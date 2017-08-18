@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Cupo
+    public class Cupo
     {
         private TipoCupo iTipoCupo;
         private bool iDisponible;
