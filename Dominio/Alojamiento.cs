@@ -10,7 +10,7 @@ namespace Dominio
     {
         private List<LineaServicio> iServicios;
         private List<Cliente> iClientes;
-        private List<Habitacion> iHabitaciones; 
+        private Habitacion iHabitacion; 
         private List<Pago> iPagos;
         private EstadoAlojamiento iEstadoAloj;
 
@@ -107,17 +107,18 @@ namespace Dominio
             this.iEstadoAloj = unEstadoAloj;
         }
 
-        public double CalcularCostoBase()
+        public double CalcularCostoBase(TarifaCliente pTarifaCliente)
         {
-            // bool exclusividad = this.iHabitaciones
-           /* double tarifa = 0;
+            bool lExclusividad = this.iHabitacion.Exclusiva;
+
+            double costoBase = 0;
 
             foreach (var item in this.iClientes)
             {
-                tarifa += item.Tarifa;
-            }*/
+                costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCLiente,lExclusividad);
+            }
 
-            return 0;
+            return costoBase * ( this.iFechaEstimadaEgreso.Subtract(this.iFechaEstimadaIngreso).Days);
         }
 
         public void RegistrarPago()

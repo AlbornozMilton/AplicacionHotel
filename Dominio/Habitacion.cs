@@ -9,16 +9,16 @@ namespace Dominio
     class Habitacion
     {
         //ATRIBUTOS
-        private int iNro;
+        private int iNumero;
         private int iCapacidad;
         private int iPlanta;
-        private bool iExclusiva; //bool o boolean usar?
-        private List<Cupo> iListaCupo; //IList<Cupo>
+        private bool iExclusiva; 
+        private List<Cupo> iListaCupo;
 
         //CONSTRUCTOR
-        public Habitacion(int pNro, int pCapacidad, int pPlanta, bool pExclusiva)
+        public Habitacion(int pNumero, int pCapacidad, int pPlanta, bool pExclusiva)
         {
-            this.iNro = pNro;
+            this.iNumero = pNumero;
             this.iCapacidad = pCapacidad;
             this.iPlanta = pPlanta;
             this.iExclusiva = pExclusiva;
@@ -27,7 +27,7 @@ namespace Dominio
         //PROPIEDADES
         public int Nro
         {
-            get { return this.iNro; }
+            get { return this.iNumero; }
         }
         public int Capacidad
         {

@@ -47,7 +47,7 @@ namespace Dominio
             {
                 switch (pTipoCliente)
                 {
-                    case TipoCliente.Titular: tarifa = 100; break; // aca seria this.iTitular
+                    case TipoCliente.Titular: tarifa = 100; break; // aca seria tarifa = this.iTitular
                     case TipoCliente.AcompanianteDirecto: tarifa = 150; break;
                     case TipoCliente.AcompanianteNoDirecto: tarifa = 200; break;
                     case TipoCliente.TitularExceptuado: tarifa = 50; break;
@@ -58,7 +58,7 @@ namespace Dominio
             {
                 switch (pTipoCliente)
                 {
-                    case TipoCliente.Titular: tarifa = 100*0.5; break; //aca seria this.iTitularExcl;
+                    case TipoCliente.Titular: tarifa = 100*0.5; break; //aca seria tarifa = this.iTitularExcl;
                     case TipoCliente.AcompanianteDirecto: tarifa = 150 * 0.5; break;
                     case TipoCliente.AcompanianteNoDirecto: tarifa = 200 * 0.5; break;
                     case TipoCliente.TitularExceptuado: tarifa = 0; break;
