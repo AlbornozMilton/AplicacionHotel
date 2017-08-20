@@ -9,37 +9,42 @@ namespace Dominio
     public class Cliente
     {
         private int iDni;
-        private string iNombe;
+        private string iNombre;
         private string iApellido;
         private string iTelefono;
         private string iCorreo;
         private Domicilio iDomicilio;
-        private TarifaCliente iTarifaCliente;
+        private TipoCliente iTipoCliente;
         
         //-------------------------------Constructores
-        public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TarifaCliente pTarifa)
+        public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TipoCliente pTipoCliente)
         {
             this.iDni = pDni;
-            this.iNombe = pNombre;
+            this.iNombre = pNombre;
             this.iApellido = pApellido;
             this.iTelefono = pTel;
             this.iCorreo = pCorreo;
             this.iDomicilio = pDom;
-            this.iTarifaCliente = pTarifa;
+            this.iTipoCliente = pTipoCliente;
         }
 
-        public Cliente(int pDni, string pNombre, string pApellido, string pTel, Domicilio pDom, TarifaCliente pTarifa)
+        //usado para pruebas
+        public Cliente(int pDni, string pNombre, string pApellido, string pTel, TipoCliente pTipoCliente)
         {
             this.iDni = pDni;
-            this.iNombe = pNombre;
+            this.iNombre = pNombre;
             this.iApellido = pApellido;
             this.iTelefono = pTel;
-           // this.iCorreo = pCorreo; no es necesario el correo
-            this.iDomicilio = pDom;
-            this.iTarifaCliente = pTarifa;
+            // this.iDomicilio = pDom; provicionalemnte, luego agregar
+            this.iTipoCliente = pTipoCliente;
         }
 
         //----------------------------------Peopiedades
+
+        public TipoCliente TipoCLiente { get; }
+
+
+        //-------------------------------------Metodos
 
 
 

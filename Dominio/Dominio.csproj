@@ -46,6 +46,7 @@
     <Compile Include="Alojamiento.cs" />
     <Compile Include="Ciudad.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="ControladorAlojamiento.cs" />
     <Compile Include="Cupo.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="EstadoAlojamiento.cs" />

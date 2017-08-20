@@ -10,7 +10,7 @@ namespace Dominio
     {
         static void Main(string[] args)
         {
-            //EMPEZA A TIRAR CLASES ! ! !
+            
         }
     }
 }
