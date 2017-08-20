@@ -8,23 +8,22 @@ namespace Dominio
 {
     public class Alojamiento
     {
-        private int iIdAlojamiento;
-        private int iDniTitular;
         private List<LineaServicio> iServicios;
+        private List<Cliente> iClientes;
+        private List<Habitacion> iHabitaciones; 
+        private List<Pago> iPagos;
+        private EstadoAlojamiento iEstadoAloj;
 
-        //private Cliente iClienteResponsable;
-        //private List<Habitacion> iHabitaciones; 
-        //private List<Pago> iPagos;
-
+        private int iIdAlojamiento;
+        private int iDniResponsable;
+        private double iMontoTotal;
+        private double iMontoDeuda;
         private DateTime iFechaReserva;
         private DateTime iFechaEstimadaEgreso;
         private DateTime iFechaEstimadaIngreso;
         private DateTime iFechaIngreso;
         private DateTime iFechaEgreso;
-        private double iMontoTotal;
-        private double iMontoDeuda;
 
-        private EstadoAlojamiento iEstadoAloj;
         //-----------------------constructores//----------------------
 
         /*
@@ -51,8 +50,8 @@ namespace Dominio
 
         public int DniTitular
         {
-            get { return this.iDniTitular; }
-            set { this.iDniTitular = value; } //Asociar Titular ¿?
+            get { return this.iDniResponsable; }
+            set { this.iDniResponsable = value; } //Asociar Titular ¿?
             //get { return this.iCliente.Dni(); }
 
         }
@@ -110,8 +109,15 @@ namespace Dominio
 
         public double CalcularCostoBase()
         {
-            //metodo
-            return 1;
+            // bool exclusividad = this.iHabitaciones
+           /* double tarifa = 0;
+
+            foreach (var item in this.iClientes)
+            {
+                tarifa += item.Tarifa;
+            }*/
+
+            return 0;
         }
 
         public void RegistrarPago()

@@ -10,7 +10,18 @@ namespace Dominio
     {
         static void Main(string[] args)
         {
-            //EMPEZA A TIRAR CLASES ! ! !
+            ControladorAlojamiento iControlador = new ControladorAlojamiento();
+
+            //instancias solo para prueba
+            Cliente lCliente = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
+            TarifaCliente lTarifaCliente = new TarifaCliente();
+            bool lExclusividad = true;
+
+            //---------------------------
+
+            Console.WriteLine(iControlador.ObteberTarifa(lCliente, lTarifaCliente, lExclusividad) );
+
+            Console.ReadKey();
         }
     }
 }
