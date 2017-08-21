@@ -62,8 +62,25 @@
     <Compile Include="AltaAlojamientoSinReserva.Designer.cs">
       <DependentUpon>AltaAlojamientoSinReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaReservaAlojamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaReservaAlojamiento.Designer.cs">
+      <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaPrincipal.Designer.cs">
+      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -72,7 +89,17 @@
     <EmbeddedResource Include="AltaAlojamientoSinReserva.resx">
       <DependentUpon>AltaAlojamientoSinReserva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AltaReservaAlojamiento.resx">
+      <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaPrincipal.resx">
+      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

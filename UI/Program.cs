@@ -11,7 +11,7 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            Application.Run(new AltaAlojamientoSinReserva());
+            Application.Run(new VentanaPrincipal());
 
         }
     }
