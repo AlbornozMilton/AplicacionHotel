@@ -41,7 +41,7 @@ namespace Dominio
 
         //----------------------------------Peopiedades
 
-        public TipoCliente TipoCLiente { get; }
+        public TipoCliente TipoCLiente { get { return this.iTipoCliente; } }
 
 
         //-------------------------------------Metodos

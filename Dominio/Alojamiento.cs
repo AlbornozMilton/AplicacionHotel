@@ -8,10 +8,10 @@ namespace Dominio
 {
     public class Alojamiento
     {
-        private List<LineaServicio> iServicios;
-        private List<Cliente> iClientes;
+        private List<LineaServicio> iServicios = new List<LineaServicio>();
+        private List<Cliente> iClientes = new List<Cliente>();
         private Habitacion iHabitacion; 
-        private List<Pago> iPagos;
+        private List<Pago> iPagos = new List<Pago>();
         private EstadoAlojamiento iEstadoAloj;
 
         private int iIdAlojamiento;
@@ -56,6 +56,12 @@ namespace Dominio
 
         }
 
+        public DateTime FechaReserva
+        {
+            get { return this.iFechaReserva; }
+            set { this.iFechaReserva = value; }
+        }
+
         public DateTime FechaEstimadaIngreso
         {
             get { return this.iFechaEstimadaIngreso.Date; }
@@ -97,28 +103,43 @@ namespace Dominio
         public EstadoAlojamiento EstadoAloj
         {
             get { return this.iEstadoAloj; }
-            //    set { this.iEstadoAloj = value; }
+            set { this.iEstadoAloj = value; }
         }
+
+        public List<Cliente> Clientes
+        {
+            get { return this.iClientes; }
+            set { this.iClientes = value; }
+        }
+
+        public Habitacion Habitacion
+        {
+            get { return this.iHabitacion; }
+            set { this.iHabitacion = value; }
+        }
+
+
 
         //----------------------métodos----------------------
-
-        public void setEstadoAlojamiento(EstadoAlojamiento unEstadoAloj)
-        {
-            this.iEstadoAloj = unEstadoAloj;
-        }
 
         public double CalcularCostoBase(TarifaCliente pTarifaCliente)
         {
             bool lExclusividad = this.iHabitacion.Exclusiva;
-
             double costoBase = 0;
 
-            foreach (var item in this.iClientes)
-            {
-                costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCLiente,lExclusividad);
-            }
+                foreach (var item in iClientes)
+                {
+                    costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCLiente, lExclusividad);
+                }
 
-            return costoBase * ( this.iFechaEstimadaEgreso.Subtract(this.iFechaEstimadaIngreso).Days);
+            if (this.FechaEstimadaIngreso == null) // NO se realizó reserva
+            {
+                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days;
+
+            } else
+            {
+                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days;
+            }
         }
 
         public void RegistrarPago()

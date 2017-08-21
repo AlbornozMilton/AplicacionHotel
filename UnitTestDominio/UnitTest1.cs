@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using Dominio;
 
 namespace UnitTestDominio
@@ -8,31 +9,55 @@ namespace UnitTestDominio
     public class UnitTest1
     {
         ControladorAlojamiento iControlador = new ControladorAlojamiento();
-        TarifaCliente lTarifaCliente = new TarifaCliente();
+              
 
-        Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
-        Cliente lCliente2 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
-        Cliente lCliente3 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
-        Cliente lCliente4 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
-        Cliente lCliente5 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
 
         [TestMethod]
         public void TestObteberTarifa() 
         {
             double lResultEsperado = 50;
             bool lExclusividad = true;
+            Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
+            TarifaCliente lTarifaCliente = new TarifaCliente();
 
             Assert.AreEqual(lResultEsperado, iControlador.ObteberTarifa(lCliente1, lTarifaCliente, lExclusividad));
 
         }
 
+        
         [TestMethod]
         public void TestCalcularCostoBase()
         {
-            double lResultEsperado = 50;
-            bool lExclusividad = true;
+            double lResultEsperado = 225 * 2;
 
-            Assert.AreEqual(lResultEsperado, iControlador.ObteberTarifa(lCliente1, lTarifaCliente, lExclusividad));
+            TarifaCliente lTarifaCliente = new TarifaCliente();
+            Alojamiento lAlojamiento = new Alojamiento();
+            List<Cliente> lClientes = new List<Cliente>();
+            Habitacion lHabitacion = new Habitacion(1, 4, 0, true);
+
+            Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
+            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", "3456542154", TipoCliente.AcompanianteDirecto);
+            Cliente lCliente3 = new Cliente(37115628, "Jaimito", "Chamorro", "3456542154", TipoCliente.AcompanianteNoDirecto);
+            Cliente lCliente4 = new Cliente(37115628, "Clara", "Burna", "3456542154", TipoCliente.TitularExceptuado);
+
+            lClientes.Add(lCliente1);
+            lClientes.Add(lCliente2);
+            lClientes.Add(lCliente3);
+            lClientes.Add(lCliente4);
+
+            lAlojamiento.Habitacion = lHabitacion; //exclusividad en true
+            lAlojamiento.Clientes = lClientes;
+
+            lAlojamiento.FechaEstimadaIngreso = DateTime.Now;
+            lAlojamiento.FechaEstimadaEgreso = (DateTime.Now).AddDays(2);
+            //diferencia de dias = 2
+
+            // la exclusividad se calcula dentro del metodo Calcular Costo base
+            Assert.AreEqual(lResultEsperado, lAlojamiento.CalcularCostoBase(lTarifaCliente));
+
+            lAlojamiento.Habitacion.Exclusiva = false;
+            int lResultEsperado2 = 1000;
+            Assert.AreEqual(lResultEsperado2, lAlojamiento.CalcularCostoBase(lTarifaCliente));
 
         }
     }
