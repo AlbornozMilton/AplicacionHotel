@@ -11,6 +11,9 @@ namespace UI
     {
         static void Main(string[] args)
         {
+            //Console.WriteLine(Convert.ToString(DateTime.Now.Date));
+            //Console.ReadKey();
+
             Application.Run(new VentanaPrincipal());
 
         }

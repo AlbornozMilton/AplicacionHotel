@@ -68,12 +68,24 @@
     <Compile Include="AltaReservaAlojamiento.Designer.cs">
       <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="InicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioSesion.Designer.cs">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TablaDisponibilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablaDisponibilidad.Designer.cs">
+      <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
     </Compile>
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
@@ -84,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\DataSources\Dominio.Cliente.datasource" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AltaAlojamientoSinReserva.resx">
@@ -92,14 +105,26 @@
     <EmbeddedResource Include="AltaReservaAlojamiento.resx">
       <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InicioSesion.resx">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TablaDisponibilidad.resx">
+      <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{6136f375-81bf-4331-a968-e279ebe177ce}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

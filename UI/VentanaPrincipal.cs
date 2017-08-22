@@ -33,5 +33,11 @@ namespace UI
             AltaReservaAlojamiento NuevaReserva = new AltaReservaAlojamiento();
             NuevaReserva.ShowDialog();
         }
+
+        private void iniciarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InicioSesion NuevoInicio = new InicioSesion();
+            NuevoInicio.ShowDialog();
+        }
     }
 }
