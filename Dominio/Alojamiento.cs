@@ -6,6 +6,19 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+    /*
+     EL VALOR NULL POR DEFECTO DE LA FECHA DATETIME ES "1/1/0001 12:00:00 AM" ....... EJEMPLOS
+
+            Console.WriteLine( new DateTime()); // 1/1/0001 12:00:00 AM
+            Console.WriteLine( default(DateTime)); // 1/1/0001 12:00:00 AM
+            Console.WriteLine( DateTime.MinValue); // 1/1/0001 12:00:00 AM
+
+            Alojamiento lAlojamiento2 = new Alojamiento(); //se instancian todos los atributos del Alojamiento por null o su default
+            Console.WriteLine(lAlojamiento2.FechaEstimadaEgreso); // 1/1/0001 12:00:00 AM
+            Console.WriteLine(lAlojamiento2.FechaReserva); // 1/1/0001 12:00:00 AM
+
+    */
+
     public class Alojamiento
     {
         private List<LineaServicio> iServicios = new List<LineaServicio>();
@@ -48,11 +61,10 @@ namespace Dominio
 
         }
 
-        public int DniTitular
+        public int DniResponsable
         {
             get { return this.iDniResponsable; }
-            set { this.iDniResponsable = value; } //Asociar Titular ¿?
-            //get { return this.iCliente.Dni(); }
+            set { this.iDniResponsable = value; } 
 
         }
 
@@ -118,6 +130,12 @@ namespace Dominio
             set { this.iHabitacion = value; }
         }
 
+        public List<LineaServicio> Servicios
+        {
+            get { return this.iServicios; }
+            set { this.iServicios = value; }
+        }
+
 
 
         //----------------------métodos----------------------
@@ -125,20 +143,21 @@ namespace Dominio
         public double CalcularCostoBase(TarifaCliente pTarifaCliente)
         {
             bool lExclusividad = this.iHabitacion.Exclusiva;
+
             double costoBase = 0;
 
-                foreach (var item in iClientes)
-                {
-                    costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCLiente, lExclusividad);
-                }
-
-            if (this.FechaEstimadaIngreso == null) // NO se realizó reserva
+            foreach (var item in iClientes)
             {
-                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days;
+                costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCliente, lExclusividad);
+            }
+
+            if (this.FechaEstimadaIngreso == default (DateTime)) // NO se realizó reserva
+            {
+                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days; //se usa fechaIngreso
 
             } else
             {
-                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days;
+                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
             }
         }
 
@@ -155,6 +174,11 @@ namespace Dominio
                 total += item.CostoServicio; // total = total + item.CostoServicio;
             }
             return total;
+        }
+
+        public void AgregarCliente(Cliente pCliente)
+        {
+            this.iClientes.Add(pCliente);
         }
 
     }

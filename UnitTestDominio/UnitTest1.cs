@@ -36,9 +36,9 @@ namespace UnitTestDominio
             Habitacion lHabitacion = new Habitacion(1, 4, 0, true);
 
             Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
-            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", "3456542154", TipoCliente.AcompanianteDirecto);
-            Cliente lCliente3 = new Cliente(37115628, "Jaimito", "Chamorro", "3456542154", TipoCliente.AcompanianteNoDirecto);
-            Cliente lCliente4 = new Cliente(37115628, "Clara", "Burna", "3456542154", TipoCliente.TitularExceptuado);
+            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", "3456545661", TipoCliente.AcompanianteDirecto);
+            Cliente lCliente3 = new Cliente(37158562, "Jaimito", "Chamorro", "3456546889", TipoCliente.AcompanianteNoDirecto);
+            Cliente lCliente4 = new Cliente(39284512, "Clara", "Burna", "3456543221", TipoCliente.TitularExceptuado);
 
             lClientes.Add(lCliente1);
             lClientes.Add(lCliente2);
@@ -48,16 +48,25 @@ namespace UnitTestDominio
             lAlojamiento.Habitacion = lHabitacion; //exclusividad en true
             lAlojamiento.Clientes = lClientes;
 
+            //diferencia de dias = 2
             lAlojamiento.FechaEstimadaIngreso = DateTime.Now;
             lAlojamiento.FechaEstimadaEgreso = (DateTime.Now).AddDays(2);
-            //diferencia de dias = 2
 
-            // la exclusividad se calcula dentro del metodo Calcular Costo base
+            //----------------Para el caso de exclusividad de la habitacion en verdadero
             Assert.AreEqual(lResultEsperado, lAlojamiento.CalcularCostoBase(lTarifaCliente));
 
+
+            //----------------Para el caso de exclusividad de la habitacion en falso
             lAlojamiento.Habitacion.Exclusiva = false;
             int lResultEsperado2 = 1000;
             Assert.AreEqual(lResultEsperado2, lAlojamiento.CalcularCostoBase(lTarifaCliente));
+
+            // cuando se da de alta un alojamiento sin reserva o se confirma... la fecha estimada de ingreso debe ser "null"
+            lAlojamiento.FechaEstimadaIngreso = default(DateTime);
+            lAlojamiento.FechaIngreso = DateTime.Now;
+
+            Assert.AreEqual(lResultEsperado2, lAlojamiento.CalcularCostoBase(lTarifaCliente));
+
 
         }
     }
