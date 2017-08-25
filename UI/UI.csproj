@@ -68,6 +68,11 @@
     <Compile Include="AltaReservaAlojamiento.Designer.cs">
       <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hotel_BDDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hotel_BDDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +85,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="TablaDisponibilidad.cs">
       <SubType>Form</SubType>
@@ -96,7 +106,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Hotel_BDDataSet.xsc">
+      <DependentUpon>Hotel_BDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_BDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hotel_BDDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hotel_BDDataSet.xss">
+      <DependentUpon>Hotel_BDDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\Dominio.Cliente.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AltaAlojamientoSinReserva.resx">

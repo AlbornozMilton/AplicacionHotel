@@ -39,5 +39,12 @@ namespace UI
             InicioSesion NuevoInicio = new InicioSesion();
             NuevoInicio.ShowDialog();
         }
+
+        private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'hotel_BDDataSet.Cliente' Puede moverla o quitarla según sea necesario.
+            this.clienteTableAdapter.Fill(this.hotel_BDDataSet.Cliente);
+
+        }
     }
 }
