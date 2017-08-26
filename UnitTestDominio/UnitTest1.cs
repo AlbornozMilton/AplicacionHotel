@@ -19,9 +19,7 @@ namespace UnitTestDominio
             TarifaCliente lTarifaCliente = new TarifaCliente();
 
             Assert.AreEqual(lResultEsperado, iControlador.ObteberTarifa(lCliente1, lTarifaCliente, lExclusividad));
-
         }
-
         
         [TestMethod]
         public void TestCalcularCostoBase()
@@ -127,12 +125,24 @@ namespace UnitTestDominio
         }
 
         [TestMethod]
-        public void TestTipoReferenciaCupos()
+        public void TestOperacionesHabitacion()
         {
             Habitacion lHabitacion = new Habitacion(1, 0, false);
-            //Verificando Capacidad de habitacion
-            int lResulEsperado = 6;
+            //Verificando Capacidad Total de habitacion
+            byte lResulEsperado = 6;
+            Assert.AreEqual(lResulEsperado, lHabitacion.CapacidadTotal());
+
+            //Verificando Capacidad actual de habitacion
+            lResulEsperado = 5;
             Assert.AreEqual(lResulEsperado, lHabitacion.Capacidad);
+            
+            //Verificando cupos simples disponibles
+            lResulEsperado = 1;
+            Assert.AreEqual(lResulEsperado, lHabitacion.CuposSimpleDisponibles());
+
+            //Verificando cupos dobles disponibles
+            lResulEsperado = 2;
+            Assert.AreEqual(lResulEsperado, lHabitacion.CuposDoblesDisponibles());
 
             //// se verifica que lCuposEsperados aputa a lHabitacion.Cupos, y son iguales a pesar de la modificacion solo a lHabitacion.Cupos
             List<Cupo> lCuposEsperados = lHabitacion.Cupos;

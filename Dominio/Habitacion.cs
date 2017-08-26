@@ -8,14 +8,14 @@ namespace Dominio
 {
     public class Habitacion
     {
-        private int iNumero;
-        private int iCapacidad;
-        private int iPlanta;
+        private byte iNumero;
+        private byte iCapacidad;
+        private byte iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos; 
 
         //CONSTRUCTOR
-        public Habitacion(int pNumero, int pPlanta, bool pExclusiva)
+        public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva)
         {
             this.iNumero = pNumero;
             this.iPlanta = pPlanta;
@@ -33,15 +33,15 @@ namespace Dominio
         }
 
         //PROPIEDADES
-        public int Nro
+        public byte Numero
         {
             get { return this.iNumero; }
         }
-        public int Capacidad
+        public byte Capacidad
         {
             get { return this.iCapacidad; }
         }
-        public int Planta
+        public byte Planta
         {
             get { return this.iPlanta; }
         }
@@ -57,10 +57,10 @@ namespace Dominio
         }
 
         //METODOS   
-        public bool OcuparCupos(int pCantS, int pCantD)
+        public bool OcuparCupos(byte pCantS, byte pCantD)
         {
             bool resultado = true;
-            foreach (var cupo in this.iCupos)
+            foreach (Cupo cupo in this.iCupos)
             {
                 //cupos.Disponible indica si un cupo esta libre
                 if (cupo.Disponible) 
@@ -95,9 +95,9 @@ namespace Dominio
             return resultado;
         }
 
-        public void OcuparCupos2(int pCantS, int pCantD)
+        public void OcuparCupos2(byte pCantS, byte pCantD)
         {
-            foreach (var cupo in this.iCupos)
+            foreach (Cupo cupo in this.iCupos)
             {
                 //cupos.Disponible indica si un cupo esta libre
                 if (cupo.Disponible)
@@ -144,21 +144,67 @@ namespace Dominio
                 throw new Exception("Error en cantidades ingresadas");
             }
         }
+
         private void CalcularCapcidad()
         {
             this.iCapacidad = 0;
 
-            foreach (var cupo in this.iCupos)
+            foreach (Cupo cupo in this.iCupos)
             {
-                if (cupo.TipoCupo==TipoCupo.simple)
+                if (cupo.Disponible)
                 {
-                    this.iCapacidad++;
-                }
-                else
-                {
-                    this.iCapacidad += 2;
+                    if (cupo.TipoCupo == TipoCupo.simple)
+                    {
+                        this.iCapacidad++;
+                    }
+                    else if (cupo.TipoCupo == TipoCupo.doble)
+                    {
+                        this.iCapacidad += 2;
+                    } 
                 }
             }
+        }
+
+        public byte CuposSimpleDisponibles()
+        {
+            byte resultado = 0;
+            foreach (Cupo cupo in this.iCupos)
+            {
+                if (cupo.Disponible && (cupo.TipoCupo == TipoCupo.simple))
+                {
+                    resultado++;
+                }
+            }
+            return resultado;
+        }
+
+        public byte CuposDoblesDisponibles()
+        {
+            byte resultado = 0;
+            foreach (Cupo cupo in this.iCupos)
+            {
+                if (cupo.Disponible && (cupo.TipoCupo == TipoCupo.doble))
+                {
+                    resultado =+ 2;
+                }
+            }
+            return resultado;
+        }
+
+        public byte CapacidadTotal()
+        {
+            byte resultado = 0;
+            foreach (Cupo cupo in this.iCupos)
+            {
+                if (cupo.TipoCupo == TipoCupo.simple)
+                {
+                    resultado++;
+                }else if (cupo.TipoCupo == TipoCupo.doble)
+	            {
+                    resultado += 2;
+                }
+            }
+            return resultado;
         }
     }
 }

@@ -8,19 +8,19 @@ namespace Dominio
 {
     public class Cupo
     {
-        private int iCodCupo;
+        private byte iCodCupo;
         private TipoCupo iTipoCupo;
         private bool iDisponible;
 
         //--------------------------CONSTRUCTOR
-        public Cupo(int pCodCupo,TipoCupo pTipoCupo, bool pDisponible)
+        public Cupo(byte pCodCupo,TipoCupo pTipoCupo, bool pDisponible)
         {
             this.iCodCupo = pCodCupo;
             this.iTipoCupo = pTipoCupo;
             this.iDisponible = pDisponible;
         }
 
-        public int CodCupo
+        public byte CodCupo
         {
             get { return this.iCodCupo; }
             set { this.iCodCupo = value; }
