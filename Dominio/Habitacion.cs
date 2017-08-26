@@ -120,6 +120,30 @@ namespace Dominio
             }
         }
 
+        public void DesocuparCupos(int pCantS, int pCantD)
+        {
+            foreach (var cupo in this.iCupos)
+            {
+                //cupos.Disponible indica si un cupo esta libre
+                if (!(cupo.Disponible))
+                {
+                    if (pCantS > 0 && cupo.TipoCupo == TipoCupo.simple)
+                    {
+                        cupo.Disponible = true;
+                        pCantS--;
+                    }
+                    else if (pCantD > 0 && cupo.TipoCupo == TipoCupo.doble)
+                    {
+                        cupo.Disponible = true;
+                        pCantD--;
+                    }
+                }
+            }
+            if (pCantD != 0 || pCantS != 0)
+            {
+                throw new Exception("Error en cantidades ingresadas");
+            }
+        }
         private void CalcularCapcidad()
         {
             this.iCapacidad = 0;

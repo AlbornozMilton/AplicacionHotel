@@ -69,7 +69,7 @@ namespace UnitTestDominio
         }
 
         [TestMethod]
-        public void TestOcuparCupos()
+        public void TestOcuparDesocuparCupos()
         {
             Habitacion lHabitacion = new Habitacion(1, 0, false);
             List<Cupo> lCuposEsperados = new List<Cupo>()
@@ -100,6 +100,30 @@ namespace UnitTestDominio
             }
             Assert.AreEqual(restEsperado, true);
 
+            //-------------------- DESOCUPAR
+            lHabitacion.DesocuparCupos(2, 1);
+            
+            lCuposEsperados = new List<Cupo>()
+            {
+                new Cupo(1, TipoCupo.simple, true),
+                new Cupo(2, TipoCupo.doble,  true),
+                new Cupo(3, TipoCupo.simple, true),
+                new Cupo(4, TipoCupo.doble, true)
+            };
+
+            restEsperado = true;
+
+            for (int i = 0; i < lHabitacion.Cupos.Count; i++)
+            {
+                if (!(lHabitacion.Cupos[i].CodCupo == lCuposEsperados[i].CodCupo &
+                            lHabitacion.Cupos[i].TipoCupo == lCuposEsperados[i].TipoCupo &
+                            lHabitacion.Cupos[i].Disponible == lCuposEsperados[i].Disponible))
+                {
+                    restEsperado = false;
+                    break;
+                }
+            }
+            Assert.AreEqual(true, restEsperado);
         }
 
         [TestMethod]
