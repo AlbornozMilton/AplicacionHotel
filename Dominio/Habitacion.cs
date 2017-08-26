@@ -57,8 +57,9 @@ namespace Dominio
         }
 
         //METODOS   
-        public void OcuparCupos(int pCantS, int pCantD)
+        public bool OcuparCupos(int pCantS, int pCantD)
         {
+            bool resultado = true;
             foreach (var cupo in this.iCupos)
             {
                 //cupos.Disponible indica si un cupo esta libre
@@ -86,6 +87,36 @@ namespace Dominio
                             break;
                     }
                 }
+            }
+            if (pCantD != 0 || pCantS != 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+
+        public void OcuparCupos2(int pCantS, int pCantD)
+        {
+            foreach (var cupo in this.iCupos)
+            {
+                //cupos.Disponible indica si un cupo esta libre
+                if (cupo.Disponible)
+                {
+                    if (pCantS > 0 && cupo.TipoCupo == TipoCupo.simple)
+                    {
+                        cupo.Disponible = false;
+                        pCantS--;
+                    }
+                    else if (pCantD > 0 && cupo.TipoCupo == TipoCupo.doble)
+                    {
+                        cupo.Disponible = false;
+                        pCantD--;
+                    }
+                }
+            }
+            if (pCantD != 0 || pCantS != 0)
+            {
+                throw new Exception("Error en cantidades ingresadas");
             }
         }
 

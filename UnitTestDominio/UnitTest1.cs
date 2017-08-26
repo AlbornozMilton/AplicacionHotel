@@ -72,8 +72,6 @@ namespace UnitTestDominio
         public void TestOcuparCupos()
         {
             Habitacion lHabitacion = new Habitacion(1, 0, false);
-            
-            //Verificacion si se ocuparon un cupo simple y un cupo doble
             List<Cupo> lCuposEsperados = new List<Cupo>()
             {
                 new Cupo(1, TipoCupo.simple, false),
@@ -82,7 +80,8 @@ namespace UnitTestDominio
                 new Cupo(4, TipoCupo.doble, true)
             };
 
-            lHabitacion.OcuparCupos(1, 1);
+            //Verificacion si se ocuparon un cupo simple y un cupo doble
+            lHabitacion.OcuparCupos2(1, 1);
             bool restEsperado = false;
 
             for (int i = 0; i < lHabitacion.Cupos.Count; i++)
@@ -99,7 +98,6 @@ namespace UnitTestDominio
                     break;
                 }
             }
-    
             Assert.AreEqual(restEsperado, true);
 
         }

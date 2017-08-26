@@ -15,7 +15,7 @@ namespace Dominio
             {
                 Console.WriteLine("{0} - {1} - {2}",cupo.CodCupo,cupo.TipoCupo,cupo.Disponible);
             }
-            lHabitacion.OcuparCupos(1,1);
+            lHabitacion.OcuparCupos2(1,3);
             Console.WriteLine();
             Console.WriteLine("OCUPACION");
 
