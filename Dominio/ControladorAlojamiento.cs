@@ -17,7 +17,7 @@ namespace Dominio
 
 
 
-            Habitacion lHabitacion = new Habitacion(1, 4, 0, true); //exclusividad en true
+            Habitacion lHabitacion = new Habitacion(1, 0, true); //exclusividad en true
 
             //-------------------------
 

@@ -8,7 +8,7 @@ namespace Dominio
 {
    public enum TipoCupo
     {
-        simple = 1,
-        doble = 2
+        simple,
+        doble
     }
 }

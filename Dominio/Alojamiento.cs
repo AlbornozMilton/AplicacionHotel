@@ -136,8 +136,6 @@ namespace Dominio
             set { this.iServicios = value; }
         }
 
-
-
         //----------------------métodos----------------------
 
         public double CalcularCostoBase(TarifaCliente pTarifaCliente)
