@@ -124,28 +124,42 @@ namespace Dominio
             //verifica si la cantidad de clientes agregados al alojamiento es igual a la cantidad de cupos que ingresó
             return (pAlojamiento.Clientes.LongCount() == pCantS + pCantD * 2);
         }
+        
+        //en este contexto, para registrar el pago de cierre se debe verificar que no presente deuda
+        // siempre se va a registrar un pago monto total aunque no se hallan consumido servicios, el pMonto = pMontoTotal 
+        public void CierreAlojamiento()
+        {
+            if (this.lAlojamiento.EstadoAloj == EstadoAlojamiento.Alojado)
+            {
+                if (this.lAlojamiento.MontoDeuda == 0)
+                {
+                    this.lAlojamiento.FechaEgreso = DateTime.Now;
+                    this.lAlojamiento.EstadoAloj = EstadoAlojamiento.Cerrado;
 
-        //public void CierreAlojamiento()
-        //{
-        //    if (this.lAlojamiento.MontoDeuda == 0)
-        //    {
-        //        this.lAlojamiento.FechaEgreso = DateTime.Now;
-        //        //en este contexto, para registrar el pago de cierre se debe verificar que no presente deuda
-        //        // siempre se va a registrar un pago monto total aunque no se hallan consumido servicios, el pMonto = pMontoTotal 
-        //        this.lAlojamiento.RegistrarPago(this.lAlojamiento.MontoTotal, TipoPago.Total, "Alojamiento Cerrado");
+                    //si ya tiene registro de TipoPago = MontoTotal devido al cosnumo de servicios, no se realiza un pago 
+                    //si no consumió servivicios se registra un TipoPago = MontoTotal igual al Monto Total
+                    if (this.lAlojamiento.TotalServicios() == 0)
+                    {
+                        this.RegistrarPagoAlojamiento(this.lAlojamiento.MontoTotal, TipoPago.Total, "Alojamiento Cerrado sin Servicios; ");
+                        //Esto se debe a que un Alojamiento siempre va a tener los tres tipos de pago
+                    }
+                }
+                else
+                {
+                    throw new Exception("El alojamiento presenta deuda");//catchear esta excepcion y tratarla para que realice un pago
+                }
+            }
+            else
+            {
+                throw new Exception("El estado alojamiento no es correspondinte para el cierre");
+            }
 
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("El alojamiento presenta deuda");
-        //    }
-
-        //} 
-
+        } 
+          
         // BUSCAR ALOJAMIENTO
 
-        //para ejecutar este metodo se tiene que controlar que los pagos se realicen en el conxtexto corresponidente
-        //es decir, que para hacer pago de deposito, se tuvo que reservar; se puede hacer un pago total solo cuando se este por cerrar un alojamiento; entre otras 
+        //para ejecutar este metodo se tiene que controlar que los pagos se realicen en el contexto corresponidente MEDIANTE ESTADO DE ALOJAMIENTO
+        //por ejemplo para realizar pago de deposito, EL ESTADO DEBE SER RESERVADO; se puede hacer un pago total solo cuando se este por cerrar un alojamiento; entre otras 
         //pMonto es distindo de null y mayor que cero (flujos de excepcion)
         /// <summary>
         /// Registrar Pago una vez pasado el control de contexto

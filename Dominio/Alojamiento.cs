@@ -183,12 +183,15 @@ namespace Dominio
 
         public void RegistrarPago(double pMonto, TipoPago pTipoPago,string pDetalle)
         {
-            this.iMontoDeuda -= pMonto;
-            if (this.iMontoDeuda < 0)
+            if ((this.iMontoDeuda -= pMonto) < 0)
             {
                 throw new Exception("Monto deuda menor a cero");
             }
-            this.iPagos.Add(new Pago(pTipoPago, pMonto, pDetalle));
+            else
+            {
+                this.iMontoDeuda -= pMonto;
+                this.iPagos.Add(new Pago(pTipoPago, pMonto, pDetalle));
+            }
         }
 
         public double TotalServicios()
