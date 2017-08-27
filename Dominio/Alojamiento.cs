@@ -23,7 +23,7 @@ namespace Dominio
     {
         private List<LineaServicio> iServicios = new List<LineaServicio>();
         private List<Cliente> iClientes = new List<Cliente>();
-        private Habitacion iHabitacion; 
+        private Habitacion iHabitacion;
         private List<Pago> iPagos = new List<Pago>();
         private EstadoAlojamiento iEstadoAloj;
 
@@ -39,19 +39,22 @@ namespace Dominio
 
         //-----------------------constructores//----------------------
 
-        /*
-        //contructor para alojamiento sin reserva
-        public Alojamiento(DateTime fechaActual)
-        //puede ser que no sea necesario pasarle fecha actual, sino en el mismo constructor inidicar fecha acutal del sistema
+        // Reservar
+        public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
         {
-            this.iFechaIngreso = fechaActual;
-            //this.iFechaIngreso = new DateTime(); //chequear que sea fecha actual 
-        } */
+            this.iFechaReserva = DateTime.Now;
+            this.iFechaEstimadaIngreso = pFechaEstIngreso;
+            this.FechaEstimadaEgreso = pFechaEstEgreso;
+        }
 
+        // Sin Reservar
+        public Alojamiento(DateTime pFechaEstEgreso)
+        {
+            this.iFechaIngreso = DateTime.Now;
+            this.FechaEstimadaEgreso = pFechaEstEgreso;
+        }
 
         //----------------------propiedades----------------------
-
-        //get EstadoAlojamiento
 
 
         public int IdAlojamiento
@@ -64,7 +67,7 @@ namespace Dominio
         public int DniResponsable
         {
             get { return this.iDniResponsable; }
-            set { this.iDniResponsable = value; } 
+            set { this.iDniResponsable = value; }
 
         }
 
@@ -136,7 +139,17 @@ namespace Dominio
             set { this.iServicios = value; }
         }
 
+        public List<Pago> Pagos
+        {
+            get { return this.iPagos; }
+        }
+
         //----------------------métodos----------------------
+
+        public void ConfirmarReserva()
+        {
+            this.iFechaIngreso = DateTime.Now;
+        }
 
         public double CalcularCostoBase(TarifaCliente pTarifaCliente)
         {
@@ -151,17 +164,31 @@ namespace Dominio
 
             if (this.FechaEstimadaIngreso == default (DateTime)) // NO se realizó reserva
             {
-                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days; //se usa fechaIngreso
+                this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days;//se usa fechaIngreso
+                this.MontoTotal = this.MontoDeuda;
+                return this.MontoDeuda; 
 
             } else
             {
-                return costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
+                this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
+                this.MontoTotal = this.MontoDeuda;
+                return this.MontoDeuda;
             }
         }
 
-        public void RegistrarPago()
+        public double Deposito
         {
+            get { return this.iMontoTotal * 0.5; }
+        }
 
+        public void RegistrarPago(double pMonto, TipoPago pTipoPago,string pDetalle)
+        {
+            this.iMontoDeuda -= pMonto;
+            if (this.iMontoDeuda < 0)
+            {
+                throw new Exception("Monto deuda menor a cero");
+            }
+            this.iPagos.Add(new Pago(pTipoPago, pMonto, pDetalle));
         }
 
         public double TotalServicios()
@@ -178,6 +205,7 @@ namespace Dominio
         {
             this.iClientes.Add(pCliente);
         }
+
 
     }
 }

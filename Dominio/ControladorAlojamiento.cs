@@ -8,9 +8,11 @@ namespace Dominio
 {
     public class ControladorAlojamiento
     {
+        Alojamiento lAlojamiento = new Alojamiento((DateTime.Now).AddDays(2));
+
         public Alojamiento NuevoAlojSinReserva()
         {
-            Alojamiento lAlojamiento = new Alojamiento();
+            Alojamiento lAlojamiento = new Alojamiento((DateTime.Now).AddDays(2));
             TarifaCliente lTarifaCliente = new TarifaCliente();
 
             //-------determinar disponibilidad
@@ -21,7 +23,7 @@ namespace Dominio
 
             //-------------------------
 
-            
+
 
             // ---------------BUSCAR y Asociar Cliente responsable
             bool op;
@@ -42,7 +44,7 @@ namespace Dominio
                         //op tendra el valor de true, que luego corta el while
                     }
 
-                }else
+                } else
                 {
                     lAlojamiento.DniResponsable = lResponsable.Dni;
                     lAlojamiento.AgregarCliente(lResponsable);
@@ -65,7 +67,7 @@ namespace Dominio
             {
                 op = VerificarCuposIngresados(cantS, cantD, lAlojamiento);
                 //notificar mediante interfaz cantidades no corresponden
-                
+
             } while (op == false);
 
 
@@ -80,14 +82,14 @@ namespace Dominio
             lAlojamiento.AgregarCliente(lCliente4);
 
 
-            lAlojamiento.Habitacion = lHabitacion; 
+            lAlojamiento.Habitacion = lHabitacion;
 
             lAlojamiento.FechaEstimadaIngreso = DateTime.Now;
             lAlojamiento.FechaEstimadaEgreso = (DateTime.Now).AddDays(2);
 
             return lAlojamiento;
         }
-        
+
         public Cliente BuscarCliente(int pDNI)
         {
             // buscar en base de datos - repositorio de clientes ?? -
@@ -96,12 +98,12 @@ namespace Dominio
 
         public double ObteberTarifa(Cliente pCliente, TarifaCliente pTarifa, bool pExclusividad)
         {
-            
-            return  pTarifa.DeterminarTarifa(pCliente.TipoCliente, pExclusividad);
-          
+
+            return pTarifa.DeterminarTarifa(pCliente.TipoCliente, pExclusividad);
+
         }
 
-        public void DeterminarDisponibilidad (DateTime pFechaDesde, DateTime pFechaHasta)
+        public void DeterminarDisponibilidad(DateTime pFechaDesde, DateTime pFechaHasta)
         {
             //fechas obtenidas desde la interfaz
             //hacer un try catch para que la fecha desde esa menor que fecha hasta
@@ -113,20 +115,104 @@ namespace Dominio
 
             List<Alojamiento> lRepoAlojamiento = new List<Alojamiento>(); // obtner como respositorio de alojamientos??
 
-          
+
 
         }
 
         public bool VerificarCuposIngresados(byte pCantS, byte pCantD, Alojamiento pAlojamiento)
         {
             //verifica si la cantidad de clientes agregados al alojamiento es igual a la cantidad de cupos que ingresó
-            return (pAlojamiento.Clientes.LongCount() == pCantS+pCantD*2);
+            return (pAlojamiento.Clientes.LongCount() == pCantS + pCantD * 2);
         }
 
-        public bool ConfirmarAlta()
+        //public void CierreAlojamiento()
+        //{
+        //    if (this.lAlojamiento.MontoDeuda == 0)
+        //    {
+        //        this.lAlojamiento.FechaEgreso = DateTime.Now;
+        //        //en este contexto, para registrar el pago de cierre se debe verificar que no presente deuda
+        //        // siempre se va a registrar un pago monto total aunque no se hallan consumido servicios, el pMonto = pMontoTotal 
+        //        this.lAlojamiento.RegistrarPago(this.lAlojamiento.MontoTotal, TipoPago.Total, "Alojamiento Cerrado");
+
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("El alojamiento presenta deuda");
+        //    }
+
+        //} 
+
+        // BUSCAR ALOJAMIENTO
+
+        //para ejecutar este metodo se tiene que controlar que los pagos se realicen en el conxtexto corresponidente
+        //es decir, que para hacer pago de deposito, se tuvo que reservar; se puede hacer un pago total solo cuando se este por cerrar un alojamiento; entre otras 
+        //pMonto es distindo de null y mayor que cero (flujos de excepcion)
+        /// <summary>
+        /// Registrar Pago una vez pasado el control de contexto
+        /// </summary>
+        public void RegistrarPagoAlojamiento(double pMonto, TipoPago pTipoPago, string pDetalle)
         {
-
-            return true;
+            if (!(this.ExistePago(pTipoPago)))
+            {
+                switch (pTipoPago)
+                {
+                    case TipoPago.Deposito: //EL MONTO TOTAL ESTA ACTUALIZO Y HASTA ENOTNCES NO SE AGREGARON SERVICIOS
+                        if (pMonto == lAlojamiento.Deposito)
+                        {
+                            lAlojamiento.RegistrarPago(pMonto,pTipoPago,pDetalle);
+                        }
+                        else
+                        {
+                            throw new Exception("Monto de Deposito No Correspondiente");
+                        }
+                        break;
+                    case TipoPago.Complemento:
+                        if (pMonto == lAlojamiento.MontoDeuda) // LA DEUDA SE ACTUALIZO CUANDO SE HIZO EL DEPOSITO o NOOO se realizo deposito
+                        {
+                            lAlojamiento.RegistrarPago(pMonto, pTipoPago, pDetalle);
+                        }
+                        else
+                        {
+                            throw new Exception("Monto de Complemento Incorrecto");
+                        }
+                        break;
+                    case TipoPago.Total:
+                        if (pMonto == lAlojamiento.TotalServicios())
+                        {
+                            lAlojamiento.RegistrarPago(pMonto, pTipoPago, pDetalle);
+                        }
+                        else
+                        {
+                            throw new Exception("Monto de Deposito No Correspondiente");
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                throw new Exception("Tipo de Pago Incorrecto");
+            }
         }
+
+        /// <summary>
+        /// Usado para registrar un Tipo de Pago de un Alojamiento
+        /// </summary>
+        /// <param name="pTipopago"> Tipo de Pago que se desea registrar sobre el Alojamiento</param>
+        /// <returns>Devuelve true si el Tipo de Pago ya existe en el Alojamiento</returns>
+        public bool ExistePago(TipoPago pTipopago)
+        {
+            bool resultado = true;
+          //  List<Pago> lPagos = new List<Pago>(lAlojamiento.Pagos);
+            foreach (Pago pago in this.lAlojamiento.Pagos)
+            {
+                if (pago.TipoPago == pTipopago)
+                {
+                    resultado = false;
+                    break;
+                }
+            }
+            return resultado;
+        }
+
     }
 }

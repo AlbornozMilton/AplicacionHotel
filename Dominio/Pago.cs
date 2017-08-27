@@ -14,23 +14,22 @@ namespace Dominio
         private DateTime iFechaPago;
         private string iDetalle;
 
-        public Pago(int pIdPago, TipoPago pTipoPago, double pMonto, string pDetalle)
+        public Pago(TipoPago pTipoPago, double pMonto, string pDetalle)
         {
-            this.iIdPago = pIdPago; //ver el idPago autoamtico
             this.iTipoPago = pTipoPago;
             this.iMonto = pMonto;
             this.iDetalle = pDetalle;
-            this.iFechaPago = new DateTime(); //ver como generar la fecha y hora actual del sistema
+            this.iFechaPago = DateTime.Now; //ver como generar la fecha y hora actual del sistema
         }
 
-        public int IdPago { get;}
+        public int IdPago { get { return this.iIdPago; } }
 
-        public TipoPago TipoPago { get; }
+        public TipoPago TipoPago { get { return this.iTipoPago; } }
 
-        public double Monto { get; }
+        public double Monto { get { return this.iMonto; } }
 
-        public DateTime Fechapago { get { return this.Fechapago.Date; } } //ver si es necesario la hora
+        public DateTime Fechapago { get { return this.Fechapago; } } //ver si es necesario la hora
 
-        public string Detalle { get; }
+        public string Detalle { get { return this.iDetalle; } }
     }
 }

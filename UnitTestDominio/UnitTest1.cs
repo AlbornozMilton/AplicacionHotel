@@ -27,7 +27,7 @@ namespace UnitTestDominio
             double lResultEsperado = 225 * 2;
 
             TarifaCliente lTarifaCliente = new TarifaCliente();
-            Alojamiento lAlojamiento = new Alojamiento();
+            Alojamiento lAlojamiento = new Alojamiento((DateTime.Now).AddDays(2));
             List<Cliente> lClientes = new List<Cliente>();
             Habitacion lHabitacion = new Habitacion(1, 0, true);
 
@@ -45,8 +45,6 @@ namespace UnitTestDominio
             lAlojamiento.Clientes = lClientes;
 
             //diferencia de dias = 2
-            lAlojamiento.FechaEstimadaIngreso = DateTime.Now;
-            lAlojamiento.FechaEstimadaEgreso = (DateTime.Now).AddDays(2);
 
             //----------------Para el caso de exclusividad de la habitacion en verdadero
             Assert.AreEqual(lResultEsperado, lAlojamiento.CalcularCostoBase(lTarifaCliente));

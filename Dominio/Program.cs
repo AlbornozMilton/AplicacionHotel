@@ -10,6 +10,7 @@ namespace Dominio
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(DateTime.Now);
             Console.ReadKey();
         }
     }
