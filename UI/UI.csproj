@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1C684EF5-2F40-4D32-8C5E-B491757C212A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UI</RootNamespace>
     <AssemblyName>UI</AssemblyName>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -68,11 +71,6 @@
     <Compile Include="AltaReservaAlojamiento.Designer.cs">
       <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hotel_BDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Hotel_BDDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +95,12 @@
     <Compile Include="TablaDisponibilidad.Designer.cs">
       <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentanaArranque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaArranque.Designer.cs">
+      <DependentUpon>VentanaArranque.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,18 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Hotel_BDDataSet.xsc">
-      <DependentUpon>Hotel_BDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Hotel_BDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Hotel_BDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Hotel_BDDataSet.xss">
-      <DependentUpon>Hotel_BDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Properties\DataSources\Dominio.Cliente.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -140,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TablaDisponibilidad.resx">
       <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaArranque.resx">
+      <DependentUpon>VentanaArranque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
