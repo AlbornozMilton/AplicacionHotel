@@ -11,8 +11,11 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            Application.Run(new AltaAlojamientoSinReserva());
+            //Console.WriteLine(Convert.ToString(DateTime.Now.Date));
+            //Console.ReadKey();
 
+            Application.Run(new VentanaArranque());
+            //Application.Run(new VentanaPrincipal());
         }
     }
 }

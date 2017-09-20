@@ -16,6 +16,7 @@ namespace UI
         public AltaAlojamientoSinReserva()
         {
             InitializeComponent();
+            textBox2.Text = Convert.ToString(DateTime.Today.Date);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -41,6 +42,17 @@ namespace UI
         private void button5_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            //textBox2.Text = "HOLAAAA";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
+            TablaDisp.ShowDialog();
         }
     }
 }
