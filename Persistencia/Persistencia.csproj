@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5E3A34C-5301-4C6C-A26D-B3C66EC8EE24}</ProjectGuid>
+    <ProjectGuid>{12B5369B-2940-44C8-A0A2-3FEC7DE409EE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Persistencia</RootNamespace>
@@ -33,19 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,79 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alojamiento.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD_Hotel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_Hotel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD_Hotel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD_Hotel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_Hotel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Ciudad.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cliente.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cupo.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Domicilio.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Habitacion.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LineaServicio.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pago.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
+    <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="Domain\Alojamiento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicio.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>BD_Hotel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="BD_Hotel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BD_Hotel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="BD_Hotel.edmx.diagram">
-      <DependentUpon>BD_Hotel.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BD_Hotel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD_Hotel.edmx</DependentUpon>
-      <LastGenOutput>BD_Hotel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BD_Hotel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD_Hotel.edmx</DependentUpon>
-      <LastGenOutput>BD_Hotel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Folder Include="DAL\EntityFramework\Mappings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
