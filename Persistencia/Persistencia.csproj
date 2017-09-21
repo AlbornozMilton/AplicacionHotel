@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
+    <Compile Include="DAL\IRepositorio.cs" />
+    <Compile Include="DAL\IRepositorioAlojamiento.cs" />
+    <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Domain\Alojamiento.cs" />
     <Compile Include="Program.cs" />

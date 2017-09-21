@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL
 {
-    class IUnitOfWork
+    interface IUnitOfWork: IDisposable
     {
+        // IDisposable: interfaz para liberar recursos
+        // las clases que usen IUnitOfWork tambien deblen implementar la interfaz IDisponsable
+
+        //  metodo que se debe implementar para realizar commits (confirmaciones)
+        void Complete();
+
+        // getters que se deben implemetar al usar la interfaz IUnitOfWork
+        IAccountRepository AccountRepository { get; }
+
+        IClientRepository ClientRepository { get; }
     }
 }
