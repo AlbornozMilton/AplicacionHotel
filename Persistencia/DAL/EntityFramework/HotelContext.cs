@@ -3,24 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entuty;
+using Persistencia.Domain;
+using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    internal class HotelContext:DbContext;
+    internal class HotelContext:DbContext
     {
+        //atributos 
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Alojamiento> Clientes { get; set; }
+        public DbSet<Alojamiento> Alojamientos { get; set; }
 
-        public HotelContext() : base("HotelDB");
+        public HotelContext() : base("HotelDB")
         {
-            Database.SetInitializer<AccountManagerDbContext>(new CreateDatabaseIfNotExists<AccountManagerDbContext>());
+            //Se establece la estrategia personalizada de inicialización de la BBDD.
+
+            Database.SetInitializer<HotelContext>(new CreateDatabaseIfNotExists<HotelContext>());
             //Database.SetInitializer<AccountManagerDbContext>(new DropCreateDatabaseIfModelChanges<AccountManagerDbContext>());
             //Database.SetInitializer<AccountManagerDbContext>(new DropCreateDatabaseAlways<AccountManagerDbContext>());
 
-            // Se establece la estrategia personalizada de inicialización de la BBDD.
-            // DatabaseInitializationStrategy: carga de datos predefinida en dicha clase
-         //   Database.SetInitializer<AccountManagerDbContext>(new DatabaseInitializationStrategy());
+            //DatabaseInitializationStrategy es una clase nuestra que carga de datos predefinida de pruba desde dicha calse
+            // y ademas utiliza un inicalizar por defecto mencionados anteriormente
+            //Database.SetInitializer<HotelContext>(new DatabaseInitializationStrategy());
+        }
+
+        protected override void OnModelCreating(DbModelBuilder pModelBuilder)
+        {
+            //cargar mapeo
+            //pModelBuilder.Configurations.Add(new ClientMap());
+            base.OnModelCreating(pModelBuilder);
         }
     }
 }

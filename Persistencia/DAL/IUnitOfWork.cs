@@ -11,12 +11,12 @@ namespace Persistencia.DAL
         // IDisposable: interfaz para liberar recursos
         // las clases que usen IUnitOfWork tambien deblen implementar la interfaz IDisponsable
 
-        //  metodo que se debe implementar para realizar commits (confirmaciones)
+        //  metodo que se debe implementar para realizar commits (confirmaciones - save changes)
         void Complete();
 
         // getters que se deben implemetar al usar la interfaz IUnitOfWork
-        IAccountRepository AccountRepository { get; }
+        IRepositorioAlojamiento RepositorioAlojamiento { get; }
 
-        IClientRepository ClientRepository { get; }
+        IRepositorioCliente RepositorioCliente { get; }
     }
 }
