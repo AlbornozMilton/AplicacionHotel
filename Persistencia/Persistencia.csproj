@@ -46,6 +46,12 @@
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Domain\Alojamiento.cs" />
+    <Compile Include="Domain\Cliente.cs" />
+    <Compile Include="Domain\Cupo.cs" />
+    <Compile Include="Domain\Habitacion.cs" />
+    <Compile Include="Domain\LineaServicio.cs" />
+    <Compile Include="Domain\Pago.cs" />
+    <Compile Include="Domain\Servicio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
