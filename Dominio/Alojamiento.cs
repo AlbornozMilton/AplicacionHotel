@@ -6,12 +6,25 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+    /*
+     EL VALOR NULL POR DEFECTO DE LA FECHA DATETIME ES "1/1/0001 12:00:00 AM" ....... EJEMPLOS
+
+            Console.WriteLine( new DateTime()); // 1/1/0001 12:00:00 AM
+            Console.WriteLine( default(DateTime)); // 1/1/0001 12:00:00 AM
+            Console.WriteLine( DateTime.MinValue); // 1/1/0001 12:00:00 AM
+
+            Alojamiento lAlojamiento2 = new Alojamiento(); //se instancian todos los atributos del Alojamiento por null o su default
+            Console.WriteLine(lAlojamiento2.FechaEstimadaEgreso); // 1/1/0001 12:00:00 AM
+            Console.WriteLine(lAlojamiento2.FechaReserva); // 1/1/0001 12:00:00 AM
+
+    */
+
     public class Alojamiento
     {
-        private List<LineaServicio> iServicios;
-        private List<Cliente> iClientes;
-        private Habitacion iHabitacion; 
-        private List<Pago> iPagos;
+        private List<LineaServicio> iServicios = new List<LineaServicio>();
+        private List<Cliente> iClientes = new List<Cliente>();
+        private Habitacion iHabitacion;
+        private List<Pago> iPagos = new List<Pago>();
         private EstadoAlojamiento iEstadoAloj;
 
         private int iIdAlojamiento;
@@ -26,19 +39,22 @@ namespace Dominio
 
         //-----------------------constructores//----------------------
 
-        /*
-        //contructor para alojamiento sin reserva
-        public Alojamiento(DateTime fechaActual)
-        //puede ser que no sea necesario pasarle fecha actual, sino en el mismo constructor inidicar fecha acutal del sistema
+        // Reservar
+        public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
         {
-            this.iFechaIngreso = fechaActual;
-            //this.iFechaIngreso = new DateTime(); //chequear que sea fecha actual 
-        } */
+            this.iFechaReserva = DateTime.Now;
+            this.iFechaEstimadaIngreso = pFechaEstIngreso;
+            this.FechaEstimadaEgreso = pFechaEstEgreso;
+        }
 
+        // Sin Reservar
+        public Alojamiento(DateTime pFechaEstEgreso)
+        {
+            this.iFechaIngreso = DateTime.Now;
+            this.FechaEstimadaEgreso = pFechaEstEgreso;
+        }
 
         //----------------------propiedades----------------------
-
-        //get EstadoAlojamiento
 
 
         public int IdAlojamiento
@@ -48,12 +64,17 @@ namespace Dominio
 
         }
 
-        public int DniTitular
+        public int DniResponsable
         {
             get { return this.iDniResponsable; }
-            set { this.iDniResponsable = value; } //Asociar Titular ¿?
-            //get { return this.iCliente.Dni(); }
+            set { this.iDniResponsable = value; }
 
+        }
+
+        public DateTime FechaReserva
+        {
+            get { return this.iFechaReserva; }
+            set { this.iFechaReserva = value; }
         }
 
         public DateTime FechaEstimadaIngreso
@@ -97,14 +118,37 @@ namespace Dominio
         public EstadoAlojamiento EstadoAloj
         {
             get { return this.iEstadoAloj; }
-            //    set { this.iEstadoAloj = value; }
+            set { this.iEstadoAloj = value; }
+        }
+
+        public List<Cliente> Clientes
+        {
+            get { return this.iClientes; }
+            set { this.iClientes = value; }
+        }
+
+        public Habitacion Habitacion
+        {
+            get { return this.iHabitacion; }
+            set { this.iHabitacion = value; }
+        }
+
+        public List<LineaServicio> Servicios
+        {
+            get { return this.iServicios; }
+            set { this.iServicios = value; }
+        }
+
+        public List<Pago> Pagos
+        {
+            get { return this.iPagos; }
         }
 
         //----------------------métodos----------------------
 
-        public void setEstadoAlojamiento(EstadoAlojamiento unEstadoAloj)
+        public void ConfirmarReserva()
         {
-            this.iEstadoAloj = unEstadoAloj;
+            this.iFechaIngreso = DateTime.Now;
         }
 
         public double CalcularCostoBase(TarifaCliente pTarifaCliente)
@@ -113,17 +157,41 @@ namespace Dominio
 
             double costoBase = 0;
 
-            foreach (var item in this.iClientes)
+            foreach (var item in iClientes)
             {
-                costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCLiente,lExclusividad);
+                costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCliente, lExclusividad);
             }
 
-            return costoBase * ( this.iFechaEstimadaEgreso.Subtract(this.iFechaEstimadaIngreso).Days);
+            if (this.FechaEstimadaIngreso == default (DateTime)) // NO se realizó reserva
+            {
+                this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days;//se usa fechaIngreso
+                this.MontoTotal = this.MontoDeuda;
+                return this.MontoDeuda; 
+
+            } else
+            {
+                this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
+                this.MontoTotal = this.MontoDeuda;
+                return this.MontoDeuda;
+            }
         }
 
-        public void RegistrarPago()
+        public double Deposito
         {
+            get { return this.iMontoTotal * 0.5; }
+        }
 
+        public void RegistrarPago(double pMonto, TipoPago pTipoPago,string pDetalle)
+        {
+            if ((this.iMontoDeuda -= pMonto) < 0)
+            {
+                throw new Exception("Monto deuda menor a cero");
+            }
+            else
+            {
+                this.iMontoDeuda -= pMonto;
+                this.iPagos.Add(new Pago(pTipoPago, pMonto, pDetalle));
+            }
         }
 
         public double TotalServicios()
@@ -135,6 +203,12 @@ namespace Dominio
             }
             return total;
         }
+
+        public void AgregarCliente(Cliente pCliente)
+        {
+            this.iClientes.Add(pCliente);
+        }
+
 
     }
 }

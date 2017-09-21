@@ -41,8 +41,13 @@ namespace Dominio
 
         //----------------------------------Peopiedades
 
-        public TipoCliente TipoCLiente { get; }
+        public int Dni
+        {
+            get { return this.iDni; }
+         //   set { this.iDni = value; }
+        }
 
+        public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
 
         //-------------------------------------Metodos
 

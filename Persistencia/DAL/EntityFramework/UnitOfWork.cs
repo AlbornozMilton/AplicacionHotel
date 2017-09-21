@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class UnitOfWork
+    class UnitOfWork : IUnitOfWork
     {
+        public UnitOfWork()
+        {
+        }
+
+        
     }
 }
