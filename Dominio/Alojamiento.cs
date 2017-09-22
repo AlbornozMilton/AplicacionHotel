@@ -39,6 +39,17 @@ namespace Dominio
 
         //-----------------------constructores//----------------------
 
+
+        //
+        public Alojamiento()
+        {
+
+        }
+
+        //public Alojamiento(object pObectect)
+        //{
+        //    this.EstadoAloj = p
+        //}
         // Reservar
         public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
         {
