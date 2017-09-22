@@ -8,6 +8,8 @@ namespace Persistencia.Domain
 {
     class LineaServicio
     {
+        public int LineaServicioId { get; set; }
+
         public int Cantidad { get; set; }
 
         public double CostoServicio { get; set; }

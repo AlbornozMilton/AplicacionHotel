@@ -8,7 +8,7 @@ namespace Persistencia.Domain
 {
     class Habitacion
     {
-        public int HabitacionId { get; set; }
+        public int HabitacionId { get; set; }//Numero de la Habitacion
 
         public int Capacidad { get; set; }
 

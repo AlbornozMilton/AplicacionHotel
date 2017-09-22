@@ -13,6 +13,5 @@ namespace Dominio
         AcompanianteDirecto,
         AcompanianteNoDirecto,
         Convenio
-
     }
 }
