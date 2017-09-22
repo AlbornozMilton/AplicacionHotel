@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Persistencia.Domain;
 using System.Data.Entity;
+using System.Runtime.CompilerServices;
+
+
+[assembly: InternalsVisibleTo("Dominio")]
 
 namespace Persistencia.DAL.EntityFramework
 {

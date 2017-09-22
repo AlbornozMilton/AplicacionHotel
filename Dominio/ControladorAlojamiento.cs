@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Persistencia.DAL.EntityFramework;
 
 namespace Dominio
 {
@@ -17,8 +18,8 @@ namespace Dominio
 
             //-------determinar disponibilidad
 
-
-
+            
+            
             Habitacion lHabitacion = new Habitacion(1, 0, true); //exclusividad en true
 
             //-------------------------
