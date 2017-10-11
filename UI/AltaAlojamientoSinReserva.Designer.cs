@@ -476,7 +476,6 @@
 
         #endregion
 
-        private DevExpress.XtraScheduler.UI.WeekOfMonthEdit weekOfMonthEdit1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;

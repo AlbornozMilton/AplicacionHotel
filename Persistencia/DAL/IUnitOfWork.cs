@@ -15,8 +15,8 @@ namespace Persistencia.DAL
         void Complete();
 
         // getters que se deben implemetar al usar la interfaz IUnitOfWork
-        IRepositorioAlojamiento RepositorioAlojamiento { get; }
-
         IRepositorioCliente RepositorioCliente { get; }
+
+        IRepositorioAlojamiento RepositorioAlojamiento { get; }
     }
 }

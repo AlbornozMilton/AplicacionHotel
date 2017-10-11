@@ -8,7 +8,7 @@ namespace Persistencia.Domain
 {
     class Pago
     {
-        public int PublicId { get; set; }
+        public int PagoId { get; set; }
 
         public TipoPago Tipo { get; set; }
 

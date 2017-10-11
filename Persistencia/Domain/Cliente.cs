@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Persistencia.Domain
 {
     class Cliente
@@ -20,13 +21,13 @@ namespace Persistencia.Domain
 
         public int AlojamientoId { get; set; }
 
-        public int TipoHuespedId { get; set; }
+        public int TarifaClienteId { get; set; }
 
         public int DomicilioId { get; set; }
 
-        //public Domicilio Domicilio { get; set; }
+        public Domicilio Domicilio { get; set; }
 
-        //public TipoHuesped TipoHuesped { get; set; }
+        public TarifaCliente TarifaCliente { get; set; }
 
         public Alojamiento Alojamiento { get; set; }
 

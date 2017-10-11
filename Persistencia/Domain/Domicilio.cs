@@ -16,6 +16,12 @@ namespace Persistencia.Domain
 
         public int Piso { get; set; }
 
+        public int NroDepto { get; set; }
 
+        public List<Cliente> Clientes { get; set; }
+
+        public int CiudadId { get; set; }
+
+        public Ciudad Ciudad { get; set; }
     }
 }

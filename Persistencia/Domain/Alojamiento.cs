@@ -10,7 +10,7 @@ namespace Persistencia.Domain
     {
         public int AlojamientoId { get; set; }
 
-        public int DniTitular { get; set; }
+        public int DniResponsable { get; set; }
 
         public DateTime FechaReserva { get; set; }
 

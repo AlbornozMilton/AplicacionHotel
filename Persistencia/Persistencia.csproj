@@ -52,16 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\EntityFramework\HotelContext.cs" />
-    <Compile Include="DAL\EntityFramework\Repositorio.cs" />
-    <Compile Include="DAL\EntityFramework\RepositorioAlojamiento.cs" />
-    <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\AlojamientoMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\CiudadMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\ClienteMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\CupoMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\DomicilioMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\HabitacionMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\LineaServicioMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\PagoMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\TarifaClienteMap.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioAlojamiento.cs" />
     <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Domain\Alojamiento.cs" />
+    <Compile Include="Domain\Ciudad.cs" />
     <Compile Include="Domain\Cliente.cs" />
     <Compile Include="Domain\Cupo.cs" />
     <Compile Include="Domain\Domicilio.cs" />
@@ -69,6 +75,7 @@
     <Compile Include="Domain\LineaServicio.cs" />
     <Compile Include="Domain\Pago.cs" />
     <Compile Include="Domain\Servicio.cs" />
+    <Compile Include="Domain\TipoCliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,9 +83,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\EntityFramework\Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
