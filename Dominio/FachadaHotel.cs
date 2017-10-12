@@ -12,7 +12,7 @@ namespace Dominio
     static class FachadaHotel
     {
        // static private UnitOfWork iUnitOfWork;
-
+       /*
         static FachadaHotel()
         {
             
@@ -28,7 +28,7 @@ namespace Dominio
               //  GC.Collect();
             }
         }
-
+        */
         //static IList<Alojamiento> ObtenerListaAlojamiento()
         //{
         //    using (UnitOfWork uow = new UnitOfWork(new HotelContext()))
