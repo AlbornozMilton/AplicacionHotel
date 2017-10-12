@@ -7,26 +7,11 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class RepositorioAlojamiento : IRepositorioAlojamiento
+    class RepositorioAlojamiento : Repositorio<Alojamiento,HotelContext>, IRepositorioAlojamiento
     {
-        public void Add(Alojamiento pEntity)
+        public RepositorioAlojamiento(HotelContext pContext) : base(pContext)
         {
-            throw new NotImplementedException();
-        }
 
-        public Alojamiento Get(int pId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Alojamiento> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Alojamiento pEntity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

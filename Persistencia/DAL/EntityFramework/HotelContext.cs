@@ -7,6 +7,9 @@ using System.Data.Entity;
 using Persistencia.Domain;
 using Persistencia.DAL.EntityFramework.Mappings;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Dominio")]
 
 namespace Persistencia.DAL.EntityFramework
 {

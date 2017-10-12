@@ -66,6 +66,7 @@
     <Compile Include="DAL\EntityFramework\Mappings\LineaServicioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\PagoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\TarifaClienteMap.cs" />
+    <Compile Include="DAL\EntityFramework\Repositorio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioAlojamiento.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />

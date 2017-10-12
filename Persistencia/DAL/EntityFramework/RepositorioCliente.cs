@@ -7,26 +7,11 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class RepositorioCliente : IRepositorioCliente
+    class RepositorioCliente : Repositorio<Cliente,HotelContext> ,IRepositorioCliente
     {
-        public void Add(Cliente pEntity)
+        public RepositorioCliente(HotelContext pContext) : base(pContext)
         {
-            throw new NotImplementedException();
         }
 
-        public Cliente Get(int pId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Cliente> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Cliente pEntity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

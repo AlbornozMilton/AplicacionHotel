@@ -45,32 +45,6 @@ namespace Persistencia.DAL.EntityFramework
         {
             this.iDbContext.Dispose();
         }
-    }
-
-        public IRepositorioCliente RepositorioCliente
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public IRepositorioAlojamiento RepositorioAlojamiento
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void Complete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+    
     }
 }

@@ -7,53 +7,29 @@ using System.Data.Entity;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity> where TEntity : class where TDbContext : DbContext
+    abstract class Repositorio <TEntity, TDbContext> : IRepositorio<TEntity> 
+        where TEntity: class
+        where TDbContext:DbContext
     {
-        protected readonly TDbContext iDbContext;
-
-        //Constructor
-        /// <summary>
-        /// Asigna un contexto a su atributo privado
-        /// </summary>
-        /// <param name="pContext" type=DbContext></param>
-        public Repositorio(TDbContext pContext)
+        public Repositorio(TDbContext pDbContext)
         {
-            if (pContext == null)
+            if (pDbContext == null)
             {
-                throw new ArgumentNullException(nameof(pContext));
+                throw new ArgumentNullException(nameof(pDbContext));
             }
-
-            this.iDbContext = pContext;
+            this.iDbContext = pDbContext;
         }
 
-        //implemetacion IRepositorio
+        protected readonly TDbContext iDbContext;
+
+        //IMPLEMENTACION IREPOSITORIO
         public void Add(TEntity pEntity)
         {
             if (pEntity == null)
             {
                 throw new ArgumentNullException(nameof(pEntity));
             }
-
             this.iDbContext.Set<TEntity>().Add(pEntity);
-        }
-
-        /// <summary>
-        /// Obtiene una entidad por clave primaria
-        /// </summary>
-        /// <param name="pId" type=int></param>
-        /// <returns><TEntity></returns>
-        public TEntity Get(int pId)
-        {
-            return this.iDbContext.Set<TEntity>().Find(pId);
-        }
-
-        /// <summary>
-        /// Retorna una lista de TEntity
-        /// </summary>
-        /// <returns>List<TEntity></returns>
-        public IEnumerable<TEntity> GetAll()
-        {
-            return this.iDbContext.Set<TEntity>().ToList();
         }
 
         public void Remove(TEntity pEntity)
@@ -64,6 +40,16 @@ namespace Persistencia.DAL.EntityFramework
             }
 
             this.iDbContext.Set<TEntity>().Remove(pEntity);
+        }
+
+        public TEntity Get(int pId)
+        {
+            return this.iDbContext.Set<TEntity>().Find(pId);
+        }
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            return this.iDbContext.Set<TEntity>().ToList();
         }
     }
 }
