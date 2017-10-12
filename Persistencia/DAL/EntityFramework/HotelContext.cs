@@ -3,39 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Persistencia.Domain;
 using System.Data.Entity;
-using System.Runtime.CompilerServices;
-
-
-[assembly: InternalsVisibleTo("Dominio")]
+using Persistencia.Domain;
+using Persistencia.DAL.EntityFramework.Mappings;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    internal class HotelContext:DbContext
+    class HotelContext: DbContext
     {
-        //atributos 
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Alojamiento> Alojamientos { get; set; }
-
-        public HotelContext() : base("HotelDB")
+        public HotelContext():base ("HotelBD")
         {
-            //Se establece la estrategia personalizada de inicialización de la BBDD.
-
-            Database.SetInitializer<HotelContext>(new CreateDatabaseIfNotExists<HotelContext>());
-            //Database.SetInitializer<AccountManagerDbContext>(new DropCreateDatabaseIfModelChanges<AccountManagerDbContext>());
-            //Database.SetInitializer<AccountManagerDbContext>(new DropCreateDatabaseAlways<AccountManagerDbContext>());
-
-            //DatabaseInitializationStrategy es una clase nuestra que carga de datos predefinida de pruba desde dicha calse
-            // y ademas utiliza un inicalizar por defecto mencionados anteriormente
-            //Database.SetInitializer<HotelContext>(new DatabaseInitializationStrategy());
         }
 
-        protected override void OnModelCreating(DbModelBuilder pModelBuilder)
+        //ATRIBUTOS       
+        public virtual DbSet<Alojamiento> Alojamiento { get; set; }
+        public virtual DbSet<Ciudad> Ciudad { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Cupo> Cupo { get; set; }
+        public virtual DbSet<Domicilio> Domicilio { get; set; }
+        public virtual DbSet<Habitacion> Habitacion { get; set; }
+        public virtual DbSet<LineaServicio> LineaServicio { get; set; }
+        public virtual DbSet<Pago> Pago { get; set; }
+        public virtual DbSet<Servicio> Servicio { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder mBuilder)
         {
-            //cargar mapeo
-            //pModelBuilder.Configurations.Add(new ClientMap());
-            base.OnModelCreating(pModelBuilder);
+            mBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //Elimina las "s" y "es" del nombre de las clases.
+            //Mappigs de las configuraciones de las Clases
+            mBuilder.Configurations.Add(new AlojamientoMap());
+            mBuilder.Configurations.Add(new CiudadMap());
+            mBuilder.Configurations.Add(new ClienteMap());
+            mBuilder.Configurations.Add(new CupoMap());
+            mBuilder.Configurations.Add(new DomicilioMap());
+            mBuilder.Configurations.Add(new HabitacionMap());
+            mBuilder.Configurations.Add(new LineaServicioMap());
+            mBuilder.Configurations.Add(new PagoMap());
+            mBuilder.Configurations.Add(new TarifaClienteMap());
+
+            base.OnModelCreating(mBuilder);
         }
+
+
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia.DAL.EntityFramework;
+using Persistencia;
 
 
 namespace Dominio

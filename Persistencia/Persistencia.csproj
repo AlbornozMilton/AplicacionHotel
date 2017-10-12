@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -52,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
+    <Compile Include="DAL\EntityFramework\HotelContext.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\AlojamientoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\CiudadMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\ClienteMap.cs" />
@@ -61,6 +66,8 @@
     <Compile Include="DAL\EntityFramework\Mappings\LineaServicioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\PagoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\TarifaClienteMap.cs" />
+    <Compile Include="DAL\EntityFramework\RepositorioAlojamiento.cs" />
+    <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioAlojamiento.cs" />
