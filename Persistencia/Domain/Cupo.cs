@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Domain
 {
-    class Cupo
+    public class Cupo
     {
         public int CupoId { get; set; }
 
