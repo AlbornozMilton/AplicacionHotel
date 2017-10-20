@@ -151,7 +151,7 @@ namespace UnitTestDominio
             lHabitacion = new Habitacion(1, 0, false);
             lCuposEsperados = new List<Cupo>(lHabitacion.Cupos);
             lHabitacion.OcuparCupos(1, 1);
-            Assert.AreNotEqual(lCuposEsperados, lHabitacion.Cupos);
+            Assert.AreNotEqual(lCuposEsperados, lHabitacion.Cupos);s
 
         }
     }

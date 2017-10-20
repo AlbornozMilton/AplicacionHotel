@@ -9,7 +9,8 @@ namespace Dominio
 {
     public class ControladorAlojamiento
     {
-        Alojamiento lAlojamiento = new Alojamiento((DateTime.Now).AddDays(2));
+        //ALOJAMIENTO CON FECHA ESTIMADA EGRESO
+        private Alojamiento lAlojamiento = new Alojamiento((DateTime.Now).AddDays(2));
 
         public Alojamiento NuevoAlojSinReserva()
         {
