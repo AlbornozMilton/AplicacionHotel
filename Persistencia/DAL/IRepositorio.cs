@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL
 {
-    interface IRepositorio<TEntity> where TEntity : class
+    public interface IRepositorio<TEntity> where TEntity : class
     {
         //metodos que todos lo repositorios deben implementar
         void Add(TEntity pEntity);

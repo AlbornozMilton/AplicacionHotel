@@ -60,11 +60,35 @@
     <Compile Include="AltaReservaAlojamiento.Designer.cs">
       <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="BuscarAlojamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarAlojamiento.Designer.cs">
+      <DependentUpon>BuscarAlojamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarCliente.Designer.cs">
+      <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListarAlojamientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListarAlojamientos.Designer.cs">
+      <DependentUpon>ListarAlojamientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevoCliente.Designer.cs">
+      <DependentUpon>NuevoCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,12 +135,24 @@
     <EmbeddedResource Include="AltaReservaAlojamiento.resx">
       <DependentUpon>AltaReservaAlojamiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BuscarAlojamiento.resx">
+      <DependentUpon>BuscarAlojamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarCliente.resx">
+      <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListarAlojamientos.resx">
+      <DependentUpon>ListarAlojamientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevoCliente.resx">
+      <DependentUpon>NuevoCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TablaDisponibilidad.resx">
@@ -136,7 +172,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\greenTick.png" />
+    <None Include="Resources\Boton_Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Ok_Seleccion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton-Agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton-buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton-InicioSesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton-CerrarSesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton-buscar-seleccion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton-buscar-seleccion2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Ok_Seleccion_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Ok_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Ok_Seleccion_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

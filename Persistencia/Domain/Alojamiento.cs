@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Domain
 {
-    class Alojamiento
+    public class Alojamiento
     {
         public int AlojamientoId { get; set; }
 

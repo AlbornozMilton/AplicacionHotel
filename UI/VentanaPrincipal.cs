@@ -46,5 +46,24 @@ namespace UI
             //this.clienteTableAdapter.Fill(this.hotel_BDDataSet.Cliente);
 
         }
+
+        private void nuevoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            NuevoCliente NuevoCliente = new NuevoCliente();
+            NuevoCliente.ShowDialog();
+        }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BuscarCliente BuscarCliente = new BuscarCliente();
+            BuscarCliente.ShowDialog();
+
+        }
+
+        private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
+            BuscarAlojamiento.ShowDialog();
+        }
     }
 }
