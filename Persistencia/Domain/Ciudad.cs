@@ -2,7 +2,7 @@
 
 namespace Persistencia.Domain
 {
-    class Ciudad
+    public class Ciudad
     {
         public int CiudadId { get; set; } //CP de la Ciudad
 

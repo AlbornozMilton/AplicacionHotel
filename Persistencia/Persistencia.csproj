@@ -78,7 +78,7 @@
     <Compile Include="Domain\LineaServicio.cs" />
     <Compile Include="Domain\Pago.cs" />
     <Compile Include="Domain\Servicio.cs" />
-    <Compile Include="Domain\TipoCliente.cs" />
+    <Compile Include="Domain\TarifaCliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
