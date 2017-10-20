@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6136F375-81BF-4331-A968-E279EBE177CE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dominio</RootNamespace>
     <AssemblyName>Dominio</AssemblyName>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +50,8 @@
     <Compile Include="Ciudad.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ControladorAlojamiento.cs" />
+    <Compile Include="ControladorCliente.cs" />
+    <Compile Include="ControladorHabitacion.cs" />
     <Compile Include="Cupo.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="EstadoAlojamiento.cs" />

@@ -2,7 +2,7 @@
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         //atributo para utilizar un solo Contexto
         private readonly HotelContext iDbContext;

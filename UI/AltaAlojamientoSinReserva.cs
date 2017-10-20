@@ -53,5 +53,10 @@ namespace UI
             TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
             TablaDisp.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

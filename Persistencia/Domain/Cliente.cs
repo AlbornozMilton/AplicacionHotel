@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia.Domain
 {
-    class Cliente
+    public class Cliente
     {
         public int ClienteId { get; set; } //dni
 

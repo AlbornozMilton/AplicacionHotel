@@ -27,6 +27,26 @@ namespace Dominio
             this.iDomicilio = pDom;
             this.iTipoCliente = pTipoCliente;
         }
+        /// <summary>
+        /// Contructor sin Correo
+        /// </summary>
+        public Cliente(int pDni, string pNombre, string pApellido, string pTel, Domicilio pDom, TipoCliente pTipoCliente)
+        {
+            this.iDni = pDni;
+            this.iNombre = pNombre;
+            this.iApellido = pApellido;
+            this.iTelefono = pTel;
+            this.iDomicilio = pDom;
+            this.iTipoCliente = pTipoCliente;
+        }
+
+        public Cliente(int pDni, string pNombre, string pApellido, string pTel)
+        {
+            this.iDni = pDni;
+            this.iNombre = pNombre;
+            this.iApellido = pApellido;
+            this.iTelefono = pTel;
+        }
 
         //usado para pruebas
         public Cliente(int pDni, string pNombre, string pApellido, string pTel, TipoCliente pTipoCliente)
