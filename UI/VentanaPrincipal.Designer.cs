@@ -376,7 +376,7 @@
             // 
             // clienteBindingSource
             // 
-            this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
+            //this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
             // 
             // VentanaPrincipal
             // 

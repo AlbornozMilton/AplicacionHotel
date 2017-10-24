@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{12B5369B-2940-44C8-A0A2-3FEC7DE409EE}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Persistencia</RootNamespace>
     <AssemblyName>Persistencia</AssemblyName>
@@ -68,7 +68,7 @@
     <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
     <Compile Include="DAL\EntityFramework\HotelContext.cs" />
     <Compile Include="DAL\EntityFramework\Repositorio.cs" />
-    <Compile Include="DAL\EntityFramework\RepositorioAlojamiento.cs" /> 
+    <Compile Include="DAL\EntityFramework\RepositorioAlojamiento.cs" />
     <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioAlojamiento.cs" />
@@ -84,6 +84,7 @@
     <Compile Include="Domain\Pago.cs" />
     <Compile Include="Domain\Servicio.cs" />
     <Compile Include="Domain\TarifaCliente.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
