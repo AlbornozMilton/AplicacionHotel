@@ -16,8 +16,10 @@ namespace Persistencia.Domain
 
         public double TarifaExclusiva { get; set; }
 
+        //???????????????
         public List<Cliente> Clientes { get; set; }
     }
+
     public enum TipoCliente
     {
         Titular,
@@ -25,6 +27,5 @@ namespace Persistencia.Domain
         AcompanianteDirecto,
         AcompanianteNoDirecto,
         Convenio
-
     }
 }

@@ -14,7 +14,8 @@ namespace Dominio
     {
         AutoMapperHotel Mapeo = new AutoMapperHotel();
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
-        public void NuevoCliente(string pDni, string pNombre, string pApellido, string pTel)
+
+        public void NuevoCliente(string pDni, string pNombre, string pApellido, int pTel)
         {
             Mapeo.Mapear();
             Cliente cli = new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel);
@@ -22,6 +23,7 @@ namespace Dominio
             //Persistencia.Domain.Cliente cliente = Converter<Cliente, Persistencia.Domain.Cliente> Cliente;
             iUoW.RepositorioCliente.Add(nuevoCli);
             iUoW.Complete();
+            iUoW.Dispose();
         }
     }
 }
