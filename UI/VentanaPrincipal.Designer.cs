@@ -374,6 +374,10 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // clienteBindingSource
+            // 
+            //this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
