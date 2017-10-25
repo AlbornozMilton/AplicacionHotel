@@ -26,7 +26,8 @@ namespace UI
         {
             this.iCiudad = new Ciudad(3260,"CdelU");
             this.iDomicilio = new Domicilio("Alejo Peyret", 661, 8, 0, this.iCiudad);
-            iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,Convert.ToInt32(textBox4.Text));
+            //  iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,Convert.ToInt32(textBox4.Text));
+            iControladorCliente.ExisteCliente(textBox1.Text,textBox3.Text,textBox2.Text,Convert.ToInt32(textBox4.Text));
         }
 
         private void button2_Click(object sender, EventArgs e)
