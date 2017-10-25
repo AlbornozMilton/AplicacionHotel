@@ -17,18 +17,18 @@ namespace Persistencia
 
             //--------------------------------------------------------------//
 
-            //UnitOfWork iUoW = new UnitOfWork(new HotelContext());
+            UnitOfWork iUoW = new UnitOfWork(new HotelContext());
             HotelContext db = new HotelContext();
 
             Ciudad unaCity = new Ciudad
             {
-                Nombre = "Villaguay",
+                Nombre = "ConcepcionDelUruguay",
             };
-            db.Ciudad.Add(unaCity);
-            db.SaveChanges();
+            //db.Ciudad.Add(unaCity);
+            //db.SaveChanges();
 
-            //iUoW.RepositorioCiudad.Add(unaCity);
-            //iUoW.Complete();
+            iUoW.RepositorioCiudad.Add(unaCity);
+            iUoW.Complete();
 
             //---------------------------------------------------------------//
 

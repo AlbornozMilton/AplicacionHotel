@@ -64,6 +64,7 @@
     <Compile Include="DAL\EntityFramework\Mappings\LineaServicioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\PagoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\TarifaClienteMap.cs" />
+    <Compile Include="DAL\EntityFramework\RepositorioCiudad.cs" />
     <Compile Include="DAL\EntityFramework\UnitOfWork.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioCliente.cs" />
     <Compile Include="DAL\EntityFramework\HotelContext.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="DAL\EntityFramework\DatabaseInitializationStrategy.cs" />
     <Compile Include="DAL\IRepositorio.cs" />
     <Compile Include="DAL\IRepositorioAlojamiento.cs" />
+    <Compile Include="DAL\IRepositorioCiudad.cs" />
     <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Domain\Alojamiento.cs" />
