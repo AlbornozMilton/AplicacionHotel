@@ -14,20 +14,22 @@ namespace Dominio.DTO_Mapper
             
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Cliente, Persistencia.Domain.Cliente>()
-                .ForMember(t => t.ClienteId, f => f.MapFrom(r => r.Dni))
-                .ForMember(t => t.Alojamiento, opt => opt.Ignore())//determinar que atributo va con que, porque varian en nombre.
-                .ForMember(t => t.Alojamiento, opt => opt.Ignore())//determinar que atributo va con que, porque varian en nombre.
-                .ForMember(t => t.Domicilio, opt => opt.Ignore());//determinar que atributo va con que, porque varian en nombre.
-                //.ForMember(t => t.Nombre, f => f.MapFrom(r => r.Nombre))
-                //.ForMember(t => t.Apellido, f => f.MapFrom(r => r.Apellido))
-                //.ForMember(t => t.Telefono, f => f.MapFrom(r => r.Telefono))
-                //.ForMember(t => t.Correo, f => f.MapFrom(r => r.Correo))
-                //.ForMember(t => t.DomicilioId, f => f.MapFrom( r => r.GetDomicilio.Ciudad.CodPostal))
-                //.ReverseMap();//para que funcione la conversion a la inversa, es decir de persistencia.cliente a domain.cliente
+                //cfg.CreateMap<Cliente, Persistencia.Domain.Cliente>()
+                //.ForMember(t => t.ClienteId, f => f.MapFrom(r => r.Dni))
+                //.ForMember(t => t.Alojamiento, opt => opt.Ignore())//determinar que atributo va con que, porque varian en nombre.
+                //.ForMember(t => t.Alojamiento, opt => opt.Ignore())//determinar que atributo va con que, porque varian en nombre.
+                //.ForMember(t => t.Domicilio, opt => opt.Ignore());//determinar que atributo va con que, porque varian en nombre.
+                //                                                  //.ForMember(t => t.Nombre, f => f.MapFrom(r => r.Nombre))
+                //                                                  //.ForMember(t => t.Apellido, f => f.MapFrom(r => r.Apellido))
+                //                                                  //.ForMember(t => t.Telefono, f => f.MapFrom(r => r.Telefono))
+                //                                                  //.ForMember(t => t.Correo, f => f.MapFrom(r => r.Correo))
+                //                                                  //.ForMember(t => t.DomicilioId, f => f.MapFrom( r => r.GetDomicilio.Ciudad.CodPostal))
+                //                                                  //.ReverseMap();//para que funcione la conversion a la inversa, es decir de persistencia.cliente a domain.cliente
 
-        //        cfg.CreateMap<Domicilio, Persistencia.Domain.Domicilio>()
-
+                ////        cfg.CreateMap<Domicilio, Persistencia.Domain.Domicilio>()
+                cfg.CreateMap<Ciudad, Persistencia.Domain.Ciudad>()
+                .ForMember(t => t.CiudadId, f => f.MapFrom(r => r.CodPostal))
+                .ForMember(t => t.Nombre, f => f.MapFrom(r => r.Nombre));//determinar que atributo va con que, porque varian en nombre.
             });
 
         }

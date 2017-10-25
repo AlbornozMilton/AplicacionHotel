@@ -8,7 +8,7 @@ namespace Persistencia.Domain
 
         public string Nombre { get; set; }
 
-        public List<Domicilio> Domicilios { get; set; }
+        //public List<Domicilio> Domicilios { get; set; }
 
     }
 }

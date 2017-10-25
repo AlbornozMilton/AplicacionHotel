@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarCiudad.Designer.cs">
+      <DependentUpon>AgregarCiudad.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaAlojamientoSinReserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AgregarCiudad.resx">
+      <DependentUpon>AgregarCiudad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AltaAlojamientoSinReserva.resx">
       <DependentUpon>AltaAlojamientoSinReserva.cs</DependentUpon>
     </EmbeddedResource>

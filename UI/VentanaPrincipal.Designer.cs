@@ -65,6 +65,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.agregarCiudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -190,7 +191,7 @@
             // 
             this.clienteToolStripMenuItem1.Image = global::UI.Properties.Resources.boton_buscar;
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 28);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(138, 28);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
@@ -209,7 +210,8 @@
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualDeUsuarioToolStripMenuItem});
+            this.manualDeUsuarioToolStripMenuItem,
+            this.agregarCiudadToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(76, 28);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
@@ -374,9 +376,12 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // clienteBindingSource
+            // agregarCiudadToolStripMenuItem
             // 
-            //this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
+            this.agregarCiudadToolStripMenuItem.Name = "agregarCiudadToolStripMenuItem";
+            this.agregarCiudadToolStripMenuItem.Size = new System.Drawing.Size(238, 28);
+            this.agregarCiudadToolStripMenuItem.Text = "AgregarCiudad";
+            this.agregarCiudadToolStripMenuItem.Click += new System.EventHandler(this.agregarCiudadToolStripMenuItem_Click);
             // 
             // VentanaPrincipal
             // 
@@ -442,5 +447,6 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.BindingSource clienteBindingSource;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem agregarCiudadToolStripMenuItem;
     }
 }

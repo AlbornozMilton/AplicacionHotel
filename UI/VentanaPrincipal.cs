@@ -66,5 +66,10 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
         }
 
+        private void agregarCiudadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarCiudad BuscarAlojamiento = new AgregarCiudad();
+            BuscarAlojamiento.ShowDialog();
+        }
     }
 }
