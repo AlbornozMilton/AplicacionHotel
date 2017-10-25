@@ -15,14 +15,8 @@ namespace Persistencia.DAL.EntityFramework
         }
         public bool Existe(Cliente pCliente)
         {
-            if ((base.iDbContext.Set<Cliente>().Find(pCliente.ClienteId)!=null))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           // return (base.iDbContext.Set<Cliente>().Find(pCliente.ClienteId) != null);
+           return (base.iDbContext.Cliente.Find(pCliente.ClienteId) != null);
         }
 
     }

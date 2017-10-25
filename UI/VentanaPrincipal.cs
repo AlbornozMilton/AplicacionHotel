@@ -65,5 +65,6 @@ namespace UI
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
         }
+
     }
 }
