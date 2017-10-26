@@ -15,7 +15,7 @@ namespace UnitTestDominio
         {
             double lResultEsperado = 50;
             bool lExclusividad = true;
-            Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
+            Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", 34565154, TipoCliente.Titular);
             TarifaCliente lTarifaCliente = new TarifaCliente();
 
             Assert.AreEqual(lResultEsperado, iControlador.ObteberTarifa(lCliente1, lTarifaCliente, lExclusividad));
@@ -31,10 +31,10 @@ namespace UnitTestDominio
             List<Cliente> lClientes = new List<Cliente>();
             Habitacion lHabitacion = new Habitacion(1, 0, true);
 
-            Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
-            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", "3456545661", TipoCliente.AcompanianteDirecto);
-            Cliente lCliente3 = new Cliente(37158562, "Jaimito", "Chamorro", "3456546889", TipoCliente.AcompanianteNoDirecto);
-            Cliente lCliente4 = new Cliente(39284512, "Clara", "Burna", "3456543221", TipoCliente.TitularExceptuado);
+            Cliente lCliente1 = new Cliente(37115628, "Mauricio", "Chamorro", 56542154, TipoCliente.Titular);
+            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", 56545661, TipoCliente.AcompanianteDirecto);
+            Cliente lCliente3 = new Cliente(37158562, "Jaimito", "Chamorro", 56546889, TipoCliente.AcompanianteNoDirecto);
+            Cliente lCliente4 = new Cliente(39284512, "Clara", "Burna", 6543221, TipoCliente.TitularExceptuado);
 
             lClientes.Add(lCliente1);
             lClientes.Add(lCliente2);

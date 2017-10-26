@@ -11,13 +11,14 @@ namespace Dominio
         private int iCodPostal;
         private string iNombre;
 
+        //-----constructor
         public Ciudad(int pCodPostal, string pNombre)
         {
             this.iCodPostal = pCodPostal;
             this.iNombre = pNombre;
         }
 
-        public int CodPostal { get; }
-        public string Nombre { get; }
+        public int CodPostal { get { return this.iCodPostal; } }
+        public string Nombre { get { return this.iNombre; } }
     }
 }

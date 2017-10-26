@@ -9,12 +9,12 @@ namespace Dominio
     public class Domicilio
     {
         private string iCalle;
-        private string iNumCalle;
+        private int iNumCalle;
         private int iNumDepto;
         private int iNumPiso;
         private Ciudad iCiudad;
 
-        public Domicilio(string pCalle, string pNumCalle, int pNumDepto, int pNumPiso, Ciudad pCiudad)
+        public Domicilio(string pCalle, int pNumCalle, int pNumDepto, int pNumPiso, Ciudad pCiudad)
         {
             this.iCalle = pCalle;
             this.iNumCalle = pNumCalle;
@@ -26,15 +26,16 @@ namespace Dominio
 
         //----------------------------------------propiedades
 
-        public int NumDepto { get; }
-        public int NumPiso { get; }
-        public string Calle { get; }
-        public string  NumCalle { get; }
+        public int NumDepto { get { return this.iNumDepto; } }
+        public int NumPiso { get { return this.iNumPiso; } }
+        public string Calle { get { return this.iCalle; } }
+        public int  NumCalle { get { return this.iNumCalle; } }
+        public Ciudad Ciudad { get { return this.iCiudad; } }
 
         //--------------------------------------metodos
         public string Direccion()
         {
-            return (this.iCalle +' '+this.iNumCalle);
+            return (this.iCalle +' '+this.iNumCalle.ToString());
         }
     }
 }

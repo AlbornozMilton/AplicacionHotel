@@ -75,9 +75,9 @@ namespace Dominio
 
             //------------------------------------
 
-            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", "3456542154", TipoCliente.AcompanianteDirecto);
-            Cliente lCliente3 = new Cliente(13123412, "Jaimito", "Chamorro", "3456542154", TipoCliente.AcompanianteNoDirecto);
-            Cliente lCliente4 = new Cliente(44134234, "Clara", "Burna", "3456542154", TipoCliente.TitularExceptuado);
+            Cliente lCliente2 = new Cliente(37000000, "Josefina", "Chamorro", 86363, TipoCliente.AcompanianteDirecto);
+            Cliente lCliente3 = new Cliente(13123412, "Jaimito", "Chamorro", 3563536, TipoCliente.AcompanianteNoDirecto);
+            Cliente lCliente4 = new Cliente(44134234, "Clara", "Burna", 3563653, TipoCliente.TitularExceptuado);
 
             lAlojamiento.AgregarCliente(lCliente2);
             lAlojamiento.AgregarCliente(lCliente3);
@@ -95,7 +95,7 @@ namespace Dominio
         public Cliente BuscarCliente(int pDNI)
         {
             // buscar en base de datos - repositorio de clientes ?? -
-            return new Cliente(37115628, "Mauricio", "Chamorro", "3456542154", TipoCliente.Titular);
+            return new Cliente(37115628, "Mauricio", "Chamorro", 0123255, TipoCliente.Titular);
         }
 
         public double ObteberTarifa(Cliente pCliente, TarifaCliente pTarifa, bool pExclusividad)

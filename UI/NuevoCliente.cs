@@ -14,6 +14,9 @@ namespace UI
     public partial class NuevoCliente : Form
     {
         ControladorCliente iControladorCliente = new ControladorCliente();
+        Domicilio iDomicilio;
+        Ciudad iCiudad;
+
         public NuevoCliente()
         {
             InitializeComponent();
@@ -21,7 +24,10 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,textBox4.Text);
+            this.iCiudad = new Ciudad(3260,"CdelU");
+            this.iDomicilio = new Domicilio("Alejo Peyret", 661, 8, 0, this.iCiudad);
+            //  iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,Convert.ToInt32(textBox4.Text));
+            iControladorCliente.ExisteCliente(textBox1.Text,textBox3.Text,textBox2.Text,Convert.ToInt32(textBox4.Text));
         }
 
         private void button2_Click(object sender, EventArgs e)

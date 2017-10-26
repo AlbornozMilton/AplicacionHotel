@@ -10,26 +10,21 @@ namespace Persistencia.Domain
     public class Cliente
     {
         public int ClienteId { get; set; } //dni
-
         public string Nombre { get; set; }
-
         public string Apellido { get; set; }
-
         public int Telefono { get; set; }
-
         public string Correo { get; set; }
 
-        public int AlojamientoId { get; set; }
-
-        public int TarifaClienteId { get; set; }
-
+        // relaciones --------------
         public int DomicilioId { get; set; }
-
         public Domicilio Domicilio { get; set; }
 
+        public int TarifaClienteId { get; set; }
         public TarifaCliente TarifaCliente { get; set; }
 
+        public int AlojamientoId { get; set; }
         public Alojamiento Alojamiento { get; set; }
 
     }
+  
 }

@@ -32,7 +32,6 @@ namespace Persistencia.DAL.EntityFramework
         public IRepositorioCliente RepositorioCliente { get; private set; }
 
         public IRepositorioCiudad RepositorioCiudad { get; private set; }
-    
 
         /// <summary>
         /// Realiza el método SaveChanges();

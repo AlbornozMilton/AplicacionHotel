@@ -30,6 +30,8 @@ namespace Persistencia.DAL.EntityFramework
                 throw new ArgumentNullException(nameof(pEntity));
             }
             this.iDbContext.Set<TEntity>().Add(pEntity);
+            //puede ser porque los valores que toma Cliente, algunos campos son null-> en el maping colocar que es opcional
+            // o bien no tengo la base de datos creada
         }
 
         public void Remove(TEntity pEntity)
