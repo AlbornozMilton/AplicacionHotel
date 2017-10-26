@@ -30,7 +30,8 @@ namespace Dominio
         {
             Mapeo.Mapear();
             Ciudad city = new Ciudad(pCodPostal, pNombre);
-            Persistencia.Domain.Ciudad persistenciaCity = Mapper.Map<Ciudad, Persistencia.Domain.Ciudad>(city);
+            Persistencia.Domain.Ciudad persistenciaCity = new Persistencia.Domain.Ciudad();
+            persistenciaCity = Mapper.Map<Ciudad, Persistencia.Domain.Ciudad>(city);
             iUoW.RepositorioCiudad.Add(persistenciaCity);
             iUoW.Complete();
             iUoW.Dispose();
