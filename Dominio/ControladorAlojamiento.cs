@@ -41,14 +41,14 @@ namespace Dominio
 
                     if (op == true)
                     {
-                        lAlojamiento.DniResponsable = lResponsable.Dni;
+                        lAlojamiento.DniResponsable = lResponsable.ClienteId;
                         lAlojamiento.AgregarCliente(lResponsable);
                         //op tendra el valor de true, que luego corta el while
                     }
 
                 } else
                 {
-                    lAlojamiento.DniResponsable = lResponsable.Dni;
+                    lAlojamiento.DniResponsable = lResponsable.ClienteId;
                     lAlojamiento.AgregarCliente(lResponsable);
                     op = true;
                     //mostrar en la interfaz

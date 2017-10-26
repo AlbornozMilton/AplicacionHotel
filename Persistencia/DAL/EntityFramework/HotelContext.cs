@@ -14,6 +14,7 @@ namespace Persistencia.DAL.EntityFramework
     {
         public HotelContext():base ("HotelBD")
         {
+            Database.SetInitializer<HotelContext>(new DatabaseInitializationStrategy());
         }
 
         //ATRIBUTOS       

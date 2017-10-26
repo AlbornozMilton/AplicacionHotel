@@ -60,13 +60,12 @@ namespace Dominio
         }
 
         //----------------------------------Peopiedades
-
-        public int Dni
-        {
-            get { return this.iDni; }
-         //   set { this.iDni = value; }
-        }
-
+        public int ClienteId { get { return this.iDni; } }
+        public string Nombre { get { return this.iNombre; } }
+        public string Apellido { get { return this.iApellido; } }
+        public string Telefono { get { return this.iTelefono; } }
+        public string Correo { get { return this.iCorreo; } }
+        public Domicilio Domiciolio { get { return this.iDomicilio; } }
         public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
 
         //-------------------------------------Metodos
