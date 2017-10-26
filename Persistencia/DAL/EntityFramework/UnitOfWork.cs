@@ -21,6 +21,7 @@ namespace Persistencia.DAL.EntityFramework
             //SE INSTANCIA CON TODAS LAS IMPLEMENTACIONES DEFINIDAS
             this.RepositorioAlojamiento = new RepositorioAlojamiento(this.iDbContext); //porque el this???-->por el constructor de ClientRepository
             this.RepositorioCliente = new RepositorioCliente(this.iDbContext); //porque el this???-->por el constructor de AccountRepository
+            this.RepositorioCiudad = new RepositorioCiudad(this.iDbContext);
         }
 
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
