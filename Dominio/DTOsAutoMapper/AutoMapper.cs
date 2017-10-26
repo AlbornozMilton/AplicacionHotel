@@ -10,7 +10,8 @@ namespace Dominio.DTOsAutoMapper
     {
         public static void Mapaer()
         {
-            Mapper.Initialize();
+            Mapper.Initialize(cfg => 
+                cfg.CreateMap<Cliente,Persistencia.Domain.Cliente>());
         }
     }
 }
