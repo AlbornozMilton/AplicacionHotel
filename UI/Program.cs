@@ -11,11 +11,10 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine(Convert.ToString(DateTime.Now.Date));
-            //Console.ReadKey();
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Dominio.DTOsAutoMapper.AutoMapper.Mapaer();
             Application.Run(new VentanaArranque());
-            //Application.Run(new VentanaPrincipal());
         }
     }
 }

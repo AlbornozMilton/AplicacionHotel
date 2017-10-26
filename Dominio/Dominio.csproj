@@ -36,6 +36,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +58,7 @@
     <Compile Include="ControladorHabitacion.cs" />
     <Compile Include="Cupo.cs" />
     <Compile Include="Domicilio.cs" />
+    <Compile Include="DTOsAutoMapper\AutoMapper.cs" />
     <Compile Include="EstadoAlojamiento.cs" />
     <Compile Include="FachadaHotel.cs" />
     <Compile Include="Habitacion.cs" />
@@ -69,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Persistencia\Persistencia.csproj">
