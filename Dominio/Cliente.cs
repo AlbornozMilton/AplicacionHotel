@@ -64,7 +64,20 @@ namespace Dominio
         public string Nombre { get { return this.iNombre; } }
         public string Apellido { get { return this.iApellido; } }
         public string Telefono { get { return this.iTelefono; } }
-        public string Correo { get { return this.iCorreo; } }
+        public string Correo
+        {
+            get
+            {
+                if (this.iCorreo == null)
+                {
+                    return " ";
+                }
+                else
+                {
+                    return this.iCorreo;
+                }
+            }
+        }
         public Domicilio Domiciolio { get { return this.iDomicilio; } }
         public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
 

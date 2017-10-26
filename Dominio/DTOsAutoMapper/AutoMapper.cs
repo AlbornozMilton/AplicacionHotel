@@ -12,7 +12,7 @@ namespace Dominio.DTOsAutoMapper
         {
             Mapper.Initialize(cfg =>
                 cfg.CreateMap<Cliente, Persistencia.Domain.Cliente>());
-              //  .ForMember(c => c.Alojamiento).
+              //  .ForMember(c => c.Alojamiento). 
         }
     }
 }
