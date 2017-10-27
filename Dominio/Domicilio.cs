@@ -8,30 +8,38 @@ namespace Dominio
 {
     public class Domicilio
     {
-        private int iDomicilioId;
+        private int iDomicilioId = 1;
         private string iCalle;
         private string iNumCalle;
-        private int iNumDepto;
-        private int iNumPiso;
+        private string iNumDepto;
+        private string iNumPiso;
         private Ciudad iCiudad;
 
-        public Domicilio(int pDomId, string pCalle, string pNumCalle, int pNumDepto, int pNumPiso, Ciudad pCiudad)
+        public Domicilio(int pDomId, string pCalle, string pNumCalle, string pNumDepto, string pNumPiso, Ciudad pCiudad)
         {
             this.iDomicilioId = pDomId;
             this.iCalle = pCalle;
             this.iNumCalle = pNumCalle;
             this.iNumDepto = pNumDepto;
-            this.iNumPiso= pNumPiso;
+            this.iNumPiso = pNumPiso;
             this.iCiudad = pCiudad;
 
+        }
+
+        public Domicilio(string pCalle, string pNumCalle, string pNumDepto, string pNumPiso)
+        {
+            this.iCalle = pCalle;
+            this.iNumCalle = pNumCalle;
+            this.iNumDepto = pNumDepto;
+            this.iNumPiso = pNumPiso;
         }
 
         //----------------------------------------propiedades
         public int DomicilioId { get { return this.iDomicilioId; } }
         public string Calle { get { return this.iCalle; } }
         public string  Numero { get { return this.iNumCalle; } }
-        public int Piso { get { return this.iNumPiso; } }
-        public int NroDepto { get { return this.iNumDepto; } }
+        public string Piso { get { return this.iNumPiso; } }
+        public string NroDepto { get { return this.iNumDepto; } }
         public Ciudad Ciudad { get { return this.iCiudad; } }
         //--------------------------------------metodos
         public string Direccion()

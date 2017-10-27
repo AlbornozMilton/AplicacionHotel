@@ -25,15 +25,21 @@ namespace Persistencia
             //    Nombre = "ConcepcionDelUruguay",
             //};
 
-            //Domicilio dom = new Domicilio { DomicilioId=78,Calle="Al",Numero = 2,Piso = 0,NroDepto=8,
-            //     Ciudad = new Ciudad
-            //     { CiudadId = 3206, Nombre = "Federacion"}
+            //Domicilio dom = new Domicilio
+            //{
+            //    DomicilioId = 78,
+            //    Calle = "Al",
+            //    Numero = 2,
+            //    Piso = 0,
+            //    NroDepto = 8,
+            //    Ciudad = new Ciudad
+            //    { CiudadId = 3206, Nombre = "Federacion" }
             //};
 
             //iUoW.RepositorioDomicilio.Add(dom);
             //iUoW.Complete();
             //iUoW.Dispose();
-            
+
             //---------------------------------------------------------------//
 
             //db.Ciudad.Add(unaCity);

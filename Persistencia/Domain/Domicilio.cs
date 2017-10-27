@@ -10,12 +10,12 @@ namespace Persistencia.Domain
     {
         public int DomicilioId { get; set; }
         public string Calle { get; set; }
-        public int Numero { get; set; }
-        public int Piso { get; set; }
-        public int NroDepto { get; set; }
+        public string Numero { get; set; }
+        public string Piso { get; set; }
+        public string NroDepto { get; set; }
 
        // public List<Cliente> Clientes { get; set; }
-       // public int CiudadId { get; set; }
+        public int CiudadId { get; set; }
 
         public Ciudad Ciudad { get; set; }
     }
