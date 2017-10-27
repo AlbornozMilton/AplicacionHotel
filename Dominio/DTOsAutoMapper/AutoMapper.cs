@@ -8,11 +8,19 @@ namespace Dominio.DTOsAutoMapper
 {
     public class AutoMapper
     {
-        public static void Mapaer()
+        public static void Mapear()
         {
             Mapper.Initialize(cfg =>
                 cfg.CreateMap<Cliente, Persistencia.Domain.Cliente>());
-              //  .ForMember(c => c.Alojamiento). 
+            //   .ForMember(c => c.DomicilioId, s => s.MapFrom(o => o.Domicilio.DomicilioId))
+            //   .ForMember(c => c.Domicilio, opt => opt.Ignore()));
+
+            Mapper.Initialize(cfg =>
+                cfg.CreateMap<Domicilio, Persistencia.Domain.Domicilio>());
+
+            Mapper.Initialize(cfg =>
+                cfg.CreateMap<Ciudad, Persistencia.Domain.Ciudad>());
+            //AutoMapperMappingException: Missing type map configuration or unsupported mapping.
         }
     }
 }

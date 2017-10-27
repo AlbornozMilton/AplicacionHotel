@@ -12,24 +12,28 @@ namespace Persistencia
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Comenzar?");
-            Console.ReadKey();
+            //Console.WriteLine("Comenzar?");
+            //Console.ReadKey();
 
-            //--------------------------------------------------------------//
+            ////--------------------------------------------------------------//
 
-            UnitOfWork iUoW = new UnitOfWork(new HotelContext());
-            HotelContext db = new HotelContext();
+            //UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
-            Ciudad unaCity = new Ciudad
-            {
-                Nombre = "ConcepcionDelUruguay",
-            };
-            //db.Ciudad.Add(unaCity);
-            //db.SaveChanges();
+            //Ciudad unaCity = new Ciudad
+            //{
+            //    CiudadId = 3260,
+            //    Nombre = "ConcepcionDelUruguay",
+            //};
 
-            iUoW.RepositorioCiudad.Add(unaCity);
-            iUoW.Complete();
+            //Domicilio dom = new Domicilio { DomicilioId=78,Calle="Al",Numero = 2,Piso = 0,NroDepto=8,
+            //     Ciudad = new Ciudad
+            //     { CiudadId = 3206, Nombre = "Federacion"}
+            //};
 
+            //iUoW.RepositorioDomicilio.Add(dom);
+            //iUoW.Complete();
+            //iUoW.Dispose();
+            
             //---------------------------------------------------------------//
 
             //db.Ciudad.Add(unaCity);
@@ -47,8 +51,8 @@ namespace Persistencia
 
             //db.Campania.Remove(db.Campania.Find(1));
             //db.SaveChanges();
-            Console.WriteLine("EXITO");
-            Console.ReadKey();
+            //Console.WriteLine("EXITO");
+            //Console.ReadKey();
         }
     }
 }

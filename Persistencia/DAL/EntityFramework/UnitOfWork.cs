@@ -22,6 +22,7 @@ namespace Persistencia.DAL.EntityFramework
             this.RepositorioAlojamiento = new RepositorioAlojamiento(this.iDbContext); //porque el this???-->por el constructor de ClientRepository
             this.RepositorioCliente = new RepositorioCliente(this.iDbContext); //porque el this???-->por el constructor de AccountRepository
             this.RepositorioCiudad = new RepositorioCiudad(this.iDbContext);
+            this.RepositorioDomicilio = new RepositorioDomicilio(this.iDbContext);
         }
 
 
@@ -32,6 +33,8 @@ namespace Persistencia.DAL.EntityFramework
         public IRepositorioCliente RepositorioCliente { get; private set; }
 
         public IRepositorioCiudad RepositorioCiudad { get; private set; }
+
+        public IRepositorioDomicilio RepositorioDomicilio { get; private set; }
     
 
         /// <summary>

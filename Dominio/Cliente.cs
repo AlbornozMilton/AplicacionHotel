@@ -78,7 +78,7 @@ namespace Dominio
                 }
             }
         }
-        public Domicilio Domiciolio { get { return this.iDomicilio; } }
+        public Domicilio Domicilio { get { return this.iDomicilio; } }
         public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
 
         //-------------------------------------Metodos

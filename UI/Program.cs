@@ -13,7 +13,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Dominio.DTOsAutoMapper.AutoMapper.Mapaer();
+            Dominio.DTOsAutoMapper.AutoMapper.Mapear();
             Application.Run(new VentanaArranque());
         }
     }

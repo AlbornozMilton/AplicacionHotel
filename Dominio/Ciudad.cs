@@ -17,7 +17,8 @@ namespace Dominio
             this.iNombre = pNombre;
         }
 
-        public int CodPostal { get; }
-        public string Nombre { get; }
+        //---Propiedades
+        public int CiudadId { get { return this.iCodPostal; } }
+        public string Nombre { get { return this.iNombre; } }
     }
 }

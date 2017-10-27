@@ -12,7 +12,7 @@ namespace Dominio
     {
         //ATRIBUTOS NECESARIOS PARA RESPONDER A LAS UI
         Cliente iCliente;
-        Domicilio iDomicilio = new Domicilio("Alejo", "661", 8, 0, new Ciudad(3260, "CdelU"));
+        Domicilio iDomicilio = new Domicilio(1,"Alejo", "661", 8, 0, new Ciudad(3260, "CdelU"));
         Ciudad iCiudad = new Ciudad(3260, "CdelU");
 
         //aca se instancoa UoW??

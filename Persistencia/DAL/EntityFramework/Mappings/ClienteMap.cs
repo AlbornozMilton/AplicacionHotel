@@ -13,7 +13,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         public ClienteMap()
         {
             this.Property(c => c.ClienteId)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
             this.Property(c => c.Nombre)
                 .IsRequired();
@@ -27,11 +27,11 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(c => c.Correo)
                 .IsOptional();
 
-            this.HasRequired(c => c.TarifaCliente)
-                .WithMany(tc => tc.Clientes);
+            //this.HasRequired(c => c.TarifaCliente)
+            //    .WithMany(tc => tc.Clientes);
 
-            this.HasRequired(c => c.Domicilio)
-                .WithMany(d => d.Clientes);
+           // this.(c => c.Domicilio);
+                
 
         }
     }
