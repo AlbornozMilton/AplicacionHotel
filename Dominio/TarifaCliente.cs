@@ -8,65 +8,35 @@ namespace Dominio
 {
     public class TarifaCliente
     {
-        private double iTitular;
-        private double iTitularExcl;
-        private double iAcompDirecto;
-        private double iAcompDirectoExcl;
-        private double iAcompNoDirecto;
-        private double iAcompNoDirectoExcl;
-        private double iExcepduado;
-        private double iConvenio;
-        private double iConvenioExcl;
+        private int iCodTarifa;
+        private TipoCliente iTipoCliente;
+        private double iMontoTarifa;
+        private double iMontaTarifaExcl;
 
-        public TarifaCliente()
+        //-------------Contructor
+        public TarifaCliente(int pCod, TipoCliente pTipoCli, double pTarifa, double pTarifaExcl)
         {
-
+            this.iCodTarifa = pCod;
+            this.iTipoCliente = pTipoCli;
+            this.iMontoTarifa = pTarifa;
+            this.iMontaTarifaExcl = pTarifaExcl;
         }
 
-        //metodo para cargar desde base de datos ??????? 
-        public TarifaCliente(double pTitular, double pTitularExcl, double pAcompDirecto, double pAcompDirectoExcl,
-                            double pAcompNoDirectoExcl, double pAcompNoDirecto, double pExceptuado, double pConvenio, 
-                            double pConvenioExcl)
+        //---------------------Propiedades
+        public int TarifaClienteId { get { return this.iCodTarifa; } }
+        public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
+        public double Tarifa { get { return this.iMontoTarifa; } }
+        public double TarifaExclusiva { get { return this.iMontaTarifaExcl; } }
+        
+        //--------------------Metodos
+        /// <summary>
+        /// Retorna el monto de Tarifa según la exclusividad de una Habitación
+        /// </summary>
+        /// <param name="pExclusiva"> Valor que indica si la Habitación a sido solicitada como exclusiva</param>
+        public double DeterminarTarifa(bool pExclusiva)
         {
-            this.iTitular = pTitular;
-            this.iTitular = pTitularExcl;
-            this.iTitular = pAcompDirecto;
-            this.iTitular = pAcompDirectoExcl;
-            this.iTitular = pAcompNoDirecto;
-            this.iTitular = pAcompNoDirectoExcl;
-            this.iTitular = pConvenio;
-            this.iTitular = pConvenioExcl;
-                
+            if (pExclusiva) return this.TarifaExclusiva;
+            else return this.Tarifa;
         }
-
-        public double DeterminarTarifa(TipoCliente pTipoCliente, bool pExclusividad)
-        {
-            double tarifa = 0;
-
-            if (pExclusividad == false)
-            {
-                switch (pTipoCliente)
-                {
-                    case TipoCliente.Titular: tarifa = 100; break; // aca seria tarifa = this.iTitular
-                    case TipoCliente.AcompanianteDirecto: tarifa = 150; break;
-                    case TipoCliente.AcompanianteNoDirecto: tarifa = 200; break;
-                    case TipoCliente.TitularExceptuado: tarifa = 50; break;
-                    case TipoCliente.Convenio: tarifa = 300; break;
-                }
-            }
-            else
-            {
-                switch (pTipoCliente)
-                {
-                    case TipoCliente.Titular: tarifa = 100*0.5; break; //aca seria tarifa = this.iTitularExcl;
-                    case TipoCliente.AcompanianteDirecto: tarifa = 150 * 0.5; break;
-                    case TipoCliente.AcompanianteNoDirecto: tarifa = 200 * 0.5; break;
-                    case TipoCliente.TitularExceptuado: tarifa = 0; break;
-                    case TipoCliente.Convenio: tarifa = 300 * 0.5; break;
-                }
-            }
-            return tarifa;
-        }
-
     }
 }
