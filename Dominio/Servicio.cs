@@ -8,38 +8,43 @@ namespace Dominio
 {
     public class Servicio
     {
+        private int iCodServicio;
         private string iNombe;
         private string iDetalle;
         private double iCostoBase;
 
         //-----------------constructor
 
-        public Servicio(string pNombre, string pDetalle, double pCostoBase)
+        public Servicio(int pCodServicio, string pNombre, string pDetalle, double pCostoBase)
         {
+            this.iCodServicio = pCodServicio;
             this.iNombe = pNombre;
             this.iDetalle = pDetalle;
             this.iCostoBase = pCostoBase;
         }
 
-
         //--------------propiedades
+        public int ServicioId { get { return this.iCodServicio; } }
+
         public string Nombre
         {
             get { return this.iNombe; }
-            //    set { this.iNombe = value; }
         }
 
         public string Detalle
         {
             get { return this.iDetalle; }
-            //  set { this.iDetalle = value; }
         }
 
         public double CostoBase
         {
             get { return this.iCostoBase; }
-            //set { this.iCostoBase = value; }
         }
 
+        //--------------------Metodos
+        public void ColocarDetalle(string pDetalle)
+        {
+            this.iDetalle = pDetalle;
+        }
     }
 }

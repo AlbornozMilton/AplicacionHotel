@@ -8,14 +8,14 @@ namespace Dominio
 {
     public class Habitacion
     {
-        private byte iNumero;
-        private byte iCapacidad;
-        private byte iPlanta;
+        private int iNumero;
+        private int iCapacidad;
+        private int iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos; 
 
-        //CONSTRUCTOR
-        public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva)
+        //CONSTRUCTORES
+        public Habitacion(int pNumero, int pPlanta, bool pExclusiva)
         {
             this.iNumero = pNumero;
             this.iPlanta = pPlanta;
@@ -33,31 +33,29 @@ namespace Dominio
         }
 
         //PROPIEDADES
-        public byte Numero
+        public int HabitacionId
         {
             get { return this.iNumero; }
         }
-        public byte Capacidad
+        public int Capacidad
         {
             get { return this.iCapacidad; }
         }
-        public byte Planta
+        public int Planta
         {
             get { return this.iPlanta; }
         }
         public bool Exclusiva
         {
             get { return this.iExclusiva; }
-            set { this.iExclusiva = value; }
         }
         public List<Cupo> Cupos
         {
             get { return this.iCupos; }
-        //    set { this.iCupos = value; }
         }
 
         //METODOS   
-        public bool OcuparCupos(byte pCantS, byte pCantD)
+        public bool OcuparCupos(int pCantS, int pCantD)
         {
             bool resultado = true;
             foreach (Cupo cupo in this.iCupos)
@@ -72,7 +70,7 @@ namespace Dominio
                             //pCantS > 0, faltan cupos por cambiar su disponibilidad
                             if (pCantS > 0)
                             {
-                                cupo.Disponible = false;
+                                cupo.Ocupar();
                                 pCantS--; 
                             }
                             break;
@@ -81,7 +79,7 @@ namespace Dominio
                             //pCantD > 0, faltan cupos por cambiar su disponibilidad
                             if (pCantD > 0)
                             {
-                                cupo.Disponible = false;
+                                cupo.Ocupar();
                                 pCantD--; 
                             }
                             break;
@@ -95,7 +93,7 @@ namespace Dominio
             return resultado;
         }
 
-        public void OcuparCupos2(byte pCantS, byte pCantD)
+        public void OcuparCupos2(int pCantS, int pCantD)
         {
             foreach (Cupo cupo in this.iCupos)
             {
@@ -104,12 +102,12 @@ namespace Dominio
                 {
                     if (pCantS > 0 && cupo.TipoCupo == TipoCupo.simple)
                     {
-                        cupo.Disponible = false;
+                        cupo.Ocupar();
                         pCantS--;
                     }
                     else if (pCantD > 0 && cupo.TipoCupo == TipoCupo.doble)
                     {
-                        cupo.Disponible = false;
+                        cupo.Ocupar();
                         pCantD--;
                     }
                 }
@@ -129,12 +127,12 @@ namespace Dominio
                 {
                     if (pCantS > 0 && cupo.TipoCupo == TipoCupo.simple)
                     {
-                        cupo.Disponible = true;
+                        cupo.Ocupar();
                         pCantS--;
                     }
                     else if (pCantD > 0 && cupo.TipoCupo == TipoCupo.doble)
                     {
-                        cupo.Disponible = true;
+                        cupo.Desocupar();
                         pCantD--;
                     }
                 }
@@ -165,9 +163,9 @@ namespace Dominio
             }
         }
 
-        public byte CuposSimpleDisponibles()
+        public int CuposSimpleDisponibles()
         {
-            byte resultado = 0;
+            int resultado = 0;
             foreach (Cupo cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.TipoCupo == TipoCupo.simple))
@@ -178,9 +176,9 @@ namespace Dominio
             return resultado;
         }
 
-        public byte CuposDoblesDisponibles()
+        public int CuposDoblesDisponibles()
         {
-            byte resultado = 0;
+            int resultado = 0;
             foreach (Cupo cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.TipoCupo == TipoCupo.doble))
@@ -191,9 +189,9 @@ namespace Dominio
             return resultado;
         }
 
-        public byte CapacidadTotal()
+        public int CapacidadTotal()
         {
-            byte resultado = 0;
+            int resultado = 0;
             foreach (Cupo cupo in this.iCupos)
             {
                 if (cupo.TipoCupo == TipoCupo.simple)

@@ -9,14 +9,11 @@ namespace Persistencia.Domain
     public class LineaServicio
     {
         public int LineaServicioId { get; set; }
-
         public int Cantidad { get; set; }
-
         public double CostoServicio { get; set; }
 
+
         public int ServicioId { get; set; }
-
         public Servicio Servicio { get; set; }
-
     }
 }

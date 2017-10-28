@@ -9,13 +9,11 @@ namespace Persistencia.Domain
     public class Cupo
     {
         public int CupoId { get; set; }
-
         public TipoCupo Tipo { get; set; }
-
         public bool Disponible { get; set; }
 
-        public int HabitacionId { get; set; }
 
+        public int HabitacionId { get; set; }
         public Habitacion Habitacion { get; set; }
 
     }

@@ -8,32 +8,42 @@ namespace Dominio
 {
     public class LineaServicio
     {
+        private int iCodLinServicio;
         private int iCantidad;
         private double iCostoServicio;
         private Servicio iServicio;
 
 
-        //----contructor
+        //--------------------------Contructor
+        public LineaServicio(int pId, int pCant, Servicio pServicio)
+        {
+            this.iCodLinServicio = pId;
+            this.iCantidad = pCant;
+            this.iServicio = pServicio;
+            this.CalcularCostoServicio();
+        }
 
-        //propiedades
+        //------------------------Propiedades
+        public int LineaServicioId { get { return this.iCodLinServicio; } }
 
         public int Cantidad
         {
             get { return this.iCantidad; }
-            set { this.iCantidad = value; }
         }
 
         public double CostoServicio
         {
             get { return this.iCostoServicio; }
-            set { this.iCostoServicio = this.iCantidad * this.iServicio.CostoBase; }
         }
 
         public Servicio Servicio
         {
             get { return this.iServicio; }
-            set { this.iServicio = value; }
         }
-
+    
+        private void CalcularCostoServicio()
+        {
+             this.iCostoServicio = this.iCantidad * this.iServicio.CostoBase; 
+        }
     }
 }
