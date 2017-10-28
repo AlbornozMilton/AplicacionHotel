@@ -37,11 +37,19 @@ namespace Dominio
 
             Cliente cli = new Cliente(Convert.ToInt32(pDni),pNombre,pApellido,pTel,TipoCliente.Titular);
             this.iCliente = Mapper.Map<Cliente, pers.Cliente>(cli);
-            //this.iDomicilio.Ciudad = this.iCiudad;
-            //this.iCliente.Domicilio = this.iDomicilio;
+            this.iDomicilio.Ciudad = this.iCiudad;
+            this.iCliente.Domicilio = this.iDomicilio;
             iUoW.RepositorioCliente.Add(this.iCliente);
             iUoW.Complete();
             iUoW.Dispose();
+            //{ "The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_dbo.Cliente_dbo.Domicilio_DomicilioId\". The conflict occurred in database \"HotelBD\", table \"dbo.Domicilio\", column 'DomicilioId'.\r\nThe statement has been terminated."}
+        }
+
+        public bool ValidarUsuario(string pUs, string pPass)
+        {
+            return (iUoW.RepositorioUsuario.Existe(pUs,pPass));
+        }
+
+        
         }
     }
-}

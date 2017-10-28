@@ -22,8 +22,10 @@ namespace UI
         private void button1_Click(object sender, EventArgs e)
         {
             iControladorCliente.CargarCiudad(Convert.ToInt32(textBox8.Text), textBox7.Text);
-            //iControladorCliente.CargarDomicilio(textBox6.Text, textBox5.Text, textBox9.Text, textBox10.Text);
+            iControladorCliente.CargarDomicilio(textBox6.Text, textBox5.Text, textBox9.Text, textBox10.Text);
             iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,textBox4.Text);
+            MessageBox.Show("Cliente agregado correctamente");
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

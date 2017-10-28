@@ -13,7 +13,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         public DomicilioMap()
         {
             this.Property(d => d.DomicilioId)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
             this.Property(d => d.Calle)
                 .IsRequired();
@@ -29,7 +29,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
             this.HasRequired(d => d.Ciudad)
                 .WithMany(c => c.Domicilios);
-
         }
     }
 }

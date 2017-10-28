@@ -128,12 +128,13 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(91, 28);
             this.archivoToolStripMenuItem.Text = "Reserva";
+            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // nuevoToolStripMenuItem1
             // 
             this.nuevoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem1.Image")));
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(136, 28);
+            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(152, 28);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
             this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
             // 
@@ -190,7 +191,7 @@
             // 
             this.clienteToolStripMenuItem1.Image = global::UI.Properties.Resources.boton_buscar;
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 28);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(138, 28);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
@@ -202,6 +203,7 @@
             // 
             // movimientoToolStripMenuItem
             // 
+            this.movimientoToolStripMenuItem.Enabled = false;
             this.movimientoToolStripMenuItem.Name = "movimientoToolStripMenuItem";
             this.movimientoToolStripMenuItem.Size = new System.Drawing.Size(128, 28);
             this.movimientoToolStripMenuItem.Text = "Movimientos";
@@ -373,10 +375,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(777, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
-            // 
-            // clienteBindingSource
-            // 
-            //this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
             // 
             // VentanaPrincipal
             // 

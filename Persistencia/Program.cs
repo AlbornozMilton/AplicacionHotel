@@ -14,7 +14,10 @@ namespace Persistencia
         {
             //Console.WriteLine("Comenzar?");
             //Console.ReadKey();
-
+            HotelContext hc = new HotelContext();
+            hc.Set<Usuario>().Add(new Usuario { UsuarioId = "admin", Password = "frcu2017" });
+            hc.SaveChanges();
+            hc.Dispose(); 
             ////--------------------------------------------------------------//
 
             //UnitOfWork iUoW = new UnitOfWork(new HotelContext());

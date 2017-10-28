@@ -28,8 +28,10 @@ namespace UI
             {
                 timer1.Enabled = false;
                 Hide();
-                VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
-                NuevaVentanaPpal.ShowDialog();
+                InicioSesion ventanaIniSesion = new InicioSesion();
+                ventanaIniSesion.ShowDialog();
+                //VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
+                //NuevaVentanaPpal.ShowDialog();
             }
 
         }

@@ -20,5 +20,9 @@ namespace Persistencia.DAL
         IRepositorioAlojamiento RepositorioAlojamiento { get; }
 
         IRepositorioCiudad RepositorioCiudad { get; }
+
+        IRepositorioUsuario RepositorioUsuario { get; }
+
+        IRepositorioDomicilio RepositorioDomicilio { get; }
     }
 }

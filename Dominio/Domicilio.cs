@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Domicilio
     {
-        private int iDomicilioId = 1;
+        private int iDomicilioId;
         private string iCalle;
         private string iNumCalle;
         private string iNumDepto;

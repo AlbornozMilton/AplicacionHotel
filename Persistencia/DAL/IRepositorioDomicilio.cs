@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Persistencia.Domain;
 
-namespace Persistencia.DAL.EntityFramework
+namespace Persistencia.DAL
 {
     public interface IRepositorioDomicilio:IRepositorio<Domicilio>
     {

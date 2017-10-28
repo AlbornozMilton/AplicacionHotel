@@ -16,5 +16,21 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Dominio.ControladorCliente controlador = new Dominio.ControladorCliente();
+            if (controlador.ValidarUsuario(textBox1.Text, textBox2.Text))
+            {
+                Close();
+                VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
+                NuevaVentanaPpal.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Usuario NO Registrado");
+            }
+            
+        }
     }
 }

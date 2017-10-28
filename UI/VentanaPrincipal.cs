@@ -15,6 +15,8 @@ namespace UI
         public VentanaPrincipal()
         {
             InitializeComponent();
+            
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace UI
         {
             // TODO: esta línea de código carga datos en la tabla 'hotel_BDDataSet.Cliente' Puede moverla o quitarla según sea necesario.
             //this.clienteTableAdapter.Fill(this.hotel_BDDataSet.Cliente);
-
+            
         }
 
         private void nuevoToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -66,5 +68,9 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
         }
 
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
