@@ -36,6 +36,13 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
             this.HasRequired(a => a.Habitacion)
                 .WithMany(h => h.Alojamientos);
+
+            this.HasMany<Cliente>(a => a.Clientes)
+                .WithMany(c => c.Alojamientos)
+                .Map(tabla =>
+               {
+                   tabla.ToTable("Alojamiento_Cliente");
+               });
             
             //Estado ALojamiento como??
         }
