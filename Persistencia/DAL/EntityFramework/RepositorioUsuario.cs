@@ -18,6 +18,7 @@ namespace Persistencia.DAL.EntityFramework
             // return (base.iDbContext.Set<Cliente>().Find(pCliente.ClienteId) != null);
             Usuario Us = base.iDbContext.Usuario.Find(pUs);
             return ((Us != null) && (Us.Password == pPass));
+            base.iDbContext.Dispose();
         }
     }
 }

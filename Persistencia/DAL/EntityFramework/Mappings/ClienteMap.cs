@@ -27,8 +27,8 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(c => c.Correo)
                 .IsOptional();
 
-            //this.HasRequired(c => c.TarifaCliente)
-            //    .WithMany(tc => tc.Clientes);
+            this.HasRequired(c => c.TarifaCliente)
+                .WithMany(tc => tc.Clientes);
 
             this.HasRequired(c => c.Domicilio).WithMany(c => c.Clientes);
 

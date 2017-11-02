@@ -17,10 +17,10 @@ namespace Persistencia.Domain
 
 
         //public int AlojamientoId { get; set; }
-       // public int TarifaClienteId { get; set; }
+        public int TarifaClienteId { get; set; }
         public int DomicilioId { get; set; }
         public Domicilio Domicilio { get; set; }
-        // public TarifaCliente TarifaCliente { get; set; }
+        public TarifaCliente TarifaCliente { get; set; }
         public int AlojamientoId { get; set; }
         public List<Alojamiento> Alojamientos { get; set; }
 
