@@ -57,15 +57,23 @@ namespace UI
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            Cliente cli = iControladorCliente.BuscarCliente((Convert.ToInt32(textBoxDNI.Text)));
-            if (cli != null)
+            if (radioButton1.Checked)
             {
-                tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                Cliente cli = iControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBoxDNI.Text)));
+                if (cli != null)
+                {
+                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                }
+                else
+                {
+                    MessageBox.Show("Cliente NO Existe");
+                }
             }
             else
             {
-                MessageBox.Show("Cliente NO Existe");
+                List<Cliente> list = iControladorCliente.BuscarClientePorNom_Ape(textBoxNombre.Text);
             }
+            
         }
 
         private void BuscarCliente_Load(object sender, EventArgs e)
