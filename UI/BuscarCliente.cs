@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace UI
 {
     public partial class BuscarCliente : Form
     {
+        ControladorCliente iControladorCliente = new ControladorCliente();
         public BuscarCliente()
         {
             InitializeComponent();
@@ -36,21 +38,34 @@ namespace UI
 
         private void textBox2_ReadOnlyChanged(object sender, EventArgs e)
         {
-            textBox1.ReadOnly = true;            
+            textBoxDNI.ReadOnly = true;            
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (textBox2.ReadOnly == true)
+            if (textBoxNombre.ReadOnly == true)
             {
-                textBox2.ReadOnly = false;
+                textBoxNombre.ReadOnly = false;
             }
             else
             {
-                textBox2.ReadOnly = true;
-                textBox1.ReadOnly = false;
+                textBoxNombre.ReadOnly = true;
+                textBoxDNI.ReadOnly = false;
             }
             
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Persistencia.Domain.Cliente cli = iControladorCliente.BuscarCliente((Convert.ToInt32(textBoxDNI.Text)));
+            if (cli != null)
+            {
+                tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+            }
+            else
+            {
+                MessageBox.Show("Cliente NO Existe");
+            }
         }
     }
 }

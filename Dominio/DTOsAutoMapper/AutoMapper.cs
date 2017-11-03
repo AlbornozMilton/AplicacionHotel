@@ -16,6 +16,8 @@ namespace Dominio.DTOsAutoMapper
 
                 cfg.CreateMap<Cliente, pers.Cliente>();
 
+                cfg.CreateMap<pers.Cliente, Cliente>();
+
                 cfg.CreateMap<Domicilio, pers.Domicilio>();
                 // .ForMember(c => c.Ciudad, s => s.NullSubstitute(null));
 

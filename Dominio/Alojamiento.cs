@@ -38,8 +38,9 @@ namespace Dominio
 
         //-----------------------constructores//----------------------
         //
-        public Alojamiento()
+        public Alojamiento(int unDNI)
         {
+            this.iDniResponsable = unDNI;
         }
 
         public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)

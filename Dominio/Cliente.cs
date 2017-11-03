@@ -59,7 +59,7 @@ namespace Dominio
             this.iTipoCliente = pTipoCliente;
         }
 
-        //----------------------------------Peopiedades
+        //----------------------------------Propiedades
         public int ClienteId { get { return this.iDni; } }
         public string Nombre { get { return this.iNombre; } }
         public string Apellido { get { return this.iApellido; } }

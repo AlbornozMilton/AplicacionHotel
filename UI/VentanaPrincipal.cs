@@ -72,5 +72,10 @@ namespace UI
         {
 
         }
+
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Cerrar ventana Principal y dejar ventana de inicio sesion.
+        }
     }
 }
