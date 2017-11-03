@@ -38,16 +38,22 @@ namespace Dominio
 
         //-----------------------constructores//----------------------
         //
-        public Alojamiento(int unDNI)
+        public Alojamiento(Habitacion unaHab, int unId, int unDni, double unMontoT, EstadoAlojamiento unEstado, DateTime unaFecha)//Arreglar este constructor
         {
-            this.iDniResponsable = unDNI;
+            this.iHabitacion = unaHab;
+            this.iEstadoAloj = unEstado;
+            this.iIdAlojamiento = unId;
+            this.iDniResponsable = unDni;
+            this.iMontoTotal = unMontoT;
+            this.iFechaEgreso = unaFecha;
+
         }
 
         public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
         {
             this.iFechaReserva = DateTime.Now;
             this.iFechaEstimadaIngreso = pFechaEstIngreso;
-         //   this.FechaEstimadaEgreso = pFechaEstEgreso;
+            this.iFechaEstimadaEgreso = pFechaEstEgreso;
         }
 
         /// <summary>
@@ -57,7 +63,7 @@ namespace Dominio
         public Alojamiento(DateTime pFechaEstEgreso)
         {
             this.iFechaIngreso = DateTime.Now;
-          //  this.FechaEstimadaEgreso = pFechaEstEgreso;
+            //  this.FechaEstimadaEgreso = pFechaEstEgreso;
         }
 
         //----------------------PROP----------------------
@@ -140,7 +146,7 @@ namespace Dominio
             get { return this.iMontoTotal * 0.5; }
         }
 
-        public void RegistrarPago(double pMonto, TipoPago pTipoPago,string pDetalle)
+        public void RegistrarPago(double pMonto, TipoPago pTipoPago, string pDetalle)
         {
             if ((this.iMontoDeuda -= pMonto) < 0)
             {
@@ -149,7 +155,7 @@ namespace Dominio
             else
             {
                 this.iMontoDeuda -= pMonto;
-                this.iPagos.Add(new Pago(1,pTipoPago, pMonto, pDetalle,DateTime.Now));
+                this.iPagos.Add(new Pago(1, pTipoPago, pMonto, pDetalle, DateTime.Now));
             }
         }
 

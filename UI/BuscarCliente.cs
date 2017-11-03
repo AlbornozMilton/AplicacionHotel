@@ -26,13 +26,13 @@ namespace UI
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.boton_buscar_seleccion2;
+            btn_Buscar.Image = Properties.Resources.boton_buscar_seleccion2;
             label3.Visible = true;
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.boton_buscar;
+            btn_Buscar.Image = Properties.Resources.boton_buscar;
             label3.Visible = false;
         }
 
@@ -55,9 +55,9 @@ namespace UI
             
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            Persistencia.Domain.Cliente cli = iControladorCliente.BuscarCliente((Convert.ToInt32(textBoxDNI.Text)));
+            Cliente cli = iControladorCliente.BuscarCliente((Convert.ToInt32(textBoxDNI.Text)));
             if (cli != null)
             {
                 tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);

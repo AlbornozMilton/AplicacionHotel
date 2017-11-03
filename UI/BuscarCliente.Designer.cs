@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_Buscar = new System.Windows.Forms.PictureBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.textBoxDNI = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,35 +42,35 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulClientes = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaResulClientes)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_Cancelar
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(491, 245);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Cancelar.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Cancelar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(491, 245);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(101, 23);
+            this.btn_Cancelar.TabIndex = 0;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = false;
+            this.btn_Cancelar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_Aceptar
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(384, 245);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Aceptar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_Aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Aceptar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(384, 245);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(101, 23);
+            this.btn_Aceptar.TabIndex = 1;
+            this.btn_Aceptar.Text = "Aceptar";
+            this.btn_Aceptar.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -79,7 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.btn_Buscar);
             this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.Controls.Add(this.textBoxDNI);
             this.groupBox1.Controls.Add(this.label2);
@@ -105,18 +105,18 @@
             this.label3.Text = "Buscar";
             this.label3.Visible = false;
             // 
-            // pictureBox1
+            // btn_Buscar
             // 
-            this.pictureBox1.Image = global::UI.Properties.Resources.boton_buscar;
-            this.pictureBox1.Location = new System.Drawing.Point(512, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 54);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
-            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            this.btn_Buscar.Image = global::UI.Properties.Resources.boton_buscar;
+            this.btn_Buscar.Location = new System.Drawing.Point(512, 25);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(56, 54);
+            this.btn_Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btn_Buscar.TabIndex = 6;
+            this.btn_Buscar.TabStop = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
+            this.btn_Buscar.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.btn_Buscar.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
             // textBoxNombre
             // 
@@ -217,14 +217,14 @@
             this.ClientSize = new System.Drawing.Size(604, 280);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Aceptar);
+            this.Controls.Add(this.btn_Cancelar);
             this.Name = "BuscarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Cliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablaResulClientes)).EndInit();
             this.ResumeLayout(false);
@@ -233,8 +233,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxNombre;
@@ -244,7 +244,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DataGridView tablaResulClientes;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btn_Buscar;
         private System.Windows.Forms.Label label3;
     }
 }

@@ -8,15 +8,20 @@ namespace Dominio
 {
     public class Cliente
     {
-        private int iDni;
-        private string iNombre;
-        private string iApellido;
-        private string iTelefono;
-        private string iCorreo;
-        private Domicilio iDomicilio;
-        private TipoCliente iTipoCliente;
-        
+
+        private int iDni { get; set; }
+        private string iNombre { get; set; }
+        private string iApellido { get; set; }
+        private string iTelefono { get; set; }
+        private string iCorreo { get; set; }
+        private Domicilio iDomicilio { get; set; }
+        private TipoCliente iTipoCliente { get; set; }
+
         //-------------------------------Constructores
+        public Cliente()
+        {
+
+        }
         public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TipoCliente pTipoCliente)
         {
             this.iDni = pDni;
