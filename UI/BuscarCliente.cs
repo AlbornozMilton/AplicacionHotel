@@ -67,5 +67,11 @@ namespace UI
                 MessageBox.Show("Cliente NO Existe");
             }
         }
+
+        private void BuscarCliente_Load(object sender, EventArgs e)
+        {
+            tablaResulClientes.DefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
+            tablaResulClientes.ColumnHeadersDefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
+        }
     }
 }

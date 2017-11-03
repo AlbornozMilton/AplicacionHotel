@@ -14,10 +14,8 @@ namespace Dominio.DTOsAutoMapper
             Mapper.Initialize(cfg =>
             {
 
-                cfg.CreateMap<Cliente, pers.Cliente>();
-
-                cfg.CreateMap<pers.Cliente, Cliente>()
-                   .ForMember(c => c.Apellido, p => p.MapFrom(pC => pC.Apellido));
+                cfg.CreateMap<Cliente, pers.Cliente>()
+                   .ReverseMap(); //Realiza el map inverso al definido en el renglon de arriba.
 
                 cfg.CreateMap<Domicilio, pers.Domicilio>();
                 // .ForMember(c => c.Ciudad, s => s.NullSubstitute(null));

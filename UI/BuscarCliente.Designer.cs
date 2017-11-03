@@ -41,6 +41,10 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulClientes = new System.Windows.Forms.DataGridView();
+            this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -201,13 +205,44 @@
             this.tablaResulClientes.AllowUserToAddRows = false;
             this.tablaResulClientes.AllowUserToDeleteRows = false;
             this.tablaResulClientes.AllowUserToOrderColumns = true;
+            this.tablaResulClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tablaResulClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaResulClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clm_Dni,
+            this.clm_apellido,
+            this.clm_Nombre,
+            this.clm_telefono});
             this.tablaResulClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaResulClientes.Location = new System.Drawing.Point(3, 23);
             this.tablaResulClientes.Name = "tablaResulClientes";
             this.tablaResulClientes.ReadOnly = true;
             this.tablaResulClientes.Size = new System.Drawing.Size(573, 83);
             this.tablaResulClientes.TabIndex = 0;
+            // 
+            // clm_Dni
+            // 
+            this.clm_Dni.HeaderText = "Dni";
+            this.clm_Dni.Name = "clm_Dni";
+            this.clm_Dni.ReadOnly = true;
+            // 
+            // clm_apellido
+            // 
+            this.clm_apellido.HeaderText = "Apellido";
+            this.clm_apellido.Name = "clm_apellido";
+            this.clm_apellido.ReadOnly = true;
+            // 
+            // clm_Nombre
+            // 
+            this.clm_Nombre.HeaderText = "Nombre";
+            this.clm_Nombre.Name = "clm_Nombre";
+            this.clm_Nombre.ReadOnly = true;
+            // 
+            // clm_telefono
+            // 
+            this.clm_telefono.HeaderText = "Telefono";
+            this.clm_telefono.Name = "clm_telefono";
+            this.clm_telefono.ReadOnly = true;
             // 
             // BuscarCliente
             // 
@@ -222,6 +257,7 @@
             this.Name = "BuscarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Cliente";
+            this.Load += new System.EventHandler(this.BuscarCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
@@ -246,5 +282,9 @@
         private System.Windows.Forms.DataGridView tablaResulClientes;
         private System.Windows.Forms.PictureBox btn_Buscar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_telefono;
     }
 }

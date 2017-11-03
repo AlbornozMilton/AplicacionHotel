@@ -8,20 +8,17 @@ namespace Dominio
 {
     public class Cliente
     {
-
-        private int iDni { get; set; }
-        private string iNombre { get; set; }
-        private string iApellido { get; set; }
-        private string iTelefono { get; set; }
-        private string iCorreo { get; set; }
-        private Domicilio iDomicilio { get; set; }
-        private TipoCliente iTipoCliente { get; set; }
+        private int iDni;
+        private string iNombre;
+        private string iApellido;
+        private string iTelefono;
+        private string iCorreo;
+        private Domicilio iDomicilio;
+        private TipoCliente iTipoCliente;
 
         //-------------------------------Constructores
-        public Cliente()
-        {
+        public Cliente() { } //Constructor utilizado por el AutoMapper para el mapeo inverso. De Persistencia a Dominio.
 
-        }
         public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TipoCliente pTipoCliente)
         {
             this.iDni = pDni;
@@ -65,10 +62,10 @@ namespace Dominio
         }
 
         //----------------------------------Propiedades
-        public int ClienteId { get { return this.iDni; } }
-        public string Nombre { get { return this.iNombre; } }
-        public string Apellido { get { return this.iApellido; } }
-        public string Telefono { get { return this.iTelefono; } }
+        public int ClienteId { get { return this.iDni; } set { this.iDni = value; } }
+        public string Nombre { get { return this.iNombre; } set { this.iNombre = value; } }
+        public string Apellido { get { return this.iApellido; } set { this.iApellido = value; } }
+        public string Telefono { get { return this.iTelefono; } set { this.iTelefono = value; } }
         public string Correo
         {
             get
@@ -82,6 +79,7 @@ namespace Dominio
                     return this.iCorreo;
                 }
             }
+            set { this.iCorreo = value; }
         }
         public Domicilio Domicilio { get { return this.iDomicilio; } }
         public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
