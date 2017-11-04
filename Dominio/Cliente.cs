@@ -42,13 +42,13 @@ namespace Dominio
         //    //this.iTipoCliente = pTipoCliente;
         //}
 
-        //public Cliente(int pDni, string pNombre, string pApellido, string pTel)
-        //{
-        //    this.iDni = pDni;
-        //    this.iNombre = pNombre;
-        //    this.iApellido = pApellido;
-        //    this.iTelefono = pTel;
-        //}
+        public Cliente(int pDni, string pNombre, string pApellido, string pTel)
+        {
+            this.iDni = pDni;
+            this.iNombre = pNombre;
+            this.iApellido = pApellido;
+            this.iTelefono = pTel;
+        }
 
         //----------------------------------Propiedades
         public int ClienteId { get { return this.iDni; } private set { this.iDni = value; } }

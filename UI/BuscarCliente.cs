@@ -71,7 +71,12 @@ namespace UI
             }
             else
             {
+                tablaResulClientes.Rows.Clear();
                 List<Cliente> list = iControladorCliente.BuscarClientePorNom_Ape(textBoxNombre.Text);
+                foreach (var cli in list)
+                {
+                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                }
             }
             
         }
