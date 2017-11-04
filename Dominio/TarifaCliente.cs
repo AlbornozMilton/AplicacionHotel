@@ -19,7 +19,7 @@ namespace Dominio
             this.iCodTarifa = pCod;
             this.iTipoCliente = pTipoCli;
             this.iMontoTarifa = pTarifa;
-            this.iMontaTarifaExcl = pTarifaExcl;
+            this.iMontoTarifaExcl = pTarifaExcl;
         }
 
         //---------------------Propiedades

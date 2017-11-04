@@ -19,5 +19,13 @@ namespace Persistencia.DAL.EntityFramework
            return (base.iDbContext.Cliente.Find(pCliente.ClienteId) != null);
         }
 
+        public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre)
+        {
+            var clientes = from cli in this.iDbContext.Set<Cliente>()
+                           where ((cli.Nombre+cli.Apellido).Contains(pNombre))
+                           select cli;
+
+            return clientes.ToList<Cliente>();
+        }
     }
 }

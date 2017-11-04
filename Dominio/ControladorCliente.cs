@@ -72,17 +72,24 @@ namespace Dominio
 
         public List<Cliente> BuscarClientePorNom_Ape(string pCadena)
         {
-            IEnumerable < pers.Cliente > listaEnum;
-            listaEnum = iUoW.RepositorioCliente.GetAll();
+            //IEnumerable < pers.Cliente > listaEnum;
+            //listaEnum = iUoW.RepositorioCliente.GetAll();
+            //List<Cliente> lista = new List<Cliente>();
+            //foreach (var i in listaEnum)
+            //{
+            //    if (i.Nombre == pCadena)
+            //    {
+            //        lista.Add(Mapper.Map<pers.Cliente,Cliente>(i));
+            //    }
+            //}
+            //    return (lista);
+            IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.ObtenerClientesPorNomyAp(pCadena);
             List<Cliente> lista = new List<Cliente>();
             foreach (var i in listaEnum)
             {
-                if (i.Nombre == pCadena)
-                {
-                    lista.Add(Mapper.Map<pers.Cliente,Cliente>(i));
-                }
+                    lista.Add(Mapper.Map<pers.Cliente, Cliente>(i));
             }
-                return (lista);
+            return (lista);
         }
 
         public bool ValidarUsuario(string pUs, string pPass)

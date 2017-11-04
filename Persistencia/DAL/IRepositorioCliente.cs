@@ -13,5 +13,9 @@ namespace Persistencia.DAL
     {
         //Esta interfaz se especifica que el resositorio va a ser sobre clientes "Client" al indicar IRepository<Client>
         bool Existe(Cliente pCliente);
+
+        IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre);
+
     }
+
 }

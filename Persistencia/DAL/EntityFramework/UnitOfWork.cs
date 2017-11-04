@@ -30,11 +30,8 @@ namespace Persistencia.DAL.EntityFramework
         // GETTERS - IMPLEMENTACION DE IUNITOFWORK
 
         public IRepositorioAlojamiento RepositorioAlojamiento { get; private set; }
-
         public IRepositorioCliente RepositorioCliente { get; private set; }
-
         public IRepositorioCiudad RepositorioCiudad { get; private set; }
-
         public IRepositorioDomicilio RepositorioDomicilio { get; private set; }
         public IRepositorioUsuario RepositorioUsuario { get; private set; }
 
