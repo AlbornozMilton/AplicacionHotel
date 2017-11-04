@@ -9,7 +9,8 @@ namespace Dominio
     public enum TipoPago
     {
         Deposito,
-        Complemento,
-        Total
+        Alojado,
+        Servicios,
+        Deuda
     }
 }

@@ -24,21 +24,24 @@ namespace Dominio
         }
 
         //------------------------Propiedades
-        public int LineaServicioId { get { return this.iCodLinServicio; } }
+        public int LineaServicioId { get { return this.iCodLinServicio; } private set { this.iCodLinServicio = value; } }
 
         public int Cantidad
         {
             get { return this.iCantidad; }
+            private set { this.iCantidad = value; }
         }
 
         public double CostoServicio
         {
             get { return this.iCostoServicio; }
+            private set { this.iCostoServicio = value; }
         }
 
         public Servicio Servicio
         {
             get { return this.iServicio; }
+            private set { this.iServicio = value; }
         }
     
         private void CalcularCostoServicio()

@@ -11,7 +11,7 @@ namespace Dominio
         private int iCodTarifa;
         private TipoCliente iTipoCliente;
         private double iMontoTarifa;
-        private double iMontaTarifaExcl;
+        private double iMontoTarifaExcl;
 
         //-------------Contructor
         public TarifaCliente(int pCod, TipoCliente pTipoCli, double pTarifa, double pTarifaExcl)
@@ -23,10 +23,10 @@ namespace Dominio
         }
 
         //---------------------Propiedades
-        public int TarifaClienteId { get { return this.iCodTarifa; } }
-        public TipoCliente TipoCliente { get { return this.iTipoCliente; } }
-        public double Tarifa { get { return this.iMontoTarifa; } }
-        public double TarifaExclusiva { get { return this.iMontaTarifaExcl; } }
+        public int TarifaClienteId { get { return this.iCodTarifa; } private set { this.iCodTarifa = value; } }
+        public TipoCliente TipoCliente { get { return this.iTipoCliente; } private set { this.iTipoCliente = value; } }
+        public double Tarifa { get { return this.iMontoTarifa; } private set { this.iMontoTarifa = value; } }
+        public double TarifaExclusiva { get { return this.iMontoTarifaExcl; } private set { this.iMontoTarifaExcl = value; } }
         
         //--------------------Metodos
         /// <summary>

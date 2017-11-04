@@ -24,16 +24,20 @@ namespace Dominio
         public int CupoId
         {
             get { return this.iCodCupo; }
+            private set { this.iCodCupo = value; }
         }
+
 
         public bool Disponible
         {
             get { return this.iDisponible; }
+            private set { this.iDisponible = value; }
         }
 
         public TipoCupo TipoCupo
         {
             get { return this.iTipoCupo; }
+            private set { this.iTipoCupo = value; }
         }
 
         //------------------------------METODOS

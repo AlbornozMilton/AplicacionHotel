@@ -36,22 +36,28 @@ namespace Dominio
         public int HabitacionId
         {
             get { return this.iNumero; }
+            private set { this.iNumero = value; }
         }
         public int Capacidad
         {
             get { return this.iCapacidad; }
+            private set { this.iCapacidad = value; }
         }
         public int Planta
         {
             get { return this.iPlanta; }
+            private set { this.iPlanta = value; }
         }
         public bool Exclusiva
         {
             get { return this.iExclusiva; }
+            private set { this.iExclusiva = value; }
         }
+
         public List<Cupo> Cupos
         {
             get { return this.iCupos; }
+            private set { this.iCupos = value; }
         }
 
         //METODOS   

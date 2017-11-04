@@ -24,15 +24,15 @@ namespace Dominio
         }
 
         //-----------------------Propiedades
-        public int PagoId { get { return this.iCodPago; } }
+        public int PagoId { get { return this.iCodPago; } private set { this.iCodPago = value; } }
 
-        public TipoPago TipoPago { get { return this.iTipoPago; } }
+        public TipoPago TipoPago { get { return this.iTipoPago; } private set { this.iTipoPago = value; } }
 
-        public double Monto { get { return this.iMonto; } }
+        public double Monto { get { return this.iMonto; } private set { this.iMonto = value; } }
 
-        public DateTime FechaPago { get { return this.iFechaPago; } } //ver si es necesario la hora
+        public DateTime FechaPago { get { return this.iFechaPago; } private set { this.iFechaPago = value; } } //ver si es necesario la hora
 
-        public string Detalle { get { return this.iDetalle; } }
+        public string Detalle { get { return this.iDetalle; } private set { this.iDetalle = value; } }
 
         /// <summary>
         /// Nuevo o Actualiza el campo Detalle

@@ -24,21 +24,24 @@ namespace Dominio
         }
 
         //--------------propiedades
-        public int ServicioId { get { return this.iCodServicio; } }
+        public int ServicioId { get { return this.iCodServicio; } private set { this.iCodServicio = value; }  }
 
         public string Nombre
         {
             get { return this.iNombe; }
+            private set { this.iNombe = value; }
         }
 
         public string Detalle
         {
             get { return this.iDetalle; }
+            private set { this.iDetalle = value; }
         }
 
         public double CostoBase
         {
             get { return this.iCostoBase; }
+            private set { this.iCostoBase = value; }
         }
 
         //--------------------Metodos

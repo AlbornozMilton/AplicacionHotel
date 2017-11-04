@@ -35,12 +35,12 @@ namespace Dominio
         }
 
         //----------------------------------------propiedades
-        public int DomicilioId { get { return this.iDomicilioId; } }
-        public string Calle { get { return this.iCalle; } }
-        public string  Numero { get { return this.iNumCalle; } }
-        public string Piso { get { return this.iNumPiso; } }
-        public string NroDepto { get { return this.iNumDepto; } }
-        public Ciudad Ciudad { get { return this.iCiudad; } }
+        public int DomicilioId { get { return this.iDomicilioId; } private set { this.iDomicilioId = value; } }
+        public string Calle { get { return this.iCalle; } private set { this.iCalle = value; } }
+        public string  Numero { get { return this.iNumCalle; } private set { this.iNumCalle = value; } }
+        public string Piso { get { return this.iNumPiso; } private set { this.iNumPiso = value; } }
+        public string NroDepto { get { return this.iNumDepto; } private set { this.iNumPiso = value; } }
+        public Ciudad Ciudad { get { return this.iCiudad; } private set { this.iCiudad = value; } }
         //--------------------------------------metodos
         public string Direccion()
         {
