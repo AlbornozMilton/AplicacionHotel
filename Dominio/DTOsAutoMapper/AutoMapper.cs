@@ -17,25 +17,25 @@ namespace Dominio.DTOsAutoMapper
                 cfg.CreateMap<Cliente, pers.Cliente>()
                    .ReverseMap(); //Realiza el map inverso al definido en el renglon de arriba.
 
-                cfg.CreateMap<Domicilio, pers.Domicilio>();
+                cfg.CreateMap<Domicilio, pers.Domicilio>().ReverseMap();
                 // .ForMember(c => c.Ciudad, s => s.NullSubstitute(null));
 
-                cfg.CreateMap<Ciudad, pers.Ciudad>();
+                cfg.CreateMap<Ciudad, pers.Ciudad>().ReverseMap();
 
                 cfg.CreateMap<Alojamiento, pers.Alojamiento>()
-                .ForMember(a => a.AlojamientoId, d => d.MapFrom(src => src.IdAlojamiento));
+                .ForMember(a => a.AlojamientoId, d => d.MapFrom(src => src.IdAlojamiento)).ReverseMap();
 
-                cfg.CreateMap<Habitacion, pers.Habitacion>();
+                cfg.CreateMap<Habitacion, pers.Habitacion>().ReverseMap();
 
-                cfg.CreateMap<LineaServicio, pers.LineaServicio>();
+                cfg.CreateMap<LineaServicio, pers.LineaServicio>().ReverseMap();
 
-                cfg.CreateMap<Servicio, pers.Servicio>();
+                cfg.CreateMap<Servicio, pers.Servicio>().ReverseMap();
 
-                cfg.CreateMap<TarifaCliente, pers.TarifaCliente>();
+                cfg.CreateMap<TarifaCliente, pers.TarifaCliente>().ReverseMap();
 
-                cfg.CreateMap<Cupo, pers.Cupo>();
+                cfg.CreateMap<Cupo, pers.Cupo>().ReverseMap();
 
-                cfg.CreateMap<Pago, pers.Pago>();
+                cfg.CreateMap<Pago, pers.Pago>().ReverseMap();
 
             });
         }
