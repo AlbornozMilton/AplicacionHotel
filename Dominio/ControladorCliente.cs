@@ -16,6 +16,7 @@ namespace Dominio
         pers.Domicilio iDomicilio;
         pers.Ciudad iCiudad;
         pers.TarifaCliente iTarifa;
+        static IEnumerable<pers.Usuario> iUsuarios;
 
         //aca se instancoa UoW??
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
@@ -94,9 +95,22 @@ namespace Dominio
 
         public bool ValidarUsuario(string pUs, string pPass)
         {
-            return (iUoW.RepositorioUsuario.Existe(pUs,pPass));
+            //bool result = false;
+            //foreach (var user in iUsuarios)
+            //{
+            //    result = (user.UsuarioId == pUs && user.Password == pPass);
+            //}
+            //return result;
+            return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUs, Password = pPass });
+            
         }
 
-        
+        public void CargarUsuarios()
+        {
+            iUsuarios = iUoW.RepositorioUsuario.GetAll();
+            iUoW.Dispose();
+
         }
+        
     }
+}

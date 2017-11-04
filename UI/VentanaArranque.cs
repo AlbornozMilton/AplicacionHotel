@@ -21,7 +21,8 @@ namespace UI
         {
             if (progressBar1.Value < 100)
             {
-                progressBar1.Value = progressBar1.Value + 2;
+                new Dominio.ControladorCliente().CargarUsuarios();
+                progressBar1.Value = progressBar1.Value + 1;
                 label2.Text = progressBar1.Value + "%";
             }
             else

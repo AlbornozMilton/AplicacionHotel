@@ -19,8 +19,7 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dominio.ControladorCliente controlador = new Dominio.ControladorCliente();
-            if (controlador.ValidarUsuario(textBox1.Text, textBox2.Text))
+            if (new Dominio.ControladorCliente().ValidarUsuario(textBox1.Text, textBox2.Text))
             {
                 Hide();
                 VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
