@@ -14,31 +14,31 @@ namespace Persistencia.DAL.EntityFramework
         {
             context.Set<TarifaCliente>().Add(new TarifaCliente
                 {
-                    TipoClienteId = TipoCliente.Titular,
+                    TarifaClienteId = TipoCliente.Titular,
                     Tarifa = 150,
                     TarifaExclusiva = 250
                 });
             context.Set<TarifaCliente>().Add(new TarifaCliente
                 {
-                    TipoClienteId = TipoCliente.AcompanianteNoDirecto,
+                    TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
                     Tarifa = 100,
                     TarifaExclusiva = 150
                 });
             context.Set<TarifaCliente>().Add(new TarifaCliente
                  {
-                     TipoClienteId = TipoCliente.AcompanianteNoDirecto,
+                     TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
                      Tarifa = 200,
                      TarifaExclusiva = 300
                  });
             context.Set<TarifaCliente>().Add(new TarifaCliente
                  {
-                     TipoClienteId = TipoCliente.TitularExceptuado,
+                     TarifaClienteId = TipoCliente.TitularExceptuado,
                      Tarifa = 50,
                      TarifaExclusiva = 150
                  });
             context.Set<TarifaCliente>().Add(new TarifaCliente
                  {
-                     TipoClienteId = TipoCliente.Convenio,
+                     TarifaClienteId = TipoCliente.Convenio,
                      Tarifa = 500,
                      TarifaExclusiva = 600
                  });
@@ -54,13 +54,14 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Federacion"
             });
 
-           
+
             Cliente cli1 = new Cliente()
             {
                 ClienteId = 38387043,
                 Apellido = "Albornoz",
                 Nombre = "Milton",
-                Telefono = "0345515431476", 
+                Telefono = "0345515431476",
+                TarifaClienteId = TipoCliente.Titular,
                 Domicilio = new Domicilio()
                 {
                     Calle = "Peron",
@@ -77,7 +78,8 @@ namespace Persistencia.DAL.EntityFramework
                 Apellido = "Chamorro",
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
-                
+                TarifaClienteId = TipoCliente.AcompanianteDirecto,
+
                 Domicilio = new Domicilio()
                 {
                     Calle = "Atencio Al Este",
@@ -99,13 +101,11 @@ namespace Persistencia.DAL.EntityFramework
                 {
                     new Cupo()
                     {
-                        CupoId = 1,
                         Disponible = true,
                         Tipo = TipoCupo.simple
                     },
                     new Cupo()
                     {
-                        CupoId = 2,
                         Disponible = true,
                         Tipo = TipoCupo.doble
                     }
@@ -122,19 +122,16 @@ namespace Persistencia.DAL.EntityFramework
                 {
                     new Cupo()
                     {
-                        CupoId = 3,
                         Disponible = true,
                         Tipo = TipoCupo.simple
                     },
                     new Cupo()
                     {
-                        CupoId = 4,
                         Disponible = true,
                         Tipo = TipoCupo.simple
                     },
                     new Cupo()
                     {
-                        CupoId = 5,
                         Disponible = true,
                         Tipo = TipoCupo.doble
                     }

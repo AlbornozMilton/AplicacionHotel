@@ -9,8 +9,8 @@ namespace Persistencia.Domain
 {
     public class TarifaCliente
     {
-        [Key]
-        public TipoCliente TipoClienteId { get; set; }
+       // [Key]
+        public TipoCliente TarifaClienteId { get; set; }
         //public string NombreTipo { get; set; }
         public double Tarifa { get; set; }
         public double TarifaExclusiva { get; set; }

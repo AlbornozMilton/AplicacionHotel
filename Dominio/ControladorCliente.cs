@@ -62,27 +62,27 @@ namespace Dominio
             {
                 case ("Titular"):
                     {
-                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.Titular);
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.Titular;
                         break;
                     }
                 case ("AcompañanteDirecto"):
                     {
-                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.AcompanianteDirecto);
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteDirecto;
                         break;
                     }
                 case ("AcompñanteNoDirecto"):
                     {
-                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.AcompanianteNoDirecto);
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteNoDirecto;
                         break;
                     }
                 case ("Titular Exceptuado"):
                     {
-                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.TitularExceptuado);
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.TitularExceptuado;
                         break;
                     }
                 case ("Convenio"):
                     {
-                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.Convenio);
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.Convenio;
                         break;
                     }
             }
