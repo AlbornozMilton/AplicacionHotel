@@ -20,8 +20,7 @@ namespace Persistencia.DAL.EntityFramework
                 Telefono = "0345515431476",
                 TarifaCliente = new TarifaCliente()
                 {
-                    TarifaClienteId = 1,
-                    TipoCliente = TipoCliente.Titular,
+                    TipoClienteId = TipoCliente.Titular,
                     Tarifa = 150,
                     TarifaExclusiva = 250
                 }, 
@@ -48,8 +47,7 @@ namespace Persistencia.DAL.EntityFramework
                 Telefono = "0345615542154",
                 TarifaCliente = new TarifaCliente()
                 {
-                    TarifaClienteId = 2,
-                    TipoCliente = TipoCliente.AcompanianteDirecto,
+                    TipoClienteId = TipoCliente.AcompanianteDirecto,
                     Tarifa = 100,
                     TarifaExclusiva = 200
                 },

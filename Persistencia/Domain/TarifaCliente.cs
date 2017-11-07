@@ -10,11 +10,12 @@ namespace Persistencia.Domain
     {
         
         public TipoCliente TipoClienteId { get; set; }
+        //public string NombreTipo { get; set; }
         public double Tarifa { get; set; }
         public double TarifaExclusiva { get; set; }
 
-
         public List<Cliente> Clientes { get; set; }
+     
     }
 
     public enum TipoCliente

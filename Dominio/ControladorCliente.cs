@@ -58,12 +58,41 @@ namespace Dominio
 
         public void NuevoCliente (string pDni, string pNombre, string pApellido, string pTel, string pTipoCliente)
         {
+            switch (pTipoCliente)
+            {
+                case ("Titular"):
+                    {
+                        this.iCliente.TarifaCliente.TipoClienteId = iUoW.RepositorioTarifa.Get(0).TipoClienteId;
+                        break;
+                    }
+                case ("AcompañanteDirecto"):
+                    {
+                        this.iTarifa = iUoW.RepositorioTarifa.Get(1);
+                        break;
+                    }
+                case ("AcompñanteNoDirecto"):
+                    {
+                        this.iTarifa = iUoW.RepositorioTarifa.Get(2);
+                        break;
+                    }
+                case ("TiTular Exceptuado"):
+                    {
+                        this.iTarifa = iUoW.RepositorioTarifa.Get(3);
+                        break;
+                    }
+                case ("Convenio"):
+                    {
+                        this.iTarifa = iUoW.RepositorioTarifa.Get(4);
+                        break;
+                    }
+            }
+
 
             Cliente cli = new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel);
             this.iCliente = Mapper.Map<Cliente, pers.Cliente>(cli);
 
             this.iCliente.Domicilio = this.iDomicilio;
-
+            
             //buscar una tarifa por tipo cliente ingresado desde la UI y generar una pers.TarifaCliente
             //probar hacer un find(tipo cliente) y asignarlo a pers.TarifaCliente, sinn tener que hacer un automapper
             

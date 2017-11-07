@@ -23,7 +23,7 @@ namespace UI
         {
             iControladorCliente.CargarCiudad(Convert.ToInt32(textBox8.Text), textBox7.Text);
             iControladorCliente.CargarDomicilio(textBox6.Text, textBox5.Text, textBox9.Text, textBox10.Text);
-            iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,textBox4.Text);
+            iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,textBox4.Text, comboBox1.Text);
             MessageBox.Show("Cliente agregado correctamente");
             Close();
         }
@@ -39,6 +39,16 @@ namespace UI
         }
 
         private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
