@@ -62,45 +62,37 @@ namespace Dominio
             {
                 case ("Titular"):
                     {
-                        this.iCliente.TarifaCliente.TipoClienteId = iUoW.RepositorioTarifa.Get(0).TipoClienteId;
+                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.Titular);
                         break;
                     }
                 case ("AcompañanteDirecto"):
                     {
-                        this.iTarifa = iUoW.RepositorioTarifa.Get(1);
+                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.AcompanianteDirecto);
                         break;
                     }
                 case ("AcompñanteNoDirecto"):
                     {
-                        this.iTarifa = iUoW.RepositorioTarifa.Get(2);
+                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.AcompanianteNoDirecto);
                         break;
                     }
-                case ("TiTular Exceptuado"):
+                case ("Titular Exceptuado"):
                     {
-                        this.iTarifa = iUoW.RepositorioTarifa.Get(3);
+                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.TitularExceptuado);
                         break;
                     }
                 case ("Convenio"):
                     {
-                        this.iTarifa = iUoW.RepositorioTarifa.Get(4);
+                        this.iCliente.TarifaClienteId = Convert.ToInt32(pers.TipoCliente.Convenio);
                         break;
                     }
             }
 
-
-            Cliente cli = new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel);
-            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(cli);
-
+            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel));
             this.iCliente.Domicilio = this.iDomicilio;
-            
-            //buscar una tarifa por tipo cliente ingresado desde la UI y generar una pers.TarifaCliente
-            //probar hacer un find(tipo cliente) y asignarlo a pers.TarifaCliente, sinn tener que hacer un automapper
-            
 
             iUoW.RepositorioCliente.Add(this.iCliente);
             iUoW.Complete();
             iUoW.Dispose();
-            //{ "The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_dbo.Cliente_dbo.Domicilio_DomicilioId\". The conflict occurred in database \"HotelBD\", table \"dbo.Domicilio\", column 'DomicilioId'.\r\nThe statement has been terminated."}
         }
 
         public Cliente BuscarClientePorDni(int unDni)

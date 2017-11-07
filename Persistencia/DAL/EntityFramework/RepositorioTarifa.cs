@@ -16,13 +16,18 @@ namespace Persistencia.DAL.EntityFramework
 
         public TarifaCliente GetString(TipoCliente pTipoCliente)
         {
-            //var tarifa = from tar in this.iDbContext.Tarifas
-            //               where (tar.NombreTipo == pTipoCliente)
-            //               select tar;
-
-            //return tarifa;
-            TipoCliente.AcompanianteDirecto.ToString("23asd");
-            //return this.iDbContext.Tarifas. Tipo;
+            throw new NotImplementedException();
         }
+
+        //public TarifaCliente GetString(TipoCliente pTipoCliente)
+        //{
+        //    //var tarifa = from tar in this.iDbContext.Tarifas
+        //    //               where (tar.NombreTipo == pTipoCliente)
+        //    //               select tar;
+
+        //    //return tarifa;
+        //    TipoCliente.AcompanianteDirecto.ToString("23asd");
+        //    //return this.iDbContext.Tarifas. Tipo;
+        //}
     }
 }

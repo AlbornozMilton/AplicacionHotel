@@ -64,7 +64,6 @@
     <Compile Include="Habitacion.cs" />
     <Compile Include="LineaServicio.cs" />
     <Compile Include="Pago.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="TarifaCliente.cs" />
