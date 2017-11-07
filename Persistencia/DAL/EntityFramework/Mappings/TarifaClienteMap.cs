@@ -12,16 +12,14 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         /// </summary>
         public TarifaClienteMap()
         {
-            this.Property(tc => tc.TarifaClienteId)
-                .IsRequired();
+            this.Property(tc => tc.TipoClienteId)
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
             this.Property(tc => tc.Tarifa)
                 .IsRequired();
 
             this.Property(tc => tc.TarifaExclusiva)
                 .IsRequired();
-
-
         }
     }
 }

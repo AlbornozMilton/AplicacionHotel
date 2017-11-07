@@ -7,8 +7,7 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL
 {
-    public interface IRepositorioDomicilio:IRepositorio<Domicilio>
+    public interface IRepositorioTarifa : IRepositorio<TarifaCliente>
     {
-       // Domicilio ObtnenerPorCiudad(int pCodPostal); 
     }
 }

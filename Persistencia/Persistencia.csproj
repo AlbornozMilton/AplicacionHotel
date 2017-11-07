@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EntityFramework\RepositorioTarifa.cs" />
     <Compile Include="DAL\IRepositorioDomicilio.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\AlojamientoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\CiudadMap.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="DAL\IRepositorioAlojamiento.cs" />
     <Compile Include="DAL\IRepositorioCiudad.cs" />
     <Compile Include="DAL\IRepositorioCliente.cs" />
+    <Compile Include="DAL\IRepositorioTarifa.cs" />
     <Compile Include="DAL\IRepositorioUsuario.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="Domain\Alojamiento.cs" />
