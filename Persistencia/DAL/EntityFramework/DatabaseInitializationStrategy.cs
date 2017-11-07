@@ -12,48 +12,18 @@ namespace Persistencia.DAL.EntityFramework
     {
         protected override void Seed(DbContext context)
         {
-            context.Set<TarifaCliente>().Add(new TarifaCliente
-                {
-                    TarifaClienteId = TipoCliente.Titular,
-                    Tarifa = 150,
-                    TarifaExclusiva = 250
-                });
-            context.Set<TarifaCliente>().Add(new TarifaCliente
-                {
-                    TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
-                    Tarifa = 100,
-                    TarifaExclusiva = 150
-                });
-            context.Set<TarifaCliente>().Add(new TarifaCliente
-                 {
-                     TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
-                     Tarifa = 200,
-                     TarifaExclusiva = 300
-                 });
-            context.Set<TarifaCliente>().Add(new TarifaCliente
-                 {
-                     TarifaClienteId = TipoCliente.TitularExceptuado,
-                     Tarifa = 50,
-                     TarifaExclusiva = 150
-                 });
-            context.Set<TarifaCliente>().Add(new TarifaCliente
-                 {
-                     TarifaClienteId = TipoCliente.Convenio,
-                     Tarifa = 500,
-                     TarifaExclusiva = 600
-                 });
-
-            context.Set<Ciudad>().Add(new Ciudad
-            {
-                CiudadId = 3260,
-                Nombre = "ConcepcionDelUruguay"
-            });
-            context.Set<Ciudad>().Add(new Ciudad
-            {
-                CiudadId = 3206,
-                Nombre = "Federacion"
-            });
-
+            //context.Set<TarifaCliente>().Add(new TarifaCliente
+            //    {
+            //        TarifaClienteId = TipoCliente.Titular,
+            //        Tarifa = 150,
+            //        TarifaExclusiva = 250
+            //    });
+            //context.Set<TarifaCliente>().Add(new TarifaCliente
+            //    {
+            //        TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
+            //        Tarifa = 100,
+            //        TarifaExclusiva = 150
+            //    });
 
             Cliente cli1 = new Cliente()
             {
@@ -61,7 +31,12 @@ namespace Persistencia.DAL.EntityFramework
                 Apellido = "Albornoz",
                 Nombre = "Milton",
                 Telefono = "0345515431476",
-                TarifaClienteId = TipoCliente.Titular,
+                TarifaCliente = new TarifaCliente
+                {
+                    TarifaClienteId = TipoCliente.Titular,
+                    Tarifa = 150,
+                    TarifaExclusiva = 250
+                },
                 Domicilio = new Domicilio()
                 {
                     Calle = "Peron",
@@ -78,8 +53,12 @@ namespace Persistencia.DAL.EntityFramework
                 Apellido = "Chamorro",
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
-                TarifaClienteId = TipoCliente.AcompanianteDirecto,
-
+                TarifaCliente = new TarifaCliente
+                {
+                    TarifaClienteId = TipoCliente.AcompanianteDirecto,
+                    Tarifa = 100,
+                    TarifaExclusiva = 150
+                },
                 Domicilio = new Domicilio()
                 {
                     Calle = "Atencio Al Este",
@@ -154,10 +133,36 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Cliente>().Add(cli2);
             context.Set<Habitacion>().Add(hab1);
             context.Set<Habitacion>().Add(hab2);
-            context.Set<Habitacion>().Add(hab2);
             context.Set<Usuario>().Add(user1);
             context.Set<Usuario>().Add(user2);
-
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+            {
+                TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
+                Tarifa = 200,
+                TarifaExclusiva = 300
+            });
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+            {
+                TarifaClienteId = TipoCliente.TitularExceptuado,
+                Tarifa = 50,
+                TarifaExclusiva = 150
+            });
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+            {
+                TarifaClienteId = TipoCliente.Convenio,
+                Tarifa = 500,
+                TarifaExclusiva = 600
+            });
+            context.Set<Ciudad>().Add(new Ciudad
+            {
+                CiudadId = 3260,
+                Nombre = "ConcepcionDelUruguay"
+            });
+            context.Set<Ciudad>().Add(new Ciudad
+            {
+                CiudadId = 3206,
+                Nombre = "Federacion"
+            });
             base.Seed(context);
         }
     }
