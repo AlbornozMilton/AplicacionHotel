@@ -58,36 +58,38 @@ namespace Dominio
 
         public void NuevoCliente (string pDni, string pNombre, string pApellido, string pTel, string pTipoCliente)
         {
+            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel));
+
             switch (pTipoCliente)
             {
-                case ("Titular"):
+                case ("Titular Afiliado"):
                     {
                         this.iCliente.TarifaClienteId = pers.TipoCliente.Titular;
                         break;
                     }
-                case ("AcompañanteDirecto"):
+                case ("Acomp. Directo"):
                     {
                         this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteDirecto;
                         break;
                     }
-                case ("AcompñanteNoDirecto"):
+                case ("Acomp. No Directo"):
                     {
                         this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteNoDirecto;
                         break;
                     }
-                case ("Titular Exceptuado"):
+                case ("Afiliado Exceptuado"):
                     {
                         this.iCliente.TarifaClienteId = pers.TipoCliente.TitularExceptuado;
                         break;
                     }
-                case ("Convenio"):
+                case ("Afiliado Convenio"):
                     {
                         this.iCliente.TarifaClienteId = pers.TipoCliente.Convenio;
                         break;
                     }
+                default: throw new Exception("No se eligio un Tipo de Cliente");
             }
 
-            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel));
             this.iCliente.Domicilio = this.iDomicilio;
 
             iUoW.RepositorioCliente.Add(this.iCliente);
@@ -113,12 +115,6 @@ namespace Dominio
 
         public bool ValidarUsuario(string pUs, string pPass)
         {
-            //bool result = false;
-            //foreach (var user in iUsuarios)
-            //{
-            //    result = (user.UsuarioId == pUs && user.Password == pPass);
-            //}
-            //return result;
             return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUs, Password = pPass });
             
         }
