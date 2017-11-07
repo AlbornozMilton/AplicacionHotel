@@ -12,30 +12,62 @@ namespace Persistencia.DAL.EntityFramework
     {
         protected override void Seed(DbContext context)
         {
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+                {
+                    TipoClienteId = TipoCliente.Titular,
+                    Tarifa = 150,
+                    TarifaExclusiva = 250
+                });
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+                {
+                    TipoClienteId = TipoCliente.AcompanianteNoDirecto,
+                    Tarifa = 100,
+                    TarifaExclusiva = 150
+                });
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+                 {
+                     TipoClienteId = TipoCliente.AcompanianteNoDirecto,
+                     Tarifa = 200,
+                     TarifaExclusiva = 300
+                 });
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+                 {
+                     TipoClienteId = TipoCliente.TitularExceptuado,
+                     Tarifa = 50,
+                     TarifaExclusiva = 150
+                 });
+            context.Set<TarifaCliente>().Add(new TarifaCliente
+                 {
+                     TipoClienteId = TipoCliente.Convenio,
+                     Tarifa = 500,
+                     TarifaExclusiva = 600
+                 });
+
+            context.Set<Ciudad>().Add(new Ciudad
+            {
+                CiudadId = 3260,
+                Nombre = "ConcepcionDelUruguay"
+            });
+            context.Set<Ciudad>().Add(new Ciudad
+            {
+                CiudadId = 3206,
+                Nombre = "Federacion"
+            });
+
+           
             Cliente cli1 = new Cliente()
             {
                 ClienteId = 38387043,
                 Apellido = "Albornoz",
                 Nombre = "Milton",
-                Telefono = "0345515431476",
-                TarifaCliente = new TarifaCliente()
-                {
-                    TipoClienteId = TipoCliente.Titular,
-                    Tarifa = 150,
-                    TarifaExclusiva = 250
-                }, 
+                Telefono = "0345515431476", 
                 Domicilio = new Domicilio()
                 {
-                    DomicilioId = 12,
                     Calle = "Peron",
                     Numero = "610",
                     Piso = "0",
                     NroDepto = "1",
-                    Ciudad = new Ciudad()
-                    {
-                        CiudadId=3260,
-                        Nombre="ConcepcionDelUruguay"
-                    }
+                    CiudadId = 3260
                 }
             };
 
@@ -45,27 +77,18 @@ namespace Persistencia.DAL.EntityFramework
                 Apellido = "Chamorro",
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
-                TarifaCliente = new TarifaCliente()
-                {
-                    TipoClienteId = TipoCliente.AcompanianteDirecto,
-                    Tarifa = 100,
-                    TarifaExclusiva = 200
-                },
+                
                 Domicilio = new Domicilio()
                 {
-                    DomicilioId = 13,
                     Calle = "Atencio Al Este",
                     Numero = "180",
                     Piso = "0",
                     NroDepto = "1",
-                    Ciudad = new Ciudad()
-                    {
-                        CiudadId = 3206,
-                        Nombre = "Federacion"
-                    }
+                    CiudadId = 3206
                 }
 
             };
+
             Habitacion hab1 = new Habitacion()
             {
                 HabitacionId = 1,

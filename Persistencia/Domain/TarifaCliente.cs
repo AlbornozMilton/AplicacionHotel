@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Persistencia.Domain
 {
     public class TarifaCliente
     {
-        
+        [Key]
         public TipoCliente TipoClienteId { get; set; }
         //public string NombreTipo { get; set; }
         public double Tarifa { get; set; }
