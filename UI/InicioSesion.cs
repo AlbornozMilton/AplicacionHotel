@@ -31,5 +31,22 @@ namespace UI
             }
             
         }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 ) //caracter que corresponde al ENTER
+            {
+                if (new Dominio.ControladorCliente().ValidarUsuario(textBox1.Text, textBox2.Text))
+                {
+                    Hide();
+                    VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
+                    NuevaVentanaPpal.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario NO Registrado");
+                }
+            }          
+        }
     }
 }

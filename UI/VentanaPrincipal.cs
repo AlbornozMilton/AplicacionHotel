@@ -77,5 +77,11 @@ namespace UI
         {
             //Cerrar ventana Principal y dejar ventana de inicio sesion.
         }
+
+        private void agregarServicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarServicio VentanaServicio = new AgregarServicio();
+            VentanaServicio.ShowDialog();
+        }
     }
 }

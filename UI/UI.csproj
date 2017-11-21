@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarServicio.Designer.cs">
+      <DependentUpon>AgregarServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaAlojamientoSinReserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AgregarServicio.resx">
+      <DependentUpon>AgregarServicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AltaAlojamientoSinReserva.resx">
       <DependentUpon>AltaAlojamientoSinReserva.cs</DependentUpon>
     </EmbeddedResource>
