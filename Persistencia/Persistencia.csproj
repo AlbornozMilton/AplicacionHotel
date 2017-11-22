@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EntityFramework\Mappings\ServicioMap.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioTarifa.cs" />
     <Compile Include="DAL\IRepositorioDomicilio.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\AlojamientoMap.cs" />

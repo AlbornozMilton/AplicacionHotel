@@ -6,10 +6,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 {
     class LineaServicioMap:EntityTypeConfiguration<LineaServicio>
     {
-        /// <summary>
-        /// Configuraciones de los atributos de LineaServicio
-        /// y de sus relaciones con las clases correspondientes.
-        /// </summary>
         public LineaServicioMap()
         {
             this.Property(l => l.LineaServicioId)
@@ -23,7 +19,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
             this.Property(f => f.FechaServicio).HasColumnType("Date").IsRequired();
 
-            //falta Relacion con servicio
+            //falta Relacion con servicio???
         }
     }
 }
