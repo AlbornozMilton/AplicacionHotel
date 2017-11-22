@@ -71,8 +71,6 @@ namespace Persistencia.DAL.EntityFramework
 
             #endregion  
 
-            
-
             #region Clientes
             Cliente Milton = new Cliente
             {
@@ -109,6 +107,7 @@ namespace Persistencia.DAL.EntityFramework
                 {
                     Milton
                 }
+                //se realizo context.Set<Cliente>().Add(Milton); pero esta lista no lo duplicó
             };
             context.Set<Domicilio>().Add(DomiciolioMilton);
 
@@ -123,6 +122,7 @@ namespace Persistencia.DAL.EntityFramework
                 {
                     Mauri
                 }
+                //se realizo context.Set<Cliente>().Add(Mauri); pero esta lista no lo duplicó
             };
             context.Set<Domicilio>().Add(DomicilioMauri);
             #endregion 
@@ -133,6 +133,8 @@ namespace Persistencia.DAL.EntityFramework
                 Tipo = TipoCupo.doble,
                 Disponible = true
             };
+            context.Set<Cupo>().Add(cupo1);
+
 
             Cupo cupo2 = new Cupo
             {
@@ -206,6 +208,50 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Usuario>().Add(user2);
             #endregion
 
+            #region Servicios
+            Servicio Bata = new Servicio
+            {
+                ServicioId = 1000,
+                Nombre = "Bata",
+                Detalle = "El costo de este servicio es por día",
+                CostoBase = 10
+            };
+
+            Servicio AireAcondicionado = new Servicio
+            {
+                ServicioId = 1001,
+                Nombre = "Aire Acondicionado",
+                Detalle = "El costo de este servicio es por hora",
+                CostoBase = 30
+            };
+
+            Servicio SeguroDeSalud = new Servicio
+            {
+                ServicioId = 1002,
+                Nombre = "Seguro De Salud",
+                Detalle = "Se debe calcular en base a la cantidad de hora utilizadas",
+                CostoBase = 50
+            };
+
+            #endregion
+
+            #region Linea de Servicios
+            LineaServicio CantBatas = new LineaServicio
+            {
+                Cantidad = 3,
+                CostoServicio = 30,
+                FechaServicio = DateTime.Now.AddDays(1),
+                Servicio = Bata
+            };
+
+            LineaServicio CantAireAcond = new LineaServicio
+            {
+                Cantidad = 5,
+                CostoServicio = 150,
+                FechaServicio = DateTime.Now.AddDays(2),
+                Servicio = AireAcondicionado
+            };
+            #endregion
 
             #region Alojamientos
             context.Set<Alojamiento>().Add(new Alojamiento
@@ -230,9 +276,9 @@ namespace Persistencia.DAL.EntityFramework
                         FechaPago = DateTime.Now,
                         Detalle = "El viejo era tacaño"
                     }
-                }
-
-            }); 
+                },
+                
+            });
             #endregion
 
             base.Seed(context);

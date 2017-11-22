@@ -16,5 +16,8 @@ namespace Persistencia.Domain
 
         public int ServicioId { get; set; }
         public Servicio Servicio { get; set; }
+
+        public int AlojamientoId { get; set; }
+        public Alojamiento Alojamiento { get; set; }
     }
 }

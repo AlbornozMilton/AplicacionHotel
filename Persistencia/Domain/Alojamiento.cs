@@ -10,8 +10,6 @@ namespace Persistencia.Domain
     {
         public int AlojamientoId { get; set; }
         public int DniResponsable { get; set; }
-
-        //[DataType(DataType.Date)]
         public DateTime? FechaReserva { get; set; }
         public DateTime? FechaEstimadaIngreso { get; set; }
         public DateTime? FechaEstimadaEgreso { get; set; }
@@ -23,14 +21,14 @@ namespace Persistencia.Domain
 
         //-------------------- Relaciones ---------------------------------//
     //    public int ClienteId { get; set; }
-        public List<Cliente> Clientes { get; set; }
         public int HabitacionId { get; set; }
         public Habitacion Habitacion {get;set;}
+
+        public List<Cliente> Clientes { get; set; }
         public List<Pago> Pagos { get; set; }
-        //FALTA LISTA LINEAS DE SERVICIOS
-        //FALTA UNA RELACION A LA NUEVA CLASE LLAMADA ALOJACLIENTE
-        // EN EL DOMINOCIO NO ES NECESARIO LA NUEVA CLASE, BASTA CON MANTENER LA LISTA DE CLIENTE COMO ATRIBUTO
+        public List<LineaServicio> Servicios { get; set; }
     }
+
     public enum EstadoAlojamiento
     {
         Reservado,
