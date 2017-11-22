@@ -11,6 +11,7 @@ namespace Persistencia.Domain
         public int LineaServicioId { get; set; }
         public int Cantidad { get; set; }
         public double CostoServicio { get; set; }
+        public DateTime FechaServicio { get; set; }
 
 
         public int ServicioId { get; set; }

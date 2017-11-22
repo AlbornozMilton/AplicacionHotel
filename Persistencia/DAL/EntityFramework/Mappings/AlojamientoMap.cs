@@ -19,19 +19,19 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(a => a.DniResponsable)
                 .IsRequired();
 
-            this.Property(a => a.FechaReserva)
+            this.Property(a => a.FechaReserva).HasColumnType("Date")
                 .IsOptional();
 
-            this.Property(a => a.FechaEstimadaIngreso)
+            this.Property(a => a.FechaEstimadaIngreso).HasColumnType("Date")
                 .IsOptional();
 
-            this.Property(a => a.FechaEstimadaEgreso)
-                .IsRequired();
-
-            this.Property(a => a.FechaIngreso)
+            this.Property(a => a.FechaEstimadaEgreso).HasColumnType("Date")
                 .IsOptional();
 
-            this.Property(a => a.FechaEgreso)
+            this.Property(a => a.FechaIngreso).HasColumnType("Date")
+                .IsOptional();
+
+            this.Property(a => a.FechaEgreso).HasColumnType("Date")
                 .IsOptional();
 
             this.HasRequired(a => a.Habitacion)
@@ -43,8 +43,8 @@ namespace Persistencia.DAL.EntityFramework.Mappings
                {
                    tabla.ToTable("Alojamiento_Cliente");
                });
-            
-            //Estado ALojamiento como??
+
+            this.Property(e => e.EstadoAlojamiento).IsRequired();
         }
     }
 }

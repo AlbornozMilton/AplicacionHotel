@@ -163,6 +163,33 @@ namespace Persistencia.DAL.EntityFramework
                 CiudadId = 3206,
                 Nombre = "Federacion"
             });
+
+            context.Set<Alojamiento>().Add(new Alojamiento
+            {
+                DniResponsable = cli1.ClienteId,
+                FechaReserva = null,
+                FechaIngreso = DateTime.Now,
+                FechaEstimadaIngreso = null,
+                FechaEstimadaEgreso = DateTime.Now.AddDays(3),
+                FechaEgreso = null,
+                MontoTotal = 250,
+                MontoDeuda = 0,
+                EstadoAlojamiento = EstadoAlojamiento.Alojado,
+                HabitacionId = 2,
+                Clientes = new List<Cliente>() {cli1, cli2},
+                Pagos = new List<Pago>()
+                {
+                    new Pago
+                    {
+                        Tipo = TipoPago.Alojado,
+                        Monto = 250,
+                        FechaPago = DateTime.Now,
+                        Detalle = "El viejo era tacaño"
+                    }
+                }
+                
+            });
+
             base.Seed(context);
         }
     }

@@ -20,7 +20,7 @@ namespace Persistencia.Domain
         public TarifaCliente TarifaCliente { get; set; }
         public int DomicilioId { get; set; }
         public Domicilio Domicilio { get; set; }
-        public int AlojamientoId { get; set; }
+       // public int AlojamientoId { get; set; }
         public List<Alojamiento> Alojamientos { get; set; }
 
 

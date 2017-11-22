@@ -20,7 +20,8 @@ namespace Persistencia.Domain
     public enum TipoPago
     {
         Deposito,
-        Complemento,
-        Total
+        Alojado,
+        Servicios,
+        Deuda
     }
 }
