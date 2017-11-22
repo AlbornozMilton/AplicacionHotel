@@ -135,7 +135,6 @@ namespace Persistencia.DAL.EntityFramework
             };
             context.Set<Cupo>().Add(cupo1);
 
-
             Cupo cupo2 = new Cupo
             {
                 Tipo = TipoCupo.simple,
@@ -216,6 +215,7 @@ namespace Persistencia.DAL.EntityFramework
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
             };
+            context.Set<Servicio>().Add(Bata);
 
             Servicio AireAcondicionado = new Servicio
             {
@@ -224,14 +224,16 @@ namespace Persistencia.DAL.EntityFramework
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
             };
+            context.Set<Servicio>().Add(AireAcondicionado);
 
             Servicio SeguroDeSalud = new Servicio
             {
                 ServicioId = 1002,
                 Nombre = "Seguro De Salud",
-                Detalle = "Se debe calcular en base a la cantidad de hora utilizadas",
+                Detalle = "El costo de este servicio es por día",
                 CostoBase = 50
             };
+            context.Set<Servicio>().Add(SeguroDeSalud);
 
             #endregion
 
@@ -254,7 +256,7 @@ namespace Persistencia.DAL.EntityFramework
             #endregion
 
             #region Alojamientos
-            context.Set<Alojamiento>().Add(new Alojamiento
+            Alojamiento Aloj1 = new Alojamiento
             {
                 DniResponsable = Milton.ClienteId,
                 FechaReserva = null,
@@ -277,8 +279,13 @@ namespace Persistencia.DAL.EntityFramework
                         Detalle = "El viejo era tacaño"
                     }
                 },
-                
-            });
+                Servicios = new List<LineaServicio>()
+                {
+                    CantBatas, CantAireAcond
+                }
+            };
+
+            context.Set<Alojamiento>().Add(Aloj1);
             #endregion
 
             base.Seed(context);
