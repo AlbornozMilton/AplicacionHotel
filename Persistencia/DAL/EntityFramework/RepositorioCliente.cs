@@ -16,12 +16,12 @@ namespace Persistencia.DAL.EntityFramework
         public bool Existe(Cliente pCliente)
         {
            // return (base.iDbContext.Set<Cliente>().Find(pCliente.ClienteId) != null);
-           return (base.iDbContext.Cliente.Find(pCliente.ClienteId) != null);
+           return (base.iDbContext.Clientes.Find(pCliente.ClienteId) != null);
         }
 
         public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre)
         {
-            var clientes = from cli in this.iDbContext.Set<Cliente>()
+            var clientes = from cli in this.iDbContext.Clientes
                            where ((cli.Nombre+cli.Apellido).Contains(pNombre))
                            select cli;
 

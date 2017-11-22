@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Persistencia.Domain
 {
     public class TarifaCliente
     {
-        public int TarifaClienteId { get; set; }
-        public TipoCliente TipoCliente { get; set; }
+       // [Key]
+        public TipoCliente TarifaClienteId { get; set; }
+        //public string NombreTipo { get; set; }
         public double Tarifa { get; set; }
         public double TarifaExclusiva { get; set; }
 
-
         public List<Cliente> Clientes { get; set; }
+     
     }
 
     public enum TipoCliente

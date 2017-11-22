@@ -18,20 +18,35 @@ namespace Dominio
         pers.TarifaCliente iTarifa;
         static IEnumerable<pers.Usuario> iUsuarios;
 
-        //aca se instancoa UoW??
+        //aca se instancoa UoW?? SI, al instanciar el controlador
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
         //-----METODOS
         public void CargarCiudad(int pCp, string pNombre)
         {
-            Ciudad city = new Ciudad(pCp, pNombre);
-            this.iCiudad = Mapper.Map<Ciudad, pers.Ciudad>(city);
+            //Ciudad city = new Ciudad(pCp, pNombre);
+            //this.iCiudad = Mapper.Map<Ciudad, pers.Ciudad>(city);
+            this.iCiudad = iUoW.RepositorioCiudad.Get(pCp);
+
+            if (this.iCiudad == null)
+            {
+                throw new Exception("Codigo postal no encontrado");
+            }
+
+            if (this.iCiudad.Nombre != pNombre)
+            {
+                this.iCiudad = null;
+                throw new Exception("Nombre de Ciudad no Correspondiente");
+            }
+
         }
 
         public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto)
         {
             Domicilio dom = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso);
             this.iDomicilio = Mapper.Map<Domicilio, pers.Domicilio>(dom);
+            this.iDomicilio.CiudadId = this.iCiudad.CiudadId;
+
         }
 
         //public void CargarTarifa(string p.)
@@ -41,49 +56,54 @@ namespace Dominio
         //}
 
 
-        public void NuevoCliente (string pDni, string pNombre, string pApellido, string pTel)
+        public void NuevoCliente (string pDni, string pNombre, string pApellido, string pTel, string pTipoCliente)
         {
+            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel));
 
-            Cliente cli = new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel);
-            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(cli);
-            this.iDomicilio.Ciudad = this.iCiudad;
+            switch (pTipoCliente)
+            {
+                case ("Titular Afiliado"):
+                    {
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.Titular;
+                        break;
+                    }
+                case ("Acomp. Directo"):
+                    {
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteDirecto;
+                        break;
+                    }
+                case ("Acomp. No Directo"):
+                    {
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteNoDirecto;
+                        break;
+                    }
+                case ("Afiliado Exceptuado"):
+                    {
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.TitularExceptuado;
+                        break;
+                    }
+                case ("Afiliado Convenio"):
+                    {
+                        this.iCliente.TarifaClienteId = pers.TipoCliente.Convenio;
+                        break;
+                    }
+                default: throw new Exception("No se eligio un Tipo de Cliente");
+            }
+
             this.iCliente.Domicilio = this.iDomicilio;
-
-            //buscar una tarifa por tipo cliente ingresado desde la UI y generar una pers.TarifaCliente
-            //probar hacer un find(tipo cliente) y asignarlo a pers.TarifaCliente, sinn tener que hacer un automapper
-            this.iCliente.TarifaCliente = new pers.TarifaCliente
-              { TarifaClienteId = 0,
-                TipoCliente = pers.TipoCliente.Titular,
-                Tarifa = 150, TarifaExclusiva = 250
-              };
 
             iUoW.RepositorioCliente.Add(this.iCliente);
             iUoW.Complete();
             iUoW.Dispose();
-            //{ "The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_dbo.Cliente_dbo.Domicilio_DomicilioId\". The conflict occurred in database \"HotelBD\", table \"dbo.Domicilio\", column 'DomicilioId'.\r\nThe statement has been terminated."}
         }
 
         public Cliente BuscarClientePorDni(int unDni)
         {
-            pers.Cliente clipers = new pers.Cliente();
-            clipers = iUoW.RepositorioCliente.Get(unDni);
-            Cliente cli= Mapper.Map<pers.Cliente,Cliente>(clipers);
-            return (cli); //Es necesario convertir?
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.Get(unDni)));
         }
 
         public List<Cliente> BuscarClientePorNom_Ape(string pCadena)
         {
-            //IEnumerable < pers.Cliente > listaEnum;
-            //listaEnum = iUoW.RepositorioCliente.GetAll();
-            //List<Cliente> lista = new List<Cliente>();
-            //foreach (var i in listaEnum)
-            //{
-            //    if (i.Nombre == pCadena)
-            //    {
-            //        lista.Add(Mapper.Map<pers.Cliente,Cliente>(i));
-            //    }
-            //}
-            //    return (lista);
             IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.ObtenerClientesPorNomyAp(pCadena);
             List<Cliente> lista = new List<Cliente>();
             foreach (var i in listaEnum)
@@ -95,12 +115,6 @@ namespace Dominio
 
         public bool ValidarUsuario(string pUs, string pPass)
         {
-            //bool result = false;
-            //foreach (var user in iUsuarios)
-            //{
-            //    result = (user.UsuarioId == pUs && user.Password == pPass);
-            //}
-            //return result;
             return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUs, Password = pPass });
             
         }

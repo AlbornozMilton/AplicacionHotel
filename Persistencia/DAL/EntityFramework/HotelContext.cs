@@ -18,16 +18,17 @@ namespace Persistencia.DAL.EntityFramework
         }
 
         //ATRIBUTOS       
-        public virtual DbSet<Alojamiento> Alojamiento { get; set; }
-        public virtual DbSet<Ciudad> Ciudad { get; set; }
-        public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Cupo> Cupo { get; set; }
-        public virtual DbSet<Domicilio> Domicilio { get; set; }
-        public virtual DbSet<Habitacion> Habitacion { get; set; }
-        public virtual DbSet<LineaServicio> LineaServicio { get; set; }
-        public virtual DbSet<Pago> Pago { get; set; }
-        public virtual DbSet<Servicio> Servicio { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Alojamiento> Alojamientos { get; set; }
+        public virtual DbSet<Ciudad> Ciudades { get; set; }
+        public virtual DbSet<Cliente> Clientes { get; set; }
+        public virtual DbSet<Cupo> Cupos { get; set; }
+        public virtual DbSet<Domicilio> Domicilios { get; set; }
+        public virtual DbSet<Habitacion> Habitacions { get; set; }
+        public virtual DbSet<LineaServicio> LineaServicios { get; set; }
+        public virtual DbSet<Pago> Pagos { get; set; }
+        public virtual DbSet<Servicio> Servicios { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<TarifaCliente> Tarifas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mBuilder)
         {

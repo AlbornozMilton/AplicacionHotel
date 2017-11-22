@@ -2,6 +2,7 @@
 using System.Data.Entity.ModelConfiguration;
 using Persistencia.Domain;
 
+
 namespace Persistencia.DAL.EntityFramework.Mappings
 {
     class TarifaClienteMap:EntityTypeConfiguration<TarifaCliente>
@@ -13,6 +14,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         public TarifaClienteMap()
         {
             this.Property(tc => tc.TarifaClienteId)
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None)
                 .IsRequired();
 
             this.Property(tc => tc.Tarifa)
@@ -21,7 +23,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(tc => tc.TarifaExclusiva)
                 .IsRequired();
 
-
+            //this.Property(tc => tc.Clientes)
         }
     }
 }
