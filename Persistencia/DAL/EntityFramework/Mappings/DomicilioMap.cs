@@ -6,10 +6,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 {
     class DomicilioMap:EntityTypeConfiguration<Domicilio>
     {
-        /// <summary>
-        /// Configuraciones de los atributos de Domicilio
-        /// y de sus relaciones con las clases correspondientes.
-        /// </summary>
         public DomicilioMap()
         {
             this.Property(d => d.DomicilioId)
