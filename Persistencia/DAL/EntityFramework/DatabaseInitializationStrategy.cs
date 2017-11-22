@@ -71,27 +71,7 @@ namespace Persistencia.DAL.EntityFramework
 
             #endregion  
 
-            #region Domicilios y Clientes
-            Domicilio DomiciolioMilton = new Domicilio
-            {
-                Calle = "Peron",
-                Numero = "610",
-                Piso = "0",
-                NroDepto = "1",
-                CiudadId = CiudadCdelU.CiudadId
-            };
-            context.Set<Domicilio>().Add(DomiciolioMilton);
-
-            Domicilio DomicilioMauri = new Domicilio
-            {
-                Calle = "Atencio Al Este",
-                Numero = "180",
-                Piso = "0",
-                NroDepto = "1",
-                CiudadId = CiudadFederacion.CiudadId
-            };
-            context.Set<Domicilio>().Add(DomicilioMauri);
-            #endregion 
+            
 
             #region Clientes
             Cliente Milton = new Cliente
@@ -101,7 +81,7 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Milton",
                 Telefono = "0345515431476",
                 TarifaClienteId = TarifaTitular.TarifaClienteId,
-                DomicilioId = DomiciolioMilton.DomicilioId
+                //DomicilioId = DomiciolioMilton.DomicilioId
             };
             context.Set<Cliente>().Add(Milton);
 
@@ -112,11 +92,40 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
                 TarifaClienteId = TarifaAcompNoDirecto.TarifaClienteId,
-                DomicilioId = DomicilioMauri.DomicilioId
-
+               //DomicilioId = DomicilioMauri.DomicilioId
             };
             context.Set<Cliente>().Add(Mauri);
             #endregion
+           
+            #region Domicilios
+            Domicilio DomiciolioMilton = new Domicilio
+            {
+                Calle = "Peron",
+                Numero = "610",
+                Piso = "0",
+                NroDepto = "1",
+                CiudadId = CiudadCdelU.CiudadId,
+                Clientes = new List<Cliente>()
+                {
+                    Milton
+                }
+            };
+            context.Set<Domicilio>().Add(DomiciolioMilton);
+
+            Domicilio DomicilioMauri = new Domicilio
+            {
+                Calle = "Atencio Al Este",
+                Numero = "180",
+                Piso = "0",
+                NroDepto = "1",
+                CiudadId = CiudadFederacion.CiudadId,
+                Clientes = new List<Cliente>()
+                {
+                    Mauri
+                }
+            };
+            context.Set<Domicilio>().Add(DomicilioMauri);
+            #endregion 
 
             #region Cupos
             Cupo cupo1 = new Cupo
