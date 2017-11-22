@@ -83,5 +83,11 @@ namespace UI
             AgregarServicio VentanaServicio = new AgregarServicio();
             VentanaServicio.ShowDialog();
         }
+
+        private void nuevoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            RegistrarPago VentanaResgitrarPago = new RegistrarPago();
+            VentanaResgitrarPago.ShowDialog();
+        }
     }
 }

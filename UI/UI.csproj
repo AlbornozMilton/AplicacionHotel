@@ -115,6 +115,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPago.Designer.cs">
+      <DependentUpon>RegistrarPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="TablaDisponibilidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPago.resx">
+      <DependentUpon>RegistrarPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TablaDisponibilidad.resx">
       <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
