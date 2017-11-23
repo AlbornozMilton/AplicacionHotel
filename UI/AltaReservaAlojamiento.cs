@@ -43,5 +43,17 @@ namespace UI
         {
             //button4.BackColor = Color.Yellow 255, 255, 128};
         }
+
+        private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(dtp_fechaDesde.Text) == Convert.ToDateTime(dtp_fechaHasta.Text))
+            {
+                //DeterminarDisponibilidad();
+            }
+            else
+            {
+                MessageBox.Show("Fecha de Ingreso mayor a Fecha de Egreso");
+            }
+        }
     }
 }
