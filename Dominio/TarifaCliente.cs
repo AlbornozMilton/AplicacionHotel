@@ -8,25 +8,29 @@ namespace Dominio
 {
     public class TarifaCliente
     {
-      //  private int iCodTarifa;
-        private TipoCliente iTipoCliente;
+        private TipoCliente iTipoCliente; // CLAVE
         private double iMontoTarifa;
         private double iMontoTarifaExcl;
+        private List<Cliente> iClientes;
 
         //-------------Contructor
-        public TarifaCliente(int pCod, TipoCliente pTipoCli, double pTarifa, double pTarifaExcl)
+        public TarifaCliente()
         {
-         //   this.iCodTarifa = pCod;
+
+        }
+
+        public TarifaCliente(TipoCliente pTipoCli, double pTarifa, double pTarifaExcl)
+        {
             this.iTipoCliente = pTipoCli;
             this.iMontoTarifa = pTarifa;
             this.iMontoTarifaExcl = pTarifaExcl;
         }
 
         //---------------------Propiedades
-       // public int TarifaClienteId { get { return this.iCodTarifa; } private set { this.iCodTarifa = value; } }
-        public TipoCliente TipoClienteId { get { return this.iTipoCliente; } private set { this.iTipoCliente = value; } }
+        public TipoCliente TarifaClienteId { get { return this.iTipoCliente; } private set { this.iTipoCliente = value; } }
         public double Tarifa { get { return this.iMontoTarifa; } private set { this.iMontoTarifa = value; } }
         public double TarifaExclusiva { get { return this.iMontoTarifaExcl; } private set { this.iMontoTarifaExcl = value; } }
+        public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
         
         //--------------------Metodos
         /// <summary>

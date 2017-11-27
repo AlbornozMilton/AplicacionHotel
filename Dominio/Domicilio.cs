@@ -14,6 +14,12 @@ namespace Dominio
         private string iNumDepto;
         private string iNumPiso;
         private Ciudad iCiudad;
+        private List<Cliente> iClientes;
+
+        public Domicilio()
+        {
+
+        }
 
         public Domicilio(int pDomId, string pCalle, string pNumCalle, string pNumDepto, string pNumPiso, Ciudad pCiudad)
         {
@@ -41,6 +47,7 @@ namespace Dominio
         public string Piso { get { return this.iNumPiso; } private set { this.iNumPiso = value; } }
         public string NroDepto { get { return this.iNumDepto; } private set { this.iNumPiso = value; } }
         public Ciudad Ciudad { get { return this.iCiudad; } private set { this.iCiudad = value; } }
+        public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
         //--------------------------------------metodos
         public string Direccion()
         {
