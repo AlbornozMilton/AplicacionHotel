@@ -7,12 +7,8 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL
 {
-    public interface IRepositorioCliente : IRepositorio<Cliente>
+    public interface IRepositorioHabitacion:IRepositorio<Habitacion>
     {
-        bool Existe(Cliente pCliente);
-
-        IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre);
-
+        IEnumerable<Habitacion> GetAllconCupos();
     }
-
 }

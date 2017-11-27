@@ -15,7 +15,7 @@ namespace Dominio
         pers.Cliente iCliente;
         pers.Domicilio iDomicilio;
         pers.Ciudad iCiudad;
-        pers.TarifaCliente iTarifa;
+      //  pers.TarifaCliente iTarifa;
         static IEnumerable<pers.Usuario> iUsuarios;
 
         //aca se instancoa UoW?? SI, al instanciar el controlador
@@ -99,6 +99,7 @@ namespace Dominio
 
         public Cliente BuscarClientePorDni(int unDni)
         {
+            List<Habitacion> hab = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
             return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.Get(unDni)));
         }
 

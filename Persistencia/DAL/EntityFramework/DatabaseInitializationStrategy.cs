@@ -12,6 +12,22 @@ namespace Persistencia.DAL.EntityFramework
     {
         protected override void Seed(DbContext context)
         {
+            //---------------- CARGA DATOS BASICOS ---------------------
+            #region Usuarios
+            Usuario user1 = new Usuario
+            {
+                UsuarioId = "mauri",
+                Password = "chamorro"
+            };
+            context.Set<Usuario>().Add(user1);
+            Usuario user2 = new Usuario
+            {
+                UsuarioId = "milton",
+                Password = "albornoz"
+            };
+            context.Set<Usuario>().Add(user2);
+            #endregion
+
             #region Tarfifas
             TarifaCliente TarifaTitular = new TarifaCliente
             {
@@ -21,27 +37,27 @@ namespace Persistencia.DAL.EntityFramework
             };
             context.Set<TarifaCliente>().Add(TarifaTitular);
 
-            TarifaCliente TarifaAcompNoDirecto = new TarifaCliente
-            {
-                TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
-                Tarifa = 100,
-                TarifaExclusiva = 150
-            };
-            context.Set<TarifaCliente>().Add(TarifaAcompNoDirecto);
-
             TarifaCliente TarifaAcompDirecto = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.AcompanianteDirecto,
-                Tarifa = 200,
-                TarifaExclusiva = 300
+                Tarifa = 170,
+                TarifaExclusiva = 0
             };
             context.Set<TarifaCliente>().Add(TarifaAcompDirecto);
+
+            TarifaCliente TarifaAcompNoDirecto = new TarifaCliente
+            {
+                TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
+                Tarifa = 200,
+                TarifaExclusiva = 0
+            };
+            context.Set<TarifaCliente>().Add(TarifaAcompNoDirecto);
 
             TarifaCliente TarifaExceptuado = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.TitularExceptuado,
-                Tarifa = 50,
-                TarifaExclusiva = 150
+                Tarifa = 0,
+                TarifaExclusiva = 0
             };
             context.Set<TarifaCliente>().Add(TarifaExceptuado);
 
@@ -49,9 +65,10 @@ namespace Persistencia.DAL.EntityFramework
             {
                 TarifaClienteId = TipoCliente.Convenio,
                 Tarifa = 500,
-                TarifaExclusiva = 600
+                TarifaExclusiva = 750
             };
             context.Set<TarifaCliente>().Add(TarifaConvenio);
+
             #endregion
 
             #region Ciudades
@@ -69,9 +86,341 @@ namespace Persistencia.DAL.EntityFramework
             };
             context.Set<Ciudad>().Add(CiudadCdelU);
 
-            #endregion  
+            #endregion
 
+            /*
+                #region Cupos
+                Cupo cupo1 = new Cupo
+                {
+                    Tipo = TipoCupo.doble,
+                    Disponible = true
+                };
+
+                Cupo cupo2 = new Cupo
+                {
+                    Tipo = TipoCupo.simple,
+                    Disponible = true
+                };
+
+                Cupo cupo3 = new Cupo
+                {
+                    Tipo = TipoCupo.simple,
+                    Disponible = true
+                };
+
+                Cupo cupo4 = new Cupo
+                {
+                    Tipo = TipoCupo.doble,
+                    Disponible = true
+                };
+
+                Cupo cupo5 = new Cupo
+                {
+                    Tipo = TipoCupo.simple,
+                    Disponible = true
+                };
+
+                #endregion
+            */
+            #region Habitaciones y Cupos
+            Habitacion hab1 = new Habitacion()
+            {
+                HabitacionId = 1,
+                Capacidad = 2, // 2 CAMAS
+                Planta = 0,// planta baja
+                Exclusiva = false,
+                Cupos = new List<Cupo>() 
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab1);
+
+            Habitacion hab2 = new Habitacion()
+            {
+                HabitacionId = 2,
+                Capacidad = 4, // 4 CAMAS
+                Exclusiva = false,
+                Planta = 0,
+                Cupos = new List<Cupo>() 
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.doble,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab2);
+
+            Habitacion hab3 = new Habitacion()
+            {
+                HabitacionId = 3,
+                Capacidad = 3,
+                Exclusiva = false,
+                Planta = 0,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab3);
+
+            Habitacion hab4 = new Habitacion()
+            {
+                HabitacionId = 4,
+                Capacidad = 3, // 3 CAMAS
+                Exclusiva = false,
+                Planta = 0,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab4);
+
+            Habitacion hab5 = new Habitacion()
+            {
+                HabitacionId = 5,
+                Capacidad = 3, // 3 CAMAS
+                Exclusiva = false,
+                Planta = 0,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.doble,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab5);
+
+            Habitacion hab6 = new Habitacion()
+            {
+                HabitacionId = 6,
+                Capacidad = 3, // 3 CAMAS
+                Exclusiva = false,
+                Planta = 1,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.doble,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab6);
+
+            Habitacion hab7 = new Habitacion()
+            {
+                HabitacionId = 7,
+                Capacidad = 3, // 3 CAMAS
+                Exclusiva = false,
+                Planta = 1,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.doble,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab7);
+
+            Habitacion hab8 = new Habitacion()
+            {
+                HabitacionId = 8,
+                Capacidad = 3, // 3 CAMAS
+                Exclusiva = false,
+                Planta = 1,
+                Cupos = new List<Cupo>()
+                {
+                   new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.doble,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab8);
+
+            Habitacion hab9 = new Habitacion()
+            {
+                HabitacionId = 9,
+                Capacidad = 3,
+                Exclusiva = false,
+                Planta = 1,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab9);
+
+            Habitacion hab10 = new Habitacion()
+            {
+                HabitacionId = 10,
+                Capacidad = 3, // 3 CAMAS
+                Exclusiva = false,
+                Planta = 1,
+                Cupos = new List<Cupo>()
+                {
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Disponible = true
+                    }
+                }
+            };
+            context.Set<Habitacion>().Add(hab10);
             
+            #endregion
+
+            #region Servicios
+            Servicio Bata = new Servicio
+            {
+                ServicioId = 1000,
+                Nombre = "Bata",
+                Detalle = "El costo de este servicio es por día",
+                CostoBase = 10
+            };
+            context.Set<Servicio>().Add(Bata);
+
+            Servicio AireAcondicionado = new Servicio
+            {
+                ServicioId = 1001,
+                Nombre = "Aire Acondicionado",
+                Detalle = "El costo de este servicio es por hora",
+                CostoBase = 30
+            };
+
+            context.Set<Servicio>().Add(AireAcondicionado);
+
+            Servicio SeguroDeSalud = new Servicio
+            {
+                ServicioId = 1002,
+                Nombre = "Seguridad Medica",
+                Detalle = "El costo de este servicio es por día",
+                CostoBase = 10
+            };
+            context.Set<Servicio>().Add(SeguroDeSalud);
+
+            Servicio Calefaccion = new Servicio
+            {
+                ServicioId = 1003,
+                Nombre = "Calefacción",
+                Detalle = "El costo de este servicio es por hora",
+                CostoBase = 30
+            };
+            context.Set<Servicio>().Add(SeguroDeSalud);
+
+            Servicio RecargoPorFumar = new Servicio
+            {
+                ServicioId = 1004,
+                Nombre = "Recargo por Fumar",
+                Detalle = "El costo de este servicio por estadía",
+                CostoBase = 50
+            };
+            context.Set<Servicio>().Add(RecargoPorFumar);
+
+            #endregion
+            //-----------------------FIN DATOS BASICOS------------------
+
+            //-----------------------A MODO DE EJEMPLO-----------------
 
             #region Clientes
             Cliente Milton = new Cliente
@@ -81,7 +430,6 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Milton",
                 Telefono = "0345515431476",
                 TarifaClienteId = TarifaTitular.TarifaClienteId,
-                //DomicilioId = DomiciolioMilton.DomicilioId
             };
             context.Set<Cliente>().Add(Milton);
 
@@ -92,7 +440,6 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
                 TarifaClienteId = TarifaAcompNoDirecto.TarifaClienteId,
-               //DomicilioId = DomicilioMauri.DomicilioId
             };
             context.Set<Cliente>().Add(Mauri);
             #endregion
@@ -112,6 +459,22 @@ namespace Persistencia.DAL.EntityFramework
             };
             context.Set<Domicilio>().Add(DomiciolioMilton);
 
+            //Domicilio DomiciolioMilton2 = new Domicilio
+            //{
+            //  //----- Agrega el domicilio pero no enlace el IdDomiciolio del CLiente, es decir, el cliente sigue con el 
+                //----- IdDomicilio original
+            //    Calle = "Peron",
+            //    Numero = "610",
+            //    Piso = "0",
+            //    NroDepto = "1",
+            //    CiudadId = CiudadFederacion.CiudadId,
+            //    Clientes = new List<Cliente>()
+            //    {
+            //        Milton
+            //    }
+            //};
+            //context.Set<Domicilio>().Add(DomiciolioMilton2);
+
             Domicilio DomicilioMauri = new Domicilio
             {
                 Calle = "Atencio Al Este",
@@ -127,88 +490,28 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Domicilio>().Add(DomicilioMauri);
             #endregion 
 
-            #region Cupos
-            Cupo cupo1 = new Cupo
+            #region Linea de Servicios para Alojamientos 
+            
+            //las lineas de servicio se generan solo para Alojamientos dado
+            LineaServicio CantBatas = new LineaServicio
             {
-                Tipo = TipoCupo.doble,
-                Disponible = true
+                Cantidad = 3,
+                CostoServicio = 30,
+                FechaServicio = DateTime.Now.AddDays(1),
+                ServicioId = Bata.ServicioId
             };
 
-            Cupo cupo2 = new Cupo
+            LineaServicio CantAireAcond = new LineaServicio
             {
-                Tipo = TipoCupo.simple,
-                Disponible = true
+                Cantidad = 5,
+                CostoServicio = 150,
+                FechaServicio = DateTime.Now.AddDays(2),
+                ServicioId = AireAcondicionado.ServicioId
             };
-
-            Cupo cupo3 = new Cupo
-            {
-                Tipo = TipoCupo.simple,
-                Disponible = true
-            };
-
-            Cupo cupo4 = new Cupo
-            {
-                Tipo = TipoCupo.doble,
-                Disponible = true
-            };
-
-            Cupo cupo5 = new Cupo
-            {
-                Tipo = TipoCupo.simple,
-                Disponible = true
-            };
-
             #endregion
-
-            #region Habitaciones
-            Habitacion hab1 = new Habitacion()
-            {
-                HabitacionId = 1,
-                Capacidad = 3,
-                Planta = 1,
-                Exclusiva = false,
-                Cupos = new List<Cupo>()
-                {
-                    cupo1, cupo2
-                }
-                //COMPROBAR SI LOS CUPOS EXISTEN O SE DUPLICAN AGREGANDO A LA LISTA 
-            };
-            context.Set<Habitacion>().Add(hab1);
-
-            Habitacion hab2 = new Habitacion()
-            {
-                HabitacionId = 2,
-                Capacidad = 4,
-                Exclusiva = false,
-                Planta = 2,
-                Cupos = new List<Cupo>()
-                {
-                    cupo3, cupo4, cupo5
-                }
-                //COMPROBAR SI LOS CUPOS EXISTEN O SE DUPLICAN AGREGANDO A LA LISTA 
-            };
-            context.Set<Habitacion>().Add(hab2);
-            #endregion
-
-
-            #region Usuarios
-            Usuario user1 = new Usuario
-            {
-                UsuarioId = "mauri",
-                Password = "chamorro"
-            };
-            context.Set<Usuario>().Add(user1);
-            Usuario user2 = new Usuario
-            {
-                UsuarioId = "milton",
-                Password = "albornoz"
-            };
-            context.Set<Usuario>().Add(user2);
-            #endregion
-
 
             #region Alojamientos
-            context.Set<Alojamiento>().Add(new Alojamiento
+            Alojamiento Aloj1 = new Alojamiento
             {
                 DniResponsable = Milton.ClienteId,
                 FechaReserva = null,
@@ -230,9 +533,45 @@ namespace Persistencia.DAL.EntityFramework
                         FechaPago = DateTime.Now,
                         Detalle = "El viejo era tacaño"
                     }
+                },
+                Servicios = new List<LineaServicio>()
+                {
+                    CantBatas, CantAireAcond
                 }
+            };
 
-            }); 
+            context.Set<Alojamiento>().Add(Aloj1);
+
+            Alojamiento Aloj2 = new Alojamiento
+            {
+                DniResponsable = Mauri.ClienteId,
+                FechaReserva = DateTime.Now.AddDays(4),
+                FechaIngreso = null,
+                FechaEstimadaIngreso = DateTime.Now.AddDays(4),
+                FechaEstimadaEgreso = DateTime.Now.AddDays(7),
+                FechaEgreso = null,
+                MontoTotal = 250,
+                MontoDeuda = 125,
+                EstadoAlojamiento = EstadoAlojamiento.Reservado,
+                HabitacionId = 1,
+                Clientes = new List<Cliente>() { Milton, Mauri },
+                Pagos = new List<Pago>()
+                {
+                    new Pago
+                    {
+                        Tipo = TipoPago.Deposito,
+                        Monto = 125,
+                        FechaPago = DateTime.Now,
+                        Detalle = "Reservando"
+                    }
+                },
+                Servicios = new List<LineaServicio>()
+                {
+                   
+                }
+            };
+
+            context.Set<Alojamiento>().Add(Aloj2);
             #endregion
 
             base.Seed(context);

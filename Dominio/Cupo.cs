@@ -13,6 +13,11 @@ namespace Dominio
         private bool iDisponible;
 
         //--------------------------CONSTRUCTOR
+        public Cupo()
+        {
+
+        }
+
         public Cupo(int pCodCupo,TipoCupo pTipoCupo, bool pDisponible)
         {
             this.iCodCupo = pCodCupo;
@@ -26,15 +31,12 @@ namespace Dominio
             get { return this.iCodCupo; }
             private set { this.iCodCupo = value; }
         }
-
-
         public bool Disponible
         {
             get { return this.iDisponible; }
             private set { this.iDisponible = value; }
         }
-
-        public TipoCupo TipoCupo
+        public TipoCupo Tipo
         {
             get { return this.iTipoCupo; }
             private set { this.iTipoCupo = value; }
