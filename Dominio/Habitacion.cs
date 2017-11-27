@@ -13,28 +13,20 @@ namespace Dominio
         private int iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos;
+        private List<Alojamiento> iAlojamientos;
 
         //CONSTRUCTORES
         public Habitacion()
         {
-
         }
 
-        public Habitacion(int pNumero, int pPlanta, bool pExclusiva)
+        public Habitacion(int pNumero, int pPlanta, bool pExclusiva,int pCapacidad, List<Cupo> pCupos)
         {
             this.iNumero = pNumero;
+            this.iCapacidad = pCapacidad;
             this.iPlanta = pPlanta;
             this.iExclusiva = pExclusiva;
-            this.iCupos = new List<Cupo>()
-            {
-                new Cupo(1, TipoCupo.simple, true),
-                new Cupo(2, TipoCupo.doble, true),
-                new Cupo(3, TipoCupo.simple, false),
-                new Cupo(4, TipoCupo.doble, true)
-            };
-
-            this.CalcularCapcidad() ;
-
+            this.iCupos = pCupos;
         }
 
         //PROPIEDADES
@@ -58,11 +50,15 @@ namespace Dominio
             get { return this.iExclusiva; }
             private set { this.iExclusiva = value; }
         }
-
         public List<Cupo> Cupos
         {
             get { return this.iCupos; }
             private set { this.iCupos = value; }
+        }
+        public List<Alojamiento> Alojamientos
+        {
+            get { return this.iAlojamientos; }
+            private set { this.iAlojamientos = value; }
         }
 
         //METODOS   

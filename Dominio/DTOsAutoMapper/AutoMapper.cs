@@ -13,17 +13,13 @@ namespace Dominio.DTOsAutoMapper
         {
             Mapper.Initialize(cfg =>
             {
-
-                cfg.CreateMap<Cliente, pers.Cliente>()
-                   .ReverseMap(); //Realiza el map inverso al definido en el renglon de arriba.
+                cfg.CreateMap<Cliente, pers.Cliente>().ReverseMap();
 
                 cfg.CreateMap<Domicilio, pers.Domicilio>().ReverseMap();
-                // .ForMember(c => c.Ciudad, s => s.NullSubstitute(null));
 
                 cfg.CreateMap<Ciudad, pers.Ciudad>().ReverseMap();
 
-                cfg.CreateMap<Alojamiento, pers.Alojamiento>()
-                .ForMember(a => a.AlojamientoId, d => d.MapFrom(src => src.IdAlojamiento)).ReverseMap();
+                cfg.CreateMap<Alojamiento, pers.Alojamiento>().ReverseMap();
 
                 cfg.CreateMap<Habitacion, pers.Habitacion>().ReverseMap();
 
@@ -37,6 +33,13 @@ namespace Dominio.DTOsAutoMapper
 
                 cfg.CreateMap<Pago, pers.Pago>().ReverseMap();
 
+                cfg.CreateMap<TipoCliente, pers.TipoCliente>().ReverseMap();
+
+                cfg.CreateMap<TipoPago, pers.TipoPago>().ReverseMap();
+
+                cfg.CreateMap<TipoCupo, pers.TipoCupo>().ReverseMap();
+
+                cfg.CreateMap<EstadoAlojamiento, pers.EstadoAlojamiento>().ReverseMap();
             });
         }
     }

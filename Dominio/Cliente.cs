@@ -15,6 +15,7 @@ namespace Dominio
         private string iCorreo;
         private Domicilio iDomicilio;
         private TarifaCliente iTarifa;
+        private List<Alojamiento> iAlojamientos;
 
         //-------------------------------Constructores
         public Cliente() { } //Constructor utilizado por el AutoMapper para el mapeo inverso. De Persistencia a Dominio.
@@ -55,23 +56,11 @@ namespace Dominio
         public string Nombre { get { return this.iNombre; } private set { this.iNombre = value; } }
         public string Apellido { get { return this.iApellido; } private set { this.iApellido = value; } }
         public string Telefono { get { return this.iTelefono; } private set { this.iTelefono = value; } }
-        public string Correo
-        {
-            get
-            {
-                if (this.iCorreo == null)
-                {
-                    return " ";
-                }
-                else
-                {
-                    return this.iCorreo;
-                }
-            }
-            private set { this.iCorreo = value; }
-        }
-        public Domicilio Domicilio { get { return this.iDomicilio; } }
-        public TarifaCliente TarifaCliente { get { return this.iTarifa; } }
+        public string Correo { get { return this.iCorreo; } private set { this.iCorreo = value; } }
+        
+        public Domicilio Domicilio { get { return this.iDomicilio; } private set { this.iDomicilio = value; } }
+        public TarifaCliente TarifaCliente { get { return this.iTarifa; } private set { this.iTarifa = value; } }
+        public List<Alojamiento> Alojamientos { get { return this.iAlojamientos; } private set { this.iAlojamientos = value; } }
 
         //-------------------------------------Metodos
 

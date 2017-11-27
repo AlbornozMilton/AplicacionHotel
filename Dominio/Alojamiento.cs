@@ -20,24 +20,30 @@ namespace Dominio
 
     public class Alojamiento
     {
-        private List<LineaServicio> iServicios = new List<LineaServicio>();
-        private List<Cliente> iClientes = new List<Cliente>();
+        private List<LineaServicio> iServicios;
+        private List<Cliente> iClientes;
         private Habitacion iHabitacion;
-        private List<Pago> iPagos = new List<Pago>();
-        private EstadoAlojamiento iEstadoAloj;
+        private List<Pago> iPagos;
 
         private int iIdAlojamiento;
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
-        private DateTime iFechaReserva;
-        private DateTime iFechaEstimadaEgreso;
-        private DateTime iFechaEstimadaIngreso;
-        private DateTime iFechaIngreso;
-        private DateTime iFechaEgreso;
+        private DateTime? iFechaReserva;
+        private DateTime? iFechaEstimadaEgreso;
+        private DateTime? iFechaEstimadaIngreso;
+        private DateTime? iFechaIngreso;
+        private DateTime? iFechaEgreso;
+        private EstadoAlojamiento iEstadoAloj;
+
 
         //-----------------------constructores//----------------------
         //
+        public Alojamiento()
+        {
+
+        }
+
         public Alojamiento(Habitacion unaHab, int unId, int unDni, double unMontoT, EstadoAlojamiento unEstado, DateTime unaFecha)//Arreglar este constructor
         {
             this.iHabitacion = unaHab;
@@ -69,51 +75,85 @@ namespace Dominio
         //----------------------PROP----------------------
 
 
-        public int IdAlojamiento { get { return this.iIdAlojamiento; } }
-
-        public int DniResponsable { get { return this.iDniResponsable; } }
-
-        public DateTime FechaReserva { get { return this.iFechaReserva; } }
-
-        public DateTime FechaEstimadaIngreso { get { return this.iFechaEstimadaIngreso.Date; } }
-
-        public DateTime FechaEstimadaEgreso { get { return this.iFechaEstimadaEgreso.Date; } }
-
-        public DateTime FechaIngreso { get { return this.iFechaIngreso.Date; } }
-
-        public DateTime FechaEgreso { get { return this.iFechaEgreso.Date; } }
-
-        public double MontoTotal { get { return this.iMontoTotal; } }
-
-        public double MontoDeuda { get { return this.iMontoDeuda; } }
-
-        public EstadoAlojamiento EstadoAlojamiento { get { return this.iEstadoAloj; } }
+        public int AlojamientoId
+        {
+            get { return this.iIdAlojamiento; }
+            private set { this.iIdAlojamiento = value; }
+        }
+        public int DniResponsable
+        {
+            get { return this.iDniResponsable; }
+            private set { this.iDniResponsable = value; }
+        }
+        public DateTime? FechaReserva
+        {
+            get { return this.iFechaReserva; }
+            private set { this.iFechaReserva = value; }
+        }
+        public DateTime? FechaEstimadaIngreso
+        {
+            get { return this.iFechaEstimadaIngreso; }
+            private set { this.iFechaEstimadaIngreso = value; }
+        }
+        public DateTime? FechaEstimadaEgreso
+        {
+            get { return this.iFechaEstimadaEgreso; }
+            private set { this.iFechaEstimadaEgreso = value; }
+        }
+        public DateTime? FechaIngreso
+        {
+            get { return this.iFechaIngreso; }
+            private set { this.iFechaIngreso = value; }
+        }
+        public DateTime? FechaEgreso
+        {
+            get { return this.iFechaEgreso; }
+            private set { this.iFechaEgreso = value; }
+        }
+        public double MontoTotal
+        {
+            get { return this.iMontoTotal; }
+            private set { this.iMontoTotal = value; }
+        }
+        public double MontoDeuda
+        {
+            get { return this.iMontoDeuda; }
+            private set { this.iMontoDeuda = value; }
+        }
+        public EstadoAlojamiento EstadoAlojamiento
+        {
+            get { return this.iEstadoAloj; }
+            private set { this.iEstadoAloj = value; }
+        }
 
         public List<Cliente> Clientes
         {
             get { return this.iClientes; }
+            private set { this.iClientes = value; }
         }
 
         public Habitacion Habitacion
         {
             get { return this.iHabitacion; }
+            private set { this.Habitacion = value; }
         }
 
         public List<LineaServicio> Servicios
         {
             get { return this.iServicios; }
+            private set { this.iServicios = value; }
         }
 
         public List<Pago> Pagos
         {
             get { return this.iPagos; }
+            private set { this.iPagos = value; }
         }
 
         //----------------------métodos----------------------
 
         public void ConfirmarReserva()
         {
-            this.iFechaIngreso = DateTime.Now;
         }
 
         //public double CalcularCostoBase(TarifaCliente pTarifaCliente)

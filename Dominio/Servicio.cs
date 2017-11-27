@@ -14,6 +14,10 @@ namespace Dominio
         private double iCostoBase;
 
         //-----------------constructor
+        public Servicio()
+        {
+
+        }
 
         public Servicio(int pCodServicio, string pNombre, string pDetalle, double pCostoBase)
         {
