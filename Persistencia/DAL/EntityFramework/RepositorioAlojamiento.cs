@@ -13,5 +13,13 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
+        public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
+        {
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Habitacion.Cupos")
+                               where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+                               select aloj;
+
+            return alojamientos.ToList<Alojamiento>();
+        }
     }
 }

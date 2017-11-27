@@ -4,11 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia.DAL.EntityFramework;
+using pers = Persistencia.Domain;
+using AutoMapper;
 
 namespace Dominio
 {
     public class ControladorAlojamiento
     {
+        UnitOfWork iUoW = new UnitOfWork(new HotelContext());
+        public List<Alojamiento> ObtenerAlojamientosActivos() //Devuelve la lista de alojamientos activos mappeandolos de Pers a Dominio
+        {
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in listaEnum)
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return (listaAlojamientos);
+        }
         ////ALOJAMIENTO CON FECHA ESTIMADA EGRESO
         //private Alojamiento lAlojamiento = new Alojamiento((DateTime.Now).AddDays(2));
 
@@ -19,8 +32,8 @@ namespace Dominio
 
         //    //-------determinar disponibilidad
 
-            
-            
+
+
         //    Habitacion lHabitacion = new Habitacion(1, 0, true); //exclusividad en true
 
         //    //-------------------------
@@ -126,7 +139,7 @@ namespace Dominio
         //    //verifica si la cantidad de clientes agregados al alojamiento es igual a la cantidad de cupos que ingresó
         //    return (pAlojamiento.Clientes.LongCount() == pCantS + pCantD * 2);
         //}
-        
+
         ////en este contexto, para registrar el pago de cierre se debe verificar que no presente deuda
         //// siempre se va a registrar un pago monto total aunque no se hallan consumido servicios, el pMonto = pMontoTotal 
         //public void CierreAlojamiento()
@@ -157,7 +170,7 @@ namespace Dominio
         //    }
 
         //} 
-          
+
         //// BUSCAR ALOJAMIENTO
 
         ////para ejecutar este metodo se tiene que controlar que los pagos se realicen en el contexto corresponidente MEDIANTE ESTADO DE ALOJAMIENTO

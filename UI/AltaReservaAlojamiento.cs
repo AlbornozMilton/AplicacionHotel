@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
@@ -46,14 +47,21 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDateTime(dtp_fechaDesde.Text) == Convert.ToDateTime(dtp_fechaHasta.Text))
-            {
-                //DeterminarDisponibilidad();
-            }
-            else
-            {
-                MessageBox.Show("Fecha de Ingreso mayor a Fecha de Egreso");
-            }
+            TablaDisponibilidad TDisp = new TablaDisponibilidad();
+            TDisp.ShowDialog();
+            //ControladorHabitacion iControladorHab = new ControladorHabitacion(); // V E R !!!! usar asi?
+            //if (Convert.ToDateTime(dtp_fechaDesde.Text) == Convert.ToDateTime(dtp_fechaHasta.Text))
+            //{
+            //    List<Habitacion> listaHabDisponibles = iControladorHab.DeterminarDisponibilidad(Convert.ToDateTime(dtp_fechaDesde.Text), Convert.ToDateTime(dtp_fechaHasta.Text));
+            //    TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
+            //    TablaDisp.
+            //    form.dataGridView tabla = TablaDisp.Form
+            //        dataGridView();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Fecha de Ingreso mayor a Fecha de Egreso");
+            //}
         }
     }
 }
