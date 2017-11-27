@@ -9,5 +9,6 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioHabitacion:IRepositorio<Habitacion>
     {
+        IEnumerable<Habitacion> GetAllconCupos();
     }
 }

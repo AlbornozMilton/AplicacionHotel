@@ -9,10 +9,5 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioAlojamiento:IRepositorio<Alojamiento>
     {
-        //metodos para alojamientos, como por ejemplo obtener listas o campos especificos
-        /* EJEMPLO
-         IEnumerable<Account> GetOverdrawnAccounts(); //Overdrawn: en descubierto
-         IEnumerable<AccountMovement> GetLastMovements(Account pAccount, int pCount = 7); 
-         */
     }
 }

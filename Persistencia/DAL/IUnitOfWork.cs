@@ -22,7 +22,7 @@ namespace Persistencia.DAL
 
         IRepositorioUsuario RepositorioUsuario { get; }
 
-        IRepositorioUsuario RepositorioHabitacion { get; }
+        IRepositorioHabitacion RepositorioHabitacion { get; }
 
     }
 }

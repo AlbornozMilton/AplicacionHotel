@@ -13,5 +13,12 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
+
+        public IEnumerable<Habitacion> GetAllconCupos()
+        {
+            var habitaciones = this.iDbContext.Habitaciones.Include("Cupos");
+
+            return habitaciones.ToList<Habitacion>();
+        }
     }
 }

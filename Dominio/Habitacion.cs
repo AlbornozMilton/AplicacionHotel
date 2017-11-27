@@ -12,9 +12,14 @@ namespace Dominio
         private int iCapacidad;
         private int iPlanta;
         private bool iExclusiva;
-        private List<Cupo> iCupos; 
+        private List<Cupo> iCupos;
 
         //CONSTRUCTORES
+        public Habitacion()
+        {
+
+        }
+
         public Habitacion(int pNumero, int pPlanta, bool pExclusiva)
         {
             this.iNumero = pNumero;
@@ -70,7 +75,7 @@ namespace Dominio
                 if (cupo.Disponible) 
                 {
                     //detectar que las cantidades resutlantes no sean menor que cero con TRY-CATCH ??
-                    switch (cupo.TipoCupo)
+                    switch (cupo.Tipo)
                     {
                         case (TipoCupo.simple):
                             //pCantS > 0, faltan cupos por cambiar su disponibilidad
@@ -106,12 +111,12 @@ namespace Dominio
                 //cupos.Disponible indica si un cupo esta libre
                 if (cupo.Disponible)
                 {
-                    if (pCantS > 0 && cupo.TipoCupo == TipoCupo.simple)
+                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
                     {
                         cupo.Ocupar();
                         pCantS--;
                     }
-                    else if (pCantD > 0 && cupo.TipoCupo == TipoCupo.doble)
+                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
                     {
                         cupo.Ocupar();
                         pCantD--;
@@ -131,12 +136,12 @@ namespace Dominio
                 //cupos.Disponible indica si un cupo esta libre
                 if (!(cupo.Disponible))
                 {
-                    if (pCantS > 0 && cupo.TipoCupo == TipoCupo.simple)
+                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
                     {
                         cupo.Ocupar();
                         pCantS--;
                     }
-                    else if (pCantD > 0 && cupo.TipoCupo == TipoCupo.doble)
+                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
                     {
                         cupo.Desocupar();
                         pCantD--;
@@ -157,11 +162,11 @@ namespace Dominio
             {
                 if (cupo.Disponible)
                 {
-                    if (cupo.TipoCupo == TipoCupo.simple)
+                    if (cupo.Tipo == TipoCupo.simple)
                     {
                         this.iCapacidad++;
                     }
-                    else if (cupo.TipoCupo == TipoCupo.doble)
+                    else if (cupo.Tipo == TipoCupo.doble)
                     {
                         this.iCapacidad += 2;
                     } 
@@ -174,7 +179,7 @@ namespace Dominio
             int resultado = 0;
             foreach (Cupo cupo in this.iCupos)
             {
-                if (cupo.Disponible && (cupo.TipoCupo == TipoCupo.simple))
+                if (cupo.Disponible && (cupo.Tipo == TipoCupo.simple))
                 {
                     resultado++;
                 }
@@ -187,7 +192,7 @@ namespace Dominio
             int resultado = 0;
             foreach (Cupo cupo in this.iCupos)
             {
-                if (cupo.Disponible && (cupo.TipoCupo == TipoCupo.doble))
+                if (cupo.Disponible && (cupo.Tipo == TipoCupo.doble))
                 {
                     resultado =+ 2;
                 }
@@ -200,10 +205,10 @@ namespace Dominio
             int resultado = 0;
             foreach (Cupo cupo in this.iCupos)
             {
-                if (cupo.TipoCupo == TipoCupo.simple)
+                if (cupo.Tipo == TipoCupo.simple)
                 {
                     resultado++;
-                }else if (cupo.TipoCupo == TipoCupo.doble)
+                }else if (cupo.Tipo == TipoCupo.doble)
 	            {
                     resultado += 2;
                 }

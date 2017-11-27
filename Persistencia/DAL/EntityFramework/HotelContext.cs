@@ -23,7 +23,7 @@ namespace Persistencia.DAL.EntityFramework
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Cupo> Cupos { get; set; }
         public virtual DbSet<Domicilio> Domicilios { get; set; }
-        public virtual DbSet<Habitacion> Habitacions { get; set; }
+        public virtual DbSet<Habitacion> Habitaciones { get; set; }
         public virtual DbSet<LineaServicio> LineaServicios { get; set; }
         public virtual DbSet<Pago> Pagos { get; set; }
         public virtual DbSet<Servicio> Servicios { get; set; }
