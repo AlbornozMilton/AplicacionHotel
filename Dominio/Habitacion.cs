@@ -77,99 +77,114 @@ namespace Dominio
         //}
 
         //METODOS   
-        public bool OcuparCupos(int pCantS, int pCantD)
-        {
-            bool resultado = true;
-            foreach (Cupo cupo in this.iCupos)
-            {
-                //cupos.Disponible indica si un cupo esta libre
-                if (cupo.Disponible) 
-                {
-                    //detectar que las cantidades resutlantes no sean menor que cero con TRY-CATCH ??
-                    switch (cupo.Tipo)
-                    {
-                        case (TipoCupo.simple):
-                            //pCantS > 0, faltan cupos por cambiar su disponibilidad
-                            if (pCantS > 0)
-                            {
-                                cupo.Ocupar();
-                                pCantS--; 
-                            }
-                            break;
+        //public void OcuparCupos(int pCantS, int pCantD)
+        //{
+        //    foreach (var cupo in this.iCupos)
+        //    {
+        //        //detectar que las cantidades resutlantes no sean menor que cero con TRY-CATCH ??
+        //        switch (cupo.Tipo)
+        //        {
+        //            case (TipoCupo.simple):
+        //                //pCantS > 0, faltan cupos por cambiar su disponibilidad
+        //                if (pCantS > 0)
+        //                {
+        //                    cupo.Ocupar();
+        //                    pCantS--; 
+        //                }
+        //                break;
 
-                        case (TipoCupo.doble):
-                            //pCantD > 0, faltan cupos por cambiar su disponibilidad
-                            if (pCantD > 0)
-                            {
-                                cupo.Ocupar();
-                                pCantD--; 
-                            }
-                            break;
-                    }
-                }
-            }
-            if (pCantD != 0 || pCantS != 0)
-            {
-                resultado = false;
-            }
-            return resultado;
-        }
+        //            case (TipoCupo.doble):
+        //                //pCantD > 0, faltan cupos por cambiar su disponibilidad
+        //                if (pCantD > 0)
+        //                {
+        //                    cupo.Ocupar();
+        //                    pCantD--; 
+        //                }
+        //                break;
+        //        }
+        //    }
+        //}
 
-        public void OcuparCupos2(int pCantS, int pCantD)
+        public void OcuparCupos(int pCantS, int pCantD)
         {
-            foreach (Cupo cupo in this.iCupos)
+            IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
+
+            while ((pCantS > 0) || (pCantD > 0))
             {
-                //cupos.Disponible indica si un cupo esta libre
-                if (cupo.Disponible)
+                if (cupos.Current != null) // PUNTERO AL ELEMENTO ACTUAL
                 {
-                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
+                    if (pCantS > 0 && cupos.Current.Tipo == TipoCupo.simple)
                     {
-                        cupo.Ocupar();
+                        cupos.Current.Ocupar(); // TRATAR ELEMENTO ACTUAL
                         pCantS--;
+                        cupos.MoveNext(); // MOVER PUNTERO A PROXIMO ELEMENTO
                     }
-                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
+                    else if (pCantD > 0 && cupos.Current.Tipo == TipoCupo.doble)
                     {
-                        cupo.Ocupar();
+                        cupos.Current.Ocupar();
                         pCantD--;
+                        cupos.MoveNext();
                     }
                 }
-            }
-            if (pCantD != 0 || pCantS != 0)
-            {
-                throw new Exception("Error en cantidades ingresadas");
+                else
+                {
+                    throw new Exception("CantS y CantD no coincide con los cupos a Ocupar");
+                }
             }
         }
 
-        public void DesocuparCupos(int pCantS, int pCantD)
+        public void DescuparCupos(int pCantS, int pCantD)
         {
-            foreach (var cupo in this.iCupos)
+            IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
+
+            while ((pCantS > 0) || (pCantD > 0))
             {
-                //cupos.Disponible indica si un cupo esta libre
-                if (!(cupo.Disponible))
+                if (cupos.Current != null) // PUNTERO AL ELEMENTO ACTUAL
                 {
-                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
+                    if (pCantS > 0 && cupos.Current.Tipo == TipoCupo.simple)
                     {
-                        cupo.Ocupar();
+                        cupos.Current.Desocupar(); // TRATAR ELEMENTO ACTUAL
                         pCantS--;
+                        cupos.MoveNext(); // MOVER PUNTERO A PROXIMO ELEMENTO
                     }
-                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
+                    else if (pCantD > 0 && cupos.Current.Tipo == TipoCupo.doble)
                     {
-                        cupo.Desocupar();
+                        cupos.Current.Desocupar();
                         pCantD--;
+                        cupos.MoveNext();
                     }
                 }
-            }
-            if (pCantD != 0 || pCantS != 0)
-            {
-                throw new Exception("Error en cantidades ingresadas");
+                else
+                {
+                    throw new Exception("CantS y CantD no coincide con los cupos a Desocupar");
+                }
             }
         }
+
+        //public void DesocuparCupos(int pCantS, int pCantD)
+        //{
+        //    foreach (var cupo in this.iCupos)
+        //    {
+        //        //cupos.Disponible indica si un cupo esta libre
+        //        if (!(cupo.Disponible))
+        //        {
+        //            if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
+        //            {
+        //                cupo.Ocupar();
+        //                pCantS--;
+        //            }
+        //            else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
+        //            {
+        //                cupo.Desocupar();
+        //                pCantD--;
+        //            }
+        //        }
+        //    }
+        //}
 
         private void CalcularCapcidad()
         {
-            this.iCapacidad = 0;
-
-            foreach (Cupo cupo in this.iCupos)
+            foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible)
                 {
@@ -188,7 +203,7 @@ namespace Dominio
         public int CuposSimpleDisponibles()
         {
             int resultado = 0;
-            foreach (Cupo cupo in this.iCupos)
+            foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.simple))
                 {
@@ -201,27 +216,11 @@ namespace Dominio
         public int CuposDoblesDisponibles()
         {
             int resultado = 0;
-            foreach (Cupo cupo in this.iCupos)
+            foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.doble))
                 {
                     resultado =+ 2;
-                }
-            }
-            return resultado;
-        }
-
-        public int CapacidadTotal()
-        {
-            int resultado = 0;
-            foreach (Cupo cupo in this.iCupos)
-            {
-                if (cupo.Tipo == TipoCupo.simple)
-                {
-                    resultado++;
-                }else if (cupo.Tipo == TipoCupo.doble)
-	            {
-                    resultado += 2;
                 }
             }
             return resultado;
