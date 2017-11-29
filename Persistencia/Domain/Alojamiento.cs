@@ -22,8 +22,7 @@ namespace Persistencia.Domain
         //-------------------- Relaciones ---------------------------------//
     //    public int ClienteId { get; set; }
         public int HabitacionId { get; set; }
-        public Habitacion Habitacion {get;set;}
-
+        public Habitacion Habitacion { get; set; }
         public List<Cliente> Clientes { get; set; }
         public List<Pago> Pagos { get; set; }
         public List<LineaServicio> Servicios { get; set; }

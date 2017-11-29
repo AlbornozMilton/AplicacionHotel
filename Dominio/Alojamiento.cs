@@ -29,11 +29,11 @@ namespace Dominio
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
-        private DateTime? iFechaReserva;
-        private DateTime? iFechaEstimadaEgreso;
-        private DateTime? iFechaEstimadaIngreso;
-        private DateTime? iFechaIngreso;
-        private DateTime? iFechaEgreso;
+        private DateTime iFechaReserva;//AGREGAR SIGNO ?
+        private DateTime iFechaEstimadaEgreso;//AGREGAR SIGNO ?
+        private DateTime iFechaEstimadaIngreso;//AGREGAR SIGNO ?
+        private DateTime iFechaIngreso;//AGREGAR SIGNO ?
+        private DateTime iFechaEgreso;//AGREGAR SIGNO ?
         private EstadoAlojamiento iEstadoAloj;
 
 
@@ -85,29 +85,29 @@ namespace Dominio
             get { return this.iDniResponsable; }
             private set { this.iDniResponsable = value; }
         }
-        public DateTime? FechaReserva
+        public DateTime FechaReserva
         {
-            get { return this.iFechaReserva; }
+            get { return this.iFechaReserva.Date; }
             private set { this.iFechaReserva = value; }
         }
-        public DateTime? FechaEstimadaIngreso
+        public DateTime FechaEstimadaIngreso
         {
-            get { return this.iFechaEstimadaIngreso; }
+            get { return this.iFechaEstimadaIngreso.Date; }
             private set { this.iFechaEstimadaIngreso = value; }
         }
-        public DateTime? FechaEstimadaEgreso
+        public DateTime FechaEstimadaEgreso
         {
-            get { return this.iFechaEstimadaEgreso; }
+            get { return this.iFechaEstimadaEgreso.Date; }
             private set { this.iFechaEstimadaEgreso = value; }
         }
-        public DateTime? FechaIngreso
+        public DateTime FechaIngreso
         {
-            get { return this.iFechaIngreso; }
+            get { return this.iFechaIngreso.Date; }
             private set { this.iFechaIngreso = value; }
         }
-        public DateTime? FechaEgreso
+        public DateTime FechaEgreso
         {
-            get { return this.iFechaEgreso; }
+            get { return this.iFechaEgreso.Date; }
             private set { this.iFechaEgreso = value; }
         }
         public double MontoTotal
@@ -135,7 +135,7 @@ namespace Dominio
         public Habitacion Habitacion
         {
             get { return this.iHabitacion; }
-            private set { this.Habitacion = value; }
+            private set { this.iHabitacion = value; }
         }
 
         public List<LineaServicio> Servicios

@@ -13,14 +13,14 @@ namespace Dominio
         private int iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos;
-        private List<Alojamiento> iAlojamientos;
+        //private List<Alojamiento> iAlojamientos;  ------>>>>>> AREGLAR HACE REFERENCIA CIRCULAR --> STACKOVERFLOW
 
         //CONSTRUCTORES
         public Habitacion()
         {
         }
 
-        public Habitacion(int pNumero, int pPlanta, bool pExclusiva,int pCapacidad, List<Cupo> pCupos)
+        public Habitacion(int pNumero, int pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
         {
             this.iNumero = pNumero;
             this.iCapacidad = pCapacidad;
@@ -28,6 +28,21 @@ namespace Dominio
             this.iExclusiva = pExclusiva;
             this.iCupos = pCupos;
         }
+        //public Habitacion(int pNumero, int pPlanta, bool pExclusiva, int pCapacidad)
+        //{
+        //    this.iNumero = pNumero;
+        //    this.iCapacidad = pCapacidad;
+        //    this.iPlanta = pPlanta;
+        //    this.iExclusiva = pExclusiva;
+        //    this.iCupos = new List<Cupo>()
+        //    {
+        //       new Cupo(1, TipoCupo.simple, true),
+        //       new Cupo(2, TipoCupo.doble, true),
+        //       new Cupo(3, TipoCupo.simple, false),
+        //       new Cupo(4, TipoCupo.doble, true)
+        //    };
+        //    this.CalcularCapcidad();
+        //}
 
         //PROPIEDADES
         public int HabitacionId
@@ -55,11 +70,11 @@ namespace Dominio
             get { return this.iCupos; }
             private set { this.iCupos = value; }
         }
-        public List<Alojamiento> Alojamientos
-        {
-            get { return this.iAlojamientos; }
-            private set { this.iAlojamientos = value; }
-        }
+        //public List<Alojamiento> Alojamientos
+        //{
+        //    get { return this.iAlojamientos; }
+        //    private set { this.iAlojamientos = value; }
+        //}
 
         //METODOS   
         public bool OcuparCupos(int pCantS, int pCantD)

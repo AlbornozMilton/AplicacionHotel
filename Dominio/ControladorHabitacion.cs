@@ -38,7 +38,7 @@ namespace Dominio
             DateTime fechaFin = new DateTime();
             List<Alojamiento> listaAlojActivos = iControladoAloj.ObtenerAlojamientosActivos(); //METODO DEFINIDO EN REPOSITORIO ALOJAMIENTO -> lista de alojamientos en estado de Alojado o Reservado
             List<Habitacion> listaHabitaciones = ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
-            foreach (var hab in listaHabitaciones)
+            foreach (var hab in listaHabitaciones.ToList<Habitacion>())
             {
                 foreach (var aloj in listaAlojActivos)
                 {
