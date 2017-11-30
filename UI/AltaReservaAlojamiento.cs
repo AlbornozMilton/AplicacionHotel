@@ -47,21 +47,8 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TDisp = new TablaDisponibilidad();
+            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde,dtp_fechaHasta);
             TDisp.ShowDialog();
-            //ControladorHabitacion iControladorHab = new ControladorHabitacion(); // V E R !!!! usar asi?
-            //if (Convert.ToDateTime(dtp_fechaDesde.Text) == Convert.ToDateTime(dtp_fechaHasta.Text))
-            //{
-            //    List<Habitacion> listaHabDisponibles = iControladorHab.DeterminarDisponibilidad(Convert.ToDateTime(dtp_fechaDesde.Text), Convert.ToDateTime(dtp_fechaHasta.Text));
-            //    TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
-            //    TablaDisp.
-            //    form.dataGridView tabla = TablaDisp.Form
-            //        dataGridView();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Fecha de Ingreso mayor a Fecha de Egreso");
-            //}
         }
     }
 }

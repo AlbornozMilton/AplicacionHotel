@@ -46,13 +46,14 @@
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btn_Buscar = new System.Windows.Forms.Button();
+            this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtp_fechaDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -66,7 +67,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -137,7 +137,7 @@
             // 
             this.nuevoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem1.Image")));
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(152, 28);
+            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(136, 28);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
             this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
             // 
@@ -186,7 +186,7 @@
             // 
             this.nuevoToolStripMenuItem2.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.nuevoToolStripMenuItem2.Name = "nuevoToolStripMenuItem2";
-            this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(152, 28);
+            this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(136, 28);
             this.nuevoToolStripMenuItem2.Text = "Nuevo";
             this.nuevoToolStripMenuItem2.Click += new System.EventHandler(this.nuevoToolStripMenuItem2_Click);
             // 
@@ -202,7 +202,7 @@
             // 
             this.clienteToolStripMenuItem1.Image = global::UI.Properties.Resources.boton_buscar;
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 28);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(138, 28);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
@@ -219,6 +219,13 @@
             this.movimientoToolStripMenuItem.Name = "movimientoToolStripMenuItem";
             this.movimientoToolStripMenuItem.Size = new System.Drawing.Size(66, 28);
             this.movimientoToolStripMenuItem.Text = "Pago";
+            // 
+            // nuevoToolStripMenuItem3
+            // 
+            this.nuevoToolStripMenuItem3.Name = "nuevoToolStripMenuItem3";
+            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(136, 28);
+            this.nuevoToolStripMenuItem3.Text = "Nuevo";
+            this.nuevoToolStripMenuItem3.Click += new System.EventHandler(this.nuevoToolStripMenuItem3_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -245,9 +252,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.btn_Buscar);
+            this.groupBox1.Controls.Add(this.dtp_fechaHasta);
+            this.groupBox1.Controls.Add(this.dtp_fechaDesde);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,28 +265,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BUSCAR DISPONIBILIDAD";
             // 
-            // button1
+            // btn_Buscar
             // 
-            this.button1.Location = new System.Drawing.Point(460, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Location = new System.Drawing.Point(460, 42);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Buscar.TabIndex = 4;
+            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
-            // dateTimePicker2
+            // dtp_fechaHasta
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(108, 61);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(307, 22);
-            this.dateTimePicker2.TabIndex = 3;
+            this.dtp_fechaHasta.Location = new System.Drawing.Point(108, 61);
+            this.dtp_fechaHasta.Name = "dtp_fechaHasta";
+            this.dtp_fechaHasta.Size = new System.Drawing.Size(307, 22);
+            this.dtp_fechaHasta.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // dtp_fechaDesde
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(108, 26);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(307, 22);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dtp_fechaDesde.Location = new System.Drawing.Point(108, 26);
+            this.dtp_fechaDesde.Name = "dtp_fechaDesde";
+            this.dtp_fechaDesde.Size = new System.Drawing.Size(307, 22);
+            this.dtp_fechaDesde.TabIndex = 2;
             // 
             // label2
             // 
@@ -388,13 +396,6 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // nuevoToolStripMenuItem3
-            // 
-            this.nuevoToolStripMenuItem3.Name = "nuevoToolStripMenuItem3";
-            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(152, 28);
-            this.nuevoToolStripMenuItem3.Text = "Nuevo";
-            this.nuevoToolStripMenuItem3.Click += new System.EventHandler(this.nuevoToolStripMenuItem3_Click);
-            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,9 +442,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btn_Buscar;
+        private System.Windows.Forms.DateTimePicker dtp_fechaHasta;
+        private System.Windows.Forms.DateTimePicker dtp_fechaDesde;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;

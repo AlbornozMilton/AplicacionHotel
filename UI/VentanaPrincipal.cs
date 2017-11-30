@@ -89,5 +89,11 @@ namespace UI
             RegistrarPago VentanaResgitrarPago = new RegistrarPago();
             VentanaResgitrarPago.ShowDialog();
         }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde, dtp_fechaHasta);
+            TDisp.ShowDialog();
+        }
     }
 }

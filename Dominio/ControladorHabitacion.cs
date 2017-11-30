@@ -59,9 +59,10 @@ namespace Dominio
                             fechaFin = aloj.FechaEstimadaEgreso;
                         }
 
-                        if ((DateTime.Compare(fechaDesde, fechaFin) < 0) || ((DateTime.Compare(fechaHasta, fechaIni) > 1)))
-                            //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
-                            //por eso solo se pone < o > segun corresponda
+                        if (((DateTime.Compare(fechaDesde, fechaFin) < 0) && (DateTime.Compare(fechaDesde, fechaIni) >= 0)) || 
+                            ((DateTime.Compare(fechaHasta, fechaFin) < 0) && (DateTime.Compare(fechaHasta, fechaIni) > 0)))
+                        //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
+                        //por eso solo se pone < o > segun corresponda
                         {
                             //modificar la habitacion de la lista de acuerdo a su ocupacion actual para luego sacar lo libre
                             //obtenerCantidadCuposDoble()

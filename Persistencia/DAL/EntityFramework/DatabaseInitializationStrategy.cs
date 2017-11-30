@@ -129,7 +129,7 @@ namespace Persistencia.DAL.EntityFramework
                 Capacidad = 2, // 2 CAMAS
                 Planta = 0,// planta baja
                 Exclusiva = false,
-                Cupos = new List<Cupo>() 
+                Cupos = new List<Cupo>()
                 {
                     new Cupo
                     {
@@ -139,7 +139,7 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
-                        Disponible = true
+                        Disponible = false
                     }
                 }
             };
@@ -166,7 +166,7 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
-                        Disponible = true
+                        Disponible = false
                     }
                 }
             };

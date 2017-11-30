@@ -59,14 +59,14 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(564, 86);
+            this.groupBox1.Size = new System.Drawing.Size(594, 87);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva Chequeo";
             // 
             // btn_Actualizar
             // 
-            this.btn_Actualizar.Location = new System.Drawing.Point(430, 34);
+            this.btn_Actualizar.Location = new System.Drawing.Point(456, 34);
             this.btn_Actualizar.Name = "btn_Actualizar";
             this.btn_Actualizar.Size = new System.Drawing.Size(75, 23);
             this.btn_Actualizar.TabIndex = 4;
@@ -76,16 +76,16 @@
             // 
             // dtp_fechaHasta
             // 
-            this.dtp_fechaHasta.Location = new System.Drawing.Point(146, 47);
+            this.dtp_fechaHasta.Location = new System.Drawing.Point(146, 49);
             this.dtp_fechaHasta.Name = "dtp_fechaHasta";
-            this.dtp_fechaHasta.Size = new System.Drawing.Size(200, 20);
+            this.dtp_fechaHasta.Size = new System.Drawing.Size(229, 20);
             this.dtp_fechaHasta.TabIndex = 3;
             // 
             // dtp_fechaDesde
             // 
-            this.dtp_fechaDesde.Location = new System.Drawing.Point(146, 20);
+            this.dtp_fechaDesde.Location = new System.Drawing.Point(146, 22);
             this.dtp_fechaDesde.Name = "dtp_fechaDesde";
-            this.dtp_fechaDesde.Size = new System.Drawing.Size(200, 20);
+            this.dtp_fechaDesde.Size = new System.Drawing.Size(229, 20);
             this.dtp_fechaDesde.TabIndex = 2;
             // 
             // label2
@@ -111,7 +111,7 @@
             this.groupBox2.Controls.Add(this.dGV_TablaHabitaciones);
             this.groupBox2.Location = new System.Drawing.Point(13, 106);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(564, 213);
+            this.groupBox2.Size = new System.Drawing.Size(597, 255);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Disponibilidad";
@@ -132,7 +132,7 @@
             this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 16);
             this.dGV_TablaHabitaciones.Name = "dGV_TablaHabitaciones";
             this.dGV_TablaHabitaciones.ReadOnly = true;
-            this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(558, 194);
+            this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(591, 236);
             this.dGV_TablaHabitaciones.TabIndex = 0;
             // 
             // Column1
@@ -180,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 358);
+            this.ClientSize = new System.Drawing.Size(622, 373);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "TablaDisponibilidad";
