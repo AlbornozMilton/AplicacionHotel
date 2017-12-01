@@ -85,6 +85,7 @@
     <Compile Include="BuscarCliente.Designer.cs">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="IForm.cs" />
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>

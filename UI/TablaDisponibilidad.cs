@@ -13,6 +13,7 @@ namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
+        public AltaReservaAlojamiento FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
         public TablaDisponibilidad()
         {
             InitializeComponent();
@@ -43,6 +44,13 @@ namespace UI
             {
                 MessageBox.Show("Fecha de Ingreso mayor a Fecha de Egreso");
             }
+        }
+
+        private void btn_Seleccionar_Click(object sender, EventArgs e)
+        {
+            DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
+            this.FormPadre.cargar_Nro_Habitacion(Convert.ToInt32(Fila[0].Value));
+            Close();
         }
     }
 }

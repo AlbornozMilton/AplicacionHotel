@@ -75,6 +75,7 @@
             this.btn_Aceptar.TabIndex = 1;
             this.btn_Aceptar.Text = "Aceptar";
             this.btn_Aceptar.UseVisualStyleBackColor = false;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // groupBox1
             // 
@@ -217,6 +218,7 @@
             this.tablaResulClientes.Location = new System.Drawing.Point(3, 23);
             this.tablaResulClientes.Name = "tablaResulClientes";
             this.tablaResulClientes.ReadOnly = true;
+            this.tablaResulClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaResulClientes.Size = new System.Drawing.Size(573, 83);
             this.tablaResulClientes.TabIndex = 0;
             // 

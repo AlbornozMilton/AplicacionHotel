@@ -44,6 +44,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_Seleccionar = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_TablaHabitaciones)).BeginInit();
@@ -132,6 +134,7 @@
             this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 16);
             this.dGV_TablaHabitaciones.Name = "dGV_TablaHabitaciones";
             this.dGV_TablaHabitaciones.ReadOnly = true;
+            this.dGV_TablaHabitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(591, 236);
             this.dGV_TablaHabitaciones.TabIndex = 0;
             // 
@@ -176,11 +179,32 @@
             // 
             this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
             // 
+            // btn_Seleccionar
+            // 
+            this.btn_Seleccionar.Location = new System.Drawing.Point(451, 368);
+            this.btn_Seleccionar.Name = "btn_Seleccionar";
+            this.btn_Seleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Seleccionar.TabIndex = 2;
+            this.btn_Seleccionar.Text = "Seleccionar";
+            this.btn_Seleccionar.UseVisualStyleBackColor = true;
+            this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.Location = new System.Drawing.Point(532, 368);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancelar.TabIndex = 3;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            // 
             // TablaDisponibilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 373);
+            this.ClientSize = new System.Drawing.Size(622, 397);
+            this.Controls.Add(this.btn_Cancelar);
+            this.Controls.Add(this.btn_Seleccionar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "TablaDisponibilidad";
@@ -212,5 +236,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.BindingSource clienteBindingSource;
+        private System.Windows.Forms.Button btn_Seleccionar;
+        private System.Windows.Forms.Button btn_Cancelar;
     }
 }

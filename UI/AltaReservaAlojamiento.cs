@@ -48,7 +48,25 @@ namespace UI
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
             TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde,dtp_fechaHasta);
+            TDisp.FormPadre = this; //Almacena esta WinForm como la padre de la TDisp con el atributo Opener
             TDisp.ShowDialog();
+        }
+        
+        public void cargar_Nro_Habitacion (int nroHab)
+        {
+            tbx_NroHab.Text = nroHab.ToString();
+        }
+
+        public void agregar_Cliente (DataGridViewCellCollection fila)
+        {
+            dGV_ClienteResponsable.Rows.Add(fila[0].Value, fila[1].Value, fila[2].Value, fila[3].Value);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BuscarCliente BuscarClienteForm = new BuscarCliente();
+            BuscarClienteForm.FormPadre = this;
+            BuscarClienteForm.ShowDialog();
         }
     }
 }

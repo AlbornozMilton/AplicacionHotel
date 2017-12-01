@@ -13,6 +13,7 @@ namespace UI
 {
     public partial class BuscarCliente : Form
     {
+        public AltaReservaAlojamiento FormPadre;
         ControladorCliente iControladorCliente = new ControladorCliente();
         public BuscarCliente()
         {
@@ -85,6 +86,12 @@ namespace UI
         {
             tablaResulClientes.DefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
             tablaResulClientes.ColumnHeadersDefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            FormPadre.agregar_Cliente(tablaResulClientes.CurrentRow.Cells);
+            Close();
         }
     }
 }
