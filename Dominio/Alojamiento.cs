@@ -57,7 +57,8 @@ namespace Dominio
         
         public Alojamiento (Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso)
         {
-            //Usado cuando se confirma reserva 
+            this.Clientes = new List<Cliente>();
+            //Usado cuando se confirma reserva
             this.DniResponsable = unClienteResp.ClienteId;
             this.Habitacion = unaHab;
             this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;

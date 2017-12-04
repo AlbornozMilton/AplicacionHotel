@@ -19,20 +19,20 @@ namespace UI
         {
             InitializeComponent();
         }
-        public TablaDisponibilidad(DateTimePicker fechaDesde, DateTimePicker fechaHasta)
+        public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             InitializeComponent();
-            this.dtp_fechaDesde = fechaDesde;
-            this.dtp_fechaHasta = fechaHasta;
+            this.dtp_fechaDesde.Value = fechaDesde;
+            this.dtp_fechaHasta.Value = fechaHasta;
             btn_Actualizar_Click(this,null); //Ejecuta el evento del clic en en el boton ACTUALIZAR automaticamente
         }
         private void btn_Actualizar_Click(object sender, EventArgs e)
         {
             ControladorHabitacion iControladorHab = new ControladorHabitacion(); // V E R !!!! usar asi?
-            if (Convert.ToDateTime(dtp_fechaDesde.Text).CompareTo(Convert.ToDateTime(dtp_fechaHasta.Text)) <= 0)
+            if (Convert.ToDateTime(dtp_fechaDesde.Value).CompareTo(Convert.ToDateTime(dtp_fechaHasta.Value)) <= 0)
             {
                 dGV_TablaHabitaciones.Rows.Clear();
-                List<Habitacion> listaHabDisponibles = iControladorHab.DeterminarDisponibilidad(Convert.ToDateTime(dtp_fechaDesde.Text), Convert.ToDateTime(dtp_fechaHasta.Text));
+                List<Habitacion> listaHabDisponibles = iControladorHab.DeterminarDisponibilidad(Convert.ToDateTime(dtp_fechaDesde.Value), Convert.ToDateTime(dtp_fechaHasta.Value));
                 foreach (var hab in listaHabDisponibles)
                 {
                     
@@ -52,9 +52,10 @@ namespace UI
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
             this.FormPadre.cargar_Nro_Habitacion(Convert.ToInt32(Fila[0].Value));
             this.FormPadre.iHabitacionSeccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
-            this.FormPadre.iFechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Text);
-            this.FormPadre.iFechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Text);
+            this.FormPadre.iFechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Value);
+            this.FormPadre.iFechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Value);
             Close();
         }
+
     }
 }

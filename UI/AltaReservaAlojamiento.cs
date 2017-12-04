@@ -52,7 +52,7 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde,dtp_fechaHasta);
+            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value,dtp_fechaHasta.Value);
             TDisp.FormPadre = this; //Almacena esta WinForm como la padre de la TDisp con el atributo Opener
             TDisp.ShowDialog();
         }

@@ -92,7 +92,7 @@ namespace UI
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde, dtp_fechaHasta);
+            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value);
             TDisp.ShowDialog();
         }
     }
