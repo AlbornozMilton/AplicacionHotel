@@ -13,6 +13,12 @@ namespace Dominio
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
+        public Habitacion ObtenerHabitacion(int unId)
+        {
+            pers.Habitacion unaHab = iUoW.RepositorioHabitacion.Get(unId);
+            Habitacion laHabBuscada = Mapper.Map<pers.Habitacion, Habitacion>(unaHab);
+            return laHabBuscada;
+        }
         public List<Habitacion> ObtenerHabitacionesFullLibres()
         {
             IEnumerable<pers.Habitacion> listaEnum = iUoW.RepositorioHabitacion.GetAllconCupos();

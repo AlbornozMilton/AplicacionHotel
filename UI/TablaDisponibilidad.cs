@@ -13,6 +13,7 @@ namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
+        ControladorHabitacion iControladorHab = new ControladorHabitacion();
         public AltaReservaAlojamiento FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
         public TablaDisponibilidad()
         {
@@ -50,6 +51,9 @@ namespace UI
         {
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
             this.FormPadre.cargar_Nro_Habitacion(Convert.ToInt32(Fila[0].Value));
+            this.FormPadre.iHabitacionSeccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
+            this.FormPadre.iFechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Text);
+            this.FormPadre.iFechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Text);
             Close();
         }
     }

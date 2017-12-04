@@ -91,6 +91,7 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             FormPadre.agregar_Cliente(tablaResulClientes.CurrentRow.Cells);
+            FormPadre.iClienteResponsable = iControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
             Close();
         }
     }

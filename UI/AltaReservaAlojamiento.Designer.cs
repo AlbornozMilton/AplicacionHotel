@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,24 +59,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.contador_NoDirecto = new System.Windows.Forms.NumericUpDown();
+            this.contador_Directo = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.contador_Exceptuado = new System.Windows.Forms.NumericUpDown();
+            this.contador_Convenio = new System.Windows.Forms.NumericUpDown();
+            this.contador_Titular = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txb_CostoBase = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txb_Deposito = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_Confirmar = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
@@ -84,12 +84,12 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_NoDirecto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Directo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Exceptuado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Convenio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Titular)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox2
@@ -305,41 +305,41 @@
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dGV_ClienteResponsable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ClienteResponsable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Dni,
             this.clm_Legajo,
             this.clm_Apellido,
             this.clm_Nombre});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle6;
             this.dGV_ClienteResponsable.Location = new System.Drawing.Point(6, 52);
             this.dGV_ClienteResponsable.Name = "dGV_ClienteResponsable";
             this.dGV_ClienteResponsable.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ClienteResponsable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dGV_ClienteResponsable.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ClienteResponsable.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dGV_ClienteResponsable.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dGV_ClienteResponsable.Size = new System.Drawing.Size(743, 68);
             this.dGV_ClienteResponsable.TabIndex = 10;
             // 
@@ -392,13 +392,13 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Controls.Add(this.numericUpDown4);
-            this.groupBox3.Controls.Add(this.numericUpDown5);
+            this.groupBox3.Controls.Add(this.contador_NoDirecto);
+            this.groupBox3.Controls.Add(this.contador_Directo);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.numericUpDown3);
-            this.groupBox3.Controls.Add(this.numericUpDown2);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Controls.Add(this.contador_Exceptuado);
+            this.groupBox3.Controls.Add(this.contador_Convenio);
+            this.groupBox3.Controls.Add(this.contador_Titular);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label5);
@@ -410,21 +410,21 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Categorización";
             // 
-            // numericUpDown4
+            // contador_NoDirecto
             // 
-            this.numericUpDown4.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown4.Location = new System.Drawing.Point(619, 49);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(35, 21);
-            this.numericUpDown4.TabIndex = 37;
+            this.contador_NoDirecto.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_NoDirecto.Location = new System.Drawing.Point(619, 49);
+            this.contador_NoDirecto.Name = "contador_NoDirecto";
+            this.contador_NoDirecto.Size = new System.Drawing.Size(35, 21);
+            this.contador_NoDirecto.TabIndex = 37;
             // 
-            // numericUpDown5
+            // contador_Directo
             // 
-            this.numericUpDown5.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown5.Location = new System.Drawing.Point(619, 19);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(35, 21);
-            this.numericUpDown5.TabIndex = 36;
+            this.contador_Directo.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Directo.Location = new System.Drawing.Point(619, 19);
+            this.contador_Directo.Name = "contador_Directo";
+            this.contador_Directo.Size = new System.Drawing.Size(35, 21);
+            this.contador_Directo.TabIndex = 36;
             // 
             // label10
             // 
@@ -446,29 +446,29 @@
             this.label11.TabIndex = 34;
             this.label11.Text = "Acompañante Directo";
             // 
-            // numericUpDown3
+            // contador_Exceptuado
             // 
-            this.numericUpDown3.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(218, 77);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(35, 21);
-            this.numericUpDown3.TabIndex = 33;
+            this.contador_Exceptuado.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Exceptuado.Location = new System.Drawing.Point(218, 77);
+            this.contador_Exceptuado.Name = "contador_Exceptuado";
+            this.contador_Exceptuado.Size = new System.Drawing.Size(35, 21);
+            this.contador_Exceptuado.TabIndex = 33;
             // 
-            // numericUpDown2
+            // contador_Convenio
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(218, 49);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(35, 21);
-            this.numericUpDown2.TabIndex = 32;
+            this.contador_Convenio.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Convenio.Location = new System.Drawing.Point(218, 49);
+            this.contador_Convenio.Name = "contador_Convenio";
+            this.contador_Convenio.Size = new System.Drawing.Size(35, 21);
+            this.contador_Convenio.TabIndex = 32;
             // 
-            // numericUpDown1
+            // contador_Titular
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(218, 22);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(35, 21);
-            this.numericUpDown1.TabIndex = 31;
+            this.contador_Titular.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Titular.Location = new System.Drawing.Point(218, 22);
+            this.contador_Titular.Name = "contador_Titular";
+            this.contador_Titular.Size = new System.Drawing.Size(35, 21);
+            this.contador_Titular.TabIndex = 31;
             // 
             // label9
             // 
@@ -524,14 +524,14 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
             // 
-            // textBox5
+            // txb_CostoBase
             // 
-            this.textBox5.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(140, 513);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 22;
+            this.txb_CostoBase.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_CostoBase.Location = new System.Drawing.Point(140, 513);
+            this.txb_CostoBase.Name = "txb_CostoBase";
+            this.txb_CostoBase.ReadOnly = true;
+            this.txb_CostoBase.Size = new System.Drawing.Size(100, 21);
+            this.txb_CostoBase.TabIndex = 22;
             // 
             // label12
             // 
@@ -543,14 +543,14 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "Costo Base";
             // 
-            // textBox4
+            // txb_Deposito
             // 
-            this.textBox4.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(140, 548);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 24;
+            this.txb_Deposito.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Deposito.Location = new System.Drawing.Point(140, 548);
+            this.txb_Deposito.Name = "txb_Deposito";
+            this.txb_Deposito.ReadOnly = true;
+            this.txb_Deposito.Size = new System.Drawing.Size(100, 21);
+            this.txb_Deposito.TabIndex = 24;
             // 
             // label13
             // 
@@ -573,18 +573,19 @@
             this.label14.Text = "Confirmar";
             this.label14.Visible = false;
             // 
-            // pictureBox1
+            // btn_Confirmar
             // 
-            this.pictureBox1.Image = global::UI.Properties.Resources.Boton_Ok_2;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(647, 499);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 62);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
-            this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
+            this.btn_Confirmar.Image = global::UI.Properties.Resources.Boton_Ok_2;
+            this.btn_Confirmar.InitialImage = null;
+            this.btn_Confirmar.Location = new System.Drawing.Point(647, 499);
+            this.btn_Confirmar.Name = "btn_Confirmar";
+            this.btn_Confirmar.Size = new System.Drawing.Size(63, 62);
+            this.btn_Confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btn_Confirmar.TabIndex = 25;
+            this.btn_Confirmar.TabStop = false;
+            this.btn_Confirmar.Click += new System.EventHandler(this.btn_Confirmar_Click);
+            this.btn_Confirmar.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
+            this.btn_Confirmar.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
             // AltaReservaAlojamiento
             // 
@@ -593,11 +594,11 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(773, 623);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.btn_Confirmar);
+            this.Controls.Add(this.txb_Deposito);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txb_CostoBase);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -623,12 +624,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_NoDirecto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Directo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Exceptuado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Convenio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contador_Titular)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,23 +656,23 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown contador_NoDirecto;
+        private System.Windows.Forms.NumericUpDown contador_Directo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown contador_Exceptuado;
+        private System.Windows.Forms.NumericUpDown contador_Convenio;
+        private System.Windows.Forms.NumericUpDown contador_Titular;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txb_CostoBase;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txb_Deposito;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btn_Confirmar;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dGV_ClienteResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;

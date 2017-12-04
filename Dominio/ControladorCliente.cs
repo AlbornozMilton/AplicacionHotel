@@ -126,6 +126,17 @@ namespace Dominio
             iUoW.Dispose();
 
         }
+
+        public List<TarifaCliente> DevolverListaTarifas() //devuelve todas las tarifas
+        {
+            List<TarifaCliente> TarifasClientes = new List<TarifaCliente>();
+            IEnumerable<pers.TarifaCliente> Tarifas = iUoW.RepositorioTarifa.GetAll();
+            foreach (var tarifa in Tarifas)
+            {
+                TarifasClientes.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(tarifa));
+            }
+            return TarifasClientes;
+        }
         
     }
 }

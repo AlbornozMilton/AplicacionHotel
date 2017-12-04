@@ -13,6 +13,11 @@ namespace UI
 {
     public partial class AltaReservaAlojamiento : Form
     {
+        public Habitacion iHabitacionSeccionada = new Habitacion();
+        public DateTime iFechaEstimadaIngreso = new DateTime();
+        public DateTime iFechaEstimadaEgreso = new DateTime();
+        public Cliente iClienteResponsable = new Cliente(); 
+
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
@@ -26,13 +31,13 @@ namespace UI
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
             label14.Visible = true;
-            pictureBox1.Image = Properties.Resources.Boton_Ok_Seleccion_3;
+            btn_Confirmar.Image = Properties.Resources.Boton_Ok_Seleccion_3;
         }
 
         private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
             label14.Visible = false;
-            pictureBox1.Image = Properties.Resources.Boton_Ok_2;
+            btn_Confirmar.Image = Properties.Resources.Boton_Ok_2;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -67,6 +72,14 @@ namespace UI
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.FormPadre = this;
             BuscarClienteForm.ShowDialog();
+        }
+
+        private void btn_Confirmar_Click(object sender, EventArgs e)
+        {
+            Alojamiento NuevoAlojamiento = new Alojamiento(iHabitacionSeccionada, iClienteResponsable, iFechaEstimadaIngreso, iFechaEstimadaEgreso);
+            NuevoAlojamiento.CalcularCostoBaseReserva(Convert.ToInt32(contador_Titular.Value), Convert.ToInt32(contador_Convenio.Value), Convert.ToInt32(contador_Exceptuado.Value), Convert.ToInt32(contador_Directo.Value), Convert.ToInt32(contador_NoDirecto.Value));
+            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+            txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
         }
     }
 }
