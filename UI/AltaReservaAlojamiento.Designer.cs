@@ -70,7 +70,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
             this.txb_CostoBase = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txb_Deposito = new System.Windows.Forms.TextBox();
@@ -94,39 +94,39 @@
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(577, 19);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 7;
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(93, 19);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(447, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.Size = new System.Drawing.Size(86, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Fecha Actual";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(47, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.Size = new System.Drawing.Size(21, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "ID";
             // 
@@ -139,10 +139,10 @@
             this.groupBox1.Controls.Add(this.dtp_fechaDesde);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(6, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(755, 104);
+            this.groupBox1.Size = new System.Drawing.Size(755, 107);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Disponibilidad";
@@ -150,7 +150,7 @@
             // btn_VerificarDisponibilidad
             // 
             this.btn_VerificarDisponibilidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_VerificarDisponibilidad.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_VerificarDisponibilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(588, 31);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
             this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(135, 39);
@@ -161,10 +161,10 @@
             // 
             // dtp_fechaHasta
             // 
-            this.dtp_fechaHasta.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_fechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaHasta.Location = new System.Drawing.Point(170, 57);
             this.dtp_fechaHasta.Name = "dtp_fechaHasta";
-            this.dtp_fechaHasta.Size = new System.Drawing.Size(361, 21);
+            this.dtp_fechaHasta.Size = new System.Drawing.Size(361, 22);
             this.dtp_fechaHasta.TabIndex = 3;
             // 
             // dtp_fechaDesde
@@ -172,29 +172,29 @@
             this.dtp_fechaDesde.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dtp_fechaDesde.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.dtp_fechaDesde.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtp_fechaDesde.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_fechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaDesde.Location = new System.Drawing.Point(170, 25);
             this.dtp_fechaDesde.Name = "dtp_fechaDesde";
-            this.dtp_fechaDesde.Size = new System.Drawing.Size(361, 21);
+            this.dtp_fechaDesde.Size = new System.Drawing.Size(361, 22);
             this.dtp_fechaDesde.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(17, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.Size = new System.Drawing.Size(93, 16);
             this.label4.TabIndex = 1;
             this.label4.Text = "Fecha Egreso";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(17, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 13);
+            this.label3.Size = new System.Drawing.Size(94, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Fecha Ingreso";
             // 
@@ -208,7 +208,7 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.checkBox1);
-            this.groupBox4.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(6, 160);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(755, 53);
@@ -218,66 +218,66 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown7.Location = new System.Drawing.Point(446, 23);
             this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(50, 21);
+            this.numericUpDown7.Size = new System.Drawing.Size(50, 22);
             this.numericUpDown7.TabIndex = 20;
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown6.Location = new System.Drawing.Point(266, 23);
             this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(50, 21);
+            this.numericUpDown6.Size = new System.Drawing.Size(50, 22);
             this.numericUpDown6.TabIndex = 19;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(333, 27);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(107, 13);
+            this.label15.Size = new System.Drawing.Size(94, 16);
             this.label15.TabIndex = 18;
             this.label15.Text = "Cupos Dobles";
             // 
             // tbx_NroHab
             // 
-            this.tbx_NroHab.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbx_NroHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbx_NroHab.Location = new System.Drawing.Point(77, 23);
             this.tbx_NroHab.Name = "tbx_NroHab";
             this.tbx_NroHab.ReadOnly = true;
-            this.tbx_NroHab.Size = new System.Drawing.Size(44, 21);
+            this.tbx_NroHab.Size = new System.Drawing.Size(44, 22);
             this.tbx_NroHab.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(150, 27);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 13);
+            this.label7.Size = new System.Drawing.Size(99, 16);
             this.label7.TabIndex = 1;
             this.label7.Text = "Cupos Simples";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(21, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(30, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Nro";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(529, 25);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(220, 17);
+            this.checkBox1.Size = new System.Drawing.Size(190, 20);
             this.checkBox1.TabIndex = 17;
             this.checkBox1.Text = "Exclusividad de Habitacion";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -292,10 +292,10 @@
             this.groupBox2.Controls.Add(this.dGV_ClienteResponsable);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(6, 219);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(755, 146);
+            this.groupBox2.Size = new System.Drawing.Size(755, 148);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente Responsable";
@@ -307,7 +307,7 @@
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -321,7 +321,7 @@
             this.clm_Nombre});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -332,13 +332,13 @@
             this.dGV_ClienteResponsable.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dGV_ClienteResponsable.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dGV_ClienteResponsable.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dGV_ClienteResponsable.Size = new System.Drawing.Size(743, 68);
             this.dGV_ClienteResponsable.TabIndex = 10;
@@ -369,7 +369,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(674, 17);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -382,10 +382,10 @@
             // 
             this.textBox3.AccessibleDescription = "";
             this.textBox3.AccessibleName = "";
-            this.textBox3.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(537, 19);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(116, 21);
+            this.textBox3.Size = new System.Drawing.Size(116, 22);
             this.textBox3.TabIndex = 8;
             this.textBox3.Tag = "";
             // 
@@ -402,7 +402,7 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(6, 373);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(755, 103);
@@ -412,98 +412,98 @@
             // 
             // contador_NoDirecto
             // 
-            this.contador_NoDirecto.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_NoDirecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contador_NoDirecto.Location = new System.Drawing.Point(619, 49);
             this.contador_NoDirecto.Name = "contador_NoDirecto";
-            this.contador_NoDirecto.Size = new System.Drawing.Size(35, 21);
+            this.contador_NoDirecto.Size = new System.Drawing.Size(35, 22);
             this.contador_NoDirecto.TabIndex = 37;
             // 
             // contador_Directo
             // 
-            this.contador_Directo.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Directo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contador_Directo.Location = new System.Drawing.Point(619, 19);
             this.contador_Directo.Name = "contador_Directo";
-            this.contador_Directo.Size = new System.Drawing.Size(35, 21);
+            this.contador_Directo.Size = new System.Drawing.Size(35, 22);
             this.contador_Directo.TabIndex = 36;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(420, 52);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(185, 13);
+            this.label10.Size = new System.Drawing.Size(159, 16);
             this.label10.TabIndex = 35;
             this.label10.Text = "Acompañante No Directo";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(420, 24);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(160, 13);
+            this.label11.Size = new System.Drawing.Size(138, 16);
             this.label11.TabIndex = 34;
             this.label11.Text = "Acompañante Directo";
             // 
             // contador_Exceptuado
             // 
-            this.contador_Exceptuado.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Exceptuado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contador_Exceptuado.Location = new System.Drawing.Point(218, 77);
             this.contador_Exceptuado.Name = "contador_Exceptuado";
-            this.contador_Exceptuado.Size = new System.Drawing.Size(35, 21);
+            this.contador_Exceptuado.Size = new System.Drawing.Size(35, 22);
             this.contador_Exceptuado.TabIndex = 33;
             // 
             // contador_Convenio
             // 
-            this.contador_Convenio.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Convenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contador_Convenio.Location = new System.Drawing.Point(218, 49);
             this.contador_Convenio.Name = "contador_Convenio";
-            this.contador_Convenio.Size = new System.Drawing.Size(35, 21);
+            this.contador_Convenio.Size = new System.Drawing.Size(35, 22);
             this.contador_Convenio.TabIndex = 32;
             // 
             // contador_Titular
             // 
-            this.contador_Titular.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contador_Titular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contador_Titular.Location = new System.Drawing.Point(218, 22);
             this.contador_Titular.Name = "contador_Titular";
-            this.contador_Titular.Size = new System.Drawing.Size(35, 21);
+            this.contador_Titular.Size = new System.Drawing.Size(35, 22);
             this.contador_Titular.TabIndex = 31;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(40, 80);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(152, 13);
+            this.label9.Size = new System.Drawing.Size(128, 16);
             this.label9.TabIndex = 30;
             this.label9.Text = "Afiliado Exceptuado";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(40, 52);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(165, 13);
+            this.label8.Size = new System.Drawing.Size(136, 16);
             this.label8.TabIndex = 29;
             this.label8.Text = "Afiliado por Convenio";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(40, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 13);
+            this.label5.Size = new System.Drawing.Size(93, 16);
             this.label5.TabIndex = 28;
             this.label5.Text = "Afiliado Titular";
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Control;
-            this.button5.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(669, 588);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(92, 23);
@@ -512,63 +512,64 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
+            // btn_Aceptar
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.Control;
-            this.button4.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(571, 588);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(92, 23);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Aceptar";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
+            this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(571, 588);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(92, 23);
+            this.btn_Aceptar.TabIndex = 18;
+            this.btn_Aceptar.Text = "Aceptar";
+            this.btn_Aceptar.UseVisualStyleBackColor = false;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
+            this.btn_Aceptar.MouseHover += new System.EventHandler(this.button4_MouseHover);
             // 
             // txb_CostoBase
             // 
-            this.txb_CostoBase.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_CostoBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_CostoBase.Location = new System.Drawing.Point(140, 513);
             this.txb_CostoBase.Name = "txb_CostoBase";
             this.txb_CostoBase.ReadOnly = true;
-            this.txb_CostoBase.Size = new System.Drawing.Size(100, 21);
+            this.txb_CostoBase.Size = new System.Drawing.Size(100, 22);
             this.txb_CostoBase.TabIndex = 22;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(34, 516);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 13);
+            this.label12.Size = new System.Drawing.Size(78, 16);
             this.label12.TabIndex = 21;
             this.label12.Text = "Costo Base";
             // 
             // txb_Deposito
             // 
-            this.txb_Deposito.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Deposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_Deposito.Location = new System.Drawing.Point(140, 548);
             this.txb_Deposito.Name = "txb_Deposito";
             this.txb_Deposito.ReadOnly = true;
-            this.txb_Deposito.Size = new System.Drawing.Size(100, 21);
+            this.txb_Deposito.Size = new System.Drawing.Size(100, 22);
             this.txb_Deposito.TabIndex = 24;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("BankGothic Lt BT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(34, 551);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.Size = new System.Drawing.Size(63, 16);
             this.label13.TabIndex = 23;
             this.label13.Text = "Deposito";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("BankGothic Lt BT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(644, 562);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 12);
+            this.label14.Size = new System.Drawing.Size(60, 13);
             this.label14.TabIndex = 26;
             this.label14.Text = "Confirmar";
             this.label14.Visible = false;
@@ -601,7 +602,7 @@
             this.Controls.Add(this.txb_CostoBase);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
@@ -667,7 +668,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.TextBox txb_CostoBase;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txb_Deposito;

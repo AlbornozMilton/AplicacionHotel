@@ -38,7 +38,7 @@ namespace Dominio
 
 
         //-----------------------constructores//----------------------
-        //
+     
         public Alojamiento()
         {
 
@@ -133,6 +133,12 @@ namespace Dominio
             get { return this.iMontoDeuda; }
             private set { this.iMontoDeuda = value; }
         }
+
+        public double Deposito
+        {
+            get { return this.iMontoTotal * 0.5; }
+        }
+
         public EstadoAlojamiento EstadoAlojamiento
         {
             get { return this.iEstadoAloj; }
@@ -170,54 +176,40 @@ namespace Dominio
             
         }
 
-        //public double CalcularCostoBase(TarifaCliente pTarifaCliente)
-        //{
-        //    bool lExclusividad = this.iHabitacion.Exclusiva;
-
-        //    double costoBase = 0;
-
-        //    foreach (var item in iClientes)
-        //    {
-        //        costoBase += pTarifaCliente.DeterminarTarifa(item.TipoCliente, lExclusividad);
-        //    }
-
-        //    if (this.FechaEstimadaIngreso == default (DateTime)) // NO se realizó reserva
-        //    {
-        //        this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days;//se usa fechaIngreso
-        //        this.MontoTotal = this.MontoDeuda;
-        //        return this.MontoDeuda; 
-
-        //    } else
-        //    {
-        //        this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
-        //        this.MontoTotal = this.MontoDeuda;
-        //        return this.MontoDeuda;
-        //    }
-        //}
-
-        public double CalcularCostoBaseReserva(int cantAfiliado, int cantConvenio, int cantExceptuado, int cantAcompDirecto, int cantAcompNoDirecto)
+        public double CalcularCostoBaseReserva(decimal[] pContadores)
         {
-            ControladorCliente iControladorCliente = new ControladorCliente();
-            List<TarifaCliente> Tarifas = iControladorCliente.DevolverListaTarifas();
             bool lExclusividad = this.iHabitacion.Exclusiva;
-
+            List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
             double costoBase = 0;
 
-            costoBase += cantAfiliado * (Tarifas[0].DeterminarTarifa(lExclusividad));
-            costoBase += cantExceptuado * (Tarifas[1].DeterminarTarifa(lExclusividad));
-            costoBase += cantAcompDirecto * (Tarifas[2].DeterminarTarifa(lExclusividad));
-            costoBase += cantAcompNoDirecto * (Tarifas[3].DeterminarTarifa(lExclusividad));
-            costoBase += cantConvenio * (Tarifas[4].DeterminarTarifa(lExclusividad));
+            for (int i = 0; i < pContadores.Length; i++)
+            {
+                costoBase += Convert.ToDouble(pContadores[i])*Tarifas[i].DeterminarTarifa(lExclusividad);
+            }
 
             this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
             this.MontoTotal = this.MontoDeuda;
             return this.MontoDeuda;
         }
 
-        public double Deposito
-        {
-            get { return this.iMontoTotal * 0.5; }
-        }
+        //public double CalcularCostoBaseReserva(int cantAfiliado, int cantConvenio, int cantExceptuado, int cantAcompDirecto, int cantAcompNoDirecto)
+        //{
+        //    ControladorCliente iControladorCliente = new ControladorCliente();
+        //    List<TarifaCliente> Tarifas = iControladorCliente.DevolverListaTarifas();
+        //    bool lExclusividad = this.iHabitacion.Exclusiva;
+
+        //    double costoBase = 0;
+
+        //    costoBase += cantAfiliado * (Tarifas[0].DeterminarTarifa(lExclusividad));
+        //    costoBase += cantExceptuado * (Tarifas[1].DeterminarTarifa(lExclusividad));
+        //    costoBase += cantAcompDirecto * (Tarifas[2].DeterminarTarifa(lExclusividad));
+        //    costoBase += cantAcompNoDirecto * (Tarifas[3].DeterminarTarifa(lExclusividad));
+        //    costoBase += cantConvenio * (Tarifas[4].DeterminarTarifa(lExclusividad));
+
+        //    this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
+        //    this.MontoTotal = this.MontoDeuda;
+        //    return this.MontoDeuda;
+        //}
 
         public void RegistrarPago(int pagoId, double pMonto, TipoPago pTipoPago, string pDetalle) //Ver si se pasa el ID
         {

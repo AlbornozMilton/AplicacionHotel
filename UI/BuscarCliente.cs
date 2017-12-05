@@ -18,6 +18,7 @@ namespace UI
         public BuscarCliente()
         {
             InitializeComponent();
+            btn_Aceptar.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace UI
                     tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
             }
-            
+            btn_Aceptar.Enabled = true;
         }
 
         private void BuscarCliente_Load(object sender, EventArgs e)

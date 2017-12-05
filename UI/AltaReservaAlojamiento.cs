@@ -16,7 +16,8 @@ namespace UI
         public Habitacion iHabitacionSeccionada = new Habitacion();
         public DateTime iFechaEstimadaIngreso = new DateTime();
         public DateTime iFechaEstimadaEgreso = new DateTime();
-        public Cliente iClienteResponsable = new Cliente(); 
+        public Cliente iClienteResponsable = new Cliente();
+        Alojamiento NuevoAlojamiento;
 
         public AltaReservaAlojamiento()
         {
@@ -76,10 +77,19 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            Alojamiento NuevoAlojamiento = new Alojamiento(iHabitacionSeccionada, iClienteResponsable, iFechaEstimadaIngreso, iFechaEstimadaEgreso);
-            NuevoAlojamiento.CalcularCostoBaseReserva(Convert.ToInt32(contador_Titular.Value), Convert.ToInt32(contador_Convenio.Value), Convert.ToInt32(contador_Exceptuado.Value), Convert.ToInt32(contador_Directo.Value), Convert.ToInt32(contador_NoDirecto.Value));
+            NuevoAlojamiento = new Alojamiento(iHabitacionSeccionada, iClienteResponsable, iFechaEstimadaIngreso, iFechaEstimadaEgreso);
+            decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value};
+            NuevoAlojamiento.CalcularCostoBaseReserva(contadores);
+            
+            //NuevoAlojamiento.CalcularCostoBaseReserva(Convert.ToInt32(contador_Titular.Value), Convert.ToInt32(contador_Convenio.Value), Convert.ToInt32(contador_Exceptuado.Value), Convert.ToInt32(contador_Directo.Value), Convert.ToInt32(contador_NoDirecto.Value));
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
             txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
+            btn_Aceptar.Enabled = true;
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
         }
     }
 }
