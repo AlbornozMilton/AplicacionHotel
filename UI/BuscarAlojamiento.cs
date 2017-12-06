@@ -13,6 +13,10 @@ namespace UI
 {
     public partial class BuscarAlojamiento : Form
     {
+        ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
+        public RegistrarPago iFormPadre;
+        public Alojamiento iAloj_Seleccionado;
+
         public BuscarAlojamiento()
         {
             InitializeComponent();
@@ -50,7 +54,6 @@ namespace UI
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
             try
             {
                 Alojamiento unAloj = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
@@ -62,6 +65,13 @@ namespace UI
 
                 MessageBox.Show(pException.Message);
             }
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            iFormPadre.CargarAlojamientoSeccionado(dGV_ListadoAlojamientos.CurrentRow.Cells);
+            iFormPadre.iAlojSeleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(dGV_ListadoAlojamientos.CurrentRow.Cells[0].Value));
+            Close();
         }
     }
 }
