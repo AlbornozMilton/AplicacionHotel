@@ -35,5 +35,95 @@ namespace Dominio
         {
             return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
         }
+
+        public bool ControlTipoPago(Alojamiento pAlojamiento, Pago pPago)
+        {
+            //EL CONTROL PARA EL FORMATO DE MONTO SE LO DEBE REALIZAR EN LA UI
+            //CONTROLAR DESDE LA UI QUE EL MONTO SEA MAYOR QUE CERO
+
+            switch (pPago.Tipo)
+            {
+                case TipoPago.Deposito:
+                    {
+                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Reservado)
+                        {
+                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
+                        }
+                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        {
+                            throw new Exception("El Tipo de Pago ya existe");
+                        }
+                        else if (pPago.Monto != pAlojamiento.Deposito)
+                        {
+                            throw new Exception("Monto Incorrecto");
+                        }
+
+                        pAlojamiento.RegistrarPago(pPago);
+                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                    }
+                    break;
+                case TipoPago.Alojado:
+                    {
+                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Alojado)
+                        {
+                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
+                        }
+                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        {
+                            throw new Exception("El Tipo de Pago ya existe");
+                        }
+                        else if (pPago.Monto != pAlojamiento.MontoDeuda)
+                        {
+                            throw new Exception("Monto Incorrecto");
+                        }
+
+                        pAlojamiento.RegistrarPago(pPago);
+                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                    }
+                    break;
+                case TipoPago.Servicios:
+                    {
+                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
+                        {
+                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
+                        }
+                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        {
+                            throw new Exception("El Tipo de Pago ya existe");
+                        }
+                        else if (pPago.Monto > pAlojamiento.MontoDeuda)
+                        {
+                            throw new Exception("Monto Incorrecto");
+                        }
+
+                        pAlojamiento.RegistrarPago(pPago);
+                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                    }
+                    break;
+                case TipoPago.Deuda:
+                    {
+                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
+                        {
+                            throw new Exception("El Tipo de Pago elegido no corresponde con el Estado de Alojamiento");
+                        }
+                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        {
+                            throw new Exception("El Tipo de Pago elegido ya existe");
+                        }
+                        else if (pAlojamiento.ExistePagoAlojamiento(new Pago(TipoPago.Servicios, pPago.Monto, "")))
+                        {
+                            throw new Exception("El Tipo de Pago elegido requiere un Pago de Servicios");
+                        }
+                        else if (pPago.Monto != pAlojamiento.MontoDeuda)
+                        {
+                            throw new Exception("Monto Incorrecto");
+                        }
+                        pAlojamiento.RegistrarPago(pPago);
+                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                    }
+                    break;
+            }
+            return true;
+        }
     }
 }

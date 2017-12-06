@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Pago
+    public class Pago:IEquatable<Pago>
     {
         private int iCodPago;
         private TipoPago iTipoPago;
@@ -20,13 +20,12 @@ namespace Dominio
 
         }
 
-        public Pago(int pCodPago, TipoPago pTipoPago, double pMonto, string pDetalle, DateTime pFechaPago)
+        public Pago(TipoPago pTipoPago, double pMonto, string pDetalle)
         {
-            this.iCodPago = pCodPago;
             this.iTipoPago = pTipoPago;
             this.iMonto = pMonto;
             this.iDetalle = pDetalle;
-            this.iFechaPago = pFechaPago; 
+            this.iFechaPago = DateTime.Now; 
         }
 
         //-----------------------Propiedades
@@ -43,6 +42,11 @@ namespace Dominio
         public void AgregarDetalle(string pDetalle)
         {
             this.iDetalle = pDetalle;
+        }
+
+        public bool Equals(Pago other)
+        {
+            return this.Tipo == other.Tipo;
         }
     }
 }

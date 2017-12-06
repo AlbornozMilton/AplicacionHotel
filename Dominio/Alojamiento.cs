@@ -171,9 +171,9 @@ namespace Dominio
 
         //----------------------métodos----------------------
 
-        public void ConfirmarReserva()
+        public bool ExistePagoAlojamiento(Pago pPago)
         {
-            
+            return this.Pagos.Contains(pPago);
         }
 
         public double CalcularCostoBaseReserva(decimal[] pContadores)
@@ -192,36 +192,10 @@ namespace Dominio
             return this.MontoDeuda;
         }
 
-        //public double CalcularCostoBaseReserva(int cantAfiliado, int cantConvenio, int cantExceptuado, int cantAcompDirecto, int cantAcompNoDirecto)
-        //{
-        //    ControladorCliente iControladorCliente = new ControladorCliente();
-        //    List<TarifaCliente> Tarifas = iControladorCliente.DevolverListaTarifas();
-        //    bool lExclusividad = this.iHabitacion.Exclusiva;
-
-        //    double costoBase = 0;
-
-        //    costoBase += cantAfiliado * (Tarifas[0].DeterminarTarifa(lExclusividad));
-        //    costoBase += cantExceptuado * (Tarifas[1].DeterminarTarifa(lExclusividad));
-        //    costoBase += cantAcompDirecto * (Tarifas[2].DeterminarTarifa(lExclusividad));
-        //    costoBase += cantAcompNoDirecto * (Tarifas[3].DeterminarTarifa(lExclusividad));
-        //    costoBase += cantConvenio * (Tarifas[4].DeterminarTarifa(lExclusividad));
-
-        //    this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
-        //    this.MontoTotal = this.MontoDeuda;
-        //    return this.MontoDeuda;
-        //}
-
-        public void RegistrarPago(int pagoId, double pMonto, TipoPago pTipoPago, string pDetalle) //Ver si se pasa el ID
+        public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
         {
-            if ((this.iMontoDeuda -= pMonto) < 0)
-            {
-                throw new Exception("Monto deuda menor a cero");
-            }
-            else
-            {
-                this.iMontoDeuda -= pMonto;
-                this.iPagos.Add(new Pago(pagoId, pTipoPago, pMonto, pDetalle, DateTime.Now));
-            }
+                this.iMontoDeuda -= pPago.Monto;
+                this.iPagos.Add(pPago);
         }
 
         public double TotalServicios()
