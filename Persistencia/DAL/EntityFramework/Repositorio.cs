@@ -42,7 +42,7 @@ namespace Persistencia.DAL.EntityFramework
             this.iDbContext.Set<TEntity>().Remove(pEntity);
         }
 
-        public TEntity Get(int pId)
+        public virtual TEntity Get(int pId)
         {
             return this.iDbContext.Set<TEntity>().Find(pId);
         }

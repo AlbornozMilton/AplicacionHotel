@@ -90,6 +90,7 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
+            Close();
         }
     }
 }

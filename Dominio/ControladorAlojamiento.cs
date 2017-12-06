@@ -26,9 +26,14 @@ namespace Dominio
         public void RegistrarReservaAloj(Alojamiento pAlojamiento)
         {
             var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-                iUoW.RepositorioAlojamiento.Add(e);
+                iUoW.RepositorioAlojamiento.AddReserva(e);
             iUoW.Complete();
             iUoW.Dispose();
+        }
+
+        public Alojamiento BuscarAlojamientoPorID(int unId)
+        {
+            return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
         }
     }
 }

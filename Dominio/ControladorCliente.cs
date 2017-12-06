@@ -99,7 +99,6 @@ namespace Dominio
 
         public Cliente BuscarClientePorDni(int unDni)
         {
-            List<Habitacion> hab = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
             return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.Get(unDni)));
         }
 
