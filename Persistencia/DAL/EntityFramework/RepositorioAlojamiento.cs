@@ -47,5 +47,16 @@ namespace Persistencia.DAL.EntityFramework
             iDbContext.Habitaciones.Attach(unAloj.Habitacion);
             iDbContext.Alojamientos.Add(unAloj);
         }
+
+        public void AddPago(Alojamiento unAloj)
+        {
+            foreach (var cli in unAloj.Clientes)
+            {
+                iDbContext.Clientes.Attach(cli);
+            }
+            iDbContext.Habitaciones.Attach(unAloj.Habitacion);
+            iDbContext.Alojamientos.Attach(unAloj);
+            iDbContext.Alojamientos.Add(unAloj);
+        }
     }
 }

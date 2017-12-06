@@ -60,6 +60,10 @@ namespace Dominio
 
                         pAlojamiento.RegistrarPago(pPago);
                         //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                        var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+                        iUoW.RepositorioAlojamiento.AddPago(e);
+                        iUoW.Complete();
+                        iUoW.Dispose();
                     }
                     break;
                 case TipoPago.Alojado:
@@ -79,6 +83,10 @@ namespace Dominio
 
                         pAlojamiento.RegistrarPago(pPago);
                         //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                        var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+                        iUoW.RepositorioAlojamiento.AddPago(e);
+                        iUoW.Complete();
+                        iUoW.Dispose();
                     }
                     break;
                 case TipoPago.Servicios:
@@ -98,6 +106,10 @@ namespace Dominio
 
                         pAlojamiento.RegistrarPago(pPago);
                         //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                        var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+                        iUoW.RepositorioAlojamiento.AddPago(e);
+                        iUoW.Complete();
+                        iUoW.Dispose();
                     }
                     break;
                 case TipoPago.Deuda:
@@ -120,6 +132,10 @@ namespace Dominio
                         }
                         pAlojamiento.RegistrarPago(pPago);
                         //Agregar metodo al repositorio "AddPago"(pAlojamiento)
+                        var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+                        iUoW.RepositorioAlojamiento.AddPago(e);
+                        iUoW.Complete();
+                        iUoW.Dispose();
                     }
                     break;
             }
