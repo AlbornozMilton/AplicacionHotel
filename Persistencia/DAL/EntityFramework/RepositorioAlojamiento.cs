@@ -26,7 +26,7 @@ namespace Persistencia.DAL.EntityFramework
             }
             else
             {
-                return (iDbContext.Alojamientos.Include("Habitacion").Include("Clientes").Where(a => a.AlojamientoId == pId).First());
+                return (iDbContext.Alojamientos.Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).First());
             }
         }
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
