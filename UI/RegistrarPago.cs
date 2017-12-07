@@ -73,6 +73,10 @@ namespace UI
             catch (Exception pException)
             {
                 MessageBox.Show(pException.Message);
+                if (pException.InnerException !=null)
+                {
+                    MessageBox.Show(pException.InnerException.Message); 
+                }
             }
         }
     }

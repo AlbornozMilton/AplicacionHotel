@@ -86,8 +86,6 @@ namespace Dominio
         }
 
         //----------------------PROP----------------------
-
-
         public int AlojamientoId
         {
             get { return this.iIdAlojamiento; }
@@ -151,6 +149,12 @@ namespace Dominio
             private set { this.iClientes = value; }
         }
 
+        public int HabitacionId
+        {
+            get { return this.iHabitacion.HabitacionId; }
+           // private set { this.iHabitacion. = value; }
+        }
+
         public Habitacion Habitacion
         {
             get { return this.iHabitacion; }
@@ -169,7 +173,7 @@ namespace Dominio
             private set { this.iPagos = value; }
         }
 
-        //----------------------métodos----------------------
+        //----------------------METHODS----------------------
 
         public bool ExistePagoAlojamiento(Pago pPago)
         {
@@ -194,8 +198,17 @@ namespace Dominio
 
         public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
         {
-                this.iMontoDeuda -= pPago.Monto;
+            this.iMontoDeuda -= pPago.Monto;
+
+            //PARA EL CASO EN EL QUE SE AGREGA UN PRIMER PAGO
+            if (this.Pagos!=null)
+            {
                 this.iPagos.Add(pPago);
+            }
+            else
+            {
+                this.Pagos = new List<Pago>() { pPago };
+            }
         }
 
         public double TotalServicios()

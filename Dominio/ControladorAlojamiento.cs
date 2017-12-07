@@ -121,7 +121,7 @@ namespace Dominio
         public void AddPago(Alojamiento pAlojamiento)
         {
             var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-            iUoW.RepositorioAlojamiento.AddPago(e);
+            iUoW.RepositorioAlojamiento.AddPago(e,e.Pagos[0]);
             iUoW.Complete();
             iUoW.Dispose();
         }
