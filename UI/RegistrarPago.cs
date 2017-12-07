@@ -68,10 +68,10 @@ namespace UI
                 ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
                 Pago iPago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
                 iControladorAloj.ControlTipoPago(iAlojSeleccionado, iPago);
+                iControladorAloj.AddPago(iAlojSeleccionado);
             }
             catch (Exception pException)
             {
-
                 MessageBox.Show(pException.Message);
             }
         }
