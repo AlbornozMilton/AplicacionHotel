@@ -51,7 +51,11 @@ namespace UI
 
         private void cbx_TipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbx_TipoPago.SelectedItem.ToString() == "Depósito")
+            if (dGV_ListadoAlojamientos.Rows.Count <= 0)
+            {
+                MessageBox.Show("Debe seleccionar un alojamiento");
+            } 
+            else if (cbx_TipoPago.SelectedItem.ToString() == "Depósito")
             {
                 txb_Monto.Text = iAlojSeleccionado.Deposito.ToString();
             }
@@ -65,14 +69,36 @@ namespace UI
         {
             try
             {
+                ValidarDatos();
                 ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
                 Pago iPago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
                 iControladorAloj.ControlTipoPago(iAlojSeleccionado, iPago);
             }
             catch (Exception pException)
             {
-
                 MessageBox.Show(pException.Message);
+            }
+        }
+
+        private void ValidarDatos()
+        {
+            int numero;
+            string monto = txb_Monto.Text;
+            if (cbx_TipoPago.SelectedItem == null)
+            {
+                throw new Exception("Debe seleccionar el Tipo de Pago");
+            }
+            if (monto == "")
+            {
+                throw new Exception("Debe ingresar un Monto");
+            }
+            else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false)
+            {
+                throw new Exception("Formato invalido de monto");
+            }
+            else if (Convert.ToInt32(monto) <= 0)
+            {
+                throw new Exception("Monto debe ser mayor a cero");
             }
         }
     }
