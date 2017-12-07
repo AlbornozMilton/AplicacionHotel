@@ -136,7 +136,7 @@ namespace Dominio
 
         public double Deposito
         {
-            get { return this.iMontoTotal * 0.5; }
+            get { return this.iMontoDeuda * 0.5; }
         }
 
         public EstadoAlojamiento EstadoAlojamiento

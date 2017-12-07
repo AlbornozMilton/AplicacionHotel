@@ -28,6 +28,36 @@ namespace Dominio
             this.iFechaPago = DateTime.Now; 
         }
 
+        public Pago(string pTipoPago, double pMonto, string pDetalle)
+        {
+            switch (pTipoPago)
+            {
+                case ("Alojado"):
+                    {
+                        this.iTipoPago = TipoPago.Alojado;
+                    }
+                    break;
+                case ("Depósito"):
+                    {
+                        this.iTipoPago = TipoPago.Deposito;
+                    }
+                    break;
+                case ("Servicios"):
+                    {
+                        this.iTipoPago = TipoPago.Servicios;
+                    }
+                    break;
+                case ("Deuda"):
+                    {
+                        this.iTipoPago = TipoPago.Deuda;
+                    }
+                    break;
+                default: throw new Exception("Error en asignacion de tipo Pago");
+            }
+            this.iMonto = pMonto;
+            this.iDetalle = pDetalle;
+            this.iFechaPago = DateTime.Now;
+        }
         //-----------------------Propiedades
         public int PagoId { get { return this.iCodPago; } private set { this.iCodPago = value; } }
         public TipoPago Tipo { get { return this.iTipoPago; } private set { this.iTipoPago = value; } }
