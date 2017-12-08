@@ -36,7 +36,7 @@ namespace Dominio
             return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
         }
 
-        public bool ControlTipoPago(Alojamiento pAlojamiento, Pago pPago)
+        public void ControlTipoPago(Alojamiento pAlojamiento, Pago pPago)
         {
             //EL CONTROL PARA EL FORMATO DE MONTO SE LO DEBE REALIZAR EN LA UI
             //CONTROLAR DESDE LA UI QUE EL MONTO SEA MAYOR QUE CERO
@@ -57,9 +57,7 @@ namespace Dominio
                         {
                             throw new Exception("Monto Incorrecto");
                         }
-
                         pAlojamiento.RegistrarPago(pPago);
-                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
                     }
                     break;
                 case TipoPago.Alojado:
@@ -76,9 +74,7 @@ namespace Dominio
                         {
                             throw new Exception("Monto Incorrecto");
                         }
-
                         pAlojamiento.RegistrarPago(pPago);
-                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
                     }
                     break;
                 case TipoPago.Servicios:
@@ -95,9 +91,7 @@ namespace Dominio
                         {
                             throw new Exception("Monto Incorrecto");
                         }
-
                         pAlojamiento.RegistrarPago(pPago);
-                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
                     }
                     break;
                 case TipoPago.Deuda:
@@ -119,11 +113,17 @@ namespace Dominio
                             throw new Exception("Monto Incorrecto");
                         }
                         pAlojamiento.RegistrarPago(pPago);
-                        //Agregar metodo al repositorio "AddPago"(pAlojamiento)
                     }
                     break;
             }
-            return true;
+        }
+
+        public void AddPago(Alojamiento pAlojamiento)
+        {
+            var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+            iUoW.RepositorioAlojamiento.AddPago(e,e.Pagos[0]);
+            iUoW.Complete();
+            iUoW.Dispose();
         }
     }
 }

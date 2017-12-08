@@ -47,5 +47,31 @@ namespace Persistencia.DAL.EntityFramework
             iDbContext.Habitaciones.Attach(unAloj.Habitacion);
             iDbContext.Alojamientos.Add(unAloj);
         }
+
+        public void AddPago(Alojamiento unAloj, Pago pPago)
+        {
+            //foreach (var cli in unAloj.Clientes)
+            //{
+            //    iDbContext.Clientes.Attach(cli);
+            //}
+            //iDbContext.Habitaciones.Attach(unAloj.Habitacion);
+            //iDbContext.Alojamientos.Attach(unAloj);
+            //iDbContext.Pagos.Add(unAloj.Pagos[0]);
+
+            Alojamiento lAuxAloj = iDbContext.Alojamientos.Include("Pagos").Where(a => a.AlojamientoId == unAloj.AlojamientoId).First();
+            //  iDbContext.Alojamientos.Attach(lAuxAloj);
+            lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
+            //var lAuxAloj = listaAux
+
+            if (lAuxAloj.Pagos.Count == 0)
+            {
+                lAuxAloj.Pagos = new List<Pago>() { pPago };
+                iDbContext.Pagos.Add(pPago);
+            }
+            else
+            {
+                iDbContext.Pagos.Add(pPago);
+            }
+        }
     }
 }

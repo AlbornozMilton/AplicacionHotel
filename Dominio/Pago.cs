@@ -13,7 +13,6 @@ namespace Dominio
         private double iMonto;
         private DateTime iFechaPago;
         private string iDetalle;
-        private Alojamiento iAlojamiento;
 
         public Pago()
         {
@@ -64,7 +63,6 @@ namespace Dominio
         public double Monto { get { return this.iMonto; } private set { this.iMonto = value; } }
         public DateTime FechaPago { get { return this.iFechaPago; } private set { this.iFechaPago = value; } } //ver si es necesario la hora
         public string Detalle { get { return this.iDetalle; } private set { this.iDetalle = value; } }
-        public Alojamiento Alojamiento { get { return this.iAlojamiento; } private set { this.iAlojamiento = value; } }
 
         /// <summary>
         /// Nuevo o Actualiza el campo Detalle

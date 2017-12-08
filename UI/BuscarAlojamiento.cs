@@ -56,13 +56,13 @@ namespace UI
         {
             try
             {
-                Alojamiento unAloj = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
+                iFormPadre.iAlojSeleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
+                iAloj_Seleccionado = iFormPadre.iAlojSeleccionado;
                 dGV_ListadoAlojamientos.Rows.Clear();
-                dGV_ListadoAlojamientos.Rows.Add(unAloj.AlojamientoId, unAloj.DniResponsable, unAloj.Clientes.Find(c => c.ClienteId == unAloj.DniResponsable).Apellido + ' ' + unAloj.Clientes.Find(c => c.ClienteId == unAloj.DniResponsable).Nombre, unAloj.Habitacion.HabitacionId);
+                dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).Apellido + ' ' + this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).Nombre, this.iAloj_Seleccionado.Habitacion.HabitacionId);
             }
             catch (Exception pException)
             {
-
                 MessageBox.Show(pException.Message);
             }
         }
