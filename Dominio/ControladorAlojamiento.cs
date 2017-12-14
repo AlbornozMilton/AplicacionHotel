@@ -118,6 +118,64 @@ namespace Dominio
             }
         }
 
+        public List<Habitacion> DeterminarDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            ControladorHabitacion iControladorHab = new ControladorHabitacion();
+            DateTime fechaIni = new DateTime();
+            DateTime fechaFin = new DateTime();
+            List<Alojamiento> listaAlojActivos = ObtenerAlojamientosActivos(); //METODO DEFINIDO EN REPOSITORIO ALOJAMIENTO -> lista de alojamientos en estado de Alojado o Reservado
+            List<Habitacion> listaHabitaciones = iControladorHab.ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
+            foreach (var hab in listaHabitaciones.ToList<Habitacion>())
+            {
+                foreach (var aloj in listaAlojActivos)
+                {
+                    if (aloj.Habitacion.HabitacionId == hab.HabitacionId)
+                    {
+                        if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                        {
+                            fechaIni = aloj.FechaIngreso;
+                            fechaFin = aloj.FechaEstimadaEgreso;
+                            if (((DateTime.Compare(fechaDesde, fechaFin) < 0) && (DateTime.Compare(fechaDesde, fechaIni) >= 0)) ||
+                                ((DateTime.Compare(fechaHasta, fechaFin) < 0) && (DateTime.Compare(fechaHasta, fechaIni) > 0)))
+                            //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
+                            //por eso solo se pone < o > segun corresponda
+                            {
+                                if (aloj.Habitacion.Exclusiva == true)
+                                {
+                                    listaHabitaciones.Remove(hab);
+                                }
+                                else
+                                {
+                                    listaHabitaciones.Remove(hab);
+                                    listaHabitaciones.Add(aloj.Habitacion); 
+                                }
+                            }
+                        }
+                        else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                        {
+                            fechaIni = aloj.FechaEstimadaIngreso;
+                            fechaFin = aloj.FechaEstimadaEgreso;
+                            if (((DateTime.Compare(fechaDesde, fechaFin) < 0) && (DateTime.Compare(fechaDesde, fechaIni) >= 0)) ||
+                                ((DateTime.Compare(fechaHasta, fechaFin) < 0) && (DateTime.Compare(fechaHasta, fechaIni) > 0)))
+                            //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
+                            //por eso solo se pone < o > segun corresponda
+                            {
+                                if (aloj.Exclusividad == true)
+                                {
+                                    listaHabitaciones.Remove(hab);
+                                }
+                                else
+                                {
+                                    hab.OcuparCupos(aloj.CantCuposSimples, aloj.CantCuposDobles); 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return (listaHabitaciones);
+        }
+
         public void AddPago(Alojamiento pAlojamiento)
         {
             var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
