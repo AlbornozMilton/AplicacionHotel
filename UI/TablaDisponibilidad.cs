@@ -28,11 +28,11 @@ namespace UI
         }
         private void btn_Actualizar_Click(object sender, EventArgs e)
         {
-            ControladorHabitacion iControladorHab = new ControladorHabitacion(); // V E R !!!! usar asi?
+            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento(); // V E R !!!! usar asi?
             if (Convert.ToDateTime(dtp_fechaDesde.Value).CompareTo(Convert.ToDateTime(dtp_fechaHasta.Value)) <= 0)
             {
                 dGV_TablaHabitaciones.Rows.Clear();
-                List<Habitacion> listaHabDisponibles = iControladorHab.DeterminarDisponibilidad(Convert.ToDateTime(dtp_fechaDesde.Value), Convert.ToDateTime(dtp_fechaHasta.Value));
+                List<Habitacion> listaHabDisponibles = iControladorAloj.DeterminarDisponibilidad(Convert.ToDateTime(dtp_fechaDesde.Value), Convert.ToDateTime(dtp_fechaHasta.Value));
                 foreach (var hab in listaHabDisponibles)
                 {
                     
