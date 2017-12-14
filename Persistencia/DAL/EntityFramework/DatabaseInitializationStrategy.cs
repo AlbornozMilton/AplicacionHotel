@@ -88,40 +88,6 @@ namespace Persistencia.DAL.EntityFramework
 
             #endregion
 
-            /*
-                #region Cupos
-                Cupo cupo1 = new Cupo
-                {
-                    Tipo = TipoCupo.doble,
-                    Disponible = true
-                };
-
-                Cupo cupo2 = new Cupo
-                {
-                    Tipo = TipoCupo.simple,
-                    Disponible = true
-                };
-
-                Cupo cupo3 = new Cupo
-                {
-                    Tipo = TipoCupo.simple,
-                    Disponible = true
-                };
-
-                Cupo cupo4 = new Cupo
-                {
-                    Tipo = TipoCupo.doble,
-                    Disponible = true
-                };
-
-                Cupo cupo5 = new Cupo
-                {
-                    Tipo = TipoCupo.simple,
-                    Disponible = true
-                };
-
-                #endregion
-            */
             #region Habitaciones y Cupos
             Habitacion hab1 = new Habitacion()
             {
@@ -510,6 +476,7 @@ namespace Persistencia.DAL.EntityFramework
             };
             #endregion
 
+            /*
             #region Alojamientos
             Alojamiento Aloj1 = new Alojamiento
             {
@@ -521,8 +488,10 @@ namespace Persistencia.DAL.EntityFramework
                 FechaEgreso = null,
                 MontoTotal = 250,
                 MontoDeuda = 0,
+                CantCuposDobles = 1,
+                CantCuposSimples = 2,
                 EstadoAlojamiento = EstadoAlojamiento.Alojado,
-                HabitacionId = 2,
+                HabitacionId = 5,
                 Clientes = new List<Cliente>() { Milton, Mauri },
                 Pagos = new List<Pago>()
                 {
@@ -570,9 +539,10 @@ namespace Persistencia.DAL.EntityFramework
                    
                 }
             };
-
+            
             context.Set<Alojamiento>().Add(Aloj2);
             #endregion
+            */
 
             base.Seed(context);
         }
