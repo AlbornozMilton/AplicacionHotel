@@ -13,7 +13,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         public HabitacionMap()
         {
             this.Property(h => h.HabitacionId)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
             //this.Property(h => h.Capacidad)
             //    .IsRequired();

@@ -15,5 +15,7 @@ namespace Persistencia.Domain
         public string Detalle { get; set; }
 
         public double CostoBase { get; set; }
+
+        public List<LineaServicio> Servicios { get; set; }
     }
 }

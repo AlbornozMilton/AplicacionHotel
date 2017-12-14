@@ -21,7 +21,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
             this.HasRequired(p => p.Alojamiento)
                 .WithMany(a => a.Servicios);
-            
+
+            this.HasRequired(c => c.Servicio)
+                .WithMany(c => c.Servicios);
         }
     }
 }

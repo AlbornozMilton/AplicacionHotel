@@ -117,12 +117,12 @@ namespace Persistencia.DAL.EntityFramework
                 //Capacidad = 4, // 4 CAMAS
                 Exclusiva = false,
                 Planta = 0,
-                Cupos = new List<Cupo>() 
+                Cupos = new List<Cupo>()
                 {
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
-                        Disponible = true
+                        Disponible = false
                     },
                     new Cupo
                     {
@@ -333,7 +333,7 @@ namespace Persistencia.DAL.EntityFramework
                 }
             };
             context.Set<Habitacion>().Add(hab10);
-            
+
             #endregion
 
             #region Servicios
@@ -368,7 +368,7 @@ namespace Persistencia.DAL.EntityFramework
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
             };
-            context.Set<Servicio>().Add(SeguroDeSalud);
+            context.Set<Servicio>().Add(Calefaccion);
 
             Servicio RecargoPorFumar = new Servicio
             {
@@ -379,165 +379,165 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Servicio>().Add(RecargoPorFumar);
 
             #endregion
-            //-----------------------FIN DATOS BASICOS------------------
+            ////-----------------------FIN DATOS BASICOS------------------
 
-            //-----------------------A MODO DE EJEMPLO-----------------
+            ////-----------------------A MODO DE EJEMPLO-----------------
 
-            #region Clientes
-            Cliente Milton = new Cliente
-            {
-                ClienteId = 38387043,
-                Apellido = "Albornoz",
-                Nombre = "Milton",
-                Telefono = "0345515431476",
-                TarifaClienteId = TarifaTitular.TarifaClienteId,
-            };
-            context.Set<Cliente>().Add(Milton);
-
-            Cliente Mauri = new Cliente
-            {
-                ClienteId = 37115628,
-                Apellido = "Chamorro",
-                Nombre = "Mauricio Manuel",
-                Telefono = "0345615542154",
-                TarifaClienteId = TarifaAcompNoDirecto.TarifaClienteId,
-            };
-            context.Set<Cliente>().Add(Mauri);
-            #endregion
-           
-            #region Domicilios
-            Domicilio DomiciolioMilton = new Domicilio
-            {
-                Calle = "Peron",
-                Numero = "610",
-                Piso = "0",
-                NroDepto = "1",
-                CiudadId = CiudadCdelU.CiudadId,
-                Clientes = new List<Cliente>()
-                {
-                    Milton
-                }
-            };
-            context.Set<Domicilio>().Add(DomiciolioMilton);
-
-            //Domicilio DomiciolioMilton2 = new Domicilio
+            //#region Clientes
+            //Cliente Milton = new Cliente
             //{
-            //  //----- Agrega el domicilio pero no enlace el IdDomiciolio del CLiente, es decir, el cliente sigue con el 
-                //----- IdDomicilio original
+            //    ClienteId = 38387043,
+            //    Apellido = "Albornoz",
+            //    Nombre = "Milton",
+            //    Telefono = "0345515431476",
+            //    TarifaClienteId = TarifaTitular.TarifaClienteId,
+            //};
+            //context.Set<Cliente>().Add(Milton);
+
+            //Cliente Mauri = new Cliente
+            //{
+            //    ClienteId = 37115628,
+            //    Apellido = "Chamorro",
+            //    Nombre = "Mauricio Manuel",
+            //    Telefono = "0345615542154",
+            //    TarifaClienteId = TarifaAcompNoDirecto.TarifaClienteId,
+            //};
+            //context.Set<Cliente>().Add(Mauri);
+            //#endregion
+
+            //#region Domicilios
+            //Domicilio DomiciolioMilton = new Domicilio
+            //{
             //    Calle = "Peron",
             //    Numero = "610",
             //    Piso = "0",
             //    NroDepto = "1",
-            //    CiudadId = CiudadFederacion.CiudadId,
+            //    CiudadId = CiudadCdelU.CiudadId,
             //    Clientes = new List<Cliente>()
             //    {
             //        Milton
             //    }
             //};
-            //context.Set<Domicilio>().Add(DomiciolioMilton2);
+            //context.Set<Domicilio>().Add(DomiciolioMilton);
 
-            Domicilio DomicilioMauri = new Domicilio
-            {
-                Calle = "Atencio Al Este",
-                Numero = "180",
-                Piso = "0",
-                NroDepto = "1",
-                CiudadId = CiudadFederacion.CiudadId,
-                Clientes = new List<Cliente>()
-                {
-                    Mauri
-                }
-            };
-            context.Set<Domicilio>().Add(DomicilioMauri);
-            #endregion 
+            ////Domicilio DomiciolioMilton2 = new Domicilio
+            ////{
+            ////  //----- Agrega el domicilio pero no enlace el IdDomiciolio del CLiente, es decir, el cliente sigue con el 
+            //    //----- IdDomicilio original
+            ////    Calle = "Peron",
+            ////    Numero = "610",
+            ////    Piso = "0",
+            ////    NroDepto = "1",
+            ////    CiudadId = CiudadFederacion.CiudadId,
+            ////    Clientes = new List<Cliente>()
+            ////    {
+            ////        Milton
+            ////    }
+            ////};
+            ////context.Set<Domicilio>().Add(DomiciolioMilton2);
 
-            #region Linea de Servicios para Alojamientos 
-            
-            //las lineas de servicio se generan solo para Alojamientos dado
-            LineaServicio CantBatas = new LineaServicio
-            {
-                Cantidad = 3,
-                CostoServicio = 30,
-                FechaServicio = DateTime.Now.AddDays(1),
-                ServicioId = Bata.ServicioId
-            };
+            //Domicilio DomicilioMauri = new Domicilio
+            //{
+            //    Calle = "Atencio Al Este",
+            //    Numero = "180",
+            //    Piso = "0",
+            //    NroDepto = "1",
+            //    CiudadId = CiudadFederacion.CiudadId,
+            //    Clientes = new List<Cliente>()
+            //    {
+            //        Mauri
+            //    }
+            //};
+            //context.Set<Domicilio>().Add(DomicilioMauri);
+            //#endregion 
 
-            LineaServicio CantAireAcond = new LineaServicio
-            {
-                Cantidad = 5,
-                CostoServicio = 150,
-                FechaServicio = DateTime.Now.AddDays(2),
-                ServicioId = AireAcondicionado.ServicioId
-            };
-            #endregion
+            //#region Linea de Servicios para Alojamientos 
 
-            /*
-            #region Alojamientos
-            Alojamiento Aloj1 = new Alojamiento
-            {
-                DniResponsable = Milton.ClienteId,
-                FechaReserva = null,
-                FechaIngreso = DateTime.Now,
-                FechaEstimadaIngreso = null,
-                FechaEstimadaEgreso = DateTime.Now.AddDays(3),
-                FechaEgreso = null,
-                MontoTotal = 250,
-                MontoDeuda = 0,
-                CantCuposDobles = 1,
-                CantCuposSimples = 2,
-                EstadoAlojamiento = EstadoAlojamiento.Alojado,
-                HabitacionId = 5,
-                Clientes = new List<Cliente>() { Milton, Mauri },
-                Pagos = new List<Pago>()
-                {
-                    new Pago
-                    {
-                        Tipo = TipoPago.Alojado,
-                        Monto = 250,
-                        FechaPago = DateTime.Now,
-                        Detalle = "El viejo era tacaño"
-                    }
-                },
-                Servicios = new List<LineaServicio>()
-                {
-                    CantBatas, CantAireAcond
-                }
-            };
+            ////las lineas de servicio se generan solo para Alojamientos dado
+            //LineaServicio CantBatas = new LineaServicio
+            //{
+            //    Cantidad = 3,
+            //    CostoServicio = 30,
+            //    FechaServicio = DateTime.Now.AddDays(1),
+            //    ServicioId = Bata.ServicioId
+            //};
 
-            context.Set<Alojamiento>().Add(Aloj1);
+            //LineaServicio CantAireAcond = new LineaServicio
+            //{
+            //    Cantidad = 5,
+            //    CostoServicio = 150,
+            //    FechaServicio = DateTime.Now.AddDays(2),
+            //    ServicioId = AireAcondicionado.ServicioId
+            //};
+            //#endregion
 
-            Alojamiento Aloj2 = new Alojamiento
-            {
-                DniResponsable = Mauri.ClienteId,
-                FechaReserva = DateTime.Now.AddDays(4),
-                FechaIngreso = null,
-                FechaEstimadaIngreso = DateTime.Now.AddDays(4),
-                FechaEstimadaEgreso = DateTime.Now.AddDays(7),
-                FechaEgreso = null,
-                MontoTotal = 250,
-                MontoDeuda = 125,
-                EstadoAlojamiento = EstadoAlojamiento.Reservado,
-                HabitacionId = 1,
-                Clientes = new List<Cliente>() { Milton, Mauri },
-                Pagos = new List<Pago>()
-                {
-                    new Pago
-                    {
-                        Tipo = TipoPago.Deposito,
-                        Monto = 125,
-                        FechaPago = DateTime.Now,
-                        Detalle = "Reservando"
-                    }
-                },
-                Servicios = new List<LineaServicio>()
-                {
-                   
-                }
-            };
-            
-            context.Set<Alojamiento>().Add(Aloj2);
-            #endregion
-            */
+            ///*
+            //#region Alojamientos
+            //Alojamiento Aloj1 = new Alojamiento
+            //{
+            //    DniResponsable = Milton.ClienteId,
+            //    FechaReserva = null,
+            //    FechaIngreso = DateTime.Now,
+            //    FechaEstimadaIngreso = null,
+            //    FechaEstimadaEgreso = DateTime.Now.AddDays(3),
+            //    FechaEgreso = null,
+            //    MontoTotal = 250,
+            //    MontoDeuda = 0,
+            //    CantCuposDobles = 1,
+            //    CantCuposSimples = 2,
+            //    EstadoAlojamiento = EstadoAlojamiento.Alojado,
+            //    HabitacionId = 5,
+            //    Clientes = new List<Cliente>() { Milton, Mauri },
+            //    Pagos = new List<Pago>()
+            //    {
+            //        new Pago
+            //        {
+            //            Tipo = TipoPago.Alojado,
+            //            Monto = 250,
+            //            FechaPago = DateTime.Now,
+            //            Detalle = "El viejo era tacaño"
+            //        }
+            //    },
+            //    Servicios = new List<LineaServicio>()
+            //    {
+            //        CantBatas, CantAireAcond
+            //    }
+            //};
+
+            //context.Set<Alojamiento>().Add(Aloj1);
+
+            //Alojamiento Aloj2 = new Alojamiento
+            //{
+            //    DniResponsable = Mauri.ClienteId,
+            //    FechaReserva = DateTime.Now.AddDays(4),
+            //    FechaIngreso = null,
+            //    FechaEstimadaIngreso = DateTime.Now.AddDays(4),
+            //    FechaEstimadaEgreso = DateTime.Now.AddDays(7),
+            //    FechaEgreso = null,
+            //    MontoTotal = 250,
+            //    MontoDeuda = 125,
+            //    EstadoAlojamiento = EstadoAlojamiento.Reservado,
+            //    HabitacionId = 1,
+            //    Clientes = new List<Cliente>() { Milton, Mauri },
+            //    Pagos = new List<Pago>()
+            //    {
+            //        new Pago
+            //        {
+            //            Tipo = TipoPago.Deposito,
+            //            Monto = 125,
+            //            FechaPago = DateTime.Now,
+            //            Detalle = "Reservando"
+            //        }
+            //    },
+            //    Servicios = new List<LineaServicio>()
+            //    {
+
+            //    }
+            //};
+
+            //context.Set<Alojamiento>().Add(Aloj2);
+            //#endregion
+            //*/
 
             base.Seed(context);
         }

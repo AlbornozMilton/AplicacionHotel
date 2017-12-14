@@ -21,6 +21,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(c => c.Disponible)
                 .IsRequired();
 
+            this.HasRequired(c => c.Habitacion)
+                .WithMany(h => h.Cupos);
+
             //TIPO CUPO como?
         }
     }
