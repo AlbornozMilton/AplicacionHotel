@@ -76,7 +76,7 @@ namespace Dominio
         //    private set { this.iAlojamientos = value; }
         //}
 
-        public void OcuparCupos(int pCantS, int pCantD)
+        public void OcuparCupos(byte pCantS, byte pCantD)
         {
             IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
 
@@ -132,7 +132,7 @@ namespace Dominio
             }
         }
 
-        private int Capcidad()
+        public int Capcidad()
         {
             int lCapacidad = 0;
             foreach (var cupo in this.iCupos)

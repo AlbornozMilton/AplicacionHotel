@@ -36,7 +36,7 @@ namespace UI
                 foreach (var hab in listaHabDisponibles)
                 {
                     
-                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad, hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
+                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capcidad(), hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
                     
                 }
                 dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
