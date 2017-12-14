@@ -15,8 +15,8 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(h => h.HabitacionId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
-            this.Property(h => h.Capacidad)
-                .IsRequired();
+            //this.Property(h => h.Capacidad)
+            //    .IsRequired();
 
             this.Property(h => h.Planta)
                 .IsRequired();

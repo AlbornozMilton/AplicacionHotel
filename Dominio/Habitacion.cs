@@ -9,7 +9,7 @@ namespace Dominio
     public class Habitacion
     {
         private int iNumero;
-        private int iCapacidad;
+      //  private int iCapacidad;
         private int iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos;
@@ -23,7 +23,7 @@ namespace Dominio
         public Habitacion(int pNumero, int pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
         {
             this.iNumero = pNumero;
-            this.iCapacidad = pCapacidad;
+          //  this.iCapacidad = pCapacidad;
             this.iPlanta = pPlanta;
             this.iExclusiva = pExclusiva;
             this.iCupos = pCupos;
@@ -50,11 +50,11 @@ namespace Dominio
             get { return this.iNumero; }
             private set { this.iNumero = value; }
         }
-        public int Capacidad
-        {
-            get { return this.iCapacidad; }
-            private set { this.iCapacidad = value; }
-        }
+        //public int Capacidad
+        //{
+        //    get { return this.iCapacidad; }
+        //    private set { this.iCapacidad = value; }
+        //}
         public int Planta
         {
             get { return this.iPlanta; }
@@ -74,35 +74,6 @@ namespace Dominio
         //{
         //    get { return this.iAlojamientos; }
         //    private set { this.iAlojamientos = value; }
-        //}
-
-        //METODOS   
-        //public void OcuparCupos(int pCantS, int pCantD)
-        //{
-        //    foreach (var cupo in this.iCupos)
-        //    {
-        //        //detectar que las cantidades resutlantes no sean menor que cero con TRY-CATCH ??
-        //        switch (cupo.Tipo)
-        //        {
-        //            case (TipoCupo.simple):
-        //                //pCantS > 0, faltan cupos por cambiar su disponibilidad
-        //                if (pCantS > 0)
-        //                {
-        //                    cupo.Ocupar();
-        //                    pCantS--; 
-        //                }
-        //                break;
-
-        //            case (TipoCupo.doble):
-        //                //pCantD > 0, faltan cupos por cambiar su disponibilidad
-        //                if (pCantD > 0)
-        //                {
-        //                    cupo.Ocupar();
-        //                    pCantD--; 
-        //                }
-        //                break;
-        //        }
-        //    }
         //}
 
         public void OcuparCupos(int pCantS, int pCantD)
@@ -161,43 +132,24 @@ namespace Dominio
             }
         }
 
-        //public void DesocuparCupos(int pCantS, int pCantD)
-        //{
-        //    foreach (var cupo in this.iCupos)
-        //    {
-        //        //cupos.Disponible indica si un cupo esta libre
-        //        if (!(cupo.Disponible))
-        //        {
-        //            if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
-        //            {
-        //                cupo.Ocupar();
-        //                pCantS--;
-        //            }
-        //            else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
-        //            {
-        //                cupo.Desocupar();
-        //                pCantD--;
-        //            }
-        //        }
-        //    }
-        //}
-
-        private void CalcularCapcidad()
+        private int Capcidad()
         {
+            int lCapacidad = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible)
                 {
                     if (cupo.Tipo == TipoCupo.simple)
                     {
-                        this.iCapacidad++;
+                        lCapacidad ++;
                     }
                     else if (cupo.Tipo == TipoCupo.doble)
                     {
-                        this.iCapacidad += 2;
+                        lCapacidad += 2;
                     } 
                 }
             }
+            return lCapacidad;
         }
 
         public int CuposSimpleDisponibles()
