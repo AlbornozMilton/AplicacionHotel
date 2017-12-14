@@ -58,7 +58,7 @@ namespace UI
             TDisp.ShowDialog();
         }
         
-        public void cargar_Nro_Habitacion (int nroHab)
+        public void cargar_Nro_Habitacion (byte nroHab)
         {
             tbx_NroHab.Text = nroHab.ToString();
         }

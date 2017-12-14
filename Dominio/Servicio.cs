@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Servicio
     {
-        private int iCodServicio;
+        private byte iCodServicio;
         private string iNombe;
         private string iDetalle;
         private double iCostoBase;
@@ -19,7 +19,7 @@ namespace Dominio
 
         }
 
-        public Servicio(int pCodServicio, string pNombre, string pDetalle, double pCostoBase)
+        public Servicio(byte pCodServicio, string pNombre, string pDetalle, double pCostoBase)
         {
             this.iCodServicio = pCodServicio;
             this.iNombe = pNombre;
@@ -28,7 +28,7 @@ namespace Dominio
         }
 
         //--------------propiedades
-        public int ServicioId { get { return this.iCodServicio; } private set { this.iCodServicio = value; }  }
+        public byte ServicioId { get { return this.iCodServicio; } private set { this.iCodServicio = value; }  }
 
         public string Nombre
         {

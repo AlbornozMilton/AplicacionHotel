@@ -9,7 +9,7 @@ namespace Dominio
     public class LineaServicio
     {
         private int iCodLinServicio;
-        private int iCantidad;
+        private byte iCantidad;
         private double iCostoServicio;
         private DateTime iFechaServicio;
         private Servicio iServicio;
@@ -22,7 +22,7 @@ namespace Dominio
 
         }
 
-        public LineaServicio(int pId, int pCant, Servicio pServicio)
+        public LineaServicio(int pId, byte pCant, Servicio pServicio)
         {
             this.iCodLinServicio = pId;
             this.iCantidad = pCant;
@@ -32,7 +32,7 @@ namespace Dominio
 
         //------------------------Propiedades
         public int LineaServicioId { get { return this.iCodLinServicio; } private set { this.iCodLinServicio = value; } }
-        public int Cantidad
+        public byte Cantidad
         {
             get { return this.iCantidad; }
             private set { this.iCantidad = value; }

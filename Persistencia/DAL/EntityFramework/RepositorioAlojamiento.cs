@@ -38,6 +38,7 @@ namespace Persistencia.DAL.EntityFramework
             return alojamientos.ToList<Alojamiento>();
         }
 
+        // MODIFICAR PENSANDO EN HABITACION.ADD
         public void AddReserva(Alojamiento unAloj)
         {
             foreach (var cli in unAloj.Clientes)

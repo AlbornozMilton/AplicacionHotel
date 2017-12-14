@@ -29,6 +29,9 @@ namespace Dominio
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
+        public byte iCantCuposSimples;
+        public byte iCantCuposDobles;
+        public bool iExclusividad;
         private DateTime iFechaReserva;//AGREGAR SIGNO ?
         private DateTime iFechaEstimadaEgreso;//AGREGAR SIGNO ?
         private DateTime iFechaEstimadaIngreso;//AGREGAR SIGNO ?
@@ -135,6 +138,24 @@ namespace Dominio
         public double Deposito
         {
             get { return this.iMontoDeuda * 0.5; }
+        }
+
+        public byte CantCuposSimples
+        {
+            get { return this.iCantCuposSimples; }
+            private set { this.iCantCuposSimples = value; }
+        }
+
+        public byte CantCuposDobles
+        {
+            get { return this.iCantCuposDobles; }
+            private set { this.iCantCuposDobles = value; }
+        }
+
+        public bool Exclusividad
+        {
+            get { return this.iExclusividad; }
+            private set { this.iExclusividad = value; }
         }
 
         public EstadoAlojamiento EstadoAlojamiento

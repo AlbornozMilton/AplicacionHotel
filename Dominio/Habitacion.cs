@@ -8,9 +8,9 @@ namespace Dominio
 {
     public class Habitacion
     {
-        private int iNumero;
-        private int iCapacidad;
-        private int iPlanta;
+        private byte iNumero;
+      //  private int iCapacidad;
+        private byte iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos;
         //private List<Alojamiento> iAlojamientos;  ------>>>>>> AREGLAR HACE REFERENCIA CIRCULAR --> STACKOVERFLOW
@@ -20,10 +20,10 @@ namespace Dominio
         {
         }
 
-        public Habitacion(int pNumero, int pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
+        public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
         {
             this.iNumero = pNumero;
-            this.iCapacidad = pCapacidad;
+          //  this.iCapacidad = pCapacidad;
             this.iPlanta = pPlanta;
             this.iExclusiva = pExclusiva;
             this.iCupos = pCupos;
@@ -45,17 +45,17 @@ namespace Dominio
         //}
 
         //PROPIEDADES
-        public int HabitacionId
+        public byte HabitacionId
         {
             get { return this.iNumero; }
             private set { this.iNumero = value; }
         }
-        public int Capacidad
-        {
-            get { return this.iCapacidad; }
-            private set { this.iCapacidad = value; }
-        }
-        public int Planta
+        //public int Capacidad
+        //{
+        //    get { return this.iCapacidad; }
+        //    private set { this.iCapacidad = value; }
+        //}
+        public byte Planta
         {
             get { return this.iPlanta; }
             private set { this.iPlanta = value; }
@@ -76,36 +76,7 @@ namespace Dominio
         //    private set { this.iAlojamientos = value; }
         //}
 
-        //METODOS   
-        //public void OcuparCupos(int pCantS, int pCantD)
-        //{
-        //    foreach (var cupo in this.iCupos)
-        //    {
-        //        //detectar que las cantidades resutlantes no sean menor que cero con TRY-CATCH ??
-        //        switch (cupo.Tipo)
-        //        {
-        //            case (TipoCupo.simple):
-        //                //pCantS > 0, faltan cupos por cambiar su disponibilidad
-        //                if (pCantS > 0)
-        //                {
-        //                    cupo.Ocupar();
-        //                    pCantS--; 
-        //                }
-        //                break;
-
-        //            case (TipoCupo.doble):
-        //                //pCantD > 0, faltan cupos por cambiar su disponibilidad
-        //                if (pCantD > 0)
-        //                {
-        //                    cupo.Ocupar();
-        //                    pCantD--; 
-        //                }
-        //                break;
-        //        }
-        //    }
-        //}
-
-        public void OcuparCupos(int pCantS, int pCantD)
+        public void OcuparCupos(byte pCantS, byte pCantD)
         {
             IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
 
@@ -133,7 +104,7 @@ namespace Dominio
             }
         }
 
-        public void DescuparCupos(int pCantS, int pCantD)
+        public void DescuparCupos(byte pCantS, byte pCantD)
         {
             IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
 
@@ -161,48 +132,29 @@ namespace Dominio
             }
         }
 
-        //public void DesocuparCupos(int pCantS, int pCantD)
-        //{
-        //    foreach (var cupo in this.iCupos)
-        //    {
-        //        //cupos.Disponible indica si un cupo esta libre
-        //        if (!(cupo.Disponible))
-        //        {
-        //            if (pCantS > 0 && cupo.Tipo == TipoCupo.simple)
-        //            {
-        //                cupo.Ocupar();
-        //                pCantS--;
-        //            }
-        //            else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble)
-        //            {
-        //                cupo.Desocupar();
-        //                pCantD--;
-        //            }
-        //        }
-        //    }
-        //}
-
-        private void CalcularCapcidad()
+        public byte Capcidad()
         {
+            byte lCapacidad = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible)
                 {
                     if (cupo.Tipo == TipoCupo.simple)
                     {
-                        this.iCapacidad++;
+                        lCapacidad ++;
                     }
                     else if (cupo.Tipo == TipoCupo.doble)
                     {
-                        this.iCapacidad += 2;
+                        lCapacidad += 2;
                     } 
                 }
             }
+            return lCapacidad;
         }
 
-        public int CuposSimpleDisponibles()
+        public byte CuposSimpleDisponibles()
         {
-            int resultado = 0;
+            byte resultado = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.simple))
@@ -213,9 +165,9 @@ namespace Dominio
             return resultado;
         }
 
-        public int CuposDoblesDisponibles()
+        public byte CuposDoblesDisponibles()
         {
-            int resultado = 0;
+            byte resultado = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.doble))

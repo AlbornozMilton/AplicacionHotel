@@ -8,7 +8,7 @@ namespace Persistencia.Domain
 {
     public class Servicio
     {
-        public int ServicioId { get; set; }
+        public byte ServicioId { get; set; }
 
         public string Nombre { get; set; }
 

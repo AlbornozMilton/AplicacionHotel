@@ -36,7 +36,7 @@ namespace UI
                 foreach (var hab in listaHabDisponibles)
                 {
                     
-                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad, hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
+                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capcidad(), hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
                     
                 }
                 dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
@@ -50,7 +50,7 @@ namespace UI
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
-            this.FormPadre.cargar_Nro_Habitacion(Convert.ToInt32(Fila[0].Value));
+            this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
             this.FormPadre.iHabitacionSeccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
             this.FormPadre.iFechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Value);
             this.FormPadre.iFechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Value);

@@ -88,45 +88,11 @@ namespace Persistencia.DAL.EntityFramework
 
             #endregion
 
-            /*
-                #region Cupos
-                Cupo cupo1 = new Cupo
-                {
-                    Tipo = TipoCupo.doble,
-                    Disponible = true
-                };
-
-                Cupo cupo2 = new Cupo
-                {
-                    Tipo = TipoCupo.simple,
-                    Disponible = true
-                };
-
-                Cupo cupo3 = new Cupo
-                {
-                    Tipo = TipoCupo.simple,
-                    Disponible = true
-                };
-
-                Cupo cupo4 = new Cupo
-                {
-                    Tipo = TipoCupo.doble,
-                    Disponible = true
-                };
-
-                Cupo cupo5 = new Cupo
-                {
-                    Tipo = TipoCupo.simple,
-                    Disponible = true
-                };
-
-                #endregion
-            */
             #region Habitaciones y Cupos
             Habitacion hab1 = new Habitacion()
             {
                 HabitacionId = 1,
-                Capacidad = 2, // 2 CAMAS
+                //Capacidad = 2, // 2 CAMAS
                 Planta = 0,// planta baja
                 Exclusiva = false,
                 Cupos = new List<Cupo>()
@@ -148,7 +114,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab2 = new Habitacion()
             {
                 HabitacionId = 2,
-                Capacidad = 4, // 4 CAMAS
+                //Capacidad = 4, // 4 CAMAS
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>() 
@@ -175,7 +141,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab3 = new Habitacion()
             {
                 HabitacionId = 3,
-                Capacidad = 3,
+                //Capacidad = 3,
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -202,7 +168,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab4 = new Habitacion()
             {
                 HabitacionId = 4,
-                Capacidad = 3, // 3 CAMAS
+                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -229,7 +195,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab5 = new Habitacion()
             {
                 HabitacionId = 5,
-                Capacidad = 3, // 3 CAMAS
+                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -251,7 +217,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab6 = new Habitacion()
             {
                 HabitacionId = 6,
-                Capacidad = 3, // 3 CAMAS
+                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -273,7 +239,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab7 = new Habitacion()
             {
                 HabitacionId = 7,
-                Capacidad = 3, // 3 CAMAS
+                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -295,7 +261,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab8 = new Habitacion()
             {
                 HabitacionId = 8,
-                Capacidad = 3, // 3 CAMAS
+                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -317,7 +283,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab9 = new Habitacion()
             {
                 HabitacionId = 9,
-                Capacidad = 3,
+                //Capacidad = 3,
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -344,7 +310,7 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab10 = new Habitacion()
             {
                 HabitacionId = 10,
-                Capacidad = 3, // 3 CAMAS
+                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -373,7 +339,6 @@ namespace Persistencia.DAL.EntityFramework
             #region Servicios
             Servicio Bata = new Servicio
             {
-                ServicioId = 1000,
                 Nombre = "Bata",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -382,7 +347,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio AireAcondicionado = new Servicio
             {
-                ServicioId = 1001,
                 Nombre = "Aire Acondicionado",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
@@ -392,7 +356,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio SeguroDeSalud = new Servicio
             {
-                ServicioId = 1002,
                 Nombre = "Seguridad Medica",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -401,7 +364,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio Calefaccion = new Servicio
             {
-                ServicioId = 1003,
                 Nombre = "Calefacción",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
@@ -410,7 +372,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio RecargoPorFumar = new Servicio
             {
-                ServicioId = 1004,
                 Nombre = "Recargo por Fumar",
                 Detalle = "El costo de este servicio por estadía",
                 CostoBase = 50
@@ -510,6 +471,7 @@ namespace Persistencia.DAL.EntityFramework
             };
             #endregion
 
+            /*
             #region Alojamientos
             Alojamiento Aloj1 = new Alojamiento
             {
@@ -521,8 +483,10 @@ namespace Persistencia.DAL.EntityFramework
                 FechaEgreso = null,
                 MontoTotal = 250,
                 MontoDeuda = 0,
+                CantCuposDobles = 1,
+                CantCuposSimples = 2,
                 EstadoAlojamiento = EstadoAlojamiento.Alojado,
-                HabitacionId = 2,
+                HabitacionId = 5,
                 Clientes = new List<Cliente>() { Milton, Mauri },
                 Pagos = new List<Pago>()
                 {
@@ -570,9 +534,10 @@ namespace Persistencia.DAL.EntityFramework
                    
                 }
             };
-
+            
             context.Set<Alojamiento>().Add(Aloj2);
             #endregion
+            */
 
             base.Seed(context);
         }
