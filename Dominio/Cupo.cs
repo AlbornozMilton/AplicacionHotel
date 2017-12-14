@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Cupo
     {
-        private int iCodCupo;
+        private byte iCodCupo;
         private TipoCupo iTipoCupo;
         private bool iDisponible;
         //private Habitacion iHabitacion;
@@ -18,7 +18,7 @@ namespace Dominio
         {
         }
 
-        public Cupo(int pCodCupo,TipoCupo pTipoCupo, bool pDisponible)
+        public Cupo(byte pCodCupo,TipoCupo pTipoCupo, bool pDisponible)
         {
             this.iCodCupo = pCodCupo;
             this.iTipoCupo = pTipoCupo;
@@ -26,7 +26,7 @@ namespace Dominio
         }
 
         //----------------------------PROPIEDADES
-        public int CupoId
+        public byte CupoId
         {
             get { return this.iCodCupo; }
             private set { this.iCodCupo = value; }

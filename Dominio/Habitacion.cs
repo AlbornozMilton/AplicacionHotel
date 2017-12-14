@@ -8,9 +8,9 @@ namespace Dominio
 {
     public class Habitacion
     {
-        private int iNumero;
+        private byte iNumero;
       //  private int iCapacidad;
-        private int iPlanta;
+        private byte iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos;
         //private List<Alojamiento> iAlojamientos;  ------>>>>>> AREGLAR HACE REFERENCIA CIRCULAR --> STACKOVERFLOW
@@ -20,7 +20,7 @@ namespace Dominio
         {
         }
 
-        public Habitacion(int pNumero, int pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
+        public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
         {
             this.iNumero = pNumero;
           //  this.iCapacidad = pCapacidad;
@@ -45,7 +45,7 @@ namespace Dominio
         //}
 
         //PROPIEDADES
-        public int HabitacionId
+        public byte HabitacionId
         {
             get { return this.iNumero; }
             private set { this.iNumero = value; }
@@ -55,7 +55,7 @@ namespace Dominio
         //    get { return this.iCapacidad; }
         //    private set { this.iCapacidad = value; }
         //}
-        public int Planta
+        public byte Planta
         {
             get { return this.iPlanta; }
             private set { this.iPlanta = value; }
@@ -104,7 +104,7 @@ namespace Dominio
             }
         }
 
-        public void DescuparCupos(int pCantS, int pCantD)
+        public void DescuparCupos(byte pCantS, byte pCantD)
         {
             IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
 
@@ -132,9 +132,9 @@ namespace Dominio
             }
         }
 
-        public int Capcidad()
+        public byte Capcidad()
         {
-            int lCapacidad = 0;
+            byte lCapacidad = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible)
@@ -152,9 +152,9 @@ namespace Dominio
             return lCapacidad;
         }
 
-        public int CuposSimpleDisponibles()
+        public byte CuposSimpleDisponibles()
         {
-            int resultado = 0;
+            byte resultado = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.simple))
@@ -165,9 +165,9 @@ namespace Dominio
             return resultado;
         }
 
-        public int CuposDoblesDisponibles()
+        public byte CuposDoblesDisponibles()
         {
-            int resultado = 0;
+            byte resultado = 0;
             foreach (var cupo in this.iCupos)
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.doble))
