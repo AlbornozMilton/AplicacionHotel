@@ -17,6 +17,9 @@ namespace Persistencia.Domain
         public DateTime? FechaEgreso { get; set; }
         public double MontoTotal { get; set; }
         public double MontoDeuda { get; set; }
+        public byte CantCuposSimples { get; set; }
+        public byte CantCuposDobles { get; set; }
+        public bool Exclusividad { get; set; }
         public EstadoAlojamiento EstadoAlojamiento { get; set; }
 
         //-------------------- Relaciones ---------------------------------//
