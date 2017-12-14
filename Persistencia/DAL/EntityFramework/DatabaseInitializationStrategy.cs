@@ -339,7 +339,6 @@ namespace Persistencia.DAL.EntityFramework
             #region Servicios
             Servicio Bata = new Servicio
             {
-                ServicioId = 1000,
                 Nombre = "Bata",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -348,7 +347,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio AireAcondicionado = new Servicio
             {
-                ServicioId = 1001,
                 Nombre = "Aire Acondicionado",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
@@ -358,7 +356,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio SeguroDeSalud = new Servicio
             {
-                ServicioId = 1002,
                 Nombre = "Seguridad Medica",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -367,7 +364,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio Calefaccion = new Servicio
             {
-                ServicioId = 1003,
                 Nombre = "Calefacción",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
@@ -376,7 +372,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio RecargoPorFumar = new Servicio
             {
-                ServicioId = 1004,
                 Nombre = "Recargo por Fumar",
                 Detalle = "El costo de este servicio por estadía",
                 CostoBase = 50
