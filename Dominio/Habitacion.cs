@@ -192,7 +192,7 @@ namespace Dominio
             {
                 if (cupo.Disponible && (cupo.Tipo == TipoCupo.doble))
                 {
-                    resultado =+ 2;
+                    resultado ++ ;
                 }
             }
             return resultado;

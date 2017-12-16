@@ -57,5 +57,9 @@ namespace UI
             Close();
         }
 
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
