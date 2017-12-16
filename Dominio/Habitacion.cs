@@ -76,30 +76,50 @@ namespace Dominio
         //    private set { this.iAlojamientos = value; }
         //}
 
+        //public void OcuparCupos(byte pCantS, byte pCantD)
+        //{
+        //    IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
+
+        //    while ((pCantS > 0) || (pCantD > 0))
+        //    {
+        //        if (cupos.Current != null) // PUNTERO AL ELEMENTO ACTUAL
+        //        {
+        //            if (pCantS > 0 && cupos.Current.Tipo == TipoCupo.simple)
+        //            {
+        //                cupos.Current.Ocupar(); // TRATAR ELEMENTO ACTUAL
+        //                pCantS--;
+        //                cupos.MoveNext(); // MOVER PUNTERO A PROXIMO ELEMENTO
+        //            }
+        //            else if (pCantD > 0 && cupos.Current.Tipo == TipoCupo.doble)
+        //            {
+        //                cupos.Current.Ocupar();
+        //                pCantD--;
+        //                cupos.MoveNext();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("CantS y CantD no coincide con los cupos a Ocupar");
+        //        }
+        //    }
+        //}
+
         public void OcuparCupos(byte pCantS, byte pCantD)
         {
-            IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
-
-            while ((pCantS > 0) || (pCantD > 0))
+            foreach (var cupo in this.iCupos)
             {
-                if (cupos.Current != null) // PUNTERO AL ELEMENTO ACTUAL
+                if ((pCantS > 0) || (pCantD > 0))
                 {
-                    if (pCantS > 0 && cupos.Current.Tipo == TipoCupo.simple)
+                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && cupo.Disponible )
                     {
-                        cupos.Current.Ocupar(); // TRATAR ELEMENTO ACTUAL
-                        pCantS--;
-                        cupos.MoveNext(); // MOVER PUNTERO A PROXIMO ELEMENTO
+                        cupo.Ocupar(); // TRATAR ELEMENTO ACTUAL
+                        pCantS--;                            
                     }
-                    else if (pCantD > 0 && cupos.Current.Tipo == TipoCupo.doble)
+                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble && cupo.Disponible)
                     {
-                        cupos.Current.Ocupar();
+                        cupo.Ocupar();
                         pCantD--;
-                        cupos.MoveNext();
                     }
-                }
-                else
-                {
-                    throw new Exception("CantS y CantD no coincide con los cupos a Ocupar");
                 }
             }
         }

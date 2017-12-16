@@ -46,6 +46,21 @@ namespace Dominio
         {
 
         }
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
+        {
+            this.Clientes = new List<Cliente>();
+            //Usado cuando se confirma reserva
+            this.DniResponsable = unClienteResp.ClienteId;
+            this.Habitacion = unaHab;
+            this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
+            this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
+            this.CantCuposSimples = cantCuposSimples;
+            this.CantCuposDobles = cantCuposDobles;
+            this.Exclusividad = ck_Exclusividad;
+            this.Clientes.Add(unClienteResp);
+            this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
+            this.FechaReserva = DateTime.Now;
+        }
 
         public Alojamiento(Habitacion unaHab, int unId, int unDni, double unMontoT, EstadoAlojamiento unEstado, DateTime unaFecha)//Arreglar este constructor
         {
@@ -56,19 +71,6 @@ namespace Dominio
             this.iMontoTotal = unMontoT;
             this.iFechaEgreso = unaFecha;
 
-        }
-        
-        public Alojamiento (Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso)
-        {
-            this.Clientes = new List<Cliente>();
-            //Usado cuando se confirma reserva
-            this.DniResponsable = unClienteResp.ClienteId;
-            this.Habitacion = unaHab;
-            this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
-            this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.Clientes.Add(unClienteResp);
-            this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
-            this.FechaReserva = DateTime.Now;
         }
 
         public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)

@@ -166,7 +166,9 @@ namespace Dominio
                                 }
                                 else
                                 {
-                                    hab.OcuparCupos(aloj.CantCuposSimples, aloj.CantCuposDobles); 
+                                    listaHabitaciones.Remove(hab);
+                                    hab.OcuparCupos(aloj.CantCuposSimples, aloj.CantCuposDobles);
+                                    listaHabitaciones.Add(hab);
                                 }
                             }
                         }
