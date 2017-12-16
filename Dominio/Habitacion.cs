@@ -9,11 +9,9 @@ namespace Dominio
     public class Habitacion
     {
         private byte iNumero;
-      //  private int iCapacidad;
         private byte iPlanta;
         private bool iExclusiva;
         private List<Cupo> iCupos;
-        //private List<Alojamiento> iAlojamientos;  ------>>>>>> AREGLAR HACE REFERENCIA CIRCULAR --> STACKOVERFLOW
 
         //CONSTRUCTORES
         public Habitacion()
@@ -23,7 +21,6 @@ namespace Dominio
         public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
         {
             this.iNumero = pNumero;
-          //  this.iCapacidad = pCapacidad;
             this.iPlanta = pPlanta;
             this.iExclusiva = pExclusiva;
             this.iCupos = pCupos;
@@ -50,11 +47,7 @@ namespace Dominio
             get { return this.iNumero; }
             private set { this.iNumero = value; }
         }
-        //public int Capacidad
-        //{
-        //    get { return this.iCapacidad; }
-        //    private set { this.iCapacidad = value; }
-        //}
+        
         public byte Planta
         {
             get { return this.iPlanta; }
@@ -70,40 +63,8 @@ namespace Dominio
             get { return this.iCupos; }
             private set { this.iCupos = value; }
         }
-        //public List<Alojamiento> Alojamientos
-        //{
-        //    get { return this.iAlojamientos; }
-        //    private set { this.iAlojamientos = value; }
-        //}
 
-        //public void OcuparCupos(byte pCantS, byte pCantD)
-        //{
-        //    IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
-
-        //    while ((pCantS > 0) || (pCantD > 0))
-        //    {
-        //        if (cupos.Current != null) // PUNTERO AL ELEMENTO ACTUAL
-        //        {
-        //            if (pCantS > 0 && cupos.Current.Tipo == TipoCupo.simple)
-        //            {
-        //                cupos.Current.Ocupar(); // TRATAR ELEMENTO ACTUAL
-        //                pCantS--;
-        //                cupos.MoveNext(); // MOVER PUNTERO A PROXIMO ELEMENTO
-        //            }
-        //            else if (pCantD > 0 && cupos.Current.Tipo == TipoCupo.doble)
-        //            {
-        //                cupos.Current.Ocupar();
-        //                pCantD--;
-        //                cupos.MoveNext();
-        //            }
-        //        }
-        //        else
-        //        {
-        //            throw new Exception("CantS y CantD no coincide con los cupos a Ocupar");
-        //        }
-        //    }
-        //}
-
+       
         public void OcuparCupos(byte pCantS, byte pCantD)
         {
             foreach (var cupo in this.iCupos)
@@ -112,7 +73,7 @@ namespace Dominio
                 {
                     if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && cupo.Disponible )
                     {
-                        cupo.Ocupar(); // TRATAR ELEMENTO ACTUAL
+                        cupo.Ocupar(); 
                         pCantS--;                            
                     }
                     else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble && cupo.Disponible)
@@ -124,35 +85,27 @@ namespace Dominio
             }
         }
 
-        public void DescuparCupos(byte pCantS, byte pCantD)
+        public void DesocuparCupos(byte pCantS, byte pCantD)
         {
-            IEnumerator<Cupo> cupos = this.iCupos.GetEnumerator(); //"ENUMENATOR" ES COMO UN PUNTERO PARA RECORRER UN ENUMERABLE
-
-            while ((pCantS > 0) || (pCantD > 0))
+            foreach (var cupo in this.iCupos)
             {
-                if (cupos.Current != null) // PUNTERO AL ELEMENTO ACTUAL
+                if ((pCantS > 0) || (pCantD > 0))
                 {
-                    if (pCantS > 0 && cupos.Current.Tipo == TipoCupo.simple)
+                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && !cupo.Disponible)
                     {
-                        cupos.Current.Desocupar(); // TRATAR ELEMENTO ACTUAL
+                        cupo.Desocupar(); 
                         pCantS--;
-                        cupos.MoveNext(); // MOVER PUNTERO A PROXIMO ELEMENTO
                     }
-                    else if (pCantD > 0 && cupos.Current.Tipo == TipoCupo.doble)
+                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble && !cupo.Disponible)
                     {
-                        cupos.Current.Desocupar();
+                        cupo.Desocupar();
                         pCantD--;
-                        cupos.MoveNext();
                     }
-                }
-                else
-                {
-                    throw new Exception("CantS y CantD no coincide con los cupos a Desocupar");
                 }
             }
         }
 
-        public byte Capcidad()
+        public byte Capacidad()
         {
             byte lCapacidad = 0;
             foreach (var cupo in this.iCupos)

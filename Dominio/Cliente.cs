@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Cliente
+    public class Cliente:IEquatable<Cliente>
     {
         private int iDni;
         private string iNombre;
@@ -63,8 +63,15 @@ namespace Dominio
         public List<Alojamiento> Alojamientos { get { return this.iAlojamientos; } private set { this.iAlojamientos = value; } }
 
         //-------------------------------------Metodos
-
-
+        /// <summary>
+        /// Usado para saber si un Cliente existe es una Lista determinada, o bien si un Cliente es iguala otro.
+        /// </summary>
+        /// <param name="other">Ciente a comparar</param>
+        /// <returns></returns>
+        bool IEquatable<Cliente>.Equals(Cliente other)
+        {
+            return (this.ClienteId.GetHashCode() == other.ClienteId.GetHashCode());
+        }
 
 
     }
