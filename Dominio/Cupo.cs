@@ -11,7 +11,6 @@ namespace Dominio
         private byte iCodCupo;
         private TipoCupo iTipoCupo;
         private bool iDisponible;
-        //private Habitacion iHabitacion;
 
         //--------------------------CONSTRUCTOR
         public Cupo()
@@ -41,11 +40,6 @@ namespace Dominio
             get { return this.iDisponible; }
             private set { this.iDisponible = value; }
         }
-        //public Habitacion Habitacion
-        //{
-        //    get { return this.iHabitacion; }
-        //    private set { this.iHabitacion = value; }
-        //}
 
         //------------------------------METODOS
         /// <summary>
