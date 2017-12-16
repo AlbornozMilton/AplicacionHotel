@@ -18,29 +18,9 @@ namespace UI
             textBox2.Text = Convert.ToString(DateTime.Today.Date);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public void cargar_Nro_Habitacion(byte nroHab)
         {
-
-        }
-
-        private void AltaAlojamientoSinReserva_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Close();
+            tbx_NroHab.Text = nroHab.ToString();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -48,15 +28,16 @@ namespace UI
             //textBox2.Text = "HOLAAAA";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Cancelar_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
-            TablaDisp.ShowDialog();
+            Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-
+            TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
+            TablaDisp.FormPadre = this;
+            TablaDisp.ShowDialog();
         }
     }
 }

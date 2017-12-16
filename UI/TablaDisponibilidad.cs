@@ -14,7 +14,7 @@ namespace UI
     public partial class TablaDisponibilidad : Form
     {
         ControladorHabitacion iControladorHab = new ControladorHabitacion();
-        public AltaReservaAlojamiento FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
+        public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
         public TablaDisponibilidad()
         {
             InitializeComponent();
