@@ -45,13 +45,13 @@ namespace Dominio
             {
                 case TipoPago.Deposito:
                     {
-                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Reservado)
-                        {
-                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        if (pAlojamiento.ExistePagoAlojamiento(pPago))
                         {
                             throw new Exception("El Tipo de Pago ya existe");
+                        }
+                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Reservado)
+                        {
+                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
                         }
                         else if (pPago.Monto != pAlojamiento.Deposito)
                         {
@@ -62,13 +62,13 @@ namespace Dominio
                     break;
                 case TipoPago.Alojado:
                     {
-                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Alojado)
-                        {
-                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        if (pAlojamiento.ExistePagoAlojamiento(pPago))
                         {
                             throw new Exception("El Tipo de Pago ya existe");
+                        }
+                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Alojado)
+                        {
+                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
                         }
                         else if (pPago.Monto != pAlojamiento.MontoDeuda)
                         {
@@ -79,13 +79,13 @@ namespace Dominio
                     break;
                 case TipoPago.Servicios:
                     {
-                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
-                        {
-                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        if(pAlojamiento.ExistePagoAlojamiento(pPago))
                         {
                             throw new Exception("El Tipo de Pago ya existe");
+                        }
+                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
+                        {
+                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
                         }
                         else if (pPago.Monto > pAlojamiento.MontoDeuda)
                         {
@@ -96,13 +96,13 @@ namespace Dominio
                     break;
                 case TipoPago.Deuda:
                     {
-                        if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
-                        {
-                            throw new Exception("El Tipo de Pago elegido no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pAlojamiento.ExistePagoAlojamiento(pPago))
+                        if (pAlojamiento.ExistePagoAlojamiento(pPago))
                         {
                             throw new Exception("El Tipo de Pago elegido ya existe");
+                        }
+                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
+                        {
+                            throw new Exception("El Tipo de Pago elegido no corresponde con el Estado de Alojamiento");
                         }
                         else if (pAlojamiento.ExistePagoAlojamiento(new Pago(TipoPago.Servicios, pPago.Monto, "")))
                         {
@@ -184,6 +184,16 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddPago(e,e.Pagos[0]);
             iUoW.Complete();
             iUoW.Dispose();
+        }
+
+        public void AgregarAcompañante (Alojamiento unAloj, Cliente unCliente)
+        {
+            if (unAloj.Clientes.Contains(unCliente))
+            {
+                throw new Exception("Cliente ya esta agregado al Alojamiento");
+            }
+
+            unAloj.Clientes.Add(unCliente);
         }
     }
 }

@@ -51,18 +51,9 @@ namespace Persistencia.DAL.EntityFramework
 
         public void AddPago(Alojamiento unAloj, Pago pPago)
         {
-            //foreach (var cli in unAloj.Clientes)
-            //{
-            //    iDbContext.Clientes.Attach(cli);
-            //}
-            //iDbContext.Habitaciones.Attach(unAloj.Habitacion);
-            //iDbContext.Alojamientos.Attach(unAloj);
-            //iDbContext.Pagos.Add(unAloj.Pagos[0]);
-
             Alojamiento lAuxAloj = iDbContext.Alojamientos.Include("Pagos").Where(a => a.AlojamientoId == unAloj.AlojamientoId).First();
-            //  iDbContext.Alojamientos.Attach(lAuxAloj);
+
             lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
-            //var lAuxAloj = listaAux
 
             if (lAuxAloj.Pagos.Count == 0)
             {
