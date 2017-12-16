@@ -29,9 +29,9 @@ namespace Dominio
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
-        public byte iCantCuposSimples;
-        public byte iCantCuposDobles;
-        public bool iExclusividad;
+        private byte iCantCuposSimples;
+        private byte iCantCuposDobles;
+        private bool iExclusividad;
         private DateTime iFechaReserva;//AGREGAR SIGNO ?
         private DateTime iFechaEstimadaEgreso;//AGREGAR SIGNO ?
         private DateTime iFechaEstimadaIngreso;//AGREGAR SIGNO ?

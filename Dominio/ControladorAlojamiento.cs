@@ -16,7 +16,7 @@ namespace Dominio
         {
             IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
             List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
-            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            foreach (var aloj in listaEnum)
             {
                 listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
             }

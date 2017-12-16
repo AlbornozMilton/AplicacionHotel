@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
     public partial class AltaAlojamientoSinReserva : Form
     {
+        public Alojamiento Alojamiento { get; set; }
+
         public AltaAlojamientoSinReserva()
         {
             InitializeComponent();
@@ -35,8 +38,9 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
-            TablaDisp.FormPadre = this;
+            TablaDisponibilidad TablaDisp = new TablaDisponibilidad(this.Alojamiento);
+
+            //TablaDisp.FormPadre = this;
             TablaDisp.ShowDialog();
         }
     }
