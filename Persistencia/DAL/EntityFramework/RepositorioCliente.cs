@@ -27,5 +27,17 @@ namespace Persistencia.DAL.EntityFramework
 
             return clientes.ToList<Cliente>();
         }
+
+        public override Cliente Get(int pId)
+        {
+            if (iDbContext.Clientes.Find(pId) == null)
+            {
+                throw new Exception("Cliente No Existe");
+            }
+            else
+            {
+                return (iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio").Where(c => c.ClienteId == pId).First());
+            }
+        }
     }
 }

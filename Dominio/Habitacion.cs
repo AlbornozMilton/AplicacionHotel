@@ -150,5 +150,10 @@ namespace Dominio
             }
             return resultado;
         }
+
+        public void SetExclusividad(bool pExclusividad)
+        {
+            this.iExclusiva = pExclusividad;
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace UI
         {
             this.iNuevoAlojamiento = new Alojamiento(iHabSeleccionada, iClienteResponsable, iFechaIni, iFechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), ck_Exclusividad.Checked);
             decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value};
-            iNuevoAlojamiento.CalcularCostoBaseReserva(contadores);
+            iNuevoAlojamiento.CalcularCostoBase(contadores);
             txb_CostoBase.Text = iNuevoAlojamiento.MontoTotal.ToString();
             txb_Deposito.Text = iNuevoAlojamiento.Deposito.ToString();
             btn_Aceptar.Enabled = true;

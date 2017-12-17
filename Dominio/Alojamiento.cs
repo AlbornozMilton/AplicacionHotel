@@ -66,12 +66,12 @@ namespace Dominio
         /// <summary>
         /// Contructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
         {
             this.Clientes = new List<Cliente>();
             this.DniResponsable = unClienteResp.ClienteId;
             this.Habitacion = unaHab;
-            this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
+            this.FechaIngreso = unaFechaIngreso;
             this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
             this.CantCuposSimples = cantCuposSimples;
             this.CantCuposDobles = cantCuposDobles;
@@ -202,7 +202,7 @@ namespace Dominio
         /// Calcular Costo Base de un Alojamiento en momentos de Reserva
         /// </summary>
         /// <param name="pContadores">Contadores obtenidos desde la UI</param>
-        public double CalcularCostoBaseReserva(decimal[] pContadores)
+        public double CalcularCostoBase(decimal[] pContadores)
         {
             //bool lExclusividad = this.iHabitacion.Exclusiva;
             List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
@@ -221,14 +221,14 @@ namespace Dominio
         /// <summary>
         /// Calcular Costo Base de un Alojamiento en momentos de Alta sin Reserva
         /// </summary>
-        public double CalcularCostoBaseReserva()
+        public double CalcularCostoBase()
         {
             //bool lExclusividad = this.iHabitacion.Exclusiva;
             //List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
             double costoBase = 0;
             foreach (var cliente in this.Clientes)
             {
-                costoBase = cliente.ObtenerSuPrecioTarifa(this.iHabitacion.Exclusiva);
+                costoBase += cliente.ObtenerSuPrecioTarifa(this.iHabitacion.Exclusiva);
             }
 
             //se utiliza FechaEstimadaEgreso y FechaIngreso
