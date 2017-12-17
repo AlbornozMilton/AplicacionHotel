@@ -13,12 +13,17 @@ namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
+        public Habitacion iHabSeleccionada;
+        public DateTime iFechaIni;
+        public DateTime iFechaFin;
+
         ControladorHabitacion iControladorHab = new ControladorHabitacion();
         public AltaReservaAlojamiento FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
         public TablaDisponibilidad()
         {
             InitializeComponent();
         }
+
         public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             InitializeComponent();
@@ -50,10 +55,10 @@ namespace UI
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
-            this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
-            this.FormPadre.iHabitacionSeccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
-            this.FormPadre.iFechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Value);
-            this.FormPadre.iFechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Value);
+            //this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
+            this.iHabSeleccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
+            this.iFechaIni = Convert.ToDateTime(dtp_fechaDesde.Value);
+            this.iFechaFin = Convert.ToDateTime(dtp_fechaHasta.Value);
             Close();
         }
 

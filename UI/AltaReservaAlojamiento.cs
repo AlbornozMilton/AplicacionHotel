@@ -13,20 +13,15 @@ namespace UI
 {
     public partial class AltaReservaAlojamiento : Form
     {
-        public Habitacion iHabitacionSeccionada = new Habitacion();
-        public DateTime iFechaEstimadaIngreso = new DateTime();
-        public DateTime iFechaEstimadaEgreso = new DateTime();
-        public Cliente iClienteResponsable = new Cliente();
-        Alojamiento NuevoAlojamiento;
+        public Habitacion iHabSeleccionada;
+        public DateTime iFechaIni;
+        public DateTime iFechaFin;
+        public Cliente iClienteResponsable;
+        Alojamiento iNuevoAlojamiento;
 
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -53,42 +48,37 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value,dtp_fechaHasta.Value);
-            TDisp.FormPadre = this; //Almacena esta WinForm como la padre de la TDisp con el atributo Opener
-            TDisp.ShowDialog();
-        }
-        
-        public void cargar_Nro_Habitacion (byte nroHab)
-        {
-            tbx_NroHab.Text = nroHab.ToString();
-        }
-
-        public void agregar_Cliente (DataGridViewCellCollection fila)
-        {
-            dGV_ClienteResponsable.Rows.Add(fila[0].Value, fila[1].Value, fila[2].Value, fila[3].Value);
+            TablaDisponibilidad TablaDisp = new TablaDisponibilidad(dtp_fechaDesde.Value,dtp_fechaHasta.Value);
+            TablaDisp.ShowDialog();
+            tbx_NroHab.Text = Convert.ToString(TablaDisp.iHabSeleccionada.HabitacionId);
+            this.iHabSeleccionada = TablaDisp.iHabSeleccionada;
+            this.iFechaIni = TablaDisp.iFechaIni;
+            this.iFechaFin = TablaDisp.iFechaFin;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
-            BuscarClienteForm.FormPadre = this;
             BuscarClienteForm.ShowDialog();
+            this.iClienteResponsable = BuscarClienteForm.iClienteSeleccionado;
+            dGV_ClienteResponsable.Rows.Clear();
+            dGV_ClienteResponsable.Rows.Add(iClienteResponsable.ClienteId, iClienteResponsable.Apellido, iClienteResponsable.Nombre, iClienteResponsable.Telefono);
         }
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            NuevoAlojamiento = new Alojamiento(iHabitacionSeccionada, iClienteResponsable, iFechaEstimadaIngreso, iFechaEstimadaEgreso, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), ck_Exclusividad.Checked);
+            this.iNuevoAlojamiento = new Alojamiento(iHabSeleccionada, iClienteResponsable, iFechaIni, iFechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), ck_Exclusividad.Checked);
             decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value};
-            NuevoAlojamiento.CalcularCostoBaseReserva(contadores);
-            //NuevoAlojamiento.CalcularCostoBaseReserva(Convert.ToInt32(contador_Titular.Value), Convert.ToInt32(contador_Convenio.Value), Convert.ToInt32(contador_Exceptuado.Value), Convert.ToInt32(contador_Directo.Value), Convert.ToInt32(contador_NoDirecto.Value));
-            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-            txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
+            iNuevoAlojamiento.CalcularCostoBaseReserva(contadores);
+            txb_CostoBase.Text = iNuevoAlojamiento.MontoTotal.ToString();
+            txb_Deposito.Text = iNuevoAlojamiento.Deposito.ToString();
             btn_Aceptar.Enabled = true;
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
+            new ControladorAlojamiento().RegistrarReservaAloj(this.iNuevoAlojamiento);
+            MessageBox.Show("Reserva Registrada con Exito");
             Close();
         }
     }

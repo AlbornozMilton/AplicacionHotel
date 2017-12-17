@@ -46,10 +46,20 @@ namespace Dominio
         {
 
         }
+        /// <summary>
+        /// /// Contructor para el Alta Reserva Alojamiento
+        /// </summary>
+        /// <param name="unaHab"></param>
+        /// <param name="unClienteResp"></param>
+        /// <param name="unaFechaEstimadaIngreso"></param>
+        /// <param name="unaFechaEstimadaEgreso"></param>
+        /// <param name="cantCuposSimples"></param>
+        /// <param name="cantCuposDobles"></param>
+        /// <param name="ck_Exclusividad"></param>
+
         public Alojamiento(Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
         {
             this.Clientes = new List<Cliente>();
-            //Usado cuando se confirma reserva
             this.DniResponsable = unClienteResp.ClienteId;
             this.Habitacion = unaHab;
             this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
@@ -61,24 +71,53 @@ namespace Dominio
             this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
             this.FechaReserva = DateTime.Now;
         }
-
-        public Alojamiento(Habitacion unaHab, int unId, int unDni, double unMontoT, EstadoAlojamiento unEstado, DateTime unaFecha)//Arreglar este constructor
+        /// <summary>
+        /// Contructor para el Alta Alojamiento sin Reserva
+        /// </summary>
+        /// <param name="unaHab"></param>
+        /// <param name="unClienteResp"></param>
+        /// <param name="listaAcompañantes"></param>
+        /// <param name="unaFechaEstimadaIngreso"></param>
+        /// <param name="unaFechaEstimadaEgreso"></param>
+        /// <param name="cantCuposSimples"></param>
+        /// <param name="cantCuposDobles"></param>
+        /// <param name="ck_Exclusividad"></param>
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
         {
-            this.iHabitacion = unaHab;
-            this.iEstadoAloj = unEstado;
-            this.iIdAlojamiento = unId;
-            this.iDniResponsable = unDni;
-            this.iMontoTotal = unMontoT;
-            this.iFechaEgreso = unaFecha;
-
+            this.Clientes = new List<Cliente>();
+            this.DniResponsable = unClienteResp.ClienteId;
+            this.Habitacion = unaHab;
+            this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
+            this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
+            this.CantCuposSimples = cantCuposSimples;
+            this.CantCuposDobles = cantCuposDobles;
+            this.Exclusividad = ck_Exclusividad;
+            this.Clientes.Add(unClienteResp);
+            foreach (var cli in listaAcompañantes)
+            {
+                Clientes.Add(cli);
+            }
+            this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
+            this.FechaReserva = DateTime.Now;
         }
 
-        public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
-        {
-            this.iFechaReserva = DateTime.Now;
-            this.iFechaEstimadaIngreso = pFechaEstIngreso;
-            this.iFechaEstimadaEgreso = pFechaEstEgreso;
-        }
+        //public Alojamiento(Habitacion unaHab, int unId, int unDni, double unMontoT, EstadoAlojamiento unEstado, DateTime unaFecha)//Arreglar este constructor
+        //{
+        //    this.iHabitacion = unaHab;
+        //    this.iEstadoAloj = unEstado;
+        //    this.iIdAlojamiento = unId;
+        //    this.iDniResponsable = unDni;
+        //    this.iMontoTotal = unMontoT;
+        //    this.iFechaEgreso = unaFecha;
+
+        //}
+
+        //public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
+        //{
+        //    this.iFechaReserva = DateTime.Now;
+        //    this.iFechaEstimadaIngreso = pFechaEstIngreso;
+        //    this.iFechaEstimadaEgreso = pFechaEstEgreso;
+        //}
 
         /// <summary>
         /// Sin Reserva
