@@ -73,6 +73,22 @@ namespace Dominio
             return (this.ClienteId.GetHashCode() == other.ClienteId.GetHashCode());
         }
 
+        /// <summary>
+        /// Obtiene el precio de su Tarifa segun la Exclusividad
+        /// </summary>
+        /// <param name="pExclusividad">Exclusividad de la Habitacion</param>
+        /// <returns></returns>
+        public double ObtenerSuPrecioTarifa(bool pExclusividad)
+        {
+            if (pExclusividad == false)
+            {
+                return this.TarifaCliente.Tarifa;
+            }
+            else
+            {
+                return this.TarifaCliente.TarifaExclusiva;
+            }
+        }
 
     }
 }
