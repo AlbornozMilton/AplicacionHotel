@@ -39,19 +39,30 @@ namespace Persistencia.DAL.EntityFramework
         }
 
         // MODIFICAR PENSANDO EN HABITACION.ADD
-        public void AddReserva(Alojamiento unAloj)
+        public override void Add(Alojamiento unAloj)
         {
+            List<Cliente> auxListCliente = new List<Cliente>();
             foreach (var cli in unAloj.Clientes)
             {
-                cli.Domicilio = null;
-                cli.TarifaCliente = null;
-                iDbContext.Clientes.Attach(cli);
-                iDbContext.Entry(cli).State = System.Data.Entity.EntityState.Added;
+                auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
             }
-            iDbContext.Habitaciones.Attach(unAloj.Habitacion);
-            iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Added;
+            unAloj.Clientes = auxListCliente;
+
+
+            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+            {
+                //Para el caso que se modifique la exclusividad de la habitacion
+                iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
+
+                foreach (var cupo in unAloj.Habitacion.Cupos)
+                {
+                    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
             
             iDbContext.Alojamientos.Add(unAloj);
+
+            iDbContext.SaveChanges();
         }
 
         public void AddPago(Alojamiento unAloj, Pago pPago)

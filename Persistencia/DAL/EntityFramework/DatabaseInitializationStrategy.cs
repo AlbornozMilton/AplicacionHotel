@@ -41,7 +41,7 @@ namespace Persistencia.DAL.EntityFramework
             {
                 TarifaClienteId = TipoCliente.AcompanianteDirecto,
                 Tarifa = 170,
-                TarifaExclusiva = 0
+                TarifaExclusiva = 200
             };
             context.Set<TarifaCliente>().Add(TarifaAcompDirecto);
 
@@ -49,7 +49,7 @@ namespace Persistencia.DAL.EntityFramework
             {
                 TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
                 Tarifa = 200,
-                TarifaExclusiva = 0
+                TarifaExclusiva = 280
             };
             context.Set<TarifaCliente>().Add(TarifaAcompNoDirecto);
 
@@ -405,7 +405,7 @@ namespace Persistencia.DAL.EntityFramework
                 Apellido = "Chamorro",
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
-                TarifaClienteId = TarifaAcompNoDirecto.TarifaClienteId,
+                TarifaClienteId = TarifaAcompDirecto.TarifaClienteId,
             };
             context.Set<Cliente>().Add(Mauri);
             #endregion
