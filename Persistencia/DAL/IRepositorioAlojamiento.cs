@@ -11,7 +11,7 @@ namespace Persistencia.DAL
     {
         IEnumerable<Alojamiento> GetAllAlojamientosActivos();
 
-        void AddReserva(Alojamiento unAloj);
+        //void AddReserva(Alojamiento unAloj);
         void AddPago(Alojamiento unAloj, Pago pPago);
     }
 }

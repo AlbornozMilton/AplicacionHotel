@@ -23,7 +23,7 @@ namespace Persistencia.DAL.EntityFramework
         protected readonly TDbContext iDbContext;
 
         //IMPLEMENTACION IREPOSITORIO
-        public void Add(TEntity pEntity)
+        public virtual void Add(TEntity pEntity)
         {
             if (pEntity == null)
             {
