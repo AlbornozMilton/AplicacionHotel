@@ -9,22 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
         ControladorHabitacion iControladorHab = new ControladorHabitacion();
-        public Alojamiento Alojamiento { get; set; }
-
-        //public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
-
-        public TablaDisponibilidad(Alojamiento pAlojamiento)
+        public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
+        public TablaDisponibilidad()
         {
             InitializeComponent();
-            this.Alojamiento = pAlojamiento;
         }
-
         public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             InitializeComponent();
@@ -56,12 +50,10 @@ namespace UI
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
-            //usar constructor para asigar estos valores,para lograr encapsulacion
-            //ej: new Alojamiento(this.Alojamiento, (Convert.ToByte(Fila[0].Value), etc)
-            this.Alojamiento.HabitacionId = (Convert.ToByte(Fila[0].Value));
-            this.Alojamiento.Habitacion = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
-            this.Alojamiento.FechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Value);
-            this.Alojamiento.FechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Value);
+            this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
+            this.FormPadre.iHabitacionSeccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
+            this.FormPadre.iFechaEstimadaIngreso = Convert.ToDateTime(dtp_fechaDesde.Value);
+            this.FormPadre.iFechaEstimadaEgreso = Convert.ToDateTime(dtp_fechaHasta.Value);
             Close();
         }
 

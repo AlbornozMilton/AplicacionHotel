@@ -17,7 +17,7 @@ namespace UI
         public DateTime iFechaEstimadaIngreso = new DateTime();
         public DateTime iFechaEstimadaEgreso = new DateTime();
         public Cliente iClienteResponsable = new Cliente();
-        public Alojamiento Alojamiento { get; set; }
+        Alojamiento NuevoAlojamiento;
 
         public AltaReservaAlojamiento()
         {
@@ -54,7 +54,7 @@ namespace UI
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
             TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value,dtp_fechaHasta.Value);
-            this.Alojamiento = TDisp.Alojamiento;
+            TDisp.FormPadre = this; //Almacena esta WinForm como la padre de la TDisp con el atributo Opener
             TDisp.ShowDialog();
         }
         
@@ -77,25 +77,18 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            //usar constructor para asigar estos valores, para lograr encapsulacion
-            //ej: new Alojamiento(this.Alojamiento, Convert.ToByte(cont_CuposDobles.Value)), etc)
-            this.Alojamiento.CantCuposSimples = Convert.ToByte(cont_CuposDobles.Value);
-            this.Alojamiento.CantCuposDobles = Convert.ToByte(cont_CuposSimples.Value);
-            this.Alojamiento.Exclusividad = ck_Exclusividad.Checked;
-            this.Alojamiento.DniResponsable = iClienteResponsable.ClienteId;
-            //se supone que ya estan cargadas: iHabitacionSeccionada, iFechaEstimadaIngreso, iFechaEstimadaEgreso, 
-            //this.Alojamiento = new Alojamiento(iHabitacionSeccionada, iClienteResponsable, iFechaEstimadaIngreso, iFechaEstimadaEgreso);
+            NuevoAlojamiento = new Alojamiento(iHabitacionSeccionada, iClienteResponsable, iFechaEstimadaIngreso, iFechaEstimadaEgreso, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), ck_Exclusividad.Checked);
             decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value};
-            this.Alojamiento.CalcularCostoBaseReserva(contadores);
+            NuevoAlojamiento.CalcularCostoBaseReserva(contadores);
             //NuevoAlojamiento.CalcularCostoBaseReserva(Convert.ToInt32(contador_Titular.Value), Convert.ToInt32(contador_Convenio.Value), Convert.ToInt32(contador_Exceptuado.Value), Convert.ToInt32(contador_Directo.Value), Convert.ToInt32(contador_NoDirecto.Value));
-            txb_CostoBase.Text = this.Alojamiento.MontoTotal.ToString();
-            txb_Deposito.Text = this.Alojamiento.Deposito.ToString();
+            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+            txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
             btn_Aceptar.Enabled = true;
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorAlojamiento().RegistrarReservaAloj(this.Alojamiento);
+            new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
             Close();
         }
     }
