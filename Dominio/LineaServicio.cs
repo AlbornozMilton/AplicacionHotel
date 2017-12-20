@@ -22,9 +22,8 @@ namespace Dominio
 
         }
 
-        public LineaServicio(int pId, byte pCant, Servicio pServicio)
+        public LineaServicio(byte pCant, Servicio pServicio)
         {
-            this.iCodLinServicio = pId;
             this.iCantidad = pCant;
             this.iServicio = pServicio;
             this.CalcularCostoServicio();

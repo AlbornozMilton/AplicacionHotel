@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
     public partial class AgregarServicio : Form
     {
+        public Alojamiento iAloj_Seleccionado;
         public AgregarServicio()
         {
             InitializeComponent();
@@ -21,6 +23,12 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
+            iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

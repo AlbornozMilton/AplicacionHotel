@@ -28,8 +28,9 @@ namespace UI
         private void button1_Click(object sender, EventArgs e)
         {
             BuscarAlojamiento VentanaBuscarAlojamiento = new BuscarAlojamiento();
-            VentanaBuscarAlojamiento.iFormPadre = this;
             VentanaBuscarAlojamiento.ShowDialog();
+            iAlojSeleccionado = VentanaBuscarAlojamiento.iAloj_Seleccionado;
+            CargarAlojamientoSeccionado(VentanaBuscarAlojamiento.iFilaSeleccionada);
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)

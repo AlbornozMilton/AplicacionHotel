@@ -14,8 +14,8 @@ namespace UI
     public partial class BuscarAlojamiento : Form
     {
         ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
-        public RegistrarPago iFormPadre;
         public Alojamiento iAloj_Seleccionado;
+        public DataGridViewCellCollection iFilaSeleccionada;
 
         public BuscarAlojamiento()
         {
@@ -56,8 +56,7 @@ namespace UI
         {
             try
             {
-                iFormPadre.iAlojSeleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
-                iAloj_Seleccionado = iFormPadre.iAlojSeleccionado;
+                iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
                 dGV_ListadoAlojamientos.Rows.Clear();
                 dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).Apellido + ' ' + this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).Nombre, this.iAloj_Seleccionado.Habitacion.HabitacionId);
             }
@@ -69,8 +68,8 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iFormPadre.CargarAlojamientoSeccionado(dGV_ListadoAlojamientos.CurrentRow.Cells);
-            iFormPadre.iAlojSeleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(dGV_ListadoAlojamientos.CurrentRow.Cells[0].Value));
+            iFilaSeleccionada = (dGV_ListadoAlojamientos.CurrentRow.Cells);
+            iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(dGV_ListadoAlojamientos.CurrentRow.Cells[0].Value));
             Close();
         }
     }

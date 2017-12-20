@@ -227,5 +227,13 @@ namespace Dominio
 
             unAloj.Clientes.Add(unCliente);
         }
+
+        public void AgregarServicio (string pServicio, int pCant, Alojamiento pAlojamiento)
+        {
+            //Servicio unServicio = busqueda del servicio(pServicio)
+            //LineaServicio nuevaLineaServicio = new LineaServicio(pCant, Servicio unServicio)
+            //pAlojamiento.Servicios.Add(nuevaLineaServicio);
+
+        }
     }
 }
