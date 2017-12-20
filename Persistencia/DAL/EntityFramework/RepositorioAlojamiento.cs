@@ -43,9 +43,14 @@ namespace Persistencia.DAL.EntityFramework
         {
             foreach (var cli in unAloj.Clientes)
             {
+                cli.Domicilio = null;
+                cli.TarifaCliente = null;
                 iDbContext.Clientes.Attach(cli);
+                iDbContext.Entry(cli).State = System.Data.Entity.EntityState.Added;
             }
             iDbContext.Habitaciones.Attach(unAloj.Habitacion);
+            iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Added;
+            
             iDbContext.Alojamientos.Add(unAloj);
         }
 

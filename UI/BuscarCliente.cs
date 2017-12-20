@@ -13,7 +13,8 @@ namespace UI
 {
     public partial class BuscarCliente : Form
     {
-        public AltaReservaAlojamiento FormPadre;
+        public Cliente iClienteSeleccionado;
+        public DataGridViewRow iFilaSeleccionada;
         ControladorCliente iControladorCliente = new ControladorCliente();
         public BuscarCliente()
         {
@@ -91,8 +92,8 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            FormPadre.agregar_Cliente(tablaResulClientes.CurrentRow.Cells);
-            FormPadre.iClienteResponsable = iControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
+            this.iClienteSeleccionado = iControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
+            this.iFilaSeleccionada = tablaResulClientes.CurrentRow;
             Close();
         }
     }

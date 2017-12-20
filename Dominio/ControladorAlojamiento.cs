@@ -22,11 +22,43 @@ namespace Dominio
             }
             return (listaAlojamientos);
         }
-        
+
+        //public Alojamiento GenerarReservaAlojamiento(Habitacion pHabitacion, Cliente pClienteResp, DateTime pFechaEstimadaIngreso, DateTime pFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
+        //{
+        //    Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad
+        //    Alojamiento NuevoAlojamiento = new Alojamiento(pHabitacion, pClienteResp,);
+        //    NuevoAlojamiento.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
+        //    this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
+        //    this.CantCuposSimples = cantCuposSimples;
+        //    this.CantCuposDobles = cantCuposDobles;
+        //    this.Exclusividad = ck_Exclusividad;
+        //    this.Clientes.Add(unClienteResp);
+        //    this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
+        //    this.FechaReserva = DateTime.Now;
+
+        //    return NuevoAlojamiento;
+        //}
+
+        //public Alojamiento GenerarAltaAlojamiento()
+        //{
+        //    this.Clientes = new List<Cliente>();
+        //    //Usado cuando se confirma reserva
+        //    this.DniResponsable = unClienteResp.ClienteId;
+        //    this.Habitacion = unaHab;
+        //    this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
+        //    this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
+        //    this.CantCuposSimples = cantCuposSimples;
+        //    this.CantCuposDobles = cantCuposDobles;
+        //    this.Exclusividad = ck_Exclusividad;
+        //    this.Clientes.Add(unClienteResp);
+        //    this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
+        //    this.FechaReserva = DateTime.Now;
+        //}
+
         public void RegistrarReservaAloj(Alojamiento pAlojamiento)
         {
             var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-                iUoW.RepositorioAlojamiento.AddReserva(e);
+            iUoW.RepositorioAlojamiento.AddReserva(e);
             iUoW.Complete();
             iUoW.Dispose();
         }

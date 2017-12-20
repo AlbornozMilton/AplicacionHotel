@@ -46,10 +46,12 @@ namespace Dominio
         {
 
         }
+        /// <summary>
+        /// Contructor para el Alta Reserva Alojamiento
+        /// </summary>
         public Alojamiento(Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
         {
             this.Clientes = new List<Cliente>();
-            //Usado cuando se confirma reserva
             this.DniResponsable = unClienteResp.ClienteId;
             this.Habitacion = unaHab;
             this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
@@ -61,33 +63,26 @@ namespace Dominio
             this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
             this.FechaReserva = DateTime.Now;
         }
-
-        public Alojamiento(Habitacion unaHab, int unId, int unDni, double unMontoT, EstadoAlojamiento unEstado, DateTime unaFecha)//Arreglar este constructor
-        {
-            this.iHabitacion = unaHab;
-            this.iEstadoAloj = unEstado;
-            this.iIdAlojamiento = unId;
-            this.iDniResponsable = unDni;
-            this.iMontoTotal = unMontoT;
-            this.iFechaEgreso = unaFecha;
-
-        }
-
-        public Alojamiento(DateTime pFechaEstIngreso, DateTime pFechaEstEgreso)
-        {
-            this.iFechaReserva = DateTime.Now;
-            this.iFechaEstimadaIngreso = pFechaEstIngreso;
-            this.iFechaEstimadaEgreso = pFechaEstEgreso;
-        }
-
         /// <summary>
-        /// Sin Reserva
+        /// Contructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        /// <param name="pFechaEstEgreso"></param>
-        public Alojamiento(DateTime pFechaEstEgreso)
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
         {
-            this.iFechaIngreso = DateTime.Now;
-            //  this.FechaEstimadaEgreso = pFechaEstEgreso;
+            this.Clientes = new List<Cliente>();
+            this.DniResponsable = unClienteResp.ClienteId;
+            this.Habitacion = unaHab;
+            this.FechaIngreso = unaFechaIngreso;
+            this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
+            this.CantCuposSimples = cantCuposSimples;
+            this.CantCuposDobles = cantCuposDobles;
+            this.Exclusividad = ck_Exclusividad;
+            this.Clientes.Add(unClienteResp);
+            foreach (var cli in listaAcompañantes)
+            {
+                Clientes.Add(cli);
+            }
+            this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
+            this.FechaReserva = DateTime.Now;
         }
 
         //----------------------PROP----------------------
@@ -203,15 +198,19 @@ namespace Dominio
             return this.Pagos.Contains(pPago);
         }
 
-        public double CalcularCostoBaseReserva(decimal[] pContadores)
+        /// <summary>
+        /// Calcular Costo Base de un Alojamiento en momentos de Reserva
+        /// </summary>
+        /// <param name="pContadores">Contadores obtenidos desde la UI</param>
+        public double CalcularCostoBase(decimal[] pContadores)
         {
-            bool lExclusividad = this.iHabitacion.Exclusiva;
+            //bool lExclusividad = this.iHabitacion.Exclusiva;
             List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
             double costoBase = 0;
 
             for (int i = 0; i < pContadores.Length; i++)
             {
-                costoBase += Convert.ToDouble(pContadores[i])*Tarifas[i].DeterminarTarifa(lExclusividad);
+                costoBase += Convert.ToDouble(pContadores[i])*Tarifas[i].DeterminarTarifa(this.iHabitacion.Exclusiva);
             }
 
             this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
@@ -219,6 +218,24 @@ namespace Dominio
             return this.MontoDeuda;
         }
 
+        /// <summary>
+        /// Calcular Costo Base de un Alojamiento en momentos de Alta sin Reserva
+        /// </summary>
+        public double CalcularCostoBase()
+        {
+            //bool lExclusividad = this.iHabitacion.Exclusiva;
+            //List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
+            double costoBase = 0;
+            foreach (var cliente in this.Clientes)
+            {
+                costoBase += cliente.ObtenerSuPrecioTarifa(this.iHabitacion.Exclusiva);
+            }
+
+            //se utiliza FechaEstimadaEgreso y FechaIngreso
+            this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days; 
+            this.MontoTotal = this.MontoDeuda;
+            return this.MontoDeuda;
+        }
         public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
         {
             this.iMontoDeuda -= pPago.Monto;
