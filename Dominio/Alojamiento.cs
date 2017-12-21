@@ -277,8 +277,14 @@ namespace Dominio
         /// </summary>
         public void Cerrar(DateTime pFechaEgreso)
         {
-            this.FechaEgreso = pFechaEgreso;
+            this.iFechaEgreso = pFechaEgreso;
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
+        }
+
+        public void Cancelar(DateTime pFechaCancelacion)
+        {
+            //this.iFechaCancelacion = pFechaCancelacion;
+            this.iEstadoAloj = EstadoAlojamiento.Cancelado;
         }
 
 

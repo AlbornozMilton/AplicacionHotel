@@ -39,7 +39,9 @@ namespace Persistencia.DAL.EntityFramework
             return alojamientos.ToList<Alojamiento>();
         }
 
-        // MODIFICAR PENSANDO EN HABITACION.ADD
+        /// <summary>
+        /// Utilizado para todos los tipos de Altas
+        /// </summary>
         public override void Add(Alojamiento unAloj)
         {
             List<Cliente> auxListCliente = new List<Cliente>();
@@ -78,10 +80,10 @@ namespace Persistencia.DAL.EntityFramework
             {
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
             }
-            else if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cancelado)
-            {
-                //modificar fechas
-            }
+            //else if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cancelado)
+            //{
+            //    //modificar fechas --> fecha de cancelacion en caso de agregar el atributo fechaCancelacion
+            //}
 
             //IMPLICITAMENTE SE MODIFICAN LOS CUPOS????? - PARECE QUE SI
             //localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
