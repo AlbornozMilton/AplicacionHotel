@@ -232,10 +232,9 @@ namespace Dominio
 
         public void AgregarServicio (string pServicio, int pCant, Alojamiento pAlojamiento)
         {
-            //Servicio unServicio = busqueda del servicio(pServicio)
+            //Servicio unServicio = iUoW.RepositorioServicio (pServicio)
             //LineaServicio nuevaLineaServicio = new LineaServicio(pCant, Servicio unServicio)
             //pAlojamiento.Servicios.Add(nuevaLineaServicio);
-
         }
     }
 }

@@ -28,7 +28,9 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-
+            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
+            iControladorAloj.AgregarServicio(cBox_Servicios.SelectedItem.ToString(), Convert.ToInt32(cant_Servicio.Value), iAloj_Seleccionado);
+            MessageBox.Show("¡ Servicio Agregado !");
         }
     }
 }
