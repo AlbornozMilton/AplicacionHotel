@@ -230,11 +230,11 @@ namespace Dominio
             unAloj.Clientes.Add(unCliente);
         }
 
-        public void AgregarServicio (string pServicio, int pCant, Alojamiento pAlojamiento)
+        public void AgregarServicio (string pServicio, byte pCant, Alojamiento pAlojamiento)
         {
-            //Servicio unServicio = iUoW.RepositorioServicio (pServicio)
-            //LineaServicio nuevaLineaServicio = new LineaServicio(pCant, Servicio unServicio)
-            //pAlojamiento.Servicios.Add(nuevaLineaServicio);
+            Servicio unServicio = Mapper.Map<pers.Servicio, Servicio>(iUoW.RepositorioServicio.GetByNombre(pServicio));
+            LineaServicio nuevaLineaServicio = new LineaServicio(pCant, unServicio);
+            pAlojamiento.Servicios.Add(nuevaLineaServicio);
         }
     }
 }
