@@ -24,5 +24,7 @@ namespace Persistencia.DAL
 
         IRepositorioHabitacion RepositorioHabitacion { get; }
 
+        IRepositorioServicio RepositorioServicio { get; }
+
     }
 }
