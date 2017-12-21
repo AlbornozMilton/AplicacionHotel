@@ -30,13 +30,14 @@ namespace Persistencia.DAL.EntityFramework
 
         public override Cliente Get(int pId)
         {
-            if (iDbContext.Clientes.Find(pId) == null)
+            var unCliente = iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio").Where(c => c.ClienteId == pId).Single();
+            if (unCliente == null)
             {
                 throw new Exception("Cliente No Existe");
             }
             else
             {
-                return (iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio").Where(c => c.ClienteId == pId).First());
+                return (unCliente);
             }
         }
     }

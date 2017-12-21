@@ -10,8 +10,8 @@ namespace Persistencia.DAL
     public interface IRepositorioAlojamiento:IRepositorio<Alojamiento>
     {
         IEnumerable<Alojamiento> GetAllAlojamientosActivos();
-
-        //void AddReserva(Alojamiento unAloj);
         void AddPago(Alojamiento unAloj, Pago pPago);
+        void AddLineaServicio(Alojamiento unAloj);
     }
+
 }

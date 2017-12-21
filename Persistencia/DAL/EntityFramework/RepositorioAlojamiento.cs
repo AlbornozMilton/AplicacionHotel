@@ -20,7 +20,7 @@ namespace Persistencia.DAL.EntityFramework
         /// <returns></returns>
         public override Alojamiento Get(int pId)
         {
-            var aux = iDbContext.Alojamientos.Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).First();
+            var aux = iDbContext.Alojamientos.Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
             if (aux == null)
             {
                 throw new Exception("Alojamiento No Existe");
@@ -68,7 +68,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public void AddPago(Alojamiento unAloj, Pago pPago)
         {
-            Alojamiento lAuxAloj = iDbContext.Alojamientos.Include("Pagos").Where(a => a.AlojamientoId == unAloj.AlojamientoId).First();
+            Alojamiento lAuxAloj = iDbContext.Alojamientos.Include("Pagos").Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
 
             lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
 
@@ -81,6 +81,11 @@ namespace Persistencia.DAL.EntityFramework
             {
                 iDbContext.Pagos.Add(pPago);
             }
+        }
+
+        public void AddLineaServicio(Alojamiento unAloj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
