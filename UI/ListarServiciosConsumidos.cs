@@ -33,6 +33,14 @@ namespace UI
             CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
         }
 
-
+        private void btn_ListarServicios_Click(object sender, EventArgs e)
+        {
+            dGV_ListadoServicios.Rows.Clear();
+            foreach (var serv in iAloj_Seleccionado.Servicios)
+            {
+                dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.Servicio.CostoBase, serv.CostoServicio);
+            }
+            
+        }
     }
 }

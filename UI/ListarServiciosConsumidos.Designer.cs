@@ -40,7 +40,7 @@
             this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dGV_ListadoServicios = new System.Windows.Forms.DataGridView();
             this.clm_Servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +51,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoServicios)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -139,7 +139,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dGV_ListadoServicios);
             this.groupBox1.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 204);
             this.groupBox1.Name = "groupBox1";
@@ -148,11 +148,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Servicios Consumidos";
             // 
-            // dataGridView1
+            // dGV_ListadoServicios
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGV_ListadoServicios.AllowUserToAddRows = false;
+            this.dGV_ListadoServicios.AllowUserToDeleteRows = false;
+            this.dGV_ListadoServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,9 +160,9 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dGV_ListadoServicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dGV_ListadoServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_ListadoServicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Servicio,
             this.clm_Cantidad,
             this.clm_CostoBase,
@@ -174,14 +174,14 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 101);
-            this.dataGridView1.TabIndex = 0;
+            this.dGV_ListadoServicios.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dGV_ListadoServicios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dGV_ListadoServicios.Location = new System.Drawing.Point(3, 20);
+            this.dGV_ListadoServicios.Name = "dGV_ListadoServicios";
+            this.dGV_ListadoServicios.ReadOnly = true;
+            this.dGV_ListadoServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGV_ListadoServicios.Size = new System.Drawing.Size(780, 101);
+            this.dGV_ListadoServicios.TabIndex = 0;
             // 
             // clm_Servicio
             // 
@@ -216,10 +216,11 @@
             this.btn_ListarServicios.TabIndex = 11;
             this.btn_ListarServicios.Text = "Listar Servicios";
             this.btn_ListarServicios.UseVisualStyleBackColor = true;
+            this.btn_ListarServicios.Click += new System.EventHandler(this.btn_ListarServicios_Click);
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(574, 346);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 30);
@@ -229,7 +230,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(687, 346);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 30);
@@ -249,11 +250,12 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_BuscarAlojamiento);
             this.Name = "ListarServiciosConsumidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarServiciosConsumidos";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoServicios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,7 +270,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IDHabitacion;
         private System.Windows.Forms.Button btn_BuscarAlojamiento;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dGV_ListadoServicios;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Servicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoBase;
