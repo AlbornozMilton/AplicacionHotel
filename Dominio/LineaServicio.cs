@@ -24,6 +24,7 @@ namespace Dominio
         {
             this.iCantidad = pCant;
             this.iServicio = pServicio;
+            this.iFechaServicio = DateTime.Now;
             this.CalcularCostoServicio();
         }
 

@@ -517,7 +517,7 @@ namespace Persistencia.DAL.EntityFramework
                         Detalle = "El viejo era tacaño"
                     }
                 },
-                Servicios = new List<LineaServicio> {CantBatas, CantAireAcond },
+                Servicios = new List<LineaServicio>() {CantBatas, CantAireAcond },
             };
 
             context.Set<Alojamiento>().Add(Aloj1);
