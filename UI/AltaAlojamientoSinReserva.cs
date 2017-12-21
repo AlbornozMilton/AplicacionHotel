@@ -37,8 +37,6 @@ namespace UI
             TablaDisp.ShowDialog();
             txb_NroHabitacion.Text = Convert.ToString(TablaDisp.iHabSeleccionada.HabitacionId);
             this.iHabSeleccionada = TablaDisp.iHabSeleccionada;
-            this.iFechaIni = TablaDisp.iFechaIni;
-            this.iFechaFin = TablaDisp.iFechaFin;
         }
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
