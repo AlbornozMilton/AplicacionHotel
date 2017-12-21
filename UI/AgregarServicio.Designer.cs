@@ -64,10 +64,11 @@
             this.cBox_Servicios.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBox_Servicios.FormattingEnabled = true;
             this.cBox_Servicios.Items.AddRange(new object[] {
-            "Televisor",
+            "Bata",
             "Calefacción",
             "Aire Acondicionado",
-            "Salida de Baño"});
+            "Seguridad Medica",
+            "Recargo por Fumar"});
             this.cBox_Servicios.Location = new System.Drawing.Point(12, 193);
             this.cBox_Servicios.Name = "cBox_Servicios";
             this.cBox_Servicios.Size = new System.Drawing.Size(174, 25);
@@ -122,6 +123,7 @@
             this.btn_Cancelar.TabIndex = 6;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // groupBox2
             // 
