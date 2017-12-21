@@ -14,6 +14,7 @@ namespace Persistencia.Domain
         public string Apellido { get; set; }
         public string Telefono { get; set; }
         public string Correo { get; set; }
+        public bool EnAlta { get; set; }
 
 
         public TipoCliente TarifaClienteId { get; set; }

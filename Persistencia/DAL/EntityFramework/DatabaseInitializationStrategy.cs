@@ -383,7 +383,7 @@ namespace Persistencia.DAL.EntityFramework
             };
             context.Set<Servicio>().Add(RecargoPorFumar);
 
-#endregion
+            #endregion
             ////-----------------------FIN DATOS BASICOS------------------
 
             ////-----------------------A MODO DE EJEMPLO-----------------
@@ -396,6 +396,7 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Milton",
                 Telefono = "0345515431476",
                 TarifaClienteId = TarifaTitular.TarifaClienteId,
+                EnAlta = true
             };
             context.Set<Cliente>().Add(Milton);
 
@@ -406,8 +407,21 @@ namespace Persistencia.DAL.EntityFramework
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
                 TarifaClienteId = TarifaAcompDirecto.TarifaClienteId,
+                EnAlta = true
             };
             context.Set<Cliente>().Add(Mauri);
+
+            Cliente Desconocido = new Cliente
+            {
+                ClienteId = 30000001,
+                Apellido = "Anonimous",
+                Nombre = "Marcelo",
+                Telefono = "3554585854",
+                TarifaClienteId = TarifaConvenio.TarifaClienteId,
+                EnAlta = false
+            };
+            context.Set<Cliente>().Add(Desconocido);
+
             #endregion
 
             #region Domicilios
@@ -420,7 +434,7 @@ namespace Persistencia.DAL.EntityFramework
                 CiudadId = CiudadCdelU.CiudadId,
                 Clientes = new List<Cliente>()
                 {
-                    Milton
+                    Milton, Desconocido
                 }
             };
             context.Set<Domicilio>().Add(DomiciolioMilton);

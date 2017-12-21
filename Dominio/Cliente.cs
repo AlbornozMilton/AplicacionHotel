@@ -13,6 +13,7 @@ namespace Dominio
         private string iApellido;
         private string iTelefono;
         private string iCorreo;
+        public bool iEnAlta;
         private Domicilio iDomicilio;
         private TarifaCliente iTarifa;
         private List<Alojamiento> iAlojamientos;
@@ -51,13 +52,14 @@ namespace Dominio
             this.iTelefono = pTel;
         }
 
-        //----------------------------------Propiedades
+        //----------------------------------Propiedades------------------------------------
         public int ClienteId { get { return this.iDni; } private set { this.iDni = value; } }
         public string Nombre { get { return this.iNombre; } private set { this.iNombre = value; } }
         public string Apellido { get { return this.iApellido; } private set { this.iApellido = value; } }
         public string Telefono { get { return this.iTelefono; } private set { this.iTelefono = value; } }
         public string Correo { get { return this.iCorreo; } private set { this.iCorreo = value; } }
-        
+        public bool EnAlta { get { return this.iEnAlta; } private set { this.iEnAlta = value; } }
+
         public Domicilio Domicilio { get { return this.iDomicilio; } private set { this.iDomicilio = value; } }
         public TarifaCliente TarifaCliente { get { return this.iTarifa; } private set { this.iTarifa = value; } }
         public List<Alojamiento> Alojamientos { get { return this.iAlojamientos; } private set { this.iAlojamientos = value; } }

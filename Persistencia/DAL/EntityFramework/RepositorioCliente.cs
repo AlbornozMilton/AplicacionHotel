@@ -13,16 +13,11 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
-        public bool Existe(Cliente pCliente)
-        {
-           // return (base.iDbContext.Set<Cliente>().Find(pCliente.ClienteId) != null);
-           return (base.iDbContext.Clientes.Find(pCliente.ClienteId) != null);
-        }
 
         public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre)
         {
             var clientes = from cli in this.iDbContext.Clientes
-                           where ((cli.Nombre+cli.Apellido).Contains(pNombre))
+                           where ((cli.Nombre+cli.Apellido).Contains(pNombre))&&(cli.EnAlta == true)
                            select cli;
 
             return clientes.ToList<Cliente>();
@@ -30,15 +25,27 @@ namespace Persistencia.DAL.EntityFramework
 
         public override Cliente Get(int pId)
         {
-            var unCliente = iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio").Where(c => c.ClienteId == pId).Single();
-            if (unCliente == null)
+            try
+            {
+                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio").Where(c => c.ClienteId == pId && c.EnAlta == true).Single();
+            }
+            catch
             {
                 throw new Exception("Cliente No Existe");
             }
-            else
-            {
-                return (unCliente);
-            }
+        }
+
+        /// <summary>
+        /// Retorna una lista de Clientes que solo estan en Alta
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Cliente> ObtenerClientesEnAlta()
+        {
+            var clientes = from cli in this.iDbContext.Clientes
+                           where (cli.EnAlta == true)
+                           select cli;
+
+            return clientes.ToList<Cliente>();
         }
     }
 }

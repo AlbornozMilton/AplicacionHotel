@@ -20,15 +20,15 @@ namespace Persistencia.DAL.EntityFramework
         /// <returns></returns>
         public override Alojamiento Get(int pId)
         {
-            var aux = iDbContext.Alojamientos.Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
-            if (aux == null)
+            try
+            {
+                return iDbContext.Alojamientos.Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
+            }
+            catch (Exception)
             {
                 throw new Exception("Alojamiento No Existe");
             }
-            else
-            {
-                return aux;
-            }
+            
         }
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
