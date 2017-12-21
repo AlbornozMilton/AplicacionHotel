@@ -91,8 +91,19 @@ namespace Persistencia.DAL.EntityFramework
                 }
             }
 
-            iDbContext.Entry(unAloj).State = System.Data.Entity.EntityState.Modified;
+            ////PARA LA CANCELACION
+            //if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            //{
+            //    //Para el caso que se modifique la exclusividad de la habitacion
+            //    iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
 
+            //    foreach (var cupo in unAloj.Habitacion.Cupos)
+            //    {
+            //        iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
+            //    }
+            //}
+
+            iDbContext.Entry(unAloj).State = System.Data.Entity.EntityState.Modified;
             iDbContext.SaveChanges();
         }
 
