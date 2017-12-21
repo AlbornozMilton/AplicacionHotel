@@ -6,18 +6,6 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    /*
-     EL VALOR NULL POR DEFECTO DE LA FECHA DATETIME ES "1/1/0001 12:00:00 AM" ....... EJEMPLOS
-
-            Console.WriteLine( new DateTime()); // 1/1/0001 12:00:00 AM
-            Console.WriteLine( default(DateTime)); // 1/1/0001 12:00:00 AM
-            Console.WriteLine( DateTime.MinValue); // 1/1/0001 12:00:00 AM
-
-            Alojamiento lAlojamiento2 = new Alojamiento(); //se instancian todos los atributos del Alojamiento por null o su default
-            Console.WriteLine(lAlojamiento2.FechaEstimadaEgreso); // 1/1/0001 12:00:00 AM
-            Console.WriteLine(lAlojamiento2.FechaReserva); // 1/1/0001 12:00:00 AM
-    */
-
     public class Alojamiento
     {
         private List<LineaServicio> iServicios;
@@ -282,6 +270,15 @@ namespace Dominio
 
             MontoTotal += pLineaServicio.CostoServicio;
             MontoDeuda += pLineaServicio.CostoServicio;
+        }
+
+        /// <summary>
+        /// Asinga la fecha parámetro como Fecha de Egreso y cambia el Estado Alojamiento a Cerrado
+        /// </summary>
+        public void Cerrar(DateTime pFechaEgreso)
+        {
+            this.FechaEgreso = pFechaEgreso;
+            this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
 
 

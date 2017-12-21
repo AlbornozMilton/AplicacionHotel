@@ -23,46 +23,10 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
-        //public Alojamiento GenerarReservaAlojamiento(Habitacion pHabitacion, Cliente pClienteResp, DateTime pFechaEstimadaIngreso, DateTime pFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
-        //{
-        //    Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad
-        //    Alojamiento NuevoAlojamiento = new Alojamiento(pHabitacion, pClienteResp,);
-        //    NuevoAlojamiento.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
-        //    this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-        //    this.CantCuposSimples = cantCuposSimples;
-        //    this.CantCuposDobles = cantCuposDobles;
-        //    this.Exclusividad = ck_Exclusividad;
-        //    this.Clientes.Add(unClienteResp);
-        //    this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
-        //    this.FechaReserva = DateTime.Now;
-
-        //    return NuevoAlojamiento;
-        //}
-
-        //public Alojamiento GenerarAltaAlojamiento()
-        //{
-        //    this.Clientes = new List<Cliente>();
-        //    //Usado cuando se confirma reserva
-        //    this.DniResponsable = unClienteResp.ClienteId;
-        //    this.Habitacion = unaHab;
-        //    this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
-        //    this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-        //    this.CantCuposSimples = cantCuposSimples;
-        //    this.CantCuposDobles = cantCuposDobles;
-        //    this.Exclusividad = ck_Exclusividad;
-        //    this.Clientes.Add(unClienteResp);
-        //    this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
-        //    this.FechaReserva = DateTime.Now;
-        //}
-
         public void RegistrarReservaAloj(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-            
             iUoW.RepositorioAlojamiento.Add(A);
-            
-            //iUoW.Complete();
-            //iUoW.Dispose();
         }
 
         public Alojamiento BuscarAlojamientoPorID(int unId)
@@ -74,7 +38,6 @@ namespace Dominio
         {
             //EL CONTROL PARA EL FORMATO DE MONTO SE LO DEBE REALIZAR EN LA UI
             //CONTROLAR DESDE LA UI QUE EL MONTO SEA MAYOR QUE CERO
-
             switch (pPago.Tipo)
             {
                 case TipoPago.Deposito:
@@ -216,18 +179,6 @@ namespace Dominio
         {
             var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
             iUoW.RepositorioAlojamiento.AddPago(e,e.Pagos[0]);
-            iUoW.Complete();
-            iUoW.Dispose();
-        }
-
-        public void AgregarAcompañante (Alojamiento unAloj, Cliente unCliente)
-        {
-            if (unAloj.Clientes.Contains(unCliente))
-            {
-                throw new Exception("Cliente ya esta agregado al Alojamiento");
-            }
-
-            unAloj.Clientes.Add(unCliente);
         }
 
         public void AgregarServicio (string pServicio, byte pCant, Alojamiento pAlojamiento)
@@ -236,6 +187,23 @@ namespace Dominio
             LineaServicio nuevaLineaServicio = new LineaServicio(pCant, unServicio);
             pAlojamiento.AgregarLineaServicio(nuevaLineaServicio);
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
+        }
+
+        /// <summary>
+        /// Para que se realice este método el Alojamiento debe tener un Pago Aljaado (Realizar control en UI)
+        /// </summary>
+        public void CerrarAlojamiento(Alojamiento pAlojamiento)
+        {
+            //Siempre se va a colocar en "false" la exclusividad
+            pAlojamiento.Habitacion.SetExclusividad(false);
+
+            //para la BD
+            pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples,pAlojamiento.CantCuposDobles);
+
+            //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
+            pAlojamiento.Cerrar(DateTime.Now);
+
+            iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
     }
 }
