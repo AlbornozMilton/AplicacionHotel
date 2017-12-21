@@ -27,7 +27,7 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio").Where(c => c.ClienteId == pId && c.EnAlta == true).Single();
+                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad").Where(c => c.ClienteId == pId && c.EnAlta == true).Single();
             }
             catch
             {

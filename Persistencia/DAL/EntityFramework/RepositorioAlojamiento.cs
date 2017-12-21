@@ -22,7 +22,7 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
+                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
             }
             catch (Exception)
             {
@@ -32,7 +32,7 @@ namespace Persistencia.DAL.EntityFramework
         }
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Habitacion.Cupos").Include("Clientes")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Habitacion.Cupos").Include("Clientes").Include("Servicios.Servicio").Include("Pagos")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 

@@ -9,6 +9,6 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioUsuario:IRepositorio<Usuario>
     {
-        bool Existe(string pUs, string pPass);
+
     }
 }
