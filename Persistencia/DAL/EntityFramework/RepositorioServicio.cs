@@ -16,7 +16,8 @@ namespace Persistencia.DAL.EntityFramework
 
         public Servicio GetByNombre(string pNombreServicio)
         {
-            return iDbContext.Servicios.Where(s => s.Nombre == pNombreServicio).GetEnumerator().Current;
+            var servicio = iDbContext.Servicios.Where(s => s.Nombre == pNombreServicio).Single();
+            return servicio;
         }
     }
 }
