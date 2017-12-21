@@ -67,6 +67,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviciosConsumidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -208,6 +209,8 @@
             // 
             // listarToolStripMenuItem
             // 
+            this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serviciosConsumidosToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(65, 28);
             this.listarToolStripMenuItem.Text = "Listar";
@@ -396,6 +399,12 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // serviciosConsumidosToolStripMenuItem
+            // 
+            this.serviciosConsumidosToolStripMenuItem.Name = "serviciosConsumidosToolStripMenuItem";
+            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(267, 28);
+            this.serviciosConsumidosToolStripMenuItem.Text = "Servicios Consumidos";
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,5 +471,6 @@
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem agregarServicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem serviciosConsumidosToolStripMenuItem;
     }
 }
