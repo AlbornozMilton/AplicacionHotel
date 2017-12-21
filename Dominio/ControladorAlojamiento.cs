@@ -190,10 +190,15 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Para que se realice este método el Alojamiento debe tener un Pago Aljaado (Realizar control en UI)
+        /// Para que se realice este método el Alojamiento debe tener un Pago Alojado (Realizar control en UI)
         /// </summary>
-        public void CerrarAlojamiento(Alojamiento pAlojamiento)
+        public void CerrarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaEgreso)
         {
+            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+            {
+                throw new Exception("Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+            }
+        
             //Siempre se va a colocar en "false" la exclusividad
             pAlojamiento.Habitacion.SetExclusividad(false);
 
@@ -201,7 +206,7 @@ namespace Dominio
             pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples,pAlojamiento.CantCuposDobles);
 
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
-            pAlojamiento.Cerrar(DateTime.Now);
+            pAlojamiento.Cerrar(pFechaEgreso);
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }

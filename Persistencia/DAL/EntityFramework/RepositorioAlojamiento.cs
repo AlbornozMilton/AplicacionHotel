@@ -22,7 +22,7 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
+                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes").Where(a => a.AlojamientoId == pId).Single();
             }
             catch (Exception)
             {
@@ -71,39 +71,24 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public void FinalizarAlojamiento(Alojamiento unAloj)
         {
-            //Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
+            Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
 
-            //List<Cliente> auxListCliente = new List<Cliente>();
-            //foreach (var cli in unAloj.Clientes)
-            //{
-            //    auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-            //}
-            //unAloj.Clientes = auxListCliente;
-
-            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
+            localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
+            if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
             {
-                //Para el caso que se modifique la exclusividad de la habitacion
-                iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
-
-                foreach (var cupo in unAloj.Habitacion.Cupos)
-                {
-                    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
-                }
+                localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
+            }
+            else if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cancelado)
+            {
+                //modificar fechas
             }
 
-            ////PARA LA CANCELACION
-            //if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-            //{
-            //    //Para el caso que se modifique la exclusividad de la habitacion
-            //    iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
+            //IMPLICITAMENTE SE MODIFICAN LOS CUPOS????? - PARECE QUE SI
+            //localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
 
-            //    foreach (var cupo in unAloj.Habitacion.Cupos)
-            //    {
-            //        iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
-            //    }
-            //}
 
-            iDbContext.Entry(unAloj).State = System.Data.Entity.EntityState.Modified;
+            iDbContext.Entry(localAuxAloj).State = System.Data.Entity.EntityState.Modified;
+            //iDbContext.Entry(localAuxAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
             iDbContext.SaveChanges();
         }
 
