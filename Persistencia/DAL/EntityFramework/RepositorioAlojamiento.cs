@@ -66,6 +66,37 @@ namespace Persistencia.DAL.EntityFramework
             iDbContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Se finaliza un Alojamiento por Cerrado o Cancelado
+        /// </summary>
+        public void FinalizarAlojamiento(Alojamiento unAloj)
+        {
+            //Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
+
+            //List<Cliente> auxListCliente = new List<Cliente>();
+            //foreach (var cli in unAloj.Clientes)
+            //{
+            //    auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+            //}
+            //unAloj.Clientes = auxListCliente;
+
+            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
+            {
+                //Para el caso que se modifique la exclusividad de la habitacion
+                iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
+
+                foreach (var cupo in unAloj.Habitacion.Cupos)
+                {
+                    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
+
+            iDbContext.Entry(unAloj).State = System.Data.Entity.EntityState.Modified;
+
+            iDbContext.SaveChanges();
+        }
+
+
         public void AddPago(Alojamiento unAloj, Pago pPago)
         {
             Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
