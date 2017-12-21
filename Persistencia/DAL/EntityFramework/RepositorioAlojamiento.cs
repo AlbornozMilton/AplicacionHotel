@@ -68,24 +68,37 @@ namespace Persistencia.DAL.EntityFramework
 
         public void AddPago(Alojamiento unAloj, Pago pPago)
         {
-            Alojamiento lAuxAloj = iDbContext.Alojamientos.Include("Pagos").Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
+            Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
 
             lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
 
-            if (lAuxAloj.Pagos.Count == 0)
-            {
-                lAuxAloj.Pagos = new List<Pago>() { pPago };
-                iDbContext.Pagos.Add(pPago);
-            }
-            else
-            {
-                iDbContext.Pagos.Add(pPago);
-            }
+            //if (lAuxAloj.Pagos.Count == 0)
+            //{
+            //    lAuxAloj.Pagos = new List<Pago>() { pPago };
+            //    iDbContext.Pagos.Add(pPago);
+            //}
+            //else
+            //{
+            //    iDbContext.Pagos.Add(pPago);
+
+            pPago.AlojamientoId = unAloj.AlojamientoId;
+            iDbContext.Pagos.Add(pPago);
+
+            iDbContext.SaveChanges();
         }
 
-        public void AddLineaServicio(Alojamiento unAloj)
+        public void AddLineaServicio(Alojamiento unAloj, LineaServicio pLineaServicio)
         {
-            throw new NotImplementedException();
+            Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
+
+            lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
+            lAuxAloj.MontoTotal = unAloj.MontoTotal;
+            pLineaServicio.Servicio = iDbContext.Servicios.Find(pLineaServicio.Servicio.ServicioId);
+
+            pLineaServicio.AlojamientoId = unAloj.AlojamientoId;
+            iDbContext.LineaServicios.Add(pLineaServicio);
+
+            iDbContext.SaveChanges();
         }
     }
 }

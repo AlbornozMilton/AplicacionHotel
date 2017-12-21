@@ -266,6 +266,24 @@ namespace Dominio
             this.iClientes.Add(pCliente);
         }
 
+        /// <summary>
+        /// Agrega una linea servicio y actualiza sus montos
+        /// </summary>
+        public void AgregarLineaServicio(LineaServicio pLineaServicio)
+        {
+            if (Servicios.Count == 0)
+            {
+                Servicios = new List<LineaServicio>() { pLineaServicio };
+            }
+            else
+            {
+                Servicios.Add(pLineaServicio);
+            }
+
+            MontoTotal += pLineaServicio.CostoServicio;
+            MontoDeuda += pLineaServicio.CostoServicio;
+        }
+
 
     }
 }

@@ -234,7 +234,8 @@ namespace Dominio
         {
             Servicio unServicio = Mapper.Map<pers.Servicio, Servicio>(iUoW.RepositorioServicio.GetByNombre(pServicio));
             LineaServicio nuevaLineaServicio = new LineaServicio(pCant, unServicio);
-            pAlojamiento.Servicios.Add(nuevaLineaServicio);
+            pAlojamiento.AgregarLineaServicio(nuevaLineaServicio);
+            iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
     }
 }
