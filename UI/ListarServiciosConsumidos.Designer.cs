@@ -45,9 +45,8 @@
             this.clm_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_ListarServicios = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -61,7 +60,7 @@
             this.groupBox2.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(9, 43);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(789, 108);
+            this.groupBox2.Size = new System.Drawing.Size(789, 82);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Alojamiento Seleccionado";
@@ -99,7 +98,7 @@
             this.dGV_ListadoAlojamientos.Name = "dGV_ListadoAlojamientos";
             this.dGV_ListadoAlojamientos.ReadOnly = true;
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(783, 85);
+            this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(783, 59);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
             // 
             // clm_IdAlojmiento
@@ -141,9 +140,9 @@
             // 
             this.groupBox1.Controls.Add(this.dGV_ListadoServicios);
             this.groupBox1.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 204);
+            this.groupBox1.Location = new System.Drawing.Point(12, 131);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(786, 124);
+            this.groupBox1.Size = new System.Drawing.Size(786, 160);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Servicios Consumidos";
@@ -180,7 +179,7 @@
             this.dGV_ListadoServicios.Name = "dGV_ListadoServicios";
             this.dGV_ListadoServicios.ReadOnly = true;
             this.dGV_ListadoServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ListadoServicios.Size = new System.Drawing.Size(780, 101);
+            this.dGV_ListadoServicios.Size = new System.Drawing.Size(780, 137);
             this.dGV_ListadoServicios.TabIndex = 0;
             // 
             // clm_Servicio
@@ -207,45 +206,34 @@
             this.clm_Total.Name = "clm_Total";
             this.clm_Total.ReadOnly = true;
             // 
-            // btn_ListarServicios
+            // btn_Aceptar
             // 
-            this.btn_ListarServicios.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ListarServicios.Location = new System.Drawing.Point(12, 175);
-            this.btn_ListarServicios.Name = "btn_ListarServicios";
-            this.btn_ListarServicios.Size = new System.Drawing.Size(178, 23);
-            this.btn_ListarServicios.TabIndex = 11;
-            this.btn_ListarServicios.Text = "Listar Servicios";
-            this.btn_ListarServicios.UseVisualStyleBackColor = true;
-            this.btn_ListarServicios.Click += new System.EventHandler(this.btn_ListarServicios_Click);
+            this.btn_Aceptar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(575, 297);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(107, 30);
+            this.btn_Aceptar.TabIndex = 12;
+            this.btn_Aceptar.Text = "Aceptar";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_Cancelar
             // 
-            this.button1.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(574, 346);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 30);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(687, 346);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 30);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(688, 297);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(107, 30);
+            this.btn_Cancelar.TabIndex = 13;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // ListarServiciosConsumidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 388);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_ListarServicios);
+            this.ClientSize = new System.Drawing.Size(807, 339);
+            this.Controls.Add(this.btn_Cancelar);
+            this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_BuscarAlojamiento);
@@ -275,8 +263,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoBase;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Total;
-        private System.Windows.Forms.Button btn_ListarServicios;
-        protected System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        protected System.Windows.Forms.Button btn_Aceptar;
+        private System.Windows.Forms.Button btn_Cancelar;
     }
 }
