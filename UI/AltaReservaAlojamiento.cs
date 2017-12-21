@@ -52,8 +52,6 @@ namespace UI
             TablaDisp.ShowDialog();
             tbx_NroHab.Text = Convert.ToString(TablaDisp.iHabSeleccionada.HabitacionId);
             this.iHabSeleccionada = TablaDisp.iHabSeleccionada;
-            this.iFechaIni = TablaDisp.iFechaIni;
-            this.iFechaFin = TablaDisp.iFechaFin;
         }
 
         private void button2_Click(object sender, EventArgs e)
