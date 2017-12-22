@@ -74,7 +74,7 @@ namespace Dominio
 
         public bool Equals(Pago other)
         {
-            return this.Tipo == other.Tipo;
+            return this.iTipoPago == other.Tipo && this.iMonto == other.Monto;
         }
     }
 }

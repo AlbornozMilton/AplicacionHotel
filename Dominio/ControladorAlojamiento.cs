@@ -190,10 +190,19 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Para que se realice este método el Alojamiento debe tener un Pago Aljaado (Realizar control en UI)
+        /// Para que se realice este método el Alojamiento debe tener un Pago Alojado (Realizar control en UI)
         /// </summary>
-        public void CerrarAlojamiento(Alojamiento pAlojamiento)
+        public void CerrarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaEgreso)
         {
+            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+            {
+                throw new Exception("Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+            }
+            else if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Alojado))
+            {
+                throw new Exception("Operacion Cancelada. Solo se puede Cerrar un Alojamiento que esta Alojado");
+            }
+
             //Siempre se va a colocar en "false" la exclusividad
             pAlojamiento.Habitacion.SetExclusividad(false);
 
@@ -201,7 +210,25 @@ namespace Dominio
             pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples,pAlojamiento.CantCuposDobles);
 
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
-            pAlojamiento.Cerrar(DateTime.Now);
+            pAlojamiento.Cerrar(pFechaEgreso);
+
+            iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
+        }
+
+        public void CancelarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaCancelacion)
+        {
+            //EL PAGO DE DEPOSITO NO SE REMUNERA EN CASO DE CANCELAR Y HABER REALIZADO UN DEPOSITO
+            //if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+            //{
+            //    throw new Exception("Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+            //}
+            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+            {
+                throw new Exception("Operacion Cancelada. Solo se puede Cancelar un Alojamiento que esta Reservado");
+            }
+
+            //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
+            pAlojamiento.Cerrar(pFechaCancelacion);
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
