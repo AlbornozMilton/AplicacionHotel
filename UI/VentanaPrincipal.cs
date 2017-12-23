@@ -99,5 +99,11 @@ namespace UI
             ListarServiciosConsumidos VentanaListarServConsumidos = new ListarServiciosConsumidos();
             VentanaListarServConsumidos.ShowDialog();
         }
+
+        private void cerrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CerrarAlojamiento VentanaCerrarALojamiento = new CerrarAlojamiento();
+            VentanaCerrarALojamiento.ShowDialog();
+        }
     }
 }
