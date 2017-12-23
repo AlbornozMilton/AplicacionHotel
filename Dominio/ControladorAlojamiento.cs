@@ -232,5 +232,15 @@ namespace Dominio
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
+
+        public void ComprobarClientesAltaConReserva(Alojamiento pAloj)
+        {
+            if (!(pAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+            {
+                throw new Exception("Operacion Cancelada. Solo se puede dar de Alta a un Alojamiento que esta Reservado");
+            }
+
+
+        }
     }
 }
