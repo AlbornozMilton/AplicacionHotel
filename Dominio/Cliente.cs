@@ -9,6 +9,7 @@ namespace Dominio
     public class Cliente:IEquatable<Cliente>
     {
         private int iDni;
+        private int iLegajo;
         private string iNombre;
         private string iApellido;
         private string iTelefono;
@@ -21,9 +22,10 @@ namespace Dominio
         //-------------------------------Constructores
         public Cliente() { } 
 
-        public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TarifaCliente pTarifa)
+        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TarifaCliente pTarifa)
         {
             this.iDni = pDni;
+            this.iLegajo = pLegajo;
             this.iNombre = pNombre;
             this.iApellido = pApellido;
             this.iTelefono = pTel;
@@ -41,9 +43,10 @@ namespace Dominio
             //el resto de los atributos es Null o Default.
         }
 
-        public Cliente(int pDni, string pNombre, string pApellido, string pTel)
+        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel)
         {
             this.iDni = pDni;
+            this.iLegajo = pLegajo;
             this.iNombre = pNombre;
             this.iApellido = pApellido;
             this.iTelefono = pTel;
@@ -51,6 +54,7 @@ namespace Dominio
 
         //----------------------------------Propiedades------------------------------------
         public int ClienteId { get { return this.iDni; } private set { this.iDni = value; } }
+        public int Legajo { get { return this.iLegajo; } private set { this.iLegajo = value; } }
         public string Nombre { get { return this.iNombre; } private set { this.iNombre = value; } }
         public string Apellido { get { return this.iApellido; } private set { this.iApellido = value; } }
         public string Telefono { get { return this.iTelefono; } private set { this.iTelefono = value; } }

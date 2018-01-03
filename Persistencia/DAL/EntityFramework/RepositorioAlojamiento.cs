@@ -44,16 +44,15 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public override void Add(Alojamiento unAloj)
         {
-            List<Cliente> auxListCliente = new List<Cliente>();
-            foreach (var cli in unAloj.Clientes)
-            {
-                auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-            }
-            unAloj.Clientes = auxListCliente;
-
-
             if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
             {
+                List<Cliente> auxListCliente = new List<Cliente>();
+                foreach (var cli in unAloj.Clientes)
+                {
+                    auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+                }
+                unAloj.Clientes = auxListCliente;
+               
                 //Para el caso que se modifique la exclusividad de la habitacion
                 iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
 
@@ -61,6 +60,43 @@ namespace Persistencia.DAL.EntityFramework
                 {
                     iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
                 }
+            }
+
+            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            {
+                List<Cliente> auxListCliente = new List<Cliente>();
+
+                foreach (var cli in unAloj.Clientes)
+                {
+                    //cliebte debido a los contadores
+                    if (cli.ClienteId == null)
+                    {
+                        do
+                        {
+                            //un digito menos que los DNI
+                            cli.ClienteId = new Random().Next(1, 9999999);
+                            
+                            //mientras lo encuentre. cuando lo encuentre va a ser "null" y corta
+                        } while (iDbContext.Clientes.Find(cli.ClienteId)!=null);
+
+                        cli.Legajo = 0000;
+                        cli.Nombre = "";
+                        cli.Apellido = "";
+                        cli.Telefono = "";
+                        cli.EnAlta = false;
+                        //domicilio se permite null
+                        //correo se permite null
+                        //la tarifa ya esta incluida en "cli"
+
+                        auxListCliente.Add(cli);
+
+                    }
+                    else
+                    {
+                        auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+                    }
+                }
+                unAloj.Clientes = auxListCliente;
             }
             
             iDbContext.Alojamientos.Add(unAloj);

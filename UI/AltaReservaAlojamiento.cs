@@ -75,11 +75,7 @@ namespace UI
             var auxListClientes = new ControladorAlojamiento().GenerarTiposClientesReserva(contadores,ClienteResponsable);
 
             this.NuevoAlojamiento = new Alojamiento(auxListClientes, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
-
             this.NuevoAlojamiento.CalcularCostoBase();
-
-            
-
 
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
             txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();

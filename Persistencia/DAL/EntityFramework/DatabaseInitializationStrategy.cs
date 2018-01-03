@@ -392,6 +392,7 @@ namespace Persistencia.DAL.EntityFramework
             Cliente Milton = new Cliente
             {
                 ClienteId = 38387043,
+                Legajo = 1111,
                 Apellido = "Albornoz",
                 Nombre = "Milton",
                 Telefono = "0345515431476",
@@ -403,6 +404,7 @@ namespace Persistencia.DAL.EntityFramework
             Cliente Mauri = new Cliente
             {
                 ClienteId = 37115628,
+                Legajo = 2222,
                 Apellido = "Chamorro",
                 Nombre = "Mauricio Manuel",
                 Telefono = "0345615542154",
