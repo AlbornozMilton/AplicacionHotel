@@ -9,9 +9,9 @@ namespace Dominio
     public enum TipoCliente
     {
         Titular,
-        TitularExceptuado,
         AcompanianteDirecto,
         AcompanianteNoDirecto,
+        TitularExceptuado,
         Convenio
     }
 }

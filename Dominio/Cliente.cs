@@ -19,7 +19,7 @@ namespace Dominio
         private List<Alojamiento> iAlojamientos;
 
         //-------------------------------Constructores
-        public Cliente() { } //Constructor utilizado por el AutoMapper para el mapeo inverso. De Persistencia a Dominio.
+        public Cliente() { } 
 
         public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TarifaCliente pTarifa)
         {
@@ -31,18 +31,15 @@ namespace Dominio
             this.iDomicilio = pDom;
             this.iTarifa = pTarifa;
         }
+
         /// <summary>
-        /// Contructor sin Correo
+        /// Constructor para Reserva. Para mantener registro del Tipo Cliente
         /// </summary>
-        //public Cliente(int pDni, string pNombre, string pApellido, string pTel, Domicilio pDom, TipoCliente pTipoCliente)
-        //{
-        //    this.iDni = pDni;
-        //    this.iNombre = pNombre;
-        //    this.iApellido = pApellido;
-        //    this.iTelefono = pTel;
-        //    this.iDomicilio = pDom;
-        //    //this.iTipoCliente = pTipoCliente;
-        //}
+        public Cliente(TarifaCliente pTarifaCliente)
+        {
+            this.iTarifa = pTarifaCliente;
+            //el resto de los atributos es Null o Default.
+        }
 
         public Cliente(int pDni, string pNombre, string pApellido, string pTel)
         {
@@ -64,12 +61,11 @@ namespace Dominio
         public TarifaCliente TarifaCliente { get { return this.iTarifa; } private set { this.iTarifa = value; } }
         public List<Alojamiento> Alojamientos { get { return this.iAlojamientos; } private set { this.iAlojamientos = value; } }
 
-        //-------------------------------------Metodos
+        //-------------------------------------Metodos---------------------------------------
         /// <summary>
         /// Usado para saber si un Cliente existe es una Lista determinada, o bien si un Cliente es iguala otro.
         /// </summary>
-        /// <param name="other">Ciente a comparar</param>
-        /// <returns></returns>
+        /// <param name="other">Cliente externo a comparar</param>
         bool IEquatable<Cliente>.Equals(Cliente other)
         {
             return (this.ClienteId.GetHashCode() == other.ClienteId.GetHashCode());
@@ -82,14 +78,17 @@ namespace Dominio
         /// <returns></returns>
         public double ObtenerSuPrecioTarifa(bool pExclusividad)
         {
-            if (pExclusividad == false)
-            {
-                return this.TarifaCliente.Tarifa;
-            }
-            else
-            {
-                return this.TarifaCliente.TarifaExclusiva;
-            }
+            //si pExclusividad == true
+            //if (pExclusividad)
+            //{
+            //    return this.TarifaCliente.TarifaExclusiva;
+            //}
+            //else
+            //{
+            //    return this.TarifaCliente.Tarifa;
+            //}
+
+            return this.iTarifa.GetTarifa(pExclusividad);
         }
 
     }

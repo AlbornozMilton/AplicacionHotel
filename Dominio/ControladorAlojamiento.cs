@@ -242,5 +242,33 @@ namespace Dominio
 
 
         }
+
+        /// <summary>
+        /// Genera Clientes vacios solo con Tarifas 
+        /// </summary>
+        /// <param name="pContadores"></param>
+        /// <returns></returns>
+        public List<Cliente> GenerarTiposClientesReserva(decimal[] pContadores)
+        {
+            List<Cliente> lClinestes = new List<Cliente>();
+
+            var tarifas = new ControladorCliente().DevolverListaTarifas();
+
+            //pContadores [contador_Titular, contador_Direc, contador_NoDirec, contador_Excep, contador_Conv]
+
+            for (int j = 0; j < pContadores.Length; j++)
+            {
+                if (pContadores[j] > 0)
+                {
+                    do
+                    {
+                        //la lista de tarifa tiene mismo orden que contadores, por eso se utiliza "i"
+                        lClinestes.Add(new Cliente(tarifas[j]));
+                        pContadores[j]--;
+                    } while (pContadores[j] > 0);
+                }
+            }
+            return lClinestes;
+        }
     }
 }

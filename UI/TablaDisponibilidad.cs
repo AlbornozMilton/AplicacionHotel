@@ -13,7 +13,8 @@ namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
-        public Habitacion iHabSeleccionada;
+        public Habitacion HabSeleccionada;
+        public List<Habitacion> Habitaciones;
 
         ControladorHabitacion iControladorHab = new ControladorHabitacion();
         public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
@@ -29,12 +30,10 @@ namespace UI
             if (Convert.ToDateTime(fechaDesde).CompareTo(Convert.ToDateTime(fechaHasta)) <= 0)
             {
                 dGV_TablaHabitaciones.Rows.Clear();
-                List<Habitacion> listaHabDisponibles = iControladorAloj.DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
-                foreach (var hab in listaHabDisponibles)
+                this.Habitaciones = iControladorAloj.DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
+                foreach (var hab in this.Habitaciones)
                 {
-
                     dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
-
                 }
                 dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
             }
@@ -48,7 +47,8 @@ namespace UI
         {
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
             //this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
-            this.iHabSeleccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
+            //this.iHabSeleccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
+            this.HabSeleccionada = this.Habitaciones.Find(h =>h.HabitacionId == Convert.ToInt32(Fila[0].Value));
             Close();
         }
 

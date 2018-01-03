@@ -13,11 +13,11 @@ namespace UI
 {
     public partial class AltaReservaAlojamiento : Form
     {
-        public Habitacion iHabSeleccionada;
-        public DateTime iFechaIni;
-        public DateTime iFechaFin;
-        public Cliente iClienteResponsable;
-        Alojamiento iNuevoAlojamiento;
+        public Habitacion HabSeleccionada;
+        public DateTime FechaIni;
+        public DateTime FechaFin;
+        public Cliente ClienteResponsable;
+        Alojamiento NuevoAlojamiento;
 
         public AltaReservaAlojamiento()
         {
@@ -48,36 +48,61 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TablaDisp = new TablaDisponibilidad(dtp_fechaDesde.Value,dtp_fechaHasta.Value);
+            TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni,FechaFin);
             TablaDisp.ShowDialog();
-            tbx_NroHab.Text = Convert.ToString(TablaDisp.iHabSeleccionada.HabitacionId);
-            this.iHabSeleccionada = TablaDisp.iHabSeleccionada;
+            tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
+            this.HabSeleccionada = TablaDisp.HabSeleccionada;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
-            this.iClienteResponsable = BuscarClienteForm.iClienteSeleccionado;
+            this.ClienteResponsable = BuscarClienteForm.iClienteSeleccionado;
             dGV_ClienteResponsable.Rows.Clear();
-            dGV_ClienteResponsable.Rows.Add(iClienteResponsable.ClienteId, iClienteResponsable.Apellido, iClienteResponsable.Nombre, iClienteResponsable.Telefono);
+            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
         }
 
+        /// <summary>
+        /// Realizar control de excepciones 
+        /// </summary>
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            this.iNuevoAlojamiento = new Alojamiento(iHabSeleccionada, iClienteResponsable, iFechaIni, iFechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), ck_Exclusividad.Checked);
-            decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value};
-            iNuevoAlojamiento.CalcularCostoBase(contadores);
-            txb_CostoBase.Text = iNuevoAlojamiento.MontoTotal.ToString();
-            txb_Deposito.Text = iNuevoAlojamiento.Deposito.ToString();
+            decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value };
+            var auxListClientes = new ControladorAlojamiento().GenerarTiposClientesReserva(contadores);
+
+            this.NuevoAlojamiento = new Alojamiento(auxListClientes, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+
+            this.NuevoAlojamiento.CalcularCostoBase();
+
+            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+            txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
             btn_Aceptar.Enabled = true;
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorAlojamiento().RegistrarReservaAloj(this.iNuevoAlojamiento);
-            MessageBox.Show("Reserva Registrada con Exito");
+            new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
+            MessageBox.Show("Reserva Registrada con Éxito");
             Close();
         }
+
+        private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
+        }
+
+        #region Ingreso de Fechas en Calendario
+        //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad o algo similar
+        private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            this.FechaIni = dtp_fechaDesde.Value;
+        }
+
+        private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            this.FechaFin = dtp_fechaHasta.Value;
+        } 
+        #endregion
     }
 }
