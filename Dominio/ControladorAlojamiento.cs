@@ -248,26 +248,40 @@ namespace Dominio
         /// </summary>
         /// <param name="pContadores"></param>
         /// <returns></returns>
-        public List<Cliente> GenerarTiposClientesReserva(decimal[] pContadores)
+        public List<Cliente> GenerarTiposClientesReserva(decimal[] pContadores, Cliente pCliResponsable)
         {
             List<Cliente> lClinestes = new List<Cliente>();
 
             var tarifas = new ControladorCliente().DevolverListaTarifas();
 
+            bool auxControl = true;
             //pContadores [contador_Titular, contador_Direc, contador_NoDirec, contador_Excep, contador_Conv]
 
             for (int j = 0; j < pContadores.Length; j++)
             {
                 if (pContadores[j] > 0)
                 {
-                    do
+                    //descontar una Tarifa de pContadores que referencia al Responsable
+                    //se lo debe hacer una sola vez
+                    if ((pCliResponsable.TarifaCliente.TarifaClienteId == tarifas[j].TarifaClienteId)&&(auxControl))
                     {
-                        //la lista de tarifa tiene mismo orden que contadores, por eso se utiliza "i"
+                        lClinestes.Add(pCliResponsable);
+                        pContadores[j]--;
+
+                        //para que lo haga una vez en caso de tener mas de un contador para el mismo tipo que el responsable
+                        auxControl = false;
+                    }
+
+                    while (pContadores[j] > 0)
+                    {
+                        //la lista de tarifa tiene mismo orden que contadores, por eso se utiliza "j"
                         lClinestes.Add(new Cliente(tarifas[j]));
                         pContadores[j]--;
-                    } while (pContadores[j] > 0);
+                    }
+                            
                 }
             }
+
             return lClinestes;
         }
     }

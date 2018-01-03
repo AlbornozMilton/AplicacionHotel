@@ -22,6 +22,9 @@ namespace UI
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
+            FechaIni = dtp_fechaDesde.Value;
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+            FechaFin = dtp_fechaHasta.Value;
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -69,11 +72,14 @@ namespace UI
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
             decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value };
-            var auxListClientes = new ControladorAlojamiento().GenerarTiposClientesReserva(contadores);
+            var auxListClientes = new ControladorAlojamiento().GenerarTiposClientesReserva(contadores,ClienteResponsable);
 
             this.NuevoAlojamiento = new Alojamiento(auxListClientes, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
             this.NuevoAlojamiento.CalcularCostoBase();
+
+            
+
 
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
             txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
