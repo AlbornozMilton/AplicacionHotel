@@ -40,6 +40,7 @@
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cerrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -176,6 +176,13 @@
             this.agregarServicioToolStripMenuItem.Size = new System.Drawing.Size(220, 28);
             this.agregarServicioToolStripMenuItem.Text = "Agregar Servicio";
             this.agregarServicioToolStripMenuItem.Click += new System.EventHandler(this.agregarServicioToolStripMenuItem_Click);
+            // 
+            // cerrarToolStripMenuItem1
+            // 
+            this.cerrarToolStripMenuItem1.Name = "cerrarToolStripMenuItem1";
+            this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(220, 28);
+            this.cerrarToolStripMenuItem1.Text = "Cerrar";
+            this.cerrarToolStripMenuItem1.Click += new System.EventHandler(this.cerrarToolStripMenuItem1_Click);
             // 
             // clienteToolStripMenuItem
             // 
@@ -407,13 +414,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(777, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
-            // 
-            // cerrarToolStripMenuItem1
-            // 
-            this.cerrarToolStripMenuItem1.Name = "cerrarToolStripMenuItem1";
-            this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(220, 28);
-            this.cerrarToolStripMenuItem1.Text = "Cerrar";
-            this.cerrarToolStripMenuItem1.Click += new System.EventHandler(this.cerrarToolStripMenuItem1_Click);
             // 
             // VentanaPrincipal
             // 

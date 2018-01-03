@@ -15,9 +15,9 @@ namespace UI
     {
         public Habitacion HabSeleccionada;
         public List<Habitacion> Habitaciones;
-
         ControladorHabitacion iControladorHab = new ControladorHabitacion();
         public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
+
         public TablaDisponibilidad()
         {
             InitializeComponent();
@@ -26,21 +26,15 @@ namespace UI
         public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             InitializeComponent();
-            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento(); // V E R !!!! usar asi?
-            if (Convert.ToDateTime(fechaDesde).CompareTo(Convert.ToDateTime(fechaHasta)) <= 0)
+            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
+            dGV_TablaHabitaciones.Rows.Clear();
+            this.Habitaciones = iControladorAloj.DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
+            foreach (var hab in this.Habitaciones)
             {
-                dGV_TablaHabitaciones.Rows.Clear();
-                this.Habitaciones = iControladorAloj.DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
-                foreach (var hab in this.Habitaciones)
-                {
-                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
-                }
-                dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
+                dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);
             }
-            else
-            {
-                MessageBox.Show("Fecha de Ingreso mayor a Fecha de Egreso");
-            }
+
+            dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
         }
 
         private void btn_Seleccionar_Click(object sender, EventArgs e)

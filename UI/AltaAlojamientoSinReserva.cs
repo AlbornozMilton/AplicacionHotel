@@ -23,20 +23,28 @@ namespace UI
         public AltaAlojamientoSinReserva()
         {
             InitializeComponent();
-            textBox2.Text = Convert.ToString(DateTime.Today.Date);
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            //textBox2.Text = "HOLAAAA";
+            txb_fechaActual.Text = Convert.ToString(DateTime.Today.Date);
+            FechaIni = dtp_fechaDesde.Value;
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+            FechaFin = dtp_fechaHasta.Value;
         }
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TablaDisp = new TablaDisponibilidad();
-            TablaDisp.ShowDialog();
-            txb_NroHabitacion.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
-            this.HabSeleccionada = TablaDisp.HabSeleccionada;
+            //si la fecha ini es manor que fecha fin
+            if (FechaIni.CompareTo(FechaFin) == -1)
+            {
+                TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin);
+                TablaDisp.ShowDialog();
+
+                if (TablaDisp.HabSeleccionada != null)
+                {
+                    txb_NroHabitacion.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
+                    this.HabSeleccionada = TablaDisp.HabSeleccionada;
+                }
+            }
+            else
+                MessageBox.Show("Las fechas seleccionadas no corresponden. Seleccione de nuevo.");
         }
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
@@ -91,6 +99,21 @@ namespace UI
             new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
             MessageBox.Show("Alojamiento Registrado con Exito");
             Close();
+        }
+
+        private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            this.FechaIni = dtp_fechaDesde.Value;
+        }
+
+        private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            this.FechaFin = dtp_fechaHasta.Value;
+        }
+
+        private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
+        {
+            this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
         }
     }
 }

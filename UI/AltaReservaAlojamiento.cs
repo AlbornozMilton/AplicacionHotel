@@ -51,10 +51,19 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni,FechaFin);
-            TablaDisp.ShowDialog();
-            tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
-            this.HabSeleccionada = TablaDisp.HabSeleccionada;
+            if (FechaIni.CompareTo(FechaFin) == -1)
+            {
+                TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin);
+                TablaDisp.ShowDialog();
+
+                if (TablaDisp.HabSeleccionada != null)
+                {
+                    tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
+                    this.HabSeleccionada = TablaDisp.HabSeleccionada;
+                }
+            }
+            else
+                MessageBox.Show("Las fechas seleccionadas no corresponden. Seleccione de nuevo.");
         }
 
         private void button2_Click(object sender, EventArgs e)

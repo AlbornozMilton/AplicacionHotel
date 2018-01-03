@@ -15,11 +15,7 @@ namespace UI
         public VentanaPrincipal()
         {
             InitializeComponent();
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
