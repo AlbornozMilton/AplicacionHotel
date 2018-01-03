@@ -23,46 +23,10 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
-        //public Alojamiento GenerarReservaAlojamiento(Habitacion pHabitacion, Cliente pClienteResp, DateTime pFechaEstimadaIngreso, DateTime pFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
-        //{
-        //    Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad
-        //    Alojamiento NuevoAlojamiento = new Alojamiento(pHabitacion, pClienteResp,);
-        //    NuevoAlojamiento.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
-        //    this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-        //    this.CantCuposSimples = cantCuposSimples;
-        //    this.CantCuposDobles = cantCuposDobles;
-        //    this.Exclusividad = ck_Exclusividad;
-        //    this.Clientes.Add(unClienteResp);
-        //    this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
-        //    this.FechaReserva = DateTime.Now;
-
-        //    return NuevoAlojamiento;
-        //}
-
-        //public Alojamiento GenerarAltaAlojamiento()
-        //{
-        //    this.Clientes = new List<Cliente>();
-        //    //Usado cuando se confirma reserva
-        //    this.DniResponsable = unClienteResp.ClienteId;
-        //    this.Habitacion = unaHab;
-        //    this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
-        //    this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-        //    this.CantCuposSimples = cantCuposSimples;
-        //    this.CantCuposDobles = cantCuposDobles;
-        //    this.Exclusividad = ck_Exclusividad;
-        //    this.Clientes.Add(unClienteResp);
-        //    this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
-        //    this.FechaReserva = DateTime.Now;
-        //}
-
         public void RegistrarReservaAloj(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-            
             iUoW.RepositorioAlojamiento.Add(A);
-            
-            //iUoW.Complete();
-            //iUoW.Dispose();
         }
 
         public Alojamiento BuscarAlojamientoPorID(int unId)
@@ -74,7 +38,6 @@ namespace Dominio
         {
             //EL CONTROL PARA EL FORMATO DE MONTO SE LO DEBE REALIZAR EN LA UI
             //CONTROLAR DESDE LA UI QUE EL MONTO SEA MAYOR QUE CERO
-
             switch (pPago.Tipo)
             {
                 case TipoPago.Deposito:
@@ -216,26 +179,110 @@ namespace Dominio
         {
             var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
             iUoW.RepositorioAlojamiento.AddPago(e,e.Pagos[0]);
-            iUoW.Complete();
-            iUoW.Dispose();
         }
 
-        public void AgregarAcompañante (Alojamiento unAloj, Cliente unCliente)
+        public void AgregarServicio (string pServicio, byte pCant, Alojamiento pAlojamiento)
         {
-            if (unAloj.Clientes.Contains(unCliente))
+            Servicio unServicio = Mapper.Map<pers.Servicio, Servicio>(iUoW.RepositorioServicio.GetByNombre(pServicio));
+            LineaServicio nuevaLineaServicio = new LineaServicio(pCant, unServicio);
+            pAlojamiento.AgregarLineaServicio(nuevaLineaServicio);
+            iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
+        }
+
+        /// <summary>
+        /// Para que se realice este método el Alojamiento debe tener un Pago Alojado (Realizar control en UI)
+        /// </summary>
+        public void CerrarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaEgreso)
+        {
+            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
             {
-                throw new Exception("Cliente ya esta agregado al Alojamiento");
+                throw new Exception("Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+            }
+            else if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Alojado))
+            {
+                throw new Exception("Operacion Cancelada. Solo se puede Cerrar un Alojamiento que esta Alojado");
             }
 
-            unAloj.Clientes.Add(unCliente);
+            //Siempre se va a colocar en "false" la exclusividad
+            pAlojamiento.Habitacion.SetExclusividad(false);
+
+            //para la BD
+            pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples,pAlojamiento.CantCuposDobles);
+
+            //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
+            pAlojamiento.Cerrar(pFechaEgreso);
+
+            iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
 
-        public void AgregarServicio (string pServicio, int pCant, Alojamiento pAlojamiento)
+        public void CancelarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaCancelacion)
         {
-            //Servicio unServicio = busqueda del servicio(pServicio)
-            //LineaServicio nuevaLineaServicio = new LineaServicio(pCant, Servicio unServicio)
-            //pAlojamiento.Servicios.Add(nuevaLineaServicio);
+            //EL PAGO DE DEPOSITO NO SE REMUNERA EN CASO DE CANCELAR Y HABER REALIZADO UN DEPOSITO
+            //if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+            //{
+            //    throw new Exception("Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+            //}
+            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+            {
+                throw new Exception("Operacion Cancelada. Solo se puede Cancelar un Alojamiento que esta Reservado");
+            }
 
+            //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
+            pAlojamiento.Cerrar(pFechaCancelacion);
+
+            iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
+        }
+
+        public void ComprobarClientesAltaConReserva(Alojamiento pAloj)
+        {
+            if (!(pAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+            {
+                throw new Exception("Operacion Cancelada. Solo se puede dar de Alta a un Alojamiento que esta Reservado");
+            }
+
+
+        }
+
+        /// <summary>
+        /// Genera Clientes vacios solo con Tarifas 
+        /// </summary>
+        /// <param name="pContadores"></param>
+        /// <returns></returns>
+        public List<Cliente> GenerarTiposClientesReserva(decimal[] pContadores, Cliente pCliResponsable)
+        {
+            List<Cliente> lClinestes = new List<Cliente>();
+
+            var tarifas = new ControladorCliente().DevolverListaTarifas();
+
+            bool auxControl = true;
+            //pContadores [contador_Titular, contador_Direc, contador_NoDirec, contador_Excep, contador_Conv]
+
+            for (int j = 0; j < pContadores.Length; j++)
+            {
+                if (pContadores[j] > 0)
+                {
+                    //descontar una Tarifa de pContadores que referencia al Responsable
+                    //se lo debe hacer una sola vez
+                    if ((pCliResponsable.TarifaCliente.TarifaClienteId == tarifas[j].TarifaClienteId)&&(auxControl))
+                    {
+                        lClinestes.Add(pCliResponsable);
+                        pContadores[j]--;
+
+                        //para que lo haga una vez en caso de tener mas de un contador para el mismo tipo que el responsable
+                        auxControl = false;
+                    }
+
+                    while (pContadores[j] > 0)
+                    {
+                        //la lista de tarifa tiene mismo orden que contadores, por eso se utiliza "j"
+                        lClinestes.Add(new Cliente(tarifas[j]));
+                        pContadores[j]--;
+                    }
+                            
+                }
+            }
+
+            return lClinestes;
         }
     }
 }

@@ -11,10 +11,10 @@ using Dominio;
 
 namespace UI
 {
-    public partial class AgregarServicio : Form
+    public partial class ListarServiciosConsumidos : Form
     {
         public Alojamiento iAloj_Seleccionado;
-        public AgregarServicio()
+        public ListarServiciosConsumidos()
         {
             InitializeComponent();
         }
@@ -31,14 +31,11 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
             iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
             CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
-        }
-
-        private void btn_Aceptar_Click(object sender, EventArgs e)
-        {
-            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
-            iControladorAloj.AgregarServicio(cBox_Servicios.SelectedItem.ToString(), Convert.ToByte(cant_Servicio.Value), iAloj_Seleccionado);
-            MessageBox.Show("¡ Servicio Agregado !");
-            Close();
+            dGV_ListadoServicios.Rows.Clear();
+            foreach (var serv in iAloj_Seleccionado.Servicios)
+            {
+                dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.Servicio.CostoBase, serv.CostoServicio);
+            }
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)

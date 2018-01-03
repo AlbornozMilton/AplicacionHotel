@@ -85,6 +85,12 @@
     <Compile Include="BuscarCliente.Designer.cs">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="CerrarAlojamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CerrarAlojamiento.Designer.cs">
+      <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="IForm.cs" />
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="ListarAlojamientos.Designer.cs">
       <DependentUpon>ListarAlojamientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListarServiciosConsumidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListarServiciosConsumidos.Designer.cs">
+      <DependentUpon>ListarServiciosConsumidos.cs</DependentUpon>
     </Compile>
     <Compile Include="NuevoCliente.cs">
       <SubType>Form</SubType>
@@ -140,6 +152,12 @@
     <Compile Include="VentanaPrincipal.Designer.cs">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="VisualizarAlojamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualizarAlojamiento.Designer.cs">
+      <DependentUpon>VisualizarAlojamiento.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -165,11 +183,17 @@
     <EmbeddedResource Include="BuscarCliente.resx">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CerrarAlojamiento.resx">
+      <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListarAlojamientos.resx">
       <DependentUpon>ListarAlojamientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListarServiciosConsumidos.resx">
+      <DependentUpon>ListarServiciosConsumidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevoCliente.resx">
       <DependentUpon>NuevoCliente.cs</DependentUpon>
@@ -190,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisualizarAlojamiento.resx">
+      <DependentUpon>VisualizarAlojamiento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

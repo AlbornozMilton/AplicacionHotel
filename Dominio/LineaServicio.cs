@@ -13,9 +13,7 @@ namespace Dominio
         private double iCostoServicio;
         private DateTime iFechaServicio;
         private Servicio iServicio;
-        private Alojamiento iAlojamiento;
-
-
+        
         //--------------------------Contructor
         public LineaServicio()
         {
@@ -26,6 +24,7 @@ namespace Dominio
         {
             this.iCantidad = pCant;
             this.iServicio = pServicio;
+            this.iFechaServicio = DateTime.Now;
             this.CalcularCostoServicio();
         }
 
@@ -47,11 +46,11 @@ namespace Dominio
             get { return this.iServicio; }
             private set { this.iServicio = value; }
         }
-        public Alojamiento Alojamiento
-        {
-            get { return this.iAlojamiento; }
-            private set { this.iAlojamiento = value; }
-        }
+        //public Alojamiento Alojamiento
+        //{
+        //    get { return this.iAlojamiento; }
+        //    private set { this.iAlojamiento = value; }
+        //}
 
         //---------------------------------------------------------
         private void CalcularCostoServicio()

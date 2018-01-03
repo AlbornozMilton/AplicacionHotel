@@ -15,6 +15,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(c => c.ClienteId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
+            this.Property(c => c.Legajo)
+                .IsRequired();
+
             this.Property(c => c.Nombre)
                 .IsRequired();
 

@@ -11,12 +11,18 @@ using Dominio;
 
 namespace UI
 {
-    public partial class AgregarServicio : Form
+    public partial class CerrarAlojamiento : Form
     {
-        public Alojamiento iAloj_Seleccionado;
-        public AgregarServicio()
+        public Alojamiento iAloj_Seleccionado; 
+        public CerrarAlojamiento()
         {
             InitializeComponent();
+        }
+
+        private void btn_Visualizar_Click(object sender, EventArgs e)
+        {
+            VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iAloj_Seleccionado);
+            VentanaVisualizar.ShowDialog();
         }
 
         public void CargarAlojamientoSeccionado(DataGridViewCellCollection fila)
@@ -31,19 +37,6 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
             iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
             CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
-        }
-
-        private void btn_Aceptar_Click(object sender, EventArgs e)
-        {
-            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
-            iControladorAloj.AgregarServicio(cBox_Servicios.SelectedItem.ToString(), Convert.ToByte(cant_Servicio.Value), iAloj_Seleccionado);
-            MessageBox.Show("¡ Servicio Agregado !");
-            Close();
-        }
-
-        private void btn_Cancelar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

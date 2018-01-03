@@ -93,5 +93,17 @@ namespace UI
             TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value);
             TDisp.ShowDialog();
         }
+
+        private void serviciosConsumidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListarServiciosConsumidos VentanaListarServConsumidos = new ListarServiciosConsumidos();
+            VentanaListarServConsumidos.ShowDialog();
+        }
+
+        private void cerrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CerrarAlojamiento VentanaCerrarALojamiento = new CerrarAlojamiento();
+            VentanaCerrarALojamiento.ShowDialog();
+        }
     }
 }

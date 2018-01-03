@@ -6,18 +6,6 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    /*
-     EL VALOR NULL POR DEFECTO DE LA FECHA DATETIME ES "1/1/0001 12:00:00 AM" ....... EJEMPLOS
-
-            Console.WriteLine( new DateTime()); // 1/1/0001 12:00:00 AM
-            Console.WriteLine( default(DateTime)); // 1/1/0001 12:00:00 AM
-            Console.WriteLine( DateTime.MinValue); // 1/1/0001 12:00:00 AM
-
-            Alojamiento lAlojamiento2 = new Alojamiento(); //se instancian todos los atributos del Alojamiento por null o su default
-            Console.WriteLine(lAlojamiento2.FechaEstimadaEgreso); // 1/1/0001 12:00:00 AM
-            Console.WriteLine(lAlojamiento2.FechaReserva); // 1/1/0001 12:00:00 AM
-    */
-
     public class Alojamiento
     {
         private List<LineaServicio> iServicios;
@@ -40,50 +28,58 @@ namespace Dominio
         private EstadoAlojamiento iEstadoAloj;
 
 
-        //-----------------------constructores//----------------------
+        //-----------------------CONSTRUCTORES----------------------
      
         public Alojamiento()
         {
 
         }
-        /// <summary>
-        /// Contructor para el Alta Reserva Alojamiento
-        /// </summary>
-        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
-        {
-            this.Clientes = new List<Cliente>();
-            this.DniResponsable = unClienteResp.ClienteId;
-            this.Habitacion = unaHab;
-            this.FechaEstimadaIngreso = unaFechaEstimadaIngreso;
-            this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.CantCuposSimples = cantCuposSimples;
-            this.CantCuposDobles = cantCuposDobles;
-            this.Exclusividad = ck_Exclusividad;
-            this.Clientes.Add(unClienteResp);
-            this.EstadoAlojamiento = EstadoAlojamiento.Reservado;
-            this.FechaReserva = DateTime.Now;
-        }
+
         /// <summary>
         /// Contructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool ck_Exclusividad)
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
         {
-            this.Clientes = new List<Cliente>();
-            this.DniResponsable = unClienteResp.ClienteId;
-            this.Habitacion = unaHab;
-            this.FechaIngreso = unaFechaIngreso;
-            this.FechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.CantCuposSimples = cantCuposSimples;
-            this.CantCuposDobles = cantCuposDobles;
-            this.Exclusividad = ck_Exclusividad;
-            this.Clientes.Add(unClienteResp);
+            this.iEstadoAloj = EstadoAlojamiento.Alojado;
+
+            this.iClientes = new List<Cliente>();
+            //this.iClientes.Add(unClienteResp);
+            this.iDniResponsable = unClienteResp.ClienteId;
+            //El cliente responsable ya se encuentra en la lista de acompañantes - Verificar
             foreach (var cli in listaAcompañantes)
             {
-                Clientes.Add(cli);
+                iClientes.Add(cli);
             }
-            this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
-            this.FechaReserva = DateTime.Now;
+
+            this.iHabitacion = unaHab;
+            this.iFechaIngreso = unaFechaIngreso;
+            this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
+            this.iCantCuposSimples = cantCuposSimples;
+            this.iCantCuposDobles = cantCuposDobles;
+            this.iExclusividad = HabExclusividad;
         }
+
+        /// <summary>
+        /// Contructor para la Reserva de Alojamiento
+        /// </summary>
+        public Alojamiento(List<Cliente> pClientes, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
+        {
+            this.iEstadoAloj = EstadoAlojamiento.Reservado;
+            this.iFechaReserva = DateTime.Now;
+
+            //el cliente responsable ya se encuentra en pClientes
+            this.iClientes = pClientes; 
+            this.iDniResponsable = unClienteResp.ClienteId;
+
+            this.iHabitacion = unaHab;
+            this.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
+            this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
+            this.iCantCuposSimples = cantCuposSimples;
+            this.iCantCuposDobles = cantCuposDobles;
+            this.iExclusividad = HabExclusividad;
+        }
+
+        
 
         //----------------------PROP----------------------
         public int AlojamientoId
@@ -195,27 +191,7 @@ namespace Dominio
 
         public bool ExistePagoAlojamiento(Pago pPago)
         {
-            return this.Pagos.Contains(pPago);
-        }
-
-        /// <summary>
-        /// Calcular Costo Base de un Alojamiento en momentos de Reserva
-        /// </summary>
-        /// <param name="pContadores">Contadores obtenidos desde la UI</param>
-        public double CalcularCostoBase(decimal[] pContadores)
-        {
-            //bool lExclusividad = this.iHabitacion.Exclusiva;
-            List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
-            double costoBase = 0;
-
-            for (int i = 0; i < pContadores.Length; i++)
-            {
-                costoBase += Convert.ToDouble(pContadores[i])*Tarifas[i].DeterminarTarifa(this.iHabitacion.Exclusiva);
-            }
-
-            this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaEstimadaIngreso).Days; //se usa fechaESTIMADAIngreso
-            this.MontoTotal = this.MontoDeuda;
-            return this.MontoDeuda;
+            return this.iPagos.Contains(pPago);
         }
 
         /// <summary>
@@ -223,19 +199,31 @@ namespace Dominio
         /// </summary>
         public double CalcularCostoBase()
         {
-            //bool lExclusividad = this.iHabitacion.Exclusiva;
-            //List<TarifaCliente> Tarifas = new ControladorCliente().DevolverListaTarifas();
+            bool lExclusividad = this.iHabitacion.Exclusiva;
             double costoBase = 0;
+            DateTime auxFechaDesde;
+
+            if (this.iEstadoAloj == EstadoAlojamiento.Alojado)
+            {
+                auxFechaDesde = this.iFechaIngreso;
+            }
+            else
+            {
+                auxFechaDesde = this.iFechaEstimadaIngreso;
+            }
+
             foreach (var cliente in this.Clientes)
             {
-                costoBase += cliente.ObtenerSuPrecioTarifa(this.iHabitacion.Exclusiva);
+                costoBase += cliente.ObtenerSuPrecioTarifa(lExclusividad);
             }
 
             //se utiliza FechaEstimadaEgreso y FechaIngreso
-            this.MontoDeuda = costoBase * this.FechaEstimadaEgreso.Subtract(this.FechaIngreso).Days; 
-            this.MontoTotal = this.MontoDeuda;
-            return this.MontoDeuda;
+            this.iMontoDeuda = costoBase * (this.iFechaEstimadaEgreso.Subtract(auxFechaDesde).Days); 
+            this.iMontoTotal = this.iMontoDeuda;
+
+            return this.iMontoDeuda;
         }
+
         public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
         {
             this.iMontoDeuda -= pPago.Monto;
@@ -264,6 +252,39 @@ namespace Dominio
         public void AgregarCliente(Cliente pCliente)
         {
             this.iClientes.Add(pCliente);
+        }
+
+        /// <summary>
+        /// Agrega una linea servicio y actualiza sus montos
+        /// </summary>
+        public void AgregarLineaServicio(LineaServicio pLineaServicio)
+        {
+            if (iServicios.Count == 0)
+            {
+                iServicios = new List<LineaServicio>() { pLineaServicio };
+            }
+            else
+            {
+                iServicios.Add(pLineaServicio);
+            }
+
+            iMontoTotal += pLineaServicio.CostoServicio;
+            iMontoDeuda += pLineaServicio.CostoServicio;
+        }
+
+        /// <summary>
+        /// Asinga la fecha parámetro como Fecha de Egreso y cambia el Estado Alojamiento a Cerrado
+        /// </summary>
+        public void Cerrar(DateTime pFechaEgreso)
+        {
+            this.iFechaEgreso = pFechaEgreso;
+            this.iEstadoAloj = EstadoAlojamiento.Cerrado;
+        }
+
+        public void Cancelar(DateTime pFechaCancelacion)
+        {
+            //this.iFechaCancelacion = pFechaCancelacion;
+            this.iEstadoAloj = EstadoAlojamiento.Cancelado;
         }
 
 

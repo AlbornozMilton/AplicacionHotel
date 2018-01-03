@@ -58,7 +58,7 @@ namespace Dominio
 
         public void NuevoCliente (string pDni, string pNombre, string pApellido, string pTel, string pTipoCliente)
         {
-            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel));
+            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), 0000, pNombre, pApellido, pTel));
 
             switch (pTipoCliente)
             {

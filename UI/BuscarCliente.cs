@@ -62,14 +62,14 @@ namespace UI
         {
             if (radioButton1.Checked)
             {
-                Cliente cli = iControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBoxDNI.Text)));
-                if (cli != null)
+                try
                 {
-                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    Cliente cli = iControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBoxDNI.Text)));
+                        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
-                else
+                catch (Exception pE)
                 {
-                    MessageBox.Show("Cliente NO Existe");
+                    MessageBox.Show(pE.Message);
                 }
             }
             else
@@ -90,6 +90,11 @@ namespace UI
             tablaResulClientes.ColumnHeadersDefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
         }
 
+        /// <summary>
+        /// Que hace estoo??? esta de mas??? ver el metodo de arriba
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             this.iClienteSeleccionado = iControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));

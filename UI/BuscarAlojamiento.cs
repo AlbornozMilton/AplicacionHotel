@@ -66,6 +66,10 @@ namespace UI
             }
         }
 
+        /// <summary>
+        /// idem buscar cliente por ID ???????''
+        /// </summary>
+   
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             iFilaSeleccionada = (dGV_ListadoAlojamientos.CurrentRow.Cells);

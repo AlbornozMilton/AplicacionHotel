@@ -37,7 +37,7 @@ namespace Dominio
         /// Retorna el monto de Tarifa según la exclusividad de una Habitación
         /// </summary>
         /// <param name="pExclusiva"> Valor que indica si la Habitación a sido solicitada como exclusiva</param>
-        public double DeterminarTarifa(bool pExclusiva)
+        public double GetTarifa(bool pExclusiva)
         {
             if (pExclusiva) return this.TarifaExclusiva;
             else return this.Tarifa;

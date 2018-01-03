@@ -20,9 +20,9 @@ namespace Persistencia.Domain
     public enum TipoCliente
     {
         Titular,
-        TitularExceptuado,
         AcompanianteDirecto,
         AcompanianteNoDirecto,
+        TitularExceptuado,
         Convenio
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class AgregarServicio
+    partial class CerrarAlojamiento
     {
         /// <summary>
         /// Required designer variable.
@@ -30,110 +30,29 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
-            this.cBox_Servicios = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cant_Servicio = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_Aceptar = new System.Windows.Forms.Button();
-            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
             this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.cant_Servicio)).BeginInit();
+            this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.btn_Visualizar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_BuscarAlojamiento
-            // 
-            this.btn_BuscarAlojamiento.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BuscarAlojamiento.Location = new System.Drawing.Point(15, 4);
-            this.btn_BuscarAlojamiento.Name = "btn_BuscarAlojamiento";
-            this.btn_BuscarAlojamiento.Size = new System.Drawing.Size(215, 25);
-            this.btn_BuscarAlojamiento.TabIndex = 0;
-            this.btn_BuscarAlojamiento.Text = "Buscar Alojamiento";
-            this.btn_BuscarAlojamiento.UseVisualStyleBackColor = true;
-            this.btn_BuscarAlojamiento.Click += new System.EventHandler(this.btn_BuscarAlojamiento_Click);
-            // 
-            // cBox_Servicios
-            // 
-            this.cBox_Servicios.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBox_Servicios.FormattingEnabled = true;
-            this.cBox_Servicios.Items.AddRange(new object[] {
-            "Bata",
-            "Calefacción",
-            "Aire Acondicionado",
-            "Seguridad Medica",
-            "Recargo por Fumar"});
-            this.cBox_Servicios.Location = new System.Drawing.Point(12, 193);
-            this.cBox_Servicios.Name = "cBox_Servicios";
-            this.cBox_Servicios.Size = new System.Drawing.Size(174, 25);
-            this.cBox_Servicios.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Seleccione Servicio";
-            // 
-            // cant_Servicio
-            // 
-            this.cant_Servicio.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cant_Servicio.Location = new System.Drawing.Point(305, 193);
-            this.cant_Servicio.Name = "cant_Servicio";
-            this.cant_Servicio.Size = new System.Drawing.Size(120, 24);
-            this.cant_Servicio.TabIndex = 3;
-            this.cant_Servicio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(302, 160);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Cantidad Consumida";
-            // 
-            // btn_Aceptar
-            // 
-            this.btn_Aceptar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(574, 233);
-            this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(101, 23);
-            this.btn_Aceptar.TabIndex = 5;
-            this.btn_Aceptar.Text = "Aceptar";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
-            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
-            // 
-            // btn_Cancelar
-            // 
-            this.btn_Cancelar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(698, 233);
-            this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(101, 23);
-            this.btn_Cancelar.TabIndex = 6;
-            this.btn_Cancelar.Text = "Cancelar";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.dGV_ListadoAlojamientos);
             this.groupBox2.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 35);
+            this.groupBox2.Location = new System.Drawing.Point(9, 43);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(787, 108);
-            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultado";
             // 
@@ -197,44 +116,77 @@
             this.clm_IDHabitacion.Name = "clm_IDHabitacion";
             this.clm_IDHabitacion.ReadOnly = true;
             // 
-            // AgregarServicio
+            // btn_BuscarAlojamiento
+            // 
+            this.btn_BuscarAlojamiento.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_BuscarAlojamiento.Location = new System.Drawing.Point(12, 12);
+            this.btn_BuscarAlojamiento.Name = "btn_BuscarAlojamiento";
+            this.btn_BuscarAlojamiento.Size = new System.Drawing.Size(215, 25);
+            this.btn_BuscarAlojamiento.TabIndex = 8;
+            this.btn_BuscarAlojamiento.Text = "Buscar Alojamiento";
+            this.btn_BuscarAlojamiento.UseVisualStyleBackColor = true;
+            this.btn_BuscarAlojamiento.Click += new System.EventHandler(this.btn_BuscarAlojamiento_Click);
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(688, 187);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(101, 23);
+            this.btn_Cancelar.TabIndex = 11;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            // 
+            // btn_Aceptar
+            // 
+            this.btn_Aceptar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(564, 187);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(101, 23);
+            this.btn_Aceptar.TabIndex = 10;
+            this.btn_Aceptar.Text = "Aceptar";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
+            // 
+            // btn_Visualizar
+            // 
+            this.btn_Visualizar.Font = new System.Drawing.Font("BankGothic Lt BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Visualizar.Location = new System.Drawing.Point(12, 174);
+            this.btn_Visualizar.Name = "btn_Visualizar";
+            this.btn_Visualizar.Size = new System.Drawing.Size(259, 23);
+            this.btn_Visualizar.TabIndex = 12;
+            this.btn_Visualizar.Text = "Visualizar Alojamiento";
+            this.btn_Visualizar.UseVisualStyleBackColor = true;
+            this.btn_Visualizar.Click += new System.EventHandler(this.btn_Visualizar_Click);
+            // 
+            // CerrarAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 268);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(801, 222);
+            this.Controls.Add(this.btn_Visualizar);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Aceptar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cant_Servicio);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cBox_Servicios);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_BuscarAlojamiento);
-            this.Name = "AgregarServicio";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AgregarServicio";
-            ((System.ComponentModel.ISupportInitialize)(this.cant_Servicio)).EndInit();
+            this.Name = "CerrarAlojamiento";
+            this.Text = "CerrarAlojamiento";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btn_BuscarAlojamiento;
-        private System.Windows.Forms.ComboBox cBox_Servicios;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown cant_Servicio;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Aceptar;
-        private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dGV_ListadoAlojamientos;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojmiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IDHabitacion;
+        private System.Windows.Forms.Button btn_BuscarAlojamiento;
+        private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button btn_Aceptar;
+        private System.Windows.Forms.Button btn_Visualizar;
     }
 }

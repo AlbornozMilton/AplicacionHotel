@@ -45,6 +45,7 @@
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviciosConsumidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cerrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -146,7 +148,8 @@
             this.alojamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem,
             this.buscarToolStripMenuItem1,
-            this.agregarServicioToolStripMenuItem});
+            this.agregarServicioToolStripMenuItem,
+            this.cerrarToolStripMenuItem1});
             this.alojamientoToolStripMenuItem.Name = "alojamientoToolStripMenuItem";
             this.alojamientoToolStripMenuItem.Size = new System.Drawing.Size(121, 28);
             this.alojamientoToolStripMenuItem.Text = "Alojamiento";
@@ -208,9 +211,18 @@
             // 
             // listarToolStripMenuItem
             // 
+            this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serviciosConsumidosToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(65, 28);
             this.listarToolStripMenuItem.Text = "Listar";
+            // 
+            // serviciosConsumidosToolStripMenuItem
+            // 
+            this.serviciosConsumidosToolStripMenuItem.Name = "serviciosConsumidosToolStripMenuItem";
+            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(267, 28);
+            this.serviciosConsumidosToolStripMenuItem.Text = "Servicios Consumidos";
+            this.serviciosConsumidosToolStripMenuItem.Click += new System.EventHandler(this.serviciosConsumidosToolStripMenuItem_Click);
             // 
             // movimientoToolStripMenuItem
             // 
@@ -396,6 +408,13 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // cerrarToolStripMenuItem1
+            // 
+            this.cerrarToolStripMenuItem1.Name = "cerrarToolStripMenuItem1";
+            this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(220, 28);
+            this.cerrarToolStripMenuItem1.Text = "Cerrar";
+            this.cerrarToolStripMenuItem1.Click += new System.EventHandler(this.cerrarToolStripMenuItem1_Click);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,5 +481,7 @@
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem agregarServicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem serviciosConsumidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem1;
     }
 }
