@@ -113,8 +113,10 @@ namespace UI
             if ((BuscarAlojamiento.iAloj_Seleccionado!=null)&&(BuscarAlojamiento.iAloj_Seleccionado.EstadoAlojamiento==Dominio.EstadoAlojamiento.Reservado))
             {
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.iAloj_Seleccionado;
-                AltaReservaAlojamiento.RellenarCampos();
+
                 AltaReservaAlojamiento.EnableAll(false);
+
+                AltaReservaAlojamiento.RellenarCampos();
 
             }
             else

@@ -12,6 +12,7 @@ namespace Dominio
     public class ControladorAlojamiento
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
+
         public List<Alojamiento> ObtenerAlojamientosActivos() //Devuelve la lista de alojamientos activos mappeandolos de Pers a Dominio
         {
             IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
@@ -233,21 +234,36 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
 
-        public void ComprobarClientesAltaConReserva(Alojamiento pAloj)
+        /// <summary>
+        /// Recorre ambas listas y determina si esta correcto los tipos de clientes agregados
+        /// </summary>
+        /// <param name="pAlojEnAlta"> Alojamiento con Clientes completos</param>
+        /// <param name="pClientesReserva">Clientes de la Reserva con Clientes Incompletos (falsos)</param>
+        public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, List<Cliente> pClientesReserva)
         {
-            if (!(pAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+            foreach (var cliente in pAlojEnAlta.Clientes)
             {
-                throw new Exception("Operacion Cancelada. Solo se puede dar de Alta a un Alojamiento que esta Reservado");
+                foreach (var clienteReserva in pClientesReserva)
+                {
+                    if (clienteReserva.TarifaCliente.TarifaClienteId == cliente.TarifaCliente.TarifaClienteId)
+                    {
+                        pClientesReserva.Remove(clienteReserva);
+                    }
+                }
             }
 
+            //Tipos de cliente incorrectos
+            if (pClientesReserva.Count != 0)
+            {
+                throw new Exception("Los Tipos de Cliente que ingreso no corresponden con los Clientes de la Reserva");
+            }
 
+            pAlojEnAlta.AltaDeReserva();
         }
 
         /// <summary>
-        /// Genera Clientes vacios solo con Tarifas 
+        /// Genera Clientes vacios solo con Tarifas más el Cliente Responsable
         /// </summary>
-        /// <param name="pContadores"></param>
-        /// <returns></returns>
         public List<Cliente> GenerarTiposClientesReserva(decimal[] pContadores, Cliente pCliResponsable)
         {
             List<Cliente> lClinestes = new List<Cliente>();

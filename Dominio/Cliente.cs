@@ -82,16 +82,6 @@ namespace Dominio
         /// <returns></returns>
         public double ObtenerSuPrecioTarifa(bool pExclusividad)
         {
-            //si pExclusividad == true
-            //if (pExclusividad)
-            //{
-            //    return this.TarifaCliente.TarifaExclusiva;
-            //}
-            //else
-            //{
-            //    return this.TarifaCliente.Tarifa;
-            //}
-
             return this.iTarifa.GetTarifa(pExclusividad);
         }
 

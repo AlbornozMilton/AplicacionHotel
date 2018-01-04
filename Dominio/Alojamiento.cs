@@ -199,7 +199,8 @@ namespace Dominio
         /// </summary>
         public double CalcularCostoBase()
         {
-            bool lExclusividad = this.iHabitacion.Exclusiva;
+            //bool lExclusividad = this.iHabitacion.Exclusiva;
+            bool lExclusividad = this.iExclusividad;
             double costoBase = 0;
             DateTime auxFechaDesde;
 
@@ -285,6 +286,12 @@ namespace Dominio
         {
             //this.iFechaCancelacion = pFechaCancelacion;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
+        }
+
+        public void AltaDeReserva()
+        {
+            this.iFechaIngreso = DateTime.Now;
+            this.iEstadoAloj = EstadoAlojamiento.Alojado;
         }
 
 

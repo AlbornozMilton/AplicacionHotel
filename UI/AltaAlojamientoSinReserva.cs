@@ -19,7 +19,6 @@ namespace UI
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
         public List<Cliente> Acompañantes;
-        double auxCostoBase;
 
 
         public AltaAlojamientoSinReserva()
@@ -54,25 +53,38 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            //-------realizar control de costo base para alta de reserva
-            //en este momento el total es igual al costo base
-            if (!txb_CostoBase.Enabled) //en momento de alta reserva
-            {
-                auxCostoBase = NuevoAlojamiento.MontoTotal;
-            }
+            //Para la reserva va a tener algo, para sin reserva va a ser null
+            List<Cliente> auxListaCliReserva = NuevoAlojamiento.Clientes;
 
-            //-------------alta sin reserva
             HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value),Convert.ToByte(cont_CuposDobles.Value));
             this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
-            NuevoAlojamiento.CalcularCostoBase();
-            txb_CostoBase.Text = NuevoAlojamiento.MontoDeuda.ToString();
 
-            if (auxCostoBase != NuevoAlojamiento.MontoTotal) //error
+            //para indicar que es un alta de reserva
+            if (!dGV_ClienteResponsable.Enabled)
             {
-
+                try
+                {
+                    new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, auxListaCliReserva);
+                }
+                catch (Exception E)
+                {
+                    MessageBox.Show(E.Message);
+                }
             }
 
-            //-----------------
+            NuevoAlojamiento.CalcularCostoBase();
+
+            if ((txb_CostoBase.Enabled == false)&&(txb_CostoBase.Text != NuevoAlojamiento.MontoTotal.ToString()))
+            {
+                MessageBox.Show("Montos Incorrectos, el costo debe ser: "+ NuevoAlojamiento.MontoTotal.ToString());
+            }
+            else
+            {
+                txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                btn_Aceptar.Enabled = true;
+            }
+            
+
         }
 
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
@@ -80,6 +92,9 @@ namespace UI
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
             this.ClienteResponsable = BuscarClienteForm.iClienteSeleccionado;
+
+            //comprobar que el cliente no esta "activo"
+
             dGV_ClienteResponsable.Rows.Clear();
             dGV_Acompañantes.Rows.Clear();
             this.Acompañantes.Clear();
@@ -92,6 +107,9 @@ namespace UI
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
+
+            //comprobar que el cliente no esta "activo"
+
             if (Acompañantes.Contains(BuscarClienteForm.iClienteSeleccionado))
             {
                 MessageBox.Show("Cliente ya agregado");
@@ -127,8 +145,7 @@ namespace UI
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
         {
-            //No es en alta reserva y se puede modificar. Caso contrario se debe evitar este evento.
-            if (ck_Exclusividad.Enabled)
+            if (btn_VerificarDisponibilidad.Enabled)
             {
                 this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked); 
             }
@@ -151,6 +168,10 @@ namespace UI
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);
 
+            HabSeleccionada = NuevoAlojamiento.Habitacion;
+
+            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+
         }
 
         /// <summary>
@@ -163,6 +184,7 @@ namespace UI
             cont_CuposSimples.Enabled = pValorEnable;
             cont_CuposDobles.Enabled = pValorEnable;
             ck_Exclusividad.Enabled = pValorEnable;
+            //ck_Exclusividad.Enabled = pValorEnable;
 
             btn_VerificarDisponibilidad.Enabled = pValorEnable;
             btn_AgregarCliente.Enabled = pValorEnable;
@@ -170,6 +192,8 @@ namespace UI
             dGV_ClienteResponsable.Enabled = pValorEnable;
 
             txb_CostoBase.Enabled = pValorEnable;
+
+            btn_Aceptar.Enabled = pValorEnable;
 
         }
         #endregion
