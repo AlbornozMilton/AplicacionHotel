@@ -76,15 +76,14 @@ namespace UI
 
             if ((txb_CostoBase.Enabled == false)&&(txb_CostoBase.Text != NuevoAlojamiento.MontoTotal.ToString()))
             {
-                MessageBox.Show("Montos Incorrectos, el costo debe ser: "+ NuevoAlojamiento.MontoTotal.ToString());
+                MessageBox.Show("Montos Incorrectos. El monto que se espera es: "+txb_CostoBase.Text+" , pero se obtuvo: "+ NuevoAlojamiento.MontoTotal.ToString()+".");
             }
             else
             {
                 txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                //colorear el boton aceptar
                 btn_Aceptar.Enabled = true;
             }
-            
-
         }
 
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
@@ -169,6 +168,7 @@ namespace UI
             this.Acompañantes.Add(ClienteResponsable);
 
             HabSeleccionada = NuevoAlojamiento.Habitacion;
+            HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
 
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
 
@@ -184,7 +184,6 @@ namespace UI
             cont_CuposSimples.Enabled = pValorEnable;
             cont_CuposDobles.Enabled = pValorEnable;
             ck_Exclusividad.Enabled = pValorEnable;
-            //ck_Exclusividad.Enabled = pValorEnable;
 
             btn_VerificarDisponibilidad.Enabled = pValorEnable;
             btn_AgregarCliente.Enabled = pValorEnable;

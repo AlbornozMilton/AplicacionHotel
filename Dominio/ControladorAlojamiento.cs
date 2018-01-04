@@ -241,24 +241,26 @@ namespace Dominio
         /// <param name="pClientesReserva">Clientes de la Reserva con Clientes Incompletos (falsos)</param>
         public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, List<Cliente> pClientesReserva)
         {
-            foreach (var cliente in pAlojEnAlta.Clientes)
+            var auxClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+            var auxClientesRes = pClientesReserva.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+
+            //auxListClientes.OrderBy(t => t.TarifaCliente.TarifaClienteId <= t.TarifaCliente.TarifaClienteId);
+            //pClientesReserva.OrderBy(t => t.TarifaCliente.TarifaClienteId <= t.TarifaCliente.TarifaClienteId);
+
+            try
             {
-                foreach (var clienteReserva in pClientesReserva)
+                for (int i = 0; i < auxClientesAloj.Count; i++)
                 {
-                    if (clienteReserva.TarifaCliente.TarifaClienteId == cliente.TarifaCliente.TarifaClienteId)
+                    if (auxClientesAloj[i].TarifaCliente.TarifaClienteId != auxClientesRes[i].TarifaCliente.TarifaClienteId)
                     {
-                        pClientesReserva.Remove(clienteReserva);
+                        throw new Exception("Los Tipos de Cliente que ingreso no corresponden con los Clientes de la Reserva");
                     }
                 }
             }
-
-            //Tipos de cliente incorrectos
-            if (pClientesReserva.Count != 0)
+            catch (IndexOutOfRangeException E)
             {
-                throw new Exception("Los Tipos de Cliente que ingreso no corresponden con los Clientes de la Reserva");
+                throw new Exception("Las cantidades de Clientes agregados no corresponden con la Reserva",E);
             }
-
-            pAlojEnAlta.AltaDeReserva();
         }
 
         /// <summary>
