@@ -101,5 +101,27 @@ namespace UI
             CerrarAlojamiento VentanaCerrarALojamiento = new CerrarAlojamiento();
             VentanaCerrarALojamiento.ShowDialog();
         }
+
+        private void altaDeReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaAlojamientoSinReserva AltaReservaAlojamiento = new AltaAlojamientoSinReserva();
+            AltaReservaAlojamiento.Show();
+
+            BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
+            BuscarAlojamiento.ShowDialog();
+
+            if ((BuscarAlojamiento.iAloj_Seleccionado!=null)&&(BuscarAlojamiento.iAloj_Seleccionado.EstadoAlojamiento==Dominio.EstadoAlojamiento.Reservado))
+            {
+                AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.iAloj_Seleccionado;
+                AltaReservaAlojamiento.RellenarCampos();
+                AltaReservaAlojamiento.EnableAll(false);
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Alojnamiento Reservado para continuar con el Alta");
+                AltaReservaAlojamiento.Close();
+            }
+        }
     }
 }

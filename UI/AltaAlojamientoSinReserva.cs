@@ -19,14 +19,19 @@ namespace UI
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
         public List<Cliente> Acompañantes;
+        double auxCostoBase;
+
 
         public AltaAlojamientoSinReserva()
         {
             InitializeComponent();
-            txb_fechaActual.Text = Convert.ToString(DateTime.Today.Date);
+            txb_fechaActual.Text = DateTime.Today.ToString("dd/mm/yy");
+            txb_fechaActual.Enabled = false;
+
             FechaIni = dtp_fechaDesde.Value;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             FechaFin = dtp_fechaHasta.Value;
+            txb_IdAloj.Enabled = false;
         }
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
@@ -49,16 +54,25 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
+            //-------realizar control de costo base para alta de reserva
+            //en este momento el total es igual al costo base
+            if (!txb_CostoBase.Enabled) //en momento de alta reserva
+            {
+                auxCostoBase = NuevoAlojamiento.MontoTotal;
+            }
+
+            //-------------alta sin reserva
             HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value),Convert.ToByte(cont_CuposDobles.Value));
             this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
             NuevoAlojamiento.CalcularCostoBase();
             txb_CostoBase.Text = NuevoAlojamiento.MontoDeuda.ToString();
-            //decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value };
-            //iNuevoAlojamiento.CalcularCostoBaseReserva(contadores);
-            //////////////txb_CostoBase.Text = iNuevoAlojamiento.MontoTotal.ToString();
-            //////////////txb_Deposito.Text = iNuevoAlojamiento.Deposito.ToString();
-            //////////////btn_Aceptar.Enabled = true;
 
+            if (auxCostoBase != NuevoAlojamiento.MontoTotal) //error
+            {
+
+            }
+
+            //-----------------
         }
 
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
@@ -113,7 +127,51 @@ namespace UI
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
         {
-            this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
+            //No es en alta reserva y se puede modificar. Caso contrario se debe evitar este evento.
+            if (ck_Exclusividad.Enabled)
+            {
+                this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked); 
+            }
         }
+
+        #region Alta de Reserva
+        public void RellenarCampos()
+        {
+            txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
+            dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
+            dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
+            txb_NroHabitacion.Text = NuevoAlojamiento.HabitacionId.ToString();
+            cont_CuposSimples.Value = NuevoAlojamiento.CantCuposSimples;
+            cont_CuposDobles.Value = NuevoAlojamiento.CantCuposDobles;
+            ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
+
+            //cliente responsable
+            this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
+            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+            this.Acompañantes = new List<Cliente>();
+            this.Acompañantes.Add(ClienteResponsable);
+
+        }
+
+        /// <summary>
+        /// Modifica el campo Enable de una conjunto de propiedades de la Form al valor de parámetro
+        /// </summary>
+        public void EnableAll(bool pValorEnable)
+        {
+            dtp_fechaDesde.Enabled = pValorEnable;
+            dtp_fechaHasta.Enabled = pValorEnable;
+            cont_CuposSimples.Enabled = pValorEnable;
+            cont_CuposDobles.Enabled = pValorEnable;
+            ck_Exclusividad.Enabled = pValorEnable;
+
+            btn_VerificarDisponibilidad.Enabled = pValorEnable;
+            btn_AgregarCliente.Enabled = pValorEnable;
+            tbx_dniResponsable.Enabled = pValorEnable;
+            dGV_ClienteResponsable.Enabled = pValorEnable;
+
+            txb_CostoBase.Enabled = pValorEnable;
+
+        }
+        #endregion
     }
 }

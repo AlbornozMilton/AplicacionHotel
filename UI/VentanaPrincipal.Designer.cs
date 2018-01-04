@@ -69,6 +69,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.altaDeReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,7 +130,8 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem1});
+            this.nuevoToolStripMenuItem1,
+            this.altaDeReservaToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(91, 28);
             this.archivoToolStripMenuItem.Text = "Reserva";
@@ -139,7 +141,7 @@
             // 
             this.nuevoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem1.Image")));
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(136, 28);
+            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(212, 28);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
             this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
             // 
@@ -415,6 +417,13 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // altaDeReservaToolStripMenuItem
+            // 
+            this.altaDeReservaToolStripMenuItem.Name = "altaDeReservaToolStripMenuItem";
+            this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(212, 28);
+            this.altaDeReservaToolStripMenuItem.Text = "Alta de Reserva";
+            this.altaDeReservaToolStripMenuItem.Click += new System.EventHandler(this.altaDeReservaToolStripMenuItem_Click);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,5 +492,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem serviciosConsumidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem altaDeReservaToolStripMenuItem;
     }
 }
