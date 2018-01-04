@@ -53,14 +53,19 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            //Para la reserva va a tener algo, para sin reserva va a ser null
-            List<Cliente> auxListaCliReserva = NuevoAlojamiento.Clientes;
+            //--------Por la reserva------------------------
+            List<Cliente> auxListaCliReserva = new List<Cliente>();
+            if (!btn_VerificarDisponibilidad.Enabled)
+            {
+              auxListaCliReserva = NuevoAlojamiento.Clientes; 
+            }
+            //-------------------------------------
 
             HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value),Convert.ToByte(cont_CuposDobles.Value));
             this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
-            //para indicar que es un alta de reserva
-            if (!dGV_ClienteResponsable.Enabled)
+            //--------Por la reserva----------
+            if (!btn_VerificarDisponibilidad.Enabled)
             {
                 try
                 {
@@ -71,19 +76,27 @@ namespace UI
                     MessageBox.Show(E.Message);
                 }
             }
+            //----------------------------------
 
             NuevoAlojamiento.CalcularCostoBase();
+
+            //----------Para la Reserva: control de tipos de tarifa y costo base
 
             if ((txb_CostoBase.Enabled == false)&&(txb_CostoBase.Text != NuevoAlojamiento.MontoTotal.ToString()))
             {
                 MessageBox.Show("Montos Incorrectos. El monto que se espera es: "+txb_CostoBase.Text+" , pero se obtuvo: "+ NuevoAlojamiento.MontoTotal.ToString()+".");
+                MessageBox.Show("Vuelva a Ingresar los Clientes correctamente.");
             }
             else
             {
                 txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+
                 //colorear el boton aceptar
+
                 btn_Aceptar.Enabled = true;
             }
+            //---------------------------------------------------------
+
         }
 
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
@@ -96,7 +109,14 @@ namespace UI
 
             dGV_ClienteResponsable.Rows.Clear();
             dGV_Acompañantes.Rows.Clear();
-            this.Acompañantes.Clear();
+            if (Acompañantes!=null)
+            {
+              this.Acompañantes.Clear();
+            }
+            else
+            {
+                this.Acompañantes = new List<Cliente>();
+            }
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
             this.Acompañantes.Add(BuscarClienteForm.iClienteSeleccionado);
 

@@ -66,6 +66,7 @@ namespace UI
                 MessageBox.Show("Las fechas seleccionadas no corresponden. Seleccione de nuevo.");
         }
 
+        //boton agregar responsable
         private void button2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();

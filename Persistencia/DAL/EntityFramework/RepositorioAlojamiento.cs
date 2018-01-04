@@ -46,8 +46,15 @@ namespace Persistencia.DAL.EntityFramework
         {
             List<Cliente> auxListCliente = new List<Cliente>();
 
+            Habitacion auxHabitacion = unAloj.Habitacion;
+            unAloj.Habitacion = iDbContext.Habitaciones.Find(unAloj.HabitacionId);
+
+            //modificar unAloj.Habitacion segun auxHab
+
             if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
             {
+                //------- modificar pensado en el alta con reserva...................................
+
                 foreach (var cli in unAloj.Clientes)
                 {
                     auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
@@ -55,14 +62,15 @@ namespace Persistencia.DAL.EntityFramework
                 unAloj.Clientes = auxListCliente;
                
                 //Para el caso que se modifique la exclusividad de la habitacion
-                iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
+                //iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
 
-                foreach (var cupo in unAloj.Habitacion.Cupos)
-                {
-                    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
-                }
+                //foreach (var cupo in unAloj.Habitacion.Cupos)
+                //{
+                //    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
+                //}
             }
 
+            //-----------------------------------------------------
             if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
             {
 
@@ -100,7 +108,7 @@ namespace Persistencia.DAL.EntityFramework
                     }
                 }
 
-                unAloj.Habitacion = iDbContext.Habitaciones.Find(unAloj.HabitacionId);
+                //unAloj.Habitacion = iDbContext.Habitaciones.Find(unAloj.HabitacionId);
 
             }
 
