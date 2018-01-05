@@ -12,6 +12,7 @@ namespace UI
 {
     public partial class VentanaPrincipal : Form
     {
+        public InicioSesion iPadre;
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -124,6 +125,11 @@ namespace UI
                 MessageBox.Show("Debe seleccionar un Alojnamiento Reservado para continuar con el Alta");
                 AltaReservaAlojamiento.Close();
             }
+        }
+
+        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            iPadre.Close();
         }
     }
 }

@@ -15,31 +15,22 @@ namespace UI
         public VentanaArranque()
         {
             InitializeComponent();
+            Show();
+            bgw_CargaUsuarios.RunWorkerAsync(); //realiza carga de datos en segundo plano permitiendo tener control sobre la UI
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void bgw_CargaUsuarios_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (progressBar1.Value < 100)
-            {
-                progressBar1.Value = progressBar1.Value + 2;
-                label2.Text = progressBar1.Value + "%";
-                new Dominio.ControladorCliente().CargarUsuarios();
-            }
-            else
-            {
-                timer1.Enabled = false;
-                Hide();
-                InicioSesion ventanaIniSesion = new InicioSesion();
-                ventanaIniSesion.ShowDialog();
-                //VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
-                //NuevaVentanaPpal.ShowDialog();
-            }
-
+            System.Threading.Thread.Sleep(2000); //retardo.. solo son 2 segundos es para que sea mas tiempo visible la portada
+            new Dominio.ControladorCliente().CargarUsuarios();
         }
 
-        private void progressBar1_Click(object sender, EventArgs e)
+        private void bgw_CargaUsuarios_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            this.Hide();
+            InicioSesion ventanaIniSesion = new InicioSesion();
+            ventanaIniSesion.iPadre = this;
+            ventanaIniSesion.ShowDialog();
         }
     }
 }

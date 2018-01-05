@@ -12,6 +12,8 @@ namespace UI
 {
     public partial class InicioSesion : Form
     {
+        public VentanaArranque iPadre;
+
         public InicioSesion()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace UI
             {
                 Hide();
                 VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
+                NuevaVentanaPpal.iPadre = this;
                 NuevaVentanaPpal.ShowDialog();
             }
             else
@@ -40,6 +43,7 @@ namespace UI
                 {
                     Hide();
                     VentanaPrincipal NuevaVentanaPpal = new VentanaPrincipal();
+                    NuevaVentanaPpal.iPadre = this;
                     NuevaVentanaPpal.ShowDialog();
                 }
                 else
@@ -47,6 +51,11 @@ namespace UI
                     MessageBox.Show("Usuario NO Registrado");
                 }
             }          
+        }
+
+        private void InicioSesion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            iPadre.Close();
         }
     }
 }
