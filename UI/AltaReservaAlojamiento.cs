@@ -81,11 +81,24 @@ namespace UI
         /// </summary>
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            decimal[] contadores = new decimal[] { contador_Titular.Value, contador_Directo.Value, contador_NoDirecto.Value, contador_Exceptuado.Value, contador_Convenio.Value };
-            var auxListClientes = new ControladorAlojamiento().GenerarTiposClientesReserva(contadores,ClienteResponsable);
+            //byte[] contadores = new byte[]
+            //    {
+            //        Convert.ToByte(contador_Titular.Value),
+            //        Convert.ToByte(contador_Directo.Value),
+            //        Convert.ToByte(contador_NoDirecto.Value),
+            //        Convert.ToByte(contador_Exceptuado.Value),
+            //        Convert.ToByte(contador_Convenio.Value)
+            //    };
 
-            this.NuevoAlojamiento = new Alojamiento(auxListClientes, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
-            this.NuevoAlojamiento.CalcularCostoBase();
+            string contadores =
+                    (contador_Titular.Value).ToString() +
+                    (contador_Directo.Value).ToString() +
+                    (contador_NoDirecto.Value).ToString() +
+                    (contador_Exceptuado.Value).ToString() +
+                    (contador_Convenio.Value);
+            this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+
+            this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
             txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
@@ -94,9 +107,16 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
-            MessageBox.Show("Reserva Registrada con Éxito");
-            Close();
+            try
+            {
+                new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento,new List<Cliente>());
+                MessageBox.Show("Alojamiento Registrado con Exito.");
+                Close();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
         }
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)

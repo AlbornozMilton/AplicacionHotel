@@ -26,6 +26,7 @@ namespace Dominio
         private DateTime iFechaIngreso;//AGREGAR SIGNO ?
         private DateTime iFechaEgreso;//AGREGAR SIGNO ?
         private EstadoAlojamiento iEstadoAloj;
+        private string iContadoresTarifas;
 
 
         //-----------------------CONSTRUCTORES----------------------
@@ -62,13 +63,13 @@ namespace Dominio
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(List<Cliente> pClientes, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
+        public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;
 
-            //el cliente responsable ya se encuentra en pClientes
-            this.iClientes = pClientes; 
+            this.iClientes = new List<Cliente>();
+            this.iClientes.Add(unClienteResp);
             this.iDniResponsable = unClienteResp.ClienteId;
 
             this.iHabitacion = unaHab;
@@ -77,6 +78,7 @@ namespace Dominio
             this.iCantCuposSimples = cantCuposSimples;
             this.iCantCuposDobles = cantCuposDobles;
             this.iExclusividad = HabExclusividad;
+            this.iContadoresTarifas = pContTarifas;
         }
 
         
@@ -157,6 +159,12 @@ namespace Dominio
             private set { this.iEstadoAloj = value; }
         }
 
+        public string ContadoresTarifas
+        {
+            get { return this.iContadoresTarifas; }
+            private set { this.iContadoresTarifas = value; }
+        }
+
         public List<Cliente> Clientes
         {
             get { return this.iClientes; }
@@ -194,10 +202,7 @@ namespace Dominio
             return this.iPagos.Contains(pPago);
         }
 
-        /// <summary>
-        /// Calcular Costo Base de un Alojamiento en momentos de Alta sin Reserva
-        /// </summary>
-        public double CalcularCostoBase()
+        public double CalcularCostoBase(List<TarifaCliente> pTarifas)
         {
             //bool lExclusividad = this.iHabitacion.Exclusiva;
             bool lExclusividad = this.iExclusividad;
@@ -207,21 +212,31 @@ namespace Dominio
             if (this.iEstadoAloj == EstadoAlojamiento.Alojado)
             {
                 auxFechaDesde = this.iFechaIngreso;
+
+                foreach (var cliente in this.Clientes)
+                {
+                    costoBase += cliente.ObtenerSuPrecioTarifa(lExclusividad);
+                }
             }
             else
             {
                 auxFechaDesde = this.iFechaEstimadaIngreso;
-            }
 
-            foreach (var cliente in this.Clientes)
-            {
-                costoBase += cliente.ObtenerSuPrecioTarifa(lExclusividad);
+                for (int i = 0; i < this.iContadoresTarifas.Length; i++)
+                {
+                    byte aux = Convert.ToByte(this.iContadoresTarifas[i]);
+
+                    while (aux > Convert.ToByte('0'))
+                    {
+                        costoBase += pTarifas[i].GetTarifa(lExclusividad);
+                        aux--;
+                    }
+                }
             }
 
             //se utiliza FechaEstimadaEgreso y FechaIngreso
             this.iMontoDeuda = costoBase * (this.iFechaEstimadaEgreso.Subtract(auxFechaDesde).Days); 
             this.iMontoTotal = this.iMontoDeuda;
-
             return this.iMontoDeuda;
         }
 
@@ -294,6 +309,9 @@ namespace Dominio
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
         }
 
-
+        public void SetIDAloj(int pID)
+        {
+            this.iIdAlojamiento = pID;
+        }
     }
 }

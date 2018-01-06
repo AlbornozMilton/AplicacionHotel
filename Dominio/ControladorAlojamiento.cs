@@ -24,10 +24,32 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
-        public void RegistrarReservaAloj(Alojamiento pAlojamiento)
+        /// <summary>
+        /// Alta de Alojamiento, teniendo en cuenta la cantidad de elementos de la lista auxilar de clientes
+        /// </summary>
+        /// <param name="pAuxList">Para lista vacia, Alta sin Reserva. Para lista con elementos, Alta de Reserva</param>
+        public void RegistrarAloj(Alojamiento pAlojamiento, List<Cliente> pAuxList)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-            iUoW.RepositorioAlojamiento.Add(A);
+
+            //para el Alta sin Reserva
+            if (pAuxList.Count==0)
+            {
+                iUoW.RepositorioAlojamiento.Add(A);
+            }
+            else //para el Alta de Reserva
+            {
+                var B = new List<pers.Cliente>();
+
+                foreach (var cli in pAuxList)
+                {
+                    B.Add(Mapper.Map<Cliente, pers.Cliente>(cli));
+                }
+
+                iUoW.RepositorioAlojamiento.AltaReserva(A,B);
+            }
+
+           // iUoW.Dispose();
         }
 
         public Alojamiento BuscarAlojamientoPorID(int unId)
@@ -244,9 +266,6 @@ namespace Dominio
             var auxClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
             var auxClientesRes = pClientesReserva.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
 
-            //auxListClientes.OrderBy(t => t.TarifaCliente.TarifaClienteId <= t.TarifaCliente.TarifaClienteId);
-            //pClientesReserva.OrderBy(t => t.TarifaCliente.TarifaClienteId <= t.TarifaCliente.TarifaClienteId);
-
             try
             {
                 for (int i = 0; i < auxClientesAloj.Count; i++)
@@ -259,48 +278,8 @@ namespace Dominio
             }
             catch (IndexOutOfRangeException E)
             {
-                throw new Exception("Las cantidades de Clientes agregados no corresponden con la Reserva",E);
+                throw new Exception("Las cantidades de Clientes agregados no corresponden con la Reserva", E);
             }
-        }
-
-        /// <summary>
-        /// Genera Clientes vacios solo con Tarifas más el Cliente Responsable
-        /// </summary>
-        public List<Cliente> GenerarTiposClientesReserva(decimal[] pContadores, Cliente pCliResponsable)
-        {
-            List<Cliente> lClinestes = new List<Cliente>();
-
-            var tarifas = new ControladorCliente().DevolverListaTarifas();
-
-            bool auxControl = true;
-            //pContadores [contador_Titular, contador_Direc, contador_NoDirec, contador_Excep, contador_Conv]
-
-            for (int j = 0; j < pContadores.Length; j++)
-            {
-                if (pContadores[j] > 0)
-                {
-                    //descontar una Tarifa de pContadores que referencia al Responsable
-                    //se lo debe hacer una sola vez
-                    if ((pCliResponsable.TarifaCliente.TarifaClienteId == tarifas[j].TarifaClienteId)&&(auxControl))
-                    {
-                        lClinestes.Add(pCliResponsable);
-                        pContadores[j]--;
-
-                        //para que lo haga una vez en caso de tener mas de un contador para el mismo tipo que el responsable
-                        auxControl = false;
-                    }
-
-                    while (pContadores[j] > 0)
-                    {
-                        //la lista de tarifa tiene mismo orden que contadores, por eso se utiliza "j"
-                        lClinestes.Add(new Cliente(tarifas[j]));
-                        pContadores[j]--;
-                    }
-                            
-                }
-            }
-
-            return lClinestes;
         }
     }
 }

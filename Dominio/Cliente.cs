@@ -34,15 +34,6 @@ namespace Dominio
             this.iTarifa = pTarifa;
         }
 
-        /// <summary>
-        /// Constructor para Reserva. Para mantener registro del Tipo Cliente
-        /// </summary>
-        public Cliente(TarifaCliente pTarifaCliente)
-        {
-            this.iTarifa = pTarifaCliente;
-            //el resto de los atributos es Null o Default.
-        }
-
         public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel)
         {
             this.iDni = pDni;

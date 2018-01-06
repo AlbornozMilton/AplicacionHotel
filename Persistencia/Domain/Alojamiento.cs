@@ -21,6 +21,7 @@ namespace Persistencia.Domain
         public byte CantCuposDobles { get; set; }
         public bool Exclusividad { get; set; }
         public EstadoAlojamiento EstadoAlojamiento { get; set; }
+        public string ContadoresTarifas { get; set; }
 
         //-------------------- Relaciones ---------------------------------//
     //    public int ClienteId { get; set; }

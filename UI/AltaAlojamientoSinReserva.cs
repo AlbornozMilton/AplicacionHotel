@@ -19,6 +19,7 @@ namespace UI
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
         public List<Cliente> Acompañantes;
+        List<Cliente> auxListaCliReserva = new List<Cliente>(); //clientes de la reserva
 
 
         public AltaAlojamientoSinReserva()
@@ -27,6 +28,7 @@ namespace UI
             txb_fechaActual.Text = DateTime.Today.ToString("dd/mm/yy");
             txb_fechaActual.Enabled = false;
 
+            dtp_fechaDesde.Value = DateTime.Now;
             FechaIni = dtp_fechaDesde.Value;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             FechaFin = dtp_fechaHasta.Value;
@@ -53,22 +55,15 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            //--------Por la reserva------------------------
-            List<Cliente> auxListaCliReserva = new List<Cliente>();
-            if (!btn_VerificarDisponibilidad.Enabled)
-            {
-              auxListaCliReserva = NuevoAlojamiento.Clientes; 
-            }
-            //-------------------------------------
-
             HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value),Convert.ToByte(cont_CuposDobles.Value));
             this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
             //--------Por la reserva----------
-            if (!btn_VerificarDisponibilidad.Enabled)
+            if (this.auxListaCliReserva.Count != 0)
             {
                 try
                 {
+                    this.NuevoAlojamiento.SetIDAloj(Convert.ToInt32(txb_IdAloj.Text));
                     new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, auxListaCliReserva);
                 }
                 catch (Exception E)
@@ -78,14 +73,13 @@ namespace UI
             }
             //----------------------------------
 
-            NuevoAlojamiento.CalcularCostoBase();
+            NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
 
             //----------Para la Reserva: control de tipos de tarifa y costo base
 
             if ((txb_CostoBase.Enabled == false)&&(txb_CostoBase.Text != NuevoAlojamiento.MontoTotal.ToString()))
             {
                 MessageBox.Show("Montos Incorrectos. El monto que se espera es: "+txb_CostoBase.Text+" , pero se obtuvo: "+ NuevoAlojamiento.MontoTotal.ToString()+".");
-                MessageBox.Show("Vuelva a Ingresar los Clientes correctamente.");
             }
             else
             {
@@ -147,9 +141,16 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorAlojamiento().RegistrarReservaAloj(this.NuevoAlojamiento);
-            MessageBox.Show("Alojamiento Registrado con Exito");
-            Close();
+            try
+            {
+                new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento,this.auxListaCliReserva);
+                MessageBox.Show("Alojamiento Registrado con Exito.");
+                Close();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message+E.InnerException.Message);
+            }
         }
 
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
@@ -190,8 +191,15 @@ namespace UI
             HabSeleccionada = NuevoAlojamiento.Habitacion;
             HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
 
+            //para almacenar el valor de consto base de reserva y luego comparar
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
 
+            //--------Por la reserva------------------------
+            if (!btn_VerificarDisponibilidad.Enabled)
+            {
+                auxListaCliReserva = NuevoAlojamiento.Clientes;
+            }
+            //-------------------------------------
         }
 
         /// <summary>

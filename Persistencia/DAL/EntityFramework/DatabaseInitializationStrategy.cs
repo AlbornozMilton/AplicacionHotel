@@ -41,7 +41,7 @@ namespace Persistencia.DAL.EntityFramework
             {
                 TarifaClienteId = TipoCliente.AcompanianteDirecto,
                 Tarifa = 170,
-                TarifaExclusiva = 200
+                TarifaExclusiva = 270
             };
             context.Set<TarifaCliente>().Add(TarifaAcompDirecto);
 
@@ -49,7 +49,7 @@ namespace Persistencia.DAL.EntityFramework
             {
                 TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
                 Tarifa = 200,
-                TarifaExclusiva = 280
+                TarifaExclusiva = 300
             };
             context.Set<TarifaCliente>().Add(TarifaAcompNoDirecto);
 
@@ -57,7 +57,7 @@ namespace Persistencia.DAL.EntityFramework
             {
                 TarifaClienteId = TipoCliente.TitularExceptuado,
                 Tarifa = 0,
-                TarifaExclusiva = 0
+                TarifaExclusiva = 50
             };
             context.Set<TarifaCliente>().Add(TarifaExceptuado);
 
@@ -471,91 +471,6 @@ namespace Persistencia.DAL.EntityFramework
             };
             context.Set<Domicilio>().Add(DomicilioMauri);
             #endregion 
-
-            #region Linea de Servicios para Alojamientos 
-
-            //las lineas de servicio se generan solo para Alojamientos dado
-            LineaServicio CantBatas = new LineaServicio
-            {
-                Cantidad = 3,
-                CostoServicio = 30,
-                FechaServicio = DateTime.Now.AddDays(1),
-                ServicioId = Bata.ServicioId
-            };
-
-            LineaServicio CantAireAcond = new LineaServicio
-            {
-                Cantidad = 5,
-                CostoServicio = 150,
-                FechaServicio = DateTime.Now.AddDays(2),
-                ServicioId = AireAcondicionado.ServicioId
-            };
-            #endregion
-
-            ///*
-            #region Alojamientos
-            Alojamiento Aloj1 = new Alojamiento
-            {
-                DniResponsable = Milton.ClienteId,
-                FechaReserva = null,
-                FechaIngreso = DateTime.Now,
-                FechaEstimadaIngreso = null,
-                FechaEstimadaEgreso = DateTime.Now.AddDays(3),
-                FechaEgreso = null,
-                MontoTotal = 250,
-                MontoDeuda = 0,
-                CantCuposDobles = 1,
-                CantCuposSimples = 2,
-                EstadoAlojamiento = EstadoAlojamiento.Alojado,
-                HabitacionId = 5,
-                Clientes = new List<Cliente>() { Milton, Mauri },
-                Pagos = new List<Pago>()
-                {
-                    new Pago
-                    {
-                        Tipo = TipoPago.Alojado,
-                        Monto = 250,
-                        FechaPago = DateTime.Now,
-                        Detalle = "El viejo era tacaño"
-                    }
-                },
-                Servicios = new List<LineaServicio>() {CantBatas, CantAireAcond },
-            };
-
-            context.Set<Alojamiento>().Add(Aloj1);
-
-            Alojamiento Aloj2 = new Alojamiento
-            {
-                DniResponsable = Mauri.ClienteId,
-                FechaReserva = DateTime.Now.AddDays(4),
-                FechaIngreso = null,
-                FechaEstimadaIngreso = DateTime.Now.AddDays(4),
-                FechaEstimadaEgreso = DateTime.Now.AddDays(7),
-                FechaEgreso = null,
-                MontoTotal = 250,
-                MontoDeuda = 125,
-                EstadoAlojamiento = EstadoAlojamiento.Reservado,
-                HabitacionId = 1,
-                Clientes = new List<Cliente>() { Milton, Mauri },
-                Pagos = new List<Pago>()
-                {
-                    new Pago
-                    {
-                        Tipo = TipoPago.Deposito,
-                        Monto = 125,
-                        FechaPago = DateTime.Now,
-                        Detalle = "Reservando"
-                    }
-                },
-                Servicios = new List<LineaServicio>()
-                {
-                    CantBatas
-                }
-            };
-
-            context.Set<Alojamiento>().Add(Aloj2);
-            #endregion
-            //*/
 
             base.Seed(context);
         }

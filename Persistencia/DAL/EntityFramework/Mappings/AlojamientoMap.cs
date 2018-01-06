@@ -5,7 +5,7 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework.Mappings
 {
-    class AlojamientoMap:EntityTypeConfiguration<Alojamiento>
+    public class AlojamientoMap:EntityTypeConfiguration<Alojamiento>
     {
         /// <summary>
         /// Configuraciones de los atributos de Alojamiento
@@ -45,6 +45,8 @@ namespace Persistencia.DAL.EntityFramework.Mappings
                });
 
             this.Property(e => e.EstadoAlojamiento).IsRequired();
+
+            this.Property(c => c.ContadoresTarifas).IsOptional();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Where(a => a.AlojamientoId == pId).Single();
+                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Where(a => a.AlojamientoId == pId).Single();
             }
             catch (Exception)
             {
@@ -118,6 +118,14 @@ namespace Persistencia.DAL.EntityFramework
 
             iDbContext.SaveChanges();
         }
+
+        public void AltaReserva(Alojamiento unAloj, List<Cliente> pListaCliente)
+        {
+            
+        }
+
+
+
 
         /// <summary>
         /// Se finaliza un Alojamiento por Cerrado o Cancelado
