@@ -191,7 +191,7 @@ namespace UI
             HabSeleccionada = NuevoAlojamiento.Habitacion;
             HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
 
-            //para almacenar el valor de consto base de reserva y luego comparar
+            //para almacenar el valor de costo base de reserva y luego comparar
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
 
             //--------Por la reserva------------------------

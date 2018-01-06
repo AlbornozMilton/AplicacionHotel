@@ -25,6 +25,7 @@ namespace UI
             FechaIni = dtp_fechaDesde.Value;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             FechaFin = dtp_fechaHasta.Value;
+            btn_Aceptar.Enabled = false;
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -81,28 +82,26 @@ namespace UI
         /// </summary>
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            //byte[] contadores = new byte[]
-            //    {
-            //        Convert.ToByte(contador_Titular.Value),
-            //        Convert.ToByte(contador_Directo.Value),
-            //        Convert.ToByte(contador_NoDirecto.Value),
-            //        Convert.ToByte(contador_Exceptuado.Value),
-            //        Convert.ToByte(contador_Convenio.Value)
-            //    };
+            try
+            {
+                string contadores =
+                            (contador_Titular.Value).ToString() +
+                            (contador_Directo.Value).ToString() +
+                            (contador_NoDirecto.Value).ToString() +
+                            (contador_Exceptuado.Value).ToString() +
+                            (contador_Convenio.Value);
+                this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
-            string contadores =
-                    (contador_Titular.Value).ToString() +
-                    (contador_Directo.Value).ToString() +
-                    (contador_NoDirecto.Value).ToString() +
-                    (contador_Exceptuado.Value).ToString() +
-                    (contador_Convenio.Value);
-            this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+                this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
-            this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
-
-            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-            txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
-            btn_Aceptar.Enabled = true;
+                txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
+                btn_Aceptar.Enabled = true;
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)

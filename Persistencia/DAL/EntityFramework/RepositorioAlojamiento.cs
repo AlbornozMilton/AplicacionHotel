@@ -49,70 +49,30 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion auxHabitacion = unAloj.Habitacion;
             unAloj.Habitacion = iDbContext.Habitaciones.Find(unAloj.HabitacionId);
 
-            //modificar unAloj.Habitacion segun auxHab
-
-            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+            foreach (var cli in unAloj.Clientes)
             {
-                //------- modificar pensado en el alta con reserva...................................
-
-                foreach (var cli in unAloj.Clientes)
-                {
-                    auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-                }
-                unAloj.Clientes = auxListCliente;
-               
-                //Para el caso que se modifique la exclusividad de la habitacion
-                //iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
-
-                //foreach (var cupo in unAloj.Habitacion.Cupos)
-                //{
-                //    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
-                //}
+                auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
             }
-
-            //-----------------------------------------------------
-            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-            {
-
-                foreach (var cli in unAloj.Clientes)
-                {
-                    //cliebte debido a los contadores
-                    if (cli.ClienteId == 0)
-                    {
-                        do
-                        {
-                            //un digito menos que los DNI
-                            cli.ClienteId = new Random().Next(1, 9999999);
-                            
-                            //mientras lo encuentre. cuando lo encuentre va a ser "null" y corta
-                        } while (iDbContext.Clientes.Find(cli.ClienteId)!=null);
-
-                        cli.Legajo = 0000;
-                        cli.Nombre = "";
-                        cli.Apellido = "";
-                        cli.Telefono = "";
-                        cli.EnAlta = false;
-                        //correo se permite null
-
-                        //luego se debe reemplazar por domicilio real
-                        cli.Domicilio = iDbContext.Domicilios.First();
-
-                        iDbContext.Entry(cli.TarifaCliente).State = System.Data.Entity.EntityState.Unchanged;
-
-                        auxListCliente.Add(cli);
-
-                    }
-                    else
-                    {
-                        auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-                    }
-                }
-
-                //unAloj.Habitacion = iDbContext.Habitaciones.Find(unAloj.HabitacionId);
-
-            }
-
             unAloj.Clientes = auxListCliente;
+
+            //if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+            //{
+            //    //------- modificar pensado en el alta con reserva...................................
+
+            //    foreach (var cli in unAloj.Clientes)
+            //    {
+            //        auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+            //    }
+            //    unAloj.Clientes = auxListCliente;
+               
+            //    //Para el caso que se modifique la exclusividad de la habitacion
+            //    //iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
+
+            //    //foreach (var cupo in unAloj.Habitacion.Cupos)
+            //    //{
+            //    //    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
+            //    //}
+            //}
 
             iDbContext.Alojamientos.Add(unAloj);
 
