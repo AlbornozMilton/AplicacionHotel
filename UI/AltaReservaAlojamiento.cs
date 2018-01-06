@@ -22,9 +22,9 @@ namespace UI
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
-            FechaIni = dtp_fechaDesde.Value;
-            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-            FechaFin = dtp_fechaHasta.Value;
+            FechaIni = dtp_fechaDesde.Value.Date;
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1).Date;
+            FechaFin = dtp_fechaHasta.Value.Date;
             btn_Aceptar.Enabled = false;
         }
 
@@ -127,12 +127,12 @@ namespace UI
         //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad o algo similar
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaIni = dtp_fechaDesde.Value;
+            this.FechaIni = dtp_fechaDesde.Value.Date;
         }
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaFin = dtp_fechaHasta.Value;
+            this.FechaFin = dtp_fechaHasta.Value.Date;
         } 
         #endregion
     }

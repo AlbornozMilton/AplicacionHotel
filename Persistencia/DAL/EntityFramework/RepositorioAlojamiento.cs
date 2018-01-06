@@ -47,7 +47,7 @@ namespace Persistencia.DAL.EntityFramework
             List<Cliente> auxListCliente = new List<Cliente>();
 
             Habitacion auxHabitacion = unAloj.Habitacion;
-            unAloj.Habitacion = iDbContext.Habitaciones.Find(unAloj.HabitacionId);
+            unAloj.Habitacion = iDbContext.Habitaciones.Include("Cupos").Single(h => h.HabitacionId == unAloj.HabitacionId);
 
             foreach (var cli in unAloj.Clientes)
             {
@@ -57,11 +57,12 @@ namespace Persistencia.DAL.EntityFramework
 
             if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
             {
-                unAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
+                unAloj.Habitacion.Exclusiva = auxHabitacion.Exclusiva;
+                
+                ////la que se ocupo en dominio
                 for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
                 {
-                    //se va a ocupar--------------------------------//asegurar de que este disponible : control
-                    if ((!unAloj.Habitacion.Cupos[i].Disponible)&&(unAloj.Habitacion.Cupos[i].Disponible))
+                    if ((unAloj.Habitacion.Cupos[i].Disponible)&&(!auxHabitacion.Cupos[i].Disponible))
                     {
                         unAloj.Habitacion.Cupos[i].Disponible = false;
                     }
@@ -84,9 +85,9 @@ namespace Persistencia.DAL.EntityFramework
             for (int i = 0; i < localAloj.Habitacion.Cupos.Count; i++)
             {
                 //se va a ocupar--------------------------------//asegurar de que este disponible : control
-                if ((!pAloj.Habitacion.Cupos[i].Disponible) && (localAloj.Habitacion.Cupos[i].Disponible))
+                if ((localAloj.Habitacion.Cupos[i].Disponible) && (!pAloj.Habitacion.Cupos[i].Disponible))
                 {
-                    localAloj.Habitacion.Cupos[i].Disponible = false;
+                    pAloj.Habitacion.Cupos[i].Disponible = false;
                 }
             }
 
@@ -96,7 +97,6 @@ namespace Persistencia.DAL.EntityFramework
                 auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
             }
             localAloj.Clientes = auxListCliente;
-
 
             iDbContext.SaveChanges();
         }

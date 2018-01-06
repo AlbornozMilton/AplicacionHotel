@@ -28,9 +28,9 @@ namespace UI
             txb_fechaActual.Text = DateTime.Today.ToString("dd/mm/yy");
             txb_fechaActual.Enabled = false;
 
-            dtp_fechaDesde.Value = DateTime.Now;
+            dtp_fechaDesde.Value = DateTime.Now.Date;
             FechaIni = dtp_fechaDesde.Value;
-            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1).Date;
             FechaFin = dtp_fechaHasta.Value;
             txb_IdAloj.Enabled = false;
         }
@@ -79,6 +79,7 @@ namespace UI
                 NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
             }
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+            btn_Confirmar.Enabled = false;
             btn_Aceptar.Enabled = true;
         }
 
@@ -151,12 +152,12 @@ namespace UI
 
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaIni = dtp_fechaDesde.Value;
+            this.FechaIni = dtp_fechaDesde.Value.Date;
         }
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaFin = dtp_fechaHasta.Value;
+            this.FechaFin = dtp_fechaHasta.Value.Date;
         }
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)

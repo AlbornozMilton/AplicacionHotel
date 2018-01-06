@@ -66,7 +66,7 @@ namespace Dominio
         public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
-            this.iFechaReserva = DateTime.Now;
+            this.iFechaReserva = DateTime.Now.Date;
 
             this.iClientes = new List<Cliente>();
             this.iClientes.Add(unClienteResp);
@@ -297,7 +297,7 @@ namespace Dominio
         /// </summary>
         public void Cerrar(DateTime pFechaEgreso)
         {
-            this.iFechaEgreso = pFechaEgreso;
+            this.iFechaEgreso = pFechaEgreso.Date;
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
 
