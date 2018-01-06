@@ -24,32 +24,16 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
-        /// <summary>
-        /// Alta de Alojamiento, teniendo en cuenta la cantidad de elementos de la lista auxilar de clientes
-        /// </summary>
-        /// <param name="pAuxList">Para lista vacia, Alta sin Reserva. Para lista con elementos, Alta de Reserva</param>
-        public void RegistrarAloj(Alojamiento pAlojamiento, List<Cliente> pAuxList)
+        public void RegistrarAloj(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+            iUoW.RepositorioAlojamiento.Add(A);
+        }
 
-            //para el Alta sin Reserva
-            if (pAuxList.Count==0)
-            {
-                iUoW.RepositorioAlojamiento.Add(A);
-            }
-            else //para el Alta de Reserva
-            {
-                var B = new List<pers.Cliente>();
-
-                foreach (var cli in pAuxList)
-                {
-                    B.Add(Mapper.Map<Cliente, pers.Cliente>(cli));
-                }
-
-                iUoW.RepositorioAlojamiento.AltaReserva(A,B);
-            }
-
-           // iUoW.Dispose();
+        public void RegistrarAltaReserva(Alojamiento pAlojamiento)
+        {
+            var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
+            iUoW.RepositorioAlojamiento.AltaReserva(A);
         }
 
         public Alojamiento BuscarAlojamientoPorID(int unId)
@@ -256,29 +240,32 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
 
-        /// <summary>
-        /// Recorre ambas listas y determina si esta correcto los tipos de clientes agregados
-        /// </summary>
-        /// <param name="pAlojEnAlta"> Alojamiento con Clientes completos</param>
-        /// <param name="pClientesReserva">Clientes de la Reserva con Clientes Incompletos (falsos)</param>
-        public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, List<Cliente> pClientesReserva)
+        public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
         {
             var auxClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
-            var auxClientesRes = pClientesReserva.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+            string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-            try
+            for (int i = 0; i < pContadores.Length; i++)
             {
-                for (int i = 0; i < auxClientesAloj.Count; i++)
+                byte aux = Convert.ToByte(pContadores[i]);
+
+                while (aux > Convert.ToByte('0'))
                 {
-                    if (auxClientesAloj[i].TarifaCliente.TarifaClienteId != auxClientesRes[i].TarifaCliente.TarifaClienteId)
+                    if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
                     {
-                        throw new Exception("Los Tipos de Cliente que ingreso no corresponden con los Clientes de la Reserva");
+                        throw new Exception("Error de Tipos Cliente");
                     }
+                    aux--;
                 }
             }
-            catch (IndexOutOfRangeException E)
+
+            pAlojEnAlta.AltaDeReserva();
+
+            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>());
+
+            if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
             {
-                throw new Exception("Las cantidades de Clientes agregados no corresponden con la Reserva", E);
+                throw new Exception("Costo base incorrecto.");
             }
         }
     }

@@ -55,33 +55,50 @@ namespace Persistencia.DAL.EntityFramework
             }
             unAloj.Clientes = auxListCliente;
 
-            //if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-            //{
-            //    //------- modificar pensado en el alta con reserva...................................
-
-            //    foreach (var cli in unAloj.Clientes)
-            //    {
-            //        auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-            //    }
-            //    unAloj.Clientes = auxListCliente;
-               
-            //    //Para el caso que se modifique la exclusividad de la habitacion
-            //    //iDbContext.Entry(unAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
-
-            //    //foreach (var cupo in unAloj.Habitacion.Cupos)
-            //    //{
-            //    //    iDbContext.Entry(cupo).State = System.Data.Entity.EntityState.Modified;
-            //    //}
-            //}
+            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+            {
+                unAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
+                for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
+                {
+                    //se va a ocupar--------------------------------//asegurar de que este disponible : control
+                    if ((!unAloj.Habitacion.Cupos[i].Disponible)&&(unAloj.Habitacion.Cupos[i].Disponible))
+                    {
+                        unAloj.Habitacion.Cupos[i].Disponible = false;
+                    }
+                }
+            }
 
             iDbContext.Alojamientos.Add(unAloj);
 
             iDbContext.SaveChanges();
         }
 
-        public void AltaReserva(Alojamiento unAloj, List<Cliente> pListaCliente)
+        public void AltaReserva(Alojamiento pAloj)
         {
-            
+            Alojamiento localAloj = this.Get(pAloj.AlojamientoId);
+            localAloj.MontoDeuda = pAloj.MontoDeuda;
+            localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
+            localAloj.FechaIngreso = pAloj.FechaIngreso;
+
+            localAloj.Habitacion.Exclusiva = pAloj.Habitacion.Exclusiva;
+            for (int i = 0; i < localAloj.Habitacion.Cupos.Count; i++)
+            {
+                //se va a ocupar--------------------------------//asegurar de que este disponible : control
+                if ((!pAloj.Habitacion.Cupos[i].Disponible) && (localAloj.Habitacion.Cupos[i].Disponible))
+                {
+                    localAloj.Habitacion.Cupos[i].Disponible = false;
+                }
+            }
+
+            List<Cliente> auxListCliente = new List<Cliente>();
+            foreach (var cli in pAloj.Clientes)
+            {
+                auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+            }
+            localAloj.Clientes = auxListCliente;
+
+
+            iDbContext.SaveChanges();
         }
 
 

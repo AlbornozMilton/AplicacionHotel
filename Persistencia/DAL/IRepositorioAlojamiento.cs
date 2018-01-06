@@ -13,7 +13,7 @@ namespace Persistencia.DAL
         void AddPago(Alojamiento unAloj, Pago pPago);
         void AddLineaServicio(Alojamiento unAloj, LineaServicio pLineaServicio);
         void FinalizarAlojamiento(Alojamiento unAloj);
-        void AltaReserva(Alojamiento unAloj, List<Cliente> pListaCliente);
+        void AltaReserva(Alojamiento unAloj);
     }
 
 }

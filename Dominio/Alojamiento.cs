@@ -196,13 +196,18 @@ namespace Dominio
         }
 
         //----------------------METHODS----------------------
+        public void AltaDeReserva()
+        {
+            this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
+            this.FechaIngreso = DateTime.Now;
+        }
 
         public bool ExistePagoAlojamiento(Pago pPago)
         {
             return this.iPagos.Contains(pPago);
         }
 
-        public double CalcularCostoBase(List<TarifaCliente> pTarifas)
+        public void CalcularCostoBase(List<TarifaCliente> pTarifas)
         {
             //bool lExclusividad = this.iHabitacion.Exclusiva;
             bool lExclusividad = this.iExclusividad;
@@ -235,9 +240,8 @@ namespace Dominio
             }
 
             //se utiliza FechaEstimadaEgreso y FechaIngreso
-            this.iMontoDeuda = costoBase * (this.iFechaEstimadaEgreso.Subtract(auxFechaDesde).Days); 
+            this.iMontoDeuda = costoBase * (this.iFechaEstimadaEgreso.Subtract(auxFechaDesde.Date).Days); 
             this.iMontoTotal = this.iMontoDeuda;
-            return this.iMontoDeuda;
         }
 
         public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
@@ -303,15 +307,14 @@ namespace Dominio
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
         }
 
-        public void AltaDeReserva()
-        {
-            this.iFechaIngreso = DateTime.Now;
-            this.iEstadoAloj = EstadoAlojamiento.Alojado;
-        }
-
         public void SetIDAloj(int pID)
         {
             this.iIdAlojamiento = pID;
+        }
+
+        public void SetClientes(List<Cliente> pClientes)
+        {
+            this.iClientes = pClientes;
         }
     }
 }

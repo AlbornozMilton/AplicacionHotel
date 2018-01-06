@@ -108,7 +108,7 @@ namespace UI
         {
             try
             {
-                new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento,new List<Cliente>());
+                new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 MessageBox.Show("Alojamiento Registrado con Exito.");
                 Close();
             }
