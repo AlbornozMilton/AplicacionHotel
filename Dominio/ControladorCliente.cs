@@ -12,9 +12,9 @@ namespace Dominio
     public class ControladorCliente
     {
         //ATRIBUTOS NECESARIOS PARA RESPONDER A LAS UI
-        pers.Cliente iCliente;
-        pers.Domicilio iDomicilio;
-        pers.Ciudad iCiudad;
+        Cliente Cliente;
+        Domicilio Domicilio;
+        Ciudad Ciudades;
       //  pers.TarifaCliente iTarifa;
         static IEnumerable<pers.Usuario> iUsuarios;
 
@@ -22,84 +22,71 @@ namespace Dominio
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
         //-----METODOS
-        public void CargarCiudad(int pCp, string pNombre)
-        {
-            //Ciudad city = new Ciudad(pCp, pNombre);
-            //this.iCiudad = Mapper.Map<Ciudad, pers.Ciudad>(city);
-            this.iCiudad = iUoW.RepositorioCiudad.Get(pCp);
-
-            if (this.iCiudad == null)
-            {
-                throw new Exception("Codigo postal no encontrado");
-            }
-
-            if (this.iCiudad.Nombre != pNombre)
-            {
-                this.iCiudad = null;
-                throw new Exception("Nombre de Ciudad no Correspondiente");
-            }
-
-        }
-
         public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto)
         {
-            Domicilio dom = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso);
-            this.iDomicilio = Mapper.Map<Domicilio, pers.Domicilio>(dom);
-            this.iDomicilio.CiudadId = this.iCiudad.CiudadId;
-
+            this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso);
+            //this.Domicilio = Mapper.Map<Domicilio, pers.Domicilio>(dom);
         }
 
-        //public void CargarTarifa(string p.)
-        //{
-        //    Domicilio dom = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso);
-        //    this.iDomicilio = Mapper.Map<Domicilio, pers.Domicilio>(dom);
-        //}
-
-
-        public void NuevoCliente (string pDni, string pNombre, string pApellido, string pTel, string pTipoCliente)
+        public void NuevoCliente (string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, string pTipoCliente)
         {
-            this.iCliente = Mapper.Map<Cliente, pers.Cliente>(new Cliente(Convert.ToInt32(pDni), 0000, pNombre, pApellido, pTel));
-
-            switch (pTipoCliente)
+            if (iUoW.RepositorioCliente.Get(Convert.ToInt32(pDni)) != null)
             {
-                case ("Titular Afiliado"):
-                    {
-                        this.iCliente.TarifaClienteId = pers.TipoCliente.Titular;
-                        break;
-                    }
-                case ("Acomp. Directo"):
-                    {
-                        this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteDirecto;
-                        break;
-                    }
-                case ("Acomp. No Directo"):
-                    {
-                        this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteNoDirecto;
-                        break;
-                    }
-                case ("Afiliado Exceptuado"):
-                    {
-                        this.iCliente.TarifaClienteId = pers.TipoCliente.TitularExceptuado;
-                        break;
-                    }
-                case ("Afiliado Convenio"):
-                    {
-                        this.iCliente.TarifaClienteId = pers.TipoCliente.Convenio;
-                        break;
-                    }
-                default: throw new Exception("No se eligio un Tipo de Cliente");
+                throw new Exception("Ya Existe un Cliente con el mismo DNI");
             }
 
-            this.iCliente.Domicilio = this.iDomicilio;
+            // control para legajo - metodo buscar por legajo
+            TarifaCliente Tarifa = Mapper.Map<pers.TarifaCliente, TarifaCliente>(iUoW.RepositorioTarifa.GetTarifaString(pTipoCliente));
 
-            iUoW.RepositorioCliente.Add(this.iCliente);
-            iUoW.Complete();
-            iUoW.Dispose();
+            Cliente auxCliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, pDomicilio, Tarifa);
+
+            //this.Cliente = Mapper.Map<Cliente, pers.Cliente>(auxCliente);
+
+            //switch (pTipoCliente)
+            //{
+            //    case ("Titular Afiliado"):
+            //        {
+            //            this.iCliente.TarifaClienteId = pers.TipoCliente.Titular;
+            //            break;
+            //        }
+            //    case ("Acomp. Directo"):
+            //        {
+            //            this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteDirecto;
+            //            break;
+            //        }
+            //    case ("Acomp. No Directo"):
+            //        {
+            //            this.iCliente.TarifaClienteId = pers.TipoCliente.AcompanianteNoDirecto;
+            //            break;
+            //        }
+            //    case ("Afiliado Exceptuado"):
+            //        {
+            //            this.iCliente.TarifaClienteId = pers.TipoCliente.TitularExceptuado;
+            //            break;
+            //        }
+            //    case ("Afiliado Convenio"):
+            //        {
+            //            this.iCliente.TarifaClienteId = pers.TipoCliente.Convenio;
+            //            break;
+            //        }
+            //    default: throw new Exception("No se eligio un Tipo de Cliente");
+            //}
+
+            //this.Cliente.Domicilio = this.Domicilio;
+
+            //iUoW.RepositorioCliente.Add(this.Cliente);
+            //iUoW.Complete();
+            //iUoW.Dispose();
         }
 
         public Cliente BuscarClientePorDni(int unDni)
         {
             return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.Get(unDni)));
+        }
+
+        public Cliente BuscarClientePorLegajo(int pLegajo)
+        {
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(pLegajo)));
         }
 
         public List<Cliente> BuscarClientePorNom_Ape(string pCadena)
@@ -149,7 +136,7 @@ namespace Dominio
 
             if (pClientes.Count != auxCantidad)
             {
-                throw new Exception("Las cantidades de cupos ingresados no corresponden con la cantidad de Clientes cargados.");
+                throw new Exception("Las cantidades de cupos ingresadas no corresponden con la cantidad de Clientes cargados.");
             }
         }
 
@@ -165,8 +152,23 @@ namespace Dominio
 
             if (auxCantidad != auxCantidadContadores)
             {
-                throw new Exception("Las cantidades de cupos ingresados no corresponden con la cantidad de Clientes cargados.");
+                throw new Exception("Las cantidades de cupos ingresadas no corresponden con la cantidad de Clientes cargados.");
             }
+        }
+
+        public List<Ciudad> ObtenerCiudades()
+        {
+            List<Ciudad> resultado = new List<Ciudad>();
+
+            //obtener con las relaciones a Domicilios
+            List<pers.Ciudad> ciudadesPer = iUoW.RepositorioCiudad.GetAll().ToList();
+
+            foreach (var ciudad in ciudadesPer)
+            {
+                resultado.Add(Mapper.Map<pers.Ciudad, Ciudad>(ciudad));
+            }
+
+            return resultado;
         }
     }
 }

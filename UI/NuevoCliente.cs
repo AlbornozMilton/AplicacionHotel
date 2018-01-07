@@ -13,17 +13,34 @@ namespace UI
 {
     public partial class NuevoCliente : Form
     {
-        ControladorCliente iControladorCliente = new ControladorCliente();
+        ControladorCliente ControladorCliente = new ControladorCliente();
+        List<Ciudad> Ciudades;
+        List<TarifaCliente> Tarifas;
+
         public NuevoCliente()
         {
             InitializeComponent();
+            Ciudades = ControladorCliente.ObtenerCiudades();
+            Tarifas = ControladorCliente.DevolverListaTarifas();
+            txb_codPostal.Enabled = false;
+
+            foreach (var ciudad in Ciudades)
+            {
+                cbx_ciudades.Items.Add(ciudad.Nombre);
+            }
+
+            foreach (var tarifa in Tarifas)
+            {
+                cbx_tipo.Items.Add(tarifa.TarifaClienteId.ToString());
+            }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            iControladorCliente.CargarCiudad(Convert.ToInt32(textBox8.Text), textBox7.Text);
-            iControladorCliente.CargarDomicilio(textBox6.Text, textBox5.Text, textBox9.Text, textBox10.Text);
-            iControladorCliente.NuevoCliente(textBox1.Text,textBox3.Text,textBox2.Text,textBox4.Text, comboBox1.Text);
+            //ControladorCliente.CargarCiudad(Convert.ToInt32(txb_codPostal.Text), txb_codPostal.Text);
+            ControladorCliente.CargarDomicilio(txb_calle.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text);
+            ControladorCliente.NuevoCliente(tbx_dni.Text,label_legajo.Text, txb_nombre.Text,txb_apellido.Text,txb_telefono.Text, txb_correo.Text, Domicilio ,cbx_tipo.Text);
             MessageBox.Show("Cliente agregado correctamente");
             Close();
         }
@@ -33,24 +50,16 @@ namespace UI
             Close();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void cbx_ciudades_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
+            if (cbx_ciudades.Items.Count > 0)
+            {
+                txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
+            }
+            else
+            {
+                MessageBox.Show("No hay ciudad cargadas en combo box.");
+            }
         }
     }
 }

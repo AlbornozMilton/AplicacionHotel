@@ -50,7 +50,7 @@ namespace Persistencia.DAL.EntityFramework
         /// <summary>
         /// Este método para los Clientes, retorna Clientes en Alta y en Baja
         /// </summary>
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return this.iDbContext.Set<TEntity>().ToList();
         }

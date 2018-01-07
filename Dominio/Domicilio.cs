@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Domicilio
+    public class Domicilio:IEquatable<Domicilio>
     {
         private int iDomicilioId;
         private string iCalle;
@@ -52,6 +52,17 @@ namespace Dominio
         public string Direccion()
         {
             return (this.iCalle +' '+this.iNumCalle);
+        }
+
+        public bool Equals(Domicilio other)
+        {
+            return
+                 (
+                     this.Calle == other.Calle &&
+                     this.Numero == other.Numero &&
+                     this.NroDepto == other.NroDepto &&
+                     this.Piso == other.Piso
+                );
         }
     }
 }

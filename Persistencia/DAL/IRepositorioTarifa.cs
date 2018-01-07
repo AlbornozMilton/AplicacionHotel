@@ -9,6 +9,6 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioTarifa : IRepositorio<TarifaCliente>
     {
-        TarifaCliente GetString(TipoCliente pTipoCliente);
+        TarifaCliente GetTarifaString(string pTipoCliente);
     }
 }

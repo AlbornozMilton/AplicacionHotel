@@ -14,6 +14,9 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        //public 
+        public override IEnumerable<Ciudad> GetAll()
+        {
+            return iDbContext.Ciudades.Include("Domicilios");
+        } 
     }
 }

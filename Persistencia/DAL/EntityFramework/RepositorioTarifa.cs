@@ -14,9 +14,9 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        public TarifaCliente GetString(TipoCliente pTipoCliente)
+        public TarifaCliente GetTarifaString(string pTipoCliente)
         {
-            throw new NotImplementedException();
+            return this.iDbContext.Tarifas.Single(t => t.TarifaClienteId.ToString() == pTipoCliente);
         }
 
         //public TarifaCliente GetString(TipoCliente pTipoCliente)

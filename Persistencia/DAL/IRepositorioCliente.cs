@@ -15,6 +15,8 @@ namespace Persistencia.DAL
         /// </summary>
         /// <returns></returns>
         IEnumerable<Cliente> ObtenerClientesEnAlta();
+        Cliente GetPorLegajo(int pLegajo);
+        
     }
 
 }
