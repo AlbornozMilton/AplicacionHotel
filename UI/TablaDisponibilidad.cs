@@ -15,7 +15,7 @@ namespace UI
     {
         public Habitacion HabSeleccionada;
         public List<Habitacion> Habitaciones;
-        ControladorHabitacion iControladorHab = new ControladorHabitacion();
+        //ControladorHabitacion iControladorHab = new ControladorHabitacion();
         public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
 
         public TablaDisponibilidad()
@@ -26,9 +26,9 @@ namespace UI
         public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             InitializeComponent();
-            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
+            //ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
             dGV_TablaHabitaciones.Rows.Clear();
-            this.Habitaciones = iControladorAloj.DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
+            this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
             foreach (var hab in this.Habitaciones)
             {
                 dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta, hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles(), hab.Exclusiva);

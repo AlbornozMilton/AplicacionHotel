@@ -124,11 +124,11 @@ namespace Dominio
 
         public List<Habitacion> DeterminarDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
-            ControladorHabitacion iControladorHab = new ControladorHabitacion();
+            //ControladorHabitacion iControladorHab = new ControladorHabitacion();
             DateTime fechaIni = new DateTime();
             DateTime fechaFin = new DateTime();
             List<Alojamiento> listaAlojActivos = ObtenerAlojamientosActivos(); //METODO DEFINIDO EN REPOSITORIO ALOJAMIENTO -> lista de alojamientos en estado de Alojado o Reservado
-            List<Habitacion> listaHabitaciones = iControladorHab.ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
+            List<Habitacion> listaHabitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
             foreach (var hab in listaHabitaciones.ToList<Habitacion>())
             {
                 foreach (var aloj in listaAlojActivos)
@@ -245,7 +245,7 @@ namespace Dominio
             var auxClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
             string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-            for (int i = 0; i < pContadores.Length; i++)
+            for (int i = 0; i < auxClientesAloj.Count; i++)
             {
                 byte aux = Convert.ToByte(pContadores[i]);
 
