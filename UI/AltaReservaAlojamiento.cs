@@ -96,6 +96,8 @@ namespace UI
                             (contador_Convenio.Value);
                 this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
+                new ControladorCliente().ControlCuposConClientes(contadores,cont_CuposSimples.Value,cont_CuposDobles.Value);
+
                 this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
                 txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();

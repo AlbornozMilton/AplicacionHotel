@@ -56,32 +56,33 @@ namespace UI
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            if (btn_VerificarDisponibilidad.Enabled == false) //se trata de alta de reserva
+            try
             {
-                try
+                if (btn_VerificarDisponibilidad.Enabled == false) //se trata de alta de reserva
                 {
                     //this.NuevoAlojamiento.SetIDAloj(Convert.ToInt32(txb_IdAloj.Text));
                     this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
                     this.NuevoAlojamiento.Habitacion.SetExclusividad(this.NuevoAlojamiento.Exclusividad);
                     this.NuevoAlojamiento.SetClientes(this.Acompañantes);
+                    new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
                     new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
                     //EL ALOJAMIENTO CAMBIA A ESTADO ALOJADO Y LA FECHA DE INGRESO = DATETIME.NOW
                 }
-                catch (Exception E)
+                else //Alta sin Reserva, crea nuevo alojamiento con estado Alojado
                 {
-                    MessageBox.Show(E.Message);
-                    Close();
+                    HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
+                    this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+                    new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes,cont_CuposSimples.Value,cont_CuposDobles.Value);
+                    NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
                 }
+                txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                btn_Confirmar.Enabled = false;
+                btn_Aceptar.Enabled = true;
             }
-            else //Alta sin Reserva, crea nuevo alojamiento con estado Alojado
+            catch (Exception E)
             {
-                HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
-                this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
-                NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
+                MessageBox.Show(E.Message);
             }
-            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-            btn_Confirmar.Enabled = false;
-            btn_Aceptar.Enabled = true;
         }
 
         private void btn_AgregarCliente_Click(object sender, EventArgs e)

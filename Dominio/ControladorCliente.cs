@@ -136,6 +136,37 @@ namespace Dominio
             }
             return TarifasClientes;
         }
-        
+
+        /// <summary>
+        /// Controla que la cantidades de cupos ingresados coincidan con la cantidad de clientes totales del Alojamiento
+        /// </summary>
+        /// <param name="pClientes">Acompañantes más el Responsable</param>
+        /// <param name="pCantS">Ya pasó el control de la cantidad posible para la Habitación.</param>
+        /// <param name="pCantD">Ya pasó el control de la cantidad posible para la Habitación.</param>
+        public void ControlCuposConClientes(List<Cliente> pClientes, decimal pCantS, decimal pCantD)
+        {
+            decimal auxCantidad = pCantS + pCantD * 2;
+
+            if (pClientes.Count != auxCantidad)
+            {
+                throw new Exception("Las cantidades de cupos ingresados no corresponden con la cantidad de Clientes cargados.");
+            }
+        }
+
+        public void ControlCuposConClientes(string pContadores, decimal pCantS, decimal pCantD)
+        {
+            decimal auxCantidad = pCantS + pCantD * 2;
+            decimal auxCantidadContadores = 0;
+
+            foreach (var contador in pContadores)
+            {
+                auxCantidadContadores+= Convert.ToDecimal(contador.ToString());
+            }
+
+            if (auxCantidad != auxCantidadContadores)
+            {
+                throw new Exception("Las cantidades de cupos ingresados no corresponden con la cantidad de Clientes cargados.");
+            }
+        }
     }
 }
