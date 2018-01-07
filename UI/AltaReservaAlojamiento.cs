@@ -61,6 +61,7 @@ namespace UI
                 {
                     tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
+                    ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
                 }
             }
             else
@@ -72,9 +73,12 @@ namespace UI
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
-            this.ClienteResponsable = BuscarClienteForm.iClienteSeleccionado;
-            dGV_ClienteResponsable.Rows.Clear();
-            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+            if (BuscarClienteForm.ClienteSeleccionado != null)
+            {
+                this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+                dGV_ClienteResponsable.Rows.Clear();
+                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono); 
+            }
         }
 
         /// <summary>
@@ -133,7 +137,33 @@ namespace UI
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
             this.FechaFin = dtp_fechaHasta.Value.Date;
-        } 
+        }
         #endregion
+
+        private void cont_CuposSimples_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada, cont_CuposSimples.Value, cont_CuposDobles.Value);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+                cont_CuposSimples.Value--;
+            }
+        }
+
+        private void cont_CuposDobles_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada, cont_CuposSimples.Value, cont_CuposDobles.Value);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+                cont_CuposDobles.Value--;
+            }
+        }
     }
 }

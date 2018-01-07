@@ -13,9 +13,9 @@ namespace UI
 {
     public partial class BuscarCliente : Form
     {
-        public Cliente iClienteSeleccionado;
-        public DataGridViewRow iFilaSeleccionada;
-        ControladorCliente iControladorCliente = new ControladorCliente();
+        public Cliente ClienteSeleccionado;
+        public DataGridViewRow FilaSeleccionada;
+        ControladorCliente ControladorCliente = new ControladorCliente();
         public BuscarCliente()
         {
             InitializeComponent();
@@ -64,7 +64,7 @@ namespace UI
             {
                 try
                 {
-                    Cliente cli = iControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBoxDNI.Text)));
+                    Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBoxDNI.Text)));
                         tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
                 catch (Exception pE)
@@ -75,7 +75,7 @@ namespace UI
             else
             {
                 tablaResulClientes.Rows.Clear();
-                List<Cliente> list = iControladorCliente.BuscarClientePorNom_Ape(textBoxNombre.Text);
+                List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBoxNombre.Text);
                 foreach (var cli in list)
                 {
                     tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
@@ -97,8 +97,8 @@ namespace UI
         /// <param name="e"></param>
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            this.iClienteSeleccionado = iControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
-            this.iFilaSeleccionada = tablaResulClientes.CurrentRow;
+            this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
+            this.FilaSeleccionada = tablaResulClientes.CurrentRow;
             Close();
         }
     }

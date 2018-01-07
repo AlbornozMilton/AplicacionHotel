@@ -225,6 +225,7 @@
             this.cont_CuposDobles.Name = "cont_CuposDobles";
             this.cont_CuposDobles.Size = new System.Drawing.Size(50, 22);
             this.cont_CuposDobles.TabIndex = 20;
+            this.cont_CuposDobles.ValueChanged += new System.EventHandler(this.cont_CuposDobles_ValueChanged);
             // 
             // cont_CuposSimples
             // 
@@ -233,6 +234,7 @@
             this.cont_CuposSimples.Name = "cont_CuposSimples";
             this.cont_CuposSimples.Size = new System.Drawing.Size(50, 22);
             this.cont_CuposSimples.TabIndex = 19;
+            this.cont_CuposSimples.ValueChanged += new System.EventHandler(this.cont_CuposSimples_ValueChanged);
             // 
             // label15
             // 

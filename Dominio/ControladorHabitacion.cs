@@ -37,5 +37,19 @@ namespace Dominio
             }
             return (lista);
         }
+
+        public bool VerificarSolicitdExclusividad(Habitacion pHab)
+        {
+            // se se cumple la igualdad, se puede pedir exclusividad
+            return (pHab.CuposDoblesDisponibles() + pHab.CuposSimpleDisponibles()) == pHab.Capacidad();
+        }
+
+        public void VerificarCuposSeleccionados(Habitacion pHab, decimal pCantS, decimal pCantD)
+        {
+            if ((pHab.CuposSimpleDisponibles()<pCantS)||(pHab.CuposDoblesDisponibles()<pCantD))
+            {
+                throw new Exception("Las cantidades de Cupos ingresadas no son posibles para la Habitación en estos momentos.");
+            }
+        }
     }
 }

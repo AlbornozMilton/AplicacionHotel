@@ -47,6 +47,7 @@ namespace UI
                 {
                     txb_NroHabitacion.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
+                    ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
                 }
             }
             else
@@ -87,22 +88,25 @@ namespace UI
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
-            this.ClienteResponsable = BuscarClienteForm.iClienteSeleccionado;
-
-            //comprobar que el cliente no esta "activo"
-
-            dGV_ClienteResponsable.Rows.Clear();
-            dGV_Acompañantes.Rows.Clear();
-            if (Acompañantes!=null)
+            if (BuscarClienteForm.ClienteSeleccionado != null)
             {
-              this.Acompañantes.Clear();
+                this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+
+                //comprobar que el cliente no esta "activo"
+
+                dGV_ClienteResponsable.Rows.Clear();
+                dGV_Acompañantes.Rows.Clear();
+                if (Acompañantes != null)
+                {
+                    this.Acompañantes.Clear();
+                }
+                else
+                {
+                    this.Acompañantes = new List<Cliente>();
+                }
+                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+                this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado); 
             }
-            else
-            {
-                this.Acompañantes = new List<Cliente>();
-            }
-            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
-            this.Acompañantes.Add(BuscarClienteForm.iClienteSeleccionado);
 
         }
 
@@ -113,14 +117,17 @@ namespace UI
 
             //comprobar que el cliente no esta "activo"
 
-            if (Acompañantes.Contains(BuscarClienteForm.iClienteSeleccionado))
+            if (BuscarClienteForm.ClienteSeleccionado != null)
             {
-                MessageBox.Show("Cliente ya agregado");
-            }
-            else
-            {
-                this.Acompañantes.Add(BuscarClienteForm.iClienteSeleccionado);
-                dGV_Acompañantes.Rows.Add(BuscarClienteForm.iClienteSeleccionado.ClienteId, BuscarClienteForm.iClienteSeleccionado.Apellido, BuscarClienteForm.iClienteSeleccionado.Nombre, BuscarClienteForm.iClienteSeleccionado.Telefono);
+                if (Acompañantes.Contains(BuscarClienteForm.ClienteSeleccionado))
+                {
+                    MessageBox.Show("Cliente ya agregado");
+                }
+                else
+                {
+                    this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
+                    dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.Apellido, BuscarClienteForm.ClienteSeleccionado.Nombre, BuscarClienteForm.ClienteSeleccionado.Telefono);
+                } 
             }            
         }
 
@@ -164,7 +171,7 @@ namespace UI
         {
             if (btn_VerificarDisponibilidad.Enabled)
             {
-                this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked); 
+                new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
             }
         }
 
@@ -221,5 +228,31 @@ namespace UI
 
         }
         #endregion
+
+        private void cont_CuposSimples_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada,cont_CuposSimples.Value,cont_CuposDobles.Value);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+                cont_CuposSimples.Value--;
+            }
+        }
+
+        private void cont_CuposDobles_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada, cont_CuposSimples.Value, cont_CuposDobles.Value);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+                cont_CuposDobles.Value--;
+            }
+        }
     }
 }
