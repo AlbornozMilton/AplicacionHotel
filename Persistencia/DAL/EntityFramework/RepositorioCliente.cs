@@ -47,5 +47,29 @@ namespace Persistencia.DAL.EntityFramework
 
             return clientes.ToList<Cliente>();
         }
+
+        public bool ExisteClienteDNI(int pDNI)
+        {
+            foreach (var cli in iDbContext.Clientes)
+            {
+                if (cli.ClienteId == pDNI)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool ExisteClienteLegajo(int pLegajo)
+        {
+            foreach (var cli in iDbContext.Clientes)
+            {
+                if (cli.Legajo == pLegajo)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

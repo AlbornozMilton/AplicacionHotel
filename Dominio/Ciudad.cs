@@ -14,6 +14,7 @@ namespace Dominio
 
         public Ciudad()
         {
+
         }
 
         public Ciudad(int pCodPostal, string pNombre)
@@ -25,6 +26,6 @@ namespace Dominio
         //---Propiedades
         public int CiudadId { get { return this.iCodPostal; } private set { this.iCodPostal = value; } }
         public string Nombre { get { return this.iNombre; } private set { this.iNombre = value; } }
-       // public List<Domicilio> Domicilios { get { return this.iDomicilios; } private set { this.iDomicilios = value; } }
+        //public List<Domicilio> Domicilios { get { return this.iDomicilios; } private set { this.iDomicilios = value; } }
     }
 }

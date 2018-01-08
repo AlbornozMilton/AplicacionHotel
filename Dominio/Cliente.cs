@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio
 {
@@ -22,7 +19,7 @@ namespace Dominio
         //-------------------------------Constructores
         public Cliente() { } 
 
-        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDom, TarifaCliente pTarifa)
+        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, TarifaCliente pTarifa)
         {
             this.iDni = pDni;
             this.iLegajo = pLegajo;
@@ -30,18 +27,18 @@ namespace Dominio
             this.iApellido = pApellido;
             this.iTelefono = pTel;
             this.iCorreo = pCorreo;
-            this.iDomicilio = pDom;
+            this.iDomicilio = pDomicilio;
             this.iTarifa = pTarifa;
         }
 
-        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel)
-        {
-            this.iDni = pDni;
-            this.iLegajo = pLegajo;
-            this.iNombre = pNombre;
-            this.iApellido = pApellido;
-            this.iTelefono = pTel;
-        }
+        //public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel)
+        //{
+        //    this.iDni = pDni;
+        //    this.iLegajo = pLegajo;
+        //    this.iNombre = pNombre;
+        //    this.iApellido = pApellido;
+        //    this.iTelefono = pTel;
+        //}
 
         //----------------------------------Propiedades------------------------------------
         public int ClienteId { get { return this.iDni; } private set { this.iDni = value; } }
@@ -75,6 +72,5 @@ namespace Dominio
         {
             return this.iTarifa.GetTarifa(pExclusividad);
         }
-
     }
 }

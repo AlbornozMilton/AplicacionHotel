@@ -21,15 +21,13 @@ namespace Dominio
 
         }
 
-        public Domicilio(int pDomId, string pCalle, string pNumCalle, string pNumDepto, string pNumPiso, Ciudad pCiudad)
+        public Domicilio(string pCalle, string pNumCalle, string pNumDepto, string pNumPiso, Ciudad pCiudad)
         {
-            this.iDomicilioId = pDomId;
             this.iCalle = pCalle;
             this.iNumCalle = pNumCalle;
             this.iNumDepto = pNumDepto;
             this.iNumPiso = pNumPiso;
             this.iCiudad = pCiudad;
-
         }
 
         public Domicilio(string pCalle, string pNumCalle, string pNumDepto, string pNumPiso)

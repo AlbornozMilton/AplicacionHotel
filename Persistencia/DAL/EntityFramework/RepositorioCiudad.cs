@@ -14,9 +14,14 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        public override IEnumerable<Ciudad> GetAll()
+        //public override IEnumerable<Ciudad> GetAll()
+        //{
+        //    return iDbContext.Ciudades.Include("Domicilios");
+        //}
+
+        public override Ciudad Get(int pId)
         {
-            return iDbContext.Ciudades.Include("Domicilios");
-        } 
+            return iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pId);
+        }
     }
 }

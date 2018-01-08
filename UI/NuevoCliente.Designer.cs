@@ -191,6 +191,7 @@
             this.txb_legajo.Name = "txb_legajo";
             this.txb_legajo.Size = new System.Drawing.Size(282, 26);
             this.txb_legajo.TabIndex = 12;
+            this.txb_legajo.TextChanged += new System.EventHandler(this.txb_legajo_TextChanged);
             // 
             // cbx_tipo
             // 
@@ -243,6 +244,7 @@
             this.tbx_dni.Name = "tbx_dni";
             this.tbx_dni.Size = new System.Drawing.Size(282, 26);
             this.tbx_dni.TabIndex = 7;
+            this.tbx_dni.TextChanged += new System.EventHandler(this.tbx_dni_TextChanged);
             // 
             // label4
             // 

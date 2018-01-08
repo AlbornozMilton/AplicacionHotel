@@ -23,6 +23,7 @@ namespace UI
             Ciudades = ControladorCliente.ObtenerCiudades();
             Tarifas = ControladorCliente.DevolverListaTarifas();
             txb_codPostal.Enabled = false;
+            cbx_tipo.Items.Clear();
 
             foreach (var ciudad in Ciudades)
             {
@@ -38,11 +39,17 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //ControladorCliente.CargarCiudad(Convert.ToInt32(txb_codPostal.Text), txb_codPostal.Text);
-            ControladorCliente.CargarDomicilio(txb_calle.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text);
-            ControladorCliente.NuevoCliente(tbx_dni.Text,label_legajo.Text, txb_nombre.Text,txb_apellido.Text,txb_telefono.Text, txb_correo.Text, Domicilio ,cbx_tipo.Text);
-            MessageBox.Show("Cliente agregado correctamente");
-            Close();
+            ControladorCliente.CargarDomicilio(txb_calle.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
+            try
+            {
+                ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
+                MessageBox.Show("Cliente agregado correctamente");
+                Close();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Error en la Persistencia: "+E.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -60,6 +67,30 @@ namespace UI
             {
                 MessageBox.Show("No hay ciudad cargadas en combo box.");
             }
+        }
+
+        private void tbx_dni_TextChanged(object sender, EventArgs e)
+        {
+            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO DE APRETAR "ENTER"
+            if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+            {
+                MessageBox.Show("El DNI ingresado ya existe.");
+                //tbx_dni.Clear();
+            }
+
+            //CONTROLAR LA LONGITUD DE LOS DIGITOS
+        }
+
+        private void txb_legajo_TextChanged(object sender, EventArgs e)
+        {
+            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO DE APRETAR "ENTER"
+            if (this.ControladorCliente.ExisteClienteDNI(txb_legajo.Text))
+            {
+                MessageBox.Show("El Legajo ingresado ya existe.");
+                //txb_legajo.Clear();
+            }
+            
+            //CONTROLAR LA LONGITUD DE LOS DIGITOS
         }
     }
 }
