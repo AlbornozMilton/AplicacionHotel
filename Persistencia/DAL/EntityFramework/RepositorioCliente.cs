@@ -14,6 +14,18 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
+        public override void Add(Cliente pCliente)
+        {
+            pCliente.EnAlta = true;
+            pCliente.DomicilioId = pCliente.Domicilio.DomicilioId;
+            pCliente.Domicilio = null;
+            pCliente.TarifaCliente = null; 
+
+            iDbContext.Clientes.Add(pCliente);
+
+            iDbContext.SaveChanges();
+        }
+
         public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre)
         {
             var clientes = from cli in this.iDbContext.Clientes

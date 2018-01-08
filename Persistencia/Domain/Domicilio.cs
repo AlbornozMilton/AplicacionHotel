@@ -21,5 +21,16 @@ namespace Persistencia.Domain
        // public int  ClienteId { get; set; }
         public List<Cliente> Clientes { get; set; }
 
+        public bool Equals(Domicilio other)
+        {
+            return
+                 (
+                     this.Calle == other.Calle &&
+                     this.Numero == other.Numero &&
+                     this.NroDepto == other.NroDepto &&
+                     this.Piso == other.Piso
+                     //this.Ciudad.CiudadId == other.Ciudad.CiudadId
+                );
+        }
     }
 }

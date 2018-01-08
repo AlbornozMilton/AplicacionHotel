@@ -101,9 +101,6 @@ namespace Persistencia.DAL.EntityFramework
             iDbContext.SaveChanges();
         }
 
-
-
-
         /// <summary>
         /// Se finaliza un Alojamiento por Cerrado o Cancelado
         /// </summary>
@@ -116,17 +113,8 @@ namespace Persistencia.DAL.EntityFramework
             {
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
             }
-            //else if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cancelado)
-            //{
-            //    //modificar fechas --> fecha de cancelacion en caso de agregar el atributo fechaCancelacion
-            //}
-
-            //IMPLICITAMENTE SE MODIFICAN LOS CUPOS????? - PARECE QUE SI
-            //localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
-
 
             iDbContext.Entry(localAuxAloj).State = System.Data.Entity.EntityState.Modified;
-            //iDbContext.Entry(localAuxAloj.Habitacion).State = System.Data.Entity.EntityState.Modified;
             iDbContext.SaveChanges();
         }
 

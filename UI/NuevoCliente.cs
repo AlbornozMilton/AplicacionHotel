@@ -49,6 +49,7 @@ namespace UI
             catch (Exception E)
             {
                 MessageBox.Show("Error en la Persistencia: "+E.Message);
+                MessageBox.Show(E.InnerException.Message);
             }
         }
 
