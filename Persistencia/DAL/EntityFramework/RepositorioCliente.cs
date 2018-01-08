@@ -16,8 +16,42 @@ namespace Persistencia.DAL.EntityFramework
 
         public override void Add(Cliente pCliente)
         {
+            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pCliente.Domicilio.Ciudad.CiudadId);
+
+            Domicilio domicilio = null;
+
+            foreach (var dom in ciudad.Domicilios)
+            {
+                if
+                    (
+                     dom.Calle == pCliente.Domicilio.Calle &&
+                     dom.Numero == pCliente.Domicilio.Numero &&
+                     dom.NroDepto == pCliente.Domicilio.NroDepto &&
+                     dom.Piso == pCliente.Domicilio.Piso
+                    )
+                {
+                    domicilio = dom;
+                    break;
+                }
+            }
+
+            if (domicilio == null)
+            {
+                pCliente.Domicilio.CiudadId = pCliente.Domicilio.Ciudad.CiudadId;
+                pCliente.Domicilio.Ciudad = null;
+                this.iDbContext.Domicilios.Add(pCliente.Domicilio);
+
+                //futuro prox ID 
+                pCliente.DomicilioId = this.iDbContext.Domicilios.Max(d => d.DomicilioId) + 1;
+                iDbContext.SaveChanges();
+            }
+            else
+            {
+                pCliente.DomicilioId = domicilio.DomicilioId;
+                pCliente.Domicilio = null;
+            }
+
             pCliente.EnAlta = true;
-            pCliente.DomicilioId = pCliente.Domicilio.DomicilioId;
             pCliente.Domicilio = null;
             pCliente.TarifaCliente = null; 
 

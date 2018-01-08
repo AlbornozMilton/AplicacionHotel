@@ -42,12 +42,7 @@ namespace Dominio
 
         public void NuevoCliente (string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, string pTipoCliente)
         {
-            pers.Domicilio auxDomicilio = iUoW.RepositorioDomicilio.CargaDomicilio(Mapper.Map<Domicilio, pers.Domicilio>(this.Domicilio));
-            //Este nuevo map contiene el ID domicilio
-            this.Domicilio = Mapper.Map<pers.Domicilio, Domicilio>(auxDomicilio);
-
             this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.TarifaClienteId.ToString() == pTipoCliente));
-
             iUoW.RepositorioCliente.Add(Mapper.Map<Cliente, pers.Cliente>(this.Cliente));
         }
 
