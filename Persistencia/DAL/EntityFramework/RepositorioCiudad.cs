@@ -23,5 +23,14 @@ namespace Persistencia.DAL.EntityFramework
         {
             return iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pId);
         }
+
+        public IEnumerable<string> CallesDeCiudad(int pCodPostal)
+        {
+            var calles = from domicilio in iDbContext.Domicilios
+                         where pCodPostal == domicilio.CiudadId
+                         select domicilio.Calle;
+
+            return calles.Distinct();
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ControladorCliente.CargarDomicilio(txb_calle.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
+            ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
             try
             {
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
@@ -63,6 +63,11 @@ namespace UI
             if (cbx_ciudades.Items.Count > 0)
             {
                 txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
+                var auxCalles = ControladorCliente.ObenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
+                foreach (var calle in auxCalles)
+                {
+                    cbx_calles.Items.Add(calle);
+                }
             }
             else
             {

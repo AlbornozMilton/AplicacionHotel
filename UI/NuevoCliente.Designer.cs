@@ -50,7 +50,6 @@
             this.txb_piso = new System.Windows.Forms.TextBox();
             this.txb_nroCalle = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txb_calle = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txb_codPostal = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.gpb_adicional = new System.Windows.Forms.GroupBox();
             this.txb_correo = new System.Windows.Forms.TextBox();
+            this.cbx_calles = new System.Windows.Forms.ComboBox();
             this.gpb_principal.SuspendLayout();
             this.gpb_ubicacion.SuspendLayout();
             this.gpb_adicional.SuspendLayout();
@@ -260,12 +260,12 @@
             // gpb_ubicacion
             // 
             this.gpb_ubicacion.BackColor = System.Drawing.SystemColors.Control;
+            this.gpb_ubicacion.Controls.Add(this.cbx_calles);
             this.gpb_ubicacion.Controls.Add(this.cbx_ciudades);
             this.gpb_ubicacion.Controls.Add(this.txb_nroDepto);
             this.gpb_ubicacion.Controls.Add(this.txb_piso);
             this.gpb_ubicacion.Controls.Add(this.txb_nroCalle);
             this.gpb_ubicacion.Controls.Add(this.label12);
-            this.gpb_ubicacion.Controls.Add(this.txb_calle);
             this.gpb_ubicacion.Controls.Add(this.label11);
             this.gpb_ubicacion.Controls.Add(this.label10);
             this.gpb_ubicacion.Controls.Add(this.txb_codPostal);
@@ -330,15 +330,6 @@
             this.label12.Size = new System.Drawing.Size(141, 20);
             this.label12.TabIndex = 11;
             this.label12.Text = "Nro Departamento";
-            // 
-            // txb_calle
-            // 
-            this.txb_calle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_calle.Location = new System.Drawing.Point(290, 87);
-            this.txb_calle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txb_calle.Name = "txb_calle";
-            this.txb_calle.Size = new System.Drawing.Size(282, 26);
-            this.txb_calle.TabIndex = 14;
             // 
             // label11
             // 
@@ -428,6 +419,16 @@
             this.txb_correo.Size = new System.Drawing.Size(392, 26);
             this.txb_correo.TabIndex = 18;
             // 
+            // cbx_calles
+            // 
+            this.cbx_calles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_calles.FormattingEnabled = true;
+            this.cbx_calles.Location = new System.Drawing.Point(290, 85);
+            this.cbx_calles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cbx_calles.Name = "cbx_calles";
+            this.cbx_calles.Size = new System.Drawing.Size(282, 28);
+            this.cbx_calles.TabIndex = 18;
+            // 
             // NuevoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -481,11 +482,11 @@
         private System.Windows.Forms.TextBox txb_nroDepto;
         private System.Windows.Forms.TextBox txb_piso;
         private System.Windows.Forms.TextBox txb_nroCalle;
-        private System.Windows.Forms.TextBox txb_calle;
         private System.Windows.Forms.TextBox txb_codPostal;
         private System.Windows.Forms.TextBox txb_correo;
         private System.Windows.Forms.Label label_legajo;
         private System.Windows.Forms.TextBox txb_legajo;
         private System.Windows.Forms.ComboBox cbx_ciudades;
+        private System.Windows.Forms.ComboBox cbx_calles;
     }
 }

@@ -9,5 +9,6 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioCiudad:IRepositorio<Ciudad>
     {
+        IEnumerable<string> CallesDeCiudad(int pCodPostal);
     }
 }

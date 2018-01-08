@@ -68,6 +68,15 @@ namespace Dominio
             return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.Get(unDni)));
         }
 
+        public List<string> ObenerCallesDeCiudad(string pCodPostal)
+        {
+            List<string> calles = new List<string>();
+            foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal)))
+            {
+                calles.Add(calle.ToString());
+            }
+            return calles;
+        }
         //public Cliente BuscarClientePorLegajo(int pLegajo)
         //{
         //    return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(pLegajo)));
