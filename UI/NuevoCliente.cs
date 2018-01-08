@@ -98,5 +98,21 @@ namespace UI
             
             //CONTROLAR LA LONGITUD DE LOS DIGITOS
         }
+
+        //solo anda cuando se selecciona un item del combo box
+        //se necesita que que lance cuando se escribe algo
+        private void cbx_calles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var auxCalles = cbx_calles.Items;
+            cbx_calles.Items.Clear();
+
+            foreach (var calle in auxCalles)
+            {
+                if (calle.ToString().Contains(cbx_calles.Text))
+                {
+                    cbx_calles.Items.Add(calle);
+                }
+            }
+        }
     }
 }

@@ -428,6 +428,7 @@
             this.cbx_calles.Name = "cbx_calles";
             this.cbx_calles.Size = new System.Drawing.Size(282, 28);
             this.cbx_calles.TabIndex = 18;
+            this.cbx_calles.SelectedIndexChanged += new System.EventHandler(this.cbx_calles_SelectedIndexChanged);
             // 
             // NuevoCliente
             // 
