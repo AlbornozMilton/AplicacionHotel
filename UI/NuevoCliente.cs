@@ -64,6 +64,7 @@ namespace UI
             {
                 txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
                 var auxCalles = ControladorCliente.ObenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
+                cbx_calles.Items.Clear();
                 foreach (var calle in auxCalles)
                 {
                     cbx_calles.Items.Add(calle);

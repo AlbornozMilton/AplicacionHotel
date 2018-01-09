@@ -220,7 +220,6 @@ namespace UI
 
             btn_VerificarDisponibilidad.Enabled = pValorEnable;
             btn_AgregarCliente.Enabled = pValorEnable;
-            tbx_dniResponsable.Enabled = pValorEnable;
             dGV_ClienteResponsable.Enabled = pValorEnable;
 
             txb_CostoBase.Enabled = pValorEnable;

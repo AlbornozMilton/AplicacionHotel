@@ -72,5 +72,10 @@ namespace Dominio
         {
             return this.iTarifa.GetTarifa(pExclusividad);
         }
+
+        public string NombreCompleto()
+        {
+            return Apellido + " " + Nombre;
+        }
     }
 }

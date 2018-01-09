@@ -45,6 +45,7 @@
             this.tbx_dni = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gpb_ubicacion = new System.Windows.Forms.GroupBox();
+            this.cbx_calles = new System.Windows.Forms.ComboBox();
             this.cbx_ciudades = new System.Windows.Forms.ComboBox();
             this.txb_nroDepto = new System.Windows.Forms.TextBox();
             this.txb_piso = new System.Windows.Forms.TextBox();
@@ -58,7 +59,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.gpb_adicional = new System.Windows.Forms.GroupBox();
             this.txb_correo = new System.Windows.Forms.TextBox();
-            this.cbx_calles = new System.Windows.Forms.ComboBox();
             this.gpb_principal.SuspendLayout();
             this.gpb_ubicacion.SuspendLayout();
             this.gpb_adicional.SuspendLayout();
@@ -69,11 +69,11 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(489, 557);
+            this.button1.Location = new System.Drawing.Point(497, 549);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 23);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 14;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -83,11 +83,11 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(630, 557);
+            this.button2.Location = new System.Drawing.Point(18, 557);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 23);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 15;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -167,7 +167,7 @@
             this.gpb_principal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gpb_principal.Name = "gpb_principal";
             this.gpb_principal.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.gpb_principal.Size = new System.Drawing.Size(724, 228);
+            this.gpb_principal.Size = new System.Drawing.Size(591, 228);
             this.gpb_principal.TabIndex = 8;
             this.gpb_principal.TabStop = false;
             this.gpb_principal.Text = "Principal";
@@ -190,7 +190,7 @@
             this.txb_legajo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_legajo.Name = "txb_legajo";
             this.txb_legajo.Size = new System.Drawing.Size(282, 26);
-            this.txb_legajo.TabIndex = 12;
+            this.txb_legajo.TabIndex = 2;
             this.txb_legajo.TextChanged += new System.EventHandler(this.txb_legajo_TextChanged);
             // 
             // cbx_tipo
@@ -207,7 +207,7 @@
             this.cbx_tipo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbx_tipo.Name = "cbx_tipo";
             this.cbx_tipo.Size = new System.Drawing.Size(282, 28);
-            this.cbx_tipo.TabIndex = 11;
+            this.cbx_tipo.TabIndex = 6;
             // 
             // txb_telefono
             // 
@@ -216,7 +216,7 @@
             this.txb_telefono.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_telefono.Name = "txb_telefono";
             this.txb_telefono.Size = new System.Drawing.Size(282, 26);
-            this.txb_telefono.TabIndex = 10;
+            this.txb_telefono.TabIndex = 5;
             // 
             // txb_nombre
             // 
@@ -225,7 +225,7 @@
             this.txb_nombre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_nombre.Name = "txb_nombre";
             this.txb_nombre.Size = new System.Drawing.Size(282, 26);
-            this.txb_nombre.TabIndex = 9;
+            this.txb_nombre.TabIndex = 4;
             // 
             // txb_apellido
             // 
@@ -234,7 +234,7 @@
             this.txb_apellido.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_apellido.Name = "txb_apellido";
             this.txb_apellido.Size = new System.Drawing.Size(282, 26);
-            this.txb_apellido.TabIndex = 8;
+            this.txb_apellido.TabIndex = 3;
             // 
             // tbx_dni
             // 
@@ -243,7 +243,7 @@
             this.tbx_dni.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbx_dni.Name = "tbx_dni";
             this.tbx_dni.Size = new System.Drawing.Size(282, 26);
-            this.tbx_dni.TabIndex = 7;
+            this.tbx_dni.TabIndex = 1;
             this.tbx_dni.TextChanged += new System.EventHandler(this.tbx_dni_TextChanged);
             // 
             // label4
@@ -277,10 +277,22 @@
             this.gpb_ubicacion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gpb_ubicacion.Name = "gpb_ubicacion";
             this.gpb_ubicacion.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.gpb_ubicacion.Size = new System.Drawing.Size(724, 228);
+            this.gpb_ubicacion.Size = new System.Drawing.Size(591, 228);
             this.gpb_ubicacion.TabIndex = 9;
             this.gpb_ubicacion.TabStop = false;
             this.gpb_ubicacion.Text = "Ubicación";
+            // 
+            // cbx_calles
+            // 
+            this.cbx_calles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_calles.FormattingEnabled = true;
+            this.cbx_calles.ItemHeight = 20;
+            this.cbx_calles.Location = new System.Drawing.Point(290, 85);
+            this.cbx_calles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cbx_calles.Name = "cbx_calles";
+            this.cbx_calles.Size = new System.Drawing.Size(282, 28);
+            this.cbx_calles.TabIndex = 9;
+            this.cbx_calles.SelectedIndexChanged += new System.EventHandler(this.cbx_calles_SelectedIndexChanged);
             // 
             // cbx_ciudades
             // 
@@ -290,8 +302,10 @@
             this.cbx_ciudades.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbx_ciudades.Name = "cbx_ciudades";
             this.cbx_ciudades.Size = new System.Drawing.Size(282, 28);
-            this.cbx_ciudades.TabIndex = 14;
+            this.cbx_ciudades.Sorted = true;
+            this.cbx_ciudades.TabIndex = 7;
             this.cbx_ciudades.SelectedIndexChanged += new System.EventHandler(this.cbx_ciudades_SelectedIndexChanged);
+            this.cbx_ciudades.TabIndexChanged += new System.EventHandler(this.cbx_ciudades_SelectedIndexChanged);
             // 
             // txb_nroDepto
             // 
@@ -300,7 +314,7 @@
             this.txb_nroDepto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_nroDepto.Name = "txb_nroDepto";
             this.txb_nroDepto.Size = new System.Drawing.Size(282, 26);
-            this.txb_nroDepto.TabIndex = 17;
+            this.txb_nroDepto.TabIndex = 12;
             // 
             // txb_piso
             // 
@@ -309,7 +323,7 @@
             this.txb_piso.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_piso.Name = "txb_piso";
             this.txb_piso.Size = new System.Drawing.Size(282, 26);
-            this.txb_piso.TabIndex = 16;
+            this.txb_piso.TabIndex = 11;
             // 
             // txb_nroCalle
             // 
@@ -318,7 +332,7 @@
             this.txb_nroCalle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_nroCalle.Name = "txb_nroCalle";
             this.txb_nroCalle.Size = new System.Drawing.Size(282, 26);
-            this.txb_nroCalle.TabIndex = 15;
+            this.txb_nroCalle.TabIndex = 10;
             // 
             // label12
             // 
@@ -360,7 +374,7 @@
             this.txb_codPostal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_codPostal.Name = "txb_codPostal";
             this.txb_codPostal.Size = new System.Drawing.Size(282, 26);
-            this.txb_codPostal.TabIndex = 12;
+            this.txb_codPostal.TabIndex = 8;
             // 
             // label9
             // 
@@ -405,7 +419,7 @@
             this.gpb_adicional.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gpb_adicional.Name = "gpb_adicional";
             this.gpb_adicional.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.gpb_adicional.Size = new System.Drawing.Size(724, 59);
+            this.gpb_adicional.Size = new System.Drawing.Size(591, 59);
             this.gpb_adicional.TabIndex = 10;
             this.gpb_adicional.TabStop = false;
             this.gpb_adicional.Text = "Adicional";
@@ -413,29 +427,18 @@
             // txb_correo
             // 
             this.txb_correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_correo.Location = new System.Drawing.Point(290, 23);
+            this.txb_correo.Location = new System.Drawing.Point(180, 22);
             this.txb_correo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txb_correo.Name = "txb_correo";
             this.txb_correo.Size = new System.Drawing.Size(392, 26);
-            this.txb_correo.TabIndex = 18;
-            // 
-            // cbx_calles
-            // 
-            this.cbx_calles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbx_calles.FormattingEnabled = true;
-            this.cbx_calles.Location = new System.Drawing.Point(290, 85);
-            this.cbx_calles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cbx_calles.Name = "cbx_calles";
-            this.cbx_calles.Size = new System.Drawing.Size(282, 28);
-            this.cbx_calles.TabIndex = 18;
-            this.cbx_calles.SelectedIndexChanged += new System.EventHandler(this.cbx_calles_SelectedIndexChanged);
+            this.txb_correo.TabIndex = 13;
             // 
             // NuevoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(760, 592);
+            this.ClientSize = new System.Drawing.Size(626, 592);
             this.Controls.Add(this.gpb_adicional);
             this.Controls.Add(this.gpb_ubicacion);
             this.Controls.Add(this.gpb_principal);

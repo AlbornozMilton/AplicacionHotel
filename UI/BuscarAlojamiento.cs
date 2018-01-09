@@ -58,7 +58,7 @@ namespace UI
             {
                 iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
                 dGV_ListadoAlojamientos.Rows.Clear();
-                dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).Apellido + ' ' + this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).Nombre, this.iAloj_Seleccionado.Habitacion.HabitacionId);
+                dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.EstadoAlojamiento, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).NombreCompleto(), this.iAloj_Seleccionado.Habitacion.HabitacionId);
             }
             catch (Exception pException)
             {
@@ -66,15 +66,24 @@ namespace UI
             }
         }
 
-        /// <summary>
-        /// idem buscar cliente por ID ???????''
-        /// </summary>
-   
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             iFilaSeleccionada = (dGV_ListadoAlojamientos.CurrentRow.Cells);
             iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(dGV_ListadoAlojamientos.CurrentRow.Cells[0].Value));
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.iAloj_Seleccionado != null)
+            {
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iAloj_Seleccionado);
+                VentanaVisualizar.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalladamente.");
+            }
         }
     }
 }
