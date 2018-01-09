@@ -117,5 +117,17 @@ namespace Persistencia.DAL.EntityFramework
             }
             return false;
         }
+
+        public Cliente GetPorLegajo(int pLegajo)
+        {
+            try
+            {
+                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad").Where(c => c.Legajo == pLegajo && c.EnAlta == true).Single();
+            }
+            catch
+            {
+                throw new Exception("Cliente No Existe");
+            }
+        }
     }
 }

@@ -77,10 +77,11 @@ namespace Dominio
             }
             return calles;
         }
-        //public Cliente BuscarClientePorLegajo(int pLegajo)
-        //{
-        //    return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(pLegajo)));
-        //}
+
+        public Cliente BuscarClientePorLegajo(string pLegajo)
+        {
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo))));
+        }
 
         public List<Cliente> BuscarClientePorNom_Ape(string pCadena)
         {

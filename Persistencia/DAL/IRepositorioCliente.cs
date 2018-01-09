@@ -14,7 +14,7 @@ namespace Persistencia.DAL
         /// Obtiene todos los clientes que solamente esten en Alta (true)
         /// </summary>
         IEnumerable<Cliente> ObtenerClientesEnAlta();
-        //Cliente GetPorLegajo(int pLegajo);
+        Cliente GetPorLegajo(int pLegajo);
         bool ExisteClienteDNI(int pDNI);
         bool ExisteClienteLegajo(int pLegajo);
     }

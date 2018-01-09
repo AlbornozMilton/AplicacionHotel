@@ -20,6 +20,9 @@ namespace UI
         {
             InitializeComponent();
             btn_Aceptar.Enabled = false;
+            radioButton1.Checked = true;
+            textBox_Legajo.Enabled = false;
+            textBox_Nombre.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,61 +30,44 @@ namespace UI
             Close();
         }
 
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
-        {
-            btn_Buscar.Image = Properties.Resources.boton_buscar_seleccion2;
-            label3.Visible = true;
-        }
+        //private void pictureBox1_MouseHover(object sender, EventArgs e)
+        //{
+        //    btn_Buscar.Image = Properties.Resources.boton_buscar_seleccion2;
+        //    label1.Visible = true;
+        //}
 
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        {
-            btn_Buscar.Image = Properties.Resources.boton_buscar;
-            label3.Visible = false;
-        }
-
-        private void textBox2_ReadOnlyChanged(object sender, EventArgs e)
-        {
-            textBoxDNI.ReadOnly = true;            
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (textBoxNombre.ReadOnly == true)
-            {
-                textBoxNombre.ReadOnly = false;
-            }
-            else
-            {
-                textBoxNombre.ReadOnly = true;
-                textBoxDNI.ReadOnly = false;
-            }
-            
-        }
+        //private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        //{
+        //    btn_Buscar.Image = Properties.Resources.boton_buscar;
+        //    label4.Visible = false;
+        //}
 
         private void btn_Buscar_Click(object sender, EventArgs e)
-        {
-            if (radioButton1.Checked)
-            {
-                try
-                {
-                    Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBoxDNI.Text)));
-                        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
-                }
-                catch (Exception pE)
-                {
-                    MessageBox.Show(pE.Message);
-                }
-            }
-            else
+        {                               //O UN METODO QUE REALICE TODOS LOC CONTROLES NECESARIOS Y RETORNE BOOLEANO
+            if (radioButton1.Checked && radioButton1.Text.Length>0)
             {
                 tablaResulClientes.Rows.Clear();
-                List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBoxNombre.Text);
+                Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)));
+                tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                btn_Aceptar.Enabled = true;
+            }
+            else if (radioButton_nombre.Checked && radioButton_nombre.Text.Length > 0)//NOMBRE
+            {
+                tablaResulClientes.Rows.Clear();
+                List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text);
                 foreach (var cli in list)
                 {
                     tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
+                btn_Aceptar.Enabled = true;
             }
-            btn_Aceptar.Enabled = true;
+            else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO
+            {
+                tablaResulClientes.Rows.Clear();
+                Cliente cli = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text);
+                tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                btn_Aceptar.Enabled = true;
+            }
         }
 
         private void BuscarCliente_Load(object sender, EventArgs e)
@@ -100,6 +86,33 @@ namespace UI
             this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
             this.FilaSeleccionada = tablaResulClientes.CurrentRow;
             Close();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox_DNI.Enabled = true;
+            textBox_Legajo.Enabled = false;
+            textBox_Legajo.Clear();
+            textBox_Nombre.Enabled = false;
+            textBox_Nombre.Clear();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)//nombre
+        {
+            textBox_DNI.Enabled = false;
+            textBox_DNI.Clear();
+            textBox_Legajo.Enabled = false;
+            textBox_Legajo.Clear();
+            textBox_Nombre.Enabled = true;
+        }
+
+        private void radioButton_legajo_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox_DNI.Enabled = false;
+            textBox_DNI.Clear();
+            textBox_Legajo.Enabled = true;
+            textBox_Nombre.Enabled = false;
+            textBox_Nombre.Clear();
         }
     }
 }
