@@ -144,7 +144,7 @@ namespace Dominio
                             //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
                             //por eso solo se pone < o > segun corresponda
                             {
-                                if (aloj.Habitacion.Exclusiva == true)
+                                if (aloj.Habitacion.Exclusiva == true || aloj.Habitacion.Capacidad() == 0)
                                 {
                                     listaHabitaciones.Remove(hab);
                                 }
@@ -164,7 +164,7 @@ namespace Dominio
                             //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
                             //por eso solo se pone < o > segun corresponda
                             {
-                                if (aloj.Exclusividad == true)
+                                if (aloj.Exclusividad == true || aloj.Habitacion.Capacidad() == 0)
                                 {
                                     listaHabitaciones.Remove(hab);
                                 }
