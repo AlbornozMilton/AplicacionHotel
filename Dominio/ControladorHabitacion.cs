@@ -41,7 +41,7 @@ namespace Dominio
         public bool VerificarSolicitdExclusividad(Habitacion pHab)
         {
             // se se cumple la igualdad, se puede pedir exclusividad
-            return (pHab.CuposDoblesDisponibles() + pHab.CuposSimpleDisponibles()) == pHab.Capacidad();
+            return (pHab.CuposDoblesDisponibles() + pHab.CuposSimpleDisponibles()) != pHab.Capacidad();
         }
 
         public void VerificarCuposSeleccionados(Habitacion pHab, decimal pCantS, decimal pCantD)

@@ -18,7 +18,7 @@ namespace UI
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
-        public List<Cliente> Acompañantes;
+        public List<Cliente> Acompañantes = new List<Cliente>();
         List<Cliente> auxListaCliReserva = new List<Cliente>(); //clientes de la reserva
 
 
@@ -27,8 +27,10 @@ namespace UI
             InitializeComponent();
             txb_fechaActual.Text = DateTime.Today.ToString("dd/mm/yy");
             txb_fechaActual.Enabled = false;
+            btn_Aceptar.Enabled = false;
 
             dtp_fechaDesde.Value = DateTime.Now.Date;
+            dtp_fechaDesde.Enabled = false;
             FechaIni = dtp_fechaDesde.Value;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1).Date;
             FechaFin = dtp_fechaHasta.Value;
@@ -95,16 +97,10 @@ namespace UI
 
                 //comprobar que el cliente no esta "activo"
 
+                //EN VEZ DE ESTO - eliminar la celda talque contiene al dni del responsable elegido
                 dGV_ClienteResponsable.Rows.Clear();
-                dGV_Acompañantes.Rows.Clear();
-                if (Acompañantes != null)
-                {
-                    this.Acompañantes.Clear();
-                }
-                else
-                {
-                    this.Acompañantes = new List<Cliente>();
-                }
+                this.Acompañantes.Clear();
+
                 dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
                 this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado); 
             }
@@ -252,6 +248,15 @@ namespace UI
             {
                 MessageBox.Show(E.Message);
                 cont_CuposDobles.Value--;
+            }
+        }
+
+        private void dGV_Acompañantes_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (dGV_Acompañantes.RowCount > Acompañantes.Count)
+            {
+                MessageBox.Show("No es posible agregar otro Cliente debido a la cantidad de cupos que ingresó.");
+                dGV_Acompañantes.Rows.RemoveAt(dGV_Acompañantes.RowCount - 1);
             }
         }
     }
