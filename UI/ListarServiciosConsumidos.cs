@@ -19,6 +19,16 @@ namespace UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Para que pueda ser llamado desde otros eventos.
+        /// </summary>
+        /// <param name="pAloPreSeleccionado">Un Alojamiento no vacío</param>
+        public ListarServiciosConsumidos(Alojamiento pAloPreSeleccionado)
+        {
+            InitializeComponent();
+            this.iAloj_Seleccionado = pAloPreSeleccionado;
+        }
+
         public void CargarAlojamientoSeccionado(DataGridViewCellCollection fila)
         {
             dGV_ListadoAlojamientos.Rows.Clear();
@@ -29,18 +39,16 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
-            CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
-            dGV_ListadoServicios.Rows.Clear();
-            foreach (var serv in iAloj_Seleccionado.Servicios)
+            if (BuscarAlojamiento.iAloj_Seleccionado != null)
             {
-                dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.Servicio.CostoBase, serv.CostoServicio);
+                iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
+                CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
+                dGV_ListadoServicios.Rows.Clear();
+                foreach (var serv in iAloj_Seleccionado.Servicios)
+                {
+                    dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.Servicio.CostoBase, serv.CostoServicio);
+                } 
             }
-        }
-
-        private void btn_Cancelar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

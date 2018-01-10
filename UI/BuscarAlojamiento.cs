@@ -82,7 +82,7 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalladamente.");
+                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
             }
         }
     }
