@@ -92,7 +92,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab1 = new Habitacion()
             {
                 HabitacionId = 1,
-                //Capacidad = 2, // 2 CAMAS
                 Planta = 0,// planta baja
                 Exclusiva = false,
                 Cupos = new List<Cupo>()
@@ -105,7 +104,7 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
-                        Disponible = false
+                        Disponible = true
                     }
                 }
             };
@@ -114,7 +113,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab2 = new Habitacion()
             {
                 HabitacionId = 2,
-                //Capacidad = 4, // 4 CAMAS
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -122,7 +120,7 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
-                        Disponible = false
+                        Disponible = true
                     },
                     new Cupo
                     {
@@ -132,7 +130,7 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
-                        Disponible = false
+                        Disponible = true
                     }
                 }
             };
@@ -141,7 +139,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab3 = new Habitacion()
             {
                 HabitacionId = 3,
-                //Capacidad = 3,
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -168,7 +165,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab4 = new Habitacion()
             {
                 HabitacionId = 4,
-                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -195,7 +191,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab5 = new Habitacion()
             {
                 HabitacionId = 5,
-                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 0,
                 Cupos = new List<Cupo>()
@@ -217,7 +212,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab6 = new Habitacion()
             {
                 HabitacionId = 6,
-                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -239,7 +233,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab7 = new Habitacion()
             {
                 HabitacionId = 7,
-                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -261,7 +254,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab8 = new Habitacion()
             {
                 HabitacionId = 8,
-                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -283,7 +275,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab9 = new Habitacion()
             {
                 HabitacionId = 9,
-                //Capacidad = 3,
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()
@@ -310,7 +301,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab10 = new Habitacion()
             {
                 HabitacionId = 10,
-                //Capacidad = 3, // 3 CAMAS
                 Exclusiva = false,
                 Planta = 1,
                 Cupos = new List<Cupo>()

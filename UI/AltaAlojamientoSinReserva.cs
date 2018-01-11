@@ -29,6 +29,11 @@ namespace UI
             txb_fechaActual.Enabled = false;
             btn_Aceptar.Enabled = false;
 
+            groupBox4.Enabled = false;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            btn_Confirmar.Enabled = false;
+
             dtp_fechaDesde.Value = DateTime.Now.Date;
             dtp_fechaDesde.Enabled = false;
             FechaIni = dtp_fechaDesde.Value;
@@ -49,7 +54,12 @@ namespace UI
                 {
                     txb_NroHabitacion.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
+
                     ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
+
+                    groupBox4.Enabled = true;
+                    groupBox2.Enabled = true;
+                    groupBox3.Enabled = true;
                 }
             }
             else
@@ -102,7 +112,8 @@ namespace UI
                 this.Acompañantes.Clear();
 
                 dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
-                this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado); 
+                this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
+                btn_Confirmar.Enabled = true;
             }
 
         }
@@ -175,14 +186,17 @@ namespace UI
         #region Alta de Reserva
         public void RellenarCampos()
         {
-            HabSeleccionada = NuevoAlojamiento.Habitacion;
 
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
             dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
             dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
             txb_NroHabitacion.Text = NuevoAlojamiento.HabitacionId.ToString();
+
+            HabSeleccionada = NuevoAlojamiento.Habitacion;
+
             cont_CuposSimples.Value = NuevoAlojamiento.CantCuposSimples;
             cont_CuposDobles.Value = NuevoAlojamiento.CantCuposDobles;
+
             ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
 
             //cliente responsable
@@ -190,6 +204,7 @@ namespace UI
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);
+            btn_Confirmar.Enabled = true;
 
             HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
 
@@ -230,7 +245,7 @@ namespace UI
         {
             try
             {
-                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada,cont_CuposSimples.Value,cont_CuposDobles.Value);
+                new ControladorHabitacion().VerificarCuposSimplesIngresados(this.HabSeleccionada,cont_CuposSimples.Value);
             }
             catch (Exception E)
             {
@@ -243,7 +258,7 @@ namespace UI
         {
             try
             {
-                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada, cont_CuposSimples.Value, cont_CuposDobles.Value);
+                new ControladorHabitacion().VerificarCuposDoblesIngresados(this.HabSeleccionada, cont_CuposDobles.Value);
             }
             catch (Exception E)
             {

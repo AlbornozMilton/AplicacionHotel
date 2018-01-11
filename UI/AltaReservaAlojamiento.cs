@@ -26,6 +26,11 @@ namespace UI
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1).Date;
             FechaFin = dtp_fechaHasta.Value.Date;
             btn_Aceptar.Enabled = false;
+            btn_Confirmar.Enabled = false;
+
+            groupBox4.Enabled = false;
+            groupBox3.Enabled = false;
+            groupBox2.Enabled = false;
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -61,7 +66,12 @@ namespace UI
                 {
                     tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
+
                     ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
+                    
+                    groupBox4.Enabled = true;
+                    groupBox3.Enabled = true;
+                    groupBox2.Enabled = true;
                 }
             }
             else
@@ -77,7 +87,8 @@ namespace UI
             {
                 this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
                 dGV_ClienteResponsable.Rows.Clear();
-                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono); 
+                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+                btn_Confirmar.Enabled = true;
             }
         }
 
@@ -96,7 +107,7 @@ namespace UI
                             (contador_Convenio.Value);
                 this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
-                new ControladorCliente().ControlCuposConClientes(contadores,cont_CuposSimples.Value,cont_CuposDobles.Value);
+                new ControladorCliente().ControlCuposConClientes(ClienteResponsable, contadores, cont_CuposSimples.Value,cont_CuposDobles.Value);
 
                 this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
@@ -146,7 +157,7 @@ namespace UI
         {
             try
             {
-                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada, cont_CuposSimples.Value, cont_CuposDobles.Value);
+                new ControladorHabitacion().VerificarCuposSimplesIngresados(this.HabSeleccionada, cont_CuposSimples.Value);
             }
             catch (Exception E)
             {
@@ -159,7 +170,7 @@ namespace UI
         {
             try
             {
-                new ControladorHabitacion().VerificarCuposSeleccionados(this.HabSeleccionada, cont_CuposSimples.Value, cont_CuposDobles.Value);
+                new ControladorHabitacion().VerificarCuposDoblesIngresados(this.HabSeleccionada, cont_CuposDobles.Value);
             }
             catch (Exception E)
             {

@@ -41,14 +41,22 @@ namespace Dominio
         public bool VerificarSolicitdExclusividad(Habitacion pHab)
         {
             // se se cumple la igualdad, se puede pedir exclusividad
-            return (pHab.CuposDoblesDisponibles() + pHab.CuposSimpleDisponibles()) != pHab.Capacidad();
+            return (pHab.CuposDoblesDisponibles() + pHab.CuposSimpleDisponibles()) == pHab.Capacidad();
         }
 
-        public void VerificarCuposSeleccionados(Habitacion pHab, decimal pCantS, decimal pCantD)
+        public void VerificarCuposSimplesIngresados(Habitacion pHab, decimal pCantS)
         {
-            if ((pHab.CuposSimpleDisponibles()<pCantS)||(pHab.CuposDoblesDisponibles()<pCantD))
+            if ((pHab.CuposSimpleDisponibles()<pCantS))
             {
-                throw new Exception("Las cantidades de Cupos ingresadas no son posibles para la Habitación en estos momentos.");
+                throw new Exception("Las cantidades de Cupos Simples ingresadas no son posibles para la Habitación en estos momentos.");
+            }
+        }
+
+        public void VerificarCuposDoblesIngresados(Habitacion pHab, decimal pCantD)
+        {
+            if (pHab.CuposDoblesDisponibles() < pCantD)
+            {
+                throw new Exception("Las cantidades de Cupos Dobles ingresadas no son posibles para la Habitación en estos momentos.");
             }
         }
     }

@@ -110,17 +110,14 @@ namespace Dominio
             byte lCapacidad = 0;
             foreach (var cupo in this.iCupos)
             {
-                if (cupo.Disponible)
+                if (cupo.Tipo == TipoCupo.simple)
                 {
-                    if (cupo.Tipo == TipoCupo.simple)
-                    {
-                        lCapacidad ++;
-                    }
-                    else if (cupo.Tipo == TipoCupo.doble)
-                    {
-                        lCapacidad += 2;
-                    } 
+                    lCapacidad ++;
                 }
+                else if (cupo.Tipo == TipoCupo.doble)
+                {
+                    lCapacidad += 2;
+                } 
             }
             return lCapacidad;
         }

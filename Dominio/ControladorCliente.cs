@@ -134,14 +134,28 @@ namespace Dominio
             }
         }
 
-        public void ControlCuposConClientes(string pContadores, decimal pCantS, decimal pCantD)
+        public void ControlCuposConClientes(Cliente pResponsable, string pContadores, decimal pCantS, decimal pCantD)
         {
             decimal auxCantidad = pCantS + pCantD * 2;
             decimal auxCantidadContadores = 0;
+            bool contieneResponsable = false;
+            int auxTipo = Convert.ToInt32(pResponsable.TarifaCliente.TarifaClienteId);
 
-            foreach (var contador in pContadores)
+            for (int i = 0; i < pContadores.Length; i++)
             {
-                auxCantidadContadores+= Convert.ToDecimal(contador.ToString());
+                if (Convert.ToDecimal(pContadores[i].ToString()) > 0)
+                {
+                    auxCantidadContadores += Convert.ToDecimal(pContadores[i].ToString());
+                    if (i == auxTipo)
+                    {
+                        contieneResponsable = true;
+                    } 
+                }
+            }
+              
+            if (!contieneResponsable)
+            {
+                throw new Exception("Los contadores de Tipo de Clientes ingresados debe contener al Responsable.");
             }
 
             if (auxCantidad != auxCantidadContadores)
