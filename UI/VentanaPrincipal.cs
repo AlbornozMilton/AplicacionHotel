@@ -115,7 +115,7 @@ namespace UI
             {
                 if (BuscarAlojamiento.iAloj_Seleccionado == null)
                 {
-                    throw new Exception("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
+                    throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
 
                 new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.iAloj_Seleccionado);
@@ -125,6 +125,11 @@ namespace UI
                 AltaReservaAlojamiento.EnableAll(false);
 
                 AltaReservaAlojamiento.RellenarCampos();
+            }
+            catch (NullReferenceException E)
+            {
+                MessageBox.Show(E.Message);
+                AltaReservaAlojamiento.Close();
             }
             catch (Exception E)
             {

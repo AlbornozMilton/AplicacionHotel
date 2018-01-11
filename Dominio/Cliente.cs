@@ -60,7 +60,7 @@ namespace Dominio
         /// <param name="other">Cliente externo a comparar</param>
         bool IEquatable<Cliente>.Equals(Cliente other)
         {
-            return (this.ClienteId.GetHashCode() == other.ClienteId.GetHashCode());
+            return (this.ClienteId == other.ClienteId);
         }
 
         /// <summary>

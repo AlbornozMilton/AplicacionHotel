@@ -137,10 +137,10 @@ namespace Dominio
                     {
                         if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                         {
-                            fechaIni = aloj.FechaIngreso;
-                            fechaFin = aloj.FechaEstimadaEgreso;
-                            if (((DateTime.Compare(fechaDesde, fechaFin) < 0) && (DateTime.Compare(fechaDesde, fechaIni) >= 0)) ||
-                                ((DateTime.Compare(fechaHasta, fechaFin) < 0) && (DateTime.Compare(fechaHasta, fechaIni) > 0)))
+                            fechaIni = aloj.FechaIngreso.Date;
+                            fechaFin = aloj.FechaEstimadaEgreso.Date;
+                            if (((DateTime.Compare(fechaDesde.Date, fechaFin) < 0) && (DateTime.Compare(fechaDesde.Date, fechaIni) >= 0)) ||
+                                ((DateTime.Compare(fechaHasta.Date, fechaFin) < 0) && (DateTime.Compare(fechaHasta.Date, fechaIni) > 0)))
                             //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
                             //por eso solo se pone < o > segun corresponda
                             {
@@ -157,10 +157,10 @@ namespace Dominio
                         }
                         else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                         {
-                            fechaIni = aloj.FechaEstimadaIngreso;
-                            fechaFin = aloj.FechaEstimadaEgreso;
-                            if (((DateTime.Compare(fechaDesde, fechaFin) < 0) && (DateTime.Compare(fechaDesde, fechaIni) >= 0)) ||
-                                ((DateTime.Compare(fechaHasta, fechaFin) < 0) && (DateTime.Compare(fechaHasta, fechaIni) > 0)))
+                            fechaIni = aloj.FechaEstimadaIngreso.Date;
+                            fechaFin = aloj.FechaEstimadaEgreso.Date;
+                            if (((DateTime.Compare(fechaDesde.Date, fechaFin) < 0) && (DateTime.Compare(fechaDesde.Date, fechaIni) >= 0)) ||
+                                ((DateTime.Compare(fechaHasta.Date, fechaFin) < 0) && (DateTime.Compare(fechaHasta.Date, fechaIni) > 0)))
                             //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
                             //por eso solo se pone < o > segun corresponda
                             {
@@ -278,7 +278,7 @@ namespace Dominio
 
             if (pAloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) != 0)
             {
-                throw new Exception("La Fecha Estimada de Ingreso no coincide con la fecha de Hoy. Vea los detalles.");
+                throw new Exception("La Fecha Estimada de Ingreso de la Reserva que quiere dar de Alta, no coincide con la Fecha Actual. Vea los detalles.");
             }
         }
     }

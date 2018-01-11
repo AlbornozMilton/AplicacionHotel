@@ -97,23 +97,36 @@ namespace UI
             }
         }
 
+        //RESPONSABLE
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
-            if (BuscarClienteForm.ClienteSeleccionado != null)
+            try
             {
-                this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+                if (BuscarClienteForm.ClienteSeleccionado != null)
+                {
+                    this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
-                //comprobar que el cliente no esta "activo"
+                    if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
+                    {
+                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio.");
+                    }
 
-                //EN VEZ DE ESTO - eliminar la celda talque contiene al dni del responsable elegido
-                dGV_ClienteResponsable.Rows.Clear();
-                this.Acompañantes.Clear();
+                    new ControladorCliente().ControlClienteActivo(ClienteResponsable, EstadoAlojamiento.Alojado,FechaIni,FechaFin);
 
-                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
-                this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
-                btn_Confirmar.Enabled = true;
+                    //EN VEZ DE ESTO - eliminar la celda talque contiene al dni del responsable elegido
+                    dGV_ClienteResponsable.Rows.Clear();
+                    this.Acompañantes.Clear();
+
+                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+                    this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
+                    btn_Confirmar.Enabled = true;
+                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
             }
 
         }
@@ -123,20 +136,27 @@ namespace UI
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
 
-            //comprobar que el cliente no esta "activo"
-
-            if (BuscarClienteForm.ClienteSeleccionado != null)
+            try
             {
+                if (BuscarClienteForm.ClienteSeleccionado == null)
+                {
+                    throw new Exception("Debe Seleccionar un Cliente.");
+                }
+                    
                 if (Acompañantes.Contains(BuscarClienteForm.ClienteSeleccionado))
                 {
-                    MessageBox.Show("Cliente ya agregado");
+                    throw new Exception("El Cliente elegido ya se encuentra entre los clientes seleccionadoss.");
                 }
-                else
-                {
-                    this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
-                    dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.Apellido, BuscarClienteForm.ClienteSeleccionado.Nombre, BuscarClienteForm.ClienteSeleccionado.Telefono);
-                } 
-            }            
+
+                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, EstadoAlojamiento.Alojado, FechaIni, FechaFin);
+
+                this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
+                dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.Apellido, BuscarClienteForm.ClienteSeleccionado.Nombre, BuscarClienteForm.ClienteSeleccionado.Telefono);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)

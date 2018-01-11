@@ -83,12 +83,26 @@ namespace UI
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
             BuscarClienteForm.ShowDialog();
-            if (BuscarClienteForm.ClienteSeleccionado != null)
+            try
             {
-                this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
-                dGV_ClienteResponsable.Rows.Clear();
-                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
-                btn_Confirmar.Enabled = true;
+                if (BuscarClienteForm.ClienteSeleccionado != null)
+                {
+                    if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
+                    {
+                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio.");
+                    }
+
+                    this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, EstadoAlojamiento.Reservado, FechaIni, FechaFin);
+
+                    dGV_ClienteResponsable.Rows.Clear();
+                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+                    btn_Confirmar.Enabled = true;
+                }
+            }
+            catch (Exception E)
+            {
+               MessageBox.Show(E.Message);
             }
         }
 
@@ -105,6 +119,7 @@ namespace UI
                             (contador_NoDirecto.Value).ToString() +
                             (contador_Exceptuado.Value).ToString() +
                             (contador_Convenio.Value);
+
                 this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
                 new ControladorCliente().ControlCuposConClientes(ClienteResponsable, contadores, cont_CuposSimples.Value,cont_CuposDobles.Value);

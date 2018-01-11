@@ -164,5 +164,40 @@ namespace Dominio
             }
         }
 
+        /// <summary>
+        /// Produce excepción si el Cliente elegido ya se encuentra en algún Alojamiento Activo.
+        /// </summary>
+        public void ControlClienteActivo(Cliente pCliente, EstadoAlojamiento pEstado, DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+
+            foreach (var aloj in auxListaAloj)
+            {
+                foreach (var cliente in aloj.Clientes)
+                {
+                    if (cliente.ClienteId == pCliente.ClienteId)
+                    {
+                        if (pEstado == EstadoAlojamiento.Alojado && aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                        {
+                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado.");
+                        }
+                        else if (pEstado == EstadoAlojamiento.Reservado && aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                        {
+                            //control de fechas
+                            if 
+                                (
+                                    !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+                                    &&
+                                    !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+                                )
+                            {
+                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas seleccionadas.");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
