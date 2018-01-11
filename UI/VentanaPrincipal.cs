@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
@@ -110,19 +111,26 @@ namespace UI
 
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-
-            if ((BuscarAlojamiento.iAloj_Seleccionado!=null)&&(BuscarAlojamiento.iAloj_Seleccionado.EstadoAlojamiento==Dominio.EstadoAlojamiento.Reservado))
+            try
             {
+                if (BuscarAlojamiento.iAloj_Seleccionado == null)
+                {
+                    throw new Exception("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
+                }
+
+                new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.iAloj_Seleccionado);
+
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.iAloj_Seleccionado;
 
                 AltaReservaAlojamiento.EnableAll(false);
 
                 AltaReservaAlojamiento.RellenarCampos();
-
             }
-            else
+            catch (Exception E)
             {
-                MessageBox.Show("Debe seleccionar un Alojnamiento Reservado para continuar con el Alta");
+                MessageBox.Show(E.Message);
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(BuscarAlojamiento.iAloj_Seleccionado);
+                VentanaVisualizar.ShowDialog();
                 AltaReservaAlojamiento.Close();
             }
         }

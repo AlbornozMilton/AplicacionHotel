@@ -268,5 +268,18 @@ namespace Dominio
                 throw new Exception("Costo base incorrecto.");
             }
         }
+       
+        public void ControlInicioAltaReserva(Alojamiento pAloj)
+        {
+            if (pAloj.EstadoAlojamiento != EstadoAlojamiento.Reservado)
+            {
+                throw new Exception("El Alojamiento seleccionado debe estar en estado Reservado solamente. Vea los detalles.");
+            }
+
+            if (pAloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) != 0)
+            {
+                throw new Exception("La Fecha Estimada de Ingreso no coincide con la fecha de Hoy. Vea los detalles.");
+            }
+        }
     }
 }

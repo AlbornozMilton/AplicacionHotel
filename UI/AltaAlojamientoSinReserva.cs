@@ -175,6 +175,8 @@ namespace UI
         #region Alta de Reserva
         public void RellenarCampos()
         {
+            HabSeleccionada = NuevoAlojamiento.Habitacion;
+
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
             dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
             dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
@@ -189,7 +191,6 @@ namespace UI
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);
 
-            HabSeleccionada = NuevoAlojamiento.Habitacion;
             HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
 
             //para almacenar el valor de costo base de reserva y luego comparar
