@@ -190,7 +190,7 @@
             this.groupBox2.Controls.Add(this.btn_AgregarCliente);
             this.groupBox2.Location = new System.Drawing.Point(12, 201);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(671, 154);
+            this.groupBox2.Size = new System.Drawing.Size(671, 124);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente Responsable";
@@ -221,7 +221,7 @@
             this.dGV_ClienteResponsable.ReadOnly = true;
             this.dGV_ClienteResponsable.RowHeadersVisible = false;
             this.dGV_ClienteResponsable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(659, 47);
+            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(659, 46);
             this.dGV_ClienteResponsable.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn5
@@ -263,9 +263,9 @@
             // 
             this.groupBox3.Controls.Add(this.dGV_Acompañantes);
             this.groupBox3.Controls.Add(this.btn_AgregarAcompañante);
-            this.groupBox3.Location = new System.Drawing.Point(12, 320);
+            this.groupBox3.Location = new System.Drawing.Point(12, 331);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(671, 140);
+            this.groupBox3.Size = new System.Drawing.Size(671, 129);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Otros Clientes";
@@ -294,7 +294,7 @@
             this.dGV_Acompañantes.ReadOnly = true;
             this.dGV_Acompañantes.RowHeadersVisible = false;
             this.dGV_Acompañantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Acompañantes.Size = new System.Drawing.Size(659, 95);
+            this.dGV_Acompañantes.Size = new System.Drawing.Size(659, 87);
             this.dGV_Acompañantes.TabIndex = 10;
             this.dGV_Acompañantes.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dGV_Acompañantes_RowsAdded);
             // 

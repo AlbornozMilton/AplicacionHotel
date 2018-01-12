@@ -281,5 +281,13 @@ namespace Dominio
                 throw new Exception("La Fecha Estimada de Ingreso de la Reserva que quiere dar de Alta, no coincide con la Fecha Actual. Vea los detalles.");
             }
         }
+
+        public void ControlPlazoRereva(DateTime pFechaEstimadaIngreso)
+        {
+            if (pFechaEstimadaIngreso.Subtract(DateTime.Now.Date).Days > 30)
+            {
+                throw new Exception("Solo se puede realizar Reservas dentro de los 30 Días respecto la Fecha Estimada Ingreso.");
+            }
+        }
     }
 }

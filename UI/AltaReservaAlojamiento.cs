@@ -142,6 +142,13 @@ namespace UI
 
                     txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
                     txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
+
+                    groupBox4.Enabled = true;
+                    groupBox3.Enabled = true;
+                    groupBox2.Enabled = true;
+                    groupBox1.Enabled = true;
+
+                    btn_Confirmar.Enabled = false;
                     btn_Aceptar.Enabled = true; 
                 }
             }
@@ -174,11 +181,20 @@ namespace UI
         //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad o algo similar
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaIni = dtp_fechaDesde.Value.Date;
-            btn_Confirmar.Enabled = false;
-            groupBox4.Enabled = false;
-            groupBox3.Enabled = false;
-            groupBox2.Enabled = false;
+            try
+            {
+                new ControladorAlojamiento().ControlPlazoRereva(dtp_fechaDesde.Value.Date);
+                this.FechaIni = dtp_fechaDesde.Value.Date;
+                btn_Confirmar.Enabled = false;
+                groupBox4.Enabled = false;
+                groupBox3.Enabled = false;
+                groupBox2.Enabled = false;
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+                this.FechaIni = DateTime.Now.Date;
+            }
         }
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)

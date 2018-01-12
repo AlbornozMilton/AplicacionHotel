@@ -29,6 +29,7 @@ namespace UI
             txb_fechaActual.Enabled = false;
             btn_Aceptar.Enabled = false;
             btn_AgregarAcompañante.Enabled = false;
+            txb_CostoBase.Enabled = false;
 
             dtp_fechaDesde.Value = DateTime.Now.Date;
             dtp_fechaDesde.Enabled = false;
@@ -105,6 +106,12 @@ namespace UI
                 }
                 txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
                 btn_Confirmar.Enabled = false;
+
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
+                groupBox4.Enabled = false;
+
                 btn_Aceptar.Enabled = true;
             }
             catch (Exception E)
