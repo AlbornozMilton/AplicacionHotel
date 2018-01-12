@@ -31,17 +31,17 @@ namespace UI
             btn_AgregarAcompañante.Enabled = false;
             txb_CostoBase.Enabled = false;
 
-            dtp_fechaDesde.Value = DateTime.Now.Date;
+            dtp_fechaDesde.Value = DateTime.Now;
             dtp_fechaDesde.Enabled = false;
             FechaIni = dtp_fechaDesde.Value;
-            dtp_fechaHasta.Value = DateTime.Now.AddDays(1).Date;
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             FechaFin = dtp_fechaHasta.Value;
             txb_IdAloj.Enabled = false;
         }
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            //si la fecha ini es manor que fecha fin
+            //si la fecha ini es menor que fecha fin
             if (FechaIni.CompareTo(FechaFin) == -1)
             {
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin);
@@ -59,10 +59,10 @@ namespace UI
                     groupBox3.Enabled = true;
                     btn_AgregarAcompañante.Enabled = false;
 
-
                     //sino produce excepcion 
                     cont_CuposDobles.Value = 0;
                     cont_CuposSimples.Value = 0;
+                    ck_Exclusividad.Checked = false;
                     //groupBox1.Enabled = false;
 
                     // ya que sino evade controles respoecto al responsable y a los demas clientes
@@ -212,7 +212,7 @@ namespace UI
 
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaIni = dtp_fechaDesde.Value.Date;
+            this.FechaIni = dtp_fechaDesde.Value;
             groupBox4.Enabled = false;
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
@@ -232,7 +232,7 @@ namespace UI
         {
             if (btn_VerificarDisponibilidad.Enabled)
             {
-                new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
+                this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
             }
         }
 

@@ -289,5 +289,31 @@ namespace Dominio
                 throw new Exception("Solo se puede realizar Reservas dentro de los 30 Días respecto la Fecha Estimada Ingreso.");
             }
         }
+
+        /// <summary>
+        /// Devulve una Lista de Alojamientos Reservados que pasaron 72hs sin realizar depósito
+        /// </summary>
+        /// <returns></returns>
+        public List<Alojamiento> TiempoDeDeposito()
+        {
+            List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
+            List<Alojamiento> ListaResultado = new List<Alojamiento>();
+            foreach (var aloj in auxLista)
+            {
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                {
+                    //if (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Days == 3)
+                    if (
+                        (DateTime.Now.Hour - aloj.FechaReserva.Hour >= 72)
+                        &
+                        (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) != null)//no existe pago de deposito
+                        )
+                    {
+                        ListaResultado.Add(aloj);
+                    }
+                }
+            }
+            return ListaResultado;
+        }
     }
 }
