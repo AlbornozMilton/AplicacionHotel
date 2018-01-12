@@ -28,11 +28,7 @@ namespace UI
             txb_fechaActual.Text = DateTime.Today.ToString("dd/mm/yy");
             txb_fechaActual.Enabled = false;
             btn_Aceptar.Enabled = false;
-
-            groupBox4.Enabled = false;
-            groupBox2.Enabled = false;
-            groupBox3.Enabled = false;
-            btn_Confirmar.Enabled = false;
+            btn_AgregarAcompañante.Enabled = false;
 
             dtp_fechaDesde.Value = DateTime.Now.Date;
             dtp_fechaDesde.Enabled = false;
@@ -60,6 +56,26 @@ namespace UI
                     groupBox4.Enabled = true;
                     groupBox2.Enabled = true;
                     groupBox3.Enabled = true;
+                    btn_AgregarAcompañante.Enabled = false;
+
+
+                    //sino produce excepcion 
+                    cont_CuposDobles.Value = 0;
+                    cont_CuposSimples.Value = 0;
+                    //groupBox1.Enabled = false;
+
+                    // ya que sino evade controles respoecto al responsable y a los demas clientes
+                    dGV_ClienteResponsable.Rows.Clear();
+
+                    if (this.Acompañantes.Count > 1)
+                    {
+                        this.Acompañantes.Clear();
+
+                        for (int i = 0; i < dGV_Acompañantes.Rows.Count; i++)
+                        {
+                            dGV_Acompañantes.Rows.RemoveAt(i);
+                        }
+                    };
                 }
             }
             else
@@ -80,7 +96,7 @@ namespace UI
                     new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
                     //EL ALOJAMIENTO CAMBIA A ESTADO ALOJADO Y LA FECHA DE INGRESO = DATETIME.NOW
                 }
-                else //Alta sin Reserva, crea nuevo alojamiento con estado Alojado
+                else if(Acompañantes.Contains(this.ClienteResponsable))//Alta sin Reserva, crea nuevo alojamiento con estado Alojado
                 {
                     HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
                     this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
@@ -122,6 +138,8 @@ namespace UI
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
                     this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
                     btn_Confirmar.Enabled = true;
+                    btn_AgregarAcompañante.Enabled = true;
+
                 }
             }
             catch (Exception E)
@@ -188,11 +206,19 @@ namespace UI
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
             this.FechaIni = dtp_fechaDesde.Value.Date;
+            groupBox4.Enabled = false;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            btn_Confirmar.Enabled = false;
         }
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
             this.FechaFin = dtp_fechaHasta.Value.Date;
+            groupBox4.Enabled = false;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            btn_Confirmar.Enabled = false;
         }
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
@@ -289,10 +315,10 @@ namespace UI
 
         private void dGV_Acompañantes_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (dGV_Acompañantes.RowCount > Acompañantes.Count)
+            if (dGV_Acompañantes.RowCount-1 > Acompañantes.Count)
             {
                 MessageBox.Show("No es posible agregar otro Cliente debido a la cantidad de cupos que ingresó.");
-                dGV_Acompañantes.Rows.RemoveAt(dGV_Acompañantes.RowCount - 1);
+                dGV_Acompañantes.Rows.RemoveAt(dGV_Acompañantes.RowCount - 2);
             }
         }
     }

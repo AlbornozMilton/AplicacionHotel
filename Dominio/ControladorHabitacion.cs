@@ -48,7 +48,7 @@ namespace Dominio
         {
             if ((pHab.CuposSimpleDisponibles()<pCantS))
             {
-                throw new Exception("Las cantidades de Cupos Simples ingresadas no son posibles para la Habitación en estos momentos.");
+                throw new Exception("Las cantidades de Cupos Simples que desea no son posibles para la Habitación en estos momentos.");
             }
         }
 
@@ -56,7 +56,7 @@ namespace Dominio
         {
             if (pHab.CuposDoblesDisponibles() < pCantD)
             {
-                throw new Exception("Las cantidades de Cupos Dobles ingresadas no son posibles para la Habitación en estos momentos.");
+                throw new Exception("Las cantidades de Cupos Dobles que desea no son posibles para la Habitación en estos momentos.");
             }
         }
     }

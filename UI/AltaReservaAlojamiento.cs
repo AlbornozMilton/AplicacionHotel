@@ -68,10 +68,22 @@ namespace UI
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
 
                     ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
-                    
+
                     groupBox4.Enabled = true;
                     groupBox3.Enabled = true;
                     groupBox2.Enabled = true;
+
+                    //sino produce excepcion
+                    cont_CuposDobles.Value = 0;
+                    cont_CuposSimples.Value = 0;
+
+                    //sino evade controles respoecto al responsable
+                    dGV_ClienteResponsable.Rows.Clear();
+                    contador_Titular.Value = 0;
+                    contador_Directo.Value = 0;
+                    contador_NoDirecto.Value = 0;
+                    contador_Exceptuado.Value = 0;
+                    contador_Convenio.Value = 0;
                 }
             }
             else
@@ -113,22 +125,25 @@ namespace UI
         {
             try
             {
-                string contadores =
-                            (contador_Titular.Value).ToString() +
-                            (contador_Directo.Value).ToString() +
-                            (contador_NoDirecto.Value).ToString() +
-                            (contador_Exceptuado.Value).ToString() +
-                            (contador_Convenio.Value);
+                if (ClienteResponsable != null) //requisito
+                {
+                    string contadores =
+                                        (contador_Titular.Value).ToString() +
+                                        (contador_Directo.Value).ToString() +
+                                        (contador_NoDirecto.Value).ToString() +
+                                        (contador_Exceptuado.Value).ToString() +
+                                        (contador_Convenio.Value);
 
-                this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+                    this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
-                new ControladorCliente().ControlCuposConClientes(ClienteResponsable, contadores, cont_CuposSimples.Value,cont_CuposDobles.Value);
+                    new ControladorCliente().ControlCuposConClientes(ClienteResponsable, contadores, cont_CuposSimples.Value, cont_CuposDobles.Value);
 
-                this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
+                    this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
-                txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
-                btn_Aceptar.Enabled = true;
+                    txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                    txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
+                    btn_Aceptar.Enabled = true; 
+                }
             }
             catch (Exception E)
             {
@@ -160,11 +175,19 @@ namespace UI
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
             this.FechaIni = dtp_fechaDesde.Value.Date;
+            btn_Confirmar.Enabled = false;
+            groupBox4.Enabled = false;
+            groupBox3.Enabled = false;
+            groupBox2.Enabled = false;
         }
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
             this.FechaFin = dtp_fechaHasta.Value.Date;
+            btn_Confirmar.Enabled = false;
+            groupBox4.Enabled = false;
+            groupBox3.Enabled = false;
+            groupBox2.Enabled = false;
         }
         #endregion
 
