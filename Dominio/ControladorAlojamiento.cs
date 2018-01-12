@@ -294,7 +294,7 @@ namespace Dominio
         /// Devulve una Lista de Alojamientos Reservados que pasaron 72hs sin realizar depósito
         /// </summary>
         /// <returns></returns>
-        public List<Alojamiento> TiempoDeDeposito()
+        public List<Alojamiento> AlojReservadosSinDeposito()
         {
             List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
             List<Alojamiento> ListaResultado = new List<Alojamiento>();
@@ -304,9 +304,9 @@ namespace Dominio
                 {
                     //if (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Days == 3)
                     if (
-                        (DateTime.Now.Hour - aloj.FechaReserva.Hour >= 72)
+                        (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Ticks >= (TimeSpan.TicksPerHour * 72))
                         &
-                        (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) != null)//no existe pago de deposito
+                        (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
                         )
                     {
                         ListaResultado.Add(aloj);

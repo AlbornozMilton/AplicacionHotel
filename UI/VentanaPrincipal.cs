@@ -18,6 +18,15 @@ namespace UI
         {
             InitializeComponent();
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+
+            //realizarlo como proceso en segundo plano
+            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojReservadosSinDeposito();
+            if (ListAloj.Count > 0)
+            {
+                //ES UN AVISO - NO SE CANCELAN AUTOMATICAMENTE
+                //GENERAR UI PARA ESTOS ALOJs
+                //PERMITIR CERRAR UN ALOJ O REALIZAR PAGO EN LA MISMA UI
+            }
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)

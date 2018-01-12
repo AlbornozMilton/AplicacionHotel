@@ -22,9 +22,9 @@ namespace UI
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
-            FechaIni = dtp_fechaDesde.Value.Date;
-            dtp_fechaHasta.Value = DateTime.Now.AddDays(1).Date;
-            FechaFin = dtp_fechaHasta.Value.Date;
+            FechaIni = dtp_fechaDesde.Value;
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+            FechaFin = dtp_fechaHasta.Value;
             btn_Aceptar.Enabled = false;
             btn_Confirmar.Enabled = false;
 
