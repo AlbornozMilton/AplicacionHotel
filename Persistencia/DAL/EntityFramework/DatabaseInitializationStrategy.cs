@@ -32,6 +32,7 @@ namespace Persistencia.DAL.EntityFramework
             TarifaCliente TarifaTitular = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.Titular,
+                NombreTarifa = "Titular",
                 Tarifa = 150,
                 TarifaExclusiva = 250
             };
@@ -40,6 +41,7 @@ namespace Persistencia.DAL.EntityFramework
             TarifaCliente TarifaAcompDirecto = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.AcompanianteDirecto,
+                NombreTarifa = "Acompañante Directo",
                 Tarifa = 170,
                 TarifaExclusiva = 270
             };
@@ -48,6 +50,7 @@ namespace Persistencia.DAL.EntityFramework
             TarifaCliente TarifaAcompNoDirecto = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
+                NombreTarifa = "Acompañante No Directo",
                 Tarifa = 200,
                 TarifaExclusiva = 300
             };
@@ -56,6 +59,7 @@ namespace Persistencia.DAL.EntityFramework
             TarifaCliente TarifaExceptuado = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.TitularExceptuado,
+                NombreTarifa = "Titular Exceptuado",
                 Tarifa = 0,
                 TarifaExclusiva = 50
             };
@@ -64,6 +68,7 @@ namespace Persistencia.DAL.EntityFramework
             TarifaCliente TarifaConvenio = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.Convenio,
+                NombreTarifa = "Convenio",
                 Tarifa = 500,
                 TarifaExclusiva = 750
             };

@@ -32,7 +32,7 @@ namespace UI
 
             foreach (var tarifa in Tarifas)
             {
-                cbx_tipo.Items.Add(tarifa.TarifaClienteId.ToString());
+                cbx_tipo.Items.Add(tarifa.NombreTarifa);
             }
         }
 
@@ -78,7 +78,7 @@ namespace UI
 
         private void tbx_dni_TextChanged(object sender, EventArgs e)
         {
-            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO DE APRETAR "ENTER"
+            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO APRETAR "ENTER"
             if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
             {
                 MessageBox.Show("El DNI ingresado ya existe.");

@@ -17,6 +17,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None)
                 .IsRequired();
 
+            this.Property(tn => tn.NombreTarifa)
+                .IsRequired();
+
             this.Property(tc => tc.Tarifa)
                 .IsRequired();
 

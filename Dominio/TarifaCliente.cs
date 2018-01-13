@@ -9,6 +9,7 @@ namespace Dominio
     public class TarifaCliente
     {
         private TipoCliente iTipoCliente; // CLAVE
+        private string iNombreTarifa;
         private double iMontoTarifa;
         private double iMontoTarifaExcl;
         private List<Cliente> iClientes;
@@ -28,6 +29,7 @@ namespace Dominio
 
         //---------------------Propiedades
         public TipoCliente TarifaClienteId { get { return this.iTipoCliente; } private set { this.iTipoCliente = value; } }
+        public string NombreTarifa { get { return this.iNombreTarifa; } private set { this.iNombreTarifa = value; } }
         public double Tarifa { get { return this.iMontoTarifa; } private set { this.iMontoTarifa = value; } }
         public double TarifaExclusiva { get { return this.iMontoTarifaExcl; } private set { this.iMontoTarifaExcl = value; } }
         public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }

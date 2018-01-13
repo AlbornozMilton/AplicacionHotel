@@ -42,7 +42,7 @@ namespace Dominio
 
         public void NuevoCliente (string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, string pTipoCliente)
         {
-            this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.TarifaClienteId.ToString() == pTipoCliente));
+            this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
             iUoW.RepositorioCliente.Add(Mapper.Map<Cliente, pers.Cliente>(this.Cliente));
         }
 
