@@ -52,7 +52,17 @@ namespace UI
                     txb_NroHabitacion.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
 
-                    ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
+                    
+                    if (!new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20))//si es falso que entre
+                    {
+                        MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel.");
+                        ck_Exclusividad.Enabled = false;
+                    }
+                    else if(!new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada))//si es falso que entre
+                    {
+                        MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque ya esta siendo ocupada.");
+                        ck_Exclusividad.Enabled = false;
+                    }
 
                     groupBox4.Enabled = true;
                     groupBox2.Enabled = true;
@@ -131,14 +141,18 @@ namespace UI
                 {
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
-                    if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
+                    if (Acompañantes.Contains(BuscarClienteForm.ClienteSeleccionado))
                     {
-                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio.");
+                        throw new Exception("El Cliente Responsable ya se encuentra entre los clientes seleccionadoss.");
                     }
 
                     new ControladorCliente().ControlClienteActivo(ClienteResponsable, EstadoAlojamiento.Alojado,FechaIni,FechaFin);
 
-                    //EN VEZ DE ESTO - eliminar la celda talque contiene al dni del responsable elegido
+                    if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
+                    {
+                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.");
+                    }
+
                     dGV_ClienteResponsable.Rows.Clear();
                     this.Acompañantes.Clear();
 
