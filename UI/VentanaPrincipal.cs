@@ -19,8 +19,8 @@ namespace UI
             InitializeComponent();
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
 
-            //realizarlo como proceso en segundo plano
-            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojReservadosSinDeposito();
+            //realizarlo como proceso en segundo plano al inicio y cada cierto tiempo
+            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojReservadosSinDepositoVencidos();
             if (ListAloj.Count > 0)
             {
                 //ES UN AVISO - NO SE CANCELAN AUTOMATICAMENTE

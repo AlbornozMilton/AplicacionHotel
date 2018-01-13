@@ -1,11 +1,9 @@
-﻿using System;
+﻿using AutoMapper;
+using Persistencia.DAL.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Persistencia.DAL.EntityFramework;
 using pers = Persistencia.Domain;
-using AutoMapper;
 
 namespace Dominio
 {
@@ -293,8 +291,7 @@ namespace Dominio
         /// <summary>
         /// Devulve una Lista de Alojamientos Reservados que pasaron 72hs sin realizar depósito
         /// </summary>
-        /// <returns></returns>
-        public List<Alojamiento> AlojReservadosSinDeposito()
+        public List<Alojamiento> AlojReservadosSinDepositoVencidos()
         {
             List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
             List<Alojamiento> ListaResultado = new List<Alojamiento>();
@@ -302,7 +299,6 @@ namespace Dominio
             {
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                 {
-                    //if (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Days == 3)
                     if (
                         (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Ticks >= (TimeSpan.TicksPerHour * 72))
                         &
@@ -314,6 +310,66 @@ namespace Dominio
                 }
             }
             return ListaResultado;
+        }
+
+        /// <summary>
+        /// Determina si aún no se a superado capacidad de exlcusividad total en cuanto a un porcentaje determinado.
+        /// El cálulo es una estimación basado en fechas límites.
+        /// Si aún se permite exclusividad, se admite exclusividad aunque los nuevos cupos sobrepasen la exclusivdad por unas pocas unidades.
+        /// </summary>
+        /// <param name="pFechaDesde">Fecha Inicial que compara con cada Alojamiento Activo</param>
+        /// <param name="pFechaHasta">Fecha Final la que compara con cada Alojamiento Activo</param>
+        /// <param name="pPorcentaje">Porcentaje de la capacidad límite de exlcusividad para el total del Hotel</param>
+        /// <returns>Retorna verdadero si ya se ha superado la exclusividad límite</returns>
+
+        public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pPorcentaje)
+        {
+            int auxCapacidadTotal = 0;
+            List <Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
+
+            foreach (var hab in Habitaciones)
+            {
+                auxCapacidadTotal += hab.Capacidad();
+            }
+
+            //acumulará la cantidad de cupos que estan exlcusivos
+            int auxCantExclusiva = 0;
+
+            List<Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
+
+            foreach (var aloj in auxLista)
+            {
+                if (aloj.Exclusividad)
+                {
+                    DateTime alojFechaDesde = DateTime.Now; 
+                    //no importa el Now, solo para instanciar
+                    //la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
+                    //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
+
+                    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                    {
+                        alojFechaDesde = aloj.FechaIngreso.Date;
+                    }
+                    else
+                    {
+                        alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+                    }
+
+                    // Hay interseccion entre las fechas
+                    if ( 
+                            //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
+                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0) 
+                            |
+                            //si fecha de egreso del aloj se encuetra entre las fechas de parametro
+                            (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+                       )
+                    {
+                        auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
+                    } 
+                }
+            }
+
+            return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
         }
     }
 }
