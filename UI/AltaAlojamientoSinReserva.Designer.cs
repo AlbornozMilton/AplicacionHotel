@@ -67,6 +67,7 @@
             this.cont_CuposSimples = new System.Windows.Forms.NumericUpDown();
             this.txb_NroHabitacion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
@@ -261,6 +262,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btn_quitarCliente);
             this.groupBox3.Controls.Add(this.dGV_Acompañantes);
             this.groupBox3.Controls.Add(this.btn_AgregarAcompañante);
             this.groupBox3.Location = new System.Drawing.Point(12, 331);
@@ -324,11 +326,11 @@
             // 
             // btn_AgregarAcompañante
             // 
-            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(502, 13);
+            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(537, 13);
             this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
-            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(135, 23);
+            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(100, 23);
             this.btn_AgregarAcompañante.TabIndex = 11;
-            this.btn_AgregarAcompañante.Text = "Agregar otro Cliente";
+            this.btn_AgregarAcompañante.Text = "Agregar Cliente";
             this.btn_AgregarAcompañante.UseVisualStyleBackColor = true;
             this.btn_AgregarAcompañante.Click += new System.EventHandler(this.btn_AgregarAcompañante_Click);
             // 
@@ -459,6 +461,16 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Nro de Habitacion";
             // 
+            // btn_quitarCliente
+            // 
+            this.btn_quitarCliente.Location = new System.Drawing.Point(442, 13);
+            this.btn_quitarCliente.Name = "btn_quitarCliente";
+            this.btn_quitarCliente.Size = new System.Drawing.Size(89, 23);
+            this.btn_quitarCliente.TabIndex = 12;
+            this.btn_quitarCliente.Text = "Quitar Cliente";
+            this.btn_quitarCliente.UseVisualStyleBackColor = true;
+            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
+            // 
             // AltaAlojamientoSinReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,5 +546,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown cont_CuposDobles;
         private System.Windows.Forms.NumericUpDown cont_CuposSimples;
+        private System.Windows.Forms.Button btn_quitarCliente;
     }
 }

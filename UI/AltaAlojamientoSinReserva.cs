@@ -29,6 +29,7 @@ namespace UI
             txb_fechaActual.Enabled = false;
             btn_Aceptar.Enabled = false;
             btn_AgregarAcompañante.Enabled = false;
+            btn_quitarCliente.Enabled = false;
             txb_CostoBase.Enabled = false;
 
             dtp_fechaDesde.Value = DateTime.Now;
@@ -160,7 +161,7 @@ namespace UI
                     this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
                     btn_Confirmar.Enabled = true;
                     btn_AgregarAcompañante.Enabled = true;
-
+                    btn_quitarCliente.Enabled = true;
                 }
             }
             catch (Exception E)
@@ -340,6 +341,15 @@ namespace UI
             {
                 MessageBox.Show("No es posible agregar otro Cliente debido a la cantidad de cupos que ingresó.");
                 dGV_Acompañantes.Rows.RemoveAt(dGV_Acompañantes.RowCount - 2);
+            }
+        }
+
+        private void btn_quitarCliente_Click(object sender, EventArgs e)
+        {
+            if (dGV_Acompañantes.CurrentRow != null)
+            {
+                Acompañantes.Remove(Acompañantes.Find(c => c.ClienteId == Convert.ToInt32(dGV_Acompañantes.CurrentRow.Cells[0].Value)));
+                dGV_Acompañantes.Rows.Remove(dGV_Acompañantes.CurrentRow);
             }
         }
     }
