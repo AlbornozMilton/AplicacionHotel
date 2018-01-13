@@ -99,12 +99,25 @@ namespace UI
             {
                 if (BuscarClienteForm.ClienteSeleccionado != null)
                 {
-                    if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
+                    this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+
+                    if (this.ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
                     {
-                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio.");
+                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.");
                     }
 
-                    this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+                    if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+                    {
+                        MessageBox.Show("Atención: Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si cambia dicho Cliente podrá solicitar la exclusividad.");
+                        HabSeleccionada.SetExclusividad(false);
+                        ck_Exclusividad.Enabled = false;
+                        ck_Exclusividad.Checked = false;
+                    }
+                    else
+                    {
+                        ck_Exclusividad.Enabled = true;
+                    }
+
                     new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, EstadoAlojamiento.Reservado, FechaIni, FechaFin);
 
                     dGV_ClienteResponsable.Rows.Clear();
@@ -230,6 +243,22 @@ namespace UI
             {
                 MessageBox.Show(E.Message);
                 cont_CuposDobles.Value--;
+            }
+        }
+
+        private void contador_Exceptuado_ValueChanged(object sender, EventArgs e)
+        {
+            if (contador_Exceptuado.Value != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado)
+            {
+                MessageBox.Show("Atención: Debido a que selecciono un Cliente de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si reduce el contador a 'cero' para dicho Cliente podrá solicitar la exclusividad.");
+                HabSeleccionada.SetExclusividad(false);
+                ck_Exclusividad.Enabled = false;
+                ck_Exclusividad.Checked = false;
+            }
+            else if(ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
+            {
+                MessageBox.Show("Atención: Ahora es posible elegir la exclusividad de Habitación.");
+                ck_Exclusividad.Enabled = true;
             }
         }
     }

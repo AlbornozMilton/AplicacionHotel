@@ -53,6 +53,7 @@ namespace Persistencia.DAL.EntityFramework
 
             pCliente.EnAlta = true;
             pCliente.Domicilio = null;
+            pCliente.TarifaClienteId = pCliente.TarifaCliente.TarifaClienteId;
             pCliente.TarifaCliente = null; 
 
             iDbContext.Clientes.Add(pCliente);

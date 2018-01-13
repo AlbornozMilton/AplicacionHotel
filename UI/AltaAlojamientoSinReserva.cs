@@ -154,6 +154,18 @@ namespace UI
                         MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.");
                     }
 
+                    if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+                    {
+                        MessageBox.Show("Atención: Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si cambia dicho Cliente podrá solicitar la exclusividad.");
+                        HabSeleccionada.SetExclusividad(false);
+                        ck_Exclusividad.Enabled = false;
+                        ck_Exclusividad.Checked = false;
+                    }
+                    else
+                    {
+                        ck_Exclusividad.Enabled = true;
+                    }
+
                     dGV_ClienteResponsable.Rows.Clear();
                     this.Acompañantes.Clear();
 
@@ -189,6 +201,14 @@ namespace UI
                 }
 
                 new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, EstadoAlojamiento.Alojado, FechaIni, FechaFin);
+
+                if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado)
+                {
+                    MessageBox.Show("Atención: Debido a que agregó un Cliente de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si quita dicho Cliente podrá solicitar la exclusividad.");
+                    HabSeleccionada.SetExclusividad(false);
+                    ck_Exclusividad.Enabled = false;
+                    ck_Exclusividad.Checked = false;
+                }
 
                 this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
                 dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.Apellido, BuscarClienteForm.ClienteSeleccionado.Nombre, BuscarClienteForm.ClienteSeleccionado.Telefono);
@@ -304,6 +324,8 @@ namespace UI
 
             txb_CostoBase.Enabled = pValorEnable;
 
+            btn_AgregarAcompañante.Enabled = pValorEnable;
+            btn_quitarCliente.Enabled = pValorEnable;
             btn_Aceptar.Enabled = pValorEnable;
 
         }
@@ -348,8 +370,16 @@ namespace UI
         {
             if (dGV_Acompañantes.CurrentRow != null)
             {
-                Acompañantes.Remove(Acompañantes.Find(c => c.ClienteId == Convert.ToInt32(dGV_Acompañantes.CurrentRow.Cells[0].Value)));
+                Cliente auxCliente = Acompañantes.Find(c => c.ClienteId == Convert.ToInt32(dGV_Acompañantes.CurrentRow.Cells[0].Value));
+                Acompañantes.Remove(auxCliente);
                 dGV_Acompañantes.Rows.Remove(dGV_Acompañantes.CurrentRow);
+
+                if (auxCliente.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado)
+                {
+                    MessageBox.Show("Atención: Ahora es posible elegir exclusividad de Habitación.");
+                    //HabSeleccionada.SetExclusividad(false);
+                    ck_Exclusividad.Enabled = true;
+                }
             }
         }
     }

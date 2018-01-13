@@ -11,7 +11,7 @@ namespace Dominio
         private List<LineaServicio> iServicios;
         private List<Cliente> iClientes;
         private Habitacion iHabitacion;
-        private List<Pago> iPagos;
+        private List<Pago> iPagos = new List<Pago>();
 
         private int iIdAlojamiento;
         private int iDniResponsable;
