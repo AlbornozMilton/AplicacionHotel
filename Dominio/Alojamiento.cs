@@ -238,9 +238,17 @@ namespace Dominio
                 }
             }
 
-            //se utiliza FechaEstimadaEgreso y FechaIngreso
-            this.iMontoDeuda = costoBase * (this.iFechaEstimadaEgreso.Subtract(auxFechaDesde.Date).Days); 
-            this.iMontoTotal = this.iMontoDeuda;
+            this.iMontoTotal = costoBase * (this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days);
+
+            Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
+            if (auxPago != null)
+            {
+                this.iMontoDeuda = this.iMontoTotal - auxPago.Monto;
+            }
+            else
+            {
+                this.iMontoDeuda = this.iMontoTotal;
+            }
         }
 
         public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
