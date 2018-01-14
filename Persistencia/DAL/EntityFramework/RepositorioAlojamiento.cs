@@ -123,16 +123,8 @@ namespace Persistencia.DAL.EntityFramework
         {
             Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
 
+            lAuxAloj.MontoTotal = unAloj.MontoTotal;
             lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
-
-            //if (lAuxAloj.Pagos.Count == 0)
-            //{
-            //    lAuxAloj.Pagos = new List<Pago>() { pPago };
-            //    iDbContext.Pagos.Add(pPago);
-            //}
-            //else
-            //{
-            //    iDbContext.Pagos.Add(pPago);
 
             pPago.AlojamientoId = unAloj.AlojamientoId;
             iDbContext.Pagos.Add(pPago);

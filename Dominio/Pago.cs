@@ -36,7 +36,7 @@ namespace Dominio
                         this.iTipoPago = TipoPago.Alojado;
                     }
                     break;
-                case ("Depósito"):
+                case ("Deposito"):
                     {
                         this.iTipoPago = TipoPago.Deposito;
                     }

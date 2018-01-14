@@ -20,6 +20,7 @@ namespace UI
         public BuscarAlojamiento()
         {
             InitializeComponent();
+            btn_Aceptar.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -59,6 +60,7 @@ namespace UI
                 iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
                 dGV_ListadoAlojamientos.Rows.Clear();
                 dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.EstadoAlojamiento, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).NombreCompleto(), this.iAloj_Seleccionado.Habitacion.HabitacionId);
+                btn_Aceptar.Enabled = true;
             }
             catch (Exception pException)
             {

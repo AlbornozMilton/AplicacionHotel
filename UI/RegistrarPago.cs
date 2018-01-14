@@ -13,24 +13,82 @@ namespace UI
 {
     public partial class RegistrarPago : Form
     {
-        public Alojamiento iAlojSeleccionado;
+        public Alojamiento AlojSeleccionado;
+
         public RegistrarPago()
         {
             InitializeComponent();
+            gbx_Pago.Enabled = false;
+            btn_Aceptar.Enabled = false;
+            ck_ModificarMonto.Enabled = false;
             lbl_MostrarFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
-        public void CargarAlojamientoSeccionado(DataGridViewCellCollection fila)
+
+        private void CargarPagos()
         {
-            dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(fila[0].Value, fila[1].Value, fila[2].Value, fila[3].Value);
+            cbx_TipoPago.Text = "Ninguno";
+            switch (AlojSeleccionado.EstadoAlojamiento)
+            {
+                case EstadoAlojamiento.Reservado:
+                    {
+                        if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Deposito")))
+                        {
+                            cbx_TipoPago.Items.Add("Deposito");
+                        }
+                    }
+                    break;
+                case EstadoAlojamiento.Alojado:
+                    if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Alojado")))
+                    {
+                        cbx_TipoPago.Items.Add("Alojado");
+                    }
+                    break;
+                case EstadoAlojamiento.Cerrado:
+                    if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Servicios")))
+                    {
+                        cbx_TipoPago.Items.Add("Servicios");
+
+                    }
+                    break;
+                case EstadoAlojamiento.Cancelado:
+                    if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Deuda")))
+                    {
+                        cbx_TipoPago.Items.Add("Deuda");
+                    }
+                    break;
+            }
+        }
+        
+        public RegistrarPago(Alojamiento pAloj)
+        {
+            InitializeComponent();
+            AlojSeleccionado = pAloj;
+            lbl_MostrarFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            CargarAlojamientoSeccionado(AlojSeleccionado);
+            ck_ModificarMonto.Enabled = false;
+
         }
 
+        public void CargarAlojamientoSeccionado(Alojamiento pAloj)
+        {
+            CargarPagos();
+            dGV_ListadoAlojamientos.Rows.Clear();
+            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId, pAloj.EstadoAlojamiento, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+        }
+
+        //Buscar otro alojamiento
         private void button1_Click(object sender, EventArgs e)
         {
             BuscarAlojamiento VentanaBuscarAlojamiento = new BuscarAlojamiento();
             VentanaBuscarAlojamiento.ShowDialog();
-            iAlojSeleccionado = VentanaBuscarAlojamiento.iAloj_Seleccionado;
-            CargarAlojamientoSeccionado(VentanaBuscarAlojamiento.iFilaSeleccionada);
+
+            if (VentanaBuscarAlojamiento.iAloj_Seleccionado != null)
+            {
+                AlojSeleccionado = VentanaBuscarAlojamiento.iAloj_Seleccionado;
+                CargarAlojamientoSeccionado(AlojSeleccionado);
+                gbx_Pago.Enabled = true;
+                btn_Aceptar.Enabled = true;
+            }
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -56,13 +114,18 @@ namespace UI
             {
                 MessageBox.Show("Debe seleccionar un alojamiento");
             } 
-            else if (cbx_TipoPago.SelectedItem.ToString() == "Depósito")
+            else if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
             {
-                txb_Monto.Text = iAlojSeleccionado.Deposito.ToString();
+                txb_Monto.Text = AlojSeleccionado.Deposito.ToString();
+            }
+            else if (cbx_TipoPago.SelectedItem.ToString() == "Servicios")
+            {
+                ck_ModificarMonto.Enabled = true;
+                txb_Monto.Text = AlojSeleccionado.MontoDeuda.ToString();
             }
             else
             {
-                txb_Monto.Text = iAlojSeleccionado.MontoDeuda.ToString();
+                txb_Monto.Text = AlojSeleccionado.MontoDeuda.ToString();
             }
         }
 
@@ -72,17 +135,15 @@ namespace UI
             {
                 ValidarDatos();
                 ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
-                Pago iPago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
-                iControladorAloj.ControlTipoPago(iAlojSeleccionado, iPago);
-                iControladorAloj.AddPago(iAlojSeleccionado);
+                Pago Pago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
+                //iControladorAloj.ControlTipoPago(AlojSeleccionado, iPago);
+                iControladorAloj.AddPago(AlojSeleccionado,Pago);
+                MessageBox.Show("Pago de Alojamiento Exitoso.");
+                Close();
             }
-            catch (Exception pException)
+            catch (Exception E)
             {
-                MessageBox.Show(pException.Message);
-                if (pException.InnerException !=null)
-                {
-                    MessageBox.Show(pException.InnerException.Message); 
-                }
+                MessageBox.Show(E.Message);
             }
         }
 
@@ -105,6 +166,20 @@ namespace UI
             else if (Convert.ToInt32(monto) <= 0)
             {
                 throw new Exception("Monto debe ser mayor a cero");
+            }
+        }
+
+        //Ver detalles
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.AlojSeleccionado != null)
+            {
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(AlojSeleccionado);
+                VentanaVisualizar.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
             }
         }
     }

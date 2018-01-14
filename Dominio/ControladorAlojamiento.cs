@@ -180,10 +180,9 @@ namespace Dominio
             return (listaHabitaciones);
         }
 
-        public void AddPago(Alojamiento pAlojamiento)
+        public void AddPago(Alojamiento pAlojamiento,Pago pPago)
         {
-            var e = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
-            iUoW.RepositorioAlojamiento.AddPago(e,e.Pagos[0]);
+           iUoW.RepositorioAlojamiento.AddPago(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<Pago, pers.Pago>(pPago));
         }
 
         public void AgregarServicio (string pServicio, byte pCant, Alojamiento pAlojamiento)
