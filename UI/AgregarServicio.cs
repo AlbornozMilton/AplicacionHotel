@@ -17,6 +17,8 @@ namespace UI
         public AgregarServicio()
         {
             InitializeComponent();
+            btn_Aceptar.Enabled = false;
+
         }
 
         public void CargarAlojamientoSeccionado(DataGridViewCellCollection fila)
@@ -35,8 +37,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
-            iControladorAloj.AgregarServicio(cBox_Servicios.SelectedItem.ToString(), Convert.ToByte(cant_Servicio.Value), iAloj_Seleccionado);
+            new ControladorAlojamiento().AgregarServicio(cBox_Servicios.SelectedItem.ToString(), Convert.ToByte(cant_Servicio.Value), iAloj_Seleccionado);
             MessageBox.Show("¡ Servicio Agregado !");
             Close();
         }
@@ -44,6 +45,23 @@ namespace UI
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cBox_Servicios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cant_Servicio.Value != 0 && cBox_Servicios.SelectedIndex > 0)
+            {
+                btn_Aceptar.Enabled = true;
+            }
+        }
+
+        private void cant_Servicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (cant_Servicio.Value != 0 && cBox_Servicios.SelectedIndex>0)
+            {
+                btn_Aceptar.Enabled = true;
+                //lbl_costo.Text = (cBox_Servicios cant_Servicio.Value
+            }
         }
     }
 }
