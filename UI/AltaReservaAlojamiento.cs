@@ -156,10 +156,10 @@ namespace UI
                     txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
                     txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
 
-                    groupBox4.Enabled = true;
-                    groupBox3.Enabled = true;
-                    groupBox2.Enabled = true;
-                    groupBox1.Enabled = true;
+                    groupBox4.Enabled = false;
+                    groupBox3.Enabled = false;
+                    groupBox2.Enabled = false;
+                    groupBox1.Enabled = false;
 
                     btn_Confirmar.Enabled = false;
                     btn_Aceptar.Enabled = true; 

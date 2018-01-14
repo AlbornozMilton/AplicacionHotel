@@ -31,7 +31,10 @@ namespace UI
             this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
             foreach (var hab in this.Habitaciones)
             {
-                dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta==0 ? "Baja":"Alta", hab.CuposDoblesDisponibles(), hab.CuposSimpleDisponibles());
+                if (!(new ControladorHabitacion().VerificarSolicitdExclusividad(hab)) || !hab.Exclusiva)
+                {
+                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", hab.CuposSimpleDisponibles(), hab.CuposDoblesDisponibles()); 
+                }
             }
 
             dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
@@ -41,7 +44,7 @@ namespace UI
         {
             DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
             //this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
-            //this.iHabSeleccionada = iControladorHab.ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
+            //this.HabSeleccionada = new ControladorHabitacion().ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
             this.HabSeleccionada = this.Habitaciones.Find(h =>h.HabitacionId == Convert.ToInt32(Fila[0].Value));
             Close();
         }
