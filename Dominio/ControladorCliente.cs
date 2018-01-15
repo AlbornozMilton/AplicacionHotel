@@ -94,6 +94,22 @@ namespace Dominio
             return (lista);
         }
 
+        public List<Cliente> GetAllClientes()
+        {
+            IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.GetAll();
+            List<Cliente> lista = new List<Cliente>();
+            foreach (var i in listaEnum)
+            {
+                lista.Add(Mapper.Map<pers.Cliente, Cliente>(i));
+            }
+            return (lista);
+        }
+
+        public void ModificarAltaCliente(bool pValor, int pIdCliente)
+        {
+            iUoW.RepositorioCliente.ModificarAlta(pValor,pIdCliente);
+        }
+
         public bool ValidarUsuario(string pUs, string pPass)
         {
             return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUs, Password = pPass });

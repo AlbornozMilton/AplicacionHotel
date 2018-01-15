@@ -63,7 +63,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre)
         {
-            var clientes = from cli in this.iDbContext.Clientes
+            var clientes = from cli in this.iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad")
                            where ((cli.Nombre+cli.Apellido).Contains(pNombre))&&(cli.EnAlta == true)
                            select cli;
 
@@ -83,16 +83,12 @@ namespace Persistencia.DAL.EntityFramework
         }
 
         /// <summary>
-        /// Retorna una lista de Clientes que solo estan en Alta
+        /// Retorna una lista con todos Clientes aunque no esten en Alta
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Cliente> ObtenerClientesEnAlta()
+        public override IEnumerable<Cliente> GetAll()
         {
-            var clientes = from cli in this.iDbContext.Clientes
-                           where (cli.EnAlta == true)
-                           select cli;
-
-            return clientes.ToList<Cliente>();
+            return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad");
         }
 
         public bool ExisteClienteDNI(int pDNI)
@@ -129,6 +125,12 @@ namespace Persistencia.DAL.EntityFramework
             {
                 throw new Exception("Cliente No Existe");
             }
+        }
+
+        public void ModificarAlta(bool pValor, int pIdCliente)
+        {
+            iDbContext.Clientes.Find(pIdCliente).EnAlta = pValor;
+            iDbContext.SaveChanges();
         }
     }
 }

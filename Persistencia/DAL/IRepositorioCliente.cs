@@ -10,10 +10,8 @@ namespace Persistencia.DAL
     public interface IRepositorioCliente : IRepositorio<Cliente>
     {
         IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre);
-        /// <summary>
-        /// Obtiene todos los clientes que solamente esten en Alta (true)
-        /// </summary>
-        IEnumerable<Cliente> ObtenerClientesEnAlta();
+       
+        void ModificarAlta(bool pValor, int pIdCliente);
         Cliente GetPorLegajo(int pLegajo);
         bool ExisteClienteDNI(int pDNI);
         bool ExisteClienteLegajo(int pLegajo);
