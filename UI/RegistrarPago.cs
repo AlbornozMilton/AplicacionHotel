@@ -21,7 +21,7 @@ namespace UI
             gbx_Pago.Enabled = false;
             btn_Aceptar.Enabled = false;
             ck_ModificarMonto.Enabled = false;
-            lbl_MostrarFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
         }
 
         private void CargarPagos()
@@ -63,7 +63,7 @@ namespace UI
         {
             InitializeComponent();
             AlojSeleccionado = pAloj;
-            lbl_MostrarFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
             CargarAlojamientoSeccionado(AlojSeleccionado);
             ck_ModificarMonto.Enabled = false;
 

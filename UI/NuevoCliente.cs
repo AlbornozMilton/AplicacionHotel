@@ -36,6 +36,25 @@ namespace UI
             }
         }
 
+        //PARA LA MODIFICACION - verrrrrrr
+        public NuevoCliente(Cliente pCliente)
+        {
+            InitializeComponent();
+            Ciudades = ControladorCliente.ObtenerCiudades();
+            Tarifas = ControladorCliente.DevolverListaTarifas();
+            txb_codPostal.Enabled = false;
+            cbx_tipo.Items.Clear();
+
+            foreach (var ciudad in Ciudades)
+            {
+                cbx_ciudades.Items.Add(ciudad.Nombre);
+            }
+
+            foreach (var tarifa in Tarifas)
+            {
+                cbx_tipo.Items.Add(tarifa.NombreTarifa);
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {

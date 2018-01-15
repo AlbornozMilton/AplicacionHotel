@@ -26,14 +26,16 @@ namespace UI
         public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             InitializeComponent();
-            //ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
             dGV_TablaHabitaciones.Rows.Clear();
             this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
             foreach (var hab in this.Habitaciones)
             {
-                if (!(new ControladorHabitacion().VerificarSolicitdExclusividad(hab)) || !hab.Exclusiva)
+                if (!hab.Exclusiva)
                 {
-                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", hab.CuposSimpleDisponibles(), hab.CuposDoblesDisponibles()); 
+                    if ((new ControladorHabitacion().VerificarSolicitdExclusividad(hab)))
+                    {
+                        dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", hab.CuposSimpleDisponibles(), hab.CuposDoblesDisponibles());
+                    } 
                 }
             }
 

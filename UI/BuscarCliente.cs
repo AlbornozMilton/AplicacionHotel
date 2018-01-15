@@ -44,29 +44,36 @@ namespace UI
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {                               //O UN METODO QUE REALICE TODOS LOC CONTROLES NECESARIOS Y RETORNE BOOLEANO
-            if (radioButton1.Checked && radioButton1.Text.Length>0)
+            try
             {
-                tablaResulClientes.Rows.Clear();
-                Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)));
-                tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
-                btn_Aceptar.Enabled = true;
-            }
-            else if (radioButton_nombre.Checked && radioButton_nombre.Text.Length > 0)//NOMBRE
-            {
-                tablaResulClientes.Rows.Clear();
-                List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text);
-                foreach (var cli in list)
+                if (radioButton1.Checked && radioButton1.Text.Length > 0) //DNi
                 {
-                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    tablaResulClientes.Rows.Clear();
+                    Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)));
+                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
+                    btn_Aceptar.Enabled = true;
                 }
-                btn_Aceptar.Enabled = true;
+                else if (radioButton_nombre.Checked && radioButton_nombre.Text.Length > 0)//NOMBRE
+                {
+                    tablaResulClientes.Rows.Clear();
+                    List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text);
+                    foreach (var cli in list)
+                    {
+                        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
+                    }
+                    btn_Aceptar.Enabled = true;
+                }
+                else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO
+                {
+                    tablaResulClientes.Rows.Clear();
+                    Cliente cli = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text);
+                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
+                    btn_Aceptar.Enabled = true;
+                }
             }
-            else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO
+            catch (Exception E)
             {
-                tablaResulClientes.Rows.Clear();
-                Cliente cli = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text);
-                tablaResulClientes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
-                btn_Aceptar.Enabled = true;
+                MessageBox.Show(E.Message);
             }
         }
 
@@ -113,6 +120,12 @@ namespace UI
             textBox_Legajo.Enabled = true;
             textBox_Nombre.Enabled = false;
             textBox_Nombre.Clear();
+        }
+
+        private void btn_nuevoCliente_Click(object sender, EventArgs e)
+        {
+            NuevoCliente VentanaVisualizar = new NuevoCliente();
+            VentanaVisualizar.ShowDialog();
         }
     }
 }

@@ -47,7 +47,9 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulClientes = new System.Windows.Forms.DataGridView();
+            this.btn_nuevoCliente = new System.Windows.Forms.Button();
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +64,7 @@
             this.btn_Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Cancelar.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(15, 403);
+            this.btn_Cancelar.Location = new System.Drawing.Point(13, 403);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(111, 29);
             this.btn_Cancelar.TabIndex = 0;
@@ -75,7 +77,7 @@
             this.btn_Aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(521, 403);
+            this.btn_Aceptar.Location = new System.Drawing.Point(722, 403);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(111, 29);
             this.btn_Aceptar.TabIndex = 1;
@@ -89,6 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.btn_nuevoCliente);
             this.groupBox1.Controls.Add(this.textBox_Legajo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.radioButton_legajo);
@@ -102,7 +105,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(623, 144);
+            this.groupBox1.Size = new System.Drawing.Size(824, 144);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda";
@@ -220,7 +223,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 163);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(623, 234);
+            this.groupBox2.Size = new System.Drawing.Size(824, 234);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -239,6 +242,7 @@
             this.tablaResulClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaResulClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Dni,
+            this.clm_legajo,
             this.clm_apellido,
             this.clm_Nombre,
             this.clm_telefono});
@@ -249,22 +253,42 @@
             this.tablaResulClientes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tablaResulClientes.RowHeadersVisible = false;
             this.tablaResulClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaResulClientes.Size = new System.Drawing.Size(617, 203);
+            this.tablaResulClientes.Size = new System.Drawing.Size(818, 203);
             this.tablaResulClientes.StandardTab = true;
             this.tablaResulClientes.TabIndex = 0;
+            // 
+            // btn_nuevoCliente
+            // 
+            this.btn_nuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nuevoCliente.Location = new System.Drawing.Point(654, 52);
+            this.btn_nuevoCliente.Name = "btn_nuevoCliente";
+            this.btn_nuevoCliente.Size = new System.Drawing.Size(129, 39);
+            this.btn_nuevoCliente.TabIndex = 11;
+            this.btn_nuevoCliente.Text = "Nuevo Cliente";
+            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
+            this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
             // 
             // clm_Dni
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.clm_Dni.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clm_Dni.FillWeight = 50F;
             this.clm_Dni.HeaderText = "DNI";
             this.clm_Dni.Name = "clm_Dni";
             this.clm_Dni.ReadOnly = true;
+            // 
+            // clm_legajo
+            // 
+            this.clm_legajo.FillWeight = 40F;
+            this.clm_legajo.HeaderText = "Legajo";
+            this.clm_legajo.Name = "clm_legajo";
+            this.clm_legajo.ReadOnly = true;
             // 
             // clm_apellido
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.clm_apellido.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clm_apellido.FillWeight = 65F;
             this.clm_apellido.HeaderText = "Apellido";
             this.clm_apellido.Name = "clm_apellido";
             this.clm_apellido.ReadOnly = true;
@@ -273,6 +297,7 @@
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.clm_Nombre.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clm_Nombre.FillWeight = 85F;
             this.clm_Nombre.HeaderText = "Nombre";
             this.clm_Nombre.Name = "clm_Nombre";
             this.clm_Nombre.ReadOnly = true;
@@ -281,6 +306,7 @@
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.clm_telefono.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clm_telefono.FillWeight = 80F;
             this.clm_telefono.HeaderText = "Telefono";
             this.clm_telefono.Name = "clm_telefono";
             this.clm_telefono.ReadOnly = true;
@@ -290,7 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(648, 435);
+            this.ClientSize = new System.Drawing.Size(849, 435);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Aceptar);
@@ -325,7 +351,9 @@
         private System.Windows.Forms.TextBox textBox_Legajo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton radioButton_legajo;
+        private System.Windows.Forms.Button btn_nuevoCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_legajo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_telefono;
