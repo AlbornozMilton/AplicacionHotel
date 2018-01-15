@@ -314,11 +314,6 @@ namespace Dominio
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
         }
 
-        public void SetIDAloj(int pID)
-        {
-            this.iIdAlojamiento = pID;
-        }
-
         public void SetClientes(List<Cliente> pClientes)
         {
             this.iClientes = pClientes;

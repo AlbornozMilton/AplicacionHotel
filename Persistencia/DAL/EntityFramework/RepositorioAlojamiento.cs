@@ -109,6 +109,7 @@ namespace Persistencia.DAL.EntityFramework
             Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
             Habitacion alojHabitacion = unAloj.Habitacion;
 
+            //pFechaingreso en caso de Cancelar
             localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
 
             if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
