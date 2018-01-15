@@ -107,14 +107,24 @@ namespace Persistencia.DAL.EntityFramework
         public void FinalizarAlojamiento(Alojamiento unAloj)
         {
             Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
+            Habitacion alojHabitacion = unAloj.Habitacion;
 
             localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
+
             if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
             {
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
+                localAuxAloj.Habitacion.Exclusiva = alojHabitacion.Exclusiva;
+                ////la que se ocupo en dominio
+                for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
+                {
+                    if ((!localAuxAloj.Habitacion.Cupos[i].Disponible) && (alojHabitacion.Cupos[i].Disponible))
+                    {
+                        localAuxAloj.Habitacion.Cupos[i].Disponible = true;
+                    }
+                }
             }
 
-            iDbContext.Entry(localAuxAloj).State = System.Data.Entity.EntityState.Modified;
             iDbContext.SaveChanges();
         }
 
@@ -124,7 +134,7 @@ namespace Persistencia.DAL.EntityFramework
             Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
 
             lAuxAloj.MontoTotal = unAloj.MontoTotal;
-            lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
+            lAuxAloj.MontoDeuda = unAloj.MontoTotal - pPago.Monto;
 
             pPago.AlojamientoId = unAloj.AlojamientoId;
             iDbContext.Pagos.Add(pPago);

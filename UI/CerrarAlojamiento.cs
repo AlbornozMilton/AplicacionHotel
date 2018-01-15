@@ -71,11 +71,9 @@ namespace UI
         {
             try
             {
-                ControladorAlojamiento lControlAloj = new ControladorAlojamiento();
-
-                //habilitar boton pagar servicios y alojado
-
-                lControlAloj.CerrarAlojamiento(iAloj_Seleccionado);
+                new ControladorAlojamiento().CerrarAlojamiento(iAloj_Seleccionado);
+                MessageBox.Show("Cierre de Alojamiento Exitoso.");
+                Close();
             }
             catch (Exception E)
             {
@@ -87,7 +85,8 @@ namespace UI
         {
             RegistrarPago VentanaVisualizar = new RegistrarPago(iAloj_Seleccionado);
             VentanaVisualizar.ShowDialog();
-            //this.iAloj_Seleccionado = VentanaVisualizar.AlojSeleccionado;
+            this.iAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(iAloj_Seleccionado.AlojamientoId);
+            CargarAlojamientoSeccionado(this.iAloj_Seleccionado);
         }
     }
 }

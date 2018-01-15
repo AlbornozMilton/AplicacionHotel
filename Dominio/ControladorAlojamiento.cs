@@ -402,12 +402,12 @@ namespace Dominio
             {
                 throw new Exception("Atencion: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
             }
+            
             //Siempre se va a colocar en "false" la exclusividad
             pAlojamiento.Habitacion.SetExclusividad(false);
+            //fecha de hoy y cambio de estado
+            pAlojamiento.Cerrar(DateTime.Now);
 
-            //fecha de hoy
-
-            //para la BD
             pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples, pAlojamiento.CantCuposDobles);
 
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
