@@ -236,32 +236,6 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
 
-        /// <summary>
-        /// Para que se realice este método el Alojamiento debe tener un Pago Alojado (Realizar control en UI)
-        /// </summary>
-        public void CerrarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaEgreso)
-        {
-            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
-            {
-                throw new Exception("Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
-            }
-            else if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Alojado))
-            {
-                throw new Exception("Operacion Cancelada. Solo se puede Cerrar un Alojamiento que esta Alojado");
-            }
-
-            //Siempre se va a colocar en "false" la exclusividad
-            pAlojamiento.Habitacion.SetExclusividad(false);
-
-            //para la BD
-            pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples,pAlojamiento.CantCuposDobles);
-
-            //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
-            pAlojamiento.Cerrar(pFechaEgreso);
-
-            iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
-        }
-
         public void CancelarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaCancelacion)
         {
             //EL PAGO DE DEPOSITO NO SE REMUNERA EN CASO DE CANCELAR Y HABER REALIZADO UN DEPOSITO
@@ -412,6 +386,32 @@ namespace Dominio
             }
 
             return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
+        }
+
+        /// <summary>
+        /// Para que se realice este método el Alojamiento debe tener un Pago Alojado (Realizar control en UI)
+        /// </summary>
+        public void CerrarAlojamiento(Alojamiento pAlojamiento)
+        {
+            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Alojado))
+            {
+                throw new Exception("Operación Cancelada: Solo se puede Cerrar un Alojamiento que esta Alojado");
+            }
+             
+            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+            {
+                throw new Exception("Atencion: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+            }
+            //Siempre se va a colocar en "false" la exclusividad
+            pAlojamiento.Habitacion.SetExclusividad(false);
+
+            //fecha de hoy
+
+            //para la BD
+            pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples, pAlojamiento.CantCuposDobles);
+
+            //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
+            iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
     }
 }
