@@ -70,7 +70,7 @@ namespace UI
                     ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
 
                     groupBox4.Enabled = true;
-                    groupBox3.Enabled = true;
+                   
                     groupBox2.Enabled = true;
 
                     //sino produce excepcion
@@ -123,6 +123,7 @@ namespace UI
                     dGV_ClienteResponsable.Rows.Clear();
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
                     btn_Confirmar.Enabled = true;
+                    groupBox3.Enabled = true;
                 }
             }
             catch (Exception E)
