@@ -153,5 +153,11 @@ namespace UI
         {
             iPadre.Close();
         }
+
+        private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarServicios VentanaServicios = new AdministrarServicios();
+            VentanaServicios.ShowDialog();
+        }
     }
 }

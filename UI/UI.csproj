@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministrarServicios.Designer.cs">
+      <DependentUpon>AdministrarServicios.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarServicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdministrarServicios.resx">
+      <DependentUpon>AdministrarServicios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarServicio.resx">
       <DependentUpon>AgregarServicio.cs</DependentUpon>
     </EmbeddedResource>

@@ -70,6 +70,8 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -97,7 +99,7 @@
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.ShowItemToolTips = true;
-            menuStrip1.Size = new System.Drawing.Size(777, 32);
+            menuStrip1.Size = new System.Drawing.Size(843, 32);
             menuStrip1.Stretch = false;
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
@@ -271,9 +273,12 @@
             // 
             // administracionToolStripMenuItem
             // 
+            this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serviciosToolStripMenuItem,
+            this.tarifasToolStripMenuItem});
             this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
-            this.administracionToolStripMenuItem.Size = new System.Drawing.Size(146, 28);
-            this.administracionToolStripMenuItem.Text = "Administracion";
+            this.administracionToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
+            this.administracionToolStripMenuItem.Text = "Administrar";
             // 
             // groupBox1
             // 
@@ -288,7 +293,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(753, 107);
+            this.groupBox1.Size = new System.Drawing.Size(819, 107);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BUSCAR DISPONIBILIDAD";
@@ -345,7 +350,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 152);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(753, 212);
+            this.groupBox2.Size = new System.Drawing.Size(819, 212);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OCUPACION ACTUAL";
@@ -369,7 +374,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(747, 191);
+            this.dataGridView1.Size = new System.Drawing.Size(813, 191);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column7
@@ -420,15 +425,28 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox2.Location = new System.Drawing.Point(0, 370);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(777, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(843, 50);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            // 
+            // serviciosToolStripMenuItem
+            // 
+            this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
+            this.serviciosToolStripMenuItem.Text = "Servicios";
+            this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
+            // 
+            // tarifasToolStripMenuItem
+            // 
+            this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
+            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
+            this.tarifasToolStripMenuItem.Text = "Tarifas";
             // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 420);
+            this.ClientSize = new System.Drawing.Size(843, 420);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(menuStrip1);
@@ -494,5 +512,7 @@
         private System.Windows.Forms.ToolStripMenuItem serviciosConsumidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem altaDeReservaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serviciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tarifasToolStripMenuItem;
     }
 }

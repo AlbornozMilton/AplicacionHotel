@@ -55,6 +55,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="ControladorAlojamiento.cs" />
     <Compile Include="ControladorCliente.cs" />
+    <Compile Include="ControladorExtra.cs" />
     <Compile Include="ControladorHabitacion.cs" />
     <Compile Include="Cupo.cs" />
     <Compile Include="Domicilio.cs" />
