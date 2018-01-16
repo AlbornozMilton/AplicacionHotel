@@ -55,8 +55,6 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -461,7 +459,7 @@
             this.Column5.ReadOnly = true;
             // 
             // Column6
-            // 
+            // As
             this.Column6.HeaderText = "Cantidad Personas";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
