@@ -16,6 +16,11 @@ namespace UI
         public Cliente ClienteSeleccionado;
         public DataGridViewRow FilaSeleccionada;
         ControladorCliente ControladorCliente = new ControladorCliente();
+
+        public void setEnable()
+        {
+            groupBox1.Enabled = false;
+        } 
         public BuscarCliente()
         {
             InitializeComponent();

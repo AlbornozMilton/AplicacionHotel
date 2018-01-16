@@ -195,6 +195,9 @@
     <EmbeddedResource Include="ActualizarTarifas.resx">
       <DependentUpon>ActualizarTarifas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarCostoServicio.resx">
+      <DependentUpon>ActualizarCostoServicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdministrarServicios.resx">
       <DependentUpon>AdministrarServicios.cs</DependentUpon>
     </EmbeddedResource>
