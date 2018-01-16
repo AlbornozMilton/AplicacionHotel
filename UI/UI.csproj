@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarTarifas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarTarifas.Designer.cs">
+      <DependentUpon>ActualizarTarifas.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdministrarServicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="CerrarAlojamiento.Designer.cs">
       <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarTarifas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarTarifas.Designer.cs">
+      <DependentUpon>ConsultarTarifas.cs</DependentUpon>
     </Compile>
     <Compile Include="IForm.cs" />
     <Compile Include="InicioSesion.cs">
@@ -174,6 +186,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ActualizarTarifas.resx">
+      <DependentUpon>ActualizarTarifas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdministrarServicios.resx">
       <DependentUpon>AdministrarServicios.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CerrarAlojamiento.resx">
       <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarTarifas.resx">
+      <DependentUpon>ConsultarTarifas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
