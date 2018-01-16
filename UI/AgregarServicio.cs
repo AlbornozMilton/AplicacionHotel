@@ -13,32 +13,81 @@ namespace UI
 {
     public partial class AgregarServicio : Form
     {
-        public Alojamiento iAloj_Seleccionado;
+        public Alojamiento AlojSeleciconado;
+        public Servicio ServicioSeleccionado;
+        //public LineaServicio lLineaServecio;
+
         public AgregarServicio()
         {
             InitializeComponent();
             btn_Aceptar.Enabled = false;
-
+            btn_buscarServicio.Enabled = false;
+            gpb_Servicio.Enabled = false;
+            cant_Servicio.Enabled = false;
         }
 
-        public void CargarAlojamientoSeccionado(DataGridViewCellCollection fila)
+        public AgregarServicio(Alojamiento pAloj)
         {
-            dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(fila[0].Value, fila[1].Value, fila[2].Value, fila[3].Value);
+            InitializeComponent();
+            btn_Aceptar.Enabled = false;
+            AlojSeleciconado = pAloj;
+            CargarAlojamientoSeccionado(AlojSeleciconado);
+        }
+
+        public void CargarAlojamientoSeccionado(Alojamiento pAloj)
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento,pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+        }
+
+        public void CargarServicioSeccionado(Servicio pServicio)
+        {
+            dataGridView_Servicio.Rows.Clear();
+            dataGridView_Servicio.Rows.Add(pServicio.Nombre, pServicio.CostoBase, DateTime.Now.ToString("dd / MM / yyyy"));
         }
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
-            CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
+            if (BuscarAlojamiento.iAloj_Seleccionado != null)
+            {
+                if (BuscarAlojamiento.iAloj_Seleccionado.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                {
+                    AlojSeleciconado = BuscarAlojamiento.iAloj_Seleccionado;
+                    CargarAlojamientoSeccionado(AlojSeleciconado);
+                    btn_buscarServicio.Enabled = true;
+                    gpb_Servicio.Enabled = true;
+                    cant_Servicio.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("El Alojamiento a seleccionar debe estar en estado Alojado");
+                    dataGridView1.Rows.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Alojamiento");
+                dataGridView1.Rows.Clear();
+            }
+        }
+
+        private void btn_buscarServicio_Click(object sender, EventArgs e)
+        {
+            AdministrarServicios Actualizar = new AdministrarServicios();
+            Actualizar.ShowDialog();
+            if (Actualizar.ServicioSeleccionado != null)
+            {
+                this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
+                CargarServicioSeccionado(this.ServicioSeleccionado);
+            }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorAlojamiento().AgregarServicio(cBox_Servicios.SelectedItem.ToString(), Convert.ToByte(cant_Servicio.Value), iAloj_Seleccionado);
-            MessageBox.Show("¡ Servicio Agregado !");
+            new ControladorAlojamiento().AgregarServicio(this.ServicioSeleccionado, Convert.ToByte(cant_Servicio.Value), AlojSeleciconado);
+            MessageBox.Show("Extito: Servicio Agregado");
             Close();
         }
 
@@ -47,20 +96,20 @@ namespace UI
             Close();
         }
 
-        private void cBox_Servicios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cant_Servicio.Value != 0 && cBox_Servicios.SelectedIndex > 0)
-            {
-                btn_Aceptar.Enabled = true;
-            }
-        }
-
         private void cant_Servicio_ValueChanged(object sender, EventArgs e)
         {
-            if (cant_Servicio.Value != 0 && cBox_Servicios.SelectedIndex>0)
+            if (ServicioSeleccionado != null)
             {
-                btn_Aceptar.Enabled = true;
-                //lbl_costo.Text = (cBox_Servicios cant_Servicio.Value
+                if (cant_Servicio.Value != 0)
+                {
+                    btn_Aceptar.Enabled = true;
+                    lbl_total.Text = (this.ServicioSeleccionado.CostoBase * Convert.ToDouble(cant_Servicio.Value)).ToString();
+                }
+                else
+                {
+                    btn_Aceptar.Enabled = false;
+                    lbl_txtTotal.Text = "-";
+                } 
             }
         }
     }
