@@ -39,7 +39,7 @@ namespace UI
                 }
                 else
                 {
-                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    dGV_Acompañantes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
             }
         }

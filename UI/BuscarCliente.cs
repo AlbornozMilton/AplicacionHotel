@@ -141,15 +141,15 @@ namespace UI
 
         private void rbn_Alta_CheckedChanged(object sender, EventArgs e)
         {
-            rbn_Alta.Checked = true;
-            rbn_baja.Checked = false;
+            //rbn_Alta.Checked = true;
+            //rbn_baja.Checked = false;
             auxAlta = true;
         }
 
         private void rbn_baja_CheckedChanged(object sender, EventArgs e)
         {
-            rbn_baja.Checked = true;
-            rbn_Alta.Checked = false;
+            //rbn_baja.Checked = true;
+            //rbn_Alta.Checked = false;
             auxAlta = false;
         }
     }
