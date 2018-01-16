@@ -61,20 +61,20 @@ namespace Persistencia.DAL.EntityFramework
             iDbContext.SaveChanges();
         }
 
-        public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre)
+        public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre, bool pAlta)
         {
             var clientes = from cli in this.iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad")
-                           where ((cli.Nombre+cli.Apellido).Contains(pNombre))&&(cli.EnAlta == true)
+                           where ((cli.Nombre+cli.Apellido).Contains(pNombre))&&(cli.EnAlta == pAlta)
                            select cli;
 
             return clientes.ToList<Cliente>();
         }
 
-        public override Cliente Get(int pId)
+        public Cliente GetPorDNI(int pId, bool pAlta)
         {
             try
             {
-                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad").Where(c => c.ClienteId == pId && c.EnAlta == true).Single();
+                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad").Where(c => c.ClienteId == pId && c.EnAlta == pAlta).Single();
             }
             catch
             {
@@ -115,11 +115,11 @@ namespace Persistencia.DAL.EntityFramework
             return false;
         }
 
-        public Cliente GetPorLegajo(int pLegajo)
+        public Cliente GetPorLegajo(int pLegajo, bool pAlta)
         {
             try
             {
-                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad").Where(c => c.Legajo == pLegajo && c.EnAlta == true).Single();
+                return iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad").Where(c => c.Legajo == pLegajo && c.EnAlta == pAlta).Single();
             }
             catch
             {

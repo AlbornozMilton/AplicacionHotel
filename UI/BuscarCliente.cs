@@ -16,11 +16,13 @@ namespace UI
         public Cliente ClienteSeleccionado;
         public DataGridViewRow FilaSeleccionada;
         ControladorCliente ControladorCliente = new ControladorCliente();
+        private bool auxAlta;
 
-        public void setEnable()
+        public void setEnable(bool pValor)
         {
-            groupBox1.Enabled = false;
+            gpb_altas.Enabled = pValor;
         } 
+
         public BuscarCliente()
         {
             InitializeComponent();
@@ -28,6 +30,10 @@ namespace UI
             radioButton1.Checked = true;
             textBox_Legajo.Enabled = false;
             textBox_Nombre.Enabled = false;
+
+            rbn_Alta.Checked = true;
+            rbn_baja.Checked = false;
+            auxAlta = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,14 +60,14 @@ namespace UI
                 if (radioButton1.Checked && radioButton1.Text.Length > 0) //DNi
                 {
                     tablaResulClientes.Rows.Clear();
-                    Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)));
+                    Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
                     tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
                     btn_Aceptar.Enabled = true;
                 }
                 else if (radioButton_nombre.Checked && radioButton_nombre.Text.Length > 0)//NOMBRE
                 {
                     tablaResulClientes.Rows.Clear();
-                    List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text);
+                    List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
                     foreach (var cli in list)
                     {
                         tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
@@ -71,7 +77,7 @@ namespace UI
                 else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO
                 {
                     tablaResulClientes.Rows.Clear();
-                    Cliente cli = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text);
+                    Cliente cli = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
                     tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
                     btn_Aceptar.Enabled = true;
                 }
@@ -95,7 +101,7 @@ namespace UI
         /// <param name="e"></param>
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value));
+            this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
             this.FilaSeleccionada = tablaResulClientes.CurrentRow;
             Close();
         }
@@ -131,6 +137,20 @@ namespace UI
         {
             NuevoCliente VentanaVisualizar = new NuevoCliente();
             VentanaVisualizar.ShowDialog();
+        }
+
+        private void rbn_Alta_CheckedChanged(object sender, EventArgs e)
+        {
+            rbn_Alta.Checked = true;
+            rbn_baja.Checked = false;
+            auxAlta = true;
+        }
+
+        private void rbn_baja_CheckedChanged(object sender, EventArgs e)
+        {
+            rbn_baja.Checked = true;
+            rbn_Alta.Checked = false;
+            auxAlta = false;
         }
     }
 }
