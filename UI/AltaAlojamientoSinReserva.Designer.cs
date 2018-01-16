@@ -48,6 +48,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_AgregarCliente = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.dGV_Acompañantes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +68,6 @@
             this.cont_CuposSimples = new System.Windows.Forms.NumericUpDown();
             this.txb_NroHabitacion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
@@ -198,10 +198,8 @@
             // 
             // dGV_ClienteResponsable
             // 
+            this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
-            this.dGV_ClienteResponsable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -272,8 +270,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Otros Clientes";
             // 
+            // btn_quitarCliente
+            // 
+            this.btn_quitarCliente.Location = new System.Drawing.Point(442, 13);
+            this.btn_quitarCliente.Name = "btn_quitarCliente";
+            this.btn_quitarCliente.Size = new System.Drawing.Size(89, 23);
+            this.btn_quitarCliente.TabIndex = 12;
+            this.btn_quitarCliente.Text = "Quitar Cliente";
+            this.btn_quitarCliente.UseVisualStyleBackColor = true;
+            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
+            // 
             // dGV_Acompañantes
             // 
+            this.dGV_Acompañantes.AllowUserToAddRows = false;
             this.dGV_Acompañantes.AllowUserToDeleteRows = false;
             this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -460,16 +469,6 @@
             this.label6.Size = new System.Drawing.Size(93, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Nro de Habitacion";
-            // 
-            // btn_quitarCliente
-            // 
-            this.btn_quitarCliente.Location = new System.Drawing.Point(442, 13);
-            this.btn_quitarCliente.Name = "btn_quitarCliente";
-            this.btn_quitarCliente.Size = new System.Drawing.Size(89, 23);
-            this.btn_quitarCliente.TabIndex = 12;
-            this.btn_quitarCliente.Text = "Quitar Cliente";
-            this.btn_quitarCliente.UseVisualStyleBackColor = true;
-            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
             // 
             // AltaAlojamientoSinReserva
             // 
