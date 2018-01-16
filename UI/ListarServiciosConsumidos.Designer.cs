@@ -34,20 +34,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
-            this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dGV_ListadoServicios = new System.Windows.Forms.DataGridView();
-            this.btn_Aceptar = new System.Windows.Forms.Button();
-            this.clm_Servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_fechaConsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dGV_ListadoServicios = new System.Windows.Forms.DataGridView();
+            this.clm_Servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_fechaConsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -104,6 +104,41 @@
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(783, 57);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
             // 
+            // clm_IdAlojmiento
+            // 
+            this.clm_IdAlojmiento.FillWeight = 35F;
+            this.clm_IdAlojmiento.HeaderText = "Numero";
+            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
+            this.clm_IdAlojmiento.ReadOnly = true;
+            // 
+            // clm_estado
+            // 
+            this.clm_estado.FillWeight = 35F;
+            this.clm_estado.HeaderText = "Estado";
+            this.clm_estado.Name = "clm_estado";
+            this.clm_estado.ReadOnly = true;
+            // 
+            // clm_DNIResponsable
+            // 
+            this.clm_DNIResponsable.FillWeight = 40F;
+            this.clm_DNIResponsable.HeaderText = "Responsable";
+            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
+            this.clm_DNIResponsable.ReadOnly = true;
+            // 
+            // clm_Cliente
+            // 
+            this.clm_Cliente.FillWeight = 150F;
+            this.clm_Cliente.HeaderText = "Nombre Completo";
+            this.clm_Cliente.Name = "clm_Cliente";
+            this.clm_Cliente.ReadOnly = true;
+            // 
+            // clm_IDHabitacion
+            // 
+            this.clm_IDHabitacion.FillWeight = 35F;
+            this.clm_IDHabitacion.HeaderText = "Habitacion";
+            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
+            this.clm_IDHabitacion.ReadOnly = true;
+            // 
             // btn_BuscarAlojamiento
             // 
             this.btn_BuscarAlojamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,9 +154,9 @@
             // 
             this.groupBox1.Controls.Add(this.dGV_ListadoServicios);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 131);
+            this.groupBox1.Location = new System.Drawing.Point(9, 131);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(786, 160);
+            this.groupBox1.Size = new System.Drawing.Size(789, 160);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Servicios Consumidos";
@@ -160,18 +195,8 @@
             this.dGV_ListadoServicios.ReadOnly = true;
             this.dGV_ListadoServicios.RowHeadersVisible = false;
             this.dGV_ListadoServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ListadoServicios.Size = new System.Drawing.Size(780, 135);
+            this.dGV_ListadoServicios.Size = new System.Drawing.Size(783, 135);
             this.dGV_ListadoServicios.TabIndex = 0;
-            // 
-            // btn_Aceptar
-            // 
-            this.btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(15, 305);
-            this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(107, 30);
-            this.btn_Aceptar.TabIndex = 12;
-            this.btn_Aceptar.Text = "Salir";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
             // 
             // clm_Servicio
             // 
@@ -208,40 +233,15 @@
             this.clm_Total.Name = "clm_Total";
             this.clm_Total.ReadOnly = true;
             // 
-            // clm_IdAlojmiento
+            // btn_Aceptar
             // 
-            this.clm_IdAlojmiento.FillWeight = 35F;
-            this.clm_IdAlojmiento.HeaderText = "Numero";
-            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
-            this.clm_IdAlojmiento.ReadOnly = true;
-            // 
-            // clm_estado
-            // 
-            this.clm_estado.FillWeight = 35F;
-            this.clm_estado.HeaderText = "Estado";
-            this.clm_estado.Name = "clm_estado";
-            this.clm_estado.ReadOnly = true;
-            // 
-            // clm_DNIResponsable
-            // 
-            this.clm_DNIResponsable.FillWeight = 40F;
-            this.clm_DNIResponsable.HeaderText = "Responsable";
-            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
-            this.clm_DNIResponsable.ReadOnly = true;
-            // 
-            // clm_Cliente
-            // 
-            this.clm_Cliente.FillWeight = 150F;
-            this.clm_Cliente.HeaderText = "Nombre Completo";
-            this.clm_Cliente.Name = "clm_Cliente";
-            this.clm_Cliente.ReadOnly = true;
-            // 
-            // clm_IDHabitacion
-            // 
-            this.clm_IDHabitacion.FillWeight = 35F;
-            this.clm_IDHabitacion.HeaderText = "Habitacion";
-            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
-            this.clm_IDHabitacion.ReadOnly = true;
+            this.btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(15, 305);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(107, 30);
+            this.btn_Aceptar.TabIndex = 12;
+            this.btn_Aceptar.Text = "Salir";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
             // 
             // ListarServiciosConsumidos
             // 
