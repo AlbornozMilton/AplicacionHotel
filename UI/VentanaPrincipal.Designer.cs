@@ -459,7 +459,7 @@
             this.Column5.ReadOnly = true;
             // 
             // Column6
-            // 
+            // As
             this.Column6.HeaderText = "Cantidad Personas";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
