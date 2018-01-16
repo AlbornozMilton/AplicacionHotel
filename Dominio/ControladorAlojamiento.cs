@@ -228,10 +228,12 @@ namespace Dominio
            iUoW.RepositorioAlojamiento.AddPago(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<Pago, pers.Pago>(pPago));
         }
 
-        public void AgregarServicio (string pServicio, byte pCant, Alojamiento pAlojamiento)
+        public void AgregarServicio (Servicio pServicio, byte pCant, Alojamiento pAlojamiento)
         {
-            Servicio unServicio = Mapper.Map<pers.Servicio, Servicio>(iUoW.RepositorioServicio.GetByNombre(pServicio));
-            LineaServicio nuevaLineaServicio = new LineaServicio(pCant, unServicio);
+            //Servicio unServicio = Mapper.Map<Servicio, pers.Servicio>(pServicio);
+            LineaServicio nuevaLineaServicio = new LineaServicio(pCant, pServicio);
+
+            //Actualiza los momtos tambien
             pAlojamiento.AgregarLineaServicio(nuevaLineaServicio);
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }

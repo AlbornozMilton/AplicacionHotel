@@ -27,12 +27,13 @@ namespace UI
         {
             InitializeComponent();
             this.iAloj_Seleccionado = pAloPreSeleccionado;
+            CargarAlojamientoSeccionado(this.iAloj_Seleccionado);
         }
 
-        public void CargarAlojamientoSeccionado(DataGridViewCellCollection fila)
+        public void CargarAlojamientoSeccionado(Alojamiento pAloj)
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(fila[0].Value, fila[1].Value, fila[2].Value, fila[3].Value);
+            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId, pAloj.EstadoAlojamiento, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
         }
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
@@ -42,12 +43,17 @@ namespace UI
             if (BuscarAlojamiento.iAloj_Seleccionado != null)
             {
                 iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
-                CargarAlojamientoSeccionado(BuscarAlojamiento.iFilaSeleccionada);
+                CargarAlojamientoSeccionado(BuscarAlojamiento.iAloj_Seleccionado);
                 dGV_ListadoServicios.Rows.Clear();
                 foreach (var serv in iAloj_Seleccionado.Servicios)
                 {
-                    dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.Servicio.CostoBase, serv.CostoServicio);
-                } 
+                    dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.Servicio.CostoBase, serv.FechaServicio.ToString("dd/MM/yyyy"), serv.CostoServicio);
+                }
+            }
+            else
+            {
+                dGV_ListadoAlojamientos.Rows.Clear();
+                dGV_ListadoServicios.Rows.Clear();
             }
         }
     }
