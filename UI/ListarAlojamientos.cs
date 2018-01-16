@@ -45,6 +45,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
+            iFormPadre.iAloj_Seleccionado = Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value));
             iFormPadre.CargarAlojamientoSeccionado(dGV_ListadoDeAlojamientos.CurrentRow.Cells);
             Close();
         }

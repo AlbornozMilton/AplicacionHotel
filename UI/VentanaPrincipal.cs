@@ -14,13 +14,15 @@ namespace UI
     public partial class VentanaPrincipal : Form
     {
         public InicioSesion iPadre;
+        ControladorAlojamiento iControladorAlojamiento = new ControladorAlojamiento();
         public VentanaPrincipal()
         {
             InitializeComponent();
+            CargarAlojamientosActivos();
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
 
             //realizarlo como proceso en segundo plano al inicio y cada cierto tiempo
-            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojReservadosSinDepositoVencidos();
+            List<Alojamiento> ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
             if (ListAloj.Count > 0)
             {
                 //ES UN AVISO - NO SE CANCELAN AUTOMATICAMENTE
@@ -127,7 +129,7 @@ namespace UI
                     throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
 
-                new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.iAloj_Seleccionado);
+                iControladorAlojamiento.ControlInicioAltaReserva(BuscarAlojamiento.iAloj_Seleccionado);
 
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.iAloj_Seleccionado;
 
@@ -158,6 +160,30 @@ namespace UI
         {
             AdministrarServicios VentanaServicios = new AdministrarServicios();
             VentanaServicios.ShowDialog();
+        }
+
+        private void CargarAlojamientosActivos()
+        {
+            List<Alojamiento> listaActivos = iControladorAlojamiento.ObtenerAlojamientosActivos();
+            foreach (var aloj in listaActivos)
+            {
+                var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                dGV_Alojamientos.Rows.Add(aloj.AlojamientoId,aloj.EstadoAlojamiento, aloj.HabitacionId, aloj.DniResponsable, cli.Legajo, cli.NombreCompleto(), (aloj.EstadoAlojamiento==EstadoAlojamiento.Alojado ? aloj.FechaIngreso:aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"), aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"), aloj.CantCuposSimples + (aloj.CantCuposDobles * 2));
+            }
+
+        }
+
+        private void btn_VerDetalle_Click(object sender, EventArgs e)
+        {
+            //if (this.iAloj_Seleccionado != null)
+            //{
+            //    VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iAloj_Seleccionado);
+            //    VentanaVisualizar.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
+            //}
         }
     }
 }
