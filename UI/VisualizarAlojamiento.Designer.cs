@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pestaña_Datos = new System.Windows.Forms.TabPage();
             this.lbl_MontoTotal = new System.Windows.Forms.Label();
             this.lbl_MontoDeuda = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             this.lbl_FechaEstEgreso = new System.Windows.Forms.Label();
             this.lbl_IdAlojamiento = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pestaña_Clientes = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dGV_Acompañantes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,29 +80,32 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pestaña_Servicios = new System.Windows.Forms.TabPage();
             this.dGV_Servicios = new System.Windows.Forms.DataGridView();
+            this.clm_FechaConsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pestaña_Pagos = new System.Windows.Forms.TabPage();
             this.dGV_Pagos = new System.Windows.Forms.DataGridView();
             this.clm_IdPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lbl_Total = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.pestaña_Datos.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.pestaña_Clientes.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Acompañantes)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.pestaña_Servicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.pestaña_Pagos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,35 +125,35 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.pestaña_Datos);
+            this.tabControl1.Controls.Add(this.pestaña_Clientes);
+            this.tabControl1.Controls.Add(this.pestaña_Servicios);
+            this.tabControl1.Controls.Add(this.pestaña_Pagos);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(684, 240);
             this.tabControl1.TabIndex = 20;
             // 
-            // tabPage1
+            // pestaña_Datos
             // 
-            this.tabPage1.Controls.Add(this.lbl_MontoTotal);
-            this.tabPage1.Controls.Add(this.lbl_MontoDeuda);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.lbl_EstadoActual);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.lbl_IdAlojamiento);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(676, 214);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Datos";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.pestaña_Datos.Controls.Add(this.lbl_MontoTotal);
+            this.pestaña_Datos.Controls.Add(this.lbl_MontoDeuda);
+            this.pestaña_Datos.Controls.Add(this.label7);
+            this.pestaña_Datos.Controls.Add(this.label11);
+            this.pestaña_Datos.Controls.Add(this.label5);
+            this.pestaña_Datos.Controls.Add(this.lbl_EstadoActual);
+            this.pestaña_Datos.Controls.Add(this.groupBox2);
+            this.pestaña_Datos.Controls.Add(this.groupBox1);
+            this.pestaña_Datos.Controls.Add(this.lbl_IdAlojamiento);
+            this.pestaña_Datos.Controls.Add(this.label1);
+            this.pestaña_Datos.Location = new System.Drawing.Point(4, 22);
+            this.pestaña_Datos.Name = "pestaña_Datos";
+            this.pestaña_Datos.Padding = new System.Windows.Forms.Padding(3);
+            this.pestaña_Datos.Size = new System.Drawing.Size(676, 214);
+            this.pestaña_Datos.TabIndex = 0;
+            this.pestaña_Datos.Text = "Datos";
+            this.pestaña_Datos.UseVisualStyleBackColor = true;
             // 
             // lbl_MontoTotal
             // 
@@ -450,17 +453,17 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "ID";
             // 
-            // tabPage2
+            // pestaña_Clientes
             // 
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(676, 214);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Clientes";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.pestaña_Clientes.Controls.Add(this.groupBox4);
+            this.pestaña_Clientes.Controls.Add(this.groupBox3);
+            this.pestaña_Clientes.Location = new System.Drawing.Point(4, 22);
+            this.pestaña_Clientes.Name = "pestaña_Clientes";
+            this.pestaña_Clientes.Padding = new System.Windows.Forms.Padding(3);
+            this.pestaña_Clientes.Size = new System.Drawing.Size(676, 214);
+            this.pestaña_Clientes.TabIndex = 1;
+            this.pestaña_Clientes.Text = "Clientes";
+            this.pestaña_Clientes.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -477,28 +480,28 @@
             this.dGV_Acompañantes.AllowUserToAddRows = false;
             this.dGV_Acompañantes.AllowUserToDeleteRows = false;
             this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Acompañantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Acompañantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dGV_Acompañantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Acompañantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Acompañantes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Acompañantes.DefaultCellStyle = dataGridViewCellStyle26;
             this.dGV_Acompañantes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Acompañantes.Location = new System.Drawing.Point(3, 16);
             this.dGV_Acompañantes.Name = "dGV_Acompañantes";
@@ -547,28 +550,28 @@
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dGV_ClienteResponsable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ClienteResponsable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle28;
             this.dGV_ClienteResponsable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_ClienteResponsable.Location = new System.Drawing.Point(3, 16);
             this.dGV_ClienteResponsable.Name = "dGV_ClienteResponsable";
@@ -602,43 +605,46 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // tabPage4
+            // pestaña_Servicios
             // 
-            this.tabPage4.Controls.Add(this.dGV_Servicios);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(676, 214);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Servicios Consumidos";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.pestaña_Servicios.Controls.Add(this.dGV_Servicios);
+            this.pestaña_Servicios.Location = new System.Drawing.Point(4, 22);
+            this.pestaña_Servicios.Name = "pestaña_Servicios";
+            this.pestaña_Servicios.Padding = new System.Windows.Forms.Padding(3);
+            this.pestaña_Servicios.Size = new System.Drawing.Size(676, 214);
+            this.pestaña_Servicios.TabIndex = 3;
+            this.pestaña_Servicios.Text = "Servicios Consumidos";
+            this.pestaña_Servicios.UseVisualStyleBackColor = true;
+            this.pestaña_Servicios.Enter += new System.EventHandler(this.pestaña_Servicios_Enter);
+            this.pestaña_Servicios.Leave += new System.EventHandler(this.pestaña_Servicios_Leave);
             // 
             // dGV_Servicios
             // 
             this.dGV_Servicios.AllowUserToAddRows = false;
             this.dGV_Servicios.AllowUserToDeleteRows = false;
             this.dGV_Servicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Servicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Servicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.dGV_Servicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Servicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clm_FechaConsumo,
             this.clm_Servicio,
             this.clm_cant,
             this.clm_Total});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Servicios.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Servicios.DefaultCellStyle = dataGridViewCellStyle30;
             this.dGV_Servicios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Servicios.Location = new System.Drawing.Point(3, 3);
             this.dGV_Servicios.Name = "dGV_Servicios";
@@ -647,6 +653,12 @@
             this.dGV_Servicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Servicios.Size = new System.Drawing.Size(670, 208);
             this.dGV_Servicios.TabIndex = 13;
+            // 
+            // clm_FechaConsumo
+            // 
+            this.clm_FechaConsumo.HeaderText = "Fecha Consumo";
+            this.clm_FechaConsumo.Name = "clm_FechaConsumo";
+            this.clm_FechaConsumo.ReadOnly = true;
             // 
             // clm_Servicio
             // 
@@ -666,44 +678,44 @@
             this.clm_Total.Name = "clm_Total";
             this.clm_Total.ReadOnly = true;
             // 
-            // tabPage5
+            // pestaña_Pagos
             // 
-            this.tabPage5.Controls.Add(this.dGV_Pagos);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(676, 214);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Pagos";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.pestaña_Pagos.Controls.Add(this.dGV_Pagos);
+            this.pestaña_Pagos.Location = new System.Drawing.Point(4, 22);
+            this.pestaña_Pagos.Name = "pestaña_Pagos";
+            this.pestaña_Pagos.Padding = new System.Windows.Forms.Padding(3);
+            this.pestaña_Pagos.Size = new System.Drawing.Size(676, 214);
+            this.pestaña_Pagos.TabIndex = 4;
+            this.pestaña_Pagos.Text = "Pagos";
+            this.pestaña_Pagos.UseVisualStyleBackColor = true;
             // 
             // dGV_Pagos
             // 
             this.dGV_Pagos.AllowUserToAddRows = false;
             this.dGV_Pagos.AllowUserToDeleteRows = false;
             this.dGV_Pagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Pagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Pagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dGV_Pagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Pagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_IdPago,
             this.clm_Fecha,
             this.clm_Tipo,
             this.clm_Monto});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Pagos.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("BankGothic Lt BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Pagos.DefaultCellStyle = dataGridViewCellStyle32;
             this.dGV_Pagos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Pagos.Location = new System.Drawing.Point(3, 3);
             this.dGV_Pagos.Name = "dGV_Pagos";
@@ -737,40 +749,65 @@
             this.clm_Monto.Name = "clm_Monto";
             this.clm_Monto.ReadOnly = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(463, 261);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 16);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Total";
+            this.label13.Visible = false;
+            // 
+            // lbl_Total
+            // 
+            this.lbl_Total.AutoSize = true;
+            this.lbl_Total.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Total.Location = new System.Drawing.Point(529, 261);
+            this.lbl_Total.Name = "lbl_Total";
+            this.lbl_Total.Size = new System.Drawing.Size(19, 16);
+            this.lbl_Total.TabIndex = 22;
+            this.lbl_Total.Text = "0";
+            this.lbl_Total.Visible = false;
+            // 
             // VisualizarAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 290);
+            this.Controls.Add(this.lbl_Total);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btn_Aceptar);
             this.Name = "VisualizarAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VisualizarAlojamiento";
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.pestaña_Datos.ResumeLayout(false);
+            this.pestaña_Datos.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.pestaña_Clientes.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Acompañantes)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
-            this.tabPage4.ResumeLayout(false);
+            this.pestaña_Servicios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.pestaña_Pagos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage pestaña_Datos;
         private System.Windows.Forms.Label lbl_MontoTotal;
         private System.Windows.Forms.Label lbl_MontoDeuda;
         private System.Windows.Forms.Label label7;
@@ -799,7 +836,7 @@
         private System.Windows.Forms.Label lbl_FechaEstEgreso;
         private System.Windows.Forms.Label lbl_IdAlojamiento;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage pestaña_Clientes;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dGV_Acompañantes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -812,16 +849,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage pestaña_Servicios;
         private System.Windows.Forms.DataGridView dGV_Servicios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Servicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_cant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Total;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage pestaña_Pagos;
         private System.Windows.Forms.DataGridView dGV_Pagos;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_FechaConsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Servicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_cant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Total;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lbl_Total;
     }
 }

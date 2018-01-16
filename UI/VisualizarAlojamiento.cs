@@ -23,7 +23,7 @@ namespace UI
             dGV_Pagos.Rows.Clear();
             foreach (var pago in pPagos)
             {
-                dGV_Pagos.Rows.Add(pago.PagoId, pago.FechaPago, pago.Tipo, pago.Monto);
+                dGV_Pagos.Rows.Add(pago.PagoId, pago.FechaPago.ToString("dd / MM / yyyy"), pago.Tipo, pago.Monto);
             }
             
         }
@@ -45,11 +45,14 @@ namespace UI
         }
         public void CargarServicios(List<LineaServicio> pServicios)
         {
+            double total = 0;
             dGV_Servicios.Rows.Clear();
             foreach (var serv in pServicios)
             {
-                dGV_Servicios.Rows.Add(serv.Servicio.Nombre, serv.Cantidad, serv.CostoServicio);
+                dGV_Servicios.Rows.Add(serv.FechaServicio.ToString("dd / MM / yyyy"), serv.Servicio.Nombre, serv.Cantidad, serv.CostoServicio);
+                total = total + serv.CostoServicio;
             }
+            lbl_Total.Text = total.ToString();
         }
 
         public string CargarFecha(DateTime pFecha)
@@ -97,6 +100,18 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pestaña_Servicios_Enter(object sender, EventArgs e)
+        {
+            lbl_Total.Visible = true;
+            label13.Visible = true;
+        }
+
+        private void pestaña_Servicios_Leave(object sender, EventArgs e)
+        {
+            lbl_Total.Visible = false;
+            label13.Visible = false;
         }
     }
 }
