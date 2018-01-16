@@ -159,5 +159,11 @@ namespace UI
             AdministrarServicios VentanaServicios = new AdministrarServicios();
             VentanaServicios.ShowDialog();
         }
+
+        private void actualizarCostoServicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarCostoServicio ActualizarCostoServicio = new ActualizarCostoServicio();
+            ActualizarCostoServicio.ShowDialog();
+        }
     }
 }

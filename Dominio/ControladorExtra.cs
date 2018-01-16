@@ -24,5 +24,11 @@ namespace Dominio
             }
             return (lista);
         }
+
+        public void AcutalizarCostoServicio(Servicio pServicio, string pCosto)
+        {
+            pServicio.ActualizarCosto(Convert.ToDouble(pCosto));
+            iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+        }
     }
 }

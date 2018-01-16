@@ -53,6 +53,8 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -70,8 +72,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarCostoServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -275,10 +276,24 @@
             // 
             this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serviciosToolStripMenuItem,
+            this.actualizarCostoServicioToolStripMenuItem,
             this.tarifasToolStripMenuItem});
             this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
             this.administracionToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
             this.administracionToolStripMenuItem.Text = "Administrar";
+            // 
+            // serviciosToolStripMenuItem
+            // 
+            this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(286, 28);
+            this.serviciosToolStripMenuItem.Text = "Consultar Servicios";
+            this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
+            // 
+            // tarifasToolStripMenuItem
+            // 
+            this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
+            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(286, 28);
+            this.tarifasToolStripMenuItem.Text = "Tarifas";
             // 
             // groupBox1
             // 
@@ -429,18 +444,12 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // serviciosToolStripMenuItem
+            // actualizarCostoServicioToolStripMenuItem
             // 
-            this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
-            this.serviciosToolStripMenuItem.Text = "Servicios";
-            this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
-            // 
-            // tarifasToolStripMenuItem
-            // 
-            this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
-            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
-            this.tarifasToolStripMenuItem.Text = "Tarifas";
+            this.actualizarCostoServicioToolStripMenuItem.Name = "actualizarCostoServicioToolStripMenuItem";
+            this.actualizarCostoServicioToolStripMenuItem.Size = new System.Drawing.Size(286, 28);
+            this.actualizarCostoServicioToolStripMenuItem.Text = "Actualizar Costo Servicio";
+            this.actualizarCostoServicioToolStripMenuItem.Click += new System.EventHandler(this.actualizarCostoServicioToolStripMenuItem_Click);
             // 
             // VentanaPrincipal
             // 
@@ -514,5 +523,6 @@
         private System.Windows.Forms.ToolStripMenuItem altaDeReservaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tarifasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actualizarCostoServicioToolStripMenuItem;
     }
 }
