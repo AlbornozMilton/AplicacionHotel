@@ -36,6 +36,10 @@
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoSinEx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoConEx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Actualizar = new System.Windows.Forms.Button();
+            this.txb_Tarifa = new System.Windows.Forms.TextBox();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).BeginInit();
             this.SuspendLayout();
@@ -110,11 +114,49 @@
             this.clm_CostoConEx.Name = "clm_CostoConEx";
             this.clm_CostoConEx.ReadOnly = true;
             // 
+            // btn_Actualizar
+            // 
+            this.btn_Actualizar.Location = new System.Drawing.Point(15, 125);
+            this.btn_Actualizar.Name = "btn_Actualizar";
+            this.btn_Actualizar.Size = new System.Drawing.Size(113, 23);
+            this.btn_Actualizar.TabIndex = 2;
+            this.btn_Actualizar.Text = "Actualizar Tarifa";
+            this.btn_Actualizar.UseVisualStyleBackColor = true;
+            // 
+            // txb_Tarifa
+            // 
+            this.txb_Tarifa.Location = new System.Drawing.Point(152, 127);
+            this.txb_Tarifa.Name = "txb_Tarifa";
+            this.txb_Tarifa.Size = new System.Drawing.Size(100, 20);
+            this.txb_Tarifa.TabIndex = 3;
+            // 
+            // btn_Aceptar
+            // 
+            this.btn_Aceptar.Location = new System.Drawing.Point(375, 159);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Aceptar.TabIndex = 4;
+            this.btn_Aceptar.Text = "Aceptar";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.Location = new System.Drawing.Point(294, 159);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancelar.TabIndex = 5;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            // 
             // ActualizarTarifas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 194);
+            this.Controls.Add(this.btn_Cancelar);
+            this.Controls.Add(this.btn_Aceptar);
+            this.Controls.Add(this.txb_Tarifa);
+            this.Controls.Add(this.btn_Actualizar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_ConsultarTarifas);
             this.Name = "ActualizarTarifas";
@@ -122,6 +164,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,5 +176,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoSinEx;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoConEx;
+        private System.Windows.Forms.Button btn_Actualizar;
+        private System.Windows.Forms.TextBox txb_Tarifa;
+        private System.Windows.Forms.Button btn_Aceptar;
+        private System.Windows.Forms.Button btn_Cancelar;
     }
 }
