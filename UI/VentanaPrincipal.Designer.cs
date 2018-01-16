@@ -76,6 +76,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_VerDetalle = new System.Windows.Forms.Button();
+            this.modificarAltaDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -201,7 +202,8 @@
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem2});
+            this.nuevoToolStripMenuItem2,
+            this.modificarAltaDeClienteToolStripMenuItem});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
             this.clienteToolStripMenuItem.Size = new System.Drawing.Size(80, 28);
             this.clienteToolStripMenuItem.Text = "Cliente";
@@ -210,7 +212,7 @@
             // 
             this.nuevoToolStripMenuItem2.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.nuevoToolStripMenuItem2.Name = "nuevoToolStripMenuItem2";
-            this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(136, 28);
+            this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(282, 28);
             this.nuevoToolStripMenuItem2.Text = "Nuevo";
             this.nuevoToolStripMenuItem2.Click += new System.EventHandler(this.nuevoToolStripMenuItem2_Click);
             // 
@@ -477,6 +479,13 @@
             this.btn_VerDetalle.UseVisualStyleBackColor = true;
             this.btn_VerDetalle.Click += new System.EventHandler(this.btn_VerDetalle_Click);
             // 
+            // modificarAltaDeClienteToolStripMenuItem
+            // 
+            this.modificarAltaDeClienteToolStripMenuItem.Name = "modificarAltaDeClienteToolStripMenuItem";
+            this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(282, 28);
+            this.modificarAltaDeClienteToolStripMenuItem.Text = "Modificar Alta de Cliente";
+            this.modificarAltaDeClienteToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeClienteToolStripMenuItem_Click);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,5 +559,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button btn_VerDetalle;
+        private System.Windows.Forms.ToolStripMenuItem modificarAltaDeClienteToolStripMenuItem;
     }
 }

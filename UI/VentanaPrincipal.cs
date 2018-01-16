@@ -179,5 +179,11 @@ namespace UI
             VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(listaActivos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
             VentanaVisualizar.ShowDialog();
         }
+
+        private void modificarAltaDeClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarAltaCliente ModAltaCliente = new ModificarAltaCliente();
+            ModAltaCliente.ShowDialog();
+        }
     }
 }
