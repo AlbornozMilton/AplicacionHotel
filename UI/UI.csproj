@@ -61,6 +61,12 @@
     <Compile Include="ActualizarTarifas.Designer.cs">
       <DependentUpon>ActualizarTarifas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActualizarCostoServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarCostoServicio.Designer.cs">
+      <DependentUpon>ActualizarCostoServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdministrarServicios.cs">
       <SubType>Form</SubType>
     </Compile>
