@@ -94,6 +94,7 @@ namespace UI
         private void button2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
+            BuscarClienteForm.setEnable(); //Cambiar
             BuscarClienteForm.ShowDialog();
             try
             {
