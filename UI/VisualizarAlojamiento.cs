@@ -35,11 +35,11 @@ namespace UI
             {
                 if (cli.ClienteId == pResponsable)
                 {
-                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Telefono);
+                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
                 else
                 {
-                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Telefono);
+                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
                 }
             }
         }
