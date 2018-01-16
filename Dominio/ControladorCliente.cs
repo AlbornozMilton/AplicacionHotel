@@ -63,9 +63,9 @@ namespace Dominio
             return resultado;
         }
 
-        public Cliente BuscarClientePorDni(int unDni)
+        public Cliente BuscarClientePorDni(int unDni, bool pValor)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.Get(unDni)));
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorDNI(unDni,pValor)));
         }
 
         public List<string> ObenerCallesDeCiudad(string pCodPostal)
@@ -78,14 +78,14 @@ namespace Dominio
             return calles;
         }
 
-        public Cliente BuscarClientePorLegajo(string pLegajo)
+        public Cliente BuscarClientePorLegajo(string pLegajo, bool pValor)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo))));
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo),pValor)));
         }
 
-        public List<Cliente> BuscarClientePorNom_Ape(string pCadena)
+        public List<Cliente> BuscarClientePorNom_Ape(string pCadena, bool pValor)
         {
-            IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.ObtenerClientesPorNomyAp(pCadena);
+            IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.ObtenerClientesPorNomyAp(pCadena, pValor);
             List<Cliente> lista = new List<Cliente>();
             foreach (var i in listaEnum)
             {
