@@ -19,12 +19,5 @@ namespace Persistencia.DAL.EntityFramework
             var servicio = iDbContext.Servicios.Where(s => s.Nombre == pNombreServicio).Single();
             return servicio;
         }
-
-        public void ActualizarCostoServicio(Servicio pServicio)
-        {
-            Servicio localServicio = iDbContext.Servicios.Find(pServicio.ServicioId);
-            localServicio.CostoBase = pServicio.CostoBase;
-            iDbContext.SaveChanges();
-        }
     }
 }

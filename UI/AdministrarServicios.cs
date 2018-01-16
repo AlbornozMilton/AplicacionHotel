@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -27,11 +33,6 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             this.ServicioSeleccionado = ListaServicios.Find(s => s.ServicioId == Convert.ToByte(dGV_Servicios.CurrentRow.Cells[0].Value));
-            Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             Close();
         }
     }
