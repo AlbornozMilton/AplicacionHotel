@@ -215,5 +215,10 @@ namespace Dominio
             }
         }
 
+        public void ModificarAltaCliente(int pDNI, bool pValoAlta)
+        {
+            iUoW.RepositorioCliente.ModificarAlta(pValoAlta, pDNI);
+        }
+
     }
 }
