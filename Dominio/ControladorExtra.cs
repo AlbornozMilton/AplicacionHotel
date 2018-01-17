@@ -30,5 +30,23 @@ namespace Dominio
             pServicio.ActualizarCosto(Convert.ToDouble(pCosto));
             iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
         }
+
+        public List<TarifaCliente> ObtenerTarifas()
+        {
+            IEnumerable<pers.TarifaCliente> listaEnum = iUoW.RepositorioTarifa.GetAll();
+            List<TarifaCliente> lista = new List<TarifaCliente>();
+
+            foreach (var serv in listaEnum)
+            {
+                lista.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(serv));
+            }
+            return (lista);
+        }
+
+        public void AcutalizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
+        {
+            pTarifa.ActualizarMontos(Convert.ToDouble(pCostoNoExcl), Convert.ToDouble(pCostoExcl));
+            iUoW.RepositorioTarifa.ActualizarMontos(Mapper.Map<TarifaCliente, pers.TarifaCliente>(pTarifa));
+        }
     }
 }

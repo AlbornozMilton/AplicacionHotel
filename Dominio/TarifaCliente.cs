@@ -44,5 +44,11 @@ namespace Dominio
             if (pExclusiva) return this.TarifaExclusiva;
             else return this.Tarifa;
         }
+
+        public void ActualizarMontos(double pNoExclusiva, double pExclusiva)
+        {
+            this.iMontoTarifa = pNoExclusiva;
+            this.iMontoTarifaExcl = pExclusiva;
+        }
     }
 }

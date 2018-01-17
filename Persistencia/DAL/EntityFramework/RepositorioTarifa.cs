@@ -19,6 +19,14 @@ namespace Persistencia.DAL.EntityFramework
             return this.iDbContext.Tarifas.Single(t => t.TarifaClienteId.ToString() == pTipoCliente);
         }
 
+        public void ActualizarMontos(TarifaCliente pTarifa)
+        {
+            TarifaCliente localTarifa = iDbContext.Tarifas.Find(pTarifa.NombreTarifa);
+            localTarifa.Tarifa = pTarifa.Tarifa;
+            localTarifa.TarifaExclusiva = pTarifa.TarifaExclusiva;
+            iDbContext.SaveChanges();
+        }
+
         //public TarifaCliente GetString(TipoCliente pTipoCliente)
         //{
         //    //var tarifa = from tar in this.iDbContext.Tarifas
