@@ -21,7 +21,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public void ActualizarMontos(TarifaCliente pTarifa)
         {
-            TarifaCliente localTarifa = iDbContext.Tarifas.Find(pTarifa.NombreTarifa);
+            TarifaCliente localTarifa = iDbContext.Tarifas.Where(t => t.NombreTarifa == pTarifa.NombreTarifa).Single();
             localTarifa.Tarifa = pTarifa.Tarifa;
             localTarifa.TarifaExclusiva = pTarifa.TarifaExclusiva;
             iDbContext.SaveChanges();

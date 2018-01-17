@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_ConsultarTarifas = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Tarifas = new System.Windows.Forms.DataGridView();
@@ -40,6 +40,8 @@
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.lbl_ = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txb_TarifaExclusiva = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).BeginInit();
             this.SuspendLayout();
@@ -69,32 +71,33 @@
             this.dGV_Tarifas.AllowUserToAddRows = false;
             this.dGV_Tarifas.AllowUserToDeleteRows = false;
             this.dGV_Tarifas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Tarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Tarifas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGV_Tarifas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Tarifas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Nombre,
             this.clm_CostoSinEx,
             this.clm_CostoConEx});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Tarifas.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Tarifas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_Tarifas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Tarifas.Location = new System.Drawing.Point(3, 16);
             this.dGV_Tarifas.Name = "dGV_Tarifas";
             this.dGV_Tarifas.ReadOnly = true;
             this.dGV_Tarifas.RowHeadersVisible = false;
+            this.dGV_Tarifas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Tarifas.Size = new System.Drawing.Size(590, 73);
             this.dGV_Tarifas.TabIndex = 1;
             // 
@@ -118,7 +121,7 @@
             // 
             // txb_Tarifa
             // 
-            this.txb_Tarifa.Location = new System.Drawing.Point(152, 140);
+            this.txb_Tarifa.Location = new System.Drawing.Point(224, 140);
             this.txb_Tarifa.Name = "txb_Tarifa";
             this.txb_Tarifa.Size = new System.Drawing.Size(100, 20);
             this.txb_Tarifa.TabIndex = 3;
@@ -126,7 +129,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(517, 169);
+            this.btn_Aceptar.Location = new System.Drawing.Point(517, 198);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(91, 23);
             this.btn_Aceptar.TabIndex = 4;
@@ -137,7 +140,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(16, 169);
+            this.btn_Cancelar.Location = new System.Drawing.Point(16, 198);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(94, 23);
             this.btn_Cancelar.TabIndex = 5;
@@ -154,11 +157,30 @@
             this.lbl_.TabIndex = 19;
             this.lbl_.Text = "Nueva Tarifa";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("BankGothic Lt BT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 168);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 16);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Nueva Tarifa Exclusiva";
+            // 
+            // txb_TarifaExclusiva
+            // 
+            this.txb_TarifaExclusiva.Location = new System.Drawing.Point(224, 166);
+            this.txb_TarifaExclusiva.Name = "txb_TarifaExclusiva";
+            this.txb_TarifaExclusiva.Size = new System.Drawing.Size(100, 20);
+            this.txb_TarifaExclusiva.TabIndex = 20;
+            // 
             // ActualizarTarifas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 204);
+            this.ClientSize = new System.Drawing.Size(620, 233);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txb_TarifaExclusiva);
             this.Controls.Add(this.lbl_);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Aceptar);
@@ -166,6 +188,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_ConsultarTarifas);
             this.Name = "ActualizarTarifas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ActualizarTarifas";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).EndInit();
@@ -186,5 +209,7 @@
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Label lbl_;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txb_TarifaExclusiva;
     }
 }

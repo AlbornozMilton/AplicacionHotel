@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,24 +13,41 @@ namespace UI
 {
     public partial class ActualizarTarifas : Form
     {
+        TarifaCliente iTarifaSeleccionada;
         public ActualizarTarifas()
         {
             InitializeComponent();
+        }
+
+        private void CargarTarifaSeleccionada(TarifaCliente pTarifa)
+        {
+            dGV_Tarifas.Rows.Clear();
+            dGV_Tarifas.Rows.Add(pTarifa.NombreTarifa, pTarifa.Tarifa, pTarifa.TarifaExclusiva);
         }
 
         private void btn_ConsultarTarifas_Click(object sender, EventArgs e)
         {
             ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
             VentanaTarifas.ShowDialog();
+            if (VentanaTarifas.iTarifaSeleccionada != null)
+            {
+                this.iTarifaSeleccionada = VentanaTarifas.iTarifaSeleccionada;
+                CargarTarifaSeleccionada(this.iTarifaSeleccionada);
+                btn_Aceptar.Enabled = true;
+            }
+            else
+            {
+                dGV_Tarifas.Rows.Clear();
+            }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorExtra().AcutalizarCostoServicio(this.ServicioSeleccionado, txb_nuevoCosto.Text);
-            MessageBox.Show("Servicio Actualizado");
+            new ControladorExtra().AcutalizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
+            MessageBox.Show("Tarifa Actualizado");
             Close();
-            AdministrarServicios Actualizar = new AdministrarServicios();
-            Actualizar.ShowDialog();
+            ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
+            VentanaTarifas.ShowDialog();
         }
     }
 }
