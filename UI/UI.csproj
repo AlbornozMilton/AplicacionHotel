@@ -109,6 +109,12 @@
     <Compile Include="CerrarAlojamiento.Designer.cs">
       <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarHabitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarHabitaciones.Designer.cs">
+      <DependentUpon>ConsultarHabitaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarTarifas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CerrarAlojamiento.resx">
       <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarHabitaciones.resx">
+      <DependentUpon>ConsultarHabitaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarTarifas.resx">
       <DependentUpon>ConsultarTarifas.cs</DependentUpon>

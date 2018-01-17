@@ -185,5 +185,29 @@ namespace UI
             ModificarAltaCliente ModAltaCliente = new ModificarAltaCliente();
             ModAltaCliente.ShowDialog();
         }
+
+        private void consultarHabitacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones();
+            consultarHabitaciones.ShowDialog();
+        }
+
+        private void tarifasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarTarifas consultarTarifas = new ConsultarTarifas();
+            consultarTarifas.ShowDialog();
+        }
+
+        private void actualizarTarifasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarTarifas actualizarTarifas = new ActualizarTarifas();
+            actualizarTarifas.ShowDialog();
+        }
+
+        private void actualizarTarifaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
+            actualizarCostoServicio.ShowDialog();
+        }
     }
 }
