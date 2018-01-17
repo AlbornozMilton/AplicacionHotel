@@ -179,5 +179,35 @@ namespace UI
             VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(listaActivos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
             VentanaVisualizar.ShowDialog();
         }
+
+        private void modificarAltaDeClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarAltaCliente ModAltaCliente = new ModificarAltaCliente();
+            ModAltaCliente.ShowDialog();
+        }
+
+        private void consultarHabitacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones();
+            consultarHabitaciones.ShowDialog();
+        }
+
+        private void tarifasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarTarifas consultarTarifas = new ConsultarTarifas();
+            consultarTarifas.ShowDialog();
+        }
+
+        private void actualizarTarifasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarTarifas actualizarTarifas = new ActualizarTarifas();
+            actualizarTarifas.ShowDialog();
+        }
+
+        private void actualizarTarifaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
+            actualizarCostoServicio.ShowDialog();
+        }
     }
 }
