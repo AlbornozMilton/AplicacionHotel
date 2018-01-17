@@ -19,6 +19,12 @@ namespace UI
             InitializeComponent();
         }
 
+        private void ActualizarTarifas_Load(object sender, EventArgs e)
+        {
+            txb_Tarifa.Enabled = false;
+            txb_TarifaExclusiva.Enabled = false;
+        }
+
         private void CargarTarifaSeleccionada(TarifaCliente pTarifa)
         {
             dGV_Tarifas.Rows.Clear();
@@ -43,11 +49,29 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorExtra().AcutalizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
-            MessageBox.Show("Tarifa Actualizado");
+            try
+            {
+                new ControladorExtra().AcutalizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
+                MessageBox.Show("Tarifa Actualizado");
+                Close();
+                ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
+                VentanaTarifas.ShowDialog();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
             Close();
-            ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
-            VentanaTarifas.ShowDialog();
+        }
+
+        private void dGV_Tarifas_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            txb_Tarifa.Enabled = true;
+            txb_TarifaExclusiva.Enabled = true;
         }
     }
 }

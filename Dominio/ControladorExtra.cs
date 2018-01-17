@@ -45,6 +45,15 @@ namespace Dominio
 
         public void AcutalizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
         {
+            if (pCostoNoExcl == "")
+            {
+                throw new Exception("Debe ingresar una nueva Tarifa");
+            }
+            else if (pCostoExcl == "")
+            {
+                throw new Exception("Debe ingresar una nueva Tarifa Exclusiva");
+            }
+
             pTarifa.ActualizarMontos(Convert.ToDouble(pCostoNoExcl), Convert.ToDouble(pCostoExcl));
             iUoW.RepositorioTarifa.ActualizarMontos(Mapper.Map<TarifaCliente, pers.TarifaCliente>(pTarifa));
         }
