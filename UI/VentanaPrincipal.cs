@@ -209,5 +209,11 @@ namespace UI
             ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
             actualizarCostoServicio.ShowDialog();
         }
+
+        private void modificarAltaDeCuposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarCupoHabitacion modificarCupoHabitacion = new ModificarCupoHabitacion();
+            modificarCupoHabitacion.ShowDialog();
+        }
     }
 }

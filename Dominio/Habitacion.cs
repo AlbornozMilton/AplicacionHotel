@@ -137,5 +137,13 @@ namespace Dominio
         {
             this.iExclusiva = pExclusividad;
         }
+
+        public void ModificarAltaCupo(int pIndex)
+        {
+            if (this.iCupos[pIndex].Alta)
+                this.iCupos[pIndex].ModificarAlta(false);
+            else
+                this.iCupos[pIndex].ModificarAlta(true);
+        }
     }
 }

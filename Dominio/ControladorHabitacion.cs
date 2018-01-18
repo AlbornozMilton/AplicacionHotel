@@ -73,9 +73,25 @@ namespace Dominio
             return listaResultado;
         }
 
+        public List<Alojamiento> ControlModificarAltaCupos(int pIdHabitacion)
+        {
+            List<Alojamiento> AlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+            List<Alojamiento> AlojsResltultado = new List<Alojamiento>();
+                
+            foreach (var aloj in AlojsActivos)
+            {
+                if (aloj.HabitacionId == pIdHabitacion)
+                {
+                    AlojsResltultado.Add(aloj);
+                }
+            }
+
+            return AlojsResltultado;
+        }
+
         public void ModificarAltaDeCupos(Habitacion pHabitacion)
         {
-
+            iUoW.RepositorioHabitacion.ModificarAltaCupo(Mapper.Map<Habitacion, pers.Habitacion>(pHabitacion));
         }
     }
 }

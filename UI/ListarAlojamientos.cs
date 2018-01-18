@@ -22,6 +22,16 @@ namespace UI
             btn_verDetalles.Enabled = false;
         }
 
+        public ListarAlojamientos(List<Alojamiento> pAlojs)
+        {
+            InitializeComponent();
+            Alojamientos = pAlojs;
+            CargarAlojamientos();
+            groupBox_Rapida.Enabled = false;
+            groupBox_Personalizado.Enabled = false;
+            btn_Aceptar.Enabled = false;
+        }
+
         public ListarAlojamientos( BuscarAlojamiento form)
         {
             InitializeComponent();
@@ -33,13 +43,18 @@ namespace UI
             Close();
         }
 
-        private void btn_ListarActivos_Click(object sender, EventArgs e)
+        private void CargarAlojamientos()
         {
-            Alojamientos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
             foreach (var aloj in Alojamientos)
             {
                 dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.DniResponsable, aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable).Apellido + ' ' + aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable).Nombre, aloj.Habitacion.HabitacionId);
             }
+        }
+
+        private void btn_ListarActivos_Click(object sender, EventArgs e)
+        {
+            Alojamientos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+            CargarAlojamientos();
             btn_verDetalles.Enabled = true;
         }
 
@@ -50,6 +65,7 @@ namespace UI
             Close();
         }
 
+        //Ver detalles
         private void button1_Click(object sender, EventArgs e)
         {
             if (dGV_ListadoDeAlojamientos.CurrentRow.Cells != null)
@@ -57,7 +73,7 @@ namespace UI
                 int auxIdAloj = Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value);
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(Alojamientos.Find(a => a.AlojamientoId == auxIdAloj));
                 VentanaVisualizar.ShowDialog();
-                iFormPadre.iAloj_Seleccionado = null;
+                //iFormPadre.iAloj_Seleccionado = null;
             }
             else
             {

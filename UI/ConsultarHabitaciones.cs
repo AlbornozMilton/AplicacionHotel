@@ -14,7 +14,7 @@ namespace UI
     public partial class ConsultarHabitaciones : Form
     {
         List<Habitacion> Habitaciones = new ControladorHabitacion().GetAllHabitaciones();
-        Habitacion HabSeleccionada;
+        public Habitacion HabSeleccionada;
 
         public ConsultarHabitaciones()
         {
