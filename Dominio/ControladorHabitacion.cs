@@ -72,5 +72,10 @@ namespace Dominio
             }
             return listaResultado;
         }
+
+        public void ModificarAltaDeCupos(Habitacion pHabitacion)
+        {
+
+        }
     }
 }

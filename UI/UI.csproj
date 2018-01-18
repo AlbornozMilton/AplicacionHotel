@@ -146,6 +146,12 @@
     <Compile Include="ModificarAltaCliente.Designer.cs">
       <DependentUpon>ModificarAltaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModificarCupoHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarCupoHabitacion.Designer.cs">
+      <DependentUpon>ModificarCupoHabitacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="NuevoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarAltaCliente.resx">
       <DependentUpon>ModificarAltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCupoHabitacion.resx">
+      <DependentUpon>ModificarCupoHabitacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevoCliente.resx">
       <DependentUpon>NuevoCliente.cs</DependentUpon>

@@ -120,66 +120,6 @@ namespace Dominio
             }
         }
 
-        //public List<Habitacion> DeterminarDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
-        //{
-        //    //ControladorHabitacion iControladorHab = new ControladorHabitacion();
-        //    DateTime fechaIni = new DateTime();
-        //    DateTime fechaFin = new DateTime();
-        //    List<Alojamiento> listaAlojActivos = ObtenerAlojamientosActivos(); //METODO DEFINIDO EN REPOSITORIO ALOJAMIENTO -> lista de alojamientos en estado de Alojado o Reservado
-        //    List<Habitacion> listaHabitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
-        //    foreach (var hab in listaHabitaciones.ToList<Habitacion>())
-        //    {
-        //        foreach (var aloj in listaAlojActivos)
-        //        {
-        //            if (aloj.Habitacion.HabitacionId == hab.HabitacionId)
-        //            {
-        //                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-        //                {
-        //                    fechaIni = aloj.FechaIngreso.Date;
-        //                    fechaFin = aloj.FechaEstimadaEgreso.Date;
-        //                    if (((DateTime.Compare(fechaDesde.Date, fechaFin) < 0) && (DateTime.Compare(fechaDesde.Date, fechaIni) >= 0)) ||
-        //                        ((DateTime.Compare(fechaHasta.Date, fechaFin) < 0) && (DateTime.Compare(fechaHasta.Date, fechaIni) > 0)))
-        //                    //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
-        //                    //por eso solo se pone < o > segun corresponda
-        //                    {
-        //                        if (aloj.Habitacion.Exclusiva == true || aloj.Habitacion.Capacidad() == 0)
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                        }
-        //                        else
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                            listaHabitaciones.Add(aloj.Habitacion); 
-        //                        }
-        //                    }
-        //                }
-        //                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-        //                {
-        //                    fechaIni = aloj.FechaEstimadaIngreso.Date;
-        //                    fechaFin = aloj.FechaEstimadaEgreso.Date;
-        //                    if (((DateTime.Compare(fechaDesde.Date, fechaFin) < 0) && (DateTime.Compare(fechaDesde.Date, fechaIni) >= 0)) ||
-        //                        ((DateTime.Compare(fechaHasta.Date, fechaFin) < 0) && (DateTime.Compare(fechaHasta.Date, fechaIni) > 0)))
-        //                    //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
-        //                    //por eso solo se pone < o > segun corresponda
-        //                    {
-        //                        if (aloj.Exclusividad == true || aloj.Habitacion.Capacidad() == 0)
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                        }
-        //                        else
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                            hab.OcuparCupos(aloj.CantCuposSimples, aloj.CantCuposDobles);
-        //                            listaHabitaciones.Add(hab);
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return (listaHabitaciones);
-        //}
-
         /// <summary>
         /// Realiza la ocupación para una fechas determinadas
         /// </summary>
