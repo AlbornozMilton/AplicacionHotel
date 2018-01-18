@@ -13,6 +13,19 @@ namespace Dominio
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
+        public bool IsNumeric (string num)
+        {
+            try
+            {
+                double x = Convert.ToDouble(num);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        } 
+
         public List<Servicio> ObtenerServicios()
         {
             IEnumerable<pers.Servicio> listaEnum = iUoW.RepositorioServicio.GetAll();
@@ -52,6 +65,10 @@ namespace Dominio
             else if (pCostoExcl == "")
             {
                 throw new Exception("Debe ingresar una nueva Tarifa Exclusiva");
+            }
+            else if ((!IsNumeric(pCostoExcl)) || (!IsNumeric(pCostoNoExcl)))
+            {
+                throw new Exception("Debe ingresar solo números");
             }
 
             pTarifa.ActualizarMontos(Convert.ToDouble(pCostoNoExcl), Convert.ToDouble(pCostoExcl));
