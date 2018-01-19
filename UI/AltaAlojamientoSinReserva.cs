@@ -52,17 +52,15 @@ namespace UI
                 {
                     txb_NroHabitacion.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
-
                     
                     if (!new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20))//si es falso que entre
                     {
                         MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel.");
                         ck_Exclusividad.Enabled = false;
                     }
-                    else if(!new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada))//si es falso que entre
+                    else
                     {
-                        MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque ya esta siendo ocupada.");
-                        ck_Exclusividad.Enabled = false;
+                        ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(HabSeleccionada) == HabSeleccionada.Capacidad();
                     }
 
                     groupBox4.Enabled = true;

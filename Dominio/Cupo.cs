@@ -11,17 +11,19 @@ namespace Dominio
         private byte iCodCupo;
         private TipoCupo iTipoCupo;
         private bool iDisponible;
+        private bool iAlta;
 
         //--------------------------CONSTRUCTOR
         public Cupo()
         {
         }
 
-        public Cupo(byte pCodCupo,TipoCupo pTipoCupo, bool pDisponible)
+        public Cupo(byte pCodCupo,TipoCupo pTipoCupo, bool pDisponible, bool pAlta)
         {
             this.iCodCupo = pCodCupo;
             this.iTipoCupo = pTipoCupo;
             this.iDisponible = pDisponible;
+            this.iAlta = pAlta;
         }
 
         //----------------------------PROPIEDADES
@@ -40,6 +42,11 @@ namespace Dominio
             get { return this.iDisponible; }
             private set { this.iDisponible = value; }
         }
+        public bool Alta
+        {
+            get { return this.iAlta; }
+            set { this.iAlta = value; }
+        }
 
         //------------------------------METODOS
         /// <summary>
@@ -56,6 +63,11 @@ namespace Dominio
         public void Desocupar()
         {
             this.iDisponible = true;
+        }
+
+        public void ModificarAlta(bool pAlta)
+        {
+            this.iAlta = pAlta;
         }
     }
 }

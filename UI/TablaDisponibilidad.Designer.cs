@@ -33,14 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_TablaHabitaciones = new System.Windows.Forms.DataGridView();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_Seleccionar = new System.Windows.Forms.Button();
-            this.btn_Cancelar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_Seleccionar = new System.Windows.Forms.Button();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.clm_exclusividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_TablaHabitaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
@@ -76,7 +77,8 @@
             this.Column2,
             this.Column3,
             this.Column5,
-            this.Column4});
+            this.Column4,
+            this.clm_exclusividad});
             this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 20);
             this.dGV_TablaHabitaciones.Name = "dGV_TablaHabitaciones";
             this.dGV_TablaHabitaciones.ReadOnly = true;
@@ -86,32 +88,6 @@
             this.dGV_TablaHabitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(693, 261);
             this.dGV_TablaHabitaciones.TabIndex = 0;
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
-            // 
-            // btn_Seleccionar
-            // 
-            this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Seleccionar.Location = new System.Drawing.Point(589, 330);
-            this.btn_Seleccionar.Name = "btn_Seleccionar";
-            this.btn_Seleccionar.Size = new System.Drawing.Size(117, 23);
-            this.btn_Seleccionar.TabIndex = 2;
-            this.btn_Seleccionar.Text = "Seleccionar";
-            this.btn_Seleccionar.UseVisualStyleBackColor = true;
-            this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
-            // 
-            // btn_Cancelar
-            // 
-            this.btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(13, 330);
-            this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(117, 23);
-            this.btn_Cancelar.TabIndex = 3;
-            this.btn_Cancelar.Text = "Cancelar";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // Column1
             // 
@@ -144,6 +120,38 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
+            // 
+            // btn_Seleccionar
+            // 
+            this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Seleccionar.Location = new System.Drawing.Point(589, 330);
+            this.btn_Seleccionar.Name = "btn_Seleccionar";
+            this.btn_Seleccionar.Size = new System.Drawing.Size(117, 23);
+            this.btn_Seleccionar.TabIndex = 2;
+            this.btn_Seleccionar.Text = "Seleccionar";
+            this.btn_Seleccionar.UseVisualStyleBackColor = true;
+            this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(13, 330);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(117, 23);
+            this.btn_Cancelar.TabIndex = 3;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
+            // 
+            // clm_exclusividad
+            // 
+            this.clm_exclusividad.HeaderText = "Exclusividad";
+            this.clm_exclusividad.Name = "clm_exclusividad";
+            this.clm_exclusividad.ReadOnly = true;
+            // 
             // TablaDisponibilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,5 +181,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_exclusividad;
     }
 }

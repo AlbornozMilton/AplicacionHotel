@@ -31,10 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Rapida = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_ListarActivos = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Personalizado = new System.Windows.Forms.GroupBox();
             this.btn_Listar = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -51,23 +51,23 @@
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_verDetalles = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox_Rapida.SuspendLayout();
+            this.groupBox_Personalizado.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoDeAlojamientos)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBox_Rapida
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btn_ListarActivos);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(232, 103);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rápida";
+            this.groupBox_Rapida.Controls.Add(this.label1);
+            this.groupBox_Rapida.Controls.Add(this.btn_ListarActivos);
+            this.groupBox_Rapida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Rapida.Location = new System.Drawing.Point(13, 13);
+            this.groupBox_Rapida.Name = "groupBox_Rapida";
+            this.groupBox_Rapida.Size = new System.Drawing.Size(232, 103);
+            this.groupBox_Rapida.TabIndex = 0;
+            this.groupBox_Rapida.TabStop = false;
+            this.groupBox_Rapida.Text = "Rápida";
             // 
             // label1
             // 
@@ -89,22 +89,22 @@
             this.btn_ListarActivos.UseVisualStyleBackColor = true;
             this.btn_ListarActivos.Click += new System.EventHandler(this.btn_ListarActivos_Click);
             // 
-            // groupBox2
+            // groupBox_Personalizado
             // 
-            this.groupBox2.Controls.Add(this.btn_Listar);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(251, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(572, 103);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Personalizado";
+            this.groupBox_Personalizado.Controls.Add(this.btn_Listar);
+            this.groupBox_Personalizado.Controls.Add(this.checkBox2);
+            this.groupBox_Personalizado.Controls.Add(this.checkBox1);
+            this.groupBox_Personalizado.Controls.Add(this.label3);
+            this.groupBox_Personalizado.Controls.Add(this.label2);
+            this.groupBox_Personalizado.Controls.Add(this.dateTimePicker2);
+            this.groupBox_Personalizado.Controls.Add(this.dateTimePicker1);
+            this.groupBox_Personalizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Personalizado.Location = new System.Drawing.Point(251, 13);
+            this.groupBox_Personalizado.Name = "groupBox_Personalizado";
+            this.groupBox_Personalizado.Size = new System.Drawing.Size(572, 103);
+            this.groupBox_Personalizado.TabIndex = 1;
+            this.groupBox_Personalizado.TabStop = false;
+            this.groupBox_Personalizado.Text = "Personalizado";
             // 
             // btn_Listar
             // 
@@ -301,14 +301,14 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox_Personalizado);
+            this.Controls.Add(this.groupBox_Rapida);
             this.Name = "ListarAlojamientos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListarAlojamientos";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBox_Rapida.ResumeLayout(false);
+            this.groupBox_Personalizado.ResumeLayout(false);
+            this.groupBox_Personalizado.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoDeAlojamientos)).EndInit();
             this.ResumeLayout(false);
@@ -317,8 +317,8 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox_Rapida;
+        private System.Windows.Forms.GroupBox groupBox_Personalizado;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button button2;

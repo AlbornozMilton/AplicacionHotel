@@ -165,6 +165,7 @@ namespace UI
 
         private void CargarAlojamientosActivos()
         {
+            dGV_Alojamientos.Rows.Clear();
             listaActivos = iControladorAlojamiento.ObtenerAlojamientosActivos();
             foreach (var aloj in listaActivos)
             {
@@ -176,8 +177,11 @@ namespace UI
 
         private void btn_VerDetalle_Click(object sender, EventArgs e)
         {
-            VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(listaActivos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
-            VentanaVisualizar.ShowDialog();
+            if (listaActivos.Count > 0)
+            {
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(listaActivos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
+                VentanaVisualizar.ShowDialog(); 
+            }
         }
 
         private void modificarAltaDeClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,6 +212,23 @@ namespace UI
         {
             ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
             actualizarCostoServicio.ShowDialog();
+        }
+
+        private void modificarAltaDeCuposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarCupoHabitacion modificarCupoHabitacion = new ModificarCupoHabitacion();
+            modificarCupoHabitacion.ShowDialog();
+        }
+
+        //ACTUALIZAR
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CargarAlojamientosActivos();
+        }
+
+        private void dGV_Alojamientos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

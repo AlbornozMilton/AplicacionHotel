@@ -28,10 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
+            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
@@ -41,11 +46,6 @@
             this.lbl_txtfechaEstEgreso = new System.Windows.Forms.Label();
             this.lbl_fechaEstEgreso = new System.Windows.Forms.Label();
             this.lbl_fechaActual = new System.Windows.Forms.Label();
-            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.SuspendLayout();
@@ -68,14 +68,14 @@
             this.dGV_ListadoAlojamientos.AllowUserToDeleteRows = false;
             this.dGV_ListadoAlojamientos.AllowUserToOrderColumns = true;
             this.dGV_ListadoAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGV_ListadoAlojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ListadoAlojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_IdAlojmiento,
@@ -83,14 +83,14 @@
             this.clm_DNIResponsable,
             this.clm_Cliente,
             this.clm_IDHabitacion});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ListadoAlojamientos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ListadoAlojamientos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_ListadoAlojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_ListadoAlojamientos.Location = new System.Drawing.Point(3, 25);
             this.dGV_ListadoAlojamientos.Name = "dGV_ListadoAlojamientos";
@@ -99,6 +99,41 @@
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(810, 58);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
+            // 
+            // clm_IdAlojmiento
+            // 
+            this.clm_IdAlojmiento.FillWeight = 30F;
+            this.clm_IdAlojmiento.HeaderText = "Número";
+            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
+            this.clm_IdAlojmiento.ReadOnly = true;
+            // 
+            // clm_estado
+            // 
+            this.clm_estado.FillWeight = 40F;
+            this.clm_estado.HeaderText = "Estado";
+            this.clm_estado.Name = "clm_estado";
+            this.clm_estado.ReadOnly = true;
+            // 
+            // clm_DNIResponsable
+            // 
+            this.clm_DNIResponsable.FillWeight = 45F;
+            this.clm_DNIResponsable.HeaderText = "Responsable";
+            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
+            this.clm_DNIResponsable.ReadOnly = true;
+            // 
+            // clm_Cliente
+            // 
+            this.clm_Cliente.FillWeight = 120F;
+            this.clm_Cliente.HeaderText = "Cliente";
+            this.clm_Cliente.Name = "clm_Cliente";
+            this.clm_Cliente.ReadOnly = true;
+            // 
+            // clm_IDHabitacion
+            // 
+            this.clm_IDHabitacion.FillWeight = 40F;
+            this.clm_IDHabitacion.HeaderText = "Habitacion";
+            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
+            this.clm_IDHabitacion.ReadOnly = true;
             // 
             // btn_BuscarAlojamiento
             // 
@@ -194,41 +229,6 @@
             this.lbl_fechaActual.TabIndex = 17;
             this.lbl_fechaActual.Text = "dd / mm / yyyy";
             // 
-            // clm_IdAlojmiento
-            // 
-            this.clm_IdAlojmiento.FillWeight = 30F;
-            this.clm_IdAlojmiento.HeaderText = "Número";
-            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
-            this.clm_IdAlojmiento.ReadOnly = true;
-            // 
-            // clm_estado
-            // 
-            this.clm_estado.FillWeight = 40F;
-            this.clm_estado.HeaderText = "Estado";
-            this.clm_estado.Name = "clm_estado";
-            this.clm_estado.ReadOnly = true;
-            // 
-            // clm_DNIResponsable
-            // 
-            this.clm_DNIResponsable.FillWeight = 45F;
-            this.clm_DNIResponsable.HeaderText = "Responsable";
-            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
-            this.clm_DNIResponsable.ReadOnly = true;
-            // 
-            // clm_Cliente
-            // 
-            this.clm_Cliente.FillWeight = 120F;
-            this.clm_Cliente.HeaderText = "Cliente";
-            this.clm_Cliente.Name = "clm_Cliente";
-            this.clm_Cliente.ReadOnly = true;
-            // 
-            // clm_IDHabitacion
-            // 
-            this.clm_IDHabitacion.FillWeight = 40F;
-            this.clm_IDHabitacion.HeaderText = "Habitacion";
-            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
-            this.clm_IDHabitacion.ReadOnly = true;
-            // 
             // CerrarAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +245,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_BuscarAlojamiento);
             this.Name = "CerrarAlojamiento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CerrarAlojamiento";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).EndInit();
