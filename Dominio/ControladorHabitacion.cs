@@ -39,12 +39,12 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Retorna verdadero si la suma de cupos simples disponibles más la suma de cupos dobles disponibles es igual a la capacidad de la habitacíón
+        /// Retorna verdadero si la suma de cupos simples disponibles más la suma de cupos dobles disponibles es menor a la capacidad de la habitacíón
         /// </summary>
-        public bool VerificarSolicitdExclusividad(Habitacion pHab)
+        public int VerificarSolicitdExclusividad(Habitacion pHab)
         {
             // se se cumple la igualdad, se puede pedir exclusividad
-            return pHab.CuposSimpleDisponibles() + (pHab.CuposDoblesDisponibles() * 2) == pHab.Capacidad();
+            return pHab.CuposSimpleDisponibles() + (pHab.CuposDoblesDisponibles() * 2);
         }
 
         public void VerificarCuposSimplesIngresados(Habitacion pHab, decimal pCantS)

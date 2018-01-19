@@ -59,11 +59,11 @@ namespace UI
                         MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel.");
                         ck_Exclusividad.Enabled = false;
                     }
-                    else if(!new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada))//si es falso que entre
-                    {
-                        MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque ya esta siendo ocupada.");
-                        ck_Exclusividad.Enabled = false;
-                    }
+                    //else if(!new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada))//si es falso que entre
+                    //{
+                    //    MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque ya esta siendo ocupada.");
+                    //    ck_Exclusividad.Enabled = false;
+                    //}
 
                     groupBox4.Enabled = true;
                     groupBox2.Enabled = true;
