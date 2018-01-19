@@ -22,6 +22,7 @@ namespace UI
             InitializeComponent();
         }
 
+    
         private void NuevoCliente_Load(object sender, EventArgs e)
         {
             Ciudades = ControladorCliente.ObtenerCiudades();
@@ -59,19 +60,31 @@ namespace UI
             }
         }
 
+        public void ControlCamposObligatorios()
+        {
+            Label[] camposOblig = new Label[] { label13, label14, label15, label16, label17, label18, label19, label21, label22 };
+            foreach (var camp in camposOblig)
+            {
+                if (camp.Visible == true)
+                {
+                    throw new Exception("Faltan Campos Obligatorios");
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
             try
             {
+                ControlCamposObligatorios();
+                ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 MessageBox.Show("Cliente agregado correctamente");
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show("Error en la Persistencia: "+E.Message);
-                MessageBox.Show(E.InnerException.Message);
+                MessageBox.Show(E.Message);
             }
         }
 
@@ -82,6 +95,7 @@ namespace UI
 
         private void cbx_ciudades_SelectedIndexChanged(object sender, EventArgs e)
         {
+            label19.Visible = false;
             txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
             var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
             cbx_calles.Items.Clear();
@@ -96,8 +110,7 @@ namespace UI
         {
             if (tbx_dni.Text == "")
             {
-                MessageBox.Show("Debe ingresar un DNI");
-                tbx_dni.Focus();
+                label13.Visible = true;
             }
             else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
             {
@@ -111,8 +124,7 @@ namespace UI
         {
             if (txb_legajo.Text == "")
             {
-                MessageBox.Show("Debe ingresar un Legajo");
-                txb_legajo.Focus();
+                label14.Visible = true;
             }
             else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
             {
@@ -186,8 +198,7 @@ namespace UI
         {
             if (txb_apellido.Text == "")
             {
-                MessageBox.Show("Debe ingresar Apellido");
-                txb_apellido.Focus();
+                label15.Visible = true;
             }
         }
 
@@ -195,8 +206,7 @@ namespace UI
         {
             if (txb_nombre.Text == "")
             {
-                MessageBox.Show("Debe ingresar Nombre");
-                txb_nombre.Focus();
+                label16.Visible = true;
             }
         }
 
@@ -204,8 +214,7 @@ namespace UI
         {
             if (txb_nroCalle.Text == "")
             {
-                MessageBox.Show("Debe ingresar Número de Calle");
-                txb_nroCalle.Focus();
+                label22.Visible = true;
             }
         }
 
@@ -229,8 +238,7 @@ namespace UI
         {
             if (cbx_tipo.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar un Tipo");
-                cbx_tipo.Focus();
+                label18.Visible = true;
             }
         }
 
@@ -238,8 +246,7 @@ namespace UI
         {
             if (cbx_ciudades.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar una Ciudad");
-                cbx_ciudades.Focus();
+                label19.Visible = true;
             }
         }
 
@@ -247,8 +254,7 @@ namespace UI
         {
             if (txb_telefono.Text == "")
             {
-                MessageBox.Show("Debe ingresar un Teléfono");
-                txb_telefono.Focus();
+                label17.Visible = true;
             }
         }
 
@@ -262,6 +268,78 @@ namespace UI
             {
                 MessageBox.Show(E.Message);
             }
+        }
+
+        private void cbx_calles_Leave(object sender, EventArgs e)
+        {
+            if (cbx_calles.Text == "")
+            {
+                label21.Visible = true;
+            }
+        }
+
+        private void tbx_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void tbx_dni_TextChanged(object sender, EventArgs e)
+        {
+            label13.Visible = false;
+        }
+
+        private void txb_legajo_TextChanged(object sender, EventArgs e)
+        {
+            label14.Visible = false;
+        }
+
+        private void txb_apellido_TextChanged(object sender, EventArgs e)
+        {
+            label15.Visible = false;
+        }
+
+        private void txb_nombre_TextChanged(object sender, EventArgs e)
+        {
+            label16.Visible = false;
+        }
+
+        private void txb_telefono_TextChanged(object sender, EventArgs e)
+        {
+            label17.Visible = false;
+        }
+
+        private void cbx_tipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label18.Visible = false;
+        }
+
+        private void cbx_calles_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_nroCalle_TextChanged(object sender, EventArgs e)
+        {
+            label22.Visible = false;
+        }
+
+        private void cbx_calles_TextChanged(object sender, EventArgs e)
+        {
+            label21.Visible = false;
         }
     }
 }
