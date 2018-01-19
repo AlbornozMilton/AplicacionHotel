@@ -62,6 +62,7 @@
             this.actualizarCostoServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarTarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -81,7 +82,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_VerDetalle = new System.Windows.Forms.Button();
-            this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -343,6 +344,13 @@
             this.consultarHabitacionesToolStripMenuItem.Text = "Consultar Habitaciones";
             this.consultarHabitacionesToolStripMenuItem.Click += new System.EventHandler(this.consultarHabitacionesToolStripMenuItem_Click);
             // 
+            // modificarAltaDeCuposToolStripMenuItem
+            // 
+            this.modificarAltaDeCuposToolStripMenuItem.Name = "modificarAltaDeCuposToolStripMenuItem";
+            this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(295, 28);
+            this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
+            this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -409,11 +417,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.btn_VerDetalle);
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.dGV_Alojamientos);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 152);
+            this.groupBox2.Location = new System.Drawing.Point(12, 200);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1086, 212);
+            this.groupBox2.Size = new System.Drawing.Size(1089, 302);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OCUPACION ACTUAL";
@@ -422,6 +432,11 @@
             // 
             this.dGV_Alojamientos.AllowUserToAddRows = false;
             this.dGV_Alojamientos.AllowUserToDeleteRows = false;
+            this.dGV_Alojamientos.AllowUserToResizeColumns = false;
+            this.dGV_Alojamientos.AllowUserToResizeRows = false;
+            this.dGV_Alojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -450,14 +465,14 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dGV_Alojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 18);
+            this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 45);
             this.dGV_Alojamientos.Name = "dGV_Alojamientos";
             this.dGV_Alojamientos.ReadOnly = true;
             this.dGV_Alojamientos.RowHeadersVisible = false;
             this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Alojamientos.Size = new System.Drawing.Size(1080, 191);
+            this.dGV_Alojamientos.Size = new System.Drawing.Size(1080, 236);
             this.dGV_Alojamientos.TabIndex = 0;
+            this.dGV_Alojamientos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Alojamientos_CellContentClick);
             // 
             // Column7
             // 
@@ -515,28 +530,30 @@
             // 
             // btn_VerDetalle
             // 
-            this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_VerDetalle.Location = new System.Drawing.Point(1005, 385);
+            this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_VerDetalle.Location = new System.Drawing.Point(957, 15);
             this.btn_VerDetalle.Name = "btn_VerDetalle";
-            this.btn_VerDetalle.Size = new System.Drawing.Size(90, 23);
+            this.btn_VerDetalle.Size = new System.Drawing.Size(126, 24);
             this.btn_VerDetalle.TabIndex = 5;
-            this.btn_VerDetalle.Text = "Ver Detalle";
+            this.btn_VerDetalle.Text = "Ver Detalles";
             this.btn_VerDetalle.UseVisualStyleBackColor = true;
             this.btn_VerDetalle.Click += new System.EventHandler(this.btn_VerDetalle_Click);
             // 
-            // modificarAltaDeCuposToolStripMenuItem
+            // button1
             // 
-            this.modificarAltaDeCuposToolStripMenuItem.Name = "modificarAltaDeCuposToolStripMenuItem";
-            this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(295, 28);
-            this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
-            this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
+            this.button1.Location = new System.Drawing.Point(3, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 24);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Actualizar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 420);
-            this.Controls.Add(this.btn_VerDetalle);
+            this.ClientSize = new System.Drawing.Size(1110, 541);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(menuStrip1);
@@ -610,5 +627,6 @@
         private System.Windows.Forms.ToolStripMenuItem actualizarTarifasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarHabitacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarAltaDeCuposToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
