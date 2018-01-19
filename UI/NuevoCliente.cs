@@ -25,6 +25,7 @@ namespace UI
     
         private void NuevoCliente_Load(object sender, EventArgs e)
         {
+            button1.Enabled = false;
             Ciudades = ControladorCliente.ObtenerCiudades();
             Tarifas = ControladorCliente.DevolverListaTarifas();
             txb_codPostal.Enabled = false;
@@ -340,6 +341,11 @@ namespace UI
         private void cbx_calles_TextChanged(object sender, EventArgs e)
         {
             label21.Visible = false;
+        }
+
+        private void tabControl1_Enter(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
         }
     }
 }
