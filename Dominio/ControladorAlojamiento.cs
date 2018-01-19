@@ -281,8 +281,7 @@ namespace Dominio
             {
                 if (aloj.Exclusividad)
                 {
-                    DateTime alojFechaDesde = DateTime.Now; 
-                    //no importa el Now, solo para instanciar
+                    DateTime alojFechaDesde = new DateTime(); 
                     //la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
                     //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
 
@@ -296,15 +295,16 @@ namespace Dominio
                     }
 
                     // Hay interseccion entre las fechas
-                    if ( 
+                    if (
                             //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
-                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0) 
+                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0)
                             |
                             //si fecha de egreso del aloj se encuetra entre las fechas de parametro
                             (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                        )
                     {
-                        auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
+                        //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
+                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad();
                     } 
                 }
             }
@@ -324,7 +324,7 @@ namespace Dominio
              
             if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
             {
-                throw new Exception("Atencion: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+                throw new Exception("Atención: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
             }
             
             //Siempre se va a colocar en "false" la exclusividad
@@ -342,7 +342,7 @@ namespace Dominio
         {
             if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
             {
-                throw new Exception("Operacion Cancelada: Solo se puede Cancelar un Alojamiento que esta Reservado");
+                throw new Exception("Operación Cancelada: Solo se puede Cancelar un Alojamiento que esta Reservado");
             }
 
             //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
