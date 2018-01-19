@@ -20,6 +20,10 @@ namespace UI
         public NuevoCliente()
         {
             InitializeComponent();
+        }
+
+        private void NuevoCliente_Load(object sender, EventArgs e)
+        {
             Ciudades = ControladorCliente.ObtenerCiudades();
             Tarifas = ControladorCliente.DevolverListaTarifas();
             txb_codPostal.Enabled = false;
@@ -36,7 +40,6 @@ namespace UI
             }
         }
 
-        //PARA LA MODIFICACION - verrrrrrr
         public NuevoCliente(Cliente pCliente)
         {
             InitializeComponent();
@@ -79,59 +82,185 @@ namespace UI
 
         private void cbx_ciudades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbx_ciudades.Items.Count > 0)
-            {
-                txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
-                var auxCalles = ControladorCliente.ObenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
-                cbx_calles.Items.Clear();
-                foreach (var calle in auxCalles)
-                {
-                    cbx_calles.Items.Add(calle);
-                }
-            }
-            else
-            {
-                MessageBox.Show("No hay ciudad cargadas en combo box.");
-            }
-        }
-
-        private void tbx_dni_TextChanged(object sender, EventArgs e)
-        {
-            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO APRETAR "ENTER"
-            if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
-            {
-                MessageBox.Show("El DNI ingresado ya existe.");
-                //tbx_dni.Clear();
-            }
-
-            //CONTROLAR LA LONGITUD DE LOS DIGITOS
-        }
-
-        private void txb_legajo_TextChanged(object sender, EventArgs e)
-        {
-            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO DE APRETAR "ENTER"
-            if (this.ControladorCliente.ExisteClienteDNI(txb_legajo.Text))
-            {
-                MessageBox.Show("El Legajo ingresado ya existe.");
-                //txb_legajo.Clear();
-            }
-            
-            //CONTROLAR LA LONGITUD DE LOS DIGITOS
-        }
-
-        //solo anda cuando se selecciona un item del combo box
-        //se necesita que que lance cuando se escribe algo
-        private void cbx_calles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var auxCalles = cbx_calles.Items;
+            txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
+            var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
             cbx_calles.Items.Clear();
-
+            cbx_calles.Text = "";
             foreach (var calle in auxCalles)
             {
-                if (calle.ToString().Contains(cbx_calles.Text))
-                {
-                    cbx_calles.Items.Add(calle);
-                }
+                cbx_calles.Items.Add(calle);
+            }
+        }
+
+        private void tbx_dni_Leave(object sender, EventArgs e)
+        {
+            if (tbx_dni.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un DNI");
+                tbx_dni.Focus();
+            }
+            else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+            {
+                MessageBox.Show("El DNI ingresado ya existe.");
+                tbx_dni.Clear();
+                tbx_dni.Focus();
+            }
+        }
+
+        private void txb_legajo_Leave(object sender, EventArgs e)
+        {
+            if (txb_legajo.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un Legajo");
+                txb_legajo.Focus();
+            }
+            else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+            {
+                MessageBox.Show("El Legajo ingresado ya existe.");
+                txb_legajo.Clear();
+                txb_legajo.Focus();
+            }
+        }
+
+        private void txb_apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            } 
+        }
+
+        private void txb_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_nroCalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_piso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_nroDepto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_apellido_Leave(object sender, EventArgs e)
+        {
+            if (txb_apellido.Text == "")
+            {
+                MessageBox.Show("Debe ingresar Apellido");
+                txb_apellido.Focus();
+            }
+        }
+
+        private void txb_nombre_Leave(object sender, EventArgs e)
+        {
+            if (txb_nombre.Text == "")
+            {
+                MessageBox.Show("Debe ingresar Nombre");
+                txb_nombre.Focus();
+            }
+        }
+
+        private void txb_nroCalle_Leave(object sender, EventArgs e)
+        {
+            if (txb_nroCalle.Text == "")
+            {
+                MessageBox.Show("Debe ingresar Número de Calle");
+                txb_nroCalle.Focus();
+            }
+        }
+
+        private void txb_piso_Leave(object sender, EventArgs e)
+        {
+            if (txb_piso.Text == "")
+            {
+                txb_piso.Text = "0";
+            }
+        }
+
+        private void txb_nroDepto_Leave(object sender, EventArgs e)
+        {
+            if (txb_nroDepto.Text == "")
+            {
+                txb_nroDepto.Text = "0";
+            }
+        }
+
+        private void cbx_tipo_Leave(object sender, EventArgs e)
+        {
+            if (cbx_tipo.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un Tipo");
+                cbx_tipo.Focus();
+            }
+        }
+
+        private void cbx_ciudades_Leave(object sender, EventArgs e)
+        {
+            if (cbx_ciudades.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una Ciudad");
+                cbx_ciudades.Focus();
+            }
+        }
+
+        private void txb_telefono_Leave(object sender, EventArgs e)
+        {
+            if (txb_telefono.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un Teléfono");
+                txb_telefono.Focus();
+            }
+        }
+
+        private void txb_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
             }
         }
     }

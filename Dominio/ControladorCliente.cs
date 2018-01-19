@@ -68,7 +68,7 @@ namespace Dominio
             return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorDNI(unDni, pAlta)));
         }
 
-        public List<string> ObenerCallesDeCiudad(string pCodPostal)
+        public List<string> ObtenerCallesDeCiudad(string pCodPostal)
         {
             List<string> calles = new List<string>();
             foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal)))
