@@ -237,5 +237,13 @@ namespace UI
             AlojsReservadosSinDeposito();
             timer1.Enabled = true;
         }
+
+        private void modificarDatosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            BuscarCliente ventanaBusqueda = new BuscarCliente();
+            ventanaBusqueda.ShowDialog();
+            NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
+            ventanaCliente.ShowDialog();
+        }
     }
 }
