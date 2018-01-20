@@ -104,11 +104,13 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -125,17 +127,20 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
-                        Disponible = true
+                        Disponible = true,
+                        Alta = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
-                        Disponible = true
+                        Disponible = true,
+                        Alta = true
                     }
                 }
             };
@@ -151,16 +156,19 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -177,16 +185,19 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -203,11 +214,13 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -224,11 +237,13 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -245,11 +260,13 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -266,11 +283,13 @@ namespace Persistencia.DAL.EntityFramework
                    new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.doble,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -287,16 +306,19 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Disponible = true,
+                        Alta = true
+                    },
+                    new Cupo
+                    {
+                        Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     }
                 }
@@ -313,16 +335,19 @@ namespace Persistencia.DAL.EntityFramework
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     },
                     new Cupo
                     {
                         Tipo = TipoCupo.simple,
+                        Alta = true,
                         Disponible = true
                     }
                 }

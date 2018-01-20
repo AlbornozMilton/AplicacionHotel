@@ -11,7 +11,7 @@ namespace Persistencia.Domain
         public byte CupoId { get; set; }
         public TipoCupo Tipo { get; set; }
         public bool Disponible { get; set; }
-
+        public bool Alta { get; set; }
 
         public byte HabitacionId { get; set; }
         public Habitacion Habitacion { get; set; }

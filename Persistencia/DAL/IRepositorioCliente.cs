@@ -9,12 +9,14 @@ namespace Persistencia.DAL
 {
     public interface IRepositorioCliente : IRepositorio<Cliente>
     {
-        Cliente GetPorDNI(int pDNI, bool pValor);
-        IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre, bool pValor);
+        IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre, bool pAlta);
+        Cliente GetPorDNI(int pDNI, bool pAlta);
         void ModificarAlta(bool pValor, int pIdCliente);
-        Cliente GetPorLegajo(int pLegajo, bool pValor);
+        Cliente GetPorLegajo(int pLegajo, bool pAlta);
         bool ExisteClienteDNI(int pDNI);
         bool ExisteClienteLegajo(int pLegajo);
+        void MoficarDatosCliente(Cliente pCliente);
+        void ModificarDNICliente(Cliente pCliente, int pLegajo);
     }
 
 }

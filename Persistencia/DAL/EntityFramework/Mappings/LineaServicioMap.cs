@@ -17,7 +17,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(l => l.CostoServicio)
                 .IsRequired();
 
-            this.Property(f => f.FechaServicio).HasColumnType("Date").IsRequired();
+            this.Property(f => f.FechaServicio).IsRequired().HasColumnType("datetime2");
 
             this.HasRequired(p => p.Alojamiento)
                 .WithMany(a => a.Servicios);

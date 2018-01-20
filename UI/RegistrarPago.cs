@@ -82,9 +82,9 @@ namespace UI
             BuscarAlojamiento VentanaBuscarAlojamiento = new BuscarAlojamiento();
             VentanaBuscarAlojamiento.ShowDialog();
 
-            if (VentanaBuscarAlojamiento.iAloj_Seleccionado != null)
+            if (VentanaBuscarAlojamiento.Aloj_Seleccionado != null)
             {
-                AlojSeleccionado = VentanaBuscarAlojamiento.iAloj_Seleccionado;
+                AlojSeleccionado = VentanaBuscarAlojamiento.Aloj_Seleccionado;
                 CargarAlojamientoSeccionado(AlojSeleccionado);
                 gbx_Pago.Enabled = true;
                 btn_Aceptar.Enabled = true;

@@ -13,55 +13,137 @@ namespace UI
 {
     public partial class ListarAlojamientos : Form
     {
-        public BuscarAlojamiento iFormPadre;
+        public Alojamiento AlojSeleccionado;
         public List<Alojamiento> Alojamientos;
 
         public ListarAlojamientos()
         {
             InitializeComponent();
-            btn_verDetalles.Enabled = false;
+            dateTimePicker_hasta.Value = DateTime.Now.AddDays(1);
+            string[] auxComponents = { "btn_Aceptar","button_realizarPago", "button_CancelarAloj" };
+            this.EnableComponents(auxComponents, false);
         }
 
-        public ListarAlojamientos( BuscarAlojamiento form)
+        public ListarAlojamientos(List<Alojamiento> pAlojs)
         {
             InitializeComponent();
-            this.iFormPadre = form;
+            Alojamientos = pAlojs;
+            CargarAlojamientos();
+            string[] auxComponents = { "btn_Aceptar","groupBox_Rapida", "groupBox_Personalizado" };
+            this.EnableComponents(auxComponents, false);
         }
 
+        //CANCELAR
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        private void CargarAlojamientos()
+        {
+            dGV_ListadoDeAlojamientos.Rows.Clear();
+            if (Alojamientos.Count > 0)
+            {
+                foreach (var aloj in Alojamientos)
+                {
+                    Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                    dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
+                }
+                btn_Aceptar.Enabled = true;
+            }
+            else
+            {
+                btn_Aceptar.Enabled = false;
+            }
+        }
+
         private void btn_ListarActivos_Click(object sender, EventArgs e)
         {
             Alojamientos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
-            foreach (var aloj in Alojamientos)
-            {
-                dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.DniResponsable, aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable).Apellido + ' ' + aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable).Nombre, aloj.Habitacion.HabitacionId);
-            }
-            btn_verDetalles.Enabled = true;
+            CargarAlojamientos();
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iFormPadre.iAloj_Seleccionado = Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value));
-            iFormPadre.CargarAlojamientoSeccionado(dGV_ListadoDeAlojamientos.CurrentRow.Cells);
+            AlojSeleccionado = Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value));
             Close();
         }
 
+        //Ver detalles
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dGV_ListadoDeAlojamientos.CurrentRow.Cells != null)
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
             {
                 int auxIdAloj = Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value);
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(Alojamientos.Find(a => a.AlojamientoId == auxIdAloj));
                 VentanaVisualizar.ShowDialog();
-                iFormPadre.iAloj_Seleccionado = null;
+            }
+        }
+
+        private void button_realizarPago_Click(object sender, EventArgs e)
+        {
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
+            {
+                RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
+                registrarPago.ShowDialog();
+                Close();
+            }
+            btn_Aceptar.Enabled = true;
+        }
+
+        private void button_CancelarAloj_Click(object sender, EventArgs e)
+        {
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
+            {
+                
+                Close();
+            }
+        }
+
+        public void EnableComponents(string[] pNombreComponentes,bool pValor)
+        {
+            foreach (string component in pNombreComponentes)
+            {
+                Control auxComponent = this.Controls.Find(component, false).Single();
+
+                if (auxComponent != null)
+                {
+                    auxComponent.Enabled = pValor;
+                }
+            }
+        }
+
+        private void btn_Listar_Click(object sender, EventArgs e)
+        {
+            if (dateTimePicker_hasta.Value.Date.CompareTo(dateTimePicker_desde.Value.Date)>0)
+            {
+                List<EstadoAlojamiento> localEstados = new List<EstadoAlojamiento>();
+
+                if (checkBox_todos.Checked)
+                {
+                    localEstados.Add(EstadoAlojamiento.Reservado);
+                    localEstados.Add(EstadoAlojamiento.Alojado);
+                    localEstados.Add(EstadoAlojamiento.Cancelado);
+                    localEstados.Add(EstadoAlojamiento.Cerrado);
+                }
+                else 
+                {
+                    if (checkBox_cancelado.Checked)
+                    {
+                        localEstados.Add(EstadoAlojamiento.Cancelado);
+                    }
+                    if (checkBox_cerrado.Checked)
+                    {
+                        localEstados.Add(EstadoAlojamiento.Cerrado);
+                    }
+                }
+
+                this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value,dateTimePicker_hasta.Value);
+                CargarAlojamientos();
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalladamente.");
+                MessageBox.Show("La fecha 'Hasta' debe ser mayor que la fecha 'Desde'");
             }
         }
     }

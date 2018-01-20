@@ -63,12 +63,12 @@ namespace Dominio
             return resultado;
         }
 
-        public Cliente BuscarClientePorDni(int unDni, bool pValor)
+        public Cliente BuscarClientePorDni(int unDni, bool pAlta)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorDNI(unDni,pValor)));
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorDNI(unDni, pAlta)));
         }
 
-        public List<string> ObenerCallesDeCiudad(string pCodPostal)
+        public List<string> ObtenerCallesDeCiudad(string pCodPostal)
         {
             List<string> calles = new List<string>();
             foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal)))
@@ -78,14 +78,14 @@ namespace Dominio
             return calles;
         }
 
-        public Cliente BuscarClientePorLegajo(string pLegajo, bool pValor)
+        public Cliente BuscarClientePorLegajo(string pLegajo, bool pAlta)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo),pValor)));
+            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo), pAlta)));
         }
 
-        public List<Cliente> BuscarClientePorNom_Ape(string pCadena, bool pValor)
+        public List<Cliente> BuscarClientePorNom_Ape(string pCadena, bool pAlta)
         {
-            IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.ObtenerClientesPorNomyAp(pCadena, pValor);
+            IEnumerable<pers.Cliente> listaEnum = iUoW.RepositorioCliente.ObtenerClientesPorNomyAp(pCadena, pAlta);
             List<Cliente> lista = new List<Cliente>();
             foreach (var i in listaEnum)
             {
@@ -195,7 +195,7 @@ namespace Dominio
                     {
                         if (pEstado == EstadoAlojamiento.Alojado && aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                         {
-                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado.");
+                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado. Verifique si debe realizar un Cierre de Alojamiento");
                         }
                         else if (pEstado == EstadoAlojamiento.Reservado && aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                         {
@@ -207,12 +207,17 @@ namespace Dominio
                                     !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                                 )
                             {
-                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas seleccionadas.");
+                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas seleccionadas. Verifique si debe realizar un Alta de Reserva.");
                             }
                         }
                     }
                 }
             }
+        }
+
+        public void ModificarAltaCliente(int pDNI, bool pValoAlta)
+        {
+            iUoW.RepositorioCliente.ModificarAlta(pValoAlta, pDNI);
         }
 
     }

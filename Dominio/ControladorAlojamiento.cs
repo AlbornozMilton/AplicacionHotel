@@ -120,66 +120,6 @@ namespace Dominio
             }
         }
 
-        //public List<Habitacion> DeterminarDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
-        //{
-        //    //ControladorHabitacion iControladorHab = new ControladorHabitacion();
-        //    DateTime fechaIni = new DateTime();
-        //    DateTime fechaFin = new DateTime();
-        //    List<Alojamiento> listaAlojActivos = ObtenerAlojamientosActivos(); //METODO DEFINIDO EN REPOSITORIO ALOJAMIENTO -> lista de alojamientos en estado de Alojado o Reservado
-        //    List<Habitacion> listaHabitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
-        //    foreach (var hab in listaHabitaciones.ToList<Habitacion>())
-        //    {
-        //        foreach (var aloj in listaAlojActivos)
-        //        {
-        //            if (aloj.Habitacion.HabitacionId == hab.HabitacionId)
-        //            {
-        //                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-        //                {
-        //                    fechaIni = aloj.FechaIngreso.Date;
-        //                    fechaFin = aloj.FechaEstimadaEgreso.Date;
-        //                    if (((DateTime.Compare(fechaDesde.Date, fechaFin) < 0) && (DateTime.Compare(fechaDesde.Date, fechaIni) >= 0)) ||
-        //                        ((DateTime.Compare(fechaHasta.Date, fechaFin) < 0) && (DateTime.Compare(fechaHasta.Date, fechaIni) > 0)))
-        //                    //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
-        //                    //por eso solo se pone < o > segun corresponda
-        //                    {
-        //                        if (aloj.Habitacion.Exclusiva == true || aloj.Habitacion.Capacidad() == 0)
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                        }
-        //                        else
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                            listaHabitaciones.Add(aloj.Habitacion); 
-        //                        }
-        //                    }
-        //                }
-        //                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-        //                {
-        //                    fechaIni = aloj.FechaEstimadaIngreso.Date;
-        //                    fechaFin = aloj.FechaEstimadaEgreso.Date;
-        //                    if (((DateTime.Compare(fechaDesde.Date, fechaFin) < 0) && (DateTime.Compare(fechaDesde.Date, fechaIni) >= 0)) ||
-        //                        ((DateTime.Compare(fechaHasta.Date, fechaFin) < 0) && (DateTime.Compare(fechaHasta.Date, fechaIni) > 0)))
-        //                    //si las fechas son iguales la habitacion estaria desponible full ya que el check out es a las 10, 
-        //                    //por eso solo se pone < o > segun corresponda
-        //                    {
-        //                        if (aloj.Exclusividad == true || aloj.Habitacion.Capacidad() == 0)
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                        }
-        //                        else
-        //                        {
-        //                            listaHabitaciones.Remove(hab);
-        //                            hab.OcuparCupos(aloj.CantCuposSimples, aloj.CantCuposDobles);
-        //                            listaHabitaciones.Add(hab);
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return (listaHabitaciones);
-        //}
-
         /// <summary>
         /// Realiza la ocupación para una fechas determinadas
         /// </summary>
@@ -300,7 +240,7 @@ namespace Dominio
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                 {
                     if (
-                        (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Ticks >= (TimeSpan.TicksPerHour * 72))
+                        (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
                         &
                         (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
                         )
@@ -341,8 +281,7 @@ namespace Dominio
             {
                 if (aloj.Exclusividad)
                 {
-                    DateTime alojFechaDesde = DateTime.Now; 
-                    //no importa el Now, solo para instanciar
+                    DateTime alojFechaDesde = new DateTime(); 
                     //la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
                     //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
 
@@ -356,15 +295,16 @@ namespace Dominio
                     }
 
                     // Hay interseccion entre las fechas
-                    if ( 
+                    if (
                             //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
-                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0) 
+                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0)
                             |
                             //si fecha de egreso del aloj se encuetra entre las fechas de parametro
                             (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                        )
                     {
-                        auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
+                        //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
+                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad();
                     } 
                 }
             }
@@ -384,7 +324,7 @@ namespace Dominio
              
             if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
             {
-                throw new Exception("Atencion: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
+                throw new Exception("Atención: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
             }
             
             //Siempre se va a colocar en "false" la exclusividad
@@ -402,13 +342,30 @@ namespace Dominio
         {
             if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
             {
-                throw new Exception("Operacion Cancelada: Solo se puede Cancelar un Alojamiento que esta Reservado");
+                throw new Exception("Operación Cancelada: Solo se puede Cancelar un Alojamiento que esta Reservado");
             }
 
             //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
             pAlojamiento.Cancelar(pFechaCancelacion);
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
+        }
+
+        public List<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados,DateTime pDesde, DateTime pHasta)
+        {
+            List<pers.EstadoAlojamiento> auxEstados = new List<pers.EstadoAlojamiento>();
+            foreach (var estado in pEstados)
+            {
+                auxEstados.Add(Mapper.Map<EstadoAlojamiento, pers.EstadoAlojamiento>(estado));
+            }
+
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.ListaPersonalizada(auxEstados, pDesde, pHasta);
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return (listaAlojamientos);
         }
     }
 }

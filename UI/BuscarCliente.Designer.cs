@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_nuevoCliente = new System.Windows.Forms.Button();
             this.textBox_Legajo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.radioButton_legajo = new System.Windows.Forms.RadioButton();
@@ -47,16 +48,19 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulClientes = new System.Windows.Forms.DataGridView();
-            this.btn_nuevoCliente = new System.Windows.Forms.Button();
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rbn_Alta = new System.Windows.Forms.RadioButton();
+            this.rbn_baja = new System.Windows.Forms.RadioButton();
+            this.gpb_altas = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaResulClientes)).BeginInit();
+            this.gpb_altas.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Cancelar
@@ -102,6 +106,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButton_nombre);
             this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.gpb_altas);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
@@ -109,6 +114,17 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda";
+            // 
+            // btn_nuevoCliente
+            // 
+            this.btn_nuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nuevoCliente.Location = new System.Drawing.Point(673, 62);
+            this.btn_nuevoCliente.Name = "btn_nuevoCliente";
+            this.btn_nuevoCliente.Size = new System.Drawing.Size(129, 39);
+            this.btn_nuevoCliente.TabIndex = 11;
+            this.btn_nuevoCliente.Text = "Nuevo Cliente";
+            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
+            this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
             // 
             // textBox_Legajo
             // 
@@ -143,7 +159,7 @@
             // btn_Buscar
             // 
             this.btn_Buscar.Image = global::UI.Properties.Resources.boton_buscar;
-            this.btn_Buscar.Location = new System.Drawing.Point(541, 52);
+            this.btn_Buscar.Location = new System.Drawing.Point(565, 21);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(56, 54);
             this.btn_Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -257,21 +273,10 @@
             this.tablaResulClientes.StandardTab = true;
             this.tablaResulClientes.TabIndex = 0;
             // 
-            // btn_nuevoCliente
-            // 
-            this.btn_nuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_nuevoCliente.Location = new System.Drawing.Point(654, 52);
-            this.btn_nuevoCliente.Name = "btn_nuevoCliente";
-            this.btn_nuevoCliente.Size = new System.Drawing.Size(129, 39);
-            this.btn_nuevoCliente.TabIndex = 11;
-            this.btn_nuevoCliente.Text = "Nuevo Cliente";
-            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
-            this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
-            // 
             // clm_Dni
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clm_Dni.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clm_Dni.DefaultCellStyle = dataGridViewCellStyle13;
             this.clm_Dni.FillWeight = 50F;
             this.clm_Dni.HeaderText = "DNI";
             this.clm_Dni.Name = "clm_Dni";
@@ -286,8 +291,8 @@
             // 
             // clm_apellido
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clm_apellido.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clm_apellido.DefaultCellStyle = dataGridViewCellStyle14;
             this.clm_apellido.FillWeight = 65F;
             this.clm_apellido.HeaderText = "Apellido";
             this.clm_apellido.Name = "clm_apellido";
@@ -295,8 +300,8 @@
             // 
             // clm_Nombre
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clm_Nombre.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clm_Nombre.DefaultCellStyle = dataGridViewCellStyle15;
             this.clm_Nombre.FillWeight = 85F;
             this.clm_Nombre.HeaderText = "Nombre";
             this.clm_Nombre.Name = "clm_Nombre";
@@ -304,12 +309,48 @@
             // 
             // clm_telefono
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clm_telefono.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clm_telefono.DefaultCellStyle = dataGridViewCellStyle16;
             this.clm_telefono.FillWeight = 80F;
             this.clm_telefono.HeaderText = "Telefono";
             this.clm_telefono.Name = "clm_telefono";
             this.clm_telefono.ReadOnly = true;
+            // 
+            // rbn_Alta
+            // 
+            this.rbn_Alta.AutoSize = true;
+            this.rbn_Alta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbn_Alta.Location = new System.Drawing.Point(0, 17);
+            this.rbn_Alta.Name = "rbn_Alta";
+            this.rbn_Alta.Size = new System.Drawing.Size(72, 22);
+            this.rbn_Alta.TabIndex = 12;
+            this.rbn_Alta.TabStop = true;
+            this.rbn_Alta.Text = "En Alta";
+            this.rbn_Alta.UseVisualStyleBackColor = true;
+            this.rbn_Alta.CheckedChanged += new System.EventHandler(this.rbn_Alta_CheckedChanged);
+            // 
+            // rbn_baja
+            // 
+            this.rbn_baja.AutoSize = true;
+            this.rbn_baja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbn_baja.Location = new System.Drawing.Point(0, 45);
+            this.rbn_baja.Name = "rbn_baja";
+            this.rbn_baja.Size = new System.Drawing.Size(77, 22);
+            this.rbn_baja.TabIndex = 13;
+            this.rbn_baja.TabStop = true;
+            this.rbn_baja.Text = "En Baja";
+            this.rbn_baja.UseVisualStyleBackColor = true;
+            this.rbn_baja.CheckedChanged += new System.EventHandler(this.rbn_baja_CheckedChanged);
+            // 
+            // gpb_altas
+            // 
+            this.gpb_altas.Controls.Add(this.rbn_Alta);
+            this.gpb_altas.Controls.Add(this.rbn_baja);
+            this.gpb_altas.Location = new System.Drawing.Point(550, 65);
+            this.gpb_altas.Name = "gpb_altas";
+            this.gpb_altas.Size = new System.Drawing.Size(82, 73);
+            this.gpb_altas.TabIndex = 14;
+            this.gpb_altas.TabStop = false;
             // 
             // BuscarCliente
             // 
@@ -330,6 +371,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablaResulClientes)).EndInit();
+            this.gpb_altas.ResumeLayout(false);
+            this.gpb_altas.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -357,5 +400,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_telefono;
+        private System.Windows.Forms.GroupBox gpb_altas;
+        private System.Windows.Forms.RadioButton rbn_Alta;
+        private System.Windows.Forms.RadioButton rbn_baja;
     }
 }

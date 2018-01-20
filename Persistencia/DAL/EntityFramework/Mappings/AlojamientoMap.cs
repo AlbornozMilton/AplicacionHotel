@@ -19,19 +19,19 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(a => a.DniResponsable)
                 .IsRequired();
 
-            this.Property(a => a.FechaReserva).HasColumnType("Date")
+            this.Property(a => a.FechaReserva).HasColumnType("datetime2")
                 .IsOptional();
 
-            this.Property(a => a.FechaEstimadaIngreso).HasColumnType("Date")
+            this.Property(a => a.FechaEstimadaIngreso).HasColumnType("datetime2")
                 .IsOptional();
 
-            this.Property(a => a.FechaEstimadaEgreso).HasColumnType("Date")
+            this.Property(a => a.FechaEstimadaEgreso).HasColumnType("datetime2")
                 .IsOptional();
 
-            this.Property(a => a.FechaIngreso).HasColumnType("Date")
+            this.Property(a => a.FechaIngreso).HasColumnType("datetime2")
                 .IsOptional();
 
-            this.Property(a => a.FechaEgreso).HasColumnType("Date")
+            this.Property(a => a.FechaEgreso).HasColumnType("datetime2")
                 .IsOptional();
 
             this.HasRequired(a => a.Habitacion)

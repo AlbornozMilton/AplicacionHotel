@@ -67,7 +67,15 @@ namespace UI
                     tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
                     this.HabSeleccionada = TablaDisp.HabSeleccionada;
 
-                    ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada);
+                    if (!new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20))//si es falso que entre
+                    {
+                        MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel.");
+                        ck_Exclusividad.Enabled = false;
+                    }
+                    else
+                    {
+                        ck_Exclusividad.Enabled = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada) == HabSeleccionada.Capacidad();
+                    }
 
                     groupBox4.Enabled = true;
                    
@@ -94,7 +102,7 @@ namespace UI
         private void button2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
-            BuscarClienteForm.setEnable(); //Cambiar
+            BuscarClienteForm.setEnableAltas(false); 
             BuscarClienteForm.ShowDialog();
             try
             {
@@ -199,7 +207,7 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().ControlPlazoRereva(dtp_fechaDesde.Value.Date);
-                this.FechaIni = dtp_fechaDesde.Value.Date;
+                this.FechaIni = dtp_fechaDesde.Value;
                 btn_Confirmar.Enabled = false;
                 groupBox4.Enabled = false;
                 groupBox3.Enabled = false;
@@ -214,7 +222,7 @@ namespace UI
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaFin = dtp_fechaHasta.Value.Date;
+            this.FechaFin = dtp_fechaHasta.Value;
             btn_Confirmar.Enabled = false;
             groupBox4.Enabled = false;
             groupBox3.Enabled = false;

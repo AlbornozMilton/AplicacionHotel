@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Dominio;
+
+namespace UI
+{
+    public partial class ModificarAltaCliente : Form
+    {
+        Cliente ClienteSeleccionado;
+        public ModificarAltaCliente()
+        {
+            InitializeComponent();
+            btn_darAlta.Enabled = false;
+            btn_darBaja.Enabled = false;
+            btn_aceptar.Enabled = false;
+        }
+
+        private void btn_nuevoCliente_Click(object sender, EventArgs e)
+        {
+            BuscarCliente BuscarCliente = new BuscarCliente();
+            BuscarCliente.ShowDialog();
+
+            if (BuscarCliente.ClienteSeleccionado != null)
+            {
+                ClienteSeleccionado = BuscarCliente.ClienteSeleccionado;
+                tablaResulCliente.Rows.Add(ClienteSeleccionado.ClienteId, ClienteSeleccionado.Legajo, ClienteSeleccionado.Apellido, ClienteSeleccionado.Nombre, ClienteSeleccionado.EnAlta ? "En Alta":"En Baja");
+                if (ClienteSeleccionado.EnAlta)
+                {
+                    btn_darBaja.Enabled = true;
+                }
+                else
+                {
+                    btn_darAlta.Enabled = true;
+                }
+                btn_aceptar.Enabled = true;
+            }
+            else
+            {
+                tablaResulCliente.Rows.Clear();
+            }
+        }
+
+        private void btn_aceptar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btn_darAlta_Click(object sender, EventArgs e)
+        {
+            new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, true);
+            MessageBox.Show("Cliente dado de Alta.");
+            Close();
+        }
+
+        private void btn_darBaja_Click(object sender, EventArgs e)
+        {
+            new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, false);
+            MessageBox.Show("Cliente dado de Baja.");
+            Close();
+        }
+    }
+}

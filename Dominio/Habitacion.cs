@@ -25,21 +25,6 @@ namespace Dominio
             this.iExclusiva = pExclusiva;
             this.iCupos = pCupos;
         }
-        //public Habitacion(int pNumero, int pPlanta, bool pExclusiva, int pCapacidad)
-        //{
-        //    this.iNumero = pNumero;
-        //    this.iCapacidad = pCapacidad;
-        //    this.iPlanta = pPlanta;
-        //    this.iExclusiva = pExclusiva;
-        //    this.iCupos = new List<Cupo>()
-        //    {
-        //       new Cupo(1, TipoCupo.simple, true),
-        //       new Cupo(2, TipoCupo.doble, true),
-        //       new Cupo(3, TipoCupo.simple, false),
-        //       new Cupo(4, TipoCupo.doble, true)
-        //    };
-        //    this.CalcularCapcidad();
-        //}
 
         //PROPIEDADES
         public byte HabitacionId
@@ -69,7 +54,7 @@ namespace Dominio
         {
             foreach (var cupo in this.iCupos)
             {
-                if ((pCantS > 0) || (pCantD > 0))
+                if (cupo.Alta && (pCantS > 0 || pCantD > 0))
                 {
                     if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && cupo.Disponible )
                     {
@@ -89,7 +74,7 @@ namespace Dominio
         {
             foreach (var cupo in this.iCupos)
             {
-                if ((pCantS > 0) || (pCantD > 0))
+                if (cupo.Alta && (pCantS > 0 || pCantD > 0))
                 {
                     if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && !cupo.Disponible)
                     {
@@ -110,11 +95,11 @@ namespace Dominio
             byte lCapacidad = 0;
             foreach (var cupo in this.iCupos)
             {
-                if (cupo.Tipo == TipoCupo.simple)
+                if (cupo.Alta && cupo.Tipo == TipoCupo.simple)
                 {
                     lCapacidad ++;
                 }
-                else if (cupo.Tipo == TipoCupo.doble)
+                else if (cupo.Alta && cupo.Tipo == TipoCupo.doble)
                 {
                     lCapacidad += 2;
                 } 
@@ -127,7 +112,7 @@ namespace Dominio
             byte resultado = 0;
             foreach (var cupo in this.iCupos)
             {
-                if (cupo.Disponible && (cupo.Tipo == TipoCupo.simple))
+                if (cupo.Alta && cupo.Disponible && cupo.Tipo == TipoCupo.simple)
                 {
                     resultado++;
                 }
@@ -140,7 +125,7 @@ namespace Dominio
             byte resultado = 0;
             foreach (var cupo in this.iCupos)
             {
-                if (cupo.Disponible && (cupo.Tipo == TipoCupo.doble))
+                if (cupo.Alta && cupo.Disponible && cupo.Tipo == TipoCupo.doble )
                 {
                     resultado ++ ;
                 }
@@ -151,6 +136,14 @@ namespace Dominio
         public void SetExclusividad(bool pExclusividad)
         {
             this.iExclusiva = pExclusividad;
+        }
+
+        public void ModificarAltaCupo(int pIndex)
+        {
+            if (this.iCupos[pIndex].Alta)
+                this.iCupos[pIndex].ModificarAlta(false);
+            else
+                this.iCupos[pIndex].ModificarAlta(true);
         }
     }
 }
