@@ -50,11 +50,11 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.iAloj_Seleccionado != null)
+            if (BuscarAlojamiento.Aloj_Seleccionado != null)
             {
-                if (BuscarAlojamiento.iAloj_Seleccionado.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                 {
-                    AlojSeleciconado = BuscarAlojamiento.iAloj_Seleccionado;
+                    AlojSeleciconado = BuscarAlojamiento.Aloj_Seleccionado;
                     CargarAlojamientoSeccionado(AlojSeleciconado);
                     btn_buscarServicio.Enabled = true;
                     gpb_Servicio.Enabled = true;

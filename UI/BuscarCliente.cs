@@ -14,11 +14,11 @@ namespace UI
     public partial class BuscarCliente : Form
     {
         public Cliente ClienteSeleccionado;
-        public DataGridViewRow FilaSeleccionada;
+        private Cliente AuxClienteSeleccionado;
         ControladorCliente ControladorCliente = new ControladorCliente();
         private bool auxAlta;
 
-        public void setEnable(bool pValor)
+        public void setEnableAltas(bool pValor)
         {
             gpb_altas.Enabled = pValor;
         } 
@@ -26,6 +26,13 @@ namespace UI
         public BuscarCliente()
         {
             InitializeComponent();
+        }
+
+
+        private void BuscarCliente_Load(object sender, EventArgs e)
+        {
+            //tablaResulClientes.DefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
+            //tablaResulClientes.ColumnHeadersDefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
             btn_Aceptar.Enabled = false;
             radioButton1.Checked = true;
             textBox_Legajo.Enabled = false;
@@ -53,34 +60,35 @@ namespace UI
         //    label4.Visible = false;
         //}
 
+        private void CargarCliente()
+        {
+            tablaResulClientes.Rows.Add(AuxClienteSeleccionado.ClienteId, AuxClienteSeleccionado.Legajo, AuxClienteSeleccionado.Apellido, AuxClienteSeleccionado.Nombre, AuxClienteSeleccionado.Telefono);
+        }
+
         private void btn_Buscar_Click(object sender, EventArgs e)
-        {                               //O UN METODO QUE REALICE TODOS LOC CONTROLES NECESARIOS Y RETORNE BOOLEANO
+        {
             try
             {
+                tablaResulClientes.Rows.Clear();
                 if (radioButton1.Checked && radioButton1.Text.Length > 0) //DNi
                 {
-                    tablaResulClientes.Rows.Clear();
-                    Cliente cli = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
-                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
-                    btn_Aceptar.Enabled = true;
+                    AuxClienteSeleccionado = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
+                    CargarCliente();
                 }
                 else if (radioButton_nombre.Checked && radioButton_nombre.Text.Length > 0)//NOMBRE
                 {
-                    tablaResulClientes.Rows.Clear();
                     List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
                     foreach (var cli in list)
                     {
                         tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
                     }
-                    btn_Aceptar.Enabled = true;
                 }
                 else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO
                 {
-                    tablaResulClientes.Rows.Clear();
-                    Cliente cli = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
-                    tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
-                    btn_Aceptar.Enabled = true;
+                    AuxClienteSeleccionado = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
+                    CargarCliente();
                 }
+                btn_Aceptar.Enabled = true;
             }
             catch (Exception E)
             {
@@ -88,21 +96,16 @@ namespace UI
             }
         }
 
-        private void BuscarCliente_Load(object sender, EventArgs e)
-        {
-            tablaResulClientes.DefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
-            tablaResulClientes.ColumnHeadersDefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
-        }
-
-        /// <summary>
-        /// Que hace estoo??? esta de mas??? ver el metodo de arriba
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
-            this.FilaSeleccionada = tablaResulClientes.CurrentRow;
+            if (AuxClienteSeleccionado != null && tablaResulClientes.CurrentRow != null)
+            {
+                this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
+            }
+            else
+            {
+                ClienteSeleccionado = AuxClienteSeleccionado;
+            }
             Close();
         }
 
@@ -141,15 +144,11 @@ namespace UI
 
         private void rbn_Alta_CheckedChanged(object sender, EventArgs e)
         {
-            //rbn_Alta.Checked = true;
-            //rbn_baja.Checked = false;
             auxAlta = true;
         }
 
         private void rbn_baja_CheckedChanged(object sender, EventArgs e)
         {
-            //rbn_baja.Checked = true;
-            //rbn_Alta.Checked = false;
             auxAlta = false;
         }
     }
