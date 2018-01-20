@@ -47,6 +47,7 @@
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarAltaDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -231,6 +232,13 @@
             this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(282, 28);
             this.modificarAltaDeClienteToolStripMenuItem.Text = "Modificar Alta de Cliente";
             this.modificarAltaDeClienteToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeClienteToolStripMenuItem_Click);
+            // 
+            // modificarDatosToolStripMenuItem
+            // 
+            this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
+            this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(282, 28);
+            this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
+            this.modificarDatosToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosToolStripMenuItem_Click);
             // 
             // buscarToolStripMenuItem
             // 
@@ -555,12 +563,12 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // modificarDatosToolStripMenuItem
+            // cancelarReservaToolStripMenuItem
             // 
-            this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
-            this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(282, 28);
-            this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
-            this.modificarDatosToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosToolStripMenuItem_Click_1);
+            this.cancelarReservaToolStripMenuItem.Name = "cancelarReservaToolStripMenuItem";
+            this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(229, 28);
+            this.cancelarReservaToolStripMenuItem.Text = "Cancelar Reserva";
+            this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click_1);
             // 
             // VentanaPrincipal
             // 
@@ -643,5 +651,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem modificarDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cancelarReservaToolStripMenuItem;
     }
 }

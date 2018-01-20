@@ -224,11 +224,10 @@ namespace UI
 
         private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BuscarCliente ventanaBuscarCliente = new BuscarCliente();
-            ventanaBuscarCliente.ShowDialog();
-            NuevoCliente ventanaCliente = new NuevoCliente(ventanaBuscarCliente.ClienteSeleccionado);
+            BuscarCliente ventanaBusqueda = new BuscarCliente();
+            ventanaBusqueda.ShowDialog();
+            NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
             ventanaCliente.ShowDialog();
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -244,12 +243,19 @@ namespace UI
             cancelarAlojamiento.ShowDialog();
         }
 
-        private void modificarDatosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        //private void modificarDatosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        //{
+        //    BuscarCliente ventanaBusqueda = new BuscarCliente();
+        //    ventanaBusqueda.ShowDialog();
+        //    NuevoCliente ventanaCliente = new NuevoCliente();
+        //    ventanaCliente.CargarCampos(ventanaBusqueda.ClienteSeleccionado);
+        //    ventanaCliente.ShowDialog();
+        //}
+
+        private void cancelarReservaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            BuscarCliente ventanaBusqueda = new BuscarCliente();
-            ventanaBusqueda.ShowDialog();
-            NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
-            ventanaCliente.ShowDialog();
+            CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
+            cancelarAlojamiento.ShowDialog();
         }
     }
 }

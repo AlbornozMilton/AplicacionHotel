@@ -16,13 +16,13 @@ namespace UI
         ControladorCliente ControladorCliente = new ControladorCliente();
         List<Ciudad> Ciudades;
         List<TarifaCliente> Tarifas;
+        Cliente localCliente;
 
         public NuevoCliente()
         {
             InitializeComponent();
         }
 
-    
         private void NuevoCliente_Load(object sender, EventArgs e)
         {
             button1.Enabled = false;
@@ -40,42 +40,35 @@ namespace UI
             {
                 cbx_tipo.Items.Add(tarifa.NombreTarifa);
             }
+
+            if (localCliente!=null)
+            {
+                CargarCampos();
+            }
         }
 
         public NuevoCliente(Cliente pCliente)
         {
             InitializeComponent();
-            CargarCampos(pCliente);
-            //Ciudades = ControladorCliente.ObtenerCiudades();
-            //Tarifas = ControladorCliente.DevolverListaTarifas();
-            //txb_codPostal.Enabled = false;
-            //cbx_tipo.Items.Clear();
-
-            //foreach (var ciudad in Ciudades)
-            //{
-            //    cbx_ciudades.Items.Add(ciudad.Nombre);
-            //}
-
-            //foreach (var tarifa in Tarifas)
-            //{
-            //    cbx_tipo.Items.Add(tarifa.NombreTarifa);
-            //}
+            localCliente = pCliente;
         }
 
-        public void CargarCampos(Cliente cli)
+        public void CargarCampos()
         {
-            tbx_dni.Text = cli.ClienteId.ToString();
-            txb_legajo.Text = cli.Legajo.ToString();
-            txb_apellido.Text = cli.Apellido;
-            txb_nombre.Text = cli.Nombre;
-            txb_telefono.Text = cli.Telefono.ToString();
-            cbx_tipo.Text = (cli.TarifaCliente.NombreTarifa);
-            cbx_ciudades.Text = cli.Domicilio.Ciudad.Nombre;
-            cbx_calles.Text = cli.Domicilio.Calle;
-            txb_nroCalle.Text = cli.Domicilio.Numero.ToString();
-            txb_piso.Text = cli.Domicilio.Piso.ToString();
-            txb_nroDepto.Text = cli.Domicilio.NroDepto.ToString();
-            txb_correo.Text = cli.Correo;
+            tbx_dni.Text = localCliente.ClienteId.ToString();
+            tbx_dni.Enabled = false;
+            txb_legajo.Text = localCliente.Legajo.ToString();
+            txb_apellido.Text = localCliente.Apellido;
+            txb_nombre.Text = localCliente.Nombre;
+            txb_telefono.Text = localCliente.Telefono.ToString();
+            cbx_tipo.SelectedIndex = cbx_tipo.FindString(localCliente.TarifaCliente.NombreTarifa);
+            cbx_ciudades.SelectedIndex = cbx_ciudades.FindString(localCliente.Domicilio.Ciudad.Nombre);
+            //cbx_ciudades.Text = localCliente.Domicilio.Ciudad.Nombre;
+            cbx_calles.Text = localCliente.Domicilio.Calle;
+            txb_nroCalle.Text = localCliente.Domicilio.Numero.ToString();
+            txb_piso.Text = localCliente.Domicilio.Piso.ToString();
+            txb_nroDepto.Text = localCliente.Domicilio.NroDepto.ToString();
+            txb_correo.Text = localCliente.Correo;
         }
 
         public void ControlCamposObligatorios()
