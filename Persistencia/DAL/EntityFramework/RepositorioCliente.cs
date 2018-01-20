@@ -160,17 +160,7 @@ namespace Persistencia.DAL.EntityFramework
 
             CargarCliente(localCliente, pCliente);
 
-            //cambiar el cliente para todos los alojamientos en los que estuvo y esta.
-            foreach (var aloj in iDbContext.Alojamientos)
-            {
-                foreach (var cli in aloj.Clientes)
-                {
-                    if (cli.ClienteId == pCliente.ClienteId)
-                    {
-                        this.CargarCliente(cli, localCliente);
-                    }
-                }
-            }
+            
 
             iDbContext.SaveChanges();
         }
@@ -189,7 +179,21 @@ namespace Persistencia.DAL.EntityFramework
         public void ModificarDNICliente(Cliente pCliente, int pLegajo)
         {
             Cliente localCliente = this.GetPorLegajo(pLegajo,pCliente.EnAlta);
+
+            //cambiar el cliente para todos los alojamientos en los que estuvo y esta.
+            foreach (var aloj in iDbContext.Alojamientos)
+            {
+                foreach (var cli in aloj.Clientes)
+                {
+                    if (cli.ClienteId == localCliente.ClienteId)
+                    {
+                        cli.ClienteId = pCliente.ClienteId;
+                    }
+                }
+            }
+
             localCliente.ClienteId = pCliente.ClienteId;
+
             iDbContext.SaveChanges();
         }
 

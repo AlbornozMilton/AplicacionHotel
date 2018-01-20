@@ -20,11 +20,11 @@ namespace Dominio
         public byte iCantCuposSimples;
         public byte iCantCuposDobles;
         public bool iExclusividad;
-        private DateTime iFechaReserva;//AGREGAR SIGNO ?
-        private DateTime iFechaEstimadaEgreso;//AGREGAR SIGNO ?
-        private DateTime iFechaEstimadaIngreso;//AGREGAR SIGNO ?
-        private DateTime iFechaIngreso;//AGREGAR SIGNO ?
-        private DateTime iFechaEgreso;//AGREGAR SIGNO ?
+        private DateTime iFechaReserva = new DateTime();//AGREGAR SIGNO ?
+        private DateTime iFechaEstimadaEgreso = new DateTime();//AGREGAR SIGNO ?
+        private DateTime iFechaEstimadaIngreso = new DateTime();//AGREGAR SIGNO ?
+        private DateTime iFechaIngreso = new DateTime();//AGREGAR SIGNO ?
+        private DateTime iFechaEgreso = new DateTime();//AGREGAR SIGNO ?
         private EstadoAlojamiento iEstadoAloj;
         private string iContadoresTarifas;
 
@@ -80,8 +80,6 @@ namespace Dominio
             this.iContadoresTarifas = pContTarifas;
         }
 
-        
-
         //----------------------PROP----------------------
         public int AlojamientoId
         {
@@ -95,27 +93,27 @@ namespace Dominio
         }
         public DateTime FechaReserva
         {
-            get { return this.iFechaReserva.Date; }
+            get { return this.iFechaReserva; }
             private set { this.iFechaReserva = value; }
         }
         public DateTime FechaEstimadaIngreso
         {
-            get { return this.iFechaEstimadaIngreso.Date; }
+            get { return this.iFechaEstimadaIngreso; }
             private set { this.iFechaEstimadaIngreso = value; }
         }
         public DateTime FechaEstimadaEgreso
         {
-            get { return this.iFechaEstimadaEgreso.Date; }
+            get { return this.iFechaEstimadaEgreso; }
             private set { this.iFechaEstimadaEgreso = value; }
         }
         public DateTime FechaIngreso
         {
-            get { return this.iFechaIngreso.Date; }
+            get { return this.iFechaIngreso; }
             private set { this.iFechaIngreso = value; }
         }
         public DateTime FechaEgreso
         {
-            get { return this.iFechaEgreso.Date; }
+            get { return this.iFechaEgreso; }
             private set { this.iFechaEgreso = value; }
         }
         public double MontoTotal

@@ -46,11 +46,6 @@ namespace Dominio
             get { return this.iServicio; }
             private set { this.iServicio = value; }
         }
-        //public Alojamiento Alojamiento
-        //{
-        //    get { return this.iAlojamiento; }
-        //    private set { this.iAlojamiento = value; }
-        //}
 
         //---------------------------------------------------------
         private void CalcularCostoServicio()

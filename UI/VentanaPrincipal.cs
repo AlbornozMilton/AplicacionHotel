@@ -19,17 +19,6 @@ namespace UI
         public VentanaPrincipal()
         {
             InitializeComponent();
-            CargarAlojamientosActivos();
-            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-
-            //realizarlo como proceso en segundo plano al inicio y cada cierto tiempo
-            List<Alojamiento> ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
-            if (ListAloj.Count > 0)
-            {
-                //ES UN AVISO - NO SE CANCELAN AUTOMATICAMENTE
-                //GENERAR UI PARA ESTOS ALOJs
-                //PERMITIR CERRAR UN ALOJ O REALIZAR PAGO EN LA MISMA UI
-            }
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,11 +41,23 @@ namespace UI
 
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'hotel_BDDataSet.Cliente' Puede moverla o quitarla según sea necesario.
-            //this.clienteTableAdapter.Fill(this.hotel_BDDataSet.Cliente);
-            
+            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+            CargarAlojamientosActivos();
+            AlojsReservadosSinDeposito();
+            timer1.Interval = 7200000;
+            timer1.Enabled = true;
         }
 
+        private void AlojsReservadosSinDeposito()
+        {
+            List<Alojamiento> ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
+            if (ListAloj.Count > 0)
+            {
+                MessageBox.Show("Los Alojamiento Reservados a continuación no presentan Pago de Depósito dentro de las 72hs");
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
+                listarAlojamientos.ShowDialog();
+            }
+        }
         private void nuevoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             NuevoCliente NuevoCliente = new NuevoCliente();
@@ -229,6 +230,13 @@ namespace UI
         private void dGV_Alojamientos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            AlojsReservadosSinDeposito();
+            timer1.Enabled = true;
         }
     }
 }
