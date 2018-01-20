@@ -70,6 +70,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_VerDetalle = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.dGV_Alojamientos = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,8 +83,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_VerDetalle = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -147,7 +148,6 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(91, 28);
             this.archivoToolStripMenuItem.Text = "Reserva";
-            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // nuevoToolStripMenuItem1
             // 
@@ -209,7 +209,8 @@
             // 
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem2,
-            this.modificarAltaDeClienteToolStripMenuItem});
+            this.modificarAltaDeClienteToolStripMenuItem,
+            this.modificarDatosToolStripMenuItem});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
             this.clienteToolStripMenuItem.Size = new System.Drawing.Size(80, 28);
             this.clienteToolStripMenuItem.Text = "Cliente";
@@ -428,6 +429,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OCUPACION ACTUAL";
             // 
+            // btn_VerDetalle
+            // 
+            this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_VerDetalle.Location = new System.Drawing.Point(957, 15);
+            this.btn_VerDetalle.Name = "btn_VerDetalle";
+            this.btn_VerDetalle.Size = new System.Drawing.Size(126, 24);
+            this.btn_VerDetalle.TabIndex = 5;
+            this.btn_VerDetalle.Text = "Ver Detalles";
+            this.btn_VerDetalle.UseVisualStyleBackColor = true;
+            this.btn_VerDetalle.Click += new System.EventHandler(this.btn_VerDetalle_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 24);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Actualizar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // dGV_Alojamientos
             // 
             this.dGV_Alojamientos.AllowUserToAddRows = false;
@@ -472,7 +494,6 @@
             this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Alojamientos.Size = new System.Drawing.Size(1080, 236);
             this.dGV_Alojamientos.TabIndex = 0;
-            this.dGV_Alojamientos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Alojamientos_CellContentClick);
             // 
             // Column7
             // 
@@ -528,26 +549,12 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
-            // btn_VerDetalle
+            // modificarDatosToolStripMenuItem
             // 
-            this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_VerDetalle.Location = new System.Drawing.Point(957, 15);
-            this.btn_VerDetalle.Name = "btn_VerDetalle";
-            this.btn_VerDetalle.Size = new System.Drawing.Size(126, 24);
-            this.btn_VerDetalle.TabIndex = 5;
-            this.btn_VerDetalle.Text = "Ver Detalles";
-            this.btn_VerDetalle.UseVisualStyleBackColor = true;
-            this.btn_VerDetalle.Click += new System.EventHandler(this.btn_VerDetalle_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 24);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Actualizar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
+            this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(282, 28);
+            this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
+            this.modificarDatosToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosToolStripMenuItem_Click);
             // 
             // VentanaPrincipal
             // 
@@ -628,5 +635,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarHabitacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarAltaDeCuposToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem modificarDatosToolStripMenuItem;
     }
 }

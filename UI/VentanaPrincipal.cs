@@ -76,11 +76,6 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
         }
 
-        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Cerrar ventana Principal y dejar ventana de inicio sesion.
@@ -226,8 +221,12 @@ namespace UI
             CargarAlojamientosActivos();
         }
 
-        private void dGV_Alojamientos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            BuscarCliente ventanaBuscarCliente = new BuscarCliente();
+            ventanaBuscarCliente.ShowDialog();
+            NuevoCliente ventanaCliente = new NuevoCliente(ventanaBuscarCliente.ClienteSeleccionado);
+            ventanaCliente.ShowDialog();
 
         }
     }
