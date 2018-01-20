@@ -13,13 +13,15 @@ namespace UI
 {
     public partial class ListarAlojamientos : Form
     {
-        public BuscarAlojamiento iFormPadre;
+        public Alojamiento AlojSeleccionado;
         public List<Alojamiento> Alojamientos;
 
         public ListarAlojamientos()
         {
             InitializeComponent();
-            btn_verDetalles.Enabled = false;
+            dateTimePicker_hasta.Value = DateTime.Now;
+            string[] auxComponents = { "btn_Aceptar","button_realizarPago", "button_CancelarAloj" };
+            this.EnableComponents(auxComponents, false);
         }
 
         public ListarAlojamientos(List<Alojamiento> pAlojs)
@@ -27,15 +29,11 @@ namespace UI
             InitializeComponent();
             Alojamientos = pAlojs;
             CargarAlojamientos();
-            groupBox_Rapida.Enabled = false;
-            groupBox_Personalizado.Enabled = false;
-            btn_Aceptar.Enabled = false;
-        }
-
-        public ListarAlojamientos( BuscarAlojamiento form)
-        {
-            InitializeComponent();
-            this.iFormPadre = form;
+            string[] auxComponents = { "btn_Aceptar","groupBox_Rapida", "groupBox_Personalizado" };
+            this.EnableComponents(auxComponents, false);
+            //groupBox_Rapida.Enabled = false;
+            //groupBox_Personalizado.Enabled = false;
+            //btn_Aceptar.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,7 +45,8 @@ namespace UI
         {
             foreach (var aloj in Alojamientos)
             {
-                dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.DniResponsable, aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable).Apellido + ' ' + aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable).Nombre, aloj.Habitacion.HabitacionId);
+                Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId,auxCli.NombreCompleto(),auxCli.TarifaCliente.NombreTarifa);
             }
         }
 
@@ -60,25 +59,53 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iFormPadre.iAloj_Seleccionado = Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value));
-            iFormPadre.CargarAlojamientoSeccionado(dGV_ListadoDeAlojamientos.CurrentRow.Cells);
+            AlojSeleccionado = Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value));
             Close();
         }
 
         //Ver detalles
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dGV_ListadoDeAlojamientos.CurrentRow.Cells != null)
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
             {
                 int auxIdAloj = Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value);
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(Alojamientos.Find(a => a.AlojamientoId == auxIdAloj));
                 VentanaVisualizar.ShowDialog();
-                //iFormPadre.iAloj_Seleccionado = null;
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalladamente.");
             }
         }
+
+        private void button_realizarPago_Click(object sender, EventArgs e)
+        {
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
+            {
+                RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
+                registrarPago.ShowDialog();
+                Close();
+            }
+            //actualizar lista o no
+        }
+
+        private void button_CancelarAloj_Click(object sender, EventArgs e)
+        {
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
+            {
+                
+                Close();
+            }
+            //actualizar lista o no
+        }
+
+        public void EnableComponents(string[] pNombreComponentes,bool pValor)
+        {
+            foreach (string component in pNombreComponentes)
+            {
+                Control auxComponent = this.Controls.Find(component, false).Single();
+
+                if (auxComponent != null)
+                {
+                    auxComponent.Enabled = pValor;
+                }
+            }
+        }        
     }
 }

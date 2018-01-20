@@ -43,7 +43,6 @@ namespace UI
         private void button3_Click(object sender, EventArgs e)
         {
             ListarAlojamientos ListarAlojamientos = new ListarAlojamientos();
-            ListarAlojamientos.iFormPadre = this;
             ListarAlojamientos.ShowDialog();
         }
 

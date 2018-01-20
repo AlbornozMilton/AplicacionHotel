@@ -32,7 +32,7 @@ namespace Persistencia.DAL.EntityFramework
         }
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Habitacion.Cupos").Include("Clientes").Include("Servicios.Servicio").Include("Pagos")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
