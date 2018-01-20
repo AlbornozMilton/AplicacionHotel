@@ -40,10 +40,10 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.iAloj_Seleccionado != null)
+            if (BuscarAlojamiento.Aloj_Seleccionado != null)
             {
-                iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
-                CargarAlojamientoSeccionado(BuscarAlojamiento.iAloj_Seleccionado);
+                iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
+                CargarAlojamientoSeccionado(BuscarAlojamiento.Aloj_Seleccionado);
                 dGV_ListadoServicios.Rows.Clear();
                 foreach (var serv in iAloj_Seleccionado.Servicios)
                 {

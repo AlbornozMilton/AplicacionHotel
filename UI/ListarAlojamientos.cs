@@ -31,9 +31,6 @@ namespace UI
             CargarAlojamientos();
             string[] auxComponents = { "btn_Aceptar","groupBox_Rapida", "groupBox_Personalizado" };
             this.EnableComponents(auxComponents, false);
-            //groupBox_Rapida.Enabled = false;
-            //groupBox_Personalizado.Enabled = false;
-            //btn_Aceptar.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
