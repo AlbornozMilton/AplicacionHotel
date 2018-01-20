@@ -239,7 +239,6 @@
             // 
             // cbx_tipo
             // 
-            this.cbx_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_tipo.FormattingEnabled = true;
             this.cbx_tipo.Items.AddRange(new object[] {

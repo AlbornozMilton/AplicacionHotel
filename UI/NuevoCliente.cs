@@ -69,14 +69,13 @@ namespace UI
             txb_apellido.Text = cli.Apellido;
             txb_nombre.Text = cli.Nombre;
             txb_telefono.Text = cli.Telefono.ToString();
-            //cbx_tipo.Text = (cli.TarifaCliente.NombreTarifa);
+            cbx_tipo.Text = (cli.TarifaCliente.NombreTarifa);
             cbx_ciudades.Text = cli.Domicilio.Ciudad.Nombre;
             cbx_calles.Text = cli.Domicilio.Calle;
             txb_nroCalle.Text = cli.Domicilio.Numero.ToString();
             txb_piso.Text = cli.Domicilio.Piso.ToString();
             txb_nroDepto.Text = cli.Domicilio.NroDepto.ToString();
             txb_correo.Text = cli.Correo;
-            cbx_tipo.SelectedItem = (cli.TarifaCliente.NombreTarifa).ToString();
         }
 
         public void ControlCamposObligatorios()
