@@ -240,7 +240,7 @@ namespace Dominio
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                 {
                     if (
-                        (DateTime.Now.Date.Subtract(aloj.FechaReserva.Date).Ticks >= (TimeSpan.TicksPerHour * 72))
+                        (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
                         &
                         (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
                         )

@@ -15,6 +15,8 @@ namespace Persistencia.DAL
         Cliente GetPorLegajo(int pLegajo, bool pAlta);
         bool ExisteClienteDNI(int pDNI);
         bool ExisteClienteLegajo(int pLegajo);
+        void MoficarDatosCliente(Cliente pCliente);
+        void ModificarDNICliente(Cliente pCliente, int pLegajo);
     }
 
 }

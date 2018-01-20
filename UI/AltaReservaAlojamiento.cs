@@ -207,7 +207,7 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().ControlPlazoRereva(dtp_fechaDesde.Value.Date);
-                this.FechaIni = dtp_fechaDesde.Value.Date;
+                this.FechaIni = dtp_fechaDesde.Value;
                 btn_Confirmar.Enabled = false;
                 groupBox4.Enabled = false;
                 groupBox3.Enabled = false;
@@ -222,7 +222,7 @@ namespace UI
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaFin = dtp_fechaHasta.Value.Date;
+            this.FechaFin = dtp_fechaHasta.Value;
             btn_Confirmar.Enabled = false;
             groupBox4.Enabled = false;
             groupBox3.Enabled = false;
