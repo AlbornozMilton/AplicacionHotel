@@ -84,7 +84,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cancelarReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -150,7 +150,6 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(91, 28);
             this.archivoToolStripMenuItem.Text = "Reserva";
-            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // nuevoToolStripMenuItem1
             // 
@@ -212,7 +211,8 @@
             // 
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem2,
-            this.modificarAltaDeClienteToolStripMenuItem});
+            this.modificarAltaDeClienteToolStripMenuItem,
+            this.modificarDatosToolStripMenuItem});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
             this.clienteToolStripMenuItem.Size = new System.Drawing.Size(80, 28);
             this.clienteToolStripMenuItem.Text = "Cliente";
@@ -496,7 +496,6 @@
             this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Alojamientos.Size = new System.Drawing.Size(1080, 236);
             this.dGV_Alojamientos.TabIndex = 0;
-            this.dGV_Alojamientos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Alojamientos_CellContentClick);
             // 
             // Column7
             // 
@@ -556,12 +555,12 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // cancelarReservaToolStripMenuItem
+            // modificarDatosToolStripMenuItem
             // 
-            this.cancelarReservaToolStripMenuItem.Name = "cancelarReservaToolStripMenuItem";
-            this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(229, 28);
-            this.cancelarReservaToolStripMenuItem.Text = "Cancelar Reserva";
-            this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click);
+            this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
+            this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(282, 28);
+            this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
+            this.modificarDatosToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosToolStripMenuItem_Click_1);
             // 
             // VentanaPrincipal
             // 
@@ -643,6 +642,6 @@
         private System.Windows.Forms.ToolStripMenuItem modificarAltaDeCuposToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem cancelarReservaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarDatosToolStripMenuItem;
     }
 }

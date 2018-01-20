@@ -45,20 +45,37 @@ namespace UI
         public NuevoCliente(Cliente pCliente)
         {
             InitializeComponent();
-            Ciudades = ControladorCliente.ObtenerCiudades();
-            Tarifas = ControladorCliente.DevolverListaTarifas();
-            txb_codPostal.Enabled = false;
-            cbx_tipo.Items.Clear();
+            CargarCampos(pCliente);
+            //Ciudades = ControladorCliente.ObtenerCiudades();
+            //Tarifas = ControladorCliente.DevolverListaTarifas();
+            //txb_codPostal.Enabled = false;
+            //cbx_tipo.Items.Clear();
 
-            foreach (var ciudad in Ciudades)
-            {
-                cbx_ciudades.Items.Add(ciudad.Nombre);
-            }
+            //foreach (var ciudad in Ciudades)
+            //{
+            //    cbx_ciudades.Items.Add(ciudad.Nombre);
+            //}
 
-            foreach (var tarifa in Tarifas)
-            {
-                cbx_tipo.Items.Add(tarifa.NombreTarifa);
-            }
+            //foreach (var tarifa in Tarifas)
+            //{
+            //    cbx_tipo.Items.Add(tarifa.NombreTarifa);
+            //}
+        }
+
+        public void CargarCampos(Cliente cli)
+        {
+            tbx_dni.Text = cli.ClienteId.ToString();
+            txb_legajo.Text = cli.Legajo.ToString();
+            txb_apellido.Text = cli.Apellido;
+            txb_nombre.Text = cli.Nombre;
+            txb_telefono.Text = cli.Telefono.ToString();
+            cbx_tipo.Text = (cli.TarifaCliente.NombreTarifa);
+            cbx_ciudades.Text = cli.Domicilio.Ciudad.Nombre;
+            cbx_calles.Text = cli.Domicilio.Calle;
+            txb_nroCalle.Text = cli.Domicilio.Numero.ToString();
+            txb_piso.Text = cli.Domicilio.Piso.ToString();
+            txb_nroDepto.Text = cli.Domicilio.NroDepto.ToString();
+            txb_correo.Text = cli.Correo;
         }
 
         public void ControlCamposObligatorios()
@@ -343,7 +360,7 @@ namespace UI
             label21.Visible = false;
         }
 
-        private void tabControl1_Enter(object sender, EventArgs e)
+        private void pestaña_DatosGenerales_Enter(object sender, EventArgs e)
         {
             button1.Enabled = true;
         }

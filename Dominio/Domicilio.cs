@@ -43,7 +43,7 @@ namespace Dominio
         public string Calle { get { return this.iCalle; } private set { this.iCalle = value; } }
         public string  Numero { get { return this.iNumCalle; } private set { this.iNumCalle = value; } }
         public string Piso { get { return this.iNumPiso; } private set { this.iNumPiso = value; } }
-        public string NroDepto { get { return this.iNumDepto; } private set { this.iNumPiso = value; } }
+        public string NroDepto { get { return this.iNumDepto; } private set { this.iNumDepto = value; } }
         public Ciudad Ciudad { get { return this.iCiudad; } private set { this.iCiudad = value; } }
         public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
         //--------------------------------------metodos

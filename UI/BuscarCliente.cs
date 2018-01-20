@@ -98,7 +98,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            if (AuxClienteSeleccionado != null && tablaResulClientes.CurrentRow != null)
+            if (AuxClienteSeleccionado == null && tablaResulClientes.CurrentRow != null)
             {
                 this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
             }
