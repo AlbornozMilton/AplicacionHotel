@@ -238,5 +238,11 @@ namespace UI
             AlojsReservadosSinDeposito();
             timer1.Enabled = true;
         }
+
+        private void cancelarReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
+            cancelarAlojamiento.ShowDialog();
+        }
     }
 }
