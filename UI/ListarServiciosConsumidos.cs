@@ -19,10 +19,6 @@ namespace UI
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Para que pueda ser llamado desde otros eventos.
-        /// </summary>
-        /// <param name="pAloPreSeleccionado">Un Alojamiento no vacío</param>
         public ListarServiciosConsumidos(Alojamiento pAloPreSeleccionado)
         {
             InitializeComponent();

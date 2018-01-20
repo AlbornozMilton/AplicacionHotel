@@ -7,7 +7,7 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class RepositorioAlojamiento : Repositorio<Alojamiento,HotelContext>, IRepositorioAlojamiento
+    class RepositorioAlojamiento : Repositorio<Alojamiento, HotelContext>, IRepositorioAlojamiento
     {
         public RepositorioAlojamiento(HotelContext pContext) : base(pContext)
         {
@@ -28,12 +28,31 @@ namespace Persistencia.DAL.EntityFramework
             {
                 throw new Exception("Alojamiento No Existe");
             }
-            
+
         }
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
             var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
+                               select aloj;
+
+            return alojamientos.ToList<Alojamiento>();
+        }
+
+        public IEnumerable<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados, DateTime pDesde, DateTime pHasta)
+        {
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
+                               where (
+                                        (pEstados.Contains(aloj.EstadoAlojamiento))
+                                        &&
+                                        (
+                                            (aloj.FechaEstimadaEgreso.ToString().CompareTo(pDesde.ToString()) > 0) && aloj.FechaEstimadaEgreso.ToString().CompareTo(pHasta.ToString()) <= 0
+                                            ||
+                                            (aloj.FechaIngreso.ToString().CompareTo(pDesde.ToString()) >= 0) && aloj.FechaIngreso.ToString().CompareTo(pHasta.ToString()) < 0
+                                            ||
+                                            (aloj.FechaEstimadaIngreso.ToString().CompareTo(pDesde.ToString()) >= 0) && aloj.FechaEstimadaIngreso.ToString().CompareTo(pHasta.ToString()) < 0
+                                        )
+                                    )
                                select aloj;
 
             return alojamientos.ToList<Alojamiento>();

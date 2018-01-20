@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_Rapida = new System.Windows.Forms.GroupBox();
             this.btn_ListarActivos = new System.Windows.Forms.Button();
             this.txt_busquedaRapida = new System.Windows.Forms.Label();
             this.groupBox_Personalizado = new System.Windows.Forms.GroupBox();
             this.checkBox_todos = new System.Windows.Forms.CheckBox();
             this.btn_Listar = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_cancelado = new System.Windows.Forms.CheckBox();
+            this.checkBox_cerrado = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker_hasta = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_desde = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoDeAlojamientos = new System.Windows.Forms.DataGridView();
-            this.btn_Aceptar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btn_verDetalles = new System.Windows.Forms.Button();
-            this.button_CancelarAloj = new System.Windows.Forms.Button();
-            this.button_realizarPago = new System.Windows.Forms.Button();
             this.clm_IdAlojamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_NroHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_ApeyNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btn_verDetalles = new System.Windows.Forms.Button();
+            this.button_CancelarAloj = new System.Windows.Forms.Button();
+            this.button_realizarPago = new System.Windows.Forms.Button();
             this.groupBox_Rapida.SuspendLayout();
             this.groupBox_Personalizado.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -78,7 +78,7 @@
             // btn_ListarActivos
             // 
             this.btn_ListarActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ListarActivos.Location = new System.Drawing.Point(255, 45);
+            this.btn_ListarActivos.Location = new System.Drawing.Point(251, 37);
             this.btn_ListarActivos.Name = "btn_ListarActivos";
             this.btn_ListarActivos.Size = new System.Drawing.Size(196, 38);
             this.btn_ListarActivos.TabIndex = 0;
@@ -99,8 +99,8 @@
             // 
             this.groupBox_Personalizado.Controls.Add(this.checkBox_todos);
             this.groupBox_Personalizado.Controls.Add(this.btn_Listar);
-            this.groupBox_Personalizado.Controls.Add(this.checkBox2);
-            this.groupBox_Personalizado.Controls.Add(this.checkBox1);
+            this.groupBox_Personalizado.Controls.Add(this.checkBox_cancelado);
+            this.groupBox_Personalizado.Controls.Add(this.checkBox_cerrado);
             this.groupBox_Personalizado.Controls.Add(this.label3);
             this.groupBox_Personalizado.Controls.Add(this.label2);
             this.groupBox_Personalizado.Controls.Add(this.dateTimePicker_hasta);
@@ -127,34 +127,35 @@
             // btn_Listar
             // 
             this.btn_Listar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Listar.Location = new System.Drawing.Point(494, 45);
+            this.btn_Listar.Location = new System.Drawing.Point(494, 37);
             this.btn_Listar.Name = "btn_Listar";
             this.btn_Listar.Size = new System.Drawing.Size(141, 38);
             this.btn_Listar.TabIndex = 6;
             this.btn_Listar.Text = "Listar";
             this.btn_Listar.UseVisualStyleBackColor = true;
+            this.btn_Listar.Click += new System.EventHandler(this.btn_Listar_Click);
             // 
-            // checkBox2
+            // checkBox_cancelado
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(382, 48);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(93, 20);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "Cancelado";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox_cancelado.AutoSize = true;
+            this.checkBox_cancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_cancelado.Location = new System.Drawing.Point(382, 48);
+            this.checkBox_cancelado.Name = "checkBox_cancelado";
+            this.checkBox_cancelado.Size = new System.Drawing.Size(93, 20);
+            this.checkBox_cancelado.TabIndex = 5;
+            this.checkBox_cancelado.Text = "Cancelado";
+            this.checkBox_cancelado.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBox_cerrado
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(382, 23);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(76, 20);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Cerrado";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_cerrado.AutoSize = true;
+            this.checkBox_cerrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_cerrado.Location = new System.Drawing.Point(382, 23);
+            this.checkBox_cerrado.Name = "checkBox_cerrado";
+            this.checkBox_cerrado.Size = new System.Drawing.Size(76, 20);
+            this.checkBox_cerrado.TabIndex = 4;
+            this.checkBox_cerrado.Text = "Cerrado";
+            this.checkBox_cerrado.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -211,14 +212,14 @@
             this.dGV_ListadoDeAlojamientos.AllowUserToResizeColumns = false;
             this.dGV_ListadoDeAlojamientos.AllowUserToResizeRows = false;
             this.dGV_ListadoDeAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoDeAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoDeAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dGV_ListadoDeAlojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ListadoDeAlojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_IdAlojamiento,
@@ -227,31 +228,80 @@
             this.clm_DNIResponsable,
             this.clm_ApeyNom,
             this.clm_tipoCliente});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ListadoDeAlojamientos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ListadoDeAlojamientos.DefaultCellStyle = dataGridViewCellStyle19;
             this.dGV_ListadoDeAlojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_ListadoDeAlojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dGV_ListadoDeAlojamientos.Location = new System.Drawing.Point(3, 25);
             this.dGV_ListadoDeAlojamientos.Name = "dGV_ListadoDeAlojamientos";
             this.dGV_ListadoDeAlojamientos.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoDeAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoDeAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dGV_ListadoDeAlojamientos.RowHeadersVisible = false;
             this.dGV_ListadoDeAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoDeAlojamientos.Size = new System.Drawing.Size(1157, 261);
             this.dGV_ListadoDeAlojamientos.TabIndex = 0;
+            // 
+            // clm_IdAlojamiento
+            // 
+            this.clm_IdAlojamiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            this.clm_IdAlojamiento.DefaultCellStyle = dataGridViewCellStyle18;
+            this.clm_IdAlojamiento.FillWeight = 30F;
+            this.clm_IdAlojamiento.HeaderText = "Número";
+            this.clm_IdAlojamiento.Name = "clm_IdAlojamiento";
+            this.clm_IdAlojamiento.ReadOnly = true;
+            // 
+            // clm_estado
+            // 
+            this.clm_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_estado.FillWeight = 40F;
+            this.clm_estado.HeaderText = "Estado";
+            this.clm_estado.Name = "clm_estado";
+            this.clm_estado.ReadOnly = true;
+            // 
+            // clm_NroHabitacion
+            // 
+            this.clm_NroHabitacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_NroHabitacion.FillWeight = 40F;
+            this.clm_NroHabitacion.HeaderText = "Habitación";
+            this.clm_NroHabitacion.Name = "clm_NroHabitacion";
+            this.clm_NroHabitacion.ReadOnly = true;
+            // 
+            // clm_DNIResponsable
+            // 
+            this.clm_DNIResponsable.FillWeight = 45F;
+            this.clm_DNIResponsable.HeaderText = "Responsable";
+            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
+            this.clm_DNIResponsable.ReadOnly = true;
+            // 
+            // clm_ApeyNom
+            // 
+            this.clm_ApeyNom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_ApeyNom.FillWeight = 120F;
+            this.clm_ApeyNom.HeaderText = "Nombre Completo";
+            this.clm_ApeyNom.Name = "clm_ApeyNom";
+            this.clm_ApeyNom.ReadOnly = true;
+            // 
+            // clm_tipoCliente
+            // 
+            this.clm_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_tipoCliente.FillWeight = 90F;
+            this.clm_tipoCliente.HeaderText = "Tipo Cliente";
+            this.clm_tipoCliente.Name = "clm_tipoCliente";
+            this.clm_tipoCliente.ReadOnly = true;
             // 
             // btn_Aceptar
             // 
@@ -308,55 +358,6 @@
             this.button_realizarPago.UseVisualStyleBackColor = true;
             this.button_realizarPago.Click += new System.EventHandler(this.button_realizarPago_Click);
             // 
-            // clm_IdAlojamiento
-            // 
-            this.clm_IdAlojamiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.clm_IdAlojamiento.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clm_IdAlojamiento.FillWeight = 30F;
-            this.clm_IdAlojamiento.HeaderText = "Número";
-            this.clm_IdAlojamiento.Name = "clm_IdAlojamiento";
-            this.clm_IdAlojamiento.ReadOnly = true;
-            // 
-            // clm_estado
-            // 
-            this.clm_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_estado.FillWeight = 40F;
-            this.clm_estado.HeaderText = "Estado";
-            this.clm_estado.Name = "clm_estado";
-            this.clm_estado.ReadOnly = true;
-            // 
-            // clm_NroHabitacion
-            // 
-            this.clm_NroHabitacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_NroHabitacion.FillWeight = 40F;
-            this.clm_NroHabitacion.HeaderText = "Habitación";
-            this.clm_NroHabitacion.Name = "clm_NroHabitacion";
-            this.clm_NroHabitacion.ReadOnly = true;
-            // 
-            // clm_DNIResponsable
-            // 
-            this.clm_DNIResponsable.FillWeight = 45F;
-            this.clm_DNIResponsable.HeaderText = "Responsable";
-            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
-            this.clm_DNIResponsable.ReadOnly = true;
-            // 
-            // clm_ApeyNom
-            // 
-            this.clm_ApeyNom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_ApeyNom.FillWeight = 120F;
-            this.clm_ApeyNom.HeaderText = "Nombre Completo";
-            this.clm_ApeyNom.Name = "clm_ApeyNom";
-            this.clm_ApeyNom.ReadOnly = true;
-            // 
-            // clm_tipoCliente
-            // 
-            this.clm_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_tipoCliente.FillWeight = 90F;
-            this.clm_tipoCliente.HeaderText = "Tipo Cliente";
-            this.clm_tipoCliente.Name = "clm_tipoCliente";
-            this.clm_tipoCliente.ReadOnly = true;
-            // 
             // ListarAlojamientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,8 +397,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_Listar;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox_cancelado;
+        private System.Windows.Forms.CheckBox checkBox_cerrado;
         private System.Windows.Forms.DataGridView dGV_ListadoDeAlojamientos;
         private System.Windows.Forms.Button btn_verDetalles;
         private System.Windows.Forms.CheckBox checkBox_todos;

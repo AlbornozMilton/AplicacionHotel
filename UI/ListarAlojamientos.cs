@@ -19,7 +19,7 @@ namespace UI
         public ListarAlojamientos()
         {
             InitializeComponent();
-            dateTimePicker_hasta.Value = DateTime.Now;
+            dateTimePicker_hasta.Value = DateTime.Now.AddDays(1);
             string[] auxComponents = { "btn_Aceptar","button_realizarPago", "button_CancelarAloj" };
             this.EnableComponents(auxComponents, false);
         }
@@ -79,7 +79,6 @@ namespace UI
                 registrarPago.ShowDialog();
                 Close();
             }
-            //actualizar lista o no
         }
 
         private void button_CancelarAloj_Click(object sender, EventArgs e)
@@ -89,7 +88,6 @@ namespace UI
                 
                 Close();
             }
-            //actualizar lista o no
         }
 
         public void EnableComponents(string[] pNombreComponentes,bool pValor)
@@ -103,6 +101,41 @@ namespace UI
                     auxComponent.Enabled = pValor;
                 }
             }
-        }        
+        }
+
+        private void btn_Listar_Click(object sender, EventArgs e)
+        {
+            if (dateTimePicker_hasta.Value.Date.CompareTo(dateTimePicker_desde.Value.Date)>0)
+            {
+                List<EstadoAlojamiento> localEstados = new List<EstadoAlojamiento>();
+
+                if (checkBox_todos.Checked)
+                {
+                    localEstados.Add(EstadoAlojamiento.Reservado);
+                    localEstados.Add(EstadoAlojamiento.Alojado);
+                    localEstados.Add(EstadoAlojamiento.Cancelado);
+                    localEstados.Add(EstadoAlojamiento.Cerrado);
+                }
+                else 
+                {
+                    if (checkBox_cancelado.Checked)
+                    {
+                        localEstados.Add(EstadoAlojamiento.Cancelado);
+                    }
+                    if (checkBox_cerrado.Checked)
+                    {
+                        localEstados.Add(EstadoAlojamiento.Cerrado);
+                    }
+                }
+
+                this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value,dateTimePicker_hasta.Value);
+                dGV_ListadoDeAlojamientos.Rows.Clear();
+                CargarAlojamientos();
+            }
+            else
+            {
+                MessageBox.Show("La fecha 'Hasta' debe ser mayor que la fecha 'Desde'");
+            }
+        }
     }
 }
