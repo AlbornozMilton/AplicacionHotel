@@ -13,8 +13,9 @@ namespace UI
 {
     public partial class BuscarAlojamiento : Form
     {
-        ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
-        public Alojamiento iAloj_Seleccionado;
+        //ControladorAlojamiento ControladorAloj = new ControladorAlojamiento();
+        public Alojamiento Aloj_Seleccionado;
+        private Alojamiento auxAloj_Seleccionado;
         public DataGridViewCellCollection iFilaSeleccionada;
 
         public BuscarAlojamiento()
@@ -40,27 +41,35 @@ namespace UI
             btn_Buscar.Image = Properties.Resources.boton_buscar;
         }
 
+        //LISTAR ALOJAMIENTO
         private void button3_Click(object sender, EventArgs e)
         {
             ListarAlojamientos ListarAlojamientos = new ListarAlojamientos();
-            ListarAlojamientos.iFormPadre = this;
             ListarAlojamientos.ShowDialog();
+            auxAloj_Seleccionado = ListarAlojamientos.AlojSeleccionado;
+            CargarAlojAux();
         }
 
-        public void CargarAlojamientoSeccionado (DataGridViewCellCollection fila)
+        private void CargarAlojAux()
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(fila[0].Value, fila[1].Value, fila[2].Value, fila[3].Value);
+            if (auxAloj_Seleccionado != null)
+            {
+                dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, this.auxAloj_Seleccionado.DniResponsable, this.auxAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.auxAloj_Seleccionado.DniResponsable).NombreCompleto(), this.auxAloj_Seleccionado.Habitacion.HabitacionId);
+                btn_Aceptar.Enabled = true;
+            }
+            else
+            {
+                btn_Aceptar.Enabled = false;
+            }
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             try
             {
-                iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
-                dGV_ListadoAlojamientos.Rows.Clear();
-                dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.EstadoAlojamiento, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).NombreCompleto(), this.iAloj_Seleccionado.Habitacion.HabitacionId);
-                btn_Aceptar.Enabled = true;
+                auxAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
+                CargarAlojAux();
             }
             catch (Exception pException)
             {
@@ -68,18 +77,19 @@ namespace UI
             }
         }
 
+        //SELECCIONAR
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            iFilaSeleccionada = (dGV_ListadoAlojamientos.CurrentRow.Cells);
-            iAloj_Seleccionado = iControladorAloj.BuscarAlojamientoPorID(Convert.ToInt32(dGV_ListadoAlojamientos.CurrentRow.Cells[0].Value));
+            Aloj_Seleccionado = auxAloj_Seleccionado;
             Close();
         }
 
+        //VER DETALLES
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.iAloj_Seleccionado != null)
+            if (dGV_ListadoAlojamientos.CurrentRow != null)
             {
-                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iAloj_Seleccionado);
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(auxAloj_Seleccionado);
                 VentanaVisualizar.ShowDialog();
             }
             else

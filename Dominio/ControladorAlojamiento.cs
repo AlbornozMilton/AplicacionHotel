@@ -350,5 +350,22 @@ namespace Dominio
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
+
+        public List<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados,DateTime pDesde, DateTime pHasta)
+        {
+            List<pers.EstadoAlojamiento> auxEstados = new List<pers.EstadoAlojamiento>();
+            foreach (var estado in pEstados)
+            {
+                auxEstados.Add(Mapper.Map<EstadoAlojamiento, pers.EstadoAlojamiento>(estado));
+            }
+
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.ListaPersonalizada(auxEstados, pDesde, pHasta);
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return (listaAlojamientos);
+        }
     }
 }

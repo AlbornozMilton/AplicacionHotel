@@ -121,14 +121,14 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
             try
             {
-                if (BuscarAlojamiento.iAloj_Seleccionado == null)
+                if (BuscarAlojamiento.Aloj_Seleccionado == null)
                 {
                     throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
 
-                iControladorAlojamiento.ControlInicioAltaReserva(BuscarAlojamiento.iAloj_Seleccionado);
+                iControladorAlojamiento.ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
 
-                AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.iAloj_Seleccionado;
+                AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.Aloj_Seleccionado;
 
                 AltaReservaAlojamiento.EnableAll(false);
 
@@ -142,7 +142,7 @@ namespace UI
             catch (Exception E)
             {
                 MessageBox.Show(E.Message);
-                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(BuscarAlojamiento.iAloj_Seleccionado);
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(BuscarAlojamiento.Aloj_Seleccionado);
                 VentanaVisualizar.ShowDialog();
                 AltaReservaAlojamiento.Close();
             }

@@ -50,9 +50,9 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.iAloj_Seleccionado != null)
+            if (BuscarAlojamiento.Aloj_Seleccionado != null)
             {
-                iAloj_Seleccionado = BuscarAlojamiento.iAloj_Seleccionado;
+                iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
                 CargarAlojamientoSeccionado(this.iAloj_Seleccionado);
 
                 if (iAloj_Seleccionado.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date)!=0)
