@@ -33,6 +33,7 @@ namespace UI
             this.EnableComponents(auxComponents, false);
         }
 
+        //CANCELAR
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
@@ -40,10 +41,19 @@ namespace UI
 
         private void CargarAlojamientos()
         {
-            foreach (var aloj in Alojamientos)
+            dGV_ListadoDeAlojamientos.Rows.Clear();
+            if (Alojamientos.Count > 0)
             {
-                Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
-                dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId,auxCli.NombreCompleto(),auxCli.TarifaCliente.NombreTarifa);
+                foreach (var aloj in Alojamientos)
+                {
+                    Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                    dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
+                }
+                btn_Aceptar.Enabled = true;
+            }
+            else
+            {
+                btn_Aceptar.Enabled = false;
             }
         }
 
@@ -51,7 +61,6 @@ namespace UI
         {
             Alojamientos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
             CargarAlojamientos();
-            btn_verDetalles.Enabled = true;
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
@@ -79,6 +88,7 @@ namespace UI
                 registrarPago.ShowDialog();
                 Close();
             }
+            btn_Aceptar.Enabled = true;
         }
 
         private void button_CancelarAloj_Click(object sender, EventArgs e)
@@ -129,7 +139,6 @@ namespace UI
                 }
 
                 this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value,dateTimePicker_hasta.Value);
-                dGV_ListadoDeAlojamientos.Rows.Clear();
                 CargarAlojamientos();
             }
             else
