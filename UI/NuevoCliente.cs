@@ -20,6 +20,12 @@ namespace UI
         public NuevoCliente()
         {
             InitializeComponent();
+        }
+
+    
+        private void NuevoCliente_Load(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
             Ciudades = ControladorCliente.ObtenerCiudades();
             Tarifas = ControladorCliente.DevolverListaTarifas();
             txb_codPostal.Enabled = false;
@@ -36,7 +42,6 @@ namespace UI
             }
         }
 
-        //PARA LA MODIFICACION - verrrrrrr
         public NuevoCliente(Cliente pCliente)
         {
             InitializeComponent();
@@ -56,19 +61,31 @@ namespace UI
             }
         }
 
+        public void ControlCamposObligatorios()
+        {
+            Label[] camposOblig = new Label[] { label13, label14, label15, label16, label17, label18, label19, label21, label22 };
+            foreach (var camp in camposOblig)
+            {
+                if (camp.Visible == true)
+                {
+                    throw new Exception("Faltan Campos Obligatorios");
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
             try
             {
+                ControlCamposObligatorios();
+                ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 MessageBox.Show("Cliente agregado correctamente");
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show("Error en la Persistencia: "+E.Message);
-                MessageBox.Show(E.InnerException.Message);
+                MessageBox.Show(E.Message);
             }
         }
 
@@ -79,60 +96,256 @@ namespace UI
 
         private void cbx_ciudades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbx_ciudades.Items.Count > 0)
+            label19.Visible = false;
+            txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
+            var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
+            cbx_calles.Items.Clear();
+            cbx_calles.Text = "";
+            foreach (var calle in auxCalles)
             {
-                txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
-                var auxCalles = ControladorCliente.ObenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
-                cbx_calles.Items.Clear();
-                foreach (var calle in auxCalles)
-                {
-                    cbx_calles.Items.Add(calle);
-                }
+                cbx_calles.Items.Add(calle);
             }
-            else
+        }
+
+        private void tbx_dni_Leave(object sender, EventArgs e)
+        {
+            if (tbx_dni.Text == "")
             {
-                MessageBox.Show("No hay ciudad cargadas en combo box.");
+                label13.Visible = true;
+            }
+            else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+            {
+                MessageBox.Show("El DNI ingresado ya existe.");
+                tbx_dni.Clear();
+                tbx_dni.Focus();
+            }
+        }
+
+        private void txb_legajo_Leave(object sender, EventArgs e)
+        {
+            if (txb_legajo.Text == "")
+            {
+                label14.Visible = true;
+            }
+            else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+            {
+                MessageBox.Show("El Legajo ingresado ya existe.");
+                txb_legajo.Clear();
+                txb_legajo.Focus();
+            }
+        }
+
+        private void txb_apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            } 
+        }
+
+        private void txb_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_nroCalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_piso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_nroDepto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_apellido_Leave(object sender, EventArgs e)
+        {
+            if (txb_apellido.Text == "")
+            {
+                label15.Visible = true;
+            }
+        }
+
+        private void txb_nombre_Leave(object sender, EventArgs e)
+        {
+            if (txb_nombre.Text == "")
+            {
+                label16.Visible = true;
+            }
+        }
+
+        private void txb_nroCalle_Leave(object sender, EventArgs e)
+        {
+            if (txb_nroCalle.Text == "")
+            {
+                label22.Visible = true;
+            }
+        }
+
+        private void txb_piso_Leave(object sender, EventArgs e)
+        {
+            if (txb_piso.Text == "")
+            {
+                txb_piso.Text = "0";
+            }
+        }
+
+        private void txb_nroDepto_Leave(object sender, EventArgs e)
+        {
+            if (txb_nroDepto.Text == "")
+            {
+                txb_nroDepto.Text = "0";
+            }
+        }
+
+        private void cbx_tipo_Leave(object sender, EventArgs e)
+        {
+            if (cbx_tipo.SelectedItem == null)
+            {
+                label18.Visible = true;
+            }
+        }
+
+        private void cbx_ciudades_Leave(object sender, EventArgs e)
+        {
+            if (cbx_ciudades.SelectedItem == null)
+            {
+                label19.Visible = true;
+            }
+        }
+
+        private void txb_telefono_Leave(object sender, EventArgs e)
+        {
+            if (txb_telefono.Text == "")
+            {
+                label17.Visible = true;
+            }
+        }
+
+        private void txb_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void cbx_calles_Leave(object sender, EventArgs e)
+        {
+            if (cbx_calles.Text == "")
+            {
+                label21.Visible = true;
+            }
+        }
+
+        private void tbx_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
             }
         }
 
         private void tbx_dni_TextChanged(object sender, EventArgs e)
         {
-            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO APRETAR "ENTER"
-            if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
-            {
-                MessageBox.Show("El DNI ingresado ya existe.");
-                //tbx_dni.Clear();
-            }
-
-            //CONTROLAR LA LONGITUD DE LOS DIGITOS
+            label13.Visible = false;
         }
 
         private void txb_legajo_TextChanged(object sender, EventArgs e)
         {
-            // BUSCAR INFO PARA SABER COMO HACER CONTROL LUEGO DE APRETAR "ENTER"
-            if (this.ControladorCliente.ExisteClienteDNI(txb_legajo.Text))
-            {
-                MessageBox.Show("El Legajo ingresado ya existe.");
-                //txb_legajo.Clear();
-            }
-            
-            //CONTROLAR LA LONGITUD DE LOS DIGITOS
+            label14.Visible = false;
         }
 
-        //solo anda cuando se selecciona un item del combo box
-        //se necesita que que lance cuando se escribe algo
-        private void cbx_calles_SelectedIndexChanged(object sender, EventArgs e)
+        private void txb_apellido_TextChanged(object sender, EventArgs e)
         {
-            var auxCalles = cbx_calles.Items;
-            cbx_calles.Items.Clear();
+            label15.Visible = false;
+        }
 
-            foreach (var calle in auxCalles)
+        private void txb_nombre_TextChanged(object sender, EventArgs e)
+        {
+            label16.Visible = false;
+        }
+
+        private void txb_telefono_TextChanged(object sender, EventArgs e)
+        {
+            label17.Visible = false;
+        }
+
+        private void cbx_tipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label18.Visible = false;
+        }
+
+        private void cbx_calles_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
             {
-                if (calle.ToString().Contains(cbx_calles.Text))
-                {
-                    cbx_calles.Items.Add(calle);
-                }
+                new ControladorExtra().EsLetra(e);
             }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
+
+        private void txb_nroCalle_TextChanged(object sender, EventArgs e)
+        {
+            label22.Visible = false;
+        }
+
+        private void cbx_calles_TextChanged(object sender, EventArgs e)
+        {
+            label21.Visible = false;
+        }
+
+        private void tabControl1_Enter(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
         }
     }
 }

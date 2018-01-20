@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Persistencia.DAL.EntityFramework;
 using pers = Persistencia.Domain;
 using AutoMapper;
+using System.Windows.Forms;
 
 namespace Dominio
 {
@@ -13,6 +14,43 @@ namespace Dominio
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
+        public void EsLetra (KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                throw new Exception("Se deben ingresar solo Letras");
+            }
+        }
+
+        public void EsNumero(KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                throw new Exception("Se deben ingresar solo Números sin espacio");
+            }
+        }
         public bool IsNumeric (string num)
         {
             try
