@@ -83,6 +83,7 @@ namespace UI
             }
         }
 
+        //ACEPTAR
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -90,7 +91,14 @@ namespace UI
                 ControlCamposObligatorios();
                 ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
-                MessageBox.Show("Cliente agregado correctamente");
+                if (localCliente != null)
+                {
+                    MessageBox.Show("Cliente Agregado Correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Cliente Actualizado Correctamente");
+                }
                 Close();
             }
             catch (Exception E)

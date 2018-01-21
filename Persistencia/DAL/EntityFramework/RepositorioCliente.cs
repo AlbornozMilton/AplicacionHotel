@@ -14,62 +14,10 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        /// <summary>
-        /// Requisito Obligatorio: la ciudad debe existir sino agregarla.
-        /// </summary>
-        public override void Add(Cliente pCliente)
-        {
-            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pCliente.Domicilio.Ciudad.CiudadId);
-
-            Domicilio domicilio = null;
-
-            foreach (var dom in ciudad.Domicilios)
-            {
-                if
-                    (
-                     dom.Calle == pCliente.Domicilio.Calle &&
-                     dom.Numero == pCliente.Domicilio.Numero &&
-                     dom.NroDepto == pCliente.Domicilio.NroDepto &&
-                     dom.Piso == pCliente.Domicilio.Piso
-                    )
-                {
-                    domicilio = dom;
-                    break;
-                }
-            }
-
-            if (domicilio == null)
-            {
-                pCliente.Domicilio.CiudadId = pCliente.Domicilio.Ciudad.CiudadId;
-                pCliente.Domicilio.Ciudad = null;
-                this.iDbContext.Domicilios.Add(pCliente.Domicilio);
-
-                //futuro prox ID 
-                pCliente.DomicilioId = this.iDbContext.Domicilios.Max(d => d.DomicilioId) + 1;
-                iDbContext.SaveChanges();
-            }
-            else
-            {
-                pCliente.DomicilioId = domicilio.DomicilioId;
-                pCliente.Domicilio = null;
-            }
-
-            //this.VerificarDomicilio(pCliente);
-
-            pCliente.EnAlta = true;
-            pCliente.Domicilio = null;
-            pCliente.TarifaClienteId = pCliente.TarifaCliente.TarifaClienteId;
-            pCliente.TarifaCliente = null; 
-
-            iDbContext.Clientes.Add(pCliente);
-
-            iDbContext.SaveChanges();
-        }
-
         public IEnumerable<Cliente> ObtenerClientesPorNomyAp(string pNombre, bool pAlta)
         {
             var clientes = from cli in this.iDbContext.Clientes.Include("TarifaCliente").Include("Domicilio.Ciudad")
-                           where ((cli.Nombre+cli.Apellido).Contains(pNombre))&&(cli.EnAlta == pAlta)
+                           where ((cli.Nombre + cli.Apellido).Contains(pNombre)) && (cli.EnAlta == pAlta)
                            select cli;
 
             return clientes.ToList<Cliente>();
@@ -139,46 +87,47 @@ namespace Persistencia.DAL.EntityFramework
         }
 
         /// <summary>
-        /// Se exceptua la modificación para DNI.
-        /// Requisito Obligatorio: la ciudad debe existir sino agregarla.
+        /// Si el cliente existe actualiza los cambios, sino lo agrega.
         /// </summary>
-        public void ModificarDatosCliente(Cliente pCliente)
+        public void ActualizarCliente(Cliente pCliente, int pIdDomicilio)
         {
             Cliente localCliente = this.GetPorDNI(pCliente.ClienteId, pCliente.EnAlta);
+            pCliente.Domicilio = null;
 
-            if (localCliente.DomicilioId != pCliente.Domicilio.DomicilioId)
+            //if (ExisteClienteDNI(pCliente.ClienteId))
+            if (localCliente != null) //MODIFICACION
             {
-                //this.VerificarDomicilio(pCliente); 
-                pCliente.Domicilio.CiudadId = pCliente.Domicilio.Ciudad.CiudadId;
-                pCliente.Domicilio.Ciudad = null;
-                this.iDbContext.Domicilios.Add(pCliente.Domicilio);
-
-                //futuro prox ID 
-                localCliente.DomicilioId = this.iDbContext.Domicilios.Max(d => d.DomicilioId) + 1;
-                iDbContext.SaveChanges();
+                CargarCliente(localCliente, pCliente, pIdDomicilio);
+                pCliente.TarifaCliente = null;
             }
-
-            CargarCliente(localCliente, pCliente);
-
-            
+            else //NUEVO CLIENTE
+            {
+                pCliente.EnAlta = true;
+                pCliente.DomicilioId = pIdDomicilio;
+                pCliente.TarifaClienteId = pCliente.TarifaCliente.TarifaClienteId;
+                pCliente.TarifaCliente = null;
+                iDbContext.Clientes.Add(pCliente);
+            }
 
             iDbContext.SaveChanges();
         }
 
-        private void CargarCliente(Cliente pClienteViejo, Cliente pClienteNuevo)
+        private void CargarCliente(Cliente pClienteViejo, Cliente pClienteNuevo, int pIdDomicilio)
         {
-            // el domicilio tiene que haberse creado 
             pClienteViejo.Legajo = pClienteNuevo.Legajo;
             pClienteViejo.Nombre = pClienteNuevo.Nombre;
             pClienteViejo.Apellido = pClienteNuevo.Apellido;
             pClienteViejo.Telefono = pClienteNuevo.Telefono;
             pClienteViejo.TarifaClienteId = pClienteNuevo.TarifaCliente.TarifaClienteId;
-            pClienteViejo.DomicilioId = pClienteNuevo.Domicilio.DomicilioId;
+            pClienteViejo.DomicilioId = pIdDomicilio;
         }
 
+        /// <summary>
+        /// Actualiza el DNI de un Cliente en base a su Legajo
+        /// </summary>
         public void ModificarDNICliente(Cliente pCliente, int pLegajo)
         {
-            Cliente localCliente = this.GetPorLegajo(pLegajo,pCliente.EnAlta);
+            Cliente localCliente = this.GetPorLegajo(pLegajo, pCliente.EnAlta);
 
             //cambiar el cliente para todos los alojamientos en los que estuvo y esta.
             foreach (var aloj in iDbContext.Alojamientos)
@@ -196,43 +145,5 @@ namespace Persistencia.DAL.EntityFramework
 
             iDbContext.SaveChanges();
         }
-
-        //private void VerificarDomicilio(Cliente pCliente)
-        //{
-        //    Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pCliente.Domicilio.Ciudad.CiudadId);
-
-        //    Domicilio domicilio = null;
-
-        //    foreach (var dom in ciudad.Domicilios)
-        //    {
-        //        if
-        //            (
-        //             dom.Calle == pCliente.Domicilio.Calle &&
-        //             dom.Numero == pCliente.Domicilio.Numero &&
-        //             dom.NroDepto == pCliente.Domicilio.NroDepto &&
-        //             dom.Piso == pCliente.Domicilio.Piso
-        //            )
-        //        {
-        //            domicilio = dom;
-        //            break;
-        //        }
-        //    }
-
-        //    if (domicilio == null)
-        //    {
-        //        pCliente.Domicilio.CiudadId = pCliente.Domicilio.Ciudad.CiudadId;
-        //        pCliente.Domicilio.Ciudad = null;
-        //        this.iDbContext.Domicilios.Add(pCliente.Domicilio);
-
-        //        //futuro prox ID 
-        //        pCliente.DomicilioId = this.iDbContext.Domicilios.Max(d => d.DomicilioId) + 1;
-        //        iDbContext.SaveChanges();
-        //    }
-        //    else
-        //    {
-        //        pCliente.DomicilioId = domicilio.DomicilioId;
-        //        pCliente.Domicilio = null;
-        //    }
-        //}
     }
 }

@@ -29,16 +29,8 @@ namespace Dominio
             this.iCorreo = pCorreo;
             this.iDomicilio = pDomicilio;
             this.iTarifa = pTarifa;
+            this.iEnAlta = true;
         }
-
-        //public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel)
-        //{
-        //    this.iDni = pDni;
-        //    this.iLegajo = pLegajo;
-        //    this.iNombre = pNombre;
-        //    this.iApellido = pApellido;
-        //    this.iTelefono = pTel;
-        //}
 
         //----------------------------------Propiedades------------------------------------
         public int ClienteId { get { return this.iDni; } private set { this.iDni = value; } }
@@ -75,7 +67,7 @@ namespace Dominio
 
         public string NombreCompleto()
         {
-            return Apellido + " " + Nombre;
+            return this.iApellido + " " + this.iNombre;
         }
     }
 }

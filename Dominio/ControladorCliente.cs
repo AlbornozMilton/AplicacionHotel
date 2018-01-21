@@ -13,6 +13,7 @@ namespace Dominio
     {
         Cliente Cliente;
         Domicilio Domicilio;
+        int IdDomiciio;
         List<Ciudad> Ciudades;
         List<TarifaCliente> Tarifas;
         static IEnumerable<pers.Usuario> iUsuarios;
@@ -22,12 +23,13 @@ namespace Dominio
         //--------------------------------------METODOS------------------
 
         /// <summary>
-        /// Retoran verdadero si el mismo domicilio existe.
+        /// Genera un Domicilio con una Ciudad en este Controlador.
         /// </summary>
         public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal)
         {
-            Ciudad auxCiudad = Mapper.Map < pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.Get(Convert.ToInt32(pCodPostal)));
+            Ciudad auxCiudad = Mapper.Map <pers.Ciudad,Ciudad>(iUoW.RepositorioCiudad.Get(Convert.ToInt32(pCodPostal)));
             this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
+            IdDomiciio = iUoW.RepositorioDomicilio.ComprobarDomicilio(Mapper.Map<Domicilio, pers.Domicilio>(this.Domicilio));
         }
 
         public bool ExisteClienteDNI(string pDNI)
@@ -43,7 +45,8 @@ namespace Dominio
         public void NuevoCliente (string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, string pTipoCliente)
         {
             this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
-            iUoW.RepositorioCliente.Add(Mapper.Map<Cliente, pers.Cliente>(this.Cliente));
+
+            iUoW.RepositorioCliente.ActualizarCliente(Mapper.Map<Cliente, pers.Cliente>(this.Cliente), IdDomiciio);
         }
 
         public List<Ciudad> ObtenerCiudades()
@@ -215,9 +218,9 @@ namespace Dominio
             iUoW.RepositorioCliente.ModificarAlta(pValoAlta, pDNI);
         }
 
-        public void ModificarDatosCliente(Cliente pCliente)
+        public void ActualizarCliente(Cliente pCliente)
         {
-            iUoW.RepositorioCliente.ModificarDatosCliente(Mapper.Map<Cliente, pers.Cliente>(pCliente));
+            iUoW.RepositorioCliente.ActualizarCliente(Mapper.Map<Cliente, pers.Cliente>(pCliente),this.IdDomiciio);
         }
 
     }
