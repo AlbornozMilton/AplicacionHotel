@@ -167,7 +167,7 @@ namespace UI
                     dGV_ClienteResponsable.Rows.Clear();
                     this.Acompañantes.Clear();
 
-                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.NombreCompleto(), ClienteResponsable.TarifaCliente.NombreTarifa, ClienteResponsable.Telefono);
                     this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
                     btn_Confirmar.Enabled = true;
                     btn_AgregarAcompañante.Enabled = true;
@@ -209,7 +209,7 @@ namespace UI
                 }
 
                 this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
-                dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.Apellido, BuscarClienteForm.ClienteSeleccionado.Nombre, BuscarClienteForm.ClienteSeleccionado.Telefono);
+                dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.NombreCompleto(), BuscarClienteForm.ClienteSeleccionado.TarifaCliente.NombreTarifa, BuscarClienteForm.ClienteSeleccionado.Telefono);
             }
             catch (Exception E)
             {
@@ -287,7 +287,7 @@ namespace UI
 
             //cliente responsable
             this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
-            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.Telefono);
+            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.NombreCompleto(), ClienteResponsable.TarifaCliente.NombreTarifa, ClienteResponsable.Telefono);
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);
             btn_Confirmar.Enabled = true;

@@ -31,8 +31,6 @@ namespace UI
 
         private void BuscarCliente_Load(object sender, EventArgs e)
         {
-            //tablaResulClientes.DefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
-            //tablaResulClientes.ColumnHeadersDefaultCellStyle.Font = new Font("BankGothic Lt BT", 12);
             btn_Aceptar.Enabled = false;
             radioButton1.Checked = true;
             textBox_Legajo.Enabled = false;
@@ -62,7 +60,7 @@ namespace UI
 
         private void CargarCliente()
         {
-            tablaResulClientes.Rows.Add(AuxClienteSeleccionado.ClienteId, AuxClienteSeleccionado.Legajo, AuxClienteSeleccionado.Apellido, AuxClienteSeleccionado.Nombre, AuxClienteSeleccionado.Telefono);
+            tablaResulClientes.Rows.Add(AuxClienteSeleccionado.ClienteId, AuxClienteSeleccionado.Legajo, AuxClienteSeleccionado.NombreCompleto(), AuxClienteSeleccionado.TarifaCliente.NombreTarifa, AuxClienteSeleccionado.Telefono);
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
