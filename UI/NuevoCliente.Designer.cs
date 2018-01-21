@@ -134,6 +134,7 @@
             this.pestaña_DatosGenerales.Controls.Add(this.label2);
             this.pestaña_DatosGenerales.Controls.Add(this.label3);
             this.pestaña_DatosGenerales.Controls.Add(this.label6);
+            this.pestaña_DatosGenerales.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pestaña_DatosGenerales.Location = new System.Drawing.Point(4, 25);
             this.pestaña_DatosGenerales.Name = "pestaña_DatosGenerales";
             this.pestaña_DatosGenerales.Padding = new System.Windows.Forms.Padding(3);
@@ -242,12 +243,6 @@
             this.cbx_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_tipo.FormattingEnabled = true;
-            this.cbx_tipo.Items.AddRange(new object[] {
-            "Titular Afiliado",
-            "Acomp. Directo",
-            "Acomp. No Directo",
-            "Afiliado Exceptuado",
-            "Afiliado Convenio"});
             this.cbx_tipo.Location = new System.Drawing.Point(165, 183);
             this.cbx_tipo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbx_tipo.Name = "cbx_tipo";
@@ -436,6 +431,7 @@
             // 
             // cbx_ciudades
             // 
+            this.cbx_ciudades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_ciudades.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_ciudades.FormattingEnabled = true;
             this.cbx_ciudades.Location = new System.Drawing.Point(172, 20);
