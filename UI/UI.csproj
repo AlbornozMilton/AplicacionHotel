@@ -103,6 +103,12 @@
     <Compile Include="BuscarCliente.Designer.cs">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="CancelarAlojamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CancelarAlojamiento.Designer.cs">
+      <DependentUpon>CancelarAlojamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="CerrarAlojamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     <EmbeddedResource Include="BuscarCliente.resx">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CancelarAlojamiento.resx">
+      <DependentUpon>CancelarAlojamiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CerrarAlojamiento.resx">
       <DependentUpon>CerrarAlojamiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,6 +332,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Gif_Cagando.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FondoPantallas.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

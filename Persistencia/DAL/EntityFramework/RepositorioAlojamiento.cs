@@ -22,7 +22,7 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Where(a => a.AlojamientoId == pId).Single();
+                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Where(a => a.AlojamientoId == pId).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -66,7 +66,7 @@ namespace Persistencia.DAL.EntityFramework
             List<Cliente> auxListCliente = new List<Cliente>();
 
             Habitacion auxHabitacion = unAloj.Habitacion;
-            unAloj.Habitacion = iDbContext.Habitaciones.Include("Cupos").Single(h => h.HabitacionId == unAloj.HabitacionId);
+            unAloj.Habitacion = iDbContext.Habitaciones.Include("Cupos").SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
 
             foreach (var cli in unAloj.Clientes)
             {

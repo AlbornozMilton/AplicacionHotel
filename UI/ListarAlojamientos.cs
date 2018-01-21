@@ -95,7 +95,8 @@ namespace UI
         {
             if (dGV_ListadoDeAlojamientos.CurrentRow != null)
             {
-                
+                CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
+                cancelarAlojamiento.ShowDialog();
                 Close();
             }
         }

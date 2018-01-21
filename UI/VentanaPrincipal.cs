@@ -77,11 +77,6 @@ namespace UI
             BuscarAlojamiento.ShowDialog();
         }
 
-        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Cerrar ventana Principal y dejar ventana de inicio sesion.
@@ -171,9 +166,19 @@ namespace UI
             foreach (var aloj in listaActivos)
             {
                 var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
-                dGV_Alojamientos.Rows.Add(aloj.AlojamientoId,aloj.EstadoAlojamiento, aloj.HabitacionId, aloj.DniResponsable, cli.Legajo, cli.NombreCompleto(), (aloj.EstadoAlojamiento==EstadoAlojamiento.Alojado ? aloj.FechaIngreso:aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"), aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"), aloj.CantCuposSimples + (aloj.CantCuposDobles * 2));
+                dGV_Alojamientos.Rows.Add
+                    (
+                    aloj.AlojamientoId,
+                    aloj.EstadoAlojamiento,
+                    aloj.HabitacionId,
+                    aloj.DniResponsable,
+                    cli.Legajo,
+                    cli.NombreCompleto(),
+                    (aloj.EstadoAlojamiento==EstadoAlojamiento.Alojado ? aloj.FechaIngreso:aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
+                    aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
+                    aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
+                    );
             }
-
         }
 
         private void btn_VerDetalle_Click(object sender, EventArgs e)
@@ -227,9 +232,15 @@ namespace UI
             CargarAlojamientosActivos();
         }
 
-        private void dGV_Alojamientos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            BuscarCliente ventanaBusqueda = new BuscarCliente();
+            ventanaBusqueda.ShowDialog();
+            if (ventanaBusqueda.ClienteSeleccionado != null)
+            {
+                NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
+                ventanaCliente.ShowDialog(); 
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -237,6 +248,12 @@ namespace UI
             timer1.Enabled = false;
             AlojsReservadosSinDeposito();
             timer1.Enabled = true;
+        }
+
+        private void cancelarReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
+            cancelarAlojamiento.ShowDialog();
         }
     }
 }

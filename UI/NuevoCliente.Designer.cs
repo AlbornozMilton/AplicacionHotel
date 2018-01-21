@@ -113,7 +113,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(620, 257);
             this.tabControl1.TabIndex = 16;
-            this.tabControl1.Enter += new System.EventHandler(this.tabControl1_Enter);
             // 
             // pestaña_DatosGenerales
             // 
@@ -135,6 +134,7 @@
             this.pestaña_DatosGenerales.Controls.Add(this.label2);
             this.pestaña_DatosGenerales.Controls.Add(this.label3);
             this.pestaña_DatosGenerales.Controls.Add(this.label6);
+            this.pestaña_DatosGenerales.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pestaña_DatosGenerales.Location = new System.Drawing.Point(4, 25);
             this.pestaña_DatosGenerales.Name = "pestaña_DatosGenerales";
             this.pestaña_DatosGenerales.Padding = new System.Windows.Forms.Padding(3);
@@ -142,6 +142,7 @@
             this.pestaña_DatosGenerales.TabIndex = 0;
             this.pestaña_DatosGenerales.Text = "Datos Generales";
             this.pestaña_DatosGenerales.UseVisualStyleBackColor = true;
+            this.pestaña_DatosGenerales.Enter += new System.EventHandler(this.pestaña_DatosGenerales_Enter);
             // 
             // label18
             // 
@@ -218,11 +219,11 @@
             // label_legajo
             // 
             this.label_legajo.AutoSize = true;
-            this.label_legajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_legajo.Font = new System.Drawing.Font("Vladimir Script", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_legajo.Location = new System.Drawing.Point(26, 55);
             this.label_legajo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_legajo.Name = "label_legajo";
-            this.label_legajo.Size = new System.Drawing.Size(57, 20);
+            this.label_legajo.Size = new System.Drawing.Size(46, 19);
             this.label_legajo.TabIndex = 31;
             this.label_legajo.Text = "Legajo";
             // 
@@ -239,14 +240,9 @@
             // 
             // cbx_tipo
             // 
+            this.cbx_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_tipo.FormattingEnabled = true;
-            this.cbx_tipo.Items.AddRange(new object[] {
-            "Titular Afiliado",
-            "Acomp. Directo",
-            "Acomp. No Directo",
-            "Afiliado Exceptuado",
-            "Afiliado Convenio"});
             this.cbx_tipo.Location = new System.Drawing.Point(165, 183);
             this.cbx_tipo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbx_tipo.Name = "cbx_tipo";
@@ -306,55 +302,55 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Vladimir Script", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(26, 189);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 20);
+            this.label4.Size = new System.Drawing.Size(35, 19);
             this.label4.TabIndex = 29;
             this.label4.Text = "Tipo";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Vladimir Script", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 20);
+            this.label1.Size = new System.Drawing.Size(32, 19);
             this.label1.TabIndex = 21;
             this.label1.Text = "Dni";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Vladimir Script", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(25, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 20);
+            this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 23;
             this.label2.Text = "Apellido";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Vladimir Script", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(25, 122);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.Size = new System.Drawing.Size(52, 19);
             this.label3.TabIndex = 26;
             this.label3.Text = "Nombre";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Vladimir Script", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(25, 155);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
+            this.label6.Size = new System.Drawing.Size(58, 19);
             this.label6.TabIndex = 27;
             this.label6.Text = "Teléfono";
             // 
@@ -435,6 +431,7 @@
             // 
             // cbx_ciudades
             // 
+            this.cbx_ciudades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_ciudades.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_ciudades.FormattingEnabled = true;
             this.cbx_ciudades.Location = new System.Drawing.Point(172, 20);

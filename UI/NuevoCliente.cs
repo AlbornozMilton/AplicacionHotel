@@ -16,13 +16,13 @@ namespace UI
         ControladorCliente ControladorCliente = new ControladorCliente();
         List<Ciudad> Ciudades;
         List<TarifaCliente> Tarifas;
+        Cliente localCliente;
 
         public NuevoCliente()
         {
             InitializeComponent();
         }
 
-    
         private void NuevoCliente_Load(object sender, EventArgs e)
         {
             button1.Enabled = false;
@@ -40,25 +40,35 @@ namespace UI
             {
                 cbx_tipo.Items.Add(tarifa.NombreTarifa);
             }
+
+            if (localCliente!=null)
+            {
+                CargarCampos();
+            }
         }
 
         public NuevoCliente(Cliente pCliente)
         {
             InitializeComponent();
-            Ciudades = ControladorCliente.ObtenerCiudades();
-            Tarifas = ControladorCliente.DevolverListaTarifas();
-            txb_codPostal.Enabled = false;
-            cbx_tipo.Items.Clear();
+            localCliente = pCliente;
+        }
 
-            foreach (var ciudad in Ciudades)
-            {
-                cbx_ciudades.Items.Add(ciudad.Nombre);
-            }
-
-            foreach (var tarifa in Tarifas)
-            {
-                cbx_tipo.Items.Add(tarifa.NombreTarifa);
-            }
+        public void CargarCampos()
+        {
+            tbx_dni.Text = localCliente.ClienteId.ToString();
+            tbx_dni.Enabled = false;
+            txb_legajo.Text = localCliente.Legajo.ToString();
+            txb_apellido.Text = localCliente.Apellido;
+            txb_nombre.Text = localCliente.Nombre;
+            txb_telefono.Text = localCliente.Telefono.ToString();
+            cbx_tipo.SelectedIndex = cbx_tipo.FindString(localCliente.TarifaCliente.NombreTarifa);
+            cbx_ciudades.SelectedIndex = cbx_ciudades.FindString(localCliente.Domicilio.Ciudad.Nombre);
+            //cbx_ciudades.Text = localCliente.Domicilio.Ciudad.Nombre;
+            cbx_calles.Text = localCliente.Domicilio.Calle;
+            txb_nroCalle.Text = localCliente.Domicilio.Numero.ToString();
+            txb_piso.Text = localCliente.Domicilio.Piso.ToString();
+            txb_nroDepto.Text = localCliente.Domicilio.NroDepto.ToString();
+            txb_correo.Text = localCliente.Correo;
         }
 
         public void ControlCamposObligatorios()
@@ -73,6 +83,7 @@ namespace UI
             }
         }
 
+        //ACEPTAR
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -80,7 +91,14 @@ namespace UI
                 ControlCamposObligatorios();
                 ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
-                MessageBox.Show("Cliente agregado correctamente");
+                if (localCliente == null)
+                {
+                    MessageBox.Show("Cliente Agregado Correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Cliente Actualizado Correctamente");
+                }
                 Close();
             }
             catch (Exception E)
@@ -343,7 +361,7 @@ namespace UI
             label21.Visible = false;
         }
 
-        private void tabControl1_Enter(object sender, EventArgs e)
+        private void pestaña_DatosGenerales_Enter(object sender, EventArgs e)
         {
             button1.Enabled = true;
         }

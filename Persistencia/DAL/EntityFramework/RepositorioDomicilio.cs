@@ -14,11 +14,14 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        public Domicilio CargaDomicilio(Domicilio pDomicilio)
+        /// <summary>
+        /// Retorna el numero ID en la BD si encuentra el Domicilio. Sino retorna el nuevo ID
+        /// </summary>
+        /// <param name="pDomicilio"></param>
+        /// <returns></returns>
+        public int ComprobarDomicilio(Domicilio pDomicilio)
         {
-            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pDomicilio.Ciudad.CiudadId);
-
-            Domicilio domicilio = null;
+            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CiudadId == pDomicilio.Ciudad.CiudadId);
 
             foreach (var dom in ciudad.Domicilios)
             {
@@ -30,26 +33,17 @@ namespace Persistencia.DAL.EntityFramework
                      dom.Piso == pDomicilio.Piso
                     )
                 {
-                    domicilio = dom;
-                    break;
+                    return dom.DomicilioId;
                 }
             }
 
-            if (domicilio == null)
-            {
-                pDomicilio.CiudadId = pDomicilio.Ciudad.CiudadId;
-                pDomicilio.Ciudad = null;
-                this.iDbContext.Domicilios.Add(pDomicilio);
+            pDomicilio.CiudadId = pDomicilio.Ciudad.CiudadId;
+            pDomicilio.Ciudad = null;
+            this.iDbContext.Domicilios.Add(pDomicilio);
 
-                //futuro prox ID - para luego buscar domicilio por ID
-                pDomicilio.DomicilioId = this.iDbContext.Domicilios.Max(d => d.DomicilioId) + 1;
-                
-                domicilio = pDomicilio;
+            this.iDbContext.SaveChanges();
 
-                iDbContext.SaveChanges();
-            }
-
-            return domicilio;
+            return this.iDbContext.Domicilios.Max(d => d.DomicilioId);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public override Ciudad Get(int pId)
         {
-            return iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pId);
+            return iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CiudadId == pId);
         }
 
         public IEnumerable<string> CallesDeCiudad(int pCodPostal)

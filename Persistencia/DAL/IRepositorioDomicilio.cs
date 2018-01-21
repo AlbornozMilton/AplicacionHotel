@@ -13,6 +13,6 @@ namespace Persistencia.DAL
         /// Retorna el ID del Domicilio que ya existe o el nuevo.
         /// </summary>
         /// <returns>ID domicilio</returns>
-        Domicilio CargaDomicilio(Domicilio pDom);
+        int ComprobarDomicilio(Domicilio pDom);
     }
 }
