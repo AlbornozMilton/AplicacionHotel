@@ -173,6 +173,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap FondoPantallas {
+            get {
+                object obj = ResourceManager.GetObject("FondoPantallas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Gif_Cagando {
             get {
                 object obj = ResourceManager.GetObject("Gif_Cagando", resourceCulture);

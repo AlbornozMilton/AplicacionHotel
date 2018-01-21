@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,19 +43,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_AgregarCliente = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.dGV_Acompañantes = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_AgregarAcompañante = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
@@ -68,40 +61,54 @@
             this.cont_CuposSimples = new System.Windows.Forms.NumericUpDown();
             this.txb_NroHabitacion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Acompañantes)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposDobles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposSimples)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 25);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.Size = new System.Drawing.Size(27, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(433, 26);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(522, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(108, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Fecha Actual";
             // 
             // txb_IdAloj
             // 
-            this.txb_IdAloj.Location = new System.Drawing.Point(93, 22);
+            this.txb_IdAloj.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_IdAloj.Location = new System.Drawing.Point(67, 9);
             this.txb_IdAloj.Name = "txb_IdAloj";
             this.txb_IdAloj.ReadOnly = true;
-            this.txb_IdAloj.Size = new System.Drawing.Size(100, 20);
+            this.txb_IdAloj.Size = new System.Drawing.Size(131, 30);
             this.txb_IdAloj.TabIndex = 2;
             this.txb_IdAloj.TabStop = false;
             this.txb_IdAloj.Text = "En proceso...";
@@ -110,34 +117,36 @@
             // 
             // txb_fechaActual
             // 
-            this.txb_fechaActual.Location = new System.Drawing.Point(514, 22);
+            this.txb_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_fechaActual.Location = new System.Drawing.Point(652, 9);
             this.txb_fechaActual.Name = "txb_fechaActual";
             this.txb_fechaActual.ReadOnly = true;
-            this.txb_fechaActual.Size = new System.Drawing.Size(100, 20);
+            this.txb_fechaActual.Size = new System.Drawing.Size(147, 30);
             this.txb_fechaActual.TabIndex = 3;
             this.txb_fechaActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
             // 
-            this.groupBox1.AutoSize = true;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btn_VerificarDisponibilidad);
             this.groupBox1.Controls.Add(this.dtp_fechaHasta);
             this.groupBox1.Controls.Add(this.dtp_fechaDesde);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(671, 96);
+            this.groupBox1.Size = new System.Drawing.Size(787, 105);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Disponibilidad";
             // 
             // btn_VerificarDisponibilidad
             // 
-            this.btn_VerificarDisponibilidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(502, 38);
+            this.btn_VerificarDisponibilidad.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(557, 42);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
-            this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(135, 23);
+            this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(210, 44);
             this.btn_VerificarDisponibilidad.TabIndex = 4;
             this.btn_VerificarDisponibilidad.Text = "Verificar Disponibilidad";
             this.btn_VerificarDisponibilidad.UseVisualStyleBackColor = false;
@@ -145,9 +154,9 @@
             // 
             // dtp_fechaHasta
             // 
-            this.dtp_fechaHasta.Location = new System.Drawing.Point(122, 57);
+            this.dtp_fechaHasta.Location = new System.Drawing.Point(172, 64);
             this.dtp_fechaHasta.Name = "dtp_fechaHasta";
-            this.dtp_fechaHasta.Size = new System.Drawing.Size(200, 20);
+            this.dtp_fechaHasta.Size = new System.Drawing.Size(328, 30);
             this.dtp_fechaHasta.TabIndex = 3;
             this.dtp_fechaHasta.Value = new System.DateTime(2018, 1, 3, 0, 0, 0, 0);
             this.dtp_fechaHasta.ValueChanged += new System.EventHandler(this.dtp_fechaHasta_ValueChanged);
@@ -157,53 +166,271 @@
             this.dtp_fechaDesde.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dtp_fechaDesde.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.dtp_fechaDesde.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtp_fechaDesde.Location = new System.Drawing.Point(122, 24);
+            this.dtp_fechaDesde.Location = new System.Drawing.Point(172, 28);
             this.dtp_fechaDesde.Name = "dtp_fechaDesde";
-            this.dtp_fechaDesde.Size = new System.Drawing.Size(200, 20);
+            this.dtp_fechaDesde.Size = new System.Drawing.Size(328, 30);
             this.dtp_fechaDesde.TabIndex = 2;
             this.dtp_fechaDesde.ValueChanged += new System.EventHandler(this.dtp_fechaDesde_ValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 59);
+            this.label4.Location = new System.Drawing.Point(17, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.Size = new System.Drawing.Size(111, 23);
             this.label4.TabIndex = 1;
             this.label4.Text = "Fecha Egreso";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 27);
+            this.label3.Location = new System.Drawing.Point(17, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.Size = new System.Drawing.Size(117, 23);
             this.label3.TabIndex = 0;
             this.label3.Text = "Fecha Ingreso";
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.AutoSize = true;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.dGV_ClienteResponsable);
             this.groupBox2.Controls.Add(this.btn_AgregarCliente);
-            this.groupBox2.Location = new System.Drawing.Point(12, 201);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 240);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(671, 124);
+            this.groupBox2.Size = new System.Drawing.Size(787, 129);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente Responsable";
+            // 
+            // btn_AgregarCliente
+            // 
+            this.btn_AgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_AgregarCliente.Location = new System.Drawing.Point(671, 20);
+            this.btn_AgregarCliente.Name = "btn_AgregarCliente";
+            this.btn_AgregarCliente.Size = new System.Drawing.Size(110, 30);
+            this.btn_AgregarCliente.TabIndex = 9;
+            this.btn_AgregarCliente.Text = "Agregar Responsable";
+            this.btn_AgregarCliente.UseVisualStyleBackColor = true;
+            this.btn_AgregarCliente.Click += new System.EventHandler(this.btn_AgregarCliente_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.btn_quitarCliente);
+            this.groupBox3.Controls.Add(this.dGV_Acompañantes);
+            this.groupBox3.Controls.Add(this.btn_AgregarAcompañante);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(12, 375);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(787, 152);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Otros Clientes";
+            // 
+            // btn_quitarCliente
+            // 
+            this.btn_quitarCliente.Location = new System.Drawing.Point(544, 18);
+            this.btn_quitarCliente.Name = "btn_quitarCliente";
+            this.btn_quitarCliente.Size = new System.Drawing.Size(110, 30);
+            this.btn_quitarCliente.TabIndex = 12;
+            this.btn_quitarCliente.Text = "Quitar Cliente";
+            this.btn_quitarCliente.UseVisualStyleBackColor = true;
+            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
+            // 
+            // dGV_Acompañantes
+            // 
+            this.dGV_Acompañantes.AllowUserToAddRows = false;
+            this.dGV_Acompañantes.AllowUserToDeleteRows = false;
+            this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Acompañantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dGV_Acompañantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Acompañantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Acompañantes.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dGV_Acompañantes.Location = new System.Drawing.Point(6, 53);
+            this.dGV_Acompañantes.Margin = new System.Windows.Forms.Padding(0);
+            this.dGV_Acompañantes.Name = "dGV_Acompañantes";
+            this.dGV_Acompañantes.ReadOnly = true;
+            this.dGV_Acompañantes.RowHeadersVisible = false;
+            this.dGV_Acompañantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGV_Acompañantes.Size = new System.Drawing.Size(778, 87);
+            this.dGV_Acompañantes.TabIndex = 10;
+            this.dGV_Acompañantes.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dGV_Acompañantes_RowsAdded);
+            // 
+            // btn_AgregarAcompañante
+            // 
+            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(671, 18);
+            this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
+            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(110, 30);
+            this.btn_AgregarAcompañante.TabIndex = 11;
+            this.btn_AgregarAcompañante.Text = "Agregar Cliente";
+            this.btn_AgregarAcompañante.UseVisualStyleBackColor = true;
+            this.btn_AgregarAcompañante.Click += new System.EventHandler(this.btn_AgregarAcompañante_Click);
+            // 
+            // btn_Aceptar
+            // 
+            this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(686, 578);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Aceptar.TabIndex = 9;
+            this.btn_Aceptar.Text = "Aceptar";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(12, 578);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Cancelar.TabIndex = 10;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 537);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 23);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Costo Base";
+            // 
+            // txb_CostoBase
+            // 
+            this.txb_CostoBase.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_CostoBase.Location = new System.Drawing.Point(141, 534);
+            this.txb_CostoBase.Name = "txb_CostoBase";
+            this.txb_CostoBase.ReadOnly = true;
+            this.txb_CostoBase.Size = new System.Drawing.Size(100, 30);
+            this.txb_CostoBase.TabIndex = 12;
+            // 
+            // btn_Confirmar
+            // 
+            this.btn_Confirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btn_Confirmar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Confirmar.ForeColor = System.Drawing.Color.White;
+            this.btn_Confirmar.Location = new System.Drawing.Point(681, 533);
+            this.btn_Confirmar.Name = "btn_Confirmar";
+            this.btn_Confirmar.Size = new System.Drawing.Size(118, 41);
+            this.btn_Confirmar.TabIndex = 13;
+            this.btn_Confirmar.Text = "Comprobar";
+            this.btn_Confirmar.UseVisualStyleBackColor = false;
+            this.btn_Confirmar.Click += new System.EventHandler(this.btn_Confirmar_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.ck_Exclusividad);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.cont_CuposDobles);
+            this.groupBox4.Controls.Add(this.cont_CuposSimples);
+            this.groupBox4.Controls.Add(this.txb_NroHabitacion);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(12, 161);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(787, 73);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Habitación Seleccionada";
+            // 
+            // ck_Exclusividad
+            // 
+            this.ck_Exclusividad.AutoSize = true;
+            this.ck_Exclusividad.Location = new System.Drawing.Point(544, 31);
+            this.ck_Exclusividad.Name = "ck_Exclusividad";
+            this.ck_Exclusividad.Size = new System.Drawing.Size(234, 27);
+            this.ck_Exclusividad.TabIndex = 15;
+            this.ck_Exclusividad.Text = "Exclusividad de Habitación";
+            this.ck_Exclusividad.UseVisualStyleBackColor = true;
+            this.ck_Exclusividad.CheckedChanged += new System.EventHandler(this.ck_Exclusividad_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(395, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 23);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "C Dobles";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(244, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 23);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "C Simples";
+            // 
+            // cont_CuposDobles
+            // 
+            this.cont_CuposDobles.Location = new System.Drawing.Point(488, 30);
+            this.cont_CuposDobles.Name = "cont_CuposDobles";
+            this.cont_CuposDobles.Size = new System.Drawing.Size(36, 30);
+            this.cont_CuposDobles.TabIndex = 18;
+            this.cont_CuposDobles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cont_CuposDobles.ValueChanged += new System.EventHandler(this.cont_CuposDobles_ValueChanged);
+            // 
+            // cont_CuposSimples
+            // 
+            this.cont_CuposSimples.Location = new System.Drawing.Point(336, 30);
+            this.cont_CuposSimples.Name = "cont_CuposSimples";
+            this.cont_CuposSimples.Size = new System.Drawing.Size(36, 30);
+            this.cont_CuposSimples.TabIndex = 17;
+            this.cont_CuposSimples.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cont_CuposSimples.ValueChanged += new System.EventHandler(this.cont_CuposSimples_ValueChanged);
+            // 
+            // txb_NroHabitacion
+            // 
+            this.txb_NroHabitacion.Location = new System.Drawing.Point(172, 29);
+            this.txb_NroHabitacion.Name = "txb_NroHabitacion";
+            this.txb_NroHabitacion.ReadOnly = true;
+            this.txb_NroHabitacion.Size = new System.Drawing.Size(44, 30);
+            this.txb_NroHabitacion.TabIndex = 16;
+            this.txb_NroHabitacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(151, 23);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Nro de Habitación";
             // 
             // dGV_ClienteResponsable
             // 
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -215,13 +442,21 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.dGV_ClienteResponsable.Location = new System.Drawing.Point(6, 51);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dGV_ClienteResponsable.Location = new System.Drawing.Point(6, 56);
             this.dGV_ClienteResponsable.Name = "dGV_ClienteResponsable";
             this.dGV_ClienteResponsable.ReadOnly = true;
             this.dGV_ClienteResponsable.RowHeadersVisible = false;
             this.dGV_ClienteResponsable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(659, 46);
-            this.dGV_ClienteResponsable.TabIndex = 12;
+            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(778, 62);
+            this.dGV_ClienteResponsable.TabIndex = 14;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -243,71 +478,9 @@
             // 
             // dataGridViewTextBoxColumn8
             // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Teléfono";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // btn_AgregarCliente
-            // 
-            this.btn_AgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_AgregarCliente.Location = new System.Drawing.Point(502, 12);
-            this.btn_AgregarCliente.Name = "btn_AgregarCliente";
-            this.btn_AgregarCliente.Size = new System.Drawing.Size(135, 23);
-            this.btn_AgregarCliente.TabIndex = 9;
-            this.btn_AgregarCliente.Text = "Agregar Responsable";
-            this.btn_AgregarCliente.UseVisualStyleBackColor = true;
-            this.btn_AgregarCliente.Click += new System.EventHandler(this.btn_AgregarCliente_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btn_quitarCliente);
-            this.groupBox3.Controls.Add(this.dGV_Acompañantes);
-            this.groupBox3.Controls.Add(this.btn_AgregarAcompañante);
-            this.groupBox3.Location = new System.Drawing.Point(12, 331);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(671, 129);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Otros Clientes";
-            // 
-            // btn_quitarCliente
-            // 
-            this.btn_quitarCliente.Location = new System.Drawing.Point(442, 13);
-            this.btn_quitarCliente.Name = "btn_quitarCliente";
-            this.btn_quitarCliente.Size = new System.Drawing.Size(89, 23);
-            this.btn_quitarCliente.TabIndex = 12;
-            this.btn_quitarCliente.Text = "Quitar Cliente";
-            this.btn_quitarCliente.UseVisualStyleBackColor = true;
-            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
-            // 
-            // dGV_Acompañantes
-            // 
-            this.dGV_Acompañantes.AllowUserToAddRows = false;
-            this.dGV_Acompañantes.AllowUserToDeleteRows = false;
-            this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Acompañantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dGV_Acompañantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV_Acompañantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dGV_Acompañantes.Location = new System.Drawing.Point(6, 42);
-            this.dGV_Acompañantes.Margin = new System.Windows.Forms.Padding(0);
-            this.dGV_Acompañantes.Name = "dGV_Acompañantes";
-            this.dGV_Acompañantes.ReadOnly = true;
-            this.dGV_Acompañantes.RowHeadersVisible = false;
-            this.dGV_Acompañantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Acompañantes.Size = new System.Drawing.Size(659, 87);
-            this.dGV_Acompañantes.TabIndex = 10;
-            this.dGV_Acompañantes.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dGV_Acompañantes_RowsAdded);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -329,152 +502,17 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Telefono";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Teléfono";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // btn_AgregarAcompañante
-            // 
-            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(537, 13);
-            this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
-            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(100, 23);
-            this.btn_AgregarAcompañante.TabIndex = 11;
-            this.btn_AgregarAcompañante.Text = "Agregar Cliente";
-            this.btn_AgregarAcompañante.UseVisualStyleBackColor = true;
-            this.btn_AgregarAcompañante.Click += new System.EventHandler(this.btn_AgregarAcompañante_Click);
-            // 
-            // btn_Aceptar
-            // 
-            this.btn_Aceptar.Location = new System.Drawing.Point(581, 516);
-            this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Aceptar.TabIndex = 9;
-            this.btn_Aceptar.Text = "Aceptar";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
-            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
-            // 
-            // btn_Cancelar
-            // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(12, 516);
-            this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 10;
-            this.btn_Cancelar.Text = "Cancelar";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 487);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Costo Base";
-            // 
-            // txb_CostoBase
-            // 
-            this.txb_CostoBase.Location = new System.Drawing.Point(93, 484);
-            this.txb_CostoBase.Name = "txb_CostoBase";
-            this.txb_CostoBase.Size = new System.Drawing.Size(100, 20);
-            this.txb_CostoBase.TabIndex = 12;
-            // 
-            // btn_Confirmar
-            // 
-            this.btn_Confirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn_Confirmar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Confirmar.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirmar.Location = new System.Drawing.Point(559, 466);
-            this.btn_Confirmar.Name = "btn_Confirmar";
-            this.btn_Confirmar.Size = new System.Drawing.Size(118, 41);
-            this.btn_Confirmar.TabIndex = 13;
-            this.btn_Confirmar.Text = "Comprobar";
-            this.btn_Confirmar.UseVisualStyleBackColor = false;
-            this.btn_Confirmar.Click += new System.EventHandler(this.btn_Confirmar_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.ck_Exclusividad);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.cont_CuposDobles);
-            this.groupBox4.Controls.Add(this.cont_CuposSimples);
-            this.groupBox4.Controls.Add(this.txb_NroHabitacion);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(12, 153);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(671, 42);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Habitación Seleccionada";
-            // 
-            // ck_Exclusividad
-            // 
-            this.ck_Exclusividad.AutoSize = true;
-            this.ck_Exclusividad.Location = new System.Drawing.Point(490, 16);
-            this.ck_Exclusividad.Name = "ck_Exclusividad";
-            this.ck_Exclusividad.Size = new System.Drawing.Size(154, 17);
-            this.ck_Exclusividad.TabIndex = 15;
-            this.ck_Exclusividad.Text = "Exclusividad de Habitacion";
-            this.ck_Exclusividad.UseVisualStyleBackColor = true;
-            this.ck_Exclusividad.CheckedChanged += new System.EventHandler(this.ck_Exclusividad_CheckedChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(362, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "C Dobles";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(240, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "C Simples";
-            // 
-            // cont_CuposDobles
-            // 
-            this.cont_CuposDobles.Location = new System.Drawing.Point(417, 14);
-            this.cont_CuposDobles.Name = "cont_CuposDobles";
-            this.cont_CuposDobles.Size = new System.Drawing.Size(33, 20);
-            this.cont_CuposDobles.TabIndex = 18;
-            this.cont_CuposDobles.ValueChanged += new System.EventHandler(this.cont_CuposDobles_ValueChanged);
-            // 
-            // cont_CuposSimples
-            // 
-            this.cont_CuposSimples.Location = new System.Drawing.Point(299, 13);
-            this.cont_CuposSimples.Name = "cont_CuposSimples";
-            this.cont_CuposSimples.Size = new System.Drawing.Size(33, 20);
-            this.cont_CuposSimples.TabIndex = 17;
-            this.cont_CuposSimples.ValueChanged += new System.EventHandler(this.cont_CuposSimples_ValueChanged);
-            // 
-            // txb_NroHabitacion
-            // 
-            this.txb_NroHabitacion.Location = new System.Drawing.Point(142, 14);
-            this.txb_NroHabitacion.Name = "txb_NroHabitacion";
-            this.txb_NroHabitacion.ReadOnly = true;
-            this.txb_NroHabitacion.Size = new System.Drawing.Size(44, 20);
-            this.txb_NroHabitacion.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Nro de Habitacion";
             // 
             // AltaAlojamientoSinReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 551);
+            this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(811, 620);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btn_Confirmar);
             this.Controls.Add(this.txb_CostoBase);
@@ -490,17 +528,17 @@
             this.Controls.Add(this.label1);
             this.Name = "AltaAlojamientoSinReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AltaAlojamientoSinReserva";
+            this.Text = "Alta Alojamiento sin Reserva";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Acompañantes)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposDobles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposSimples)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,18 +558,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_AgregarCliente;
-        private System.Windows.Forms.DataGridView dGV_ClienteResponsable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_AgregarAcompañante;
         private System.Windows.Forms.DataGridView dGV_Acompañantes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Label label5;
@@ -546,5 +575,14 @@
         private System.Windows.Forms.NumericUpDown cont_CuposDobles;
         private System.Windows.Forms.NumericUpDown cont_CuposSimples;
         private System.Windows.Forms.Button btn_quitarCliente;
+        private System.Windows.Forms.DataGridView dGV_ClienteResponsable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
