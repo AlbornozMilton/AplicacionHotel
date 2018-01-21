@@ -357,10 +357,10 @@ namespace UI
 
         private void dGV_Acompañantes_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (dGV_Acompañantes.RowCount-1 > Acompañantes.Count)
+            if (dGV_Acompañantes.RowCount > Acompañantes.Count)
             {
                 MessageBox.Show("No es posible agregar otro Cliente debido a la cantidad de cupos que ingresó.");
-                dGV_Acompañantes.Rows.RemoveAt(dGV_Acompañantes.RowCount - 2);
+                dGV_Acompañantes.Rows.RemoveAt(dGV_Acompañantes.RowCount - 1);
             }
         }
 

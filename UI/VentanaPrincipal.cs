@@ -166,9 +166,19 @@ namespace UI
             foreach (var aloj in listaActivos)
             {
                 var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
-                dGV_Alojamientos.Rows.Add(aloj.AlojamientoId,aloj.EstadoAlojamiento, aloj.HabitacionId, aloj.DniResponsable, cli.Legajo, cli.NombreCompleto(), (aloj.EstadoAlojamiento==EstadoAlojamiento.Alojado ? aloj.FechaIngreso:aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"), aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"), aloj.CantCuposSimples + (aloj.CantCuposDobles * 2));
+                dGV_Alojamientos.Rows.Add
+                    (
+                    aloj.AlojamientoId,
+                    aloj.EstadoAlojamiento,
+                    aloj.HabitacionId,
+                    aloj.DniResponsable,
+                    cli.Legajo,
+                    cli.NombreCompleto(),
+                    (aloj.EstadoAlojamiento==EstadoAlojamiento.Alojado ? aloj.FechaIngreso:aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
+                    aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
+                    aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
+                    );
             }
-
         }
 
         private void btn_VerDetalle_Click(object sender, EventArgs e)
@@ -226,8 +236,11 @@ namespace UI
         {
             BuscarCliente ventanaBusqueda = new BuscarCliente();
             ventanaBusqueda.ShowDialog();
-            NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
-            ventanaCliente.ShowDialog();
+            if (ventanaBusqueda.ClienteSeleccionado != null)
+            {
+                NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
+                ventanaCliente.ShowDialog(); 
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -238,21 +251,6 @@ namespace UI
         }
 
         private void cancelarReservaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
-            cancelarAlojamiento.ShowDialog();
-        }
-
-        //private void modificarDatosToolStripMenuItem_Click_1(object sender, EventArgs e)
-        //{
-        //    BuscarCliente ventanaBusqueda = new BuscarCliente();
-        //    ventanaBusqueda.ShowDialog();
-        //    NuevoCliente ventanaCliente = new NuevoCliente();
-        //    ventanaCliente.CargarCampos(ventanaBusqueda.ClienteSeleccionado);
-        //    ventanaCliente.ShowDialog();
-        //}
-
-        private void cancelarReservaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
             cancelarAlojamiento.ShowDialog();

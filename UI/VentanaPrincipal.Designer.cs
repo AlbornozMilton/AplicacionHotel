@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.MenuStrip menuStrip1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +65,7 @@
             this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtp_fechaDesde = new System.Windows.Forms.DateTimePicker();
@@ -75,6 +75,8 @@
             this.btn_VerDetalle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dGV_Alojamientos = new System.Windows.Forms.DataGridView();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,11 +86,9 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_disponibilidad.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
@@ -172,7 +172,7 @@
             this.cancelarReservaToolStripMenuItem.Name = "cancelarReservaToolStripMenuItem";
             this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(254, 34);
             this.cancelarReservaToolStripMenuItem.Text = "Cancelar Reserva";
-            this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click_1);
+            this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click);
             // 
             // alojamientoToolStripMenuItem
             // 
@@ -370,32 +370,31 @@
             this.manualDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(272, 34);
             this.manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
             // 
-            // groupBox1
+            // groupBox_disponibilidad
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.btn_Buscar);
-            this.groupBox1.Controls.Add(this.dtp_fechaHasta);
-            this.groupBox1.Controls.Add(this.dtp_fechaDesde);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 41);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1086, 132);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "BUSCAR DISPONIBILIDAD";
+            this.groupBox_disponibilidad.AutoSize = true;
+            this.groupBox_disponibilidad.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox_disponibilidad.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox_disponibilidad.Controls.Add(this.btn_Buscar);
+            this.groupBox_disponibilidad.Controls.Add(this.dtp_fechaHasta);
+            this.groupBox_disponibilidad.Controls.Add(this.dtp_fechaDesde);
+            this.groupBox_disponibilidad.Controls.Add(this.label2);
+            this.groupBox_disponibilidad.Controls.Add(this.label1);
+            this.groupBox_disponibilidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_disponibilidad.Location = new System.Drawing.Point(12, 41);
+            this.groupBox_disponibilidad.Name = "groupBox_disponibilidad";
+            this.groupBox_disponibilidad.Size = new System.Drawing.Size(599, 132);
+            this.groupBox_disponibilidad.TabIndex = 3;
+            this.groupBox_disponibilidad.TabStop = false;
+            this.groupBox_disponibilidad.Text = "BUSCAR DISPONIBILIDAD";
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(531, 54);
+            this.btn_Buscar.Location = new System.Drawing.Point(466, 47);
             this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Buscar.Size = new System.Drawing.Size(127, 41);
             this.btn_Buscar.TabIndex = 4;
-            this.btn_Buscar.Text = "Buscar";
+            this.btn_Buscar.Text = "Disponibilidad";
             this.btn_Buscar.UseVisualStyleBackColor = true;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
@@ -408,6 +407,7 @@
             // 
             // dtp_fechaDesde
             // 
+            this.dtp_fechaDesde.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.dtp_fechaDesde.Location = new System.Drawing.Point(101, 38);
             this.dtp_fechaDesde.Name = "dtp_fechaDesde";
             this.dtp_fechaDesde.Size = new System.Drawing.Size(346, 30);
@@ -448,7 +448,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1089, 352);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "OCUPACION ACTUAL";
+            this.groupBox2.Text = "OCUPACIÓN ACTUAL";
             // 
             // btn_VerDetalle
             // 
@@ -481,14 +481,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -500,14 +500,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle8;
             this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
             this.dGV_Alojamientos.Name = "dGV_Alojamientos";
             this.dGV_Alojamientos.ReadOnly = true;
@@ -516,63 +516,80 @@
             this.dGV_Alojamientos.Size = new System.Drawing.Size(1080, 272);
             this.dGV_Alojamientos.TabIndex = 0;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Column7
             // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.FillWeight = 35F;
             this.Column7.HeaderText = "Número";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
             // clm_Estado
             // 
+            this.clm_Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Estado.FillWeight = 38F;
             this.clm_Estado.HeaderText = "Estado";
             this.clm_Estado.Name = "clm_Estado";
             this.clm_Estado.ReadOnly = true;
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 40F;
             this.Column1.HeaderText = "Habitación";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // clm_DNI
             // 
-            this.clm_DNI.HeaderText = "DNI";
+            this.clm_DNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_DNI.FillWeight = 45F;
+            this.clm_DNI.HeaderText = "Responsable";
             this.clm_DNI.Name = "clm_DNI";
             this.clm_DNI.ReadOnly = true;
             // 
             // clm_Legajo
             // 
+            this.clm_Legajo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Legajo.FillWeight = 45F;
             this.clm_Legajo.HeaderText = "Legajo";
             this.clm_Legajo.Name = "clm_Legajo";
             this.clm_Legajo.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Responsable";
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Nombre";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column4
             // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.FillWeight = 50F;
             this.Column4.HeaderText = "Ingreso";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.FillWeight = 50F;
             this.Column5.HeaderText = "Egreso";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.FillWeight = 45F;
             this.Column6.HeaderText = "Cantidad Personas";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // VentanaPrincipal
             // 
@@ -582,7 +599,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1110, 541);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox_disponibilidad);
             this.Controls.Add(menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = menuStrip1;
@@ -594,8 +611,8 @@
             this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox_disponibilidad.ResumeLayout(false);
+            this.groupBox_disponibilidad.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
@@ -618,7 +635,7 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox_disponibilidad;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.DateTimePicker dtp_fechaHasta;
@@ -638,15 +655,6 @@
         private System.Windows.Forms.ToolStripMenuItem altaDeReservaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tarifasToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Legajo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button btn_VerDetalle;
         private System.Windows.Forms.ToolStripMenuItem modificarAltaDeClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarTarifaToolStripMenuItem;
@@ -658,5 +666,14 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem modificarDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelarReservaToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Legajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
