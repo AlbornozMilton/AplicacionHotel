@@ -68,10 +68,10 @@
             // 
             this.btn_Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Cancelar.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(15, 403);
+            this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(12, 399);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(111, 29);
+            this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
             this.btn_Cancelar.TabIndex = 0;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = false;
@@ -81,10 +81,10 @@
             // 
             this.btn_Aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(899, 403);
+            this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(904, 399);
             this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(111, 29);
+            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
             this.btn_Aceptar.TabIndex = 1;
             this.btn_Aceptar.Text = "Seleccionar";
             this.btn_Aceptar.UseVisualStyleBackColor = false;
@@ -95,7 +95,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btn_nuevoCliente);
             this.groupBox1.Controls.Add(this.textBox_Legajo);
             this.groupBox1.Controls.Add(this.label4);
@@ -108,20 +108,20 @@
             this.groupBox1.Controls.Add(this.radioButton_nombre);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.gpb_altas);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1001, 144);
+            this.groupBox1.Size = new System.Drawing.Size(1001, 150);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda";
             // 
             // btn_nuevoCliente
             // 
-            this.btn_nuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_nuevoCliente.Location = new System.Drawing.Point(807, 62);
+            this.btn_nuevoCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nuevoCliente.Location = new System.Drawing.Point(795, 62);
             this.btn_nuevoCliente.Name = "btn_nuevoCliente";
-            this.btn_nuevoCliente.Size = new System.Drawing.Size(129, 39);
+            this.btn_nuevoCliente.Size = new System.Drawing.Size(141, 30);
             this.btn_nuevoCliente.TabIndex = 11;
             this.btn_nuevoCliente.Text = "Nuevo Cliente";
             this.btn_nuevoCliente.UseVisualStyleBackColor = true;
@@ -129,29 +129,29 @@
             // 
             // textBox_Legajo
             // 
-            this.textBox_Legajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Legajo.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Legajo.Location = new System.Drawing.Point(347, 68);
             this.textBox_Legajo.Name = "textBox_Legajo";
-            this.textBox_Legajo.Size = new System.Drawing.Size(168, 26);
+            this.textBox_Legajo.Size = new System.Drawing.Size(168, 30);
             this.textBox_Legajo.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(194, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 20);
+            this.label4.Size = new System.Drawing.Size(125, 23);
             this.label4.TabIndex = 9;
             this.label4.Text = "Ingrese Legajo:";
             // 
             // radioButton_legajo
             // 
             this.radioButton_legajo.AutoSize = true;
-            this.radioButton_legajo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_legajo.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton_legajo.Location = new System.Drawing.Point(23, 69);
             this.radioButton_legajo.Name = "radioButton_legajo";
-            this.radioButton_legajo.Size = new System.Drawing.Size(103, 24);
+            this.radioButton_legajo.Size = new System.Drawing.Size(108, 27);
             this.radioButton_legajo.TabIndex = 2;
             this.radioButton_legajo.Text = "Por Legajo";
             this.radioButton_legajo.UseVisualStyleBackColor = true;
@@ -170,47 +170,47 @@
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Nombre.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Nombre.Location = new System.Drawing.Point(347, 104);
             this.textBox_Nombre.Name = "textBox_Nombre";
-            this.textBox_Nombre.Size = new System.Drawing.Size(168, 26);
+            this.textBox_Nombre.Size = new System.Drawing.Size(168, 30);
             this.textBox_Nombre.TabIndex = 5;
             // 
             // textBox_DNI
             // 
-            this.textBox_DNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_DNI.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_DNI.Location = new System.Drawing.Point(347, 31);
             this.textBox_DNI.Name = "textBox_DNI";
-            this.textBox_DNI.Size = new System.Drawing.Size(168, 26);
+            this.textBox_DNI.Size = new System.Drawing.Size(168, 30);
             this.textBox_DNI.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(194, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 20);
+            this.label2.Size = new System.Drawing.Size(138, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Ingrese Nombre:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(194, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.Size = new System.Drawing.Size(105, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ingrese DNI:";
             // 
             // radioButton_nombre
             // 
             this.radioButton_nombre.AutoSize = true;
-            this.radioButton_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_nombre.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton_nombre.Location = new System.Drawing.Point(23, 105);
             this.radioButton_nombre.Name = "radioButton_nombre";
-            this.radioButton_nombre.Size = new System.Drawing.Size(111, 24);
+            this.radioButton_nombre.Size = new System.Drawing.Size(121, 27);
             this.radioButton_nombre.TabIndex = 3;
             this.radioButton_nombre.Text = "Por Nombre";
             this.radioButton_nombre.UseVisualStyleBackColor = true;
@@ -220,10 +220,10 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(23, 32);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 24);
+            this.radioButton1.Size = new System.Drawing.Size(88, 27);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Por DNI";
@@ -243,10 +243,10 @@
             // rbn_Alta
             // 
             this.rbn_Alta.AutoSize = true;
-            this.rbn_Alta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbn_Alta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbn_Alta.Location = new System.Drawing.Point(0, 17);
             this.rbn_Alta.Name = "rbn_Alta";
-            this.rbn_Alta.Size = new System.Drawing.Size(72, 22);
+            this.rbn_Alta.Size = new System.Drawing.Size(82, 27);
             this.rbn_Alta.TabIndex = 12;
             this.rbn_Alta.TabStop = true;
             this.rbn_Alta.Text = "En Alta";
@@ -256,10 +256,10 @@
             // rbn_baja
             // 
             this.rbn_baja.AutoSize = true;
-            this.rbn_baja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbn_baja.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbn_baja.Location = new System.Drawing.Point(0, 45);
             this.rbn_baja.Name = "rbn_baja";
-            this.rbn_baja.Size = new System.Drawing.Size(77, 22);
+            this.rbn_baja.Size = new System.Drawing.Size(84, 27);
             this.rbn_baja.TabIndex = 13;
             this.rbn_baja.TabStop = true;
             this.rbn_baja.Text = "En Baja";
@@ -271,12 +271,12 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.tablaResulClientes);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 163);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1001, 234);
+            this.groupBox2.Size = new System.Drawing.Size(1002, 230);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -286,15 +286,12 @@
             this.tablaResulClientes.AllowUserToAddRows = false;
             this.tablaResulClientes.AllowUserToDeleteRows = false;
             this.tablaResulClientes.AllowUserToOrderColumns = true;
-            this.tablaResulClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaResulClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaResulClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -307,14 +304,15 @@
             this.clm_apellido,
             this.clm_Nombre,
             this.clm_telefono});
-            this.tablaResulClientes.Location = new System.Drawing.Point(3, 25);
+            this.tablaResulClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaResulClientes.Location = new System.Drawing.Point(3, 26);
             this.tablaResulClientes.MultiSelect = false;
             this.tablaResulClientes.Name = "tablaResulClientes";
             this.tablaResulClientes.ReadOnly = true;
             this.tablaResulClientes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tablaResulClientes.RowHeadersVisible = false;
             this.tablaResulClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaResulClientes.Size = new System.Drawing.Size(995, 203);
+            this.tablaResulClientes.Size = new System.Drawing.Size(996, 201);
             this.tablaResulClientes.StandardTab = true;
             this.tablaResulClientes.TabIndex = 0;
             // 
@@ -361,7 +359,7 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.clm_telefono.DefaultCellStyle = dataGridViewCellStyle5;
             this.clm_telefono.FillWeight = 60F;
-            this.clm_telefono.HeaderText = "Telefono";
+            this.clm_telefono.HeaderText = "Teléfono";
             this.clm_telefono.Name = "clm_telefono";
             this.clm_telefono.ReadOnly = true;
             // 
@@ -370,7 +368,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(1026, 435);
+            this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1026, 441);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Aceptar);

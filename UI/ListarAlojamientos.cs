@@ -20,7 +20,9 @@ namespace UI
         {
             InitializeComponent();
             dateTimePicker_hasta.Value = DateTime.Now.AddDays(1);
-            string[] auxComponents = { "btn_Aceptar","button_realizarPago", "button_CancelarAloj" };
+            string[] auxComponents = { "btn_Aceptar"};
+            button_realizarPago.Visible = false;
+            button_CancelarAloj.Visible = false;
             this.EnableComponents(auxComponents, false);
         }
 
