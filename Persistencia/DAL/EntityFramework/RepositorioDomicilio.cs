@@ -21,7 +21,7 @@ namespace Persistencia.DAL.EntityFramework
         /// <returns></returns>
         public int ComprobarDomicilio(Domicilio pDomicilio)
         {
-            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").Single(c => c.CiudadId == pDomicilio.Ciudad.CiudadId);
+            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CiudadId == pDomicilio.Ciudad.CiudadId);
 
             foreach (var dom in ciudad.Domicilios)
             {

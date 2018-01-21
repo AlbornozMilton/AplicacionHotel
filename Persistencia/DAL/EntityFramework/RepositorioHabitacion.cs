@@ -23,7 +23,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public void ModificarAltaCupo(Habitacion pHabitacion)
         {
-            Habitacion localHab = iDbContext.Habitaciones.Include("Cupos").Where(h => h.HabitacionId == pHabitacion.HabitacionId).Single();
+            Habitacion localHab = iDbContext.Habitaciones.Include("Cupos").Where(h => h.HabitacionId == pHabitacion.HabitacionId).SingleOrDefault();
 
             //La pHabitacion viene con los cupos modificados
             for (int i = 0; i < pHabitacion.Cupos.Count; i++)
