@@ -102,7 +102,7 @@ namespace Persistencia.DAL.EntityFramework
             }
             else //NUEVO CLIENTE
             {
-                pCliente.EnAlta = true;
+                //pCliente.EnAlta = true;
                 pCliente.DomicilioId = pIdDomicilio;
                 pCliente.TarifaClienteId = pCliente.TarifaCliente.TarifaClienteId;
                 pCliente.TarifaCliente = null;
