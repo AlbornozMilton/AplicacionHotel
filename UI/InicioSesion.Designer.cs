@@ -54,18 +54,18 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(239, 71);
+            this.textBox1.Location = new System.Drawing.Point(203, 71);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 30);
+            this.textBox1.Size = new System.Drawing.Size(186, 30);
             this.textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(239, 108);
+            this.textBox2.Location = new System.Drawing.Point(203, 108);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = 'o';
-            this.textBox2.Size = new System.Drawing.Size(150, 30);
+            this.textBox2.Size = new System.Drawing.Size(186, 30);
             this.textBox2.TabIndex = 2;
             this.textBox2.UseSystemPasswordChar = true;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
@@ -131,7 +131,7 @@
             this.Controls.Add(this.button1);
             this.Name = "InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Inicio Sesion";
+            this.Text = "Inicio Sesión";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InicioSesion_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

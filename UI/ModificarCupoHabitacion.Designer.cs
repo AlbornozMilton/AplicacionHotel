@@ -53,10 +53,10 @@
             // 
             // btn_buscarHab
             // 
-            this.btn_buscarHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscarHab.Location = new System.Drawing.Point(12, 12);
+            this.btn_buscarHab.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscarHab.Location = new System.Drawing.Point(12, 9);
             this.btn_buscarHab.Name = "btn_buscarHab";
-            this.btn_buscarHab.Size = new System.Drawing.Size(174, 25);
+            this.btn_buscarHab.Size = new System.Drawing.Size(196, 30);
             this.btn_buscarHab.TabIndex = 16;
             this.btn_buscarHab.Text = "Consultar Habitación";
             this.btn_buscarHab.UseVisualStyleBackColor = true;
@@ -64,12 +64,12 @@
             // 
             // gpb_Hab
             // 
-            this.gpb_Hab.BackColor = System.Drawing.SystemColors.Control;
+            this.gpb_Hab.BackColor = System.Drawing.Color.Transparent;
             this.gpb_Hab.Controls.Add(this.dGV_Habs);
-            this.gpb_Hab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpb_Hab.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpb_Hab.Location = new System.Drawing.Point(9, 43);
             this.gpb_Hab.Name = "gpb_Hab";
-            this.gpb_Hab.Size = new System.Drawing.Size(407, 71);
+            this.gpb_Hab.Size = new System.Drawing.Size(432, 88);
             this.gpb_Hab.TabIndex = 15;
             this.gpb_Hab.TabStop = false;
             this.gpb_Hab.Text = "Habitación Seleccionada";
@@ -78,9 +78,10 @@
             // 
             this.dGV_Habs.AllowUserToAddRows = false;
             this.dGV_Habs.AllowUserToDeleteRows = false;
+            this.dGV_Habs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -93,20 +94,20 @@
             this.clm_Nombre});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV_Habs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_Habs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGV_Habs.Location = new System.Drawing.Point(3, 19);
+            this.dGV_Habs.Location = new System.Drawing.Point(3, 26);
             this.dGV_Habs.Name = "dGV_Habs";
             this.dGV_Habs.ReadOnly = true;
             this.dGV_Habs.RowHeadersVisible = false;
             this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Habs.Size = new System.Drawing.Size(401, 49);
+            this.dGV_Habs.Size = new System.Drawing.Size(426, 59);
             this.dGV_Habs.TabIndex = 1;
             // 
             // clm_Id
@@ -115,7 +116,6 @@
             this.clm_Id.HeaderText = "Número";
             this.clm_Id.Name = "clm_Id";
             this.clm_Id.ReadOnly = true;
-            this.clm_Id.Width = 134;
             // 
             // clm_capacidad
             // 
@@ -123,7 +123,6 @@
             this.clm_capacidad.HeaderText = "Capacidad";
             this.clm_capacidad.Name = "clm_capacidad";
             this.clm_capacidad.ReadOnly = true;
-            this.clm_capacidad.Width = 131;
             // 
             // clm_Nombre
             // 
@@ -131,17 +130,15 @@
             this.clm_Nombre.HeaderText = "Planta";
             this.clm_Nombre.Name = "clm_Nombre";
             this.clm_Nombre.ReadOnly = true;
-            this.clm_Nombre.Width = 132;
             // 
             // dataGridView_cupos
             // 
             this.dataGridView_cupos.AllowUserToAddRows = false;
             this.dataGridView_cupos.AllowUserToDeleteRows = false;
-            this.dataGridView_cupos.AllowUserToOrderColumns = true;
             this.dataGridView_cupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -154,18 +151,19 @@
             this.clm_modificar});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_cupos.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView_cupos.Location = new System.Drawing.Point(3, 22);
+            this.dataGridView_cupos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_cupos.Location = new System.Drawing.Point(3, 26);
             this.dataGridView_cupos.Name = "dataGridView_cupos";
             this.dataGridView_cupos.ReadOnly = true;
             this.dataGridView_cupos.RowHeadersVisible = false;
             this.dataGridView_cupos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_cupos.Size = new System.Drawing.Size(397, 103);
+            this.dataGridView_cupos.Size = new System.Drawing.Size(423, 99);
             this.dataGridView_cupos.TabIndex = 0;
             this.dataGridView_cupos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_cupos_CellMouseClick);
             this.dataGridView_cupos.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView_cupos_CellValuePushed);
@@ -195,20 +193,22 @@
             // 
             // groupBox_cupos
             // 
+            this.groupBox_cupos.BackColor = System.Drawing.Color.Transparent;
             this.groupBox_cupos.Controls.Add(this.dataGridView_cupos);
-            this.groupBox_cupos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_cupos.Location = new System.Drawing.Point(9, 119);
+            this.groupBox_cupos.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_cupos.Location = new System.Drawing.Point(12, 137);
             this.groupBox_cupos.Name = "groupBox_cupos";
-            this.groupBox_cupos.Size = new System.Drawing.Size(406, 128);
+            this.groupBox_cupos.Size = new System.Drawing.Size(429, 128);
             this.groupBox_cupos.TabIndex = 17;
             this.groupBox_cupos.TabStop = false;
             this.groupBox_cupos.Text = "Cupos";
             // 
             // btn_confirmar
             // 
-            this.btn_confirmar.Location = new System.Drawing.Point(334, 262);
+            this.btn_confirmar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_confirmar.Location = new System.Drawing.Point(331, 274);
             this.btn_confirmar.Name = "btn_confirmar";
-            this.btn_confirmar.Size = new System.Drawing.Size(75, 23);
+            this.btn_confirmar.Size = new System.Drawing.Size(110, 30);
             this.btn_confirmar.TabIndex = 18;
             this.btn_confirmar.Text = "Confirmar";
             this.btn_confirmar.UseVisualStyleBackColor = true;
@@ -216,9 +216,10 @@
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(12, 262);
+            this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(12, 274);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(79, 23);
+            this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
             this.btn_Cancelar.TabIndex = 19;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
@@ -227,7 +228,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 296);
+            this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(450, 316);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_confirmar);
             this.Controls.Add(this.groupBox_cupos);
