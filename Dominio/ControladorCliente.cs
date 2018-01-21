@@ -105,11 +105,6 @@ namespace Dominio
             return (lista);
         }
 
-        public void ModificarAltaCliente(bool pValor, int pIdCliente)
-        {
-            iUoW.RepositorioCliente.ModificarAlta(pValor,pIdCliente);
-        }
-
         public bool ValidarUsuario(string pUs, string pPass)
         {
             return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUs, Password = pPass });
@@ -218,6 +213,11 @@ namespace Dominio
         public void ModificarAltaCliente(int pDNI, bool pValoAlta)
         {
             iUoW.RepositorioCliente.ModificarAlta(pValoAlta, pDNI);
+        }
+
+        public void ModificarDatosCliente(Cliente pCliente)
+        {
+            iUoW.RepositorioCliente.ModificarDatosCliente(Mapper.Map<Cliente, pers.Cliente>(pCliente));
         }
 
     }

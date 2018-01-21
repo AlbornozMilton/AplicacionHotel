@@ -142,7 +142,7 @@ namespace Persistencia.DAL.EntityFramework
         /// Se exceptua la modificación para DNI.
         /// Requisito Obligatorio: la ciudad debe existir sino agregarla.
         /// </summary>
-        public void MoficarDatosCliente(Cliente pCliente)
+        public void ModificarDatosCliente(Cliente pCliente)
         {
             Cliente localCliente = this.GetPorDNI(pCliente.ClienteId, pCliente.EnAlta);
 
