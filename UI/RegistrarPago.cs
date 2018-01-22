@@ -64,16 +64,16 @@ namespace UI
             InitializeComponent();
             AlojSeleccionado = pAloj;
             lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
-            CargarAlojamientoSeccionado(AlojSeleccionado);
+            CargarAlojamientoSeccionado();
             ck_ModificarMonto.Enabled = false;
 
         }
 
-        public void CargarAlojamientoSeccionado(Alojamiento pAloj)
+        public void CargarAlojamientoSeccionado()
         {
             CargarPagos();
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId, pAloj.EstadoAlojamiento, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+            dGV_ListadoAlojamientos.Rows.Add(AlojSeleccionado.AlojamientoId, AlojSeleccionado.EstadoAlojamiento, AlojSeleccionado.DniResponsable, AlojSeleccionado.Clientes.Find(c => c.ClienteId == AlojSeleccionado.DniResponsable).NombreCompleto(), AlojSeleccionado.HabitacionId);
         }
 
         //Buscar otro alojamiento
@@ -85,7 +85,7 @@ namespace UI
             if (VentanaBuscarAlojamiento.Aloj_Seleccionado != null)
             {
                 AlojSeleccionado = VentanaBuscarAlojamiento.Aloj_Seleccionado;
-                CargarAlojamientoSeccionado(AlojSeleccionado);
+                CargarAlojamientoSeccionado();
                 gbx_Pago.Enabled = true;
                 btn_Aceptar.Enabled = true;
             }

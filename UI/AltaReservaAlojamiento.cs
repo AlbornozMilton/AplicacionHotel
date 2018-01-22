@@ -186,7 +186,9 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
-                MessageBox.Show("Alojamiento Registrado con Exito.");
+                //this.NuevoAlojamiento = new ControladorAlojamiento().BuscarAlojamientoPorID(NuevoAlojamiento.AlojamientoId);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Alojamiento Registrado con Éxito", TipoMensaje.ReservaExitosa, NuevoAlojamiento.AlojamientoId);
+                ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)

@@ -7,14 +7,104 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
 
 namespace UI
 {
     public partial class VentanaEmergente : Form
     {
-        public VentanaEmergente()
+        string Mensaje;
+        TipoMensaje TipoMensaje;
+        Alojamiento Alojamiento;
+
+        public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje)
         {
             InitializeComponent();
+            Mensaje = pMensajePrincipal;
+            TipoMensaje = pTipoMensaje;
+            button_cancelar.Visible = false;
+            lbl_TextAux.Visible = false;
         }
+
+        public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje,int pIdAloj)
+        {
+            InitializeComponent();
+            Mensaje = pMensajePrincipal;
+            TipoMensaje = pTipoMensaje;
+            Alojamiento = new ControladorAlojamiento().BuscarAlojamientoPorID(pIdAloj);
+
+            pictureBox_icon.Location = new Point(37, 12);
+            lbl_TextPrincipal.Location = new Point(118, 34);
+
+            //lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+            lbl_TextAux.Location = new Point(66, 87);
+            lbl_TextAux.Visible = true;
+
+
+            btn_Aceptar.Text = "Realizar Pago";
+            btn_Aceptar.Location = new Point(242, 113);
+            btn_Aceptar.Size = new Size(132, 30);
+
+            button_cancelar.Visible = true;
+        }
+
+        private void VentanaEmergente_Load(object sender, EventArgs e)
+        {
+
+            lbl_TextPrincipal.Text = Mensaje;
+            pictureBox_icon.Image = Properties.Resources.Boton_Ok_2;
+
+
+            switch (TipoMensaje)
+            {
+                case TipoMensaje.Exito:
+                    {
+                    }
+                    break;
+                case TipoMensaje.Alerta:
+                    {
+                        pictureBox_icon.Image = Properties.Resources.Boton_CerrarSesion;
+                    }
+                    break;
+                case TipoMensaje.ReservaExitosa:
+                    {
+                        lbl_TextAux.Visible = true;
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                    }
+                    break;
+                case TipoMensaje.AltaAlojamientiExitosa:
+                    {
+                        lbl_TextAux.Visible = true;
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                    }
+                    break;
+            }
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            if (this.TipoMensaje == TipoMensaje.AltaAlojamientiExitosa|| this.TipoMensaje == TipoMensaje.ReservaExitosa)
+            {
+                RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
+                registrarPago.ShowDialog();
+                Close();
+            }else
+	        {
+                Close();
+            }
+        }
+
+        private void button_cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+
+    public enum TipoMensaje
+    {
+        ReservaExitosa,
+        AltaAlojamientiExitosa,
+        Exito,
+        Alerta
     }
 }
