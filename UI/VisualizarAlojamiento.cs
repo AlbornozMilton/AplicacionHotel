@@ -21,11 +21,13 @@ namespace UI
         public void CargarPagos(List<Pago> pPagos)
         {
             dGV_Pagos.Rows.Clear();
+            double auxTotal = 0;
             foreach (var pago in pPagos)
             {
-                dGV_Pagos.Rows.Add(pago.PagoId, pago.FechaPago.ToString("dd / MM / yyyy"), pago.Tipo, pago.Monto);
+                auxTotal += pago.Monto;
+                dGV_Pagos.Rows.Add(pago.Tipo,pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.TimeOfDay, pago.Monto);
             }
-            
+            textBox_total.Text = auxTotal.ToString();
         }
         public void CargarClientes(List<Cliente> pClientes, int pResponsable)
         {
@@ -109,6 +111,18 @@ namespace UI
         }
 
         private void pestaña_Servicios_Leave(object sender, EventArgs e)
+        {
+            textBox_total.Visible = false;
+            label13.Visible = false;
+        }
+
+        private void pestaña_Pagos_Enter(object sender, EventArgs e)
+        {
+            textBox_total.Visible = true;
+            label13.Visible = true;
+        }
+
+        private void pestaña_Pagos_Leave(object sender, EventArgs e)
         {
             textBox_total.Visible = false;
             label13.Visible = false;

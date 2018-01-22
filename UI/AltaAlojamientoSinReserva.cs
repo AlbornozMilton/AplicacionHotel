@@ -176,7 +176,7 @@ namespace UI
                         ck_Exclusividad.Enabled = true;
                     }
 
-                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.NombreCompleto(), ClienteResponsable.TarifaCliente.NombreTarifa, ClienteResponsable.Telefono);
+                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
                     btn_Confirmar.Enabled = true;
                     btn_AgregarAcompañante.Enabled = true;
@@ -225,7 +225,7 @@ namespace UI
                 }
 
                 this.Acompañantes.Add(BuscarClienteForm.ClienteSeleccionado);
-                dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.NombreCompleto(), BuscarClienteForm.ClienteSeleccionado.TarifaCliente.NombreTarifa, BuscarClienteForm.ClienteSeleccionado.Telefono);
+                dGV_Acompañantes.Rows.Add(BuscarClienteForm.ClienteSeleccionado.ClienteId, BuscarClienteForm.ClienteSeleccionado.Legajo, BuscarClienteForm.ClienteSeleccionado.Apellido, BuscarClienteForm.ClienteSeleccionado.Nombre, BuscarClienteForm.ClienteSeleccionado.TarifaCliente.NombreTarifa);
             }
             catch (Exception E)
             {
