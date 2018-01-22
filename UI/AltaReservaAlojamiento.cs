@@ -69,7 +69,8 @@ namespace UI
 
                     if (!new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20))//si es falso que entre
                     {
-                        MessageBox.Show("Atención: No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel.");
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel", TipoMensaje.Alerta);
+                        ventanaEmergente.ShowDialog();
                         ck_Exclusividad.Enabled = false;
                     }
                     else
@@ -95,7 +96,10 @@ namespace UI
                 }
             }
             else
-                MessageBox.Show("Las fechas seleccionadas no corresponden. Seleccione de nuevo.");
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Las fechas seleccionadas no corresponden. Seleccione de nuevo.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
         }
 
         //boton agregar responsable
@@ -112,12 +116,14 @@ namespace UI
 
                     if (this.ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
                     {
-                        MessageBox.Show("Atención: El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.");
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.", TipoMensaje.Alerta);
+                        ventanaEmergente.ShowDialog();
                     }
 
                     if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
                     {
-                        MessageBox.Show("Atención: Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si cambia dicho Cliente podrá solicitar la exclusividad.");
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación", TipoMensaje.Alerta);
+                        ventanaEmergente.ShowDialog();
                         HabSeleccionada.SetExclusividad(false);
                         ck_Exclusividad.Enabled = false;
                         ck_Exclusividad.Checked = false;
@@ -137,7 +143,8 @@ namespace UI
             }
             catch (Exception E)
             {
-               MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -177,7 +184,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -185,14 +193,15 @@ namespace UI
         {
             try
             {
-                new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa, NuevoAlojamiento.AlojamientoId);
+                int IdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa, IdAloj);
                 ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -216,7 +225,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 this.FechaIni = DateTime.Now.Date;
             }
         }
@@ -239,7 +249,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 cont_CuposSimples.Value--;
             }
         }
@@ -252,7 +263,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 cont_CuposDobles.Value--;
             }
         }
@@ -261,14 +273,16 @@ namespace UI
         {
             if (contador_Exceptuado.Value != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado)
             {
-                MessageBox.Show("Atención: Debido a que selecciono un Cliente de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si reduce el contador a 'cero' para dicho Cliente podrá solicitar la exclusividad.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que selecciono un Cliente de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 HabSeleccionada.SetExclusividad(false);
                 ck_Exclusividad.Enabled = false;
                 ck_Exclusividad.Checked = false;
             }
             else if(ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
             {
-                MessageBox.Show("Atención: Ahora es posible elegir la exclusividad de Habitación.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Ahora es posible elegir la exclusividad de Habitación", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 ck_Exclusividad.Enabled = true;
             }
         }

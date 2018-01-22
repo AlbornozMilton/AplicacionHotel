@@ -73,7 +73,8 @@ namespace UI
             }
             catch (Exception pException)
             {
-                MessageBox.Show(pException.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(pException.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -94,7 +95,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento antes de Ver Detalles", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
     }

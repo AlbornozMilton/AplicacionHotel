@@ -62,13 +62,15 @@ namespace UI
                 }
                 else
                 {
-                    MessageBox.Show("El Alojamiento a seleccionar debe estar en estado Alojado");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Alojamiento debe estar en Estado Alojado", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
                     dataGridView1.Rows.Clear();
                 }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Alojamiento");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 dataGridView1.Rows.Clear();
             }
         }
@@ -87,7 +89,8 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             new ControladorAlojamiento().AgregarServicio(this.ServicioSeleccionado, Convert.ToByte(cant_Servicio.Value), AlojSeleciconado);
-            MessageBox.Show("Extito: Servicio Agregado");
+            VentanaEmergente ventanaEmergente = new VentanaEmergente("Servicio agregado correctamente", TipoMensaje.Exito);
+            ventanaEmergente.ShowDialog();
             Close();
         }
 

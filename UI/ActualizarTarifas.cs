@@ -52,7 +52,8 @@ namespace UI
             try
             {
                 new ControladorExtra().AcutalizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
-                MessageBox.Show("Tarifa Actualizado");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Tarifa Actualizada", TipoMensaje.Exito);
+                ventanaEmergente.ShowDialog();
                 Close();
                 ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
                 VentanaTarifas.ShowDialog();

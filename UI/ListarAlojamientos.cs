@@ -146,7 +146,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("La fecha 'Hasta' debe ser mayor que la fecha 'Desde'");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("La fecha 'Hasta' debe ser mayor que la fecha 'Desde'", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
     }

@@ -112,7 +112,8 @@ namespace UI
         {
             if (dGV_ListadoAlojamientos.Rows.Count <= 0)
             {
-                MessageBox.Show("Debe seleccionar un alojamiento");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             } 
             else if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
             {
@@ -138,12 +139,14 @@ namespace UI
                 Pago Pago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
                 //iControladorAloj.ControlTipoPago(AlojSeleccionado, iPago);
                 iControladorAloj.AddPago(AlojSeleccionado,Pago);
-                MessageBox.Show("Pago de Alojamiento Exitoso.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Pago de Alojamiento Exitoso", TipoMensaje.Exito);
+                ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -179,7 +182,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento antes de Ver Detalles", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
     }

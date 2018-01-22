@@ -70,7 +70,8 @@ namespace UI
             List<Alojamiento> ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
             if (ListAloj.Count > 0)
             {
-                MessageBox.Show("Los Alojamiento Reservados a continuación no presentan Pago de Depósito dentro de las 72hs");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito dentro de las 72hs", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
                 listarAlojamientos.ShowDialog();
             }
@@ -153,12 +154,14 @@ namespace UI
             }
             catch (NullReferenceException E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 AltaReservaAlojamiento.Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(BuscarAlojamiento.Aloj_Seleccionado);
                 VentanaVisualizar.ShowDialog();
                 AltaReservaAlojamiento.Close();

@@ -61,12 +61,14 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().CancelarAlojamiento(Aloj_Seleccionado,DateTime.Now);
-                MessageBox.Show("Cancelación de Reserva de Alojamiento Exitosa.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Cancelación de Reserva de Alojamiento Exitosa", TipoMensaje.Exito);
+                ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
     }

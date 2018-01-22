@@ -57,7 +57,8 @@ namespace UI
 
                 if (iAloj_Seleccionado.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date)!=0)
                 {
-                    MessageBox.Show("Atención: La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
                 }
 
                 lbl_fechaEstEgreso.Text = iAloj_Seleccionado.FechaEstimadaEgreso.Date.ToString("dd / MM / yyyy");
@@ -72,12 +73,14 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().CerrarAlojamiento(iAloj_Seleccionado);
-                MessageBox.Show("Cierre de Alojamiento Exitoso.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.Exito);
+                ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 

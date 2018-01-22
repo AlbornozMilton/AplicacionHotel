@@ -44,7 +44,8 @@ namespace UI
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             new ControladorExtra().AcutalizarCostoServicio(this.ServicioSeleccionado, txb_nuevoCosto.Text);
-            MessageBox.Show("Servicio Actualizado");
+            VentanaEmergente ventanaEmergente = new VentanaEmergente("Servicio Actualizado", TipoMensaje.Exito);
+            ventanaEmergente.ShowDialog();
             Close();
             AdministrarServicios Actualizar = new AdministrarServicios();
             Actualizar.ShowDialog();
