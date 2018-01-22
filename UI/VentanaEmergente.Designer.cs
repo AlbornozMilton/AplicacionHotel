@@ -51,7 +51,8 @@
             this.lbl_TextPrincipal.AutoSize = true;
             this.lbl_TextPrincipal.BackColor = System.Drawing.Color.Transparent;
             this.lbl_TextPrincipal.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TextPrincipal.Location = new System.Drawing.Point(118, 49);
+            this.lbl_TextPrincipal.Location = new System.Drawing.Point(111, 39);
+            this.lbl_TextPrincipal.MaximumSize = new System.Drawing.Size(300, 0);
             this.lbl_TextPrincipal.Name = "lbl_TextPrincipal";
             this.lbl_TextPrincipal.Size = new System.Drawing.Size(112, 19);
             this.lbl_TextPrincipal.TabIndex = 9;
@@ -62,7 +63,8 @@
             this.lbl_TextAux.AutoSize = true;
             this.lbl_TextAux.BackColor = System.Drawing.Color.Transparent;
             this.lbl_TextAux.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TextAux.Location = new System.Drawing.Point(118, 87);
+            this.lbl_TextAux.Location = new System.Drawing.Point(111, 86);
+            this.lbl_TextAux.MaximumSize = new System.Drawing.Size(350, 0);
             this.lbl_TextAux.Name = "lbl_TextAux";
             this.lbl_TextAux.Size = new System.Drawing.Size(62, 20);
             this.lbl_TextAux.TabIndex = 10;

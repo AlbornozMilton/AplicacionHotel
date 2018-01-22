@@ -380,6 +380,7 @@
             this.pestaña_Ubicacion.TabIndex = 1;
             this.pestaña_Ubicacion.Text = "Ubicación";
             this.pestaña_Ubicacion.UseVisualStyleBackColor = true;
+            this.pestaña_Ubicacion.Enter += new System.EventHandler(this.pestaña_Ubicacion_Enter);
             // 
             // label22
             // 

@@ -53,7 +53,7 @@ namespace UI
 
             lbl_TextPrincipal.Text = Mensaje;
             pictureBox_icon.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox_icon.Image = Properties.Resources.Boton_Ok_2;
+            pictureBox_icon.Image = Properties.Resources.Exito_Icon;
 
 
             switch (TipoMensaje)
@@ -64,7 +64,7 @@ namespace UI
                     break;
                 case TipoMensaje.Alerta:
                     {
-                        pictureBox_icon.Image = Properties.Resources.Boton_CerrarSesion;
+                        pictureBox_icon.Image = Properties.Resources.Alerta_Icon;
                     }
                     break;
                 case TipoMensaje.ReservaExitosa:
