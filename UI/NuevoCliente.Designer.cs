@@ -237,6 +237,7 @@
             this.txb_legajo.Size = new System.Drawing.Size(282, 30);
             this.txb_legajo.TabIndex = 22;
             this.txb_legajo.TextChanged += new System.EventHandler(this.txb_legajo_TextChanged);
+            this.txb_legajo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_legajo_KeyPress);
             this.txb_legajo.Leave += new System.EventHandler(this.txb_legajo_Leave);
             // 
             // cbx_tipo

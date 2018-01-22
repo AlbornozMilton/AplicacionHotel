@@ -52,6 +52,7 @@ namespace UI
         {
 
             lbl_TextPrincipal.Text = Mensaje;
+            pictureBox_icon.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox_icon.Image = Properties.Resources.Boton_Ok_2;
 
 

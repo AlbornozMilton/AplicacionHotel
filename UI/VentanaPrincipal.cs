@@ -46,13 +46,16 @@ namespace UI
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             CargarAlojamientosActivos();
 
-            VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa
-                , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
-            ventanaEmergente.ShowDialog();
+            if (dGV_Alojamientos.CurrentRow != null)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa
+                        , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
+                ventanaEmergente.ShowDialog();
 
-            VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa
-                , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
-            ventanaEmergente2.ShowDialog();
+                VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa
+                    , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
+                ventanaEmergente2.ShowDialog(); 
+            }
 
             VentanaEmergente ventanaEmergente3 = new VentanaEmergente("Éxito en la Cancelación", TipoMensaje.Exito);
             ventanaEmergente3.ShowDialog();
@@ -61,7 +64,7 @@ namespace UI
             ventanaEmergente4.ShowDialog();
 
             AlojsReservadosSinDeposito();
-            timer1.Interval = 7200000;
+            timer1.Interval = 7200000;// dos horas
             timer1.Enabled = true;
         }
 
@@ -274,6 +277,12 @@ namespace UI
         {
             CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
             cancelarAlojamiento.ShowDialog();
+        }
+
+        private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            BuscarCliente BuscarCliente = new BuscarCliente();
+            BuscarCliente.ShowDialog();
         }
     }
 }
