@@ -20,7 +20,7 @@ namespace UI
         {
             foreach (var serv in ListaServicios)
             {
-                dGV_Servicios.Rows.Add(serv.ServicioId,serv.Nombre,serv.CostoBase);
+                dGV_Servicios.Rows.Add(serv.ServicioId,serv.Nombre,serv.CostoBase,serv.Detalle);
             }
         }
 

@@ -48,7 +48,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 240);
+            this.groupBox1.Size = new System.Drawing.Size(572, 240);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tarifas";
@@ -85,7 +85,7 @@
             this.dGV_Tarifas.ReadOnly = true;
             this.dGV_Tarifas.RowHeadersVisible = false;
             this.dGV_Tarifas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Tarifas.Size = new System.Drawing.Size(531, 211);
+            this.dGV_Tarifas.Size = new System.Drawing.Size(566, 211);
             this.dGV_Tarifas.TabIndex = 0;
             // 
             // clm_Nombre
@@ -109,7 +109,7 @@
             // btn_Seleccionar
             // 
             this.btn_Seleccionar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Seleccionar.Location = new System.Drawing.Point(440, 259);
+            this.btn_Seleccionar.Location = new System.Drawing.Point(472, 256);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
             this.btn_Seleccionar.Size = new System.Drawing.Size(110, 30);
             this.btn_Seleccionar.TabIndex = 1;
@@ -134,13 +134,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(562, 296);
+            this.ClientSize = new System.Drawing.Size(598, 296);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Seleccionar);
             this.Controls.Add(this.groupBox1);
             this.Name = "ConsultarTarifas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ConsultarTarifas";
+            this.Text = "Costos de Tarifas";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).EndInit();
             this.ResumeLayout(false);
