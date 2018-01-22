@@ -49,10 +49,10 @@ namespace UI
             dGV_Servicios.Rows.Clear();
             foreach (var serv in pServicios)
             {
-                dGV_Servicios.Rows.Add(serv.FechaServicio.ToString("dd / MM / yyyy"), serv.Servicio.Nombre, serv.Cantidad, serv.CostoServicio);
-                total = total + serv.CostoServicio;
+                dGV_Servicios.Rows.Add(serv.Servicio.Nombre,serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd / MM / yyyy"), serv.CostoServicio);
+                total += serv.CostoServicio;
             }
-            lbl_Total.Text = total.ToString();
+            textBox_total.Text = total.ToString();
         }
 
         public string CargarFecha(DateTime pFecha)
@@ -104,13 +104,13 @@ namespace UI
 
         private void pestaña_Servicios_Enter(object sender, EventArgs e)
         {
-            lbl_Total.Visible = true;
+            textBox_total.Visible = true;
             label13.Visible = true;
         }
 
         private void pestaña_Servicios_Leave(object sender, EventArgs e)
         {
-            lbl_Total.Visible = false;
+            textBox_total.Visible = false;
             label13.Visible = false;
         }
     }

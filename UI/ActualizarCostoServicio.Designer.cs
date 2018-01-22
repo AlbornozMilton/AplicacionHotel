@@ -35,9 +35,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarCostoServicio));
             this.gpb_Servicio = new System.Windows.Forms.GroupBox();
             this.dataGridView_Servicio = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,10 @@
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.txb_nuevoCosto = new System.Windows.Forms.TextBox();
             this.lbl_textIngreseCosto = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_detalles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gpb_Servicio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Servicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -62,7 +63,7 @@
             this.gpb_Servicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpb_Servicio.Location = new System.Drawing.Point(12, 48);
             this.gpb_Servicio.Name = "gpb_Servicio";
-            this.gpb_Servicio.Size = new System.Drawing.Size(618, 86);
+            this.gpb_Servicio.Size = new System.Drawing.Size(855, 86);
             this.gpb_Servicio.TabIndex = 9;
             this.gpb_Servicio.TabStop = false;
             this.gpb_Servicio.Text = "Servicio Seleccionado";
@@ -85,7 +86,8 @@
             this.dataGridView_Servicio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
+            this.dataGridViewTextBoxColumn7,
+            this.clm_detalles});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -100,29 +102,8 @@
             this.dataGridView_Servicio.ReadOnly = true;
             this.dataGridView_Servicio.RowHeadersVisible = false;
             this.dataGridView_Servicio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Servicio.Size = new System.Drawing.Size(612, 57);
+            this.dataGridView_Servicio.Size = new System.Drawing.Size(849, 57);
             this.dataGridView_Servicio.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.FillWeight = 35F;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Código";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.FillWeight = 25F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Costo Unidad";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridView3
             // 
@@ -159,7 +140,7 @@
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(612, 57);
+            this.dataGridView3.Size = new System.Drawing.Size(849, 57);
             this.dataGridView3.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn11
@@ -211,7 +192,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(16, 188);
+            this.btn_Cancelar.Location = new System.Drawing.Point(12, 186);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
             this.btn_Cancelar.TabIndex = 16;
@@ -222,7 +203,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(520, 188);
+            this.btn_Aceptar.Location = new System.Drawing.Point(753, 186);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
             this.btn_Aceptar.TabIndex = 15;
@@ -233,7 +214,7 @@
             // txb_nuevoCosto
             // 
             this.txb_nuevoCosto.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_nuevoCosto.Location = new System.Drawing.Point(220, 145);
+            this.txb_nuevoCosto.Location = new System.Drawing.Point(209, 145);
             this.txb_nuevoCosto.Name = "txb_nuevoCosto";
             this.txb_nuevoCosto.Size = new System.Drawing.Size(82, 30);
             this.txb_nuevoCosto.TabIndex = 17;
@@ -250,6 +231,34 @@
             this.lbl_textIngreseCosto.TabIndex = 18;
             this.lbl_textIngreseCosto.Text = "Nuevo Costo Unitario:";
             // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.FillWeight = 35F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Código";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Costo Unitario";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // clm_detalles
+            // 
+            this.clm_detalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_detalles.HeaderText = "Detalles";
+            this.clm_detalles.Name = "clm_detalles";
+            this.clm_detalles.ReadOnly = true;
+            // 
             // ActualizarCostoServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,7 +266,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(642, 228);
+            this.ClientSize = new System.Drawing.Size(879, 228);
             this.Controls.Add(this.lbl_textIngreseCosto);
             this.Controls.Add(this.txb_nuevoCosto);
             this.Controls.Add(this.btn_Cancelar);
@@ -286,12 +295,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.Button btn_buscarServicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.TextBox txb_nuevoCosto;
         private System.Windows.Forms.Label lbl_textIngreseCosto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_detalles;
     }
 }

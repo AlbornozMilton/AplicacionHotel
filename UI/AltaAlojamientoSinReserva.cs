@@ -138,6 +138,7 @@ namespace UI
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
+            BuscarClienteForm.setEnableAltas(false);
             BuscarClienteForm.ShowDialog();
             try
             {
@@ -193,6 +194,7 @@ namespace UI
         private void btn_AgregarAcompañante_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarClienteForm = new BuscarCliente();
+            BuscarClienteForm.setEnableAltas(false);
             BuscarClienteForm.ShowDialog();
 
             try
