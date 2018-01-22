@@ -25,7 +25,7 @@ namespace UI
             foreach (var pago in pPagos)
             {
                 auxTotal += pago.Monto;
-                dGV_Pagos.Rows.Add(pago.Tipo,pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.TimeOfDay, pago.Monto);
+                dGV_Pagos.Rows.Add(pago.Tipo,pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.TimeOfDay.ToString("hh:mm"), pago.Monto);
             }
             textBox_total.Text = auxTotal.ToString();
         }
@@ -37,11 +37,11 @@ namespace UI
             {
                 if (cli.ClienteId == pResponsable)
                 {
-                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
                 }
                 else
                 {
-                    dGV_Acompañantes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    dGV_Acompañantes.Rows.Add(cli.ClienteId,cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
                 }
             }
         }

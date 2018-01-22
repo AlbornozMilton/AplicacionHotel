@@ -112,15 +112,16 @@ namespace UI
             {
                 if (BuscarClienteForm.ClienteSeleccionado != null)
                 {
+
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+
+                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, EstadoAlojamiento.Reservado, FechaIni, FechaFin);
 
                     if (this.ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
-                    }
-
-                    if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+                    }else if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
@@ -132,8 +133,6 @@ namespace UI
                     {
                         ck_Exclusividad.Enabled = true;
                     }
-
-                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, EstadoAlojamiento.Reservado, FechaIni, FechaFin);
 
                     dGV_ClienteResponsable.Rows.Clear();
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
