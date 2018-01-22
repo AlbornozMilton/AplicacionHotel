@@ -166,7 +166,7 @@
             this.dataGridView_cupos.Size = new System.Drawing.Size(423, 99);
             this.dataGridView_cupos.TabIndex = 0;
             this.dataGridView_cupos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_cupos_CellMouseClick);
-            this.dataGridView_cupos.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView_cupos_CellValuePushed);
+           
             // 
             // dataGridViewTextBoxColumn11
             // 

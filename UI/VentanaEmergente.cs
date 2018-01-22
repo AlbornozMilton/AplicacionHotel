@@ -76,6 +76,13 @@ namespace UI
                     {
                         lbl_TextAux.Visible = true;
                         lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                        
+                    }
+                    break;
+                case TipoMensaje.CierreExistoso:
+                    {
+                        lbl_TextAux.Visible = true;
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Servicios?";
                     }
                     break;
             }
@@ -83,7 +90,8 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa|| this.TipoMensaje == TipoMensaje.ReservaExitosa)
+            if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa|| this.TipoMensaje == TipoMensaje.ReservaExitosa 
+                || TipoMensaje == TipoMensaje.CierreExistoso)
             {
                 RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
                 registrarPago.ShowDialog();
@@ -104,6 +112,7 @@ namespace UI
     {
         ReservaExitosa,
         AltaAlojamientoExitosa,
+        CierreExistoso,
         Exito,
         Alerta
     }

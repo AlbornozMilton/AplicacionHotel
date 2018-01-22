@@ -28,10 +28,19 @@ namespace UI
 
         public AgregarServicio(Alojamiento pAloj)
         {
-            InitializeComponent();
-            btn_Aceptar.Enabled = false;
-            AlojSeleciconado = pAloj;
-            CargarAlojamientoSeccionado(AlojSeleciconado);
+            if (pAloj.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+            {
+                InitializeComponent();
+                btn_Aceptar.Enabled = false;
+                AlojSeleciconado = pAloj;
+                CargarAlojamientoSeccionado(AlojSeleciconado);
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Para agregar Servicios primeramente debe realziar un Pago de Alojado", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                Close();
+            }
         }
 
         public void CargarAlojamientoSeccionado(Alojamiento pAloj)
@@ -50,28 +59,38 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.Aloj_Seleccionado != null)
+            try
             {
-                if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                if (BuscarAlojamiento.Aloj_Seleccionado != null)
                 {
-                    AlojSeleciconado = BuscarAlojamiento.Aloj_Seleccionado;
-                    CargarAlojamientoSeccionado(AlojSeleciconado);
-                    btn_buscarServicio.Enabled = true;
-                    gpb_Servicio.Enabled = true;
-                    cant_Servicio.Enabled = true;
+                    if (!BuscarAlojamiento.Aloj_Seleccionado.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+                    {
+                        throw new Exception("Para agregar Servicios primeramente debe realziar un Pago de Alojado");
+                    }
+                    if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                    {
+                        AlojSeleciconado = BuscarAlojamiento.Aloj_Seleccionado;
+                        CargarAlojamientoSeccionado(AlojSeleciconado);
+                        btn_buscarServicio.Enabled = true;
+                        gpb_Servicio.Enabled = true;
+                        cant_Servicio.Enabled = true;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows.Clear();
+                        throw new Exception("El Alojamiento debe estar en Estado Alojado");
+                    }
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Alojamiento debe estar en Estado Alojado", TipoMensaje.Alerta);
-                    ventanaEmergente.ShowDialog();
                     dataGridView1.Rows.Clear();
+                    throw new Exception("Debe seleccionar un Alojamiento");
                 }
             }
-            else
+            catch (Exception E)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                dataGridView1.Rows.Clear();
             }
         }
 

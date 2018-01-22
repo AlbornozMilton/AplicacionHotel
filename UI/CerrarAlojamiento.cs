@@ -73,7 +73,7 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().CerrarAlojamiento(iAloj_Seleccionado);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.Exito);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.CierreExistoso, iAloj_Seleccionado.AlojamientoId);
                 ventanaEmergente.ShowDialog();
                 Close();
             }
