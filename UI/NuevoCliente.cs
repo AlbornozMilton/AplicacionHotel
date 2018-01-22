@@ -365,5 +365,17 @@ namespace UI
         {
             button1.Enabled = true;
         }
+
+        private void txb_legajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+        }
     }
 }

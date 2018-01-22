@@ -38,9 +38,11 @@
             // 
             // pictureBox_icon
             // 
+            this.pictureBox_icon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox_icon.Location = new System.Drawing.Point(36, 30);
             this.pictureBox_icon.Name = "pictureBox_icon";
-            this.pictureBox_icon.Size = new System.Drawing.Size(65, 56);
+            this.pictureBox_icon.Size = new System.Drawing.Size(57, 57);
             this.pictureBox_icon.TabIndex = 3;
             this.pictureBox_icon.TabStop = false;
             // 
