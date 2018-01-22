@@ -15,6 +15,7 @@ namespace Persistencia.DAL
         void FinalizarAlojamiento(Alojamiento unAloj);
         void AltaReserva(Alojamiento unAloj);
         IEnumerable<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados, DateTime pDesde, DateTime pHasta);
+        int UltimoAgregado();
     }
 
 }

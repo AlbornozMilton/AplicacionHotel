@@ -13,6 +13,11 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
+
+        public int UltimoAgregado()
+        {
+            return iDbContext.Alojamientos.Max(a => a.AlojamientoId);
+        }
         /// <summary>
         /// Este Get devuelve el Alojamiento acompañado de la Habitacion y de la lista de Clientes
         /// </summary>

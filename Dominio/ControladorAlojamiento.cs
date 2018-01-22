@@ -22,10 +22,11 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
-        public void RegistrarAloj(Alojamiento pAlojamiento)
+        public int RegistrarAloj(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
             iUoW.RepositorioAlojamiento.Add(A);
+            return iUoW.RepositorioAlojamiento.UltimoAgregado();
         }
 
         public void RegistrarAltaReserva(Alojamiento pAlojamiento)

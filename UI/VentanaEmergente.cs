@@ -72,7 +72,7 @@ namespace UI
                         lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
                     }
                     break;
-                case TipoMensaje.AltaAlojamientiExitosa:
+                case TipoMensaje.AltaAlojamientoExitosa:
                     {
                         lbl_TextAux.Visible = true;
                         lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
@@ -83,7 +83,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            if (this.TipoMensaje == TipoMensaje.AltaAlojamientiExitosa|| this.TipoMensaje == TipoMensaje.ReservaExitosa)
+            if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa|| this.TipoMensaje == TipoMensaje.ReservaExitosa)
             {
                 RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
                 registrarPago.ShowDialog();
@@ -103,7 +103,7 @@ namespace UI
     public enum TipoMensaje
     {
         ReservaExitosa,
-        AltaAlojamientiExitosa,
+        AltaAlojamientoExitosa,
         Exito,
         Alerta
     }

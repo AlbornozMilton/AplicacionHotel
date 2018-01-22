@@ -50,7 +50,7 @@ namespace UI
                 , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
             ventanaEmergente.ShowDialog();
 
-            VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientiExitosa
+            VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa
                 , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
             ventanaEmergente2.ShowDialog();
 
