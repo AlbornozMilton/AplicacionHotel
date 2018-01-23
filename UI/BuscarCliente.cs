@@ -150,5 +150,17 @@ namespace UI
         {
             auxAlta = false;
         }
+
+        private void btn_Buscar_MouseHover(object sender, EventArgs e)
+        {
+            btn_Buscar.SizeMode = PictureBoxSizeMode.Zoom;
+            lbl_Buscar.Visible = true;
+        }
+
+        private void btn_Buscar_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Buscar.SizeMode = PictureBoxSizeMode.CenterImage;
+            lbl_Buscar.Visible = false;
+        }
     }
 }

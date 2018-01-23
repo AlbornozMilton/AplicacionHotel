@@ -32,13 +32,13 @@ namespace UI
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
             label2.Visible = true;
-            btn_Buscar.Image = Properties.Resources.boton_buscar_seleccion2;
+            btn_Buscar.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
             label2.Visible = false;
-            btn_Buscar.Image = Properties.Resources.boton_buscar;
+            btn_Buscar.SizeMode = PictureBoxSizeMode.CenterImage;
         }
 
         //LISTAR ALOJAMIENTO
@@ -70,6 +70,19 @@ namespace UI
             {
                 auxAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
                 CargarAlojAux();
+            }
+            catch(FormatException)
+            {
+                if (tbx_IdAlojamiento.Text == "")
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe ingresar un número de Alojamiento", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Formato Incorrecto: se debe ingresar un número sin espacios", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                }
             }
             catch (Exception pException)
             {

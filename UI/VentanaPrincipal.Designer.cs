@@ -160,6 +160,7 @@
             // 
             // altaDeReservaToolStripMenuItem
             // 
+            this.altaDeReservaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_AltaReserva;
             this.altaDeReservaToolStripMenuItem.Name = "altaDeReservaToolStripMenuItem";
             this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
             this.altaDeReservaToolStripMenuItem.Text = "Alta de Reserva";
@@ -307,6 +308,7 @@
             // 
             // serviciosToolStripMenuItem
             // 
+            this.serviciosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
             this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.serviciosToolStripMenuItem.Text = "Consultar Servicios";
@@ -321,6 +323,7 @@
             // 
             // tarifasToolStripMenuItem
             // 
+            this.tarifasToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
             this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
             this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.tarifasToolStripMenuItem.Text = "Consultar Tarifas";
@@ -341,6 +344,7 @@
             // 
             // consultarHabitacionesToolStripMenuItem
             // 
+            this.consultarHabitacionesToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
             this.consultarHabitacionesToolStripMenuItem.Name = "consultarHabitacionesToolStripMenuItem";
             this.consultarHabitacionesToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.consultarHabitacionesToolStripMenuItem.Text = "Consultar Habitaciones";

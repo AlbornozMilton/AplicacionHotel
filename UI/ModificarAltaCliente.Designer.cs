@@ -36,6 +36,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulCliente = new System.Windows.Forms.DataGridView();
+            this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_nuevoCliente = new System.Windows.Forms.Button();
             this.btn_darAlta = new System.Windows.Forms.Button();
             this.btn_darBaja = new System.Windows.Forms.Button();
@@ -44,11 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_aceptar = new System.Windows.Forms.Button();
-            this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaResulCliente)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -59,12 +59,12 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.tablaResulCliente);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 40);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(11, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(907, 91);
+            this.groupBox2.Size = new System.Drawing.Size(907, 84);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente Seleccionado";
@@ -74,15 +74,12 @@
             this.tablaResulCliente.AllowUserToAddRows = false;
             this.tablaResulCliente.AllowUserToDeleteRows = false;
             this.tablaResulCliente.AllowUserToOrderColumns = true;
-            this.tablaResulCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaResulCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaResulCliente.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -97,110 +94,23 @@
             this.clm_telefono});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaResulCliente.DefaultCellStyle = dataGridViewCellStyle6;
-            this.tablaResulCliente.Location = new System.Drawing.Point(3, 25);
+            this.tablaResulCliente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaResulCliente.Location = new System.Drawing.Point(3, 26);
             this.tablaResulCliente.MultiSelect = false;
             this.tablaResulCliente.Name = "tablaResulCliente";
             this.tablaResulCliente.ReadOnly = true;
             this.tablaResulCliente.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tablaResulCliente.RowHeadersVisible = false;
             this.tablaResulCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaResulCliente.Size = new System.Drawing.Size(898, 57);
+            this.tablaResulCliente.Size = new System.Drawing.Size(901, 55);
             this.tablaResulCliente.StandardTab = true;
             this.tablaResulCliente.TabIndex = 0;
-            // 
-            // btn_nuevoCliente
-            // 
-            this.btn_nuevoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_nuevoCliente.Location = new System.Drawing.Point(15, 12);
-            this.btn_nuevoCliente.Name = "btn_nuevoCliente";
-            this.btn_nuevoCliente.Size = new System.Drawing.Size(160, 25);
-            this.btn_nuevoCliente.TabIndex = 12;
-            this.btn_nuevoCliente.Text = "Seleccionar Cliente";
-            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
-            this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
-            // 
-            // btn_darAlta
-            // 
-            this.btn_darAlta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_darAlta.Location = new System.Drawing.Point(833, 142);
-            this.btn_darAlta.Name = "btn_darAlta";
-            this.btn_darAlta.Size = new System.Drawing.Size(80, 25);
-            this.btn_darAlta.TabIndex = 13;
-            this.btn_darAlta.Text = "Dar Alta";
-            this.btn_darAlta.UseVisualStyleBackColor = true;
-            this.btn_darAlta.Click += new System.EventHandler(this.btn_darAlta_Click);
-            // 
-            // btn_darBaja
-            // 
-            this.btn_darBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_darBaja.Location = new System.Drawing.Point(833, 198);
-            this.btn_darBaja.Name = "btn_darBaja";
-            this.btn_darBaja.Size = new System.Drawing.Size(80, 25);
-            this.btn_darBaja.TabIndex = 14;
-            this.btn_darBaja.Text = "Dar Baja";
-            this.btn_darBaja.UseVisualStyleBackColor = true;
-            this.btn_darBaja.Click += new System.EventHandler(this.btn_darBaja_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(15, 128);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(812, 102);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ayuda";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(543, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Las búsquedas que realiza diariamente solo funcionan para clientes en alta.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(544, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Un cliente que esta en Baja, no puede participar en ningún tipo de actividad.";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(649, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Un cliente que esta en Alta, puede participar en las reservas y altas de nuevos A" +
-    "lojamiento.";
-            // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_aceptar.Location = new System.Drawing.Point(15, 236);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(97, 25);
-            this.btn_aceptar.TabIndex = 16;
-            this.btn_aceptar.Text = "Salir";
-            this.btn_aceptar.UseVisualStyleBackColor = true;
-            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
             // clm_Dni
             // 
@@ -245,11 +155,102 @@
             this.clm_telefono.Name = "clm_telefono";
             this.clm_telefono.ReadOnly = true;
             // 
+            // btn_nuevoCliente
+            // 
+            this.btn_nuevoCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nuevoCliente.Location = new System.Drawing.Point(12, 12);
+            this.btn_nuevoCliente.Name = "btn_nuevoCliente";
+            this.btn_nuevoCliente.Size = new System.Drawing.Size(183, 30);
+            this.btn_nuevoCliente.TabIndex = 12;
+            this.btn_nuevoCliente.Text = "Seleccionar Cliente";
+            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
+            this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
+            // 
+            // btn_darAlta
+            // 
+            this.btn_darAlta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_darAlta.Location = new System.Drawing.Point(833, 147);
+            this.btn_darAlta.Name = "btn_darAlta";
+            this.btn_darAlta.Size = new System.Drawing.Size(85, 30);
+            this.btn_darAlta.TabIndex = 13;
+            this.btn_darAlta.Text = "Dar Alta";
+            this.btn_darAlta.UseVisualStyleBackColor = true;
+            this.btn_darAlta.Click += new System.EventHandler(this.btn_darAlta_Click);
+            // 
+            // btn_darBaja
+            // 
+            this.btn_darBaja.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_darBaja.Location = new System.Drawing.Point(833, 209);
+            this.btn_darBaja.Name = "btn_darBaja";
+            this.btn_darBaja.Size = new System.Drawing.Size(85, 30);
+            this.btn_darBaja.TabIndex = 14;
+            this.btn_darBaja.Text = "Dar Baja";
+            this.btn_darBaja.UseVisualStyleBackColor = true;
+            this.btn_darBaja.Click += new System.EventHandler(this.btn_darBaja_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(11, 138);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(812, 102);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ayuda";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(521, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Las búsquedas que realiza diariamente solo funcionan para clientes en alta.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(532, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Un cliente que esta en Baja, no puede participar en ningún tipo de actividad.";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(628, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Un cliente que esta en Alta, puede participar en las reservas y altas de nuevos A" +
+    "lojamiento.";
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_aceptar.Location = new System.Drawing.Point(11, 245);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(110, 30);
+            this.btn_aceptar.TabIndex = 16;
+            this.btn_aceptar.Text = "Salir";
+            this.btn_aceptar.UseVisualStyleBackColor = true;
+            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
+            // 
             // ModificarAltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 273);
+            this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(931, 283);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_darBaja);
@@ -258,7 +259,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "ModificarAltaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ModificarAltaCliente";
+            this.Text = "Modificar Alta Cliente";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablaResulCliente)).EndInit();
             this.groupBox1.ResumeLayout(false);
