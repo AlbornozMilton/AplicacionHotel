@@ -36,13 +36,15 @@ namespace UI
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
             label14.Visible = true;
-            btn_Confirmar.Image = Properties.Resources.Boton_Ok_Seleccion_3;
+            btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
+            //btn_Confirmar.Image = Properties.Resources.Boton_Ok_Seleccion_3;
         }
 
         private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
             label14.Visible = false;
-            btn_Confirmar.Image = Properties.Resources.Boton_Ok_2;
+            btn_Confirmar.SizeMode = PictureBoxSizeMode.CenterImage;
+            //btn_Confirmar.Image = Properties.Resources.Boton_Ok_2;
         }
 
         private void button5_Click(object sender, EventArgs e)

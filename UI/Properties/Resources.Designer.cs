@@ -83,6 +83,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Boton_AltaReserva {
+            get {
+                object obj = ResourceManager.GetObject("Boton_AltaReserva", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap boton_buscar {
             get {
                 object obj = ResourceManager.GetObject("boton_buscar", resourceCulture);
@@ -136,6 +146,16 @@ namespace UI.Properties {
         public static System.Drawing.Bitmap Boton_CerrarSesion {
             get {
                 object obj = ResourceManager.GetObject("Boton_CerrarSesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Boton_Consultar {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Consultar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
