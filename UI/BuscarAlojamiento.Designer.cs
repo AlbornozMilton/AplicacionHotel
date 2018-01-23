@@ -67,7 +67,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda";
-            this.groupBox1.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -78,7 +77,6 @@
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Buscar";
-            this.label2.UseWaitCursor = true;
             this.label2.Visible = false;
             // 
             // btn_Buscar
@@ -90,7 +88,6 @@
             this.btn_Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btn_Buscar.TabIndex = 3;
             this.btn_Buscar.TabStop = false;
-            this.btn_Buscar.UseWaitCursor = true;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             this.btn_Buscar.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             this.btn_Buscar.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
@@ -104,7 +101,6 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Listar Alojamientos";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.UseWaitCursor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tbx_IdAlojamiento
@@ -115,7 +111,6 @@
             this.tbx_IdAlojamiento.Size = new System.Drawing.Size(46, 30);
             this.tbx_IdAlojamiento.TabIndex = 1;
             this.tbx_IdAlojamiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbx_IdAlojamiento.UseWaitCursor = true;
             // 
             // label1
             // 
@@ -126,7 +121,6 @@
             this.label1.Size = new System.Drawing.Size(194, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número de Alojamiento";
-            this.label1.UseWaitCursor = true;
             // 
             // groupBox2
             // 
@@ -139,7 +133,6 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultado - Vista Simplificada";
-            this.groupBox2.UseWaitCursor = true;
             // 
             // dGV_ListadoAlojamientos
             // 
@@ -178,7 +171,6 @@
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(914, 64);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
-            this.dGV_ListadoAlojamientos.UseWaitCursor = true;
             // 
             // clm_IdAlojmiento
             // 
@@ -225,7 +217,6 @@
             this.btn_Aceptar.TabIndex = 2;
             this.btn_Aceptar.Text = "Seleccionar";
             this.btn_Aceptar.UseVisualStyleBackColor = false;
-            this.btn_Aceptar.UseWaitCursor = true;
             this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // button2
@@ -238,7 +229,6 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.UseWaitCursor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
@@ -251,7 +241,6 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Ver Detalles";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.UseWaitCursor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BuscarAlojamiento
@@ -270,7 +259,6 @@
             this.Name = "BuscarAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar Alojamiento";
-            this.UseWaitCursor = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
