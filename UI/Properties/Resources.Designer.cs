@@ -113,6 +113,26 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Boton_Cerrar {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Cerrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Boton_Cerrar_Cancelar {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Cerrar_Cancelar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Boton_CerrarSesion {
             get {
                 object obj = ResourceManager.GetObject("Boton_CerrarSesion", resourceCulture);
@@ -123,9 +143,39 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Boton_Editar {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Editar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Boton_Go {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Go", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Boton_InicioSesion {
             get {
                 object obj = ResourceManager.GetObject("Boton_InicioSesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Boton_Listar {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Listar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +256,26 @@ namespace UI.Properties {
         public static System.Drawing.Bitmap Gif_Cagando {
             get {
                 object obj = ResourceManager.GetObject("Gif_Cagando", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Gif_Cagando_Amarillo {
+            get {
+                object obj = ResourceManager.GetObject("Gif_Cagando_Amarillo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ImagenInicial_2 {
+            get {
+                object obj = ResourceManager.GetObject("ImagenInicial_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

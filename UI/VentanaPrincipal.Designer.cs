@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.MenuStrip menuStrip1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +128,7 @@
             // 
             this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
             this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(147, 34);
+            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.iniciarToolStripMenuItem.Text = "Iniciar";
             this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
             // 
@@ -136,7 +136,7 @@
             // 
             this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(147, 34);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -154,21 +154,22 @@
             // 
             this.nuevoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem1.Image")));
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(254, 34);
+            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(263, 34);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
             this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
             // 
             // altaDeReservaToolStripMenuItem
             // 
             this.altaDeReservaToolStripMenuItem.Name = "altaDeReservaToolStripMenuItem";
-            this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(254, 34);
+            this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
             this.altaDeReservaToolStripMenuItem.Text = "Alta de Reserva";
             this.altaDeReservaToolStripMenuItem.Click += new System.EventHandler(this.altaDeReservaToolStripMenuItem_Click);
             // 
             // cancelarReservaToolStripMenuItem
             // 
+            this.cancelarReservaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Cerrar_Cancelar;
             this.cancelarReservaToolStripMenuItem.Name = "cancelarReservaToolStripMenuItem";
-            this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(254, 34);
+            this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
             this.cancelarReservaToolStripMenuItem.Text = "Cancelar Reserva";
             this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click);
             // 
@@ -209,6 +210,7 @@
             // 
             // cerrarToolStripMenuItem1
             // 
+            this.cerrarToolStripMenuItem1.Image = global::UI.Properties.Resources.Boton_Cerrar;
             this.cerrarToolStripMenuItem1.Name = "cerrarToolStripMenuItem1";
             this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(260, 34);
             this.cerrarToolStripMenuItem1.Text = "Cerrar";
@@ -243,6 +245,7 @@
             // 
             // modificarAltaDeClienteToolStripMenuItem
             // 
+            this.modificarAltaDeClienteToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
             this.modificarAltaDeClienteToolStripMenuItem.Name = "modificarAltaDeClienteToolStripMenuItem";
             this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
             this.modificarAltaDeClienteToolStripMenuItem.Text = "Modificar Alta de Cliente";
@@ -250,6 +253,7 @@
             // 
             // modificarDatosToolStripMenuItem
             // 
+            this.modificarDatosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
             this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
             this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
             this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
@@ -265,8 +269,9 @@
             // 
             // serviciosConsumidosToolStripMenuItem
             // 
+            this.serviciosConsumidosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
             this.serviciosConsumidosToolStripMenuItem.Name = "serviciosConsumidosToolStripMenuItem";
-            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(302, 34);
+            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(311, 34);
             this.serviciosConsumidosToolStripMenuItem.Text = "Servicios Consumidos";
             this.serviciosConsumidosToolStripMenuItem.Click += new System.EventHandler(this.serviciosConsumidosToolStripMenuItem_Click);
             // 
@@ -280,8 +285,9 @@
             // 
             // nuevoToolStripMenuItem3
             // 
+            this.nuevoToolStripMenuItem3.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.nuevoToolStripMenuItem3.Name = "nuevoToolStripMenuItem3";
-            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(152, 34);
+            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(161, 34);
             this.nuevoToolStripMenuItem3.Text = "Nuevo";
             this.nuevoToolStripMenuItem3.Click += new System.EventHandler(this.nuevoToolStripMenuItem3_Click);
             // 
@@ -302,48 +308,49 @@
             // serviciosToolStripMenuItem
             // 
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.serviciosToolStripMenuItem.Text = "Consultar Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
             // 
             // actualizarTarifaToolStripMenuItem
             // 
             this.actualizarTarifaToolStripMenuItem.Name = "actualizarTarifaToolStripMenuItem";
-            this.actualizarTarifaToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.actualizarTarifaToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.actualizarTarifaToolStripMenuItem.Text = "Actualizar Costo Servicios";
             this.actualizarTarifaToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifaToolStripMenuItem_Click);
             // 
             // tarifasToolStripMenuItem
             // 
             this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
-            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.tarifasToolStripMenuItem.Text = "Consultar Tarifas";
             this.tarifasToolStripMenuItem.Click += new System.EventHandler(this.tarifasToolStripMenuItem_Click);
             // 
             // actualizarCostoServiciosToolStripMenuItem
             // 
             this.actualizarCostoServiciosToolStripMenuItem.Name = "actualizarCostoServiciosToolStripMenuItem";
-            this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Servicios";
             // 
             // actualizarTarifasToolStripMenuItem
             // 
             this.actualizarTarifasToolStripMenuItem.Name = "actualizarTarifasToolStripMenuItem";
-            this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Tarifa";
             this.actualizarTarifasToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifasToolStripMenuItem_Click);
             // 
             // consultarHabitacionesToolStripMenuItem
             // 
             this.consultarHabitacionesToolStripMenuItem.Name = "consultarHabitacionesToolStripMenuItem";
-            this.consultarHabitacionesToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.consultarHabitacionesToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.consultarHabitacionesToolStripMenuItem.Text = "Consultar Habitaciones";
             this.consultarHabitacionesToolStripMenuItem.Click += new System.EventHandler(this.consultarHabitacionesToolStripMenuItem_Click);
             // 
             // modificarAltaDeCuposToolStripMenuItem
             // 
+            this.modificarAltaDeCuposToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
             this.modificarAltaDeCuposToolStripMenuItem.Name = "modificarAltaDeCuposToolStripMenuItem";
-            this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
             this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
             this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
             // 
@@ -472,14 +479,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -491,14 +498,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
             this.dGV_Alojamientos.Name = "dGV_Alojamientos";
             this.dGV_Alojamientos.ReadOnly = true;
