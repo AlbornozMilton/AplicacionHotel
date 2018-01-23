@@ -139,8 +139,16 @@ namespace UI
                 Pago Pago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
                 //iControladorAloj.ControlTipoPago(AlojSeleccionado, iPago);
                 iControladorAloj.AddPago(AlojSeleccionado,Pago);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Pago de Alojamiento Exitoso", TipoMensaje.Exito);
-                ventanaEmergente.ShowDialog();
+                if (Pago.Tipo == TipoPago.Servicios && Pago.Monto != AlojSeleccionado.MontoDeuda)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realziar un Pago de Deuda.", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Pago de Alojamiento Exitoso", TipoMensaje.Exito);
+                    ventanaEmergente.ShowDialog();
+                }
                 Close();
             }
             catch (Exception E)
@@ -175,15 +183,10 @@ namespace UI
         //Ver detalles
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.AlojSeleccionado != null)
+            if (dGV_ListadoAlojamientos.CurrentRow != null)
             {
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(AlojSeleccionado);
                 VentanaVisualizar.ShowDialog();
-            }
-            else
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento antes de Ver Detalles", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
             }
         }
     }

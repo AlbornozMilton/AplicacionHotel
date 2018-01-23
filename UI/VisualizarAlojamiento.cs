@@ -18,16 +18,20 @@ namespace UI
             InitializeComponent();
             CargarFormulario(pAlojamiento);
         }
+
         public void CargarPagos(List<Pago> pPagos)
         {
             dGV_Pagos.Rows.Clear();
-            double auxTotal = 0;
-            foreach (var pago in pPagos)
+            if (pPagos.Count > 0)
             {
-                auxTotal += pago.Monto;
-                dGV_Pagos.Rows.Add(pago.Tipo,pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.TimeOfDay.ToString("hh:mm"), pago.Monto);
+                double auxTotal = 0;
+                foreach (var pago in pPagos)
+                {
+                    auxTotal += pago.Monto;
+                    dGV_Pagos.Rows.Add(pago.Tipo, pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.ToString("H:mm"), pago.Monto);
+                }
+                textBox_total.Text = auxTotal.ToString(); 
             }
-            textBox_total.Text = auxTotal.ToString();
         }
         public void CargarClientes(List<Cliente> pClientes, int pResponsable)
         {
@@ -45,16 +49,21 @@ namespace UI
                 }
             }
         }
+
         public void CargarServicios(List<LineaServicio> pServicios)
         {
-            double total = 0;
             dGV_Servicios.Rows.Clear();
-            foreach (var serv in pServicios)
+
+            if (pServicios.Count > 0)
             {
-                dGV_Servicios.Rows.Add(serv.Servicio.Nombre,serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd / MM / yyyy"), serv.CostoServicio);
-                total += serv.CostoServicio;
+                double total = 0;
+                foreach (var serv in pServicios)
+                {
+                    dGV_Servicios.Rows.Add(serv.Servicio.Nombre, serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd / MM / yyyy"), serv.CostoServicio);
+                    total += serv.CostoServicio;
+                }
+                textBox_total.Text = total.ToString(); 
             }
-            textBox_total.Text = total.ToString();
         }
 
         public string CargarFecha(DateTime pFecha)

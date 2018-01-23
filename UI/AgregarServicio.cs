@@ -46,7 +46,7 @@ namespace UI
         public void CargarAlojamientoSeccionado(Alojamiento pAloj)
         {
             dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento,pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+            dataGridView1.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento, pAloj.HabitacionId,pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto());
         }
 
         public void CargarServicioSeccionado(Servicio pServicio)
