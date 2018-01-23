@@ -39,16 +39,13 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::UI.Properties.Resources.Gif_Cagando;
-            this.pictureBox1.Location = new System.Drawing.Point(128, 225);
+            this.pictureBox1.Image = global::UI.Properties.Resources.Gif_Cagando_Amarillo;
+            this.pictureBox1.Location = new System.Drawing.Point(111, 214);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 109);
+            this.pictureBox1.Size = new System.Drawing.Size(124, 124);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // timer1
-            // 
             // 
             // bgw_CargaUsuarios
             // 
@@ -60,7 +57,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::UI.Properties.Resources.ImagenInicial_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(834, 361);
             this.Controls.Add(this.pictureBox1);

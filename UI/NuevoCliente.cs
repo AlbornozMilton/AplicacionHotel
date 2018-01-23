@@ -307,7 +307,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente Emergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                Emergente.ShowDialog();
             }
         }
 
@@ -349,7 +350,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente Emergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                Emergente.ShowDialog();
             }
         }
 

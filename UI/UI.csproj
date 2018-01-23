@@ -351,6 +351,27 @@
   <ItemGroup>
     <None Include="Resources\Exito_Icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Cerrar_Cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Listar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton_Cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenInicial_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gif_Cagando_Amarillo.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
