@@ -143,13 +143,13 @@ namespace UI
         {
             if (txb_legajo.Text == "")
             {
+                label14.Text = "Campo Obligatorio";
                 label14.Visible = true;
             }
             else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
             {
-                MessageBox.Show("El Legajo ingresado ya existe.");
-                txb_legajo.Clear();
-                txb_legajo.Focus();
+                label14.Text = "Ya Existe";
+                label14.Visible = true;
             }
         }
 
@@ -161,7 +161,9 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                //MessageBox.Show(E.Message);
+                label15.Text = (E.Message);
+                label15.Visible = false;
             } 
         }
 
@@ -363,7 +365,7 @@ namespace UI
 
         private void pestaña_DatosGenerales_Enter(object sender, EventArgs e)
         {
-            button1.Enabled = true;
+            
         }
 
         private void txb_legajo_KeyPress(object sender, KeyPressEventArgs e)
@@ -376,6 +378,11 @@ namespace UI
             {
                 MessageBox.Show(E.Message);
             }
+        }
+
+        private void pestaña_Ubicacion_Enter(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
         }
     }
 }
