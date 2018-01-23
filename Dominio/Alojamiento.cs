@@ -196,7 +196,7 @@ namespace Dominio
         public void AltaDeReserva()
         {
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
-            this.FechaIngreso = DateTime.Now.Date;
+            this.FechaIngreso = DateTime.Now;
         }
 
         public bool ExistePagoAlojamiento(Pago pPago)

@@ -103,11 +103,12 @@ namespace UI
                 if (btn_VerificarDisponibilidad.Enabled == false) //se trata de alta de reserva
                 {
                     //this.NuevoAlojamiento.SetIDAloj(Convert.ToInt32(txb_IdAloj.Text));
-                    this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
-                    this.NuevoAlojamiento.Habitacion.SetExclusividad(this.NuevoAlojamiento.Exclusividad);
+                    
                     this.NuevoAlojamiento.SetClientes(this.Acompañantes);
                     new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
                     new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
+                    this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
+                    //this.NuevoAlojamiento.Habitacion.SetExclusividad(this.NuevoAlojamiento.Exclusividad);
                     //EL ALOJAMIENTO CAMBIA A ESTADO ALOJADO Y LA FECHA DE INGRESO = DATETIME.NOW
                 }
                 else if(Acompañantes.Contains(this.ClienteResponsable))//Alta sin Reserva, crea nuevo alojamiento con estado Alojado
@@ -117,6 +118,7 @@ namespace UI
                     new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes,cont_CuposSimples.Value,cont_CuposDobles.Value);
                     NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
                 }
+
                 txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
                 btn_Confirmar.Enabled = false;
 
@@ -237,12 +239,12 @@ namespace UI
             try
             {
                 int auxIdAloj;
-                if (this.NuevoAlojamiento.ContadoresTarifas==null)
+                if (this.NuevoAlojamiento.ContadoresTarifas==null) //Alta sin Reserva
                 {
                     auxIdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 }
                 else
-                {
+                {//Alta de reserva
                     new ControladorAlojamiento().RegistrarAltaReserva(this.NuevoAlojamiento);
                     auxIdAloj = NuevoAlojamiento.AlojamientoId;
                 }
@@ -293,30 +295,28 @@ namespace UI
             txb_NroHabitacion.Text = NuevoAlojamiento.HabitacionId.ToString();
 
             HabSeleccionada = NuevoAlojamiento.Habitacion;
-
+            ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
             cont_CuposSimples.Value = NuevoAlojamiento.CantCuposSimples;
             cont_CuposDobles.Value = NuevoAlojamiento.CantCuposDobles;
-
-            ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
 
             //cliente responsable
             this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.NombreCompleto(), ClienteResponsable.TarifaCliente.NombreTarifa, ClienteResponsable.Telefono);
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);
-            btn_Confirmar.Enabled = true;
+            //btn_Confirmar.Enabled = true;
 
-            HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
+            //HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
 
             //para almacenar el valor de costo base de reserva y luego comparar
             txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
 
-            //--------Por la reserva------------------------
-            if (!btn_VerificarDisponibilidad.Enabled)
-            {
-                auxListaCliReserva = NuevoAlojamiento.Clientes;
-            }
-            //-------------------------------------
+            ////--------Por la reserva------------------------
+            //if (!btn_VerificarDisponibilidad.Enabled)
+            //{
+            //    auxListaCliReserva = NuevoAlojamiento.Clientes;
+            //}
+            ////-------------------------------------
         }
 
         /// <summary>
@@ -324,22 +324,26 @@ namespace UI
         /// </summary>
         public void EnableAll(bool pValorEnable)
         {
-            dtp_fechaDesde.Enabled = pValorEnable;
-            dtp_fechaHasta.Enabled = pValorEnable;
-            cont_CuposSimples.Enabled = pValorEnable;
-            cont_CuposDobles.Enabled = pValorEnable;
-            ck_Exclusividad.Enabled = pValorEnable;
+            groupBox1.Enabled = pValorEnable; //disponibilidad
+            groupBox2.Enabled = pValorEnable; //cliente responsable
+            groupBox3.Enabled = !pValorEnable; //cliente responsable
+            btn_AgregarAcompañante.Enabled = !pValorEnable;
+            btn_quitarCliente.Enabled = !pValorEnable;
+            groupBox4.Enabled = pValorEnable; //habitacion
 
-            btn_VerificarDisponibilidad.Enabled = pValorEnable;
-            btn_AgregarCliente.Enabled = pValorEnable;
-            dGV_ClienteResponsable.Enabled = pValorEnable;
+            //dtp_fechaDesde.Enabled = pValorEnable;
+            //dtp_fechaHasta.Enabled = pValorEnable;
+            //cont_CuposSimples.Enabled = pValorEnable;
+            //cont_CuposDobles.Enabled = pValorEnable;
+            //ck_Exclusividad.Enabled = pValorEnable;
+            //btn_VerificarDisponibilidad.Enabled = pValorEnable;
+            //btn_AgregarCliente.Enabled = pValorEnable;
+            //dGV_ClienteResponsable.Enabled = pValorEnable;
+            //txb_CostoBase.Enabled = pValorEnable;
+            
 
-            txb_CostoBase.Enabled = pValorEnable;
-
-            btn_AgregarAcompañante.Enabled = pValorEnable;
-            btn_quitarCliente.Enabled = pValorEnable;
+            btn_Confirmar.Enabled = !pValorEnable;
             btn_Aceptar.Enabled = pValorEnable;
-
         }
         #endregion
 

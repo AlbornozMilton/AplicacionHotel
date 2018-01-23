@@ -46,22 +46,22 @@ namespace UI
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             CargarAlojamientosActivos();
 
-            if (dGV_Alojamientos.CurrentRow != null)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa
-                        , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
-                ventanaEmergente.ShowDialog();
+            //if (dGV_Alojamientos.CurrentRow != null)
+            //{
+            //    VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa
+            //            , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
+            //    ventanaEmergente.ShowDialog();
 
-                VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa
-                    , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
-                ventanaEmergente2.ShowDialog(); 
-            }
+            //    VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa
+            //        , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
+            //    ventanaEmergente2.ShowDialog(); 
+            //}
 
-            VentanaEmergente ventanaEmergente3 = new VentanaEmergente("Éxito en la Cancelación", TipoMensaje.Exito);
-            ventanaEmergente3.ShowDialog();
+            //VentanaEmergente ventanaEmergente3 = new VentanaEmergente("Éxito en la Cancelación", TipoMensaje.Exito);
+            //ventanaEmergente3.ShowDialog();
 
-            VentanaEmergente ventanaEmergente4 = new VentanaEmergente("Atención: El Cliente responsable elegido no es Titular, ...", TipoMensaje.Alerta);
-            ventanaEmergente4.ShowDialog();
+            //VentanaEmergente ventanaEmergente4 = new VentanaEmergente("Atención: El Cliente responsable elegido no es Titular, ...", TipoMensaje.Alerta);
+            //ventanaEmergente4.ShowDialog();
 
             AlojsReservadosSinDeposito();
             timer1.Interval = 7200000;// dos horas
@@ -151,9 +151,11 @@ namespace UI
 
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.Aloj_Seleccionado;
 
+                AltaReservaAlojamiento.RellenarCampos();
+
                 AltaReservaAlojamiento.EnableAll(false);
 
-                AltaReservaAlojamiento.RellenarCampos();
+                //AltaReservaAlojamiento.ShowDialog();
             }
             catch (NullReferenceException E)
             {

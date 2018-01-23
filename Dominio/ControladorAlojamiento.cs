@@ -179,6 +179,9 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
 
+        /// <summary>
+        /// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
+        /// </summary>
         public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
         {
             var auxClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
