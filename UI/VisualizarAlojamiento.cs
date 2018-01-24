@@ -77,11 +77,12 @@ namespace UI
             {
                 return pFecha.ToString("dd / MM / yy");
             }
-
         }
 
         public void CargarFormulario(Alojamiento pAlojamiento)
         {
+            groupBox_AcompReserva.Visible = false;
+            groupBox4.Visible = true;
             lbl_IdAlojamiento.Text = pAlojamiento.AlojamientoId.ToString();
             lbl_EstadoActual.Text = pAlojamiento.EstadoAlojamiento.ToString();
             lbl_MontoDeuda.Text = pAlojamiento.MontoDeuda.ToString();
@@ -107,6 +108,10 @@ namespace UI
             CargarClientes(pAlojamiento.Clientes, pAlojamiento.DniResponsable);
             CargarPagos(pAlojamiento.Pagos);
             CargarServicios(pAlojamiento.Servicios);
+            if (pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            {
+                AlojReserva(pAlojamiento.ContadoresTarifas); 
+            }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
@@ -138,6 +143,22 @@ namespace UI
         {
             textBox_total.Visible = false;
             label13.Visible = false;
+        }
+
+        private void AlojReserva(string pContadores)
+        {
+            //(contador_Titular.Value).ToString() +
+            //(contador_Directo.Value).ToString() +
+            //(contador_NoDirecto.Value).ToString() +
+            //(contador_Exceptuado.Value).ToString() +
+            //(contador_Convenio.Value);
+            groupBox4.Visible = false; //Acompañantes
+            cant_titular.Text = pContadores[0].ToString();
+            cat_CantAcpmDirect.Text = pContadores[1].ToString();
+            cantNoDirec.Text = pContadores[2].ToString();
+            cantExcep.Text = pContadores[3].ToString();
+            cant_conv.Text = pContadores[4].ToString();
+            groupBox_AcompReserva.Visible = true;
         }
     }
 }

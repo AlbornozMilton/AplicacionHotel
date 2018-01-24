@@ -97,6 +97,17 @@
             this.clm_Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox_total = new System.Windows.Forms.TextBox();
+            this.groupBox_AcompReserva = new System.Windows.Forms.GroupBox();
+            this.label_Titular = new System.Windows.Forms.Label();
+            this.cant_titular = new System.Windows.Forms.Label();
+            this.cant_conv = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbl_AcompaDIrecto = new System.Windows.Forms.Label();
+            this.label_Exceptuado = new System.Windows.Forms.Label();
+            this.cantExcep = new System.Windows.Forms.Label();
+            this.cat_CantAcpmDirect = new System.Windows.Forms.Label();
+            this.cantNoDirec = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.pestaña_Datos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -110,6 +121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).BeginInit();
             this.pestaña_Pagos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).BeginInit();
+            this.groupBox_AcompReserva.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Aceptar
@@ -460,6 +472,7 @@
             // pestaña_Clientes
             // 
             this.pestaña_Clientes.Controls.Add(this.groupBox4);
+            this.pestaña_Clientes.Controls.Add(this.groupBox_AcompReserva);
             this.pestaña_Clientes.Controls.Add(this.groupBox3);
             this.pestaña_Clientes.Location = new System.Drawing.Point(4, 32);
             this.pestaña_Clientes.Name = "pestaña_Clientes";
@@ -472,12 +485,13 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dGV_Acompañantes);
-            this.groupBox4.Location = new System.Drawing.Point(3, 94);
+            this.groupBox4.Location = new System.Drawing.Point(6, 100);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(861, 152);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Acompañantes";
+            this.groupBox4.Visible = false;
             // 
             // dGV_Acompañantes
             // 
@@ -836,6 +850,125 @@
             this.textBox_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_total.Visible = false;
             // 
+            // groupBox_AcompReserva
+            // 
+            this.groupBox_AcompReserva.Controls.Add(this.cantNoDirec);
+            this.groupBox_AcompReserva.Controls.Add(this.cat_CantAcpmDirect);
+            this.groupBox_AcompReserva.Controls.Add(this.cantExcep);
+            this.groupBox_AcompReserva.Controls.Add(this.label_Exceptuado);
+            this.groupBox_AcompReserva.Controls.Add(this.lbl_AcompaDIrecto);
+            this.groupBox_AcompReserva.Controls.Add(this.label19);
+            this.groupBox_AcompReserva.Controls.Add(this.label18);
+            this.groupBox_AcompReserva.Controls.Add(this.cant_conv);
+            this.groupBox_AcompReserva.Controls.Add(this.cant_titular);
+            this.groupBox_AcompReserva.Controls.Add(this.label_Titular);
+            this.groupBox_AcompReserva.Location = new System.Drawing.Point(8, 112);
+            this.groupBox_AcompReserva.Name = "groupBox_AcompReserva";
+            this.groupBox_AcompReserva.Size = new System.Drawing.Size(852, 130);
+            this.groupBox_AcompReserva.TabIndex = 1;
+            this.groupBox_AcompReserva.TabStop = false;
+            this.groupBox_AcompReserva.Text = "Acompañantes";
+            // 
+            // label_Titular
+            // 
+            this.label_Titular.AutoSize = true;
+            this.label_Titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Titular.Location = new System.Drawing.Point(47, 40);
+            this.label_Titular.Name = "label_Titular";
+            this.label_Titular.Size = new System.Drawing.Size(63, 23);
+            this.label_Titular.TabIndex = 27;
+            this.label_Titular.Text = "Titular:";
+            // 
+            // cant_titular
+            // 
+            this.cant_titular.AutoSize = true;
+            this.cant_titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cant_titular.Location = new System.Drawing.Point(116, 40);
+            this.cant_titular.Name = "cant_titular";
+            this.cant_titular.Size = new System.Drawing.Size(95, 23);
+            this.cant_titular.TabIndex = 28;
+            this.cant_titular.Text = "cant_titular";
+            // 
+            // cant_conv
+            // 
+            this.cant_conv.AutoSize = true;
+            this.cant_conv.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cant_conv.Location = new System.Drawing.Point(696, 40);
+            this.cant_conv.Name = "cant_conv";
+            this.cant_conv.Size = new System.Drawing.Size(116, 23);
+            this.cant_conv.TabIndex = 29;
+            this.cant_conv.Text = "cantConvenio";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(603, 40);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(87, 23);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "Convenio:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(267, 78);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(209, 23);
+            this.label19.TabIndex = 31;
+            this.label19.Text = "Acompañante No Directo:";
+            // 
+            // lbl_AcompaDIrecto
+            // 
+            this.lbl_AcompaDIrecto.AutoSize = true;
+            this.lbl_AcompaDIrecto.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AcompaDIrecto.Location = new System.Drawing.Point(295, 40);
+            this.lbl_AcompaDIrecto.Name = "lbl_AcompaDIrecto";
+            this.lbl_AcompaDIrecto.Size = new System.Drawing.Size(181, 23);
+            this.lbl_AcompaDIrecto.TabIndex = 32;
+            this.lbl_AcompaDIrecto.Text = "Acompañante Directo:";
+            // 
+            // label_Exceptuado
+            // 
+            this.label_Exceptuado.AutoSize = true;
+            this.label_Exceptuado.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Exceptuado.Location = new System.Drawing.Point(6, 78);
+            this.label_Exceptuado.Name = "label_Exceptuado";
+            this.label_Exceptuado.Size = new System.Drawing.Size(104, 23);
+            this.label_Exceptuado.TabIndex = 33;
+            this.label_Exceptuado.Text = "Exceptuado:";
+            // 
+            // cantExcep
+            // 
+            this.cantExcep.AutoSize = true;
+            this.cantExcep.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantExcep.Location = new System.Drawing.Point(116, 78);
+            this.cantExcep.Name = "cantExcep";
+            this.cantExcep.Size = new System.Drawing.Size(95, 23);
+            this.cantExcep.TabIndex = 34;
+            this.cantExcep.Text = "cant_excep";
+            // 
+            // cat_CantAcpmDirect
+            // 
+            this.cat_CantAcpmDirect.AutoSize = true;
+            this.cat_CantAcpmDirect.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cat_CantAcpmDirect.Location = new System.Drawing.Point(482, 40);
+            this.cat_CantAcpmDirect.Name = "cat_CantAcpmDirect";
+            this.cat_CantAcpmDirect.Size = new System.Drawing.Size(72, 23);
+            this.cat_CantAcpmDirect.TabIndex = 35;
+            this.cat_CantAcpmDirect.Text = "catDirec";
+            // 
+            // cantNoDirec
+            // 
+            this.cantNoDirec.AutoSize = true;
+            this.cantNoDirec.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantNoDirec.Location = new System.Drawing.Point(482, 78);
+            this.cantNoDirec.Name = "cantNoDirec";
+            this.cantNoDirec.Size = new System.Drawing.Size(106, 23);
+            this.cantNoDirec.TabIndex = 36;
+            this.cantNoDirec.Text = "cantNoDIrec";
+            // 
             // VisualizarAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -866,6 +999,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).EndInit();
             this.pestaña_Pagos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).EndInit();
+            this.groupBox_AcompReserva.ResumeLayout(false);
+            this.groupBox_AcompReserva.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -933,5 +1068,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipoCliente;
+        private System.Windows.Forms.GroupBox groupBox_AcompReserva;
+        private System.Windows.Forms.Label cantNoDirec;
+        private System.Windows.Forms.Label cat_CantAcpmDirect;
+        private System.Windows.Forms.Label cantExcep;
+        private System.Windows.Forms.Label label_Exceptuado;
+        private System.Windows.Forms.Label lbl_AcompaDIrecto;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label cant_conv;
+        private System.Windows.Forms.Label cant_titular;
+        private System.Windows.Forms.Label label_Titular;
     }
 }
