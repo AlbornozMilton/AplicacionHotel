@@ -448,6 +448,7 @@
             this.txb_CostoBase.ReadOnly = true;
             this.txb_CostoBase.Size = new System.Drawing.Size(100, 30);
             this.txb_CostoBase.TabIndex = 12;
+            this.txb_CostoBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btn_Confirmar
             // 

@@ -280,11 +280,11 @@ namespace UI
             cancelarAlojamiento.ShowDialog();
         }
 
-        private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            BuscarCliente BuscarCliente = new BuscarCliente();
-            BuscarCliente.ShowDialog();
-        }
+        //private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
+        //{
+        //    BuscarCliente BuscarCliente = new BuscarCliente();
+        //    BuscarCliente.ShowDialog();
+        //}
 
         private void actualizarCostoServiciosToolStripMenuItem_Click(object sender, EventArgs e)
         {

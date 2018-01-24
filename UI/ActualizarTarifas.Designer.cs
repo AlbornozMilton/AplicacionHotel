@@ -135,6 +135,7 @@
             this.txb_Tarifa.Name = "txb_Tarifa";
             this.txb_Tarifa.Size = new System.Drawing.Size(115, 30);
             this.txb_Tarifa.TabIndex = 3;
+            this.txb_Tarifa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btn_Aceptar
             // 
@@ -187,6 +188,7 @@
             this.txb_TarifaExclusiva.Name = "txb_TarifaExclusiva";
             this.txb_TarifaExclusiva.Size = new System.Drawing.Size(115, 30);
             this.txb_TarifaExclusiva.TabIndex = 20;
+            this.txb_TarifaExclusiva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ActualizarTarifas
             // 

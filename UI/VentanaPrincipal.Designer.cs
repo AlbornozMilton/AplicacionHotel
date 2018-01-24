@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.MenuStrip menuStrip1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +56,6 @@
             this.nuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarTarifaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarCostoServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarTarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -242,7 +241,6 @@
             this.buscarToolStripMenuItem2.Name = "buscarToolStripMenuItem2";
             this.buscarToolStripMenuItem2.Size = new System.Drawing.Size(344, 34);
             this.buscarToolStripMenuItem2.Text = "Buscar";
-            this.buscarToolStripMenuItem2.Click += new System.EventHandler(this.buscarToolStripMenuItem2_Click);
             // 
             // modificarAltaDeClienteToolStripMenuItem
             // 
@@ -288,17 +286,16 @@
             // 
             this.nuevoToolStripMenuItem3.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.nuevoToolStripMenuItem3.Name = "nuevoToolStripMenuItem3";
-            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(161, 34);
-            this.nuevoToolStripMenuItem3.Text = "Nuevo";
+            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(216, 34);
+            this.nuevoToolStripMenuItem3.Text = "Nuevo Pago";
             this.nuevoToolStripMenuItem3.Click += new System.EventHandler(this.nuevoToolStripMenuItem3_Click);
             // 
             // administracionToolStripMenuItem
             // 
             this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serviciosToolStripMenuItem,
-            this.actualizarTarifaToolStripMenuItem,
-            this.tarifasToolStripMenuItem,
             this.actualizarCostoServiciosToolStripMenuItem,
+            this.tarifasToolStripMenuItem,
             this.actualizarTarifasToolStripMenuItem,
             this.consultarHabitacionesToolStripMenuItem,
             this.modificarAltaDeCuposToolStripMenuItem});
@@ -314,13 +311,6 @@
             this.serviciosToolStripMenuItem.Text = "Consultar Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
             // 
-            // actualizarTarifaToolStripMenuItem
-            // 
-            this.actualizarTarifaToolStripMenuItem.Name = "actualizarTarifaToolStripMenuItem";
-            this.actualizarTarifaToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
-            this.actualizarTarifaToolStripMenuItem.Text = "Actualizar Costo Servicios";
-            this.actualizarTarifaToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifaToolStripMenuItem_Click);
-            // 
             // tarifasToolStripMenuItem
             // 
             this.tarifasToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
@@ -332,15 +322,15 @@
             // actualizarCostoServiciosToolStripMenuItem
             // 
             this.actualizarCostoServiciosToolStripMenuItem.Name = "actualizarCostoServiciosToolStripMenuItem";
-            this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
-            this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Servicios";
+            this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
+            this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Unitario de Servicio";
             this.actualizarCostoServiciosToolStripMenuItem.Click += new System.EventHandler(this.actualizarCostoServiciosToolStripMenuItem_Click);
             // 
             // actualizarTarifasToolStripMenuItem
             // 
             this.actualizarTarifasToolStripMenuItem.Name = "actualizarTarifasToolStripMenuItem";
             this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(350, 34);
-            this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Tarifa";
+            this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Costos deTarifa";
             this.actualizarTarifasToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifasToolStripMenuItem_Click);
             // 
             // consultarHabitacionesToolStripMenuItem
@@ -484,14 +474,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -503,14 +493,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
             this.dGV_Alojamientos.Name = "dGV_Alojamientos";
             this.dGV_Alojamientos.ReadOnly = true;
@@ -659,7 +649,6 @@
         private System.Windows.Forms.ToolStripMenuItem tarifasToolStripMenuItem;
         private System.Windows.Forms.Button btn_VerDetalle;
         private System.Windows.Forms.ToolStripMenuItem modificarAltaDeClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actualizarTarifaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarCostoServiciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarTarifasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarHabitacionesToolStripMenuItem;

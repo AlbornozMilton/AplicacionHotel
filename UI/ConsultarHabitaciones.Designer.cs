@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_Aceptar = new System.Windows.Forms.Button();
             this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(726, 278);
+            this.groupBox1.Size = new System.Drawing.Size(726, 284);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Habitaciones";
@@ -87,30 +87,8 @@
             this.dGV_Habs.RowHeadersVisible = false;
             this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Habs.Size = new System.Drawing.Size(720, 249);
+            this.dGV_Habs.Size = new System.Drawing.Size(720, 255);
             this.dGV_Habs.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 296);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 30);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_Aceptar
-            // 
-            this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(628, 296);
-            this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
-            this.btn_Aceptar.TabIndex = 4;
-            this.btn_Aceptar.Text = "Seleccionar";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
-            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // clm_Id
             // 
@@ -144,13 +122,35 @@
             this.clm_CostoBase.Name = "clm_CostoBase";
             this.clm_CostoBase.ReadOnly = true;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(15, 302);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 30);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Salir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_Aceptar
+            // 
+            this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(625, 302);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Aceptar.TabIndex = 4;
+            this.btn_Aceptar.Text = "Seleccionar";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
+            // 
             // ConsultarHabitaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(750, 334);
+            this.ClientSize = new System.Drawing.Size(750, 344);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox1);

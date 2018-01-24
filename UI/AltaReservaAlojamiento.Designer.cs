@@ -561,6 +561,7 @@
             this.txb_CostoBase.ReadOnly = true;
             this.txb_CostoBase.Size = new System.Drawing.Size(112, 30);
             this.txb_CostoBase.TabIndex = 22;
+            this.txb_CostoBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
@@ -581,6 +582,7 @@
             this.txb_Deposito.ReadOnly = true;
             this.txb_Deposito.Size = new System.Drawing.Size(112, 30);
             this.txb_Deposito.TabIndex = 24;
+            this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 

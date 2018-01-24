@@ -34,6 +34,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
+            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoServicios = new System.Windows.Forms.DataGridView();
@@ -45,11 +50,6 @@
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.textBox_total = new System.Windows.Forms.TextBox();
             this.label_total = new System.Windows.Forms.Label();
-            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -105,6 +105,41 @@
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(809, 59);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
+            // 
+            // clm_IdAlojmiento
+            // 
+            this.clm_IdAlojmiento.FillWeight = 35F;
+            this.clm_IdAlojmiento.HeaderText = "Número";
+            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
+            this.clm_IdAlojmiento.ReadOnly = true;
+            // 
+            // clm_estado
+            // 
+            this.clm_estado.FillWeight = 35F;
+            this.clm_estado.HeaderText = "Estado";
+            this.clm_estado.Name = "clm_estado";
+            this.clm_estado.ReadOnly = true;
+            // 
+            // clm_IDHabitacion
+            // 
+            this.clm_IDHabitacion.FillWeight = 35F;
+            this.clm_IDHabitacion.HeaderText = "Habitación";
+            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
+            this.clm_IDHabitacion.ReadOnly = true;
+            // 
+            // clm_DNIResponsable
+            // 
+            this.clm_DNIResponsable.FillWeight = 40F;
+            this.clm_DNIResponsable.HeaderText = "Responsable";
+            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
+            this.clm_DNIResponsable.ReadOnly = true;
+            // 
+            // clm_Cliente
+            // 
+            this.clm_Cliente.FillWeight = 150F;
+            this.clm_Cliente.HeaderText = "Nombre Completo";
+            this.clm_Cliente.Name = "clm_Cliente";
+            this.clm_Cliente.ReadOnly = true;
             // 
             // btn_BuscarAlojamiento
             // 
@@ -226,6 +261,7 @@
             this.textBox_total.Name = "textBox_total";
             this.textBox_total.Size = new System.Drawing.Size(70, 30);
             this.textBox_total.TabIndex = 13;
+            this.textBox_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label_total
             // 
@@ -237,41 +273,6 @@
             this.label_total.Size = new System.Drawing.Size(46, 23);
             this.label_total.TabIndex = 14;
             this.label_total.Text = "Total";
-            // 
-            // clm_IdAlojmiento
-            // 
-            this.clm_IdAlojmiento.FillWeight = 35F;
-            this.clm_IdAlojmiento.HeaderText = "Número";
-            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
-            this.clm_IdAlojmiento.ReadOnly = true;
-            // 
-            // clm_estado
-            // 
-            this.clm_estado.FillWeight = 35F;
-            this.clm_estado.HeaderText = "Estado";
-            this.clm_estado.Name = "clm_estado";
-            this.clm_estado.ReadOnly = true;
-            // 
-            // clm_IDHabitacion
-            // 
-            this.clm_IDHabitacion.FillWeight = 35F;
-            this.clm_IDHabitacion.HeaderText = "Habitación";
-            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
-            this.clm_IDHabitacion.ReadOnly = true;
-            // 
-            // clm_DNIResponsable
-            // 
-            this.clm_DNIResponsable.FillWeight = 40F;
-            this.clm_DNIResponsable.HeaderText = "Responsable";
-            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
-            this.clm_DNIResponsable.ReadOnly = true;
-            // 
-            // clm_Cliente
-            // 
-            this.clm_Cliente.FillWeight = 150F;
-            this.clm_Cliente.HeaderText = "Nombre Completo";
-            this.clm_Cliente.Name = "clm_Cliente";
-            this.clm_Cliente.ReadOnly = true;
             // 
             // ListarServiciosConsumidos
             // 

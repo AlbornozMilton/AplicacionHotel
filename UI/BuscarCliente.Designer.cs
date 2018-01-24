@@ -146,6 +146,7 @@
             this.textBox_Legajo.Name = "textBox_Legajo";
             this.textBox_Legajo.Size = new System.Drawing.Size(168, 30);
             this.textBox_Legajo.TabIndex = 10;
+            this.textBox_Legajo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -189,6 +190,7 @@
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(168, 30);
             this.textBox_Nombre.TabIndex = 5;
+            this.textBox_Nombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_DNI
             // 
@@ -197,6 +199,7 @@
             this.textBox_DNI.Name = "textBox_DNI";
             this.textBox_DNI.Size = new System.Drawing.Size(168, 30);
             this.textBox_DNI.TabIndex = 4;
+            this.textBox_DNI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 

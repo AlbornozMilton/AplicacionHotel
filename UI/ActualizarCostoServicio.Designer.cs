@@ -246,6 +246,7 @@
             this.txb_nuevoCosto.Name = "txb_nuevoCosto";
             this.txb_nuevoCosto.Size = new System.Drawing.Size(82, 30);
             this.txb_nuevoCosto.TabIndex = 17;
+            this.txb_nuevoCosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_textIngreseCosto
             // 

@@ -44,6 +44,11 @@ namespace UI
             else
             {
                 dGV_Tarifas.Rows.Clear();
+                txb_Tarifa.Text = "";
+                txb_Tarifa.Enabled = false;
+                txb_TarifaExclusiva.Text = "";
+                txb_TarifaExclusiva.Enabled = false;
+                btn_Aceptar.Enabled = false;
             }
         }
 
@@ -60,7 +65,8 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
