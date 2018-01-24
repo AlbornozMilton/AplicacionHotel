@@ -184,22 +184,66 @@ namespace Dominio
         /// </summary>
         public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
         {
-            var auxClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+            List<Cliente> ClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
             string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-            for (int i = 0; i < auxClientesAloj.Count; i++)
-            {
-                byte aux = Convert.ToByte(pContadores[i]);
+            int indiceListaCli = 0;
 
-                while (aux > Convert.ToByte('0'))
+            for (int indiceTipo = 0; indiceTipo < ClientesAloj.Count; indiceTipo++)
+            {
+                byte cantTipo = Convert.ToByte(pContadores[indiceTipo]);
+
+                while (cantTipo > Convert.ToByte('0'))
                 {
-                    if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
+
+                    if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
                     {
                         throw new Exception("Error de Tipos Cliente");
                     }
-                    aux--;
+                    cantTipo--;
+                    indiceListaCli++;
                 }
             }
+
+            //for (int i = 0; i < pContadores.Length; i++)
+            //{
+            //    byte aux = Convert.ToByte(pContadores[i]); //CANTIDAD del tipo
+
+            //    while (aux > Convert.ToByte('0'))
+            //    {
+            //        switch (i)
+            //        {
+            //            case 0: //Tipo Tituar
+            //                {
+            //                    if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
+            //                    {
+            //                        throw new Exception("Error de Tipos Cliente");
+            //                    }
+            //                    aux--;
+            //                }
+            //                break;
+            //            case 1:
+            //                {
+            //                    if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
+            //                    {
+            //                        throw new Exception("Error de Tipos Cliente");
+            //                    }
+            //                    aux--;
+            //                }
+            //                break;
+            //            case 4:
+            //                {
+
+            //                }
+            //                break;
+            //        }
+            //        if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
+            //        {
+            //            throw new Exception("Error de Tipos Cliente");
+            //        }
+            //        aux--;
+            //    }
+            //}
 
             pAlojEnAlta.AltaDeReserva();
 

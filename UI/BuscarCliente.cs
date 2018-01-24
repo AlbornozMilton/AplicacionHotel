@@ -60,7 +60,7 @@ namespace UI
 
         private void CargarCliente()
         {
-            tablaResulClientes.Rows.Add(AuxClienteSeleccionado.ClienteId, AuxClienteSeleccionado.Legajo, AuxClienteSeleccionado.NombreCompleto(), AuxClienteSeleccionado.TarifaCliente.NombreTarifa, AuxClienteSeleccionado.Telefono);
+            tablaResulClientes.Rows.Add(AuxClienteSeleccionado.ClienteId, AuxClienteSeleccionado.Legajo, AuxClienteSeleccionado.Apellido, AuxClienteSeleccionado.Nombre, AuxClienteSeleccionado.TarifaCliente.NombreTarifa);
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace UI
                     List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
                     foreach (var cli in list)
                     {
-                        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.Telefono);
+                        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
                     }
                 }
                 else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO

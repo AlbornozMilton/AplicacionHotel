@@ -156,7 +156,7 @@ namespace UI
                         ventanaEmergente.ShowDialog();
                     }else if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación. Si cambia dicho Cliente podrá solicitar la exclusividad.", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación. Si cambia dicho Cliente podrá solicitar la exclusividad.", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                         HabSeleccionada.SetExclusividad(false);
                         ck_Exclusividad.Enabled = false;
@@ -210,7 +210,7 @@ namespace UI
                 if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente(
-                        "Debido a que agregó un Cliente de Tipo Exceptuado, no es posible soliticar la exclusividad de la Habitación", 
+                        "Debido a que agregó un Cliente de Tipo Exceptuado, no es posible soliticar la Exclusividad de la Habitación", 
                         TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
 
@@ -360,7 +360,7 @@ namespace UI
 
                 if (auxCliente.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado)
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Ahora es posible elegir exclusividad de Habitación", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Ahora es posible elegir Exclusividad de Habitación", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                     //HabSeleccionada.SetExclusividad(false);
                     ck_Exclusividad.Enabled = true;
