@@ -141,7 +141,7 @@
             this.MaximizeBox = false;
             this.Name = "ConsultarTarifas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Costos de Tarifas";
+            this.Text = "Consulta de Tarifas";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).EndInit();
             this.ResumeLayout(false);

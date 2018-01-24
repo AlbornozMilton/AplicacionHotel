@@ -568,7 +568,7 @@
             this.MaximizeBox = false;
             this.Name = "AltaAlojamientoSinReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alta Alojamiento sin Reserva";
+            this.Text = "Alta de Alojamiento";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

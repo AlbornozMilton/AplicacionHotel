@@ -285,5 +285,11 @@ namespace UI
             BuscarCliente BuscarCliente = new BuscarCliente();
             BuscarCliente.ShowDialog();
         }
+
+        private void actualizarCostoServiciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
+            actualizarCostoServicio.ShowDialog();
+        }
     }
 }
