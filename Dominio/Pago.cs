@@ -51,7 +51,7 @@ namespace Dominio
                         this.iTipoPago = TipoPago.Deuda;
                     }
                     break;
-                default: throw new Exception("Error en asignacion de tipo Pago");
+                default: throw new Exception("Error en asignación de tipo Pago durante la creación del Pago.");
             }
             this.iMonto = pMonto;
             this.iDetalle = pDetalle;

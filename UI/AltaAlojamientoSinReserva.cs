@@ -301,7 +301,7 @@ namespace UI
 
             //cliente responsable
             this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
-            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.NombreCompleto(), ClienteResponsable.TarifaCliente.NombreTarifa, ClienteResponsable.Telefono);
+            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre,ClienteResponsable.TarifaCliente.NombreTarifa);
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);
             //btn_Confirmar.Enabled = true;

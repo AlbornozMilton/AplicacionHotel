@@ -65,7 +65,7 @@ namespace UI
                 {
                     if (!BuscarAlojamiento.Aloj_Seleccionado.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
                     {
-                        throw new Exception("Para agregar Servicios primeramente debe realziar un Pago de Alojado");
+                        throw new Exception("Para agregar Servicios primeramente debe realizar un Pago de Alojado");
                     }
                     if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                     {

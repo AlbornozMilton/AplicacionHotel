@@ -76,7 +76,7 @@ namespace UI
                 case TipoMensaje.AltaAlojamientoExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Alojado?";
                         
                     }
                     break;

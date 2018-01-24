@@ -13,6 +13,9 @@ namespace UI
 {
     public partial class VisualizarAlojamiento : Form
     {
+        double totalPagos;
+        double totalServicios;
+
         public VisualizarAlojamiento(Alojamiento pAlojamiento)
         {
             InitializeComponent();
@@ -24,13 +27,12 @@ namespace UI
             dGV_Pagos.Rows.Clear();
             if (pPagos.Count > 0)
             {
-                double auxTotal = 0;
+                totalPagos = 0;
                 foreach (var pago in pPagos)
                 {
-                    auxTotal += pago.Monto;
+                    totalPagos += pago.Monto;
                     dGV_Pagos.Rows.Add(pago.Tipo, pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.ToString("H:mm"), pago.Monto);
                 }
-                textBox_total.Text = auxTotal.ToString(); 
             }
         }
         public void CargarClientes(List<Cliente> pClientes, int pResponsable)
@@ -56,13 +58,12 @@ namespace UI
 
             if (pServicios.Count > 0)
             {
-                double total = 0;
+                totalServicios = 0;
                 foreach (var serv in pServicios)
                 {
                     dGV_Servicios.Rows.Add(serv.Servicio.Nombre, serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd / MM / yyyy"), serv.CostoServicio);
-                    total += serv.CostoServicio;
+                    totalServicios += serv.CostoServicio;
                 }
-                textBox_total.Text = total.ToString(); 
             }
         }
 
@@ -115,6 +116,7 @@ namespace UI
 
         private void pestaña_Servicios_Enter(object sender, EventArgs e)
         {
+            textBox_total.Text = totalServicios.ToString();
             textBox_total.Visible = true;
             label13.Visible = true;
         }
@@ -127,6 +129,7 @@ namespace UI
 
         private void pestaña_Pagos_Enter(object sender, EventArgs e)
         {
+            textBox_total.Text = totalPagos.ToString();
             textBox_total.Visible = true;
             label13.Visible = true;
         }
