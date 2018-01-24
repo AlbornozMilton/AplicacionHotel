@@ -15,14 +15,13 @@ namespace UI
     {
         public Alojamiento AlojSeleccionado;
         public List<Alojamiento> Alojamientos;
+        private ControladorAlojamiento ControladorAloj = new ControladorAlojamiento();
 
         public ListarAlojamientos()
         {
             InitializeComponent();
             dateTimePicker_hasta.Value = DateTime.Now.AddDays(1);
             string[] auxComponents = { "btn_Aceptar"};
-            button_realizarPago.Visible = false;
-            button_CancelarAloj.Visible = false;
             this.EnableComponents(auxComponents, false);
         }
 
@@ -46,7 +45,7 @@ namespace UI
             dGV_ListadoDeAlojamientos.Rows.Clear();
             if (Alojamientos.Count > 0)
             {
-                foreach (var aloj in Alojamientos)
+                foreach (var aloj in this.Alojamientos)
                 {
                     Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                     dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
@@ -61,7 +60,8 @@ namespace UI
 
         private void btn_ListarActivos_Click(object sender, EventArgs e)
         {
-            Alojamientos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+            this.Alojamientos = new List<Alojamiento>();
+            this.Alojamientos = ControladorAloj.ObtenerAlojamientosActivos();
             CargarAlojamientos();
         }
 
@@ -79,27 +79,6 @@ namespace UI
                 int auxIdAloj = Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value);
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(Alojamientos.Find(a => a.AlojamientoId == auxIdAloj));
                 VentanaVisualizar.ShowDialog();
-            }
-        }
-
-        private void button_realizarPago_Click(object sender, EventArgs e)
-        {
-            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
-            {
-                RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
-                registrarPago.ShowDialog();
-                Close();
-            }
-            btn_Aceptar.Enabled = true;
-        }
-
-        private void button_CancelarAloj_Click(object sender, EventArgs e)
-        {
-            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
-            {
-                CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
-                cancelarAlojamiento.ShowDialog();
-                Close();
             }
         }
 
@@ -141,6 +120,7 @@ namespace UI
                     }
                 }
 
+                this.Alojamientos = new List<Alojamiento>();
                 this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value,dateTimePicker_hasta.Value);
                 CargarAlojamientos();
             }
@@ -149,6 +129,24 @@ namespace UI
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("La fecha 'Hasta' debe ser mayor que la fecha 'Desde'", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
+        }
+
+        //REALIZAR PAGO
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (dGV_ListadoDeAlojamientos.CurrentRow != null)
+            {
+                RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
+                registrarPago.ShowDialog();
+                this.Alojamientos = new List<Alojamiento>();
+                this.Alojamientos = ControladorAloj.AlojReservadosSinDepositoVencidos();
+                CargarAlojamientos();
+            }
+        }
+
+        public void VisiblePago()
+        {
+            button1.Visible = true;
         }
     }
 }

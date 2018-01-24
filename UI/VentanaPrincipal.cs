@@ -39,43 +39,101 @@ namespace UI
             NuevoInicio.ShowDialog();
         }
 
+        // LOADDDDDDDDDDDDDDDDDDDDD------------------------------------------------------
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            
-
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             CargarAlojamientosActivos();
 
-            //if (dGV_Alojamientos.CurrentRow != null)
-            //{
-            //    VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa
-            //            , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
-            //    ventanaEmergente.ShowDialog();
-
-            //    VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Nuevo Alojamiento registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa
-            //        , Convert.ToInt32(dGV_Alojamientos.Rows[1].Cells[0].Value));
-            //    ventanaEmergente2.ShowDialog(); 
-            //}
-
-            //VentanaEmergente ventanaEmergente3 = new VentanaEmergente("Éxito en la Cancelación", TipoMensaje.Exito);
-            //ventanaEmergente3.ShowDialog();
-
-            //VentanaEmergente ventanaEmergente4 = new VentanaEmergente("Atención: El Cliente responsable elegido no es Titular, ...", TipoMensaje.Alerta);
-            //ventanaEmergente4.ShowDialog();
-
+            //ALOJS TRAS 72HS SIN DEPOSITO
             AlojsReservadosSinDeposito();
             timer1.Interval = 7200000;// dos horas
             timer1.Enabled = true;
+
+            List<Alojamiento> auxLista = new List<Alojamiento>();
+
+            //RESERVAS QUE SE DEBEN REALIZAR EL ALTA
+            auxLista = new ControladorExtra().ControlFechaAltaReserva();
+            if (auxLista.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
+                listarAlojamientos.ShowDialog();
+                ventanaEmergente = new VentanaEmergente("Tenga en cuenta que si para el próximo día no se ha realizado el Alta de Reserva, se Cancelarán automáticamente.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+
+            //CANCELACION AUTOMATICA
+            auxLista = new List<Alojamiento>();
+            auxLista = new ControladorExtra().CancelacionAutomatica();
+            if (auxLista.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamiento han sido Cancelados automáticamente por falta de registro de Alta de Reserva.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
+                listarAlojamientos.ShowDialog();
+            }
+
+            //ALOJS QUE DEBEN CERRARSE HOY
+            auxLista = new List<Alojamiento>();
+            auxLista = new ControladorExtra().ControlFechaCierre();
+            if (auxLista.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben Cerrarse Hoy.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
+                listarAlojamientos.ShowDialog();
+                ventanaEmergente = new VentanaEmergente("Tenga en cuenta que si para el próximo día no se ha realizado el Cierre, se lo hará automáticamente.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+
+            //ALOJS DE CIERRES AUTOMATICOS
+            auxLista = new List<Alojamiento>();
+            auxLista = new ControladorExtra().CierreAutomatico();
+            if (auxLista.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamiento han sido Cerrados automáticamente por falta de registro de Cierre de Alojamiento.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
+                listarAlojamientos.ShowDialog();
+            }
+        }
+
+        private void CargarAlojamientosActivos()
+        {
+            dGV_Alojamientos.Rows.Clear();
+            List<Alojamiento> ListAloj = new List<Alojamiento>();
+            ListAloj = iControladorAlojamiento.ObtenerAlojamientosActivos();
+            foreach (var aloj in ListAloj)
+            {
+                var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                dGV_Alojamientos.Rows.Add
+                    (
+                    aloj.AlojamientoId,
+                    aloj.EstadoAlojamiento,
+                    aloj.HabitacionId,
+                    aloj.DniResponsable,
+                    cli.Legajo,
+                    cli.NombreCompleto(),
+                    (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
+                    aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
+                    aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
+                    );
+            }
         }
 
         private void AlojsReservadosSinDeposito()
         {
-            List<Alojamiento> ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
+            List<Alojamiento> ListAloj = new List<Alojamiento>();
+            ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
+
             if (ListAloj.Count > 0)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito dentro de las 72hs", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito tras pasar de las 72hs de la fecha de Reserva", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
+                listarAlojamientos.VisiblePago();
                 listarAlojamientos.ShowDialog();
             }
         }
@@ -182,27 +240,6 @@ namespace UI
         {
             AdministrarServicios VentanaServicios = new AdministrarServicios();
             VentanaServicios.ShowDialog();
-        }
-
-        private void CargarAlojamientosActivos()
-        {
-            dGV_Alojamientos.Rows.Clear();
-            foreach (var aloj in iControladorAlojamiento.ObtenerAlojamientosActivos())
-            {
-                var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
-                dGV_Alojamientos.Rows.Add
-                    (
-                    aloj.AlojamientoId,
-                    aloj.EstadoAlojamiento,
-                    aloj.HabitacionId,
-                    aloj.DniResponsable,
-                    cli.Legajo,
-                    cli.NombreCompleto(),
-                    (aloj.EstadoAlojamiento==EstadoAlojamiento.Alojado ? aloj.FechaIngreso:aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
-                    aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
-                    aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
-                    );
-            }
         }
 
         private void btn_VerDetalle_Click(object sender, EventArgs e)

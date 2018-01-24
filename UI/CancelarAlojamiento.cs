@@ -23,6 +23,16 @@ namespace UI
             btn_Aceptar.Enabled = false;
         }
 
+        public CancelarAlojamiento(Alojamiento pAloj)
+        {
+            InitializeComponent();
+            lbl_fechaActual.Text = DateTime.Today.ToString("dd / MM / yyyy");
+            btn_Visualizar.Enabled = false;
+            btn_Aceptar.Enabled = false;
+            Aloj_Seleccionado = pAloj;
+            CargarAlojamientoSeccionado(pAloj);
+        }
+
         private void CargarAlojamientoSeccionado(Alojamiento pAloj)
         {
             dGV_ListadoAlojamientos.Rows.Clear();

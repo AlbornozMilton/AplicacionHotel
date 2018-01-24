@@ -112,5 +112,82 @@ namespace Dominio
             pTarifa.ActualizarMontos(Convert.ToDouble(pCostoNoExcl), Convert.ToDouble(pCostoExcl));
             iUoW.RepositorioTarifa.ActualizarMontos(Mapper.Map<TarifaCliente, pers.TarifaCliente>(pTarifa));
         }
+
+        /// <summary>
+        /// Retorna lista de alojamientos a cancelar
+        /// </summary>
+        public List<Alojamiento> ControlFechaAltaReserva()
+        {
+            List<Alojamiento> Resultado = new List<Alojamiento>();
+            List<Alojamiento> Activos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+
+            foreach (var aloj in Activos)
+            {
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
+                {
+                    Resultado.Add(aloj);
+                }
+            }
+            return Resultado;
+        }
+
+        /// <summary>
+        /// Retorna lista de alojamiento canelados
+        /// </summary>
+        public List<Alojamiento> CancelacionAutomatica()
+        {
+            List<Alojamiento> ListaACancelar = ControlFechaAltaReserva();
+            List<Alojamiento> Resultado = new List<Alojamiento>();
+            ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
+
+            foreach (var aloj in ListaACancelar)
+            {
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
+                {
+                    ControlAloj.CancelarAlojamiento(aloj, DateTime.Now);
+                    Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId)); 
+                }
+            }
+
+            return Resultado;
+        }
+
+        /// <summary>
+        /// Retorna lista de alojamientos que deben cerrarse hoy
+        /// </summary>
+        public List<Alojamiento> ControlFechaCierre()
+        {
+            List<Alojamiento> Resultado = new List<Alojamiento>();
+            List<Alojamiento> Activos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+
+            foreach (var aloj in Activos)
+            {
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == 0)
+                {
+                    Resultado.Add(aloj);
+                }
+            }
+            return Resultado;
+        }
+
+        /// <summary>
+        /// Retorna lista de alojamiento cerrados
+        /// </summary>
+        public List<Alojamiento> CierreAutomatico()
+        {
+            List<Alojamiento> ListaACerrar = ControlFechaAltaReserva();
+            List<Alojamiento> Resultado = new List<Alojamiento>();
+            ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
+
+            foreach (var aloj in ListaACerrar)
+            {
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
+                {
+                    ControlAloj.CerrarAlojamiento(aloj);
+                    Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId));
+                }
+            }
+            return Resultado;
+        }
     }
 }

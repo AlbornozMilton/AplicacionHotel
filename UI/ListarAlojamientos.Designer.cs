@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_Rapida = new System.Windows.Forms.GroupBox();
             this.btn_ListarActivos = new System.Windows.Forms.Button();
             this.txt_busquedaRapida = new System.Windows.Forms.Label();
@@ -55,8 +55,7 @@
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_verDetalles = new System.Windows.Forms.Button();
-            this.button_CancelarAloj = new System.Windows.Forms.Button();
-            this.button_realizarPago = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox_Rapida.SuspendLayout();
             this.groupBox_Personalizado.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -129,7 +128,7 @@
             // btn_Listar
             // 
             this.btn_Listar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Listar.Location = new System.Drawing.Point(544, 45);
+            this.btn_Listar.Location = new System.Drawing.Point(544, 37);
             this.btn_Listar.Name = "btn_Listar";
             this.btn_Listar.Size = new System.Drawing.Size(141, 30);
             this.btn_Listar.TabIndex = 6;
@@ -215,14 +214,14 @@
             this.dGV_ListadoDeAlojamientos.AllowUserToResizeColumns = false;
             this.dGV_ListadoDeAlojamientos.AllowUserToResizeRows = false;
             this.dGV_ListadoDeAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoDeAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoDeAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dGV_ListadoDeAlojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ListadoDeAlojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_IdAlojamiento,
@@ -231,27 +230,27 @@
             this.clm_DNIResponsable,
             this.clm_ApeyNom,
             this.clm_tipoCliente});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ListadoDeAlojamientos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ListadoDeAlojamientos.DefaultCellStyle = dataGridViewCellStyle15;
             this.dGV_ListadoDeAlojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_ListadoDeAlojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dGV_ListadoDeAlojamientos.Location = new System.Drawing.Point(3, 26);
             this.dGV_ListadoDeAlojamientos.Name = "dGV_ListadoDeAlojamientos";
             this.dGV_ListadoDeAlojamientos.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoDeAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoDeAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dGV_ListadoDeAlojamientos.RowHeadersVisible = false;
             this.dGV_ListadoDeAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoDeAlojamientos.Size = new System.Drawing.Size(1157, 260);
@@ -260,8 +259,8 @@
             // clm_IdAlojamiento
             // 
             this.clm_IdAlojamiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.clm_IdAlojamiento.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            this.clm_IdAlojamiento.DefaultCellStyle = dataGridViewCellStyle14;
             this.clm_IdAlojamiento.FillWeight = 30F;
             this.clm_IdAlojamiento.HeaderText = "Número";
             this.clm_IdAlojamiento.Name = "clm_IdAlojamiento";
@@ -339,27 +338,17 @@
             this.btn_verDetalles.UseVisualStyleBackColor = true;
             this.btn_verDetalles.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button_CancelarAloj
+            // button1
             // 
-            this.button_CancelarAloj.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_CancelarAloj.Location = new System.Drawing.Point(615, 417);
-            this.button_CancelarAloj.Name = "button_CancelarAloj";
-            this.button_CancelarAloj.Size = new System.Drawing.Size(191, 30);
-            this.button_CancelarAloj.TabIndex = 6;
-            this.button_CancelarAloj.Text = "Cancelar Alojamiento";
-            this.button_CancelarAloj.UseVisualStyleBackColor = true;
-            this.button_CancelarAloj.Click += new System.EventHandler(this.button_CancelarAloj_Click);
-            // 
-            // button_realizarPago
-            // 
-            this.button_realizarPago.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_realizarPago.Location = new System.Drawing.Point(812, 417);
-            this.button_realizarPago.Name = "button_realizarPago";
-            this.button_realizarPago.Size = new System.Drawing.Size(132, 30);
-            this.button_realizarPago.TabIndex = 7;
-            this.button_realizarPago.Text = "Realizar Pago";
-            this.button_realizarPago.UseVisualStyleBackColor = true;
-            this.button_realizarPago.Click += new System.EventHandler(this.button_realizarPago_Click);
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(766, 417);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Realizar Pago";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // ListarAlojamientos
             // 
@@ -368,8 +357,7 @@
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1188, 451);
-            this.Controls.Add(this.button_realizarPago);
-            this.Controls.Add(this.button_CancelarAloj);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_verDetalles);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_Aceptar);
@@ -408,13 +396,12 @@
         private System.Windows.Forms.DataGridView dGV_ListadoDeAlojamientos;
         private System.Windows.Forms.Button btn_verDetalles;
         private System.Windows.Forms.CheckBox checkBox_todos;
-        private System.Windows.Forms.Button button_CancelarAloj;
-        private System.Windows.Forms.Button button_realizarPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojamiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_ApeyNom;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipoCliente;
+        private System.Windows.Forms.Button button1;
     }
 }
