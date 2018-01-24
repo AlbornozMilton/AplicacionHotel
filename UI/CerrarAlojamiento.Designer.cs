@@ -32,6 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
+            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
@@ -41,11 +46,6 @@
             this.lbl_txtfechaEstEgreso = new System.Windows.Forms.Label();
             this.lbl_fechaEstEgreso = new System.Windows.Forms.Label();
             this.lbl_fechaActual = new System.Windows.Forms.Label();
-            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +99,46 @@
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(810, 57);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
+            // 
+            // clm_IdAlojmiento
+            // 
+            this.clm_IdAlojmiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_IdAlojmiento.FillWeight = 35F;
+            this.clm_IdAlojmiento.HeaderText = "Número";
+            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
+            this.clm_IdAlojmiento.ReadOnly = true;
+            // 
+            // clm_estado
+            // 
+            this.clm_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_estado.FillWeight = 35F;
+            this.clm_estado.HeaderText = "Estado";
+            this.clm_estado.Name = "clm_estado";
+            this.clm_estado.ReadOnly = true;
+            // 
+            // clm_IDHabitacion
+            // 
+            this.clm_IDHabitacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_IDHabitacion.FillWeight = 40F;
+            this.clm_IDHabitacion.HeaderText = "Habitación";
+            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
+            this.clm_IDHabitacion.ReadOnly = true;
+            // 
+            // clm_DNIResponsable
+            // 
+            this.clm_DNIResponsable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_DNIResponsable.FillWeight = 45F;
+            this.clm_DNIResponsable.HeaderText = "Responsable";
+            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
+            this.clm_DNIResponsable.ReadOnly = true;
+            // 
+            // clm_nom
+            // 
+            this.clm_nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_nom.FillWeight = 140F;
+            this.clm_nom.HeaderText = "Nombre Completo";
+            this.clm_nom.Name = "clm_nom";
+            this.clm_nom.ReadOnly = true;
             // 
             // btn_BuscarAlojamiento
             // 
@@ -198,46 +238,6 @@
             this.lbl_fechaActual.TabIndex = 17;
             this.lbl_fechaActual.Text = "dd / mm / yyyy";
             // 
-            // clm_IdAlojmiento
-            // 
-            this.clm_IdAlojmiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_IdAlojmiento.FillWeight = 35F;
-            this.clm_IdAlojmiento.HeaderText = "Número";
-            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
-            this.clm_IdAlojmiento.ReadOnly = true;
-            // 
-            // clm_estado
-            // 
-            this.clm_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_estado.FillWeight = 35F;
-            this.clm_estado.HeaderText = "Estado";
-            this.clm_estado.Name = "clm_estado";
-            this.clm_estado.ReadOnly = true;
-            // 
-            // clm_IDHabitacion
-            // 
-            this.clm_IDHabitacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_IDHabitacion.FillWeight = 40F;
-            this.clm_IDHabitacion.HeaderText = "Habitación";
-            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
-            this.clm_IDHabitacion.ReadOnly = true;
-            // 
-            // clm_DNIResponsable
-            // 
-            this.clm_DNIResponsable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_DNIResponsable.FillWeight = 45F;
-            this.clm_DNIResponsable.HeaderText = "Responsable";
-            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
-            this.clm_DNIResponsable.ReadOnly = true;
-            // 
-            // clm_nom
-            // 
-            this.clm_nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_nom.FillWeight = 140F;
-            this.clm_nom.HeaderText = "Nombre Completo";
-            this.clm_nom.Name = "clm_nom";
-            this.clm_nom.ReadOnly = true;
-            // 
             // CerrarAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +255,7 @@
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_BuscarAlojamiento);
+            this.MaximizeBox = false;
             this.Name = "CerrarAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cerrar Alojamiento";

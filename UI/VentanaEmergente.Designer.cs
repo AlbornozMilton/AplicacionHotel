@@ -107,6 +107,7 @@
             this.Controls.Add(this.lbl_TextAux);
             this.Controls.Add(this.lbl_TextPrincipal);
             this.Controls.Add(this.pictureBox_icon);
+            this.MaximizeBox = false;
             this.Name = "VentanaEmergente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplicación Hotel";

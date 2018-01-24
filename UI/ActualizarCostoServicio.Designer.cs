@@ -273,6 +273,7 @@
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.btn_buscarServicio);
             this.Controls.Add(this.gpb_Servicio);
+            this.MaximizeBox = false;
             this.Name = "ActualizarCostoServicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Actualizar Costo de Servicio";

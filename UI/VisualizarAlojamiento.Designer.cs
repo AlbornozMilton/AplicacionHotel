@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.pestaña_Datos = new System.Windows.Forms.TabPage();
@@ -75,6 +75,17 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_tipoAcomp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox_AcompReserva = new System.Windows.Forms.GroupBox();
+            this.cantNoDirec = new System.Windows.Forms.Label();
+            this.cat_CantAcpmDirect = new System.Windows.Forms.Label();
+            this.cantExcep = new System.Windows.Forms.Label();
+            this.label_Exceptuado = new System.Windows.Forms.Label();
+            this.lbl_AcompaDIrecto = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cant_conv = new System.Windows.Forms.Label();
+            this.cant_titular = new System.Windows.Forms.Label();
+            this.label_Titular = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,17 +108,6 @@
             this.clm_Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox_total = new System.Windows.Forms.TextBox();
-            this.groupBox_AcompReserva = new System.Windows.Forms.GroupBox();
-            this.label_Titular = new System.Windows.Forms.Label();
-            this.cant_titular = new System.Windows.Forms.Label();
-            this.cant_conv = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lbl_AcompaDIrecto = new System.Windows.Forms.Label();
-            this.label_Exceptuado = new System.Windows.Forms.Label();
-            this.cantExcep = new System.Windows.Forms.Label();
-            this.cat_CantAcpmDirect = new System.Windows.Forms.Label();
-            this.cantNoDirec = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.pestaña_Datos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -115,13 +115,13 @@
             this.pestaña_Clientes.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Acompañantes)).BeginInit();
+            this.groupBox_AcompReserva.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
             this.pestaña_Servicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).BeginInit();
             this.pestaña_Pagos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).BeginInit();
-            this.groupBox_AcompReserva.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Aceptar
@@ -498,14 +498,14 @@
             this.dGV_Acompañantes.AllowUserToAddRows = false;
             this.dGV_Acompañantes.AllowUserToDeleteRows = false;
             this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Acompañantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Acompañantes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGV_Acompañantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Acompañantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
@@ -513,14 +513,14 @@
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
             this.clm_tipoAcomp});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Acompañantes.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Acompañantes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_Acompañantes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Acompañantes.Location = new System.Drawing.Point(3, 26);
             this.dGV_Acompañantes.Name = "dGV_Acompañantes";
@@ -570,6 +570,125 @@
             this.clm_tipoAcomp.Name = "clm_tipoAcomp";
             this.clm_tipoAcomp.ReadOnly = true;
             // 
+            // groupBox_AcompReserva
+            // 
+            this.groupBox_AcompReserva.Controls.Add(this.cantNoDirec);
+            this.groupBox_AcompReserva.Controls.Add(this.cat_CantAcpmDirect);
+            this.groupBox_AcompReserva.Controls.Add(this.cantExcep);
+            this.groupBox_AcompReserva.Controls.Add(this.label_Exceptuado);
+            this.groupBox_AcompReserva.Controls.Add(this.lbl_AcompaDIrecto);
+            this.groupBox_AcompReserva.Controls.Add(this.label19);
+            this.groupBox_AcompReserva.Controls.Add(this.label18);
+            this.groupBox_AcompReserva.Controls.Add(this.cant_conv);
+            this.groupBox_AcompReserva.Controls.Add(this.cant_titular);
+            this.groupBox_AcompReserva.Controls.Add(this.label_Titular);
+            this.groupBox_AcompReserva.Location = new System.Drawing.Point(8, 112);
+            this.groupBox_AcompReserva.Name = "groupBox_AcompReserva";
+            this.groupBox_AcompReserva.Size = new System.Drawing.Size(852, 130);
+            this.groupBox_AcompReserva.TabIndex = 1;
+            this.groupBox_AcompReserva.TabStop = false;
+            this.groupBox_AcompReserva.Text = "Acompañantes";
+            // 
+            // cantNoDirec
+            // 
+            this.cantNoDirec.AutoSize = true;
+            this.cantNoDirec.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantNoDirec.Location = new System.Drawing.Point(482, 78);
+            this.cantNoDirec.Name = "cantNoDirec";
+            this.cantNoDirec.Size = new System.Drawing.Size(106, 23);
+            this.cantNoDirec.TabIndex = 36;
+            this.cantNoDirec.Text = "cantNoDIrec";
+            // 
+            // cat_CantAcpmDirect
+            // 
+            this.cat_CantAcpmDirect.AutoSize = true;
+            this.cat_CantAcpmDirect.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cat_CantAcpmDirect.Location = new System.Drawing.Point(482, 40);
+            this.cat_CantAcpmDirect.Name = "cat_CantAcpmDirect";
+            this.cat_CantAcpmDirect.Size = new System.Drawing.Size(72, 23);
+            this.cat_CantAcpmDirect.TabIndex = 35;
+            this.cat_CantAcpmDirect.Text = "catDirec";
+            // 
+            // cantExcep
+            // 
+            this.cantExcep.AutoSize = true;
+            this.cantExcep.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantExcep.Location = new System.Drawing.Point(116, 78);
+            this.cantExcep.Name = "cantExcep";
+            this.cantExcep.Size = new System.Drawing.Size(95, 23);
+            this.cantExcep.TabIndex = 34;
+            this.cantExcep.Text = "cant_excep";
+            // 
+            // label_Exceptuado
+            // 
+            this.label_Exceptuado.AutoSize = true;
+            this.label_Exceptuado.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Exceptuado.Location = new System.Drawing.Point(6, 78);
+            this.label_Exceptuado.Name = "label_Exceptuado";
+            this.label_Exceptuado.Size = new System.Drawing.Size(104, 23);
+            this.label_Exceptuado.TabIndex = 33;
+            this.label_Exceptuado.Text = "Exceptuado:";
+            // 
+            // lbl_AcompaDIrecto
+            // 
+            this.lbl_AcompaDIrecto.AutoSize = true;
+            this.lbl_AcompaDIrecto.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AcompaDIrecto.Location = new System.Drawing.Point(295, 40);
+            this.lbl_AcompaDIrecto.Name = "lbl_AcompaDIrecto";
+            this.lbl_AcompaDIrecto.Size = new System.Drawing.Size(181, 23);
+            this.lbl_AcompaDIrecto.TabIndex = 32;
+            this.lbl_AcompaDIrecto.Text = "Acompañante Directo:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(267, 78);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(209, 23);
+            this.label19.TabIndex = 31;
+            this.label19.Text = "Acompañante No Directo:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(603, 40);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(87, 23);
+            this.label18.TabIndex = 30;
+            this.label18.Text = "Convenio:";
+            // 
+            // cant_conv
+            // 
+            this.cant_conv.AutoSize = true;
+            this.cant_conv.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cant_conv.Location = new System.Drawing.Point(696, 40);
+            this.cant_conv.Name = "cant_conv";
+            this.cant_conv.Size = new System.Drawing.Size(116, 23);
+            this.cant_conv.TabIndex = 29;
+            this.cant_conv.Text = "cantConvenio";
+            // 
+            // cant_titular
+            // 
+            this.cant_titular.AutoSize = true;
+            this.cant_titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cant_titular.Location = new System.Drawing.Point(116, 40);
+            this.cant_titular.Name = "cant_titular";
+            this.cant_titular.Size = new System.Drawing.Size(95, 23);
+            this.cant_titular.TabIndex = 28;
+            this.cant_titular.Text = "cant_titular";
+            // 
+            // label_Titular
+            // 
+            this.label_Titular.AutoSize = true;
+            this.label_Titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Titular.Location = new System.Drawing.Point(47, 40);
+            this.label_Titular.Name = "label_Titular";
+            this.label_Titular.Size = new System.Drawing.Size(63, 23);
+            this.label_Titular.TabIndex = 27;
+            this.label_Titular.Text = "Titular:";
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dGV_ClienteResponsable);
@@ -585,14 +704,14 @@
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dGV_ClienteResponsable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ClienteResponsable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
@@ -600,14 +719,14 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.clm_tipoCliente});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle4;
             this.dGV_ClienteResponsable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_ClienteResponsable.Location = new System.Drawing.Point(3, 26);
             this.dGV_ClienteResponsable.Name = "dGV_ClienteResponsable";
@@ -675,14 +794,14 @@
             this.dGV_Servicios.AllowUserToAddRows = false;
             this.dGV_Servicios.AllowUserToDeleteRows = false;
             this.dGV_Servicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Servicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Servicios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dGV_Servicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Servicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Servicio,
@@ -690,14 +809,14 @@
             this.clm_cant,
             this.clm_FechaConsumo,
             this.clm_Total});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Servicios.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Servicios.DefaultCellStyle = dataGridViewCellStyle6;
             this.dGV_Servicios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Servicios.Location = new System.Drawing.Point(3, 3);
             this.dGV_Servicios.Name = "dGV_Servicios";
@@ -765,28 +884,28 @@
             this.dGV_Pagos.AllowUserToAddRows = false;
             this.dGV_Pagos.AllowUserToDeleteRows = false;
             this.dGV_Pagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_Pagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_Pagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dGV_Pagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Pagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Tipo,
             this.clm_Fecha,
             this.clm_hora,
             this.clm_Monto});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_Pagos.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_Pagos.DefaultCellStyle = dataGridViewCellStyle8;
             this.dGV_Pagos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Pagos.Location = new System.Drawing.Point(3, 3);
             this.dGV_Pagos.Name = "dGV_Pagos";
@@ -850,125 +969,6 @@
             this.textBox_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_total.Visible = false;
             // 
-            // groupBox_AcompReserva
-            // 
-            this.groupBox_AcompReserva.Controls.Add(this.cantNoDirec);
-            this.groupBox_AcompReserva.Controls.Add(this.cat_CantAcpmDirect);
-            this.groupBox_AcompReserva.Controls.Add(this.cantExcep);
-            this.groupBox_AcompReserva.Controls.Add(this.label_Exceptuado);
-            this.groupBox_AcompReserva.Controls.Add(this.lbl_AcompaDIrecto);
-            this.groupBox_AcompReserva.Controls.Add(this.label19);
-            this.groupBox_AcompReserva.Controls.Add(this.label18);
-            this.groupBox_AcompReserva.Controls.Add(this.cant_conv);
-            this.groupBox_AcompReserva.Controls.Add(this.cant_titular);
-            this.groupBox_AcompReserva.Controls.Add(this.label_Titular);
-            this.groupBox_AcompReserva.Location = new System.Drawing.Point(8, 112);
-            this.groupBox_AcompReserva.Name = "groupBox_AcompReserva";
-            this.groupBox_AcompReserva.Size = new System.Drawing.Size(852, 130);
-            this.groupBox_AcompReserva.TabIndex = 1;
-            this.groupBox_AcompReserva.TabStop = false;
-            this.groupBox_AcompReserva.Text = "Acompañantes";
-            // 
-            // label_Titular
-            // 
-            this.label_Titular.AutoSize = true;
-            this.label_Titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Titular.Location = new System.Drawing.Point(47, 40);
-            this.label_Titular.Name = "label_Titular";
-            this.label_Titular.Size = new System.Drawing.Size(63, 23);
-            this.label_Titular.TabIndex = 27;
-            this.label_Titular.Text = "Titular:";
-            // 
-            // cant_titular
-            // 
-            this.cant_titular.AutoSize = true;
-            this.cant_titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cant_titular.Location = new System.Drawing.Point(116, 40);
-            this.cant_titular.Name = "cant_titular";
-            this.cant_titular.Size = new System.Drawing.Size(95, 23);
-            this.cant_titular.TabIndex = 28;
-            this.cant_titular.Text = "cant_titular";
-            // 
-            // cant_conv
-            // 
-            this.cant_conv.AutoSize = true;
-            this.cant_conv.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cant_conv.Location = new System.Drawing.Point(696, 40);
-            this.cant_conv.Name = "cant_conv";
-            this.cant_conv.Size = new System.Drawing.Size(116, 23);
-            this.cant_conv.TabIndex = 29;
-            this.cant_conv.Text = "cantConvenio";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(603, 40);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(87, 23);
-            this.label18.TabIndex = 30;
-            this.label18.Text = "Convenio:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(267, 78);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(209, 23);
-            this.label19.TabIndex = 31;
-            this.label19.Text = "Acompañante No Directo:";
-            // 
-            // lbl_AcompaDIrecto
-            // 
-            this.lbl_AcompaDIrecto.AutoSize = true;
-            this.lbl_AcompaDIrecto.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AcompaDIrecto.Location = new System.Drawing.Point(295, 40);
-            this.lbl_AcompaDIrecto.Name = "lbl_AcompaDIrecto";
-            this.lbl_AcompaDIrecto.Size = new System.Drawing.Size(181, 23);
-            this.lbl_AcompaDIrecto.TabIndex = 32;
-            this.lbl_AcompaDIrecto.Text = "Acompañante Directo:";
-            // 
-            // label_Exceptuado
-            // 
-            this.label_Exceptuado.AutoSize = true;
-            this.label_Exceptuado.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Exceptuado.Location = new System.Drawing.Point(6, 78);
-            this.label_Exceptuado.Name = "label_Exceptuado";
-            this.label_Exceptuado.Size = new System.Drawing.Size(104, 23);
-            this.label_Exceptuado.TabIndex = 33;
-            this.label_Exceptuado.Text = "Exceptuado:";
-            // 
-            // cantExcep
-            // 
-            this.cantExcep.AutoSize = true;
-            this.cantExcep.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantExcep.Location = new System.Drawing.Point(116, 78);
-            this.cantExcep.Name = "cantExcep";
-            this.cantExcep.Size = new System.Drawing.Size(95, 23);
-            this.cantExcep.TabIndex = 34;
-            this.cantExcep.Text = "cant_excep";
-            // 
-            // cat_CantAcpmDirect
-            // 
-            this.cat_CantAcpmDirect.AutoSize = true;
-            this.cat_CantAcpmDirect.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cat_CantAcpmDirect.Location = new System.Drawing.Point(482, 40);
-            this.cat_CantAcpmDirect.Name = "cat_CantAcpmDirect";
-            this.cat_CantAcpmDirect.Size = new System.Drawing.Size(72, 23);
-            this.cat_CantAcpmDirect.TabIndex = 35;
-            this.cat_CantAcpmDirect.Text = "catDirec";
-            // 
-            // cantNoDirec
-            // 
-            this.cantNoDirec.AutoSize = true;
-            this.cantNoDirec.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantNoDirec.Location = new System.Drawing.Point(482, 78);
-            this.cantNoDirec.Name = "cantNoDirec";
-            this.cantNoDirec.Size = new System.Drawing.Size(106, 23);
-            this.cantNoDirec.TabIndex = 36;
-            this.cantNoDirec.Text = "cantNoDIrec";
-            // 
             // VisualizarAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -980,6 +980,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btn_Aceptar);
+            this.MaximizeBox = false;
             this.Name = "VisualizarAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizar Alojamiento";
@@ -993,14 +994,14 @@
             this.pestaña_Clientes.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Acompañantes)).EndInit();
+            this.groupBox_AcompReserva.ResumeLayout(false);
+            this.groupBox_AcompReserva.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
             this.pestaña_Servicios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).EndInit();
             this.pestaña_Pagos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).EndInit();
-            this.groupBox_AcompReserva.ResumeLayout(false);
-            this.groupBox_AcompReserva.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

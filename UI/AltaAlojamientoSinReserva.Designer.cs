@@ -565,6 +565,7 @@
             this.Controls.Add(this.txb_IdAloj);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "AltaAlojamientoSinReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Alojamiento sin Reserva";

@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Servicios = new System.Windows.Forms.DataGridView();
-            this.btn_Aceptar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).BeginInit();
             this.SuspendLayout();
@@ -90,28 +90,6 @@
             this.dGV_Servicios.Size = new System.Drawing.Size(870, 202);
             this.dGV_Servicios.TabIndex = 0;
             // 
-            // btn_Aceptar
-            // 
-            this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(779, 249);
-            this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
-            this.btn_Aceptar.TabIndex = 2;
-            this.btn_Aceptar.Text = "Seleccionar";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
-            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(16, 249);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 30);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // clm_Id
             // 
             this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -143,6 +121,28 @@
             this.clm_detalle.Name = "clm_detalle";
             this.clm_detalle.ReadOnly = true;
             // 
+            // btn_Aceptar
+            // 
+            this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Aceptar.Location = new System.Drawing.Point(779, 249);
+            this.btn_Aceptar.Name = "btn_Aceptar";
+            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Aceptar.TabIndex = 2;
+            this.btn_Aceptar.Text = "Seleccionar";
+            this.btn_Aceptar.UseVisualStyleBackColor = true;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(16, 249);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 30);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AdministrarServicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +153,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "AdministrarServicios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Servicios";
