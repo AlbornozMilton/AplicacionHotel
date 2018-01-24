@@ -98,7 +98,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(522, 12);
+            this.label2.Location = new System.Drawing.Point(642, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 23);
             this.label2.TabIndex = 1;
@@ -120,10 +120,10 @@
             // txb_fechaActual
             // 
             this.txb_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_fechaActual.Location = new System.Drawing.Point(652, 9);
+            this.txb_fechaActual.Location = new System.Drawing.Point(756, 5);
             this.txb_fechaActual.Name = "txb_fechaActual";
             this.txb_fechaActual.ReadOnly = true;
-            this.txb_fechaActual.Size = new System.Drawing.Size(147, 30);
+            this.txb_fechaActual.Size = new System.Drawing.Size(121, 30);
             this.txb_fechaActual.TabIndex = 3;
             this.txb_fechaActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -138,15 +138,16 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(787, 105);
+            this.groupBox1.Size = new System.Drawing.Size(865, 105);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Disponibilidad";
+            this.groupBox1.Text = "Disponibilidad de Habitaciones";
             // 
             // btn_VerificarDisponibilidad
             // 
-            this.btn_VerificarDisponibilidad.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(557, 42);
+            this.btn_VerificarDisponibilidad.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(621, 42);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
             this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(210, 44);
             this.btn_VerificarDisponibilidad.TabIndex = 4;
@@ -158,7 +159,8 @@
             // 
             this.dtp_fechaHasta.Location = new System.Drawing.Point(172, 64);
             this.dtp_fechaHasta.Name = "dtp_fechaHasta";
-            this.dtp_fechaHasta.Size = new System.Drawing.Size(328, 30);
+            this.dtp_fechaHasta.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtp_fechaHasta.Size = new System.Drawing.Size(406, 30);
             this.dtp_fechaHasta.TabIndex = 3;
             this.dtp_fechaHasta.Value = new System.DateTime(2018, 1, 3, 0, 0, 0, 0);
             this.dtp_fechaHasta.ValueChanged += new System.EventHandler(this.dtp_fechaHasta_ValueChanged);
@@ -170,7 +172,8 @@
             this.dtp_fechaDesde.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtp_fechaDesde.Location = new System.Drawing.Point(172, 28);
             this.dtp_fechaDesde.Name = "dtp_fechaDesde";
-            this.dtp_fechaDesde.Size = new System.Drawing.Size(328, 30);
+            this.dtp_fechaDesde.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtp_fechaDesde.Size = new System.Drawing.Size(406, 30);
             this.dtp_fechaDesde.TabIndex = 2;
             this.dtp_fechaDesde.ValueChanged += new System.EventHandler(this.dtp_fechaDesde_ValueChanged);
             // 
@@ -200,7 +203,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 240);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(787, 129);
+            this.groupBox2.Size = new System.Drawing.Size(865, 129);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente Responsable";
@@ -238,7 +241,7 @@
             this.dGV_ClienteResponsable.ReadOnly = true;
             this.dGV_ClienteResponsable.RowHeadersVisible = false;
             this.dGV_ClienteResponsable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(778, 62);
+            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(853, 62);
             this.dGV_ClienteResponsable.TabIndex = 14;
             // 
             // dataGridViewTextBoxColumn5
@@ -284,7 +287,7 @@
             // btn_AgregarCliente
             // 
             this.btn_AgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_AgregarCliente.Location = new System.Drawing.Point(671, 20);
+            this.btn_AgregarCliente.Location = new System.Drawing.Point(749, 20);
             this.btn_AgregarCliente.Name = "btn_AgregarCliente";
             this.btn_AgregarCliente.Size = new System.Drawing.Size(110, 30);
             this.btn_AgregarCliente.TabIndex = 9;
@@ -301,14 +304,14 @@
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 375);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(787, 176);
+            this.groupBox3.Size = new System.Drawing.Size(865, 176);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Otros Clientes";
             // 
             // btn_quitarCliente
             // 
-            this.btn_quitarCliente.Location = new System.Drawing.Point(544, 18);
+            this.btn_quitarCliente.Location = new System.Drawing.Point(622, 20);
             this.btn_quitarCliente.Name = "btn_quitarCliente";
             this.btn_quitarCliente.Size = new System.Drawing.Size(110, 30);
             this.btn_quitarCliente.TabIndex = 12;
@@ -350,7 +353,7 @@
             this.dGV_Acompañantes.ReadOnly = true;
             this.dGV_Acompañantes.RowHeadersVisible = false;
             this.dGV_Acompañantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Acompañantes.Size = new System.Drawing.Size(778, 120);
+            this.dGV_Acompañantes.Size = new System.Drawing.Size(853, 120);
             this.dGV_Acompañantes.TabIndex = 10;
             this.dGV_Acompañantes.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dGV_Acompañantes_RowsAdded);
             // 
@@ -396,7 +399,7 @@
             // 
             // btn_AgregarAcompañante
             // 
-            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(671, 18);
+            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(749, 20);
             this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
             this.btn_AgregarAcompañante.Size = new System.Drawing.Size(110, 30);
             this.btn_AgregarAcompañante.TabIndex = 11;
@@ -407,7 +410,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(688, 622);
+            this.btn_Aceptar.Location = new System.Drawing.Point(758, 623);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
             this.btn_Aceptar.TabIndex = 9;
@@ -440,7 +443,7 @@
             // txb_CostoBase
             // 
             this.txb_CostoBase.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_CostoBase.Location = new System.Drawing.Point(143, 578);
+            this.txb_CostoBase.Location = new System.Drawing.Point(125, 578);
             this.txb_CostoBase.Name = "txb_CostoBase";
             this.txb_CostoBase.ReadOnly = true;
             this.txb_CostoBase.Size = new System.Drawing.Size(100, 30);
@@ -451,7 +454,7 @@
             this.btn_Confirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_Confirmar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Confirmar.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirmar.Location = new System.Drawing.Point(683, 577);
+            this.btn_Confirmar.Location = new System.Drawing.Point(753, 578);
             this.btn_Confirmar.Name = "btn_Confirmar";
             this.btn_Confirmar.Size = new System.Drawing.Size(118, 41);
             this.btn_Confirmar.TabIndex = 13;
@@ -472,7 +475,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 161);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(787, 73);
+            this.groupBox4.Size = new System.Drawing.Size(865, 73);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Habitación Seleccionada";
@@ -480,7 +483,7 @@
             // ck_Exclusividad
             // 
             this.ck_Exclusividad.AutoSize = true;
-            this.ck_Exclusividad.Location = new System.Drawing.Point(544, 31);
+            this.ck_Exclusividad.Location = new System.Drawing.Point(625, 31);
             this.ck_Exclusividad.Name = "ck_Exclusividad";
             this.ck_Exclusividad.Size = new System.Drawing.Size(234, 27);
             this.ck_Exclusividad.TabIndex = 15;
@@ -491,45 +494,45 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(395, 32);
+            this.label9.Location = new System.Drawing.Point(415, 32);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 23);
+            this.label9.Size = new System.Drawing.Size(115, 23);
             this.label9.TabIndex = 20;
-            this.label9.Text = "C Dobles";
+            this.label9.Text = "Cupos Dobles";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(244, 32);
+            this.label8.Location = new System.Drawing.Point(197, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 23);
+            this.label8.Size = new System.Drawing.Size(121, 23);
             this.label8.TabIndex = 19;
-            this.label8.Text = "C Simples";
+            this.label8.Text = "Cupos Simples";
             // 
             // cont_CuposDobles
             // 
-            this.cont_CuposDobles.Location = new System.Drawing.Point(488, 30);
+            this.cont_CuposDobles.Location = new System.Drawing.Point(536, 30);
             this.cont_CuposDobles.Name = "cont_CuposDobles";
-            this.cont_CuposDobles.Size = new System.Drawing.Size(36, 30);
+            this.cont_CuposDobles.Size = new System.Drawing.Size(42, 30);
             this.cont_CuposDobles.TabIndex = 18;
             this.cont_CuposDobles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cont_CuposDobles.ValueChanged += new System.EventHandler(this.cont_CuposDobles_ValueChanged);
             // 
             // cont_CuposSimples
             // 
-            this.cont_CuposSimples.Location = new System.Drawing.Point(336, 30);
+            this.cont_CuposSimples.Location = new System.Drawing.Point(324, 29);
             this.cont_CuposSimples.Name = "cont_CuposSimples";
-            this.cont_CuposSimples.Size = new System.Drawing.Size(36, 30);
+            this.cont_CuposSimples.Size = new System.Drawing.Size(46, 30);
             this.cont_CuposSimples.TabIndex = 17;
             this.cont_CuposSimples.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cont_CuposSimples.ValueChanged += new System.EventHandler(this.cont_CuposSimples_ValueChanged);
             // 
             // txb_NroHabitacion
             // 
-            this.txb_NroHabitacion.Location = new System.Drawing.Point(172, 29);
+            this.txb_NroHabitacion.Location = new System.Drawing.Point(87, 28);
             this.txb_NroHabitacion.Name = "txb_NroHabitacion";
             this.txb_NroHabitacion.ReadOnly = true;
-            this.txb_NroHabitacion.Size = new System.Drawing.Size(44, 30);
+            this.txb_NroHabitacion.Size = new System.Drawing.Size(53, 30);
             this.txb_NroHabitacion.TabIndex = 16;
             this.txb_NroHabitacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -538,9 +541,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(8, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 23);
+            this.label6.Size = new System.Drawing.Size(73, 23);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Nro de Habitación";
+            this.label6.Text = "Número";
             // 
             // AltaAlojamientoSinReserva
             // 
@@ -548,7 +551,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(811, 664);
+            this.ClientSize = new System.Drawing.Size(889, 664);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btn_Confirmar);
             this.Controls.Add(this.txb_CostoBase);

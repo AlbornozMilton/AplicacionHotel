@@ -25,7 +25,7 @@ namespace UI
         public AltaAlojamientoSinReserva()
         {
             InitializeComponent();
-            txb_fechaActual.Text = DateTime.Today.ToString("dd/mm/yy");
+            txb_fechaActual.Text = DateTime.Today.ToString("dd/MM/yy");
             txb_fechaActual.Enabled = false;
             btn_Aceptar.Enabled = false;
             btn_AgregarAcompañante.Enabled = false;

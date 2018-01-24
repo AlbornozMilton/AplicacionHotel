@@ -35,6 +35,7 @@ namespace Persistencia.DAL.EntityFramework
             }
 
         }
+
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
             var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")

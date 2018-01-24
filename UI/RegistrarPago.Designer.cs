@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.lbl_MostrarFecha = new System.Windows.Forms.Label();
@@ -40,11 +40,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
-            this.clm_IdAlojamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_DniResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_NombreResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_NroHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbx_Pago = new System.Windows.Forms.GroupBox();
             this.ck_ModificarMonto = new System.Windows.Forms.CheckBox();
             this.txb_Detalle = new System.Windows.Forms.TextBox();
@@ -54,6 +49,11 @@
             this.lbl_Monto = new System.Windows.Forms.Label();
             this.lbl_TipoPago = new System.Windows.Forms.Label();
             this.lbl_Fecha = new System.Windows.Forms.Label();
+            this.clm_IdAlojamiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_NroHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_DniResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_NombreResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbx_Alojamiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
             this.gbx_Pago.SuspendLayout();
@@ -62,7 +62,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(676, 306);
+            this.btn_Aceptar.Location = new System.Drawing.Point(668, 269);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
             this.btn_Aceptar.TabIndex = 3;
@@ -73,7 +73,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(11, 306);
+            this.btn_Cancelar.Location = new System.Drawing.Point(15, 271);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
             this.btn_Cancelar.TabIndex = 4;
@@ -86,7 +86,7 @@
             this.lbl_MostrarFecha.AutoSize = true;
             this.lbl_MostrarFecha.BackColor = System.Drawing.Color.Transparent;
             this.lbl_MostrarFecha.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_MostrarFecha.Location = new System.Drawing.Point(273, 10);
+            this.lbl_MostrarFecha.Location = new System.Drawing.Point(662, 17);
             this.lbl_MostrarFecha.Name = "lbl_MostrarFecha";
             this.lbl_MostrarFecha.Size = new System.Drawing.Size(108, 23);
             this.lbl_MostrarFecha.TabIndex = 9;
@@ -99,12 +99,12 @@
             this.gbx_Alojamiento.Controls.Add(this.button1);
             this.gbx_Alojamiento.Controls.Add(this.dGV_ListadoAlojamientos);
             this.gbx_Alojamiento.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbx_Alojamiento.Location = new System.Drawing.Point(12, 41);
+            this.gbx_Alojamiento.Location = new System.Drawing.Point(12, 12);
             this.gbx_Alojamiento.Name = "gbx_Alojamiento";
             this.gbx_Alojamiento.Size = new System.Drawing.Size(774, 137);
             this.gbx_Alojamiento.TabIndex = 10;
             this.gbx_Alojamiento.TabStop = false;
-            this.gbx_Alojamiento.Text = "Alojamiento Elegido";
+            this.gbx_Alojamiento.Text = "Alojamiento Seleccionado";
             // 
             // button2
             // 
@@ -122,9 +122,9 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(3, 97);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 30);
+            this.button1.Size = new System.Drawing.Size(190, 30);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Buscar otro Alojamiento";
+            this.button1.Text = "Buscar Alojamiento";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -137,97 +137,62 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_ListadoAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoAlojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dGV_ListadoAlojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ListadoAlojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_IdAlojamiento,
             this.clm_estado,
+            this.clm_NroHabitacion,
             this.clm_DniResponsable,
-            this.clm_NombreResponsable,
-            this.clm_NroHabitacion});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGV_ListadoAlojamientos.DefaultCellStyle = dataGridViewCellStyle8;
+            this.clm_NombreResponsable});
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGV_ListadoAlojamientos.DefaultCellStyle = dataGridViewCellStyle33;
             this.dGV_ListadoAlojamientos.Location = new System.Drawing.Point(3, 23);
             this.dGV_ListadoAlojamientos.Name = "dGV_ListadoAlojamientos";
             this.dGV_ListadoAlojamientos.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dGV_ListadoAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGV_ListadoAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.dGV_ListadoAlojamientos.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dGV_ListadoAlojamientos.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dGV_ListadoAlojamientos.RowsDefaultCellStyle = dataGridViewCellStyle35;
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(765, 68);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
-            // 
-            // clm_IdAlojamiento
-            // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clm_IdAlojamiento.DefaultCellStyle = dataGridViewCellStyle7;
-            this.clm_IdAlojamiento.FillWeight = 35F;
-            this.clm_IdAlojamiento.HeaderText = "Número";
-            this.clm_IdAlojamiento.Name = "clm_IdAlojamiento";
-            this.clm_IdAlojamiento.ReadOnly = true;
-            // 
-            // clm_estado
-            // 
-            this.clm_estado.FillWeight = 35F;
-            this.clm_estado.HeaderText = "Estado";
-            this.clm_estado.Name = "clm_estado";
-            this.clm_estado.ReadOnly = true;
-            // 
-            // clm_DniResponsable
-            // 
-            this.clm_DniResponsable.FillWeight = 50F;
-            this.clm_DniResponsable.HeaderText = "Responsable";
-            this.clm_DniResponsable.Name = "clm_DniResponsable";
-            this.clm_DniResponsable.ReadOnly = true;
-            // 
-            // clm_NombreResponsable
-            // 
-            this.clm_NombreResponsable.FillWeight = 150F;
-            this.clm_NombreResponsable.HeaderText = "Nombre";
-            this.clm_NombreResponsable.Name = "clm_NombreResponsable";
-            this.clm_NombreResponsable.ReadOnly = true;
-            // 
-            // clm_NroHabitacion
-            // 
-            this.clm_NroHabitacion.FillWeight = 40F;
-            this.clm_NroHabitacion.HeaderText = "Habitación";
-            this.clm_NroHabitacion.Name = "clm_NroHabitacion";
-            this.clm_NroHabitacion.ReadOnly = true;
             // 
             // gbx_Pago
             // 
             this.gbx_Pago.BackColor = System.Drawing.Color.Transparent;
             this.gbx_Pago.Controls.Add(this.ck_ModificarMonto);
             this.gbx_Pago.Controls.Add(this.txb_Detalle);
+            this.gbx_Pago.Controls.Add(this.lbl_MostrarFecha);
             this.gbx_Pago.Controls.Add(this.txb_Monto);
+            this.gbx_Pago.Controls.Add(this.lbl_Fecha);
             this.gbx_Pago.Controls.Add(this.cbx_TipoPago);
             this.gbx_Pago.Controls.Add(this.lbl_Detalle);
             this.gbx_Pago.Controls.Add(this.lbl_Monto);
             this.gbx_Pago.Controls.Add(this.lbl_TipoPago);
             this.gbx_Pago.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbx_Pago.Location = new System.Drawing.Point(11, 184);
+            this.gbx_Pago.Location = new System.Drawing.Point(11, 155);
             this.gbx_Pago.Name = "gbx_Pago";
             this.gbx_Pago.Size = new System.Drawing.Size(775, 110);
             this.gbx_Pago.TabIndex = 11;
@@ -263,6 +228,7 @@
             this.txb_Monto.ReadOnly = true;
             this.txb_Monto.Size = new System.Drawing.Size(81, 30);
             this.txb_Monto.TabIndex = 12;
+            this.txb_Monto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbx_TipoPago
             // 
@@ -309,11 +275,52 @@
             this.lbl_Fecha.AutoSize = true;
             this.lbl_Fecha.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Fecha.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Fecha.Location = new System.Drawing.Point(13, 10);
+            this.lbl_Fecha.Location = new System.Drawing.Point(529, 18);
             this.lbl_Fecha.Name = "lbl_Fecha";
-            this.lbl_Fecha.Size = new System.Drawing.Size(254, 23);
+            this.lbl_Fecha.Size = new System.Drawing.Size(127, 23);
             this.lbl_Fecha.TabIndex = 8;
-            this.lbl_Fecha.Text = "La Fecha de Pago será la actual:";
+            this.lbl_Fecha.Text = "Fecha de Pago:";
+            // 
+            // clm_IdAlojamiento
+            // 
+            this.clm_IdAlojamiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clm_IdAlojamiento.DefaultCellStyle = dataGridViewCellStyle32;
+            this.clm_IdAlojamiento.FillWeight = 35F;
+            this.clm_IdAlojamiento.HeaderText = "Número";
+            this.clm_IdAlojamiento.Name = "clm_IdAlojamiento";
+            this.clm_IdAlojamiento.ReadOnly = true;
+            // 
+            // clm_estado
+            // 
+            this.clm_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_estado.FillWeight = 35F;
+            this.clm_estado.HeaderText = "Estado";
+            this.clm_estado.Name = "clm_estado";
+            this.clm_estado.ReadOnly = true;
+            // 
+            // clm_NroHabitacion
+            // 
+            this.clm_NroHabitacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_NroHabitacion.FillWeight = 40F;
+            this.clm_NroHabitacion.HeaderText = "Habitación";
+            this.clm_NroHabitacion.Name = "clm_NroHabitacion";
+            this.clm_NroHabitacion.ReadOnly = true;
+            // 
+            // clm_DniResponsable
+            // 
+            this.clm_DniResponsable.FillWeight = 45F;
+            this.clm_DniResponsable.HeaderText = "Responsable";
+            this.clm_DniResponsable.Name = "clm_DniResponsable";
+            this.clm_DniResponsable.ReadOnly = true;
+            // 
+            // clm_NombreResponsable
+            // 
+            this.clm_NombreResponsable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_NombreResponsable.FillWeight = 140F;
+            this.clm_NombreResponsable.HeaderText = "Nombre Completo";
+            this.clm_NombreResponsable.Name = "clm_NombreResponsable";
+            this.clm_NombreResponsable.ReadOnly = true;
             // 
             // RegistrarPago
             // 
@@ -321,11 +328,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(798, 348);
+            this.ClientSize = new System.Drawing.Size(798, 311);
             this.Controls.Add(this.gbx_Pago);
             this.Controls.Add(this.gbx_Alojamiento);
-            this.Controls.Add(this.lbl_MostrarFecha);
-            this.Controls.Add(this.lbl_Fecha);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Aceptar);
             this.Name = "RegistrarPago";
@@ -336,7 +341,6 @@
             this.gbx_Pago.ResumeLayout(false);
             this.gbx_Pago.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -359,8 +363,8 @@
         private System.Windows.Forms.Label lbl_Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojamiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_DniResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_NombreResponsable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
     }
 }

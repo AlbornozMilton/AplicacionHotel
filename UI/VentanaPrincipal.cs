@@ -15,7 +15,7 @@ namespace UI
     {
         public InicioSesion iPadre;
         ControladorAlojamiento iControladorAlojamiento = new ControladorAlojamiento();
-        List<Alojamiento> listaActivos;
+
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -187,8 +187,7 @@ namespace UI
         private void CargarAlojamientosActivos()
         {
             dGV_Alojamientos.Rows.Clear();
-            listaActivos = iControladorAlojamiento.ObtenerAlojamientosActivos();
-            foreach (var aloj in listaActivos)
+            foreach (var aloj in iControladorAlojamiento.ObtenerAlojamientosActivos())
             {
                 var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                 dGV_Alojamientos.Rows.Add
@@ -208,9 +207,9 @@ namespace UI
 
         private void btn_VerDetalle_Click(object sender, EventArgs e)
         {
-            if (listaActivos.Count > 0)
+            if (dGV_Alojamientos.CurrentRow != null)
             {
-                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(listaActivos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iControladorAlojamiento.BuscarAlojamientoPorID(Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
                 VentanaVisualizar.ShowDialog(); 
             }
         }

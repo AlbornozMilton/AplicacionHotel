@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_Buscar = new System.Windows.Forms.Label();
             this.btn_nuevoCliente = new System.Windows.Forms.Button();
             this.textBox_Legajo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,9 +55,8 @@
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbl_Buscar = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.gpb_altas.SuspendLayout();
@@ -118,12 +117,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Búsqueda";
             // 
+            // lbl_Buscar
+            // 
+            this.lbl_Buscar.AutoSize = true;
+            this.lbl_Buscar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Buscar.Location = new System.Drawing.Point(625, 37);
+            this.lbl_Buscar.Name = "lbl_Buscar";
+            this.lbl_Buscar.Size = new System.Drawing.Size(50, 19);
+            this.lbl_Buscar.TabIndex = 15;
+            this.lbl_Buscar.Text = "Buscar";
+            this.lbl_Buscar.Visible = false;
+            // 
             // btn_nuevoCliente
             // 
             this.btn_nuevoCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_nuevoCliente.Location = new System.Drawing.Point(795, 62);
+            this.btn_nuevoCliente.Location = new System.Drawing.Point(768, 59);
             this.btn_nuevoCliente.Name = "btn_nuevoCliente";
-            this.btn_nuevoCliente.Size = new System.Drawing.Size(141, 30);
+            this.btn_nuevoCliente.Size = new System.Drawing.Size(168, 47);
             this.btn_nuevoCliente.TabIndex = 11;
             this.btn_nuevoCliente.Text = "Nuevo Cliente";
             this.btn_nuevoCliente.UseVisualStyleBackColor = true;
@@ -293,21 +303,21 @@
             this.tablaResulClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaResulClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaResulClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaResulClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaResulClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaResulClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Dni,
             this.clm_legajo,
             this.clm_apellido,
-            this.clm_Nombre,
-            this.clm_telefono});
+            this.clm_nom,
+            this.clm_Nombre});
             this.tablaResulClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaResulClientes.Location = new System.Drawing.Point(3, 26);
             this.tablaResulClientes.MultiSelect = false;
@@ -323,8 +333,8 @@
             // clm_Dni
             // 
             this.clm_Dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clm_Dni.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clm_Dni.DefaultCellStyle = dataGridViewCellStyle6;
             this.clm_Dni.FillWeight = 40F;
             this.clm_Dni.HeaderText = "DNI";
             this.clm_Dni.Name = "clm_Dni";
@@ -341,42 +351,30 @@
             // clm_apellido
             // 
             this.clm_apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clm_apellido.DefaultCellStyle = dataGridViewCellStyle18;
-            this.clm_apellido.HeaderText = "Nombre Completo";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clm_apellido.DefaultCellStyle = dataGridViewCellStyle7;
+            this.clm_apellido.FillWeight = 70F;
+            this.clm_apellido.HeaderText = "Apellido";
             this.clm_apellido.Name = "clm_apellido";
             this.clm_apellido.ReadOnly = true;
+            // 
+            // clm_nom
+            // 
+            this.clm_nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_nom.FillWeight = 70F;
+            this.clm_nom.HeaderText = "Nombre";
+            this.clm_nom.Name = "clm_nom";
+            this.clm_nom.ReadOnly = true;
             // 
             // clm_Nombre
             // 
             this.clm_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clm_Nombre.DefaultCellStyle = dataGridViewCellStyle19;
-            this.clm_Nombre.FillWeight = 90F;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clm_Nombre.DefaultCellStyle = dataGridViewCellStyle8;
+            this.clm_Nombre.FillWeight = 70F;
             this.clm_Nombre.HeaderText = "Tipo Cliente";
             this.clm_Nombre.Name = "clm_Nombre";
             this.clm_Nombre.ReadOnly = true;
-            // 
-            // clm_telefono
-            // 
-            this.clm_telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clm_telefono.DefaultCellStyle = dataGridViewCellStyle20;
-            this.clm_telefono.FillWeight = 60F;
-            this.clm_telefono.HeaderText = "Teléfono";
-            this.clm_telefono.Name = "clm_telefono";
-            this.clm_telefono.ReadOnly = true;
-            // 
-            // lbl_Buscar
-            // 
-            this.lbl_Buscar.AutoSize = true;
-            this.lbl_Buscar.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Buscar.Location = new System.Drawing.Point(625, 37);
-            this.lbl_Buscar.Name = "lbl_Buscar";
-            this.lbl_Buscar.Size = new System.Drawing.Size(50, 19);
-            this.lbl_Buscar.TabIndex = 15;
-            this.lbl_Buscar.Text = "Buscar";
-            this.lbl_Buscar.Visible = false;
             // 
             // BuscarCliente
             // 
@@ -426,11 +424,11 @@
         private System.Windows.Forms.GroupBox gpb_altas;
         private System.Windows.Forms.RadioButton rbn_Alta;
         private System.Windows.Forms.RadioButton rbn_baja;
+        private System.Windows.Forms.Label lbl_Buscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_legajo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_telefono;
-        private System.Windows.Forms.Label lbl_Buscar;
     }
 }

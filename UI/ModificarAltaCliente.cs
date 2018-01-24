@@ -43,7 +43,7 @@ namespace UI
         private void RellenarCampos()
         {
             tablaResulCliente.Rows.Clear();
-            tablaResulCliente.Rows.Add(ClienteSeleccionado.ClienteId, ClienteSeleccionado.Legajo, ClienteSeleccionado.Apellido, ClienteSeleccionado.Nombre, ClienteSeleccionado.EnAlta ? "En Alta" : "En Baja");
+            tablaResulCliente.Rows.Add(ClienteSeleccionado.ClienteId, ClienteSeleccionado.Legajo, ClienteSeleccionado.Apellido, ClienteSeleccionado.Nombre, ClienteSeleccionado.TarifaCliente.NombreTarifa, ClienteSeleccionado.EnAlta ? "En Alta" : "En Baja");
             if (ClienteSeleccionado.EnAlta)
             {
                 btn_darAlta.Enabled = false;

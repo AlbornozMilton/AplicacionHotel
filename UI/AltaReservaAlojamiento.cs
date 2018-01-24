@@ -22,6 +22,7 @@ namespace UI
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
+            txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
             FechaIni = dtp_fechaDesde.Value;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             FechaFin = dtp_fechaHasta.Value;

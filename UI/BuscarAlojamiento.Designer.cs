@@ -38,14 +38,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
-            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_EstadoAloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_EstadoAloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -66,13 +66,13 @@
             this.groupBox1.Size = new System.Drawing.Size(920, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Búsqueda";
+            this.groupBox1.Text = "Búsqueda de Alojamento";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(402, 52);
+            this.label2.Location = new System.Drawing.Point(393, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 4;
@@ -83,9 +83,9 @@
             // 
             this.btn_Buscar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btn_Buscar.Image = global::UI.Properties.Resources.boton_buscar;
-            this.btn_Buscar.Location = new System.Drawing.Point(334, 28);
+            this.btn_Buscar.Location = new System.Drawing.Point(307, 19);
             this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(62, 62);
+            this.btn_Buscar.Size = new System.Drawing.Size(80, 75);
             this.btn_Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btn_Buscar.TabIndex = 3;
             this.btn_Buscar.TabStop = false;
@@ -100,16 +100,16 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(208, 37);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Listar Alojamientos";
+            this.button3.Text = "Lista de Alojamientos";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tbx_IdAlojamiento
             // 
             this.tbx_IdAlojamiento.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_IdAlojamiento.Location = new System.Drawing.Point(222, 45);
+            this.tbx_IdAlojamiento.Location = new System.Drawing.Point(206, 45);
             this.tbx_IdAlojamiento.Name = "tbx_IdAlojamiento";
-            this.tbx_IdAlojamiento.Size = new System.Drawing.Size(46, 30);
+            this.tbx_IdAlojamiento.Size = new System.Drawing.Size(95, 30);
             this.tbx_IdAlojamiento.TabIndex = 1;
             this.tbx_IdAlojamiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -153,9 +153,9 @@
             this.dGV_ListadoAlojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_IdAlojmiento,
             this.clm_EstadoAloj,
+            this.clm_IDHabitacion,
             this.clm_DNIResponsable,
-            this.clm_Cliente,
-            this.clm_IDHabitacion});
+            this.clm_Cliente});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -173,41 +173,6 @@
             this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(914, 64);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
             // 
-            // clm_IdAlojmiento
-            // 
-            this.clm_IdAlojmiento.FillWeight = 35F;
-            this.clm_IdAlojmiento.HeaderText = "Número";
-            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
-            this.clm_IdAlojmiento.ReadOnly = true;
-            // 
-            // clm_EstadoAloj
-            // 
-            this.clm_EstadoAloj.FillWeight = 60F;
-            this.clm_EstadoAloj.HeaderText = "Estado";
-            this.clm_EstadoAloj.Name = "clm_EstadoAloj";
-            this.clm_EstadoAloj.ReadOnly = true;
-            // 
-            // clm_DNIResponsable
-            // 
-            this.clm_DNIResponsable.FillWeight = 60F;
-            this.clm_DNIResponsable.HeaderText = "Responsable";
-            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
-            this.clm_DNIResponsable.ReadOnly = true;
-            // 
-            // clm_Cliente
-            // 
-            this.clm_Cliente.FillWeight = 150F;
-            this.clm_Cliente.HeaderText = "Nombre Completo";
-            this.clm_Cliente.Name = "clm_Cliente";
-            this.clm_Cliente.ReadOnly = true;
-            // 
-            // clm_IDHabitacion
-            // 
-            this.clm_IDHabitacion.FillWeight = 40F;
-            this.clm_IDHabitacion.HeaderText = "Habitación";
-            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
-            this.clm_IDHabitacion.ReadOnly = true;
-            // 
             // btn_Aceptar
             // 
             this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
@@ -224,7 +189,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 218);
+            this.button2.Location = new System.Drawing.Point(15, 218);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 30);
             this.button2.TabIndex = 3;
@@ -243,6 +208,41 @@
             this.button1.Text = "Ver Detalles";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // clm_IdAlojmiento
+            // 
+            this.clm_IdAlojmiento.FillWeight = 35F;
+            this.clm_IdAlojmiento.HeaderText = "Número";
+            this.clm_IdAlojmiento.Name = "clm_IdAlojmiento";
+            this.clm_IdAlojmiento.ReadOnly = true;
+            // 
+            // clm_EstadoAloj
+            // 
+            this.clm_EstadoAloj.FillWeight = 60F;
+            this.clm_EstadoAloj.HeaderText = "Estado";
+            this.clm_EstadoAloj.Name = "clm_EstadoAloj";
+            this.clm_EstadoAloj.ReadOnly = true;
+            // 
+            // clm_IDHabitacion
+            // 
+            this.clm_IDHabitacion.FillWeight = 40F;
+            this.clm_IDHabitacion.HeaderText = "Habitación";
+            this.clm_IDHabitacion.Name = "clm_IDHabitacion";
+            this.clm_IDHabitacion.ReadOnly = true;
+            // 
+            // clm_DNIResponsable
+            // 
+            this.clm_DNIResponsable.FillWeight = 60F;
+            this.clm_DNIResponsable.HeaderText = "Responsable";
+            this.clm_DNIResponsable.Name = "clm_DNIResponsable";
+            this.clm_DNIResponsable.ReadOnly = true;
+            // 
+            // clm_Cliente
+            // 
+            this.clm_Cliente.FillWeight = 150F;
+            this.clm_Cliente.HeaderText = "Nombre Completo";
+            this.clm_Cliente.Name = "clm_Cliente";
+            this.clm_Cliente.ReadOnly = true;
             // 
             // BuscarAlojamiento
             // 
@@ -284,8 +284,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojmiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_EstadoAloj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_IDHabitacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_IDHabitacion;
     }
 }
