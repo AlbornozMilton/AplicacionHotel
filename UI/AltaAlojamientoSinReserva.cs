@@ -285,40 +285,6 @@ namespace UI
             }
         }
 
-        #region Alta de Reserva
-        public void RellenarCampos()
-        {
-
-            txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
-            dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
-            dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
-            txb_NroHabitacion.Text = NuevoAlojamiento.HabitacionId.ToString();
-
-            HabSeleccionada = NuevoAlojamiento.Habitacion;
-            ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
-            cont_CuposSimples.Value = NuevoAlojamiento.CantCuposSimples;
-            cont_CuposDobles.Value = NuevoAlojamiento.CantCuposDobles;
-
-            //cliente responsable
-            this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
-            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre,ClienteResponsable.TarifaCliente.NombreTarifa);
-            this.Acompañantes = new List<Cliente>();
-            this.Acompañantes.Add(ClienteResponsable);
-            //btn_Confirmar.Enabled = true;
-
-            //HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
-
-            //para almacenar el valor de costo base de reserva y luego comparar
-            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-
-            ////--------Por la reserva------------------------
-            //if (!btn_VerificarDisponibilidad.Enabled)
-            //{
-            //    auxListaCliReserva = NuevoAlojamiento.Clientes;
-            //}
-            ////-------------------------------------
-        }
-
         /// <summary>
         /// Modifica el campo Enable de una conjunto de propiedades de la Form al valor de parámetro
         /// </summary>
@@ -345,7 +311,6 @@ namespace UI
             btn_Confirmar.Enabled = !pValorEnable;
             btn_Aceptar.Enabled = pValorEnable;
         }
-        #endregion
 
         private void cont_CuposSimples_ValueChanged(object sender, EventArgs e)
         {
@@ -401,6 +366,48 @@ namespace UI
                     ck_Exclusividad.Enabled = true;
                 }
             }
+        }
+
+        #region Alta de Reserva
+        public void RellenarCampos()
+        {
+
+            txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
+            dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
+            dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
+            txb_NroHabitacion.Text = NuevoAlojamiento.HabitacionId.ToString();
+
+            HabSeleccionada = NuevoAlojamiento.Habitacion;
+            ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
+            cont_CuposSimples.Value = NuevoAlojamiento.CantCuposSimples;
+            cont_CuposDobles.Value = NuevoAlojamiento.CantCuposDobles;
+
+            //cliente responsable
+            this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
+            dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
+            this.Acompañantes = new List<Cliente>();
+            this.Acompañantes.Add(ClienteResponsable);
+            //btn_Confirmar.Enabled = true;
+
+            //HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
+
+            //para almacenar el valor de costo base de reserva y luego comparar
+            txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+
+            ////--------Por la reserva------------------------
+            //if (!btn_VerificarDisponibilidad.Enabled)
+            //{
+            //    auxListaCliReserva = NuevoAlojamiento.Clientes;
+            //}
+            ////-------------------------------------
+            button_visualizarReserva.Visible = true;
+        }
+        #endregion
+
+        private void button_visualizarReserva_Click(object sender, EventArgs e)
+        {
+            VisualizarAlojamiento visualizarAlojamiento = new VisualizarAlojamiento(NuevoAlojamiento);
+            visualizarAlojamiento.ShowDialog();
         }
     }
 }

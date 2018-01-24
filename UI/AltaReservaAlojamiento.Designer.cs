@@ -158,7 +158,7 @@
             // 
             this.btn_VerificarDisponibilidad.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_VerificarDisponibilidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(654, 31);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
             this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(199, 41);

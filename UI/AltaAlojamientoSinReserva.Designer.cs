@@ -51,6 +51,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_AgregarCliente = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_visualizarReserva = new System.Windows.Forms.Button();
             this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.dGV_Acompañantes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -146,7 +147,7 @@
             // btn_VerificarDisponibilidad
             // 
             this.btn_VerificarDisponibilidad.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(621, 42);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
             this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(210, 44);
@@ -298,6 +299,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.button_visualizarReserva);
             this.groupBox3.Controls.Add(this.btn_quitarCliente);
             this.groupBox3.Controls.Add(this.dGV_Acompañantes);
             this.groupBox3.Controls.Add(this.btn_AgregarAcompañante);
@@ -308,6 +310,19 @@
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Otros Clientes";
+            // 
+            // button_visualizarReserva
+            // 
+            this.button_visualizarReserva.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button_visualizarReserva.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button_visualizarReserva.Location = new System.Drawing.Point(6, 20);
+            this.button_visualizarReserva.Name = "button_visualizarReserva";
+            this.button_visualizarReserva.Size = new System.Drawing.Size(236, 30);
+            this.button_visualizarReserva.TabIndex = 13;
+            this.button_visualizarReserva.Text = "Ver Detalles de Reserva";
+            this.button_visualizarReserva.UseVisualStyleBackColor = false;
+            this.button_visualizarReserva.Visible = false;
+            this.button_visualizarReserva.Click += new System.EventHandler(this.button_visualizarReserva_Click);
             // 
             // btn_quitarCliente
             // 
@@ -627,5 +642,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Button button_visualizarReserva;
     }
 }
