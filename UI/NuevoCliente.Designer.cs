@@ -286,7 +286,7 @@
             this.txb_apellido.Size = new System.Drawing.Size(282, 30);
             this.txb_apellido.TabIndex = 24;
             this.txb_apellido.TextChanged += new System.EventHandler(this.txb_apellido_TextChanged);
-            this.txb_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_nombre_KeyPress);
+            this.txb_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_apellido_KeyPress);
             this.txb_apellido.Leave += new System.EventHandler(this.txb_apellido_Leave);
             // 
             // tbx_dni

@@ -60,10 +60,12 @@ namespace UI
             {
                 case TipoMensaje.Exito:
                     {
+                        this.Text = "Exito";
                     }
                     break;
                 case TipoMensaje.Alerta:
                     {
+                        this.Text = "¡Alerta!";
                         pictureBox_icon.Image = Properties.Resources.Alerta_Icon;
                     }
                     break;

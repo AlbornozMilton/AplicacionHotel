@@ -328,5 +328,11 @@ namespace UI
             ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
             actualizarCostoServicio.ShowDialog();
         }
+
+        private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            BuscarCliente BuscarCliente = new BuscarCliente();
+            BuscarCliente.ShowDialog();
+        }
     }
 }
