@@ -82,18 +82,6 @@ namespace Dominio
             iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
         }
 
-        public List<TarifaCliente> ObtenerTarifas()
-        {
-            IEnumerable<pers.TarifaCliente> listaEnum = iUoW.RepositorioTarifa.GetAll();
-            List<TarifaCliente> lista = new List<TarifaCliente>();
-
-            foreach (var serv in listaEnum)
-            {
-                lista.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(serv));
-            }
-            return (lista);
-        }
-
         public void AcutalizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
         {
             if (pCostoNoExcl == "")
@@ -136,7 +124,7 @@ namespace Dominio
         /// </summary>
         public List<Alojamiento> CancelacionAutomatica()
         {
-            List<Alojamiento> ListaACancelar = ControlFechaAltaReserva();
+            List<Alojamiento> ListaACancelar = this.AlojamientosACancelar();
             List<Alojamiento> Resultado = new List<Alojamiento>();
             ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
 
@@ -144,7 +132,7 @@ namespace Dominio
             {
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
                 {
-                    ControlAloj.CancelarAlojamiento(aloj, DateTime.Now);
+                    ControlAloj.CancelarAlojamiento(aloj);
                     Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId)); 
                 }
             }
@@ -175,7 +163,7 @@ namespace Dominio
         /// </summary>
         public List<Alojamiento> CierreAutomatico()
         {
-            List<Alojamiento> ListaACerrar = ControlFechaAltaReserva();
+            List<Alojamiento> ListaACerrar = this.AlojamientosACerrar();
             List<Alojamiento> Resultado = new List<Alojamiento>();
             ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
 

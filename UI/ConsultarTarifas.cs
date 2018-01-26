@@ -14,7 +14,7 @@ namespace UI
     public partial class ConsultarTarifas : Form
     {
         public TarifaCliente iTarifaSeleccionada;
-        public List<TarifaCliente> ListaTarifas = new ControladorExtra().ObtenerTarifas();
+        public List<TarifaCliente> ListaTarifas = new ControladorCliente().DevolverListaTarifas();
         public ConsultarTarifas()
         {
             InitializeComponent();

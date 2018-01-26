@@ -53,7 +53,7 @@ namespace UI
             List<Alojamiento> auxLista = new List<Alojamiento>();
 
             //RESERVAS QUE SE DEBEN REALIZAR EL ALTA
-            auxLista = new ControladorExtra().ControlFechaAltaReserva();
+            auxLista = new ControladorExtra().AlojamientosACancelar();
             if (auxLista.Count > 0)
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
@@ -77,7 +77,7 @@ namespace UI
 
             //ALOJS QUE DEBEN CERRARSE HOY
             auxLista = new List<Alojamiento>();
-            auxLista = new ControladorExtra().ControlFechaCierre();
+            auxLista = new ControladorExtra().AlojamientosACerrar();
             if (auxLista.Count > 0)
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben Cerrarse Hoy.", TipoMensaje.Alerta);
@@ -126,7 +126,7 @@ namespace UI
         private void AlojsReservadosSinDeposito()
         {
             List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
+            ListAloj = iControladorAlojamiento.AlojsReservadosConDepositoVencidos();
 
             if (ListAloj.Count > 0)
             {

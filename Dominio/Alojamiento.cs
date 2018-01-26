@@ -306,7 +306,7 @@ namespace Dominio
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
 
-        public void Cancelar(DateTime pFechaCancelacion)
+        public void Cancelar()
         {
             //this.iFechaCancelacion = pFechaCancelacion;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;

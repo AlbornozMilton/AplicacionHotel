@@ -218,7 +218,7 @@ namespace UI
         {
             try
             {
-                new ControladorAlojamiento().ControlPlazoRereva(dtp_fechaDesde.Value.Date);
+                new ControladorAlojamiento().ControlPlazoParaReservar(dtp_fechaDesde.Value.Date);
                 this.FechaIni = dtp_fechaDesde.Value;
                 btn_Confirmar.Enabled = false;
                 groupBox4.Enabled = false;
