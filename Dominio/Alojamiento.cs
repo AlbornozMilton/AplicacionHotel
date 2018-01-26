@@ -249,7 +249,7 @@ namespace Dominio
             }
         }
 
-        public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
+        public void RegistrarPago(Pago pPago)
         {
             this.iMontoDeuda -= pPago.Monto;
 

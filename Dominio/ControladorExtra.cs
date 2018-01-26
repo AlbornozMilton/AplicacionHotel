@@ -116,7 +116,7 @@ namespace Dominio
         /// <summary>
         /// Retorna lista de alojamientos a cancelar
         /// </summary>
-        public List<Alojamiento> ControlFechaAltaReserva()
+        public List<Alojamiento> AlojamientosACancelar()
         {
             List<Alojamiento> Resultado = new List<Alojamiento>();
             List<Alojamiento> Activos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
@@ -155,7 +155,7 @@ namespace Dominio
         /// <summary>
         /// Retorna lista de alojamientos que deben cerrarse hoy
         /// </summary>
-        public List<Alojamiento> ControlFechaCierre()
+        public List<Alojamiento> AlojamientosACerrar()
         {
             List<Alojamiento> Resultado = new List<Alojamiento>();
             List<Alojamiento> Activos = new ControladorAlojamiento().ObtenerAlojamientosActivos();

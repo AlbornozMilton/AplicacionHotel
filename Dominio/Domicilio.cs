@@ -30,13 +30,13 @@ namespace Dominio
             this.iCiudad = pCiudad;
         }
 
-        public Domicilio(string pCalle, string pNumCalle, string pNumDepto, string pNumPiso)
-        {
-            this.iCalle = pCalle;
-            this.iNumCalle = pNumCalle;
-            this.iNumDepto = pNumDepto;
-            this.iNumPiso = pNumPiso;
-        }
+        //public Domicilio(string pCalle, string pNumCalle, string pNumDepto, string pNumPiso)
+        //{
+        //    this.iCalle = pCalle;
+        //    this.iNumCalle = pNumCalle;
+        //    this.iNumDepto = pNumDepto;
+        //    this.iNumPiso = pNumPiso;
+        //}
 
         //----------------------------------------propiedades
         public int DomicilioId { get { return this.iDomicilioId; } private set { this.iDomicilioId = value; } }
