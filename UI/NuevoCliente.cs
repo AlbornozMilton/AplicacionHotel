@@ -89,15 +89,23 @@ namespace UI
             try
             {
                 ControlCamposObligatorios();
+                if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+                {
+                    new VentanaEmergente("El DNI ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+                }
+                if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+                {
+                    new VentanaEmergente("El Legajo ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+                }
                 ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 if (localCliente == null)
                 {
-                    MessageBox.Show("Cliente Agregado Correctamente");
+                    new VentanaEmergente("Cliente Agregado Correctamente", TipoMensaje.Exito).ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Cliente Actualizado Correctamente");
+                    new VentanaEmergente("Cliente Actualizado Correctamente", TipoMensaje.Exito).ShowDialog();
                 }
                 Close();
             }
@@ -133,9 +141,8 @@ namespace UI
             }
             else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
             {
-                MessageBox.Show("El DNI ingresado ya existe.");
-                tbx_dni.Clear();
-                tbx_dni.Focus();
+                label13.Text = "Ya Existe";
+                label13.Visible = true;
             }
         }
 
@@ -161,9 +168,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                //MessageBox.Show(E.Message);
-                label15.Text = (E.Message);
-                label15.Visible = false;
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             } 
         }
 
@@ -175,7 +180,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -187,7 +192,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -199,7 +204,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -211,7 +216,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -287,7 +292,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -307,8 +312,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                VentanaEmergente Emergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                Emergente.ShowDialog();
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -350,8 +354,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                VentanaEmergente Emergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                Emergente.ShowDialog();
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -378,7 +381,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
