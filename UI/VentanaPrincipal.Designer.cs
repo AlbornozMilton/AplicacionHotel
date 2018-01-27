@@ -61,8 +61,6 @@
             this.actualizarTarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -104,8 +102,7 @@
             this.clienteToolStripMenuItem,
             this.listarToolStripMenuItem,
             this.movimientoToolStripMenuItem,
-            this.administracionToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
+            this.administracionToolStripMenuItem});
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.ShowItemToolTips = true;
@@ -127,7 +124,7 @@
             // 
             this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
             this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.iniciarToolStripMenuItem.Text = "Iniciar";
             this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
             // 
@@ -135,7 +132,7 @@
             // 
             this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -349,20 +346,6 @@
             this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
             this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualDeUsuarioToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(88, 34);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // manualDeUsuarioToolStripMenuItem
-            // 
-            this.manualDeUsuarioToolStripMenuItem.Name = "manualDeUsuarioToolStripMenuItem";
-            this.manualDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(272, 34);
-            this.manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
             // 
             // groupBox_disponibilidad
             // 
@@ -629,8 +612,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem listarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimientoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox_disponibilidad;
         private System.Windows.Forms.GroupBox groupBox2;

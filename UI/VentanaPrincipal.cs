@@ -35,13 +35,42 @@ namespace UI
 
         private void iniciarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InicioSesion NuevoInicio = new InicioSesion();
-            NuevoInicio.ShowDialog();
+            ReInicioSesion ReinicioSesion = new ReInicioSesion();
+            ReinicioSesion.ShowDialog();
+            if (ReinicioSesion.Validacion == true)
+            {
+                archivoToolStripMenuItem.Enabled = true;
+                alojamientoToolStripMenuItem.Enabled = true;
+                clienteToolStripMenuItem.Enabled = true;
+                listarToolStripMenuItem.Enabled = true;
+                movimientoToolStripMenuItem.Enabled = true;
+                administracionToolStripMenuItem.Enabled = true;
+                groupBox_disponibilidad.Enabled = true;
+                cerrarToolStripMenuItem.Enabled = true;
+
+                iniciarToolStripMenuItem.Enabled = false;
+            }
+
         }
 
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            archivoToolStripMenuItem.Enabled = false;
+            alojamientoToolStripMenuItem.Enabled = false;
+            clienteToolStripMenuItem.Enabled = false;
+            listarToolStripMenuItem.Enabled = false;
+            movimientoToolStripMenuItem.Enabled = false;
+            administracionToolStripMenuItem.Enabled = false;
+            groupBox_disponibilidad.Enabled = false;
+            cerrarToolStripMenuItem.Enabled = false;
+
+            iniciarToolStripMenuItem.Enabled = true;
+        }
         // LOADDDDDDDDDDDDDDDDDDDDD------------------------------------------------------
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
+            iniciarToolStripMenuItem.Enabled = false;
+
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             CargarAlojamientosActivos();
 
@@ -154,11 +183,6 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-        }
-
-        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Cerrar ventana Principal y dejar ventana de inicio sesion.
         }
 
         private void agregarServicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -316,12 +340,6 @@ namespace UI
             CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
             cancelarAlojamiento.ShowDialog();
         }
-
-        //private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
-        //{
-        //    BuscarCliente BuscarCliente = new BuscarCliente();
-        //    BuscarCliente.ShowDialog();
-        //}
 
         private void actualizarCostoServiciosToolStripMenuItem_Click(object sender, EventArgs e)
         {
