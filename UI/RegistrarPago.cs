@@ -44,15 +44,16 @@ namespace UI
                     }
                     break;
                 case EstadoAlojamiento.Cerrado:
-                    if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Servicios")))
+                    if (AlojSeleccionado.MontoDeuda > 0)
                     {
-                        cbx_TipoPago.Items.Add("Servicios");
-
-                    }
-                    else
-                    {
-                        cbx_TipoPago.Items.Add("Deuda");
-
+                        if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Servicios")))
+                        {
+                            cbx_TipoPago.Items.Add("Servicios");
+                        }
+                        else
+                        {
+                            cbx_TipoPago.Items.Add("Deuda");
+                        }
                     }
                     break;
             }

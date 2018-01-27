@@ -14,7 +14,7 @@ namespace UI
     public partial class VentanaPrincipal : Form
     {
         public InicioSesion iPadre;
-        ControladorAlojamiento iControladorAlojamiento = new ControladorAlojamiento();
+        //ControladorAlojamiento iControladorAlojamiento = new ControladorAlojamiento();
 
         public VentanaPrincipal()
         {
@@ -133,10 +133,10 @@ namespace UI
         {
             dGV_Alojamientos.Rows.Clear();
             List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = iControladorAlojamiento.ObtenerAlojamientosActivos();
-            foreach (var aloj in ListAloj)
+            ListAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+            foreach (Alojamiento aloj in ListAloj)
             {
-                var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                Cliente cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                 dGV_Alojamientos.Rows.Add
                     (
                     aloj.AlojamientoId,
@@ -155,11 +155,11 @@ namespace UI
         private void AlojsReservadosSinDeposito()
         {
             List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = iControladorAlojamiento.AlojsReservadosConDepositoVencidos();
+            ListAloj = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
 
             if (ListAloj.Count > 0)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito tras pasar de las 72hs de la fecha de Reserva", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito tras pasar de las 72hs de la Fecha de Reserva", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
                 listarAlojamientos.VisiblePago();
@@ -229,7 +229,7 @@ namespace UI
                     throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
 
-                iControladorAlojamiento.ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
+                new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
 
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.Aloj_Seleccionado;
 
@@ -270,7 +270,7 @@ namespace UI
         {
             if (dGV_Alojamientos.CurrentRow != null)
             {
-                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iControladorAlojamiento.BuscarAlojamientoPorID(Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(new ControladorAlojamiento().BuscarAlojamientoPorID(Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
                 VentanaVisualizar.ShowDialog(); 
             }
         }

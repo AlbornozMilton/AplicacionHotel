@@ -54,7 +54,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(10, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(737, 287);
+            this.groupBox2.Size = new System.Drawing.Size(737, 298);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Disponibilidad de Habitaciones - Seleccione una";
@@ -91,7 +91,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dGV_TablaHabitaciones.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_TablaHabitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(731, 258);
+            this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(731, 269);
             this.dGV_TablaHabitaciones.TabIndex = 0;
             // 
             // Column1
@@ -138,7 +138,7 @@
             // btn_Seleccionar
             // 
             this.btn_Seleccionar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Seleccionar.Location = new System.Drawing.Point(637, 305);
+            this.btn_Seleccionar.Location = new System.Drawing.Point(637, 316);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
             this.btn_Seleccionar.Size = new System.Drawing.Size(110, 30);
             this.btn_Seleccionar.TabIndex = 2;
@@ -149,7 +149,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(10, 305);
+            this.btn_Cancelar.Location = new System.Drawing.Point(13, 316);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
             this.btn_Cancelar.TabIndex = 3;
@@ -161,9 +161,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(759, 345);
+            this.ClientSize = new System.Drawing.Size(759, 356);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Seleccionar);
             this.Controls.Add(this.groupBox2);
