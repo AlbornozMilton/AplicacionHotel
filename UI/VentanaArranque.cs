@@ -21,7 +21,7 @@ namespace UI
 
         private void bgw_CargaUsuarios_DoWork(object sender, DoWorkEventArgs e)
         {
-            System.Threading.Thread.Sleep(2000); //retardo.. solo son 2 segundos es para que sea mas tiempo visible la portada
+            //System.Threading.Thread.Sleep(2000); //retardo.. solo son 2 segundos es para que sea mas tiempo visible la portada
             new Dominio.ControladorCliente().CargarUsuarios();
         }
 

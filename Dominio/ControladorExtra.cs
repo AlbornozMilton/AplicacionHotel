@@ -122,23 +122,23 @@ namespace Dominio
         /// <summary>
         /// Retorna lista de alojamiento canelados
         /// </summary>
-        public List<Alojamiento> CancelacionAutomatica()
-        {
-            List<Alojamiento> ListaACancelar = this.AlojamientosACancelar();
-            List<Alojamiento> Resultado = new List<Alojamiento>();
-            ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
+        //public List<Alojamiento> CancelacionAutomatica()
+        //{
+        //    List<Alojamiento> ListaACancelar = this.AlojamientosACancelar();
+        //    List<Alojamiento> Resultado = new List<Alojamiento>();
+        //    ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
 
-            foreach (var aloj in ListaACancelar)
-            {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
-                {
-                    ControlAloj.CancelarAlojamiento(aloj);
-                    Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId)); 
-                }
-            }
+        //    foreach (var aloj in ListaACancelar)
+        //    {
+        //        if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
+        //        {
+        //            ControlAloj.CancelarAlojamiento(aloj);
+        //            Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId)); 
+        //        }
+        //    }
 
-            return Resultado;
-        }
+        //    return Resultado;
+        //}
 
         /// <summary>
         /// Retorna lista de alojamientos que deben cerrarse hoy
@@ -161,21 +161,21 @@ namespace Dominio
         /// <summary>
         /// Retorna lista de alojamiento cerrados
         /// </summary>
-        public List<Alojamiento> CierreAutomatico()
-        {
-            List<Alojamiento> ListaACerrar = this.AlojamientosACerrar();
-            List<Alojamiento> Resultado = new List<Alojamiento>();
-            ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
+        //public List<Alojamiento> CierreAutomatico()
+        //{
+        //    List<Alojamiento> ListaACerrar = this.AlojamientosACerrar();
+        //    List<Alojamiento> Resultado = new List<Alojamiento>();
+        //    ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
 
-            foreach (var aloj in ListaACerrar)
-            {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
-                {
-                    ControlAloj.CerrarAlojamiento(aloj);
-                    Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId));
-                }
-            }
-            return Resultado;
-        }
+        //    foreach (var aloj in ListaACerrar)
+        //    {
+        //        if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
+        //        {
+        //            ControlAloj.CerrarAlojamiento(aloj);
+        //            Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId));
+        //        }
+        //    }
+        //    return Resultado;
+        //}
     }
 }

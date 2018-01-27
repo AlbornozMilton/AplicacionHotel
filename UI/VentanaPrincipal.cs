@@ -14,7 +14,6 @@ namespace UI
     public partial class VentanaPrincipal : Form
     {
         public InicioSesion iPadre;
-        //ControladorAlojamiento iControladorAlojamiento = new ControladorAlojamiento();
 
         public VentanaPrincipal()
         {
@@ -72,44 +71,24 @@ namespace UI
             iniciarToolStripMenuItem.Enabled = false;
 
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+
+            //tarea a fondo
             CargarAlojamientosActivos();
 
             //ALOJS TRAS 72HS SIN DEPOSITO
-            AlojsReservadosSinDeposito();
+            //tarea a fondo
+            //AlojsReservadosSinDeposito();
             timer1.Interval = 7200000;// dos horas
             timer1.Enabled = true;
-
-            List<Alojamiento> auxLista = new List<Alojamiento>();
-
-            //RESERVAS QUE SE DEBEN REALIZAR EL ALTA
-            auxLista = new ControladorExtra().AlojamientosACancelar();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Recuerde Dar de Alta las Reservas en las Fechas de Ingreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
-
-            //ALOJS QUE DEBEN CERRARSE HOY
-            auxLista = new ControladorExtra().AlojamientosACerrar();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben Cerrarse Hoy.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Recuerde Cerrar Alojamientos en las Fechas de Egreso correspondientes para evitar confusion en las operaciones.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
         }
 
         private void CargarAlojamientosActivos()
         {
             dGV_Alojamientos.Rows.Clear();
             List<Alojamiento> ListAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+
+            int countRow = 0;
+
             foreach (Alojamiento aloj in ListAloj)
             {
                 Cliente cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
@@ -125,14 +104,14 @@ namespace UI
                     aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
                     aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
                     );
-                //dGV_Alojamientos.Rows[dGV_Alojamientos.Rows.Count-1].DefaultCellStyle.BackColor = Color.MediumOrchid;
-                //dGV_Alojamientos.CurrentRow.DefaultCellStyle.BackColor = Color.MediumOrchid;
+
+                if (aloj.MontoTotal > 0)
+                {
+                    dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.AliceBlue;
+                }
+                countRow++;
             }
-
-            //dGV_Alojamientos.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
-
         }
-
         private void AlojsReservadosSinDeposito()
         {
             List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
@@ -146,6 +125,37 @@ namespace UI
                 listarAlojamientos.ShowDialog();
             }
         }
+
+        //RESERVAS QUE SE DEBEN REALIZAR EL ALTA
+        private void AlojamietosParaDarDeAlta()
+        {
+            List<Alojamiento> auxLista = new ControladorExtra().AlojamientosACancelar();
+            if (auxLista.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
+                listarAlojamientos.ShowDialog();
+                ventanaEmergente = new VentanaEmergente("Recuerde Dar de Alta las Reservas en las Fechas de Ingreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+        }
+
+        //ALOJS QUE DEBEN CERRARSE HOY
+        private void AlojamietosParaCerrar()
+        {
+            List<Alojamiento> auxLista = new ControladorExtra().AlojamientosACerrar();
+            if (auxLista.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben Cerrarse Hoy.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
+                listarAlojamientos.ShowDialog();
+                ventanaEmergente = new VentanaEmergente("Recuerde Cerrar Alojamientos en las Fechas de Egreso correspondientes para evitar confusion en las operaciones.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+        }
+
         private void nuevoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             NuevoCliente NuevoCliente = new NuevoCliente();
