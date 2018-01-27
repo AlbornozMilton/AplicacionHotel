@@ -47,24 +47,20 @@
             this.cerrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarAltaDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosConsumidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarTarifaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarCostoServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarTarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -98,17 +94,15 @@
             // 
             menuStrip1.BackColor = System.Drawing.Color.Yellow;
             menuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sesionToolStripMenuItem1,
             this.archivoToolStripMenuItem,
             this.alojamientoToolStripMenuItem,
             this.clienteToolStripMenuItem,
-            this.buscarToolStripMenuItem,
             this.listarToolStripMenuItem,
             this.movimientoToolStripMenuItem,
-            this.administracionToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
+            this.administracionToolStripMenuItem});
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.ShowItemToolTips = true;
@@ -130,7 +124,7 @@
             // 
             this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
             this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(147, 34);
+            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.iniciarToolStripMenuItem.Text = "Iniciar";
             this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
             // 
@@ -138,7 +132,7 @@
             // 
             this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(147, 34);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -156,21 +150,23 @@
             // 
             this.nuevoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem1.Image")));
             this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(254, 34);
+            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(263, 34);
             this.nuevoToolStripMenuItem1.Text = "Nuevo";
             this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
             // 
             // altaDeReservaToolStripMenuItem
             // 
+            this.altaDeReservaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_AltaReserva;
             this.altaDeReservaToolStripMenuItem.Name = "altaDeReservaToolStripMenuItem";
-            this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(254, 34);
+            this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
             this.altaDeReservaToolStripMenuItem.Text = "Alta de Reserva";
             this.altaDeReservaToolStripMenuItem.Click += new System.EventHandler(this.altaDeReservaToolStripMenuItem_Click);
             // 
             // cancelarReservaToolStripMenuItem
             // 
+            this.cancelarReservaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Cerrar_Cancelar;
             this.cancelarReservaToolStripMenuItem.Name = "cancelarReservaToolStripMenuItem";
-            this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(254, 34);
+            this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
             this.cancelarReservaToolStripMenuItem.Text = "Cancelar Reserva";
             this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click);
             // 
@@ -190,7 +186,7 @@
             this.nuevoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem.Image")));
             this.nuevoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(251, 34);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(260, 34);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
@@ -198,21 +194,22 @@
             // 
             this.buscarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("buscarToolStripMenuItem1.Image")));
             this.buscarToolStripMenuItem1.Name = "buscarToolStripMenuItem1";
-            this.buscarToolStripMenuItem1.Size = new System.Drawing.Size(251, 34);
+            this.buscarToolStripMenuItem1.Size = new System.Drawing.Size(260, 34);
             this.buscarToolStripMenuItem1.Text = "Buscar";
             this.buscarToolStripMenuItem1.Click += new System.EventHandler(this.buscarToolStripMenuItem1_Click);
             // 
             // agregarServicioToolStripMenuItem
             // 
             this.agregarServicioToolStripMenuItem.Name = "agregarServicioToolStripMenuItem";
-            this.agregarServicioToolStripMenuItem.Size = new System.Drawing.Size(251, 34);
+            this.agregarServicioToolStripMenuItem.Size = new System.Drawing.Size(260, 34);
             this.agregarServicioToolStripMenuItem.Text = "Agregar Servicio";
             this.agregarServicioToolStripMenuItem.Click += new System.EventHandler(this.agregarServicioToolStripMenuItem_Click);
             // 
             // cerrarToolStripMenuItem1
             // 
+            this.cerrarToolStripMenuItem1.Image = global::UI.Properties.Resources.Boton_Cerrar;
             this.cerrarToolStripMenuItem1.Name = "cerrarToolStripMenuItem1";
-            this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(251, 34);
+            this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(260, 34);
             this.cerrarToolStripMenuItem1.Text = "Cerrar";
             this.cerrarToolStripMenuItem1.Click += new System.EventHandler(this.cerrarToolStripMenuItem1_Click);
             // 
@@ -220,6 +217,7 @@
             // 
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem2,
+            this.buscarToolStripMenuItem2,
             this.modificarAltaDeClienteToolStripMenuItem,
             this.modificarDatosToolStripMenuItem});
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
@@ -230,39 +228,33 @@
             // 
             this.nuevoToolStripMenuItem2.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.nuevoToolStripMenuItem2.Name = "nuevoToolStripMenuItem2";
-            this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(335, 34);
+            this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(344, 34);
             this.nuevoToolStripMenuItem2.Text = "Nuevo";
             this.nuevoToolStripMenuItem2.Click += new System.EventHandler(this.nuevoToolStripMenuItem2_Click);
             // 
+            // buscarToolStripMenuItem2
+            // 
+            this.buscarToolStripMenuItem2.Image = global::UI.Properties.Resources.boton_buscar;
+            this.buscarToolStripMenuItem2.Name = "buscarToolStripMenuItem2";
+            this.buscarToolStripMenuItem2.Size = new System.Drawing.Size(344, 34);
+            this.buscarToolStripMenuItem2.Text = "Buscar";
+            this.buscarToolStripMenuItem2.Click += new System.EventHandler(this.buscarToolStripMenuItem2_Click);
+            // 
             // modificarAltaDeClienteToolStripMenuItem
             // 
+            this.modificarAltaDeClienteToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
             this.modificarAltaDeClienteToolStripMenuItem.Name = "modificarAltaDeClienteToolStripMenuItem";
-            this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(335, 34);
+            this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
             this.modificarAltaDeClienteToolStripMenuItem.Text = "Modificar Alta de Cliente";
             this.modificarAltaDeClienteToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeClienteToolStripMenuItem_Click);
             // 
             // modificarDatosToolStripMenuItem
             // 
+            this.modificarDatosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
             this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
-            this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(335, 34);
+            this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
             this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
             this.modificarDatosToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosToolStripMenuItem_Click);
-            // 
-            // buscarToolStripMenuItem
-            // 
-            this.buscarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem1});
-            this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(89, 34);
-            this.buscarToolStripMenuItem.Text = "Buscar";
-            // 
-            // clienteToolStripMenuItem1
-            // 
-            this.clienteToolStripMenuItem1.Image = global::UI.Properties.Resources.boton_buscar;
-            this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(157, 34);
-            this.clienteToolStripMenuItem1.Text = "Cliente";
-            this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
             // listarToolStripMenuItem
             // 
@@ -274,8 +266,9 @@
             // 
             // serviciosConsumidosToolStripMenuItem
             // 
+            this.serviciosConsumidosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
             this.serviciosConsumidosToolStripMenuItem.Name = "serviciosConsumidosToolStripMenuItem";
-            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(302, 34);
+            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(311, 34);
             this.serviciosConsumidosToolStripMenuItem.Text = "Servicios Consumidos";
             this.serviciosConsumidosToolStripMenuItem.Click += new System.EventHandler(this.serviciosConsumidosToolStripMenuItem_Click);
             // 
@@ -289,18 +282,18 @@
             // 
             // nuevoToolStripMenuItem3
             // 
+            this.nuevoToolStripMenuItem3.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.nuevoToolStripMenuItem3.Name = "nuevoToolStripMenuItem3";
-            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(152, 34);
-            this.nuevoToolStripMenuItem3.Text = "Nuevo";
+            this.nuevoToolStripMenuItem3.Size = new System.Drawing.Size(216, 34);
+            this.nuevoToolStripMenuItem3.Text = "Nuevo Pago";
             this.nuevoToolStripMenuItem3.Click += new System.EventHandler(this.nuevoToolStripMenuItem3_Click);
             // 
             // administracionToolStripMenuItem
             // 
             this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serviciosToolStripMenuItem,
-            this.actualizarTarifaToolStripMenuItem,
-            this.tarifasToolStripMenuItem,
             this.actualizarCostoServiciosToolStripMenuItem,
+            this.tarifasToolStripMenuItem,
             this.actualizarTarifasToolStripMenuItem,
             this.consultarHabitacionesToolStripMenuItem,
             this.modificarAltaDeCuposToolStripMenuItem});
@@ -310,65 +303,49 @@
             // 
             // serviciosToolStripMenuItem
             // 
+            this.serviciosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.serviciosToolStripMenuItem.Text = "Consultar Servicios";
             this.serviciosToolStripMenuItem.Click += new System.EventHandler(this.serviciosToolStripMenuItem_Click);
-            // 
-            // actualizarTarifaToolStripMenuItem
-            // 
-            this.actualizarTarifaToolStripMenuItem.Name = "actualizarTarifaToolStripMenuItem";
-            this.actualizarTarifaToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
-            this.actualizarTarifaToolStripMenuItem.Text = "Actualizar Costo Servicios";
-            this.actualizarTarifaToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifaToolStripMenuItem_Click);
-            // 
-            // tarifasToolStripMenuItem
-            // 
-            this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
-            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
-            this.tarifasToolStripMenuItem.Text = "Consultar Tarifas";
-            this.tarifasToolStripMenuItem.Click += new System.EventHandler(this.tarifasToolStripMenuItem_Click);
             // 
             // actualizarCostoServiciosToolStripMenuItem
             // 
             this.actualizarCostoServiciosToolStripMenuItem.Name = "actualizarCostoServiciosToolStripMenuItem";
-            this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
-            this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Servicios";
+            this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
+            this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Unitario de Servicio";
+            this.actualizarCostoServiciosToolStripMenuItem.Click += new System.EventHandler(this.actualizarCostoServiciosToolStripMenuItem_Click);
+            // 
+            // tarifasToolStripMenuItem
+            // 
+            this.tarifasToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
+            this.tarifasToolStripMenuItem.Name = "tarifasToolStripMenuItem";
+            this.tarifasToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
+            this.tarifasToolStripMenuItem.Text = "Consultar Tarifas";
+            this.tarifasToolStripMenuItem.Click += new System.EventHandler(this.tarifasToolStripMenuItem_Click);
             // 
             // actualizarTarifasToolStripMenuItem
             // 
             this.actualizarTarifasToolStripMenuItem.Name = "actualizarTarifasToolStripMenuItem";
-            this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
-            this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Tarifa";
+            this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
+            this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Costos deTarifa";
             this.actualizarTarifasToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifasToolStripMenuItem_Click);
             // 
             // consultarHabitacionesToolStripMenuItem
             // 
+            this.consultarHabitacionesToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
             this.consultarHabitacionesToolStripMenuItem.Name = "consultarHabitacionesToolStripMenuItem";
-            this.consultarHabitacionesToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.consultarHabitacionesToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.consultarHabitacionesToolStripMenuItem.Text = "Consultar Habitaciones";
             this.consultarHabitacionesToolStripMenuItem.Click += new System.EventHandler(this.consultarHabitacionesToolStripMenuItem_Click);
             // 
             // modificarAltaDeCuposToolStripMenuItem
             // 
+            this.modificarAltaDeCuposToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
             this.modificarAltaDeCuposToolStripMenuItem.Name = "modificarAltaDeCuposToolStripMenuItem";
-            this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(341, 34);
+            this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
             this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualDeUsuarioToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(88, 34);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // manualDeUsuarioToolStripMenuItem
-            // 
-            this.manualDeUsuarioToolStripMenuItem.Name = "manualDeUsuarioToolStripMenuItem";
-            this.manualDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(272, 34);
-            this.manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
             // 
             // groupBox_disponibilidad
             // 
@@ -475,6 +452,7 @@
             // 
             this.dGV_Alojamientos.AllowUserToAddRows = false;
             this.dGV_Alojamientos.AllowUserToDeleteRows = false;
+            this.dGV_Alojamientos.AllowUserToOrderColumns = true;
             this.dGV_Alojamientos.AllowUserToResizeColumns = false;
             this.dGV_Alojamientos.AllowUserToResizeRows = false;
             this.dGV_Alojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -595,6 +573,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1110, 541);
@@ -603,9 +583,10 @@
             this.Controls.Add(menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sistema de Información de Alojamientos";
+            this.Text = "Sistema de Información de Alojamientos - FJPPER";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VentanaPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
@@ -629,11 +610,8 @@
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimientoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox_disponibilidad;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -647,7 +625,6 @@
         private System.Windows.Forms.ToolStripMenuItem iniciarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.BindingSource clienteBindingSource;
-        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem agregarServicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem serviciosConsumidosToolStripMenuItem;
@@ -657,7 +634,6 @@
         private System.Windows.Forms.ToolStripMenuItem tarifasToolStripMenuItem;
         private System.Windows.Forms.Button btn_VerDetalle;
         private System.Windows.Forms.ToolStripMenuItem modificarAltaDeClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actualizarTarifaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarCostoServiciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarTarifasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarHabitacionesToolStripMenuItem;
@@ -675,5 +651,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem2;
     }
 }

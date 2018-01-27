@@ -32,13 +32,13 @@ namespace UI
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
             label2.Visible = true;
-            btn_Buscar.Image = Properties.Resources.boton_buscar_seleccion2;
+            btn_Buscar.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
             label2.Visible = false;
-            btn_Buscar.Image = Properties.Resources.boton_buscar;
+            btn_Buscar.SizeMode = PictureBoxSizeMode.CenterImage;
         }
 
         //LISTAR ALOJAMIENTO
@@ -55,7 +55,7 @@ namespace UI
             dGV_ListadoAlojamientos.Rows.Clear();
             if (auxAloj_Seleccionado != null)
             {
-                dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, this.auxAloj_Seleccionado.DniResponsable, this.auxAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.auxAloj_Seleccionado.DniResponsable).NombreCompleto(), this.auxAloj_Seleccionado.Habitacion.HabitacionId);
+                dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, this.auxAloj_Seleccionado.Habitacion.HabitacionId,this.auxAloj_Seleccionado.DniResponsable, this.auxAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.auxAloj_Seleccionado.DniResponsable).NombreCompleto());
                 btn_Aceptar.Enabled = true;
             }
             else
@@ -71,9 +71,23 @@ namespace UI
                 auxAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
                 CargarAlojAux();
             }
+            catch(FormatException)
+            {
+                if (tbx_IdAlojamiento.Text == "")
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe ingresar un número de Alojamiento", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Formato Incorrecto: se debe ingresar un número sin espacios", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                }
+            }
             catch (Exception pException)
             {
-                MessageBox.Show(pException.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(pException.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -94,7 +108,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento antes de Ver Detalles", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
     }

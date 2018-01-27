@@ -13,19 +13,27 @@ namespace UI
 {
     public partial class VisualizarAlojamiento : Form
     {
+        double totalPagos;
+        double totalServicios;
+
         public VisualizarAlojamiento(Alojamiento pAlojamiento)
         {
             InitializeComponent();
             CargarFormulario(pAlojamiento);
         }
+
         public void CargarPagos(List<Pago> pPagos)
         {
             dGV_Pagos.Rows.Clear();
-            foreach (var pago in pPagos)
+            if (pPagos.Count > 0)
             {
-                dGV_Pagos.Rows.Add(pago.PagoId, pago.FechaPago.ToString("dd / MM / yyyy"), pago.Tipo, pago.Monto);
+                totalPagos = 0;
+                foreach (var pago in pPagos)
+                {
+                    totalPagos += pago.Monto;
+                    dGV_Pagos.Rows.Add(pago.Tipo, pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.ToString("H:mm"), pago.Monto);
+                }
             }
-            
         }
         public void CargarClientes(List<Cliente> pClientes, int pResponsable)
         {
@@ -35,24 +43,28 @@ namespace UI
             {
                 if (cli.ClienteId == pResponsable)
                 {
-                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
                 }
                 else
                 {
-                    dGV_Acompañantes.Rows.Add(cli.ClienteId, cli.Apellido, cli.Nombre, cli.Telefono);
+                    dGV_Acompañantes.Rows.Add(cli.ClienteId,cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
                 }
             }
         }
+
         public void CargarServicios(List<LineaServicio> pServicios)
         {
-            double total = 0;
             dGV_Servicios.Rows.Clear();
-            foreach (var serv in pServicios)
+
+            if (pServicios.Count > 0)
             {
-                dGV_Servicios.Rows.Add(serv.FechaServicio.ToString("dd / MM / yyyy"), serv.Servicio.Nombre, serv.Cantidad, serv.CostoServicio);
-                total = total + serv.CostoServicio;
+                totalServicios = 0;
+                foreach (var serv in pServicios)
+                {
+                    dGV_Servicios.Rows.Add(serv.Servicio.Nombre, serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd / MM / yyyy"), serv.CostoServicio);
+                    totalServicios += serv.CostoServicio;
+                }
             }
-            lbl_Total.Text = total.ToString();
         }
 
         public string CargarFecha(DateTime pFecha)
@@ -65,11 +77,12 @@ namespace UI
             {
                 return pFecha.ToString("dd / MM / yy");
             }
-
         }
 
         public void CargarFormulario(Alojamiento pAlojamiento)
         {
+            groupBox_AcompReserva.Visible = false;
+            groupBox4.Visible = true;
             lbl_IdAlojamiento.Text = pAlojamiento.AlojamientoId.ToString();
             lbl_EstadoActual.Text = pAlojamiento.EstadoAlojamiento.ToString();
             lbl_MontoDeuda.Text = pAlojamiento.MontoDeuda.ToString();
@@ -95,6 +108,10 @@ namespace UI
             CargarClientes(pAlojamiento.Clientes, pAlojamiento.DniResponsable);
             CargarPagos(pAlojamiento.Pagos);
             CargarServicios(pAlojamiento.Servicios);
+            if (pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            {
+                AlojReserva(pAlojamiento.ContadoresTarifas); 
+            }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
@@ -104,14 +121,44 @@ namespace UI
 
         private void pestaña_Servicios_Enter(object sender, EventArgs e)
         {
-            lbl_Total.Visible = true;
+            textBox_total.Text = totalServicios.ToString();
+            textBox_total.Visible = true;
             label13.Visible = true;
         }
 
         private void pestaña_Servicios_Leave(object sender, EventArgs e)
         {
-            lbl_Total.Visible = false;
+            textBox_total.Visible = false;
             label13.Visible = false;
+        }
+
+        private void pestaña_Pagos_Enter(object sender, EventArgs e)
+        {
+            textBox_total.Text = totalPagos.ToString();
+            textBox_total.Visible = true;
+            label13.Visible = true;
+        }
+
+        private void pestaña_Pagos_Leave(object sender, EventArgs e)
+        {
+            textBox_total.Visible = false;
+            label13.Visible = false;
+        }
+
+        private void AlojReserva(string pContadores)
+        {
+            //(contador_Titular.Value).ToString() +
+            //(contador_Directo.Value).ToString() +
+            //(contador_NoDirecto.Value).ToString() +
+            //(contador_Exceptuado.Value).ToString() +
+            //(contador_Convenio.Value);
+            groupBox4.Visible = false; //Acompañantes
+            cant_titular.Text = pContadores[0].ToString();
+            cat_CantAcpmDirect.Text = pContadores[1].ToString();
+            cantNoDirec.Text = pContadores[2].ToString();
+            cantExcep.Text = pContadores[3].ToString();
+            cant_conv.Text = pContadores[4].ToString();
+            groupBox_AcompReserva.Visible = true;
         }
     }
 }

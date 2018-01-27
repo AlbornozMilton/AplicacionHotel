@@ -17,7 +17,7 @@ namespace UI
         public void CargarServicioSeccionado(Servicio pServicio)
         {
             dataGridView_Servicio.Rows.Clear();
-            dataGridView_Servicio.Rows.Add(pServicio.ServicioId, pServicio.Nombre, pServicio.CostoBase);
+            dataGridView_Servicio.Rows.Add(pServicio.ServicioId, pServicio.Nombre, pServicio.CostoBase,pServicio.Detalle);
         }
 
         private void btn_buscarServicio_Click(object sender, EventArgs e)
@@ -43,11 +43,20 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            new ControladorExtra().AcutalizarCostoServicio(this.ServicioSeleccionado, txb_nuevoCosto.Text);
-            MessageBox.Show("Servicio Actualizado");
-            Close();
-            AdministrarServicios Actualizar = new AdministrarServicios();
-            Actualizar.ShowDialog();
+            try
+            {
+                new ControladorExtra().AcutalizarCostoServicio(this.ServicioSeleccionado, txb_nuevoCosto.Text);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Servicio Actualizado", TipoMensaje.Exito);
+                ventanaEmergente.ShowDialog();
+                Close();
+                AdministrarServicios Actualizar = new AdministrarServicios();
+                Actualizar.ShowDialog();
+            }
+            catch (Exception E)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
         }
     }
 }

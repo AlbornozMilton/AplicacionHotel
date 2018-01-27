@@ -67,11 +67,12 @@ namespace UI
                 }
                 else
                 {
-                    MessageBox.Show("No es posible la Habitación seleccionada ya que se ecuentra activa en los siguientes Alojamietos.");
-                    ListarAlojamientos ListarAlojs = new ListarAlojamientos(auxListaAlojs);
-                    ListarAlojs.ShowDialog();
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("No es posible la Habitación seleccionada ya que se ecuentra activa en los siguientes Alojamietos", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
                     dGV_Habs.Rows.Clear();
                     dataGridView_cupos.Rows.Clear();
+                    ListarAlojamientos ListarAlojs = new ListarAlojamientos(auxListaAlojs);
+                    ListarAlojs.ShowDialog();
                 }
             }
             else
@@ -84,13 +85,9 @@ namespace UI
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
             new ControladorHabitacion().ModificarAltaDeCupos(HabSeleccionada);
-            MessageBox.Show("Modificacion de Cupos exitosa");
+            VentanaEmergente ventanaEmergente = new VentanaEmergente("Modificacion de Cupos Exitosa", TipoMensaje.Exito);
+            ventanaEmergente.ShowDialog();
             Close();
-        }
-
-        private void dataGridView_cupos_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
-        {
-            MessageBox.Show("CellValuePushed");
         }
 
         private void dataGridView_cupos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -15,9 +15,7 @@ namespace UI
     {
         public Habitacion HabSeleccionada;
         public List<Habitacion> Habitaciones;
-        ControladorHabitacion ControladorHab = new ControladorHabitacion();
-        ControladorAlojamiento ControlAlojs = new ControladorAlojamiento();
-        public Form FormPadre {get; set;} //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
+        //public Form FormPadre { get; set; } //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
 
         public TablaDisponibilidad()
         {
@@ -28,10 +26,10 @@ namespace UI
         {
             InitializeComponent();
             dGV_TablaHabitaciones.Rows.Clear();
-            this.Habitaciones = ControlAlojs.DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
+            this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
             foreach (var hab in this.Habitaciones)
             {
-                int auxExcl = ControladorHab.VerificarSolicitdExclusividad(hab);
+                int auxExcl = new ControladorHabitacion().VerificarSolicitdExclusividad(hab);
 
                 if (!hab.Exclusiva && auxExcl!=0) 
                 {

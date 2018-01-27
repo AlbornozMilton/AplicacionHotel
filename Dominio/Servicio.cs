@@ -49,7 +49,7 @@ namespace Dominio
         }
 
         //--------------------Metodos
-        public void ColocarDetalle(string pDetalle)
+        public void ActualizarDetalle(string pDetalle)
         {
             this.iDetalle = pDetalle;
         }

@@ -196,7 +196,7 @@ namespace Dominio
         public void AltaDeReserva()
         {
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
-            this.FechaIngreso = DateTime.Now.Date;
+            this.FechaIngreso = DateTime.Now;
         }
 
         public bool ExistePagoAlojamiento(Pago pPago)
@@ -249,7 +249,7 @@ namespace Dominio
             }
         }
 
-        public void RegistrarPago(Pago pPago) //Ver si se pasa el ID
+        public void RegistrarPago(Pago pPago)
         {
             this.iMontoDeuda -= pPago.Monto;
 
@@ -306,7 +306,7 @@ namespace Dominio
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
 
-        public void Cancelar(DateTime pFechaCancelacion)
+        public void Cancelar()
         {
             //this.iFechaCancelacion = pFechaCancelacion;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;

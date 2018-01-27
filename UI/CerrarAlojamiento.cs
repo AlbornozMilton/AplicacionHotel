@@ -43,7 +43,7 @@ namespace UI
         private void CargarAlojamientoSeccionado(Alojamiento pAloj)
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento, pAloj.HabitacionId, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto());
         }
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
@@ -57,7 +57,8 @@ namespace UI
 
                 if (iAloj_Seleccionado.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date)!=0)
                 {
-                    MessageBox.Show("Atención: La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
                 }
 
                 lbl_fechaEstEgreso.Text = iAloj_Seleccionado.FechaEstimadaEgreso.Date.ToString("dd / MM / yyyy");
@@ -72,12 +73,14 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().CerrarAlojamiento(iAloj_Seleccionado);
-                MessageBox.Show("Cierre de Alojamiento Exitoso.");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.CierreExistoso, iAloj_Seleccionado.AlojamientoId);
+                ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 

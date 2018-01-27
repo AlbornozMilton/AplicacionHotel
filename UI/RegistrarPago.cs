@@ -49,11 +49,10 @@ namespace UI
                         cbx_TipoPago.Items.Add("Servicios");
 
                     }
-                    break;
-                case EstadoAlojamiento.Cancelado:
-                    if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Deuda")))
+                    else
                     {
                         cbx_TipoPago.Items.Add("Deuda");
+
                     }
                     break;
             }
@@ -62,18 +61,25 @@ namespace UI
         public RegistrarPago(Alojamiento pAloj)
         {
             InitializeComponent();
-            AlojSeleccionado = pAloj;
-            lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
-            CargarAlojamientoSeccionado(AlojSeleccionado);
-            ck_ModificarMonto.Enabled = false;
-
+            if (!(pAloj.EstadoAlojamiento == EstadoAlojamiento.Cancelado))
+            {
+                AlojSeleccionado = pAloj;
+                lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
+                CargarAlojamientoSeccionado();
+                ck_ModificarMonto.Enabled = false;
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("No se realizan Pagos de Alojamientos Cancelados", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
         }
 
-        public void CargarAlojamientoSeccionado(Alojamiento pAloj)
+        public void CargarAlojamientoSeccionado()
         {
             CargarPagos();
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId, pAloj.EstadoAlojamiento, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+            dGV_ListadoAlojamientos.Rows.Add(AlojSeleccionado.AlojamientoId, AlojSeleccionado.EstadoAlojamiento, AlojSeleccionado.HabitacionId, AlojSeleccionado.DniResponsable, AlojSeleccionado.Clientes.Find(c => c.ClienteId == AlojSeleccionado.DniResponsable).NombreCompleto());
         }
 
         //Buscar otro alojamiento
@@ -84,10 +90,25 @@ namespace UI
 
             if (VentanaBuscarAlojamiento.Aloj_Seleccionado != null)
             {
-                AlojSeleccionado = VentanaBuscarAlojamiento.Aloj_Seleccionado;
-                CargarAlojamientoSeccionado(AlojSeleccionado);
-                gbx_Pago.Enabled = true;
-                btn_Aceptar.Enabled = true;
+                if (VentanaBuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento != EstadoAlojamiento.Cancelado)
+                {
+                    AlojSeleccionado = VentanaBuscarAlojamiento.Aloj_Seleccionado;
+                    CargarAlojamientoSeccionado();
+                    gbx_Pago.Enabled = true;
+                    btn_Aceptar.Enabled = true;
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("No se realizan Pagos de Alojamientos Cancelados", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                    gbx_Pago.Enabled = false;
+                    btn_Aceptar.Enabled = false;
+                }
+            }
+            else
+            {
+                gbx_Pago.Enabled = false;
+                btn_Aceptar.Enabled = false;
             }
         }
 
@@ -112,7 +133,8 @@ namespace UI
         {
             if (dGV_ListadoAlojamientos.Rows.Count <= 0)
             {
-                MessageBox.Show("Debe seleccionar un alojamiento");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             } 
             else if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
             {
@@ -133,17 +155,28 @@ namespace UI
         {
             try
             {
+                //vertificar el monto ingresado: formato y numeros
                 ValidarDatos();
                 ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
                 Pago Pago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
-                //iControladorAloj.ControlTipoPago(AlojSeleccionado, iPago);
+                //iControladorAloj.ControlTipoPago(AlojSeleccionado, Pago);
                 iControladorAloj.AddPago(AlojSeleccionado,Pago);
-                MessageBox.Show("Pago de Alojamiento Exitoso.");
+                if (Pago.Tipo == TipoPago.Servicios && Pago.Monto != AlojSeleccionado.MontoDeuda)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realziar un Pago de Deuda.", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
+                }
+                else
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Pago de Alojamiento Exitoso", TipoMensaje.Exito);
+                    ventanaEmergente.ShowDialog();
+                }
                 Close();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 
@@ -151,35 +184,31 @@ namespace UI
         {
             int numero;
             string monto = txb_Monto.Text;
-            if (cbx_TipoPago.SelectedItem == null)
-            {
-                throw new Exception("Debe seleccionar el Tipo de Pago");
-            }
-            if (monto == "")
+            //if (cbx_TipoPago.SelectedItem == null)
+            //{
+            //    throw new Exception("Debe seleccionar el Tipo de Pago");
+            //}
+            if ((Convert.ToInt32(monto) <= 0) && cbx_TipoPago.SelectedItem.ToString() != "Servicios")
             {
                 throw new Exception("Debe ingresar un Monto");
             }
             else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false)
             {
-                throw new Exception("Formato invalido de monto");
+                throw new Exception("Formato inválido de Monto. Solo se adminiten dígitos.");
             }
-            else if (Convert.ToInt32(monto) <= 0)
+            else if (Convert.ToDouble(monto) > AlojSeleccionado.MontoDeuda)
             {
-                throw new Exception("Monto debe ser mayor a cero");
+                throw new Exception("El Monto ingresado es superior al Monto Deuda del Alojamiento.");
             }
         }
 
         //Ver detalles
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.AlojSeleccionado != null)
+            if (dGV_ListadoAlojamientos.CurrentRow != null)
             {
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(AlojSeleccionado);
                 VentanaVisualizar.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un Alojamiento antes de Ver Detalles.");
             }
         }
     }

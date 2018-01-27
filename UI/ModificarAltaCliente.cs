@@ -26,25 +26,35 @@ namespace UI
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
             BuscarCliente.ShowDialog();
-
             if (BuscarCliente.ClienteSeleccionado != null)
             {
                 ClienteSeleccionado = BuscarCliente.ClienteSeleccionado;
-                tablaResulCliente.Rows.Add(ClienteSeleccionado.ClienteId, ClienteSeleccionado.Legajo, ClienteSeleccionado.Apellido, ClienteSeleccionado.Nombre, ClienteSeleccionado.EnAlta ? "En Alta":"En Baja");
-                if (ClienteSeleccionado.EnAlta)
-                {
-                    btn_darBaja.Enabled = true;
-                }
-                else
-                {
-                    btn_darAlta.Enabled = true;
-                }
-                btn_aceptar.Enabled = true;
+                RellenarCampos();
             }
             else
             {
                 tablaResulCliente.Rows.Clear();
+                btn_darBaja.Enabled = false;
+                btn_aceptar.Enabled = false;
+                btn_aceptar.Enabled = false;
             }
+        }
+
+        private void RellenarCampos()
+        {
+            tablaResulCliente.Rows.Clear();
+            tablaResulCliente.Rows.Add(ClienteSeleccionado.ClienteId, ClienteSeleccionado.Legajo, ClienteSeleccionado.Apellido, ClienteSeleccionado.Nombre, ClienteSeleccionado.TarifaCliente.NombreTarifa, ClienteSeleccionado.EnAlta ? "En Alta" : "En Baja");
+            if (ClienteSeleccionado.EnAlta)
+            {
+                btn_darAlta.Enabled = false;
+                btn_darBaja.Enabled = true;
+            }
+            else
+            {
+                btn_darBaja.Enabled = false;
+                btn_darAlta.Enabled = true;
+            }
+            btn_aceptar.Enabled = true;   
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -56,14 +66,16 @@ namespace UI
         {
             new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, true);
             MessageBox.Show("Cliente dado de Alta.");
-            Close();
+            ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(ClienteSeleccionado.ClienteId, !ClienteSeleccionado.EnAlta);
+            RellenarCampos();
         }
 
         private void btn_darBaja_Click(object sender, EventArgs e)
         {
             new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, false);
             MessageBox.Show("Cliente dado de Baja.");
-            Close();
+            ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(ClienteSeleccionado.ClienteId, !ClienteSeleccionado.EnAlta);
+            RellenarCampos();
         }
     }
 }

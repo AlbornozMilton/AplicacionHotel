@@ -19,6 +19,17 @@ namespace Dominio
             Habitacion laHabBuscada = Mapper.Map<pers.Habitacion, Habitacion>(unaHab);
             return laHabBuscada;
         }
+
+        public List<Habitacion> GetAllHabitaciones()
+        {
+            List<Habitacion> listaResultado = new List<Habitacion>();
+            foreach (var hab in iUoW.RepositorioHabitacion.GetAllconCupos())
+            {
+                listaResultado.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab));
+            }
+            return listaResultado;
+        }
+
         public List<Habitacion> ObtenerHabitacionesFullLibres()
         {
             IEnumerable<pers.Habitacion> listaEnum = iUoW.RepositorioHabitacion.GetAllconCupos();
@@ -61,16 +72,6 @@ namespace Dominio
             {
                 throw new Exception("Las cantidades de Cupos Dobles que desea no son posibles para la Habitación en estos momentos.");
             }
-        }
-
-        public List<Habitacion> GetAllHabitaciones()
-        {
-            List<Habitacion> listaResultado = new List<Habitacion>();
-            foreach (var hab in iUoW.RepositorioHabitacion.GetAllconCupos())
-            {
-                listaResultado.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab));
-            }
-            return listaResultado;
         }
 
         public List<Alojamiento> ControlModificarAltaCupos(int pIdHabitacion)

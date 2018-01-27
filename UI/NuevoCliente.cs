@@ -89,15 +89,23 @@ namespace UI
             try
             {
                 ControlCamposObligatorios();
+                if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+                {
+                    new VentanaEmergente("El DNI ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+                }
+                if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+                {
+                    new VentanaEmergente("El Legajo ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+                }
                 ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 if (localCliente == null)
                 {
-                    MessageBox.Show("Cliente Agregado Correctamente");
+                    new VentanaEmergente("Cliente Agregado Correctamente", TipoMensaje.Exito).ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Cliente Actualizado Correctamente");
+                    new VentanaEmergente("Cliente Actualizado Correctamente", TipoMensaje.Exito).ShowDialog();
                 }
                 Close();
             }
@@ -133,9 +141,8 @@ namespace UI
             }
             else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
             {
-                MessageBox.Show("El DNI ingresado ya existe.");
-                tbx_dni.Clear();
-                tbx_dni.Focus();
+                label13.Text = "Ya Existe";
+                label13.Visible = true;
             }
         }
 
@@ -143,13 +150,13 @@ namespace UI
         {
             if (txb_legajo.Text == "")
             {
+                label14.Text = "Campo Obligatorio";
                 label14.Visible = true;
             }
             else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
             {
-                MessageBox.Show("El Legajo ingresado ya existe.");
-                txb_legajo.Clear();
-                txb_legajo.Focus();
+                label14.Text = "Ya Existe";
+                label14.Visible = true;
             }
         }
 
@@ -161,7 +168,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             } 
         }
 
@@ -173,7 +180,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -185,7 +192,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -197,7 +204,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -209,7 +216,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -285,7 +292,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -305,7 +312,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -347,7 +354,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -362,6 +369,23 @@ namespace UI
         }
 
         private void pestaña_DatosGenerales_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txb_legajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+            }
+        }
+
+        private void pestaña_Ubicacion_Enter(object sender, EventArgs e)
         {
             button1.Enabled = true;
         }

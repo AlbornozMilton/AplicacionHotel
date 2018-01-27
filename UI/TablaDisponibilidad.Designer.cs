@@ -38,10 +38,10 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_exclusividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_Seleccionar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
-            this.clm_exclusividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_TablaHabitaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
@@ -49,11 +49,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.dGV_TablaHabitaciones);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(10, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(699, 287);
+            this.groupBox2.Size = new System.Drawing.Size(737, 287);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Disponibilidad de Habitaciones - Seleccione una";
@@ -62,10 +63,13 @@
             // 
             this.dGV_TablaHabitaciones.AllowUserToAddRows = false;
             this.dGV_TablaHabitaciones.AllowUserToDeleteRows = false;
+            this.dGV_TablaHabitaciones.AllowUserToOrderColumns = true;
+            this.dGV_TablaHabitaciones.AllowUserToResizeColumns = false;
+            this.dGV_TablaHabitaciones.AllowUserToResizeRows = false;
             this.dGV_TablaHabitaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -79,14 +83,15 @@
             this.Column5,
             this.Column4,
             this.clm_exclusividad});
-            this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 20);
+            this.dGV_TablaHabitaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 26);
             this.dGV_TablaHabitaciones.Name = "dGV_TablaHabitaciones";
             this.dGV_TablaHabitaciones.ReadOnly = true;
             this.dGV_TablaHabitaciones.RowHeadersVisible = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dGV_TablaHabitaciones.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dGV_TablaHabitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(693, 261);
+            this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(731, 258);
             this.dGV_TablaHabitaciones.TabIndex = 0;
             // 
             // Column1
@@ -120,16 +125,22 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // clm_exclusividad
+            // 
+            this.clm_exclusividad.HeaderText = "Exclusividad";
+            this.clm_exclusividad.Name = "clm_exclusividad";
+            this.clm_exclusividad.ReadOnly = true;
+            // 
             // clienteBindingSource
             // 
             this.clienteBindingSource.DataSource = typeof(Dominio.Cliente);
             // 
             // btn_Seleccionar
             // 
-            this.btn_Seleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Seleccionar.Location = new System.Drawing.Point(589, 330);
+            this.btn_Seleccionar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Seleccionar.Location = new System.Drawing.Point(637, 305);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
-            this.btn_Seleccionar.Size = new System.Drawing.Size(117, 23);
+            this.btn_Seleccionar.Size = new System.Drawing.Size(110, 30);
             this.btn_Seleccionar.TabIndex = 2;
             this.btn_Seleccionar.Text = "Seleccionar";
             this.btn_Seleccionar.UseVisualStyleBackColor = true;
@@ -137,32 +148,30 @@
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(13, 330);
+            this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.Location = new System.Drawing.Point(10, 305);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(117, 23);
+            this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
             this.btn_Cancelar.TabIndex = 3;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
-            // clm_exclusividad
-            // 
-            this.clm_exclusividad.HeaderText = "Exclusividad";
-            this.clm_exclusividad.Name = "clm_exclusividad";
-            this.clm_exclusividad.ReadOnly = true;
-            // 
             // TablaDisponibilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 365);
+            this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(759, 345);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Seleccionar);
             this.Controls.Add(this.groupBox2);
+            this.DoubleBuffered = true;
+            this.MinimizeBox = false;
             this.Name = "TablaDisponibilidad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TablaDisponibilidad";
+            this.Text = "Tabla Disponibilidad";
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_TablaHabitaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();

@@ -44,6 +44,11 @@ namespace UI
             else
             {
                 dGV_Tarifas.Rows.Clear();
+                txb_Tarifa.Text = "";
+                txb_Tarifa.Enabled = false;
+                txb_TarifaExclusiva.Text = "";
+                txb_TarifaExclusiva.Enabled = false;
+                btn_Aceptar.Enabled = false;
             }
         }
 
@@ -52,14 +57,16 @@ namespace UI
             try
             {
                 new ControladorExtra().AcutalizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
-                MessageBox.Show("Tarifa Actualizado");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Tarifa Actualizada", TipoMensaje.Exito);
+                ventanaEmergente.ShowDialog();
                 Close();
                 ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
                 VentanaTarifas.ShowDialog();
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
         }
 

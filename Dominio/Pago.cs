@@ -51,7 +51,7 @@ namespace Dominio
                         this.iTipoPago = TipoPago.Deuda;
                     }
                     break;
-                default: throw new Exception("Error en asignacion de tipo Pago");
+                default: throw new Exception("Error en asignación de tipo Pago durante la creación del Pago.");
             }
             this.iMonto = pMonto;
             this.iDetalle = pDetalle;
@@ -63,14 +63,6 @@ namespace Dominio
         public double Monto { get { return this.iMonto; } private set { this.iMonto = value; } }
         public DateTime FechaPago { get { return this.iFechaPago; } private set { this.iFechaPago = value; } } //ver si es necesario la hora
         public string Detalle { get { return this.iDetalle; } private set { this.iDetalle = value; } }
-
-        /// <summary>
-        /// Nuevo o Actualiza el campo Detalle
-        /// </summary>
-        public void AgregarDetalle(string pDetalle)
-        {
-            this.iDetalle = pDetalle;
-        }
 
         public bool Equals(Pago other)
         {

@@ -13,6 +13,11 @@ namespace Persistencia.DAL.EntityFramework
         {
 
         }
+
+        public int UltimoAgregado()
+        {
+            return iDbContext.Alojamientos.Max(a => a.AlojamientoId);
+        }
         /// <summary>
         /// Este Get devuelve el Alojamiento acompañado de la Habitacion y de la lista de Clientes
         /// </summary>
@@ -30,6 +35,7 @@ namespace Persistencia.DAL.EntityFramework
             }
 
         }
+
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
             var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
@@ -81,10 +87,16 @@ namespace Persistencia.DAL.EntityFramework
                 ////la que se ocupo en dominio
                 for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
                 {
-                    if ((unAloj.Habitacion.Cupos[i].Disponible)&&(!auxHabitacion.Cupos[i].Disponible))
+                    Cupo localCupo = unAloj.Habitacion.Cupos[i];
+                    Cupo externalCupo = auxHabitacion.Cupos[i];
+                    if ((!externalCupo.Disponible && externalCupo.Alta) && (localCupo.Disponible && localCupo.Alta))
                     {
-                        unAloj.Habitacion.Cupos[i].Disponible = false;
+                        localCupo.Disponible = false;
                     }
+                    //if ((unAloj.Habitacion.Cupos[i].Disponible)&&(!auxHabitacion.Cupos[i].Disponible))
+                    //{
+                    //    unAloj.Habitacion.Cupos[i].Disponible = false;
+                    //}
                 }
             }
 
@@ -96,17 +108,19 @@ namespace Persistencia.DAL.EntityFramework
         public void AltaReserva(Alojamiento pAloj)
         {
             Alojamiento localAloj = this.Get(pAloj.AlojamientoId);
-            localAloj.MontoDeuda = pAloj.MontoDeuda;
+            localAloj.MontoDeuda = pAloj.MontoDeuda;//por si efectuo pago reserva 
             localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
-            localAloj.FechaIngreso = pAloj.FechaIngreso;
+            localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
 
             localAloj.Habitacion.Exclusiva = pAloj.Habitacion.Exclusiva;
             for (int i = 0; i < localAloj.Habitacion.Cupos.Count; i++)
             {
                 //se va a ocupar--------------------------------//asegurar de que este disponible : control
-                if ((localAloj.Habitacion.Cupos[i].Disponible) && (!pAloj.Habitacion.Cupos[i].Disponible))
+                Cupo localCupo = localAloj.Habitacion.Cupos[i];
+                Cupo externalCupo = pAloj.Habitacion.Cupos[i];
+                if ((localCupo.Disponible && localCupo.Alta ) && (!externalCupo.Disponible && externalCupo.Alta))
                 {
-                    pAloj.Habitacion.Cupos[i].Disponible = false;
+                    localCupo.Disponible = false;
                 }
             }
 
@@ -126,7 +140,6 @@ namespace Persistencia.DAL.EntityFramework
         public void FinalizarAlojamiento(Alojamiento unAloj)
         {
             Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
-            Habitacion alojHabitacion = unAloj.Habitacion;
 
             //pFechaingreso en caso de Cancelar
             localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
@@ -134,14 +147,20 @@ namespace Persistencia.DAL.EntityFramework
             if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
             {
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
-                localAuxAloj.Habitacion.Exclusiva = alojHabitacion.Exclusiva;
+                localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
                 ////la que se ocupo en dominio
-                for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
+                for (int i = 0; i < localAuxAloj.Habitacion.Cupos.Count; i++)
                 {
-                    if ((!localAuxAloj.Habitacion.Cupos[i].Disponible) && (alojHabitacion.Cupos[i].Disponible))
+                    Cupo localCupo = localAuxAloj.Habitacion.Cupos[i];
+                    Cupo externalCupo = unAloj.Habitacion.Cupos[i];
+                    if ((!localCupo.Disponible && localCupo.Alta) && (externalCupo.Disponible && externalCupo.Alta))
                     {
-                        localAuxAloj.Habitacion.Cupos[i].Disponible = true;
+                        localCupo.Disponible = true;
                     }
+                    //if ((!localAuxAloj.Habitacion.Cupos[i].Disponible) && (alojHabitacion.Cupos[i].Disponible))
+                    //{
+                    //    localAuxAloj.Habitacion.Cupos[i].Disponible = true;
+                    //}
                 }
             }
 
@@ -151,12 +170,12 @@ namespace Persistencia.DAL.EntityFramework
 
         public void AddPago(Alojamiento unAloj, Pago pPago)
         {
-            Alojamiento lAuxAloj = iDbContext.Alojamientos.Where(a => a.AlojamientoId == unAloj.AlojamientoId).Single();
+            Alojamiento localAloj = this.Get(unAloj.AlojamientoId);
 
-            lAuxAloj.MontoTotal = unAloj.MontoTotal;
-            lAuxAloj.MontoDeuda = unAloj.MontoTotal - pPago.Monto;
+            localAloj.MontoTotal = unAloj.MontoTotal;
+            localAloj.MontoDeuda = localAloj.MontoDeuda - pPago.Monto;
 
-            pPago.AlojamientoId = unAloj.AlojamientoId;
+            pPago.AlojamientoId = localAloj.AlojamientoId;
             iDbContext.Pagos.Add(pPago);
 
             iDbContext.SaveChanges();

@@ -32,11 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Servicios = new System.Windows.Forms.DataGridView();
-            this.btn_Actualizar = new System.Windows.Forms.Button();
-            this.btn_Aceptar = new System.Windows.Forms.Button();
             this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +49,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(512, 231);
+            this.groupBox1.Size = new System.Drawing.Size(876, 231);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Consulta de Servicios";
@@ -57,6 +58,9 @@
             // 
             this.dGV_Servicios.AllowUserToAddRows = false;
             this.dGV_Servicios.AllowUserToDeleteRows = false;
+            this.dGV_Servicios.AllowUserToOrderColumns = true;
+            this.dGV_Servicios.AllowUserToResizeColumns = false;
+            this.dGV_Servicios.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -69,7 +73,8 @@
             this.dGV_Servicios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Id,
             this.clm_Nombre,
-            this.clm_CostoBase});
+            this.clm_CostoBase,
+            this.clm_detalle});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,29 +90,8 @@
             this.dGV_Servicios.RowHeadersVisible = false;
             this.dGV_Servicios.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGV_Servicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Servicios.Size = new System.Drawing.Size(506, 202);
+            this.dGV_Servicios.Size = new System.Drawing.Size(870, 202);
             this.dGV_Servicios.TabIndex = 0;
-            // 
-            // btn_Actualizar
-            // 
-            this.btn_Actualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Actualizar.Location = new System.Drawing.Point(485, 35);
-            this.btn_Actualizar.Name = "btn_Actualizar";
-            this.btn_Actualizar.Size = new System.Drawing.Size(107, 30);
-            this.btn_Actualizar.TabIndex = 1;
-            this.btn_Actualizar.Text = "Actualizar";
-            this.btn_Actualizar.UseVisualStyleBackColor = true;
-            // 
-            // btn_Aceptar
-            // 
-            this.btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(485, 210);
-            this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(107, 31);
-            this.btn_Aceptar.TabIndex = 2;
-            this.btn_Aceptar.Text = "Seleccionar";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
-            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // clm_Id
             // 
@@ -133,10 +117,17 @@
             this.clm_CostoBase.Name = "clm_CostoBase";
             this.clm_CostoBase.ReadOnly = true;
             // 
+            // clm_detalle
+            // 
+            this.clm_detalle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_detalle.HeaderText = "Detalles";
+            this.clm_detalle.Name = "clm_detalle";
+            this.clm_detalle.ReadOnly = true;
+            // 
             // btn_Aceptar
             // 
             this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(415, 250);
+            this.btn_Aceptar.Location = new System.Drawing.Point(779, 249);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
             this.btn_Aceptar.TabIndex = 2;
@@ -147,7 +138,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 250);
+            this.button1.Location = new System.Drawing.Point(16, 249);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 30);
             this.button1.TabIndex = 3;
@@ -161,14 +152,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(537, 291);
+            this.ClientSize = new System.Drawing.Size(901, 291);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Aceptar);
-            this.Controls.Add(this.btn_Actualizar);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "AdministrarServicios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdministrarServicios";
+            this.Text = "Consultar Servicios";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).EndInit();
             this.ResumeLayout(false);
@@ -179,10 +170,11 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dGV_Servicios;
-        private System.Windows.Forms.Button btn_Actualizar;
         private System.Windows.Forms.Button btn_Aceptar;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoBase;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_detalle;
     }
 }

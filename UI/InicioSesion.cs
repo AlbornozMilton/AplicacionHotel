@@ -30,7 +30,8 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Usuario NO Registrado");
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Usuario No Registrado", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
             }
             
         }
@@ -48,7 +49,8 @@ namespace UI
                 }
                 else
                 {
-                    MessageBox.Show("Usuario NO Registrado");
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Usuario No Registrado", TipoMensaje.Alerta);
+                    ventanaEmergente.ShowDialog();
                 }
             }          
         }
