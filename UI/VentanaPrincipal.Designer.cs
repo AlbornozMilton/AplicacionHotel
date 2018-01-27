@@ -82,6 +82,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.alojamientosConDeudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox_disponibilidad.SuspendLayout();
@@ -124,7 +125,7 @@
             // 
             this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
             this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
+            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
             this.iniciarToolStripMenuItem.Text = "Iniciar";
             this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
             // 
@@ -132,7 +133,7 @@
             // 
             this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -259,7 +260,8 @@
             // listarToolStripMenuItem
             // 
             this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serviciosConsumidosToolStripMenuItem});
+            this.serviciosConsumidosToolStripMenuItem,
+            this.alojamientosConDeudaToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(78, 34);
             this.listarToolStripMenuItem.Text = "Listar";
@@ -268,7 +270,7 @@
             // 
             this.serviciosConsumidosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
             this.serviciosConsumidosToolStripMenuItem.Name = "serviciosConsumidosToolStripMenuItem";
-            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(311, 34);
+            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.serviciosConsumidosToolStripMenuItem.Text = "Servicios Consumidos";
             this.serviciosConsumidosToolStripMenuItem.Click += new System.EventHandler(this.serviciosConsumidosToolStripMenuItem_Click);
             // 
@@ -569,6 +571,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // alojamientosConDeudaToolStripMenuItem
+            // 
+            this.alojamientosConDeudaToolStripMenuItem.Name = "alojamientosConDeudaToolStripMenuItem";
+            this.alojamientosConDeudaToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
+            this.alojamientosConDeudaToolStripMenuItem.Text = "Alojamientos con Deuda";
+            this.alojamientosConDeudaToolStripMenuItem.Click += new System.EventHandler(this.alojamientosConDeudaToolStripMenuItem_Click);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,5 +661,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem alojamientosConDeudaToolStripMenuItem;
     }
 }

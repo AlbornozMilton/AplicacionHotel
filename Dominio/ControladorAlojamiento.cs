@@ -59,6 +59,16 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
+        public List<Alojamiento> AlojamientosConDeuda()
+        {
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.AlojamientosConDeuda();
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return listaAlojamientos;
+        }
         /// <summary>
         /// Realiza la ocupación para una fechas determinadas
         /// </summary>

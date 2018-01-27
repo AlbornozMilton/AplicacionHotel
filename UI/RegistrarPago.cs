@@ -164,7 +164,7 @@ namespace UI
                 iControladorAloj.AddPago(AlojSeleccionado,Pago);
                 if (Pago.Tipo == TipoPago.Servicios && Pago.Monto != AlojSeleccionado.MontoDeuda)
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realziar un Pago de Deuda.", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realizar un Pago de Deuda.", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                 }
                 else

@@ -138,8 +138,14 @@ namespace UI
             {
                 RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
                 registrarPago.ShowDialog();
-                this.Alojamientos = new List<Alojamiento>();
-                this.Alojamientos = ControladorAloj.AlojsReservadosConDepositoVencidos();
+                if (this.Alojamientos[0].EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                {
+                    this.Alojamientos = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
+                }
+                else
+                {
+                    this.Alojamientos = new ControladorAlojamiento().AlojamientosConDeuda();
+                }
                 CargarAlojamientos();
             }
         }

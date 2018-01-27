@@ -89,23 +89,11 @@ namespace UI
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
                 listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Tenga en cuenta que si para el próximo día no se ha realizado el Alta de Reserva, se Cancelarán automáticamente.", TipoMensaje.Alerta);
+                ventanaEmergente = new VentanaEmergente("Recuerde Dar de Alta las Reservas en las Fechas de Ingreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-            }
-
-            //CANCELACION AUTOMATICA
-            auxLista = new List<Alojamiento>();
-            auxLista = new ControladorExtra().CancelacionAutomatica();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamiento han sido Cancelados automáticamente por falta de registro de Alta de Reserva.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
             }
 
             //ALOJS QUE DEBEN CERRARSE HOY
-            auxLista = new List<Alojamiento>();
             auxLista = new ControladorExtra().AlojamientosACerrar();
             if (auxLista.Count > 0)
             {
@@ -113,27 +101,15 @@ namespace UI
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
                 listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Tenga en cuenta que si para el próximo día no se ha realizado el Cierre, se lo hará automáticamente.", TipoMensaje.Alerta);
+                ventanaEmergente = new VentanaEmergente("Recuerde Cerrar Alojamientos en las Fechas de Egreso correspondientes para evitar confusion en las operaciones.", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-            }
-
-            //ALOJS DE CIERRES AUTOMATICOS
-            auxLista = new List<Alojamiento>();
-            auxLista = new ControladorExtra().CierreAutomatico();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamiento han sido Cerrados automáticamente por falta de registro de Cierre de Alojamiento.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
             }
         }
 
         private void CargarAlojamientosActivos()
         {
             dGV_Alojamientos.Rows.Clear();
-            List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+            List<Alojamiento> ListAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
             foreach (Alojamiento aloj in ListAloj)
             {
                 Cliente cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
@@ -149,13 +125,17 @@ namespace UI
                     aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
                     aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
                     );
+                //dGV_Alojamientos.Rows[dGV_Alojamientos.Rows.Count-1].DefaultCellStyle.BackColor = Color.MediumOrchid;
+                //dGV_Alojamientos.CurrentRow.DefaultCellStyle.BackColor = Color.MediumOrchid;
             }
+
+            //dGV_Alojamientos.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
+
         }
 
         private void AlojsReservadosSinDeposito()
         {
-            List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
+            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
 
             if (ListAloj.Count > 0)
             {
@@ -351,6 +331,18 @@ namespace UI
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
             BuscarCliente.ShowDialog();
+        }
+
+        private void alojamientosConDeudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojamientosConDeuda();
+
+            if (ListAloj.Count > 0)
+            {
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
+                listarAlojamientos.VisiblePago();
+                listarAlojamientos.ShowDialog();
+            }
         }
     }
 }
