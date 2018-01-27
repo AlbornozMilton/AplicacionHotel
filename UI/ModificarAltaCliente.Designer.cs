@@ -73,7 +73,8 @@
             // 
             this.tablaResulCliente.AllowUserToAddRows = false;
             this.tablaResulCliente.AllowUserToDeleteRows = false;
-            this.tablaResulCliente.AllowUserToOrderColumns = true;
+            this.tablaResulCliente.AllowUserToResizeColumns = false;
+            this.tablaResulCliente.AllowUserToResizeRows = false;
             this.tablaResulCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaResulCliente.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -183,7 +184,7 @@
             // btn_darAlta
             // 
             this.btn_darAlta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_darAlta.Location = new System.Drawing.Point(975, 148);
+            this.btn_darAlta.Location = new System.Drawing.Point(975, 149);
             this.btn_darAlta.Name = "btn_darAlta";
             this.btn_darAlta.Size = new System.Drawing.Size(85, 30);
             this.btn_darAlta.TabIndex = 13;
@@ -194,7 +195,7 @@
             // btn_darBaja
             // 
             this.btn_darBaja.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_darBaja.Location = new System.Drawing.Point(978, 210);
+            this.btn_darBaja.Location = new System.Drawing.Point(975, 210);
             this.btn_darBaja.Name = "btn_darBaja";
             this.btn_darBaja.Size = new System.Drawing.Size(85, 30);
             this.btn_darBaja.TabIndex = 14;

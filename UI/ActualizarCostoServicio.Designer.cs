@@ -72,7 +72,8 @@
             // 
             this.dataGridView_Servicio.AllowUserToAddRows = false;
             this.dataGridView_Servicio.AllowUserToDeleteRows = false;
-            this.dataGridView_Servicio.AllowUserToOrderColumns = true;
+            this.dataGridView_Servicio.AllowUserToResizeColumns = false;
+            this.dataGridView_Servicio.AllowUserToResizeRows = false;
             this.dataGridView_Servicio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

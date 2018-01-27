@@ -57,6 +57,9 @@
             // 
             this.dGV_Tarifas.AllowUserToAddRows = false;
             this.dGV_Tarifas.AllowUserToDeleteRows = false;
+            this.dGV_Tarifas.AllowUserToOrderColumns = true;
+            this.dGV_Tarifas.AllowUserToResizeColumns = false;
+            this.dGV_Tarifas.AllowUserToResizeRows = false;
             this.dGV_Tarifas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

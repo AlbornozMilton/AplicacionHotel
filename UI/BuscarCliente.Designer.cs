@@ -303,6 +303,8 @@
             this.tablaResulClientes.AllowUserToAddRows = false;
             this.tablaResulClientes.AllowUserToDeleteRows = false;
             this.tablaResulClientes.AllowUserToOrderColumns = true;
+            this.tablaResulClientes.AllowUserToResizeColumns = false;
+            this.tablaResulClientes.AllowUserToResizeRows = false;
             this.tablaResulClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaResulClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;

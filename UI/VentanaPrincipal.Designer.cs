@@ -469,6 +469,7 @@
             // 
             this.dGV_Alojamientos.AllowUserToAddRows = false;
             this.dGV_Alojamientos.AllowUserToDeleteRows = false;
+            this.dGV_Alojamientos.AllowUserToOrderColumns = true;
             this.dGV_Alojamientos.AllowUserToResizeColumns = false;
             this.dGV_Alojamientos.AllowUserToResizeRows = false;
             this.dGV_Alojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

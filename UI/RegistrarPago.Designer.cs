@@ -132,7 +132,8 @@
             // 
             this.dGV_ListadoAlojamientos.AllowUserToAddRows = false;
             this.dGV_ListadoAlojamientos.AllowUserToDeleteRows = false;
-            this.dGV_ListadoAlojamientos.AllowUserToOrderColumns = true;
+            this.dGV_ListadoAlojamientos.AllowUserToResizeColumns = false;
+            this.dGV_ListadoAlojamientos.AllowUserToResizeRows = false;
             this.dGV_ListadoAlojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -176,7 +177,7 @@
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dGV_ListadoAlojamientos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dGV_ListadoAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(765, 68);
+            this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(765, 58);
             this.dGV_ListadoAlojamientos.TabIndex = 0;
             // 
             // clm_IdAlojamiento
@@ -284,6 +285,7 @@
             // 
             // cbx_TipoPago
             // 
+            this.cbx_TipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_TipoPago.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_TipoPago.FormattingEnabled = true;
             this.cbx_TipoPago.Location = new System.Drawing.Point(113, 31);

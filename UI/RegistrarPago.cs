@@ -188,13 +188,13 @@ namespace UI
             //{
             //    throw new Exception("Debe seleccionar el Tipo de Pago");
             //}
-            if (monto == "")
+            if ((Convert.ToInt32(monto) <= 0) && cbx_TipoPago.SelectedItem.ToString() != "Servicios")
             {
                 throw new Exception("Debe ingresar un Monto");
             }
-            else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false || (Convert.ToInt32(monto) <= 0))
+            else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false)
             {
-                throw new Exception("Formato inválido de Monto. Debe ingresar dígitos distintos de cero.");
+                throw new Exception("Formato inválido de Monto. Solo se adminiten dígitos.");
             }
             else if (Convert.ToDouble(monto) > AlojSeleccionado.MontoDeuda)
             {

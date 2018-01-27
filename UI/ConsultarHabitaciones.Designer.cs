@@ -58,6 +58,9 @@
             // 
             this.dGV_Habs.AllowUserToAddRows = false;
             this.dGV_Habs.AllowUserToDeleteRows = false;
+            this.dGV_Habs.AllowUserToOrderColumns = true;
+            this.dGV_Habs.AllowUserToResizeColumns = false;
+            this.dGV_Habs.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

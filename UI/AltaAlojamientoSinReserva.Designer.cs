@@ -213,6 +213,8 @@
             // 
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
+            this.dGV_ClienteResponsable.AllowUserToResizeColumns = false;
+            this.dGV_ClienteResponsable.AllowUserToResizeRows = false;
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -338,6 +340,9 @@
             // 
             this.dGV_Acompañantes.AllowUserToAddRows = false;
             this.dGV_Acompañantes.AllowUserToDeleteRows = false;
+            this.dGV_Acompañantes.AllowUserToOrderColumns = true;
+            this.dGV_Acompañantes.AllowUserToResizeColumns = false;
+            this.dGV_Acompañantes.AllowUserToResizeRows = false;
             this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));

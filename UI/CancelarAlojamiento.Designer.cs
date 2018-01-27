@@ -118,7 +118,8 @@
             // 
             this.dGV_ListadoAlojamientos.AllowUserToAddRows = false;
             this.dGV_ListadoAlojamientos.AllowUserToDeleteRows = false;
-            this.dGV_ListadoAlojamientos.AllowUserToOrderColumns = true;
+            this.dGV_ListadoAlojamientos.AllowUserToResizeColumns = false;
+            this.dGV_ListadoAlojamientos.AllowUserToResizeRows = false;
             this.dGV_ListadoAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

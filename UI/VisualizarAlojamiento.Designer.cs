@@ -497,6 +497,9 @@
             // 
             this.dGV_Acompañantes.AllowUserToAddRows = false;
             this.dGV_Acompañantes.AllowUserToDeleteRows = false;
+            this.dGV_Acompañantes.AllowUserToOrderColumns = true;
+            this.dGV_Acompañantes.AllowUserToResizeColumns = false;
+            this.dGV_Acompañantes.AllowUserToResizeRows = false;
             this.dGV_Acompañantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -703,6 +706,8 @@
             // 
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
             this.dGV_ClienteResponsable.AllowUserToDeleteRows = false;
+            this.dGV_ClienteResponsable.AllowUserToResizeColumns = false;
+            this.dGV_ClienteResponsable.AllowUserToResizeRows = false;
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -793,6 +798,9 @@
             // 
             this.dGV_Servicios.AllowUserToAddRows = false;
             this.dGV_Servicios.AllowUserToDeleteRows = false;
+            this.dGV_Servicios.AllowUserToOrderColumns = true;
+            this.dGV_Servicios.AllowUserToResizeColumns = false;
+            this.dGV_Servicios.AllowUserToResizeRows = false;
             this.dGV_Servicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -883,6 +891,9 @@
             // 
             this.dGV_Pagos.AllowUserToAddRows = false;
             this.dGV_Pagos.AllowUserToDeleteRows = false;
+            this.dGV_Pagos.AllowUserToOrderColumns = true;
+            this.dGV_Pagos.AllowUserToResizeColumns = false;
+            this.dGV_Pagos.AllowUserToResizeRows = false;
             this.dGV_Pagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
