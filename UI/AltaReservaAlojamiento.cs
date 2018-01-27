@@ -281,7 +281,7 @@ namespace UI
                 ck_Exclusividad.Enabled = false;
                 ck_Exclusividad.Checked = false;
             }
-            else if(ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
+            else if(ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Ahora es posible elegir la Exclusividad de Habitación", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();

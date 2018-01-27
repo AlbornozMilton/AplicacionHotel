@@ -195,7 +195,7 @@ namespace Dominio
                     {
                         if (pEstado == EstadoAlojamiento.Alojado && aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                         {
-                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado. Verifique si debe realizar un Cierre de Alojamiento");
+                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
                         }
                         else if (pEstado == EstadoAlojamiento.Reservado && aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                         {
@@ -207,7 +207,7 @@ namespace Dominio
                                     !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                                 )
                             {
-                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas seleccionadas. Verifique si debe realizar un Alta de Reserva.");
+                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
                             }
                         }
                     }

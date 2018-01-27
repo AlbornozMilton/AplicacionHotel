@@ -41,7 +41,7 @@ namespace UI
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Para agregar Servicios debe realziar un Pago de Alojado", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Para Agregar Servicios antes debe realziar un Pago de Alojado", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                     Close();
                 }
@@ -80,7 +80,7 @@ namespace UI
 
                     if (!BuscarAlojamiento.Aloj_Seleccionado.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
                     {
-                        throw new Exception("Para gregar Servicios debe realizar un Pago de Alojado");
+                        throw new Exception("Para Agregar Servicios antes debe realizar un Pago de Alojado");
                     }
 
                     AlojSeleciconado = BuscarAlojamiento.Aloj_Seleccionado;

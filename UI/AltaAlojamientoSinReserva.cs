@@ -152,11 +152,11 @@ namespace UI
                     
                     if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, según las reglas de negocio.Queda a su criterio continuar con la carga.", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                     }else if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación. Si cambia dicho Cliente podrá solicitar la exclusividad.", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación.", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                         HabSeleccionada.SetExclusividad(false);
                         ck_Exclusividad.Enabled = false;
@@ -204,7 +204,7 @@ namespace UI
 
                 if (Acompañantes.Contains(BuscarClienteForm.ClienteSeleccionado))
                 {
-                    throw new Exception("El Cliente elegido ya se encuentra entre los clientes seleccionadoss.");
+                    throw new Exception("El Cliente elegido ya se encuentra entre los clientes seleccionados.");
                 }
 
                 if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
