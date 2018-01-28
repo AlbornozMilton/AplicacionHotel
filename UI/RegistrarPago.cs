@@ -26,7 +26,7 @@ namespace UI
 
         private void CargarPagos()
         {
-            cbx_TipoPago.Text = "Ninguno";
+            //cbx_TipoPago.Text = "Ninguno";
             switch (AlojSeleccionado.EstadoAlojamiento)
             {
                 case EstadoAlojamiento.Reservado:
@@ -132,12 +132,7 @@ namespace UI
 
         private void cbx_TipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dGV_ListadoAlojamientos.Rows.Count <= 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            } 
-            else if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
+            if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
             {
                 txb_Monto.Text = AlojSeleccionado.Deposito.ToString();
             }
