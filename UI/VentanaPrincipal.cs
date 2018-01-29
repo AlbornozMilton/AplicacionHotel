@@ -354,5 +354,11 @@ namespace UI
                 listarAlojamientos.ShowDialog();
             }
         }
+
+        private void listaPersonalizadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListarAlojamientos listarAlojamientos = new ListarAlojamientos();
+            listarAlojamientos.ShowDialog();
+        }
     }
 }

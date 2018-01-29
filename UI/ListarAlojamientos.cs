@@ -45,10 +45,23 @@ namespace UI
             dGV_ListadoDeAlojamientos.Rows.Clear();
             if (Alojamientos.Count > 0)
             {
+                int indexRow = 0;
                 foreach (var aloj in this.Alojamientos)
                 {
                     Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                     dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
+                    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
+                    {
+                        if (aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
+                        {
+                            dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.BackColor = Color.Orange;
+                        }
+                        else
+                        {
+                            dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.BackColor = Color.OrangeRed;
+                        }
+                    }
+                    indexRow++;
                 }
                 btn_Aceptar.Enabled = true;
             }
