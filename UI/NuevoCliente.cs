@@ -17,26 +17,30 @@ namespace UI
         List<Ciudad> Ciudades;
         List<TarifaCliente> Tarifas;
         Cliente localCliente;
+		Label[] camposOblig;
 
-        public NuevoCliente()
+		public NuevoCliente()
         {
             InitializeComponent();
-        }
+		}
 
         private void NuevoCliente_Load(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            Ciudades = ControladorCliente.ObtenerCiudades();
-            Tarifas = ControladorCliente.DevolverListaTarifas();
-            txb_codPostal.Enabled = false;
-            cbx_tipo.Items.Clear();
+			camposOblig = new Label[] { label13, label14, label15, label16, label17, label18, label19, label21, label22 };
+			Ciudades = ControladorCliente.ObtenerCiudades();
+			cbx_ciudades.Items.Clear();
+			//cbx_ciudades.Items.Add("");
+			Tarifas = ControladorCliente.DevolverListaTarifas();
+			cbx_tipo.Items.Clear();
+			//cbx_tipo.Items.Add("");
 
-            foreach (var ciudad in Ciudades)
+			foreach (var ciudad in Ciudades)
             {
                 cbx_ciudades.Items.Add(ciudad.Nombre);
             }
+			//cbx_ciudades.SelectedIndex = 0;
 
-            foreach (var tarifa in Tarifas)
+			foreach (var tarifa in Tarifas)
             {
                 cbx_tipo.Items.Add(tarifa.NombreTarifa);
             }
@@ -50,6 +54,7 @@ namespace UI
         public NuevoCliente(Cliente pCliente)
         {
             InitializeComponent();
+			button1.Enabled = true;
             localCliente = pCliente;
         }
 
@@ -57,6 +62,7 @@ namespace UI
         {
             tbx_dni.Text = localCliente.ClienteId.ToString();
             tbx_dni.Enabled = false;
+			label13.Visible = false;
             txb_legajo.Text = localCliente.Legajo.ToString();
             txb_apellido.Text = localCliente.Apellido;
             txb_nombre.Text = localCliente.Nombre;
@@ -73,8 +79,7 @@ namespace UI
 
         public void ControlCamposObligatorios()
         {
-            Label[] camposOblig = new Label[] { label13, label14, label15, label16, label17, label18, label19, label21, label22 };
-            foreach (var camp in camposOblig)
+           foreach (Label camp in camposOblig)
             {
                 if (camp.Visible == true)
                 {
@@ -89,15 +94,18 @@ namespace UI
             try
             {
                 ControlCamposObligatorios();
-                if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
-                {
-                    new VentanaEmergente("El DNI ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
-                }
-                if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
-                {
-                    new VentanaEmergente("El Legajo ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
-                }
-                ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
+				//if (tbx_dni.Enabled == true) //NO SE ESTA ACTUALIZANDO
+				//{
+				//	if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+				//	{
+				//		new VentanaEmergente("El DNI ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+				//	}
+				//}
+				//if (this.localCliente.Legajo.ToString() != label_legajo.Text && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+				//{
+				//	new VentanaEmergente("El Legajo ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+				//}
+				ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 if (localCliente == null)
                 {
@@ -122,15 +130,18 @@ namespace UI
 
         private void cbx_ciudades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label19.Visible = false;
-            txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
-            var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
-            cbx_calles.Items.Clear();
-            cbx_calles.Text = "";
-            foreach (var calle in auxCalles)
-            {
-                cbx_calles.Items.Add(calle);
-            }
+			if (cbx_ciudades.Text != "")
+			{
+				label19.Visible = false;
+				txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
+				var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
+				cbx_calles.Items.Clear();
+				//cbx_calles.Text = "";
+				foreach (var calle in auxCalles)
+				{
+					cbx_calles.Items.Add(calle);
+				} 
+			}
         }
 
         private void tbx_dni_Leave(object sender, EventArgs e)
@@ -153,11 +164,22 @@ namespace UI
                 label14.Text = "Campo Obligatorio";
                 label14.Visible = true;
             }
-            else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+            else if (localCliente == null)//NO MODIFCANDO
             {
-                label14.Text = "Ya Existe";
-                label14.Visible = true;
-            }
+				if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+				{
+					label14.Text = "Ya Existe";
+					label14.Visible = true; 
+				}
+			}
+			else //MODIFICANDO
+			{
+				if (localCliente.Legajo.ToString() != txb_legajo.Text && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+				{
+					label14.Text = "Ya Existe";
+					label14.Visible = true;
+				}
+			}
         }
 
         private void txb_apellido_KeyPress(object sender, KeyPressEventArgs e)
@@ -360,7 +382,10 @@ namespace UI
 
         private void txb_nroCalle_TextChanged(object sender, EventArgs e)
         {
-            label22.Visible = false;
+			if (txb_nroCalle.Text != "")
+			{
+				label22.Visible = false; 
+			}
         }
 
         private void cbx_calles_TextChanged(object sender, EventArgs e)
@@ -387,7 +412,15 @@ namespace UI
 
         private void pestaña_Ubicacion_Enter(object sender, EventArgs e)
         {
-            button1.Enabled = true;
+            //button1.Enabled = true;
         }
-    }
+
+		private void cbx_calles_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbx_calles.Text != "")
+			{
+				label21.Visible = false; 
+			}
+		}
+	}
 }
