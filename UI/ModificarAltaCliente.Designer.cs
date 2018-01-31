@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarAltaCliente));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulCliente = new System.Windows.Forms.DataGridView();
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -262,6 +263,7 @@
             this.Controls.Add(this.btn_darAlta);
             this.Controls.Add(this.btn_nuevoCliente);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ModificarAltaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarCupoHabitacion));
             this.btn_buscarHab = new System.Windows.Forms.Button();
             this.gpb_Hab = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
@@ -241,6 +242,7 @@
             this.Controls.Add(this.groupBox_cupos);
             this.Controls.Add(this.btn_buscarHab);
             this.Controls.Add(this.gpb_Hab);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "ModificarCupoHabitacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
