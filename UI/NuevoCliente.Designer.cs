@@ -143,7 +143,6 @@
 			this.pestaña_DatosGenerales.TabIndex = 0;
 			this.pestaña_DatosGenerales.Text = "Datos Generales";
 			this.pestaña_DatosGenerales.UseVisualStyleBackColor = true;
-			this.pestaña_DatosGenerales.Enter += new System.EventHandler(this.pestaña_DatosGenerales_Enter);
 			// 
 			// label18
 			// 
@@ -155,6 +154,7 @@
 			this.label18.Size = new System.Drawing.Size(111, 15);
 			this.label18.TabIndex = 37;
 			this.label18.Text = "Campo Obligatiorio";
+			this.label18.Visible = false;
 			// 
 			// label17
 			// 
@@ -166,6 +166,7 @@
 			this.label17.Size = new System.Drawing.Size(111, 15);
 			this.label17.TabIndex = 36;
 			this.label17.Text = "Campo Obligatiorio";
+			this.label17.Visible = false;
 			// 
 			// label16
 			// 
@@ -177,6 +178,7 @@
 			this.label16.Size = new System.Drawing.Size(111, 15);
 			this.label16.TabIndex = 35;
 			this.label16.Text = "Campo Obligatiorio";
+			this.label16.Visible = false;
 			// 
 			// label15
 			// 
@@ -188,6 +190,7 @@
 			this.label15.Size = new System.Drawing.Size(111, 15);
 			this.label15.TabIndex = 34;
 			this.label15.Text = "Campo Obligatiorio";
+			this.label15.Visible = false;
 			// 
 			// label14
 			// 
@@ -199,6 +202,7 @@
 			this.label14.Size = new System.Drawing.Size(111, 15);
 			this.label14.TabIndex = 33;
 			this.label14.Text = "Campo Obligatiorio";
+			this.label14.Visible = false;
 			// 
 			// label13
 			// 
@@ -210,6 +214,7 @@
 			this.label13.Size = new System.Drawing.Size(111, 15);
 			this.label13.TabIndex = 32;
 			this.label13.Text = "Campo Obligatiorio";
+			this.label13.Visible = false;
 			// 
 			// label_legajo
 			// 
@@ -313,9 +318,9 @@
 			this.label1.Location = new System.Drawing.Point(26, 22);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(36, 23);
+			this.label1.Size = new System.Drawing.Size(40, 23);
 			this.label1.TabIndex = 21;
-			this.label1.Text = "Dni";
+			this.label1.Text = "DNI";
 			// 
 			// label2
 			// 
@@ -374,7 +379,6 @@
 			this.pestaña_Ubicacion.TabIndex = 1;
 			this.pestaña_Ubicacion.Text = "Ubicación";
 			this.pestaña_Ubicacion.UseVisualStyleBackColor = true;
-			this.pestaña_Ubicacion.Enter += new System.EventHandler(this.pestaña_Ubicacion_Enter);
 			// 
 			// label22
 			// 
@@ -386,6 +390,7 @@
 			this.label22.Size = new System.Drawing.Size(111, 15);
 			this.label22.TabIndex = 38;
 			this.label22.Text = "Campo Obligatiorio";
+			this.label22.Visible = false;
 			// 
 			// label21
 			// 
@@ -397,6 +402,7 @@
 			this.label21.Size = new System.Drawing.Size(111, 15);
 			this.label21.TabIndex = 37;
 			this.label21.Text = "Campo Obligatiorio";
+			this.label21.Visible = false;
 			// 
 			// label19
 			// 
@@ -408,6 +414,7 @@
 			this.label19.Size = new System.Drawing.Size(111, 15);
 			this.label19.TabIndex = 36;
 			this.label19.Text = "Campo Obligatiorio";
+			this.label19.Visible = false;
 			// 
 			// cbx_calles
 			// 
@@ -419,7 +426,6 @@
 			this.cbx_calles.Name = "cbx_calles";
 			this.cbx_calles.Size = new System.Drawing.Size(282, 31);
 			this.cbx_calles.TabIndex = 29;
-			this.cbx_calles.SelectedIndexChanged += new System.EventHandler(this.cbx_calles_SelectedIndexChanged);
 			this.cbx_calles.TextChanged += new System.EventHandler(this.cbx_calles_TextChanged);
 			this.cbx_calles.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbx_calles_KeyPress);
 			this.cbx_calles.Leave += new System.EventHandler(this.cbx_calles_Leave);
@@ -507,7 +513,6 @@
 			// 
 			// txb_codPostal
 			// 
-			this.txb_codPostal.Enabled = false;
 			this.txb_codPostal.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_codPostal.Location = new System.Drawing.Point(181, 57);
 			this.txb_codPostal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -584,7 +589,6 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
 			this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

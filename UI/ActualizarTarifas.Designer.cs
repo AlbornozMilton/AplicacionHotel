@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarTarifas));
             this.btn_ConsultarTarifas = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Tarifas = new System.Windows.Forms.DataGridView();
@@ -208,6 +209,7 @@
             this.Controls.Add(this.txb_Tarifa);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_ConsultarTarifas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ActualizarTarifas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

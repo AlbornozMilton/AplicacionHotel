@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarHabitaciones));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
             this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -158,6 +159,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ConsultarHabitaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

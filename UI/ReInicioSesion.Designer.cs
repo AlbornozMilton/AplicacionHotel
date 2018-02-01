@@ -142,6 +142,7 @@
             this.Controls.Add(this.textBox_pass);
             this.Controls.Add(this.textBox_user);
             this.Controls.Add(this.button_aceptar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReInicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reanudar Sesión";

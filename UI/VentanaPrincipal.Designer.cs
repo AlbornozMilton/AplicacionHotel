@@ -129,7 +129,7 @@
             // 
             this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
             this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.iniciarToolStripMenuItem.Text = "Iniciar";
             this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
             // 
@@ -137,7 +137,7 @@
             // 
             this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -205,6 +205,7 @@
             // 
             // agregarServicioToolStripMenuItem
             // 
+            this.agregarServicioToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.agregarServicioToolStripMenuItem.Name = "agregarServicioToolStripMenuItem";
             this.agregarServicioToolStripMenuItem.Size = new System.Drawing.Size(260, 34);
             this.agregarServicioToolStripMenuItem.Text = "Agregar Servicio";
@@ -273,6 +274,7 @@
             // 
             // listaPersonalizadaToolStripMenuItem
             // 
+            this.listaPersonalizadaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
             this.listaPersonalizadaToolStripMenuItem.Name = "listaPersonalizadaToolStripMenuItem";
             this.listaPersonalizadaToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.listaPersonalizadaToolStripMenuItem.Text = "Lista Personalizada";
@@ -288,6 +290,7 @@
             // 
             // alojamientosConDeudaToolStripMenuItem
             // 
+            this.alojamientosConDeudaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
             this.alojamientosConDeudaToolStripMenuItem.Name = "alojamientosConDeudaToolStripMenuItem";
             this.alojamientosConDeudaToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.alojamientosConDeudaToolStripMenuItem.Text = "Alojamientos con Deuda";
@@ -332,6 +335,7 @@
             // 
             // actualizarCostoServiciosToolStripMenuItem
             // 
+            this.actualizarCostoServiciosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Actualizar;
             this.actualizarCostoServiciosToolStripMenuItem.Name = "actualizarCostoServiciosToolStripMenuItem";
             this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Unitario de Servicio";
@@ -347,6 +351,7 @@
             // 
             // actualizarTarifasToolStripMenuItem
             // 
+            this.actualizarTarifasToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Actualizar;
             this.actualizarTarifasToolStripMenuItem.Name = "actualizarTarifasToolStripMenuItem";
             this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Costos deTarifa";

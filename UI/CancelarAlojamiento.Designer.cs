@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelarAlojamiento));
             this.lbl_fechaActual = new System.Windows.Forms.Label();
             this.lbl_txtFechaActual = new System.Windows.Forms.Label();
             this.btn_Visualizar = new System.Windows.Forms.Button();
@@ -214,6 +215,7 @@
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_BuscarAlojamiento);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CancelarAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
