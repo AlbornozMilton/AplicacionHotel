@@ -14,7 +14,8 @@ namespace UI
     public partial class VentanaPrincipal : Form
     {
         public InicioSesion iPadre;
-        ControladorAlojamiento iControladorAlojamiento = new ControladorAlojamiento();
+        private List<Alojamiento> ListaAlojamientos;
+        private BackgroundWorker SegundoPlano = new BackgroundWorker();
 
         public VentanaPrincipal()
         {
@@ -35,79 +36,87 @@ namespace UI
 
         private void iniciarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InicioSesion NuevoInicio = new InicioSesion();
-            NuevoInicio.ShowDialog();
+            ReInicioSesion ReinicioSesion = new ReInicioSesion();
+            ReinicioSesion.ShowDialog();
+            if (ReinicioSesion.Validacion == true)
+            {
+                archivoToolStripMenuItem.Enabled = true;
+                alojamientoToolStripMenuItem.Enabled = true;
+                clienteToolStripMenuItem.Enabled = true;
+                listarToolStripMenuItem.Enabled = true;
+                movimientoToolStripMenuItem.Enabled = true;
+                administracionToolStripMenuItem.Enabled = true;
+                groupBox_disponibilidad.Enabled = true;
+                cerrarToolStripMenuItem.Enabled = true;
+
+                iniciarToolStripMenuItem.Enabled = false;
+            }
+
+        }
+
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            archivoToolStripMenuItem.Enabled = false;
+            alojamientoToolStripMenuItem.Enabled = false;
+            clienteToolStripMenuItem.Enabled = false;
+            listarToolStripMenuItem.Enabled = false;
+            movimientoToolStripMenuItem.Enabled = false;
+            administracionToolStripMenuItem.Enabled = false;
+            groupBox_disponibilidad.Enabled = false;
+            cerrarToolStripMenuItem.Enabled = false;
+
+            iniciarToolStripMenuItem.Enabled = true;
         }
 
         // LOADDDDDDDDDDDDDDDDDDDDD------------------------------------------------------
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
+            iniciarToolStripMenuItem.Enabled = false;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-            CargarAlojamientosActivos();
-
-            //ALOJS TRAS 72HS SIN DEPOSITO
-            AlojsReservadosSinDeposito();
-            timer1.Interval = 7200000;// dos horas
-            timer1.Enabled = true;
-
-            List<Alojamiento> auxLista = new List<Alojamiento>();
-
-            //RESERVAS QUE SE DEBEN REALIZAR EL ALTA
-            auxLista = new ControladorExtra().ControlFechaAltaReserva();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Tenga en cuenta que si para el próximo día no se ha realizado el Alta de Reserva, se Cancelarán automáticamente.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
-
-            //CANCELACION AUTOMATICA
-            auxLista = new List<Alojamiento>();
-            auxLista = new ControladorExtra().CancelacionAutomatica();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamiento han sido Cancelados automáticamente por falta de registro de Alta de Reserva.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
-            }
-
-            //ALOJS QUE DEBEN CERRARSE HOY
-            auxLista = new List<Alojamiento>();
-            auxLista = new ControladorExtra().ControlFechaCierre();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben Cerrarse Hoy.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Tenga en cuenta que si para el próximo día no se ha realizado el Cierre, se lo hará automáticamente.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
-
-            //ALOJS DE CIERRES AUTOMATICOS
-            auxLista = new List<Alojamiento>();
-            auxLista = new ControladorExtra().CierreAutomatico();
-            if (auxLista.Count > 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamiento han sido Cerrados automáticamente por falta de registro de Cierre de Alojamiento.", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(auxLista);
-                listarAlojamientos.ShowDialog();
-            }
+            CorrerTodoSegundoPlano();
         }
 
-        private void CargarAlojamientosActivos()
+
+        #region SegundoPlano
+
+        async private void CorrerTodoSegundoPlano()
         {
             dGV_Alojamientos.Rows.Clear();
-            List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = iControladorAlojamiento.ObtenerAlojamientosActivos();
-            foreach (var aloj in ListAloj)
+            pictureBox1.Visible = true;
+            this.ListaAlojamientos = await CargarAlojsActivos();
+            MostrarAlojsActivos();
+            this.ListaAlojamientos = CargarAlojsSinDeposito();
+            MostrarAlojsSinDeposito();
+            timer1.Interval = 7200000;// dos horas para nueva notificacion
+            timer1.Enabled = true;
+            this.ListaAlojamientos = CargarAlojsADarDeAlta();
+            MostrarAlojsADarDeAlta();
+            this.ListaAlojamientos = CargarAlojsACerrar();
+            MostrarAlojsACerrar();
+        }
+
+        async private void SegundoPlanoCargarActivos()
+        {
+            dGV_Alojamientos.Rows.Clear();
+            pictureBox1.Visible = true;
+            this.ListaAlojamientos = await CargarAlojsActivos();
+            MostrarAlojsActivos();
+        }
+
+        private Task<List<Alojamiento>> CargarAlojsActivos()
+        {
+            return Task.Run(() => (new ControladorAlojamiento().ObtenerAlojamientosActivos()));
+        }
+
+        private void MostrarAlojsActivos()
+        {
+            pictureBox1.Visible = false;
+
+            int countRow = 0;
+
+            foreach (Alojamiento aloj in this.ListaAlojamientos)
             {
-                var cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+                Cliente cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                 dGV_Alojamientos.Rows.Add
                     (
                     aloj.AlojamientoId,
@@ -120,23 +129,85 @@ namespace UI
                     aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
                     aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
                     );
+
+                if (aloj.MontoTotal > 0)
+                {
+                    dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.AliceBlue;
+                }
+                countRow++;
             }
         }
 
-        private void AlojsReservadosSinDeposito()
+        private List<Alojamiento> CargarAlojsSinDeposito()
         {
-            List<Alojamiento> ListAloj = new List<Alojamiento>();
-            ListAloj = iControladorAlojamiento.AlojReservadosSinDepositoVencidos();
+           return new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
+        }
 
-            if (ListAloj.Count > 0)
+        private void MostrarAlojsSinDeposito()
+        {
+            if (this.ListaAlojamientos.Count > 0)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito tras pasar de las 72hs de la fecha de Reserva", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito tras pasar de las 72hs de la Fecha de Reserva", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(this.ListaAlojamientos);
                 listarAlojamientos.VisiblePago();
                 listarAlojamientos.ShowDialog();
             }
         }
+
+        private List<Alojamiento> CargarAlojsADarDeAlta()
+        {
+            return new ControladorExtra().AlojamientosACancelar();
+        }
+
+        private void MostrarAlojsADarDeAlta()
+        {
+            if (this.ListaAlojamientos.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(this.ListaAlojamientos);
+                listarAlojamientos.ShowDialog();
+                ventanaEmergente = new VentanaEmergente("Recuerde Dar de Alta las Reservas en las Fechas de Ingreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+        }
+
+        private List<Alojamiento> CargarAlojsACerrar()
+        {
+            return new ControladorExtra().AlojamientosACerrar();
+        }
+
+        private void MostrarAlojsACerrar()
+        {
+            if (this.ListaAlojamientos.Count > 0)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben Cerrarse Hoy.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(this.ListaAlojamientos);
+                listarAlojamientos.ShowDialog();
+                ventanaEmergente = new VentanaEmergente("Recuerde Cerrar Alojamientos en las Fechas de Egreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+        }
+        
+        //Temporizador para 72hs sin deposito
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            this.ListaAlojamientos = CargarAlojsSinDeposito();
+            MostrarAlojsSinDeposito();
+            timer1.Enabled = true;
+            SegundoPlanoCargarActivos();
+        }
+        #endregion
+
+        //ACTUALIZAR
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SegundoPlanoCargarActivos();
+        }
+
         private void nuevoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             NuevoCliente NuevoCliente = new NuevoCliente();
@@ -154,11 +225,6 @@ namespace UI
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-        }
-
-        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Cerrar ventana Principal y dejar ventana de inicio sesion.
         }
 
         private void agregarServicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -205,7 +271,7 @@ namespace UI
                     throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
 
-                iControladorAlojamiento.ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
+                new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
 
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.Aloj_Seleccionado;
 
@@ -246,7 +312,7 @@ namespace UI
         {
             if (dGV_Alojamientos.CurrentRow != null)
             {
-                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iControladorAlojamiento.BuscarAlojamientoPorID(Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
+                VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(new ControladorAlojamiento().BuscarAlojamientoPorID(Convert.ToInt32(dGV_Alojamientos.CurrentRow.Cells[0].Value)));
                 VentanaVisualizar.ShowDialog(); 
             }
         }
@@ -287,12 +353,6 @@ namespace UI
             modificarCupoHabitacion.ShowDialog();
         }
 
-        //ACTUALIZAR
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CargarAlojamientosActivos();
-        }
-
         private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BuscarCliente ventanaBusqueda = new BuscarCliente();
@@ -300,15 +360,8 @@ namespace UI
             if (ventanaBusqueda.ClienteSeleccionado != null)
             {
                 NuevoCliente ventanaCliente = new NuevoCliente(ventanaBusqueda.ClienteSeleccionado);
-                ventanaCliente.ShowDialog(); 
+                ventanaCliente.ShowDialog();
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1.Enabled = false;
-            AlojsReservadosSinDeposito();
-            timer1.Enabled = true;
         }
 
         private void cancelarReservaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -316,12 +369,6 @@ namespace UI
             CancelarAlojamiento cancelarAlojamiento = new CancelarAlojamiento();
             cancelarAlojamiento.ShowDialog();
         }
-
-        //private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
-        //{
-        //    BuscarCliente BuscarCliente = new BuscarCliente();
-        //    BuscarCliente.ShowDialog();
-        //}
 
         private void actualizarCostoServiciosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -333,6 +380,24 @@ namespace UI
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
             BuscarCliente.ShowDialog();
+        }
+
+        private void alojamientosConDeudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Alojamiento> ListAloj = new ControladorAlojamiento().AlojamientosConDeuda();
+
+            if (ListAloj.Count > 0)
+            {
+                ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
+                listarAlojamientos.VisiblePago();
+                listarAlojamientos.ShowDialog();
+            }
+        }
+
+        private void listaPersonalizadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListarAlojamientos listarAlojamientos = new ListarAlojamientos();
+            listarAlojamientos.ShowDialog();
         }
     }
 }

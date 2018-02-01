@@ -70,7 +70,7 @@ namespace UI
         {
             try
             {
-                new ControladorAlojamiento().CancelarAlojamiento(Aloj_Seleccionado,DateTime.Now);
+                new ControladorAlojamiento().CancelarAlojamiento(Aloj_Seleccionado);
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Cancelación de Reserva de Alojamiento Exitosa", TipoMensaje.Exito);
                 ventanaEmergente.ShowDialog();
                 Close();

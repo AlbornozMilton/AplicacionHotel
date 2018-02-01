@@ -51,7 +51,9 @@
             this.modificarAltaDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaPersonalizadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosConsumidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alojamientosConDeudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,8 +63,6 @@
             this.actualizarTarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualDeUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -70,6 +70,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_VerDetalle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dGV_Alojamientos = new System.Windows.Forms.DataGridView();
@@ -84,10 +85,12 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             menuStrip1.SuspendLayout();
             this.groupBox_disponibilidad.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -104,8 +107,7 @@
             this.clienteToolStripMenuItem,
             this.listarToolStripMenuItem,
             this.movimientoToolStripMenuItem,
-            this.administracionToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
+            this.administracionToolStripMenuItem});
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.ShowItemToolTips = true;
@@ -127,7 +129,7 @@
             // 
             this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
             this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.iniciarToolStripMenuItem.Text = "Iniciar";
             this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
             // 
@@ -135,7 +137,7 @@
             // 
             this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -203,6 +205,7 @@
             // 
             // agregarServicioToolStripMenuItem
             // 
+            this.agregarServicioToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Agregar;
             this.agregarServicioToolStripMenuItem.Name = "agregarServicioToolStripMenuItem";
             this.agregarServicioToolStripMenuItem.Size = new System.Drawing.Size(260, 34);
             this.agregarServicioToolStripMenuItem.Text = "Agregar Servicio";
@@ -262,18 +265,36 @@
             // listarToolStripMenuItem
             // 
             this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serviciosConsumidosToolStripMenuItem});
+            this.listaPersonalizadaToolStripMenuItem,
+            this.serviciosConsumidosToolStripMenuItem,
+            this.alojamientosConDeudaToolStripMenuItem});
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(78, 34);
             this.listarToolStripMenuItem.Text = "Listar";
+            // 
+            // listaPersonalizadaToolStripMenuItem
+            // 
+            this.listaPersonalizadaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
+            this.listaPersonalizadaToolStripMenuItem.Name = "listaPersonalizadaToolStripMenuItem";
+            this.listaPersonalizadaToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
+            this.listaPersonalizadaToolStripMenuItem.Text = "Lista Personalizada";
+            this.listaPersonalizadaToolStripMenuItem.Click += new System.EventHandler(this.listaPersonalizadaToolStripMenuItem_Click);
             // 
             // serviciosConsumidosToolStripMenuItem
             // 
             this.serviciosConsumidosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
             this.serviciosConsumidosToolStripMenuItem.Name = "serviciosConsumidosToolStripMenuItem";
-            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(311, 34);
+            this.serviciosConsumidosToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
             this.serviciosConsumidosToolStripMenuItem.Text = "Servicios Consumidos";
             this.serviciosConsumidosToolStripMenuItem.Click += new System.EventHandler(this.serviciosConsumidosToolStripMenuItem_Click);
+            // 
+            // alojamientosConDeudaToolStripMenuItem
+            // 
+            this.alojamientosConDeudaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Listar;
+            this.alojamientosConDeudaToolStripMenuItem.Name = "alojamientosConDeudaToolStripMenuItem";
+            this.alojamientosConDeudaToolStripMenuItem.Size = new System.Drawing.Size(339, 34);
+            this.alojamientosConDeudaToolStripMenuItem.Text = "Alojamientos con Deuda";
+            this.alojamientosConDeudaToolStripMenuItem.Click += new System.EventHandler(this.alojamientosConDeudaToolStripMenuItem_Click);
             // 
             // movimientoToolStripMenuItem
             // 
@@ -314,6 +335,7 @@
             // 
             // actualizarCostoServiciosToolStripMenuItem
             // 
+            this.actualizarCostoServiciosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Actualizar;
             this.actualizarCostoServiciosToolStripMenuItem.Name = "actualizarCostoServiciosToolStripMenuItem";
             this.actualizarCostoServiciosToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.actualizarCostoServiciosToolStripMenuItem.Text = "Actualizar Costo Unitario de Servicio";
@@ -329,6 +351,7 @@
             // 
             // actualizarTarifasToolStripMenuItem
             // 
+            this.actualizarTarifasToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Actualizar;
             this.actualizarTarifasToolStripMenuItem.Name = "actualizarTarifasToolStripMenuItem";
             this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Costos deTarifa";
@@ -349,20 +372,6 @@
             this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
             this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
             this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manualDeUsuarioToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(88, 34);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // manualDeUsuarioToolStripMenuItem
-            // 
-            this.manualDeUsuarioToolStripMenuItem.Name = "manualDeUsuarioToolStripMenuItem";
-            this.manualDeUsuarioToolStripMenuItem.Size = new System.Drawing.Size(272, 34);
-            this.manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
             // 
             // groupBox_disponibilidad
             // 
@@ -432,6 +441,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSize = true;
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.btn_VerDetalle);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.dGV_Alojamientos);
@@ -443,6 +453,19 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OCUPACIÓN ACTUAL";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.pictureBox1.Image = global::UI.Properties.Resources.gears_200;
+            this.pictureBox1.Location = new System.Drawing.Point(536, 211);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // btn_VerDetalle
             // 
@@ -469,6 +492,7 @@
             // 
             this.dGV_Alojamientos.AllowUserToAddRows = false;
             this.dGV_Alojamientos.AllowUserToDeleteRows = false;
+            this.dGV_Alojamientos.AllowUserToOrderColumns = true;
             this.dGV_Alojamientos.AllowUserToResizeColumns = false;
             this.dGV_Alojamientos.AllowUserToResizeRows = false;
             this.dGV_Alojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -611,6 +635,7 @@
             this.groupBox_disponibilidad.ResumeLayout(false);
             this.groupBox_disponibilidad.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -628,8 +653,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem listarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimientoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox_disponibilidad;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -670,5 +693,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem alojamientosConDeudaToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ToolStripMenuItem listaPersonalizadaToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

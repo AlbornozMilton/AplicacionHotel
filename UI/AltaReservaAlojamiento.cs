@@ -218,7 +218,7 @@ namespace UI
         {
             try
             {
-                new ControladorAlojamiento().ControlPlazoRereva(dtp_fechaDesde.Value.Date);
+                new ControladorAlojamiento().ControlPlazoParaReservar(dtp_fechaDesde.Value.Date);
                 this.FechaIni = dtp_fechaDesde.Value;
                 btn_Confirmar.Enabled = false;
                 groupBox4.Enabled = false;
@@ -281,7 +281,7 @@ namespace UI
                 ck_Exclusividad.Enabled = false;
                 ck_Exclusividad.Checked = false;
             }
-            else if(ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
+            else if(ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Ahora es posible elegir la Exclusividad de Habitación", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();

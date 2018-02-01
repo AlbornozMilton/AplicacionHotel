@@ -26,7 +26,7 @@ namespace UI
 
         private void CargarPagos()
         {
-            cbx_TipoPago.Text = "Ninguno";
+            //cbx_TipoPago.Text = "Ninguno";
             switch (AlojSeleccionado.EstadoAlojamiento)
             {
                 case EstadoAlojamiento.Reservado:
@@ -44,15 +44,16 @@ namespace UI
                     }
                     break;
                 case EstadoAlojamiento.Cerrado:
-                    if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Servicios")))
+                    if (AlojSeleccionado.MontoDeuda > 0)
                     {
-                        cbx_TipoPago.Items.Add("Servicios");
-
-                    }
-                    else
-                    {
-                        cbx_TipoPago.Items.Add("Deuda");
-
+                        if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Servicios")))
+                        {
+                            cbx_TipoPago.Items.Add("Servicios");
+                        }
+                        else
+                        {
+                            cbx_TipoPago.Items.Add("Deuda");
+                        }
                     }
                     break;
             }
@@ -131,12 +132,7 @@ namespace UI
 
         private void cbx_TipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dGV_ListadoAlojamientos.Rows.Count <= 0)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar un Alojamiento", TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            } 
-            else if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
+            if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
             {
                 txb_Monto.Text = AlojSeleccionado.Deposito.ToString();
             }
@@ -163,7 +159,7 @@ namespace UI
                 iControladorAloj.AddPago(AlojSeleccionado,Pago);
                 if (Pago.Tipo == TipoPago.Servicios && Pago.Monto != AlojSeleccionado.MontoDeuda)
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realziar un Pago de Deuda.", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realizar un Pago de Deuda.", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                 }
                 else
@@ -188,13 +184,13 @@ namespace UI
             //{
             //    throw new Exception("Debe seleccionar el Tipo de Pago");
             //}
-            if (monto == "")
+            if ((Convert.ToInt32(monto) <= 0) && cbx_TipoPago.SelectedItem.ToString() != "Servicios")
             {
                 throw new Exception("Debe ingresar un Monto");
             }
-            else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false || (Convert.ToInt32(monto) <= 0))
+            else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false)
             {
-                throw new Exception("Formato inválido de Monto. Debe ingresar dígitos distintos de cero.");
+                throw new Exception("Formato inválido de Monto. Solo se adminiten dígitos.");
             }
             else if (Convert.ToDouble(monto) > AlojSeleccionado.MontoDeuda)
             {

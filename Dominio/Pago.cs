@@ -64,14 +64,6 @@ namespace Dominio
         public DateTime FechaPago { get { return this.iFechaPago; } private set { this.iFechaPago = value; } } //ver si es necesario la hora
         public string Detalle { get { return this.iDetalle; } private set { this.iDetalle = value; } }
 
-        /// <summary>
-        /// Nuevo o Actualiza el campo Detalle
-        /// </summary>
-        public void AgregarDetalle(string pDetalle)
-        {
-            this.iDetalle = pDetalle;
-        }
-
         public bool Equals(Pago other)
         {
             return this.iTipoPago == other.Tipo && this.iMonto == other.Monto;

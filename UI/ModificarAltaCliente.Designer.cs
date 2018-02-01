@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarAltaCliente));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tablaResulCliente = new System.Windows.Forms.DataGridView();
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +74,8 @@
             // 
             this.tablaResulCliente.AllowUserToAddRows = false;
             this.tablaResulCliente.AllowUserToDeleteRows = false;
-            this.tablaResulCliente.AllowUserToOrderColumns = true;
+            this.tablaResulCliente.AllowUserToResizeColumns = false;
+            this.tablaResulCliente.AllowUserToResizeRows = false;
             this.tablaResulCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaResulCliente.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.tablaResulCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -183,7 +185,7 @@
             // btn_darAlta
             // 
             this.btn_darAlta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_darAlta.Location = new System.Drawing.Point(975, 148);
+            this.btn_darAlta.Location = new System.Drawing.Point(975, 149);
             this.btn_darAlta.Name = "btn_darAlta";
             this.btn_darAlta.Size = new System.Drawing.Size(85, 30);
             this.btn_darAlta.TabIndex = 13;
@@ -194,7 +196,7 @@
             // btn_darBaja
             // 
             this.btn_darBaja.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_darBaja.Location = new System.Drawing.Point(978, 210);
+            this.btn_darBaja.Location = new System.Drawing.Point(975, 210);
             this.btn_darBaja.Name = "btn_darBaja";
             this.btn_darBaja.Size = new System.Drawing.Size(85, 30);
             this.btn_darBaja.TabIndex = 14;
@@ -251,6 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1076, 283);
@@ -260,6 +263,7 @@
             this.Controls.Add(this.btn_darAlta);
             this.Controls.Add(this.btn_nuevoCliente);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ModificarAltaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

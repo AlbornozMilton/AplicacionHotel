@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActualizarTarifas));
             this.btn_ConsultarTarifas = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Tarifas = new System.Windows.Forms.DataGridView();
@@ -73,6 +74,8 @@
             // 
             this.dGV_Tarifas.AllowUserToAddRows = false;
             this.dGV_Tarifas.AllowUserToDeleteRows = false;
+            this.dGV_Tarifas.AllowUserToResizeColumns = false;
+            this.dGV_Tarifas.AllowUserToResizeRows = false;
             this.dGV_Tarifas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -194,6 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(736, 268);
@@ -205,6 +209,7 @@
             this.Controls.Add(this.txb_Tarifa);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_ConsultarTarifas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ActualizarTarifas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

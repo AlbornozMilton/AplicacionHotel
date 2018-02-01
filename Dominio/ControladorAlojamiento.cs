@@ -11,17 +11,7 @@ namespace Dominio
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
-        public List<Alojamiento> ObtenerAlojamientosActivos() //Devuelve la lista de alojamientos activos mappeandolos de Pers a Dominio
-        {
-            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
-            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
-            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
-            {
-                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
-            }
-            return (listaAlojamientos);
-        }
-
+        //Alta sin Reserva - Nueva Reserva
         public int RegistrarAloj(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
@@ -29,6 +19,7 @@ namespace Dominio
             return iUoW.RepositorioAlojamiento.UltimoAgregado();
         }
 
+        //Alta con Reserva
         public void RegistrarAltaReserva(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
@@ -40,87 +31,44 @@ namespace Dominio
             return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
         }
 
-        public void ControlTipoPago(Alojamiento pAlojamiento, Pago pPago)
+        public List<Alojamiento> ObtenerAlojamientosActivos() //Devuelve la lista de alojamientos activos mappeandolos de Pers a Dominio
         {
-            //EL CONTROL PARA EL FORMATO DE MONTO SE LO DEBE REALIZAR EN LA UI
-            //CONTROLAR DESDE LA UI QUE EL MONTO SEA MAYOR QUE CERO
-            switch (pPago.Tipo)
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
             {
-                case TipoPago.Deposito:
-                    {
-                        if (pAlojamiento.ExistePagoAlojamiento(pPago))
-                        {
-                            throw new Exception("El Tipo de Pago ya existe");
-                        }
-                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Reservado)
-                        {
-                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pPago.Monto != pAlojamiento.Deposito)
-                        {
-                            throw new Exception("Monto Incorrecto");
-                        }
-                        pAlojamiento.RegistrarPago(pPago);
-                    }
-                    break;
-                case TipoPago.Alojado:
-                    {
-                        if (pAlojamiento.ExistePagoAlojamiento(pPago))
-                        {
-                            throw new Exception("El Tipo de Pago ya existe");
-                        }
-                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Alojado)
-                        {
-                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pPago.Monto != pAlojamiento.MontoDeuda)
-                        {
-                            throw new Exception("Monto Incorrecto");
-                        }
-                        pAlojamiento.RegistrarPago(pPago);
-                    }
-                    break;
-                case TipoPago.Servicios:
-                    {
-                        if(pAlojamiento.ExistePagoAlojamiento(pPago))
-                        {
-                            throw new Exception("El Tipo de Pago ya existe");
-                        }
-                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
-                        {
-                            throw new Exception("El Tipo de Pago no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pPago.Monto > pAlojamiento.MontoDeuda)
-                        {
-                            throw new Exception("Monto Incorrecto");
-                        }
-                        pAlojamiento.RegistrarPago(pPago);
-                    }
-                    break;
-                case TipoPago.Deuda:
-                    {
-                        if (pAlojamiento.ExistePagoAlojamiento(pPago))
-                        {
-                            throw new Exception("El Tipo de Pago elegido ya existe");
-                        }
-                        else if (pAlojamiento.EstadoAlojamiento != EstadoAlojamiento.Cerrado)
-                        {
-                            throw new Exception("El Tipo de Pago elegido no corresponde con el Estado de Alojamiento");
-                        }
-                        else if (pAlojamiento.ExistePagoAlojamiento(new Pago(TipoPago.Servicios, pPago.Monto, "")))
-                        {
-                            throw new Exception("El Tipo de Pago elegido requiere un Pago de Servicios");
-                        }
-                        else if (pPago.Monto != pAlojamiento.MontoDeuda)
-                        {
-                            throw new Exception("Monto Incorrecto");
-                        }
-                        pAlojamiento.RegistrarPago(pPago);
-                    }
-                    break;
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
             }
+            return (listaAlojamientos);
         }
 
+        public List<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados, DateTime pDesde, DateTime pHasta)
+        {
+            List<pers.EstadoAlojamiento> auxEstados = new List<pers.EstadoAlojamiento>();
+            foreach (var estado in pEstados)
+            {
+                auxEstados.Add(Mapper.Map<EstadoAlojamiento, pers.EstadoAlojamiento>(estado));
+            }
+
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.ListaPersonalizada(auxEstados, pDesde, pHasta);
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return (listaAlojamientos);
+        }
+
+        public List<Alojamiento> AlojamientosConDeuda()
+        {
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.AlojamientosConDeuda();
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return listaAlojamientos;
+        }
         /// <summary>
         /// Realiza la ocupación para una fechas determinadas
         /// </summary>
@@ -164,6 +112,66 @@ namespace Dominio
             return (listaHabitaciones);
         }
 
+        /// <summary>
+        /// Determina si aún no se a superado capacidad de exlcusividad total en cuanto a un porcentaje determinado.
+        /// El cálulo es una estimación basado en fechas límites.
+        /// Si aún se permite exclusividad, se admite exclusividad aunque los nuevos cupos sobrepasen la exclusivdad por unas pocas unidades.
+        /// </summary>
+        /// <param name="pFechaDesde">Fecha Inicial que compara con cada Alojamiento Activo</param>
+        /// <param name="pFechaHasta">Fecha Final la que compara con cada Alojamiento Activo</param>
+        /// <param name="pPorcentaje">Porcentaje de la capacidad límite de exlcusividad para el total del Hotel</param>
+        /// <returns>Retorna verdadero si ya se ha superado la exclusividad límite</returns>
+
+        public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pPorcentaje)
+        {
+            int auxCapacidadTotal = 0;
+            List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
+
+            foreach (var hab in Habitaciones)
+            {
+                auxCapacidadTotal += hab.Capacidad();
+            }
+
+            //acumulará la cantidad de cupos que estan exlcusivos
+            int auxCantExclusiva = 0;
+
+            List<Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
+
+            foreach (var aloj in auxLista)
+            {
+                if (aloj.Exclusividad)
+                {
+                    DateTime alojFechaDesde = new DateTime();
+                    //la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
+                    //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
+
+                    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                    {
+                        alojFechaDesde = aloj.FechaIngreso.Date;
+                    }
+                    else
+                    {
+                        alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+                    }
+
+                    // Hay interseccion entre las fechas
+                    if (
+                            //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
+                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0)
+                            |
+                            //si fecha de egreso del aloj se encuetra entre las fechas de parametro
+                            (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+                       )
+                    {
+                        //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
+                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad();
+                    }
+                }
+            }
+
+            return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
+        }
+
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)
         {
            iUoW.RepositorioAlojamiento.AddPago(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<Pago, pers.Pago>(pPago));
@@ -205,46 +213,6 @@ namespace Dominio
                 }
             }
 
-            //for (int i = 0; i < pContadores.Length; i++)
-            //{
-            //    byte aux = Convert.ToByte(pContadores[i]); //CANTIDAD del tipo
-
-            //    while (aux > Convert.ToByte('0'))
-            //    {
-            //        switch (i)
-            //        {
-            //            case 0: //Tipo Tituar
-            //                {
-            //                    if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
-            //                    {
-            //                        throw new Exception("Error de Tipos Cliente");
-            //                    }
-            //                    aux--;
-            //                }
-            //                break;
-            //            case 1:
-            //                {
-            //                    if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
-            //                    {
-            //                        throw new Exception("Error de Tipos Cliente");
-            //                    }
-            //                    aux--;
-            //                }
-            //                break;
-            //            case 4:
-            //                {
-
-            //                }
-            //                break;
-            //        }
-            //        if (Convert.ToInt32(auxClientesAloj[i].TarifaCliente.TarifaClienteId) != i)
-            //        {
-            //            throw new Exception("Error de Tipos Cliente");
-            //        }
-            //        aux--;
-            //    }
-            //}
-
             pAlojEnAlta.AltaDeReserva();
 
             pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>());
@@ -255,6 +223,9 @@ namespace Dominio
             }
         }
        
+        /// <summary>
+        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservad - Fecha de Alta
+        /// </summary>
         public void ControlInicioAltaReserva(Alojamiento pAloj)
         {
             if (pAloj.EstadoAlojamiento != EstadoAlojamiento.Reservado)
@@ -268,7 +239,7 @@ namespace Dominio
             }
         }
 
-        public void ControlPlazoRereva(DateTime pFechaEstimadaIngreso)
+        public void ControlPlazoParaReservar(DateTime pFechaEstimadaIngreso)
         {
             if (pFechaEstimadaIngreso.Subtract(DateTime.Now.Date).Days > 30)
             {
@@ -279,7 +250,7 @@ namespace Dominio
         /// <summary>
         /// Devulve una Lista de Alojamientos Reservados que pasaron 72hs sin realizar depósito
         /// </summary>
-        public List<Alojamiento> AlojReservadosSinDepositoVencidos()
+        public List<Alojamiento> AlojsReservadosConDepositoVencidos()
         {
             List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
             List<Alojamiento> ListaResultado = new List<Alojamiento>();
@@ -298,66 +269,6 @@ namespace Dominio
                 }
             }
             return ListaResultado;
-        }
-
-        /// <summary>
-        /// Determina si aún no se a superado capacidad de exlcusividad total en cuanto a un porcentaje determinado.
-        /// El cálulo es una estimación basado en fechas límites.
-        /// Si aún se permite exclusividad, se admite exclusividad aunque los nuevos cupos sobrepasen la exclusivdad por unas pocas unidades.
-        /// </summary>
-        /// <param name="pFechaDesde">Fecha Inicial que compara con cada Alojamiento Activo</param>
-        /// <param name="pFechaHasta">Fecha Final la que compara con cada Alojamiento Activo</param>
-        /// <param name="pPorcentaje">Porcentaje de la capacidad límite de exlcusividad para el total del Hotel</param>
-        /// <returns>Retorna verdadero si ya se ha superado la exclusividad límite</returns>
-
-        public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pPorcentaje)
-        {
-            int auxCapacidadTotal = 0;
-            List <Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
-
-            foreach (var hab in Habitaciones)
-            {
-                auxCapacidadTotal += hab.Capacidad();
-            }
-
-            //acumulará la cantidad de cupos que estan exlcusivos
-            int auxCantExclusiva = 0;
-
-            List<Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
-
-            foreach (var aloj in auxLista)
-            {
-                if (aloj.Exclusividad)
-                {
-                    DateTime alojFechaDesde = new DateTime(); 
-                    //la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
-                    //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
-
-                    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-                    {
-                        alojFechaDesde = aloj.FechaIngreso.Date;
-                    }
-                    else
-                    {
-                        alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
-                    }
-
-                    // Hay interseccion entre las fechas
-                    if (
-                            //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
-                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0)
-                            |
-                            //si fecha de egreso del aloj se encuetra entre las fechas de parametro
-                            (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
-                       )
-                    {
-                        //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
-                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad();
-                    } 
-                }
-            }
-
-            return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
         }
 
         /// <summary>
@@ -386,7 +297,7 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
 
-        public void CancelarAlojamiento(Alojamiento pAlojamiento, DateTime pFechaCancelacion)
+        public void CancelarAlojamiento(Alojamiento pAlojamiento)
         {
             if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
             {
@@ -394,26 +305,9 @@ namespace Dominio
             }
 
             //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
-            pAlojamiento.Cancelar(pFechaCancelacion);
+            pAlojamiento.Cancelar();
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
-        }
-
-        public List<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados,DateTime pDesde, DateTime pHasta)
-        {
-            List<pers.EstadoAlojamiento> auxEstados = new List<pers.EstadoAlojamiento>();
-            foreach (var estado in pEstados)
-            {
-                auxEstados.Add(Mapper.Map<EstadoAlojamiento, pers.EstadoAlojamiento>(estado));
-            }
-
-            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.ListaPersonalizada(auxEstados, pDesde, pHasta);
-            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
-            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
-            {
-                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
-            }
-            return (listaAlojamientos);
         }
     }
 }

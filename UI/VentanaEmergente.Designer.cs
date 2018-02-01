@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaEmergente));
             this.pictureBox_icon = new System.Windows.Forms.PictureBox();
             this.lbl_TextPrincipal = new System.Windows.Forms.Label();
             this.lbl_TextAux = new System.Windows.Forms.Label();
@@ -100,6 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(421, 155);
             this.Controls.Add(this.button_cancelar);
@@ -107,6 +109,7 @@
             this.Controls.Add(this.lbl_TextAux);
             this.Controls.Add(this.lbl_TextPrincipal);
             this.Controls.Add(this.pictureBox_icon);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "VentanaEmergente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
