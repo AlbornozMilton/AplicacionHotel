@@ -98,5 +98,10 @@ namespace UI
                 CargarCupos(HabSeleccionada.Cupos);
             }
         }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

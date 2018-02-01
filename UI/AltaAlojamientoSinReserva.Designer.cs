@@ -65,7 +65,6 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txb_CostoBase = new System.Windows.Forms.TextBox();
-            this.btn_Confirmar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ck_Exclusividad = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -74,6 +73,8 @@
             this.cont_CuposSimples = new System.Windows.Forms.NumericUpDown();
             this.txb_NroHabitacion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btn_Comprobar = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
@@ -82,6 +83,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposDobles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposSimples)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Comprobar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -471,19 +473,6 @@
             this.txb_CostoBase.TabIndex = 12;
             this.txb_CostoBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btn_Confirmar
-            // 
-            this.btn_Confirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn_Confirmar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Confirmar.ForeColor = System.Drawing.Color.White;
-            this.btn_Confirmar.Location = new System.Drawing.Point(753, 578);
-            this.btn_Confirmar.Name = "btn_Confirmar";
-            this.btn_Confirmar.Size = new System.Drawing.Size(118, 41);
-            this.btn_Confirmar.TabIndex = 13;
-            this.btn_Confirmar.Text = "Comprobar";
-            this.btn_Confirmar.UseVisualStyleBackColor = false;
-            this.btn_Confirmar.Click += new System.EventHandler(this.btn_Confirmar_Click);
-            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
@@ -567,6 +556,33 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Número";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(781, 578);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 19);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "COMPROBAR";
+            this.label14.Visible = false;
+            // 
+            // btn_Comprobar
+            // 
+            this.btn_Comprobar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Comprobar.Image = global::UI.Properties.Resources.Boton_Go;
+            this.btn_Comprobar.InitialImage = null;
+            this.btn_Comprobar.Location = new System.Drawing.Point(712, 558);
+            this.btn_Comprobar.Name = "btn_Comprobar";
+            this.btn_Comprobar.Size = new System.Drawing.Size(63, 61);
+            this.btn_Comprobar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btn_Comprobar.TabIndex = 27;
+            this.btn_Comprobar.TabStop = false;
+            this.btn_Comprobar.Click += new System.EventHandler(this.btn_Comprobar_Click);
+            this.btn_Comprobar.MouseLeave += new System.EventHandler(this.btn_Comprobar_MouseLeave);
+            this.btn_Comprobar.MouseHover += new System.EventHandler(this.btn_Comprobar_MouseHover);
+            // 
             // AltaAlojamientoSinReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -575,8 +591,9 @@
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(889, 664);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.btn_Comprobar);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.btn_Confirmar);
             this.Controls.Add(this.txb_CostoBase);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btn_Cancelar);
@@ -603,6 +620,7 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposDobles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cont_CuposSimples)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Comprobar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -629,7 +647,6 @@
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txb_CostoBase;
-        private System.Windows.Forms.Button btn_Confirmar;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txb_NroHabitacion;
         private System.Windows.Forms.Label label6;
@@ -651,5 +668,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button button_visualizarReserva;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox btn_Comprobar;
     }
 }

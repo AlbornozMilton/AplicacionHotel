@@ -96,50 +96,6 @@ namespace UI
             }
         }
 
-        private void btn_Confirmar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (btn_VerificarDisponibilidad.Enabled == false) //se trata de alta de reserva
-                {
-                    //this.NuevoAlojamiento.SetIDAloj(Convert.ToInt32(txb_IdAloj.Text));
-                    
-                    this.NuevoAlojamiento.SetClientes(this.Acompañantes);
-                    new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
-                    new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
-                    this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
-                    //this.NuevoAlojamiento.Habitacion.SetExclusividad(this.NuevoAlojamiento.Exclusividad);
-                    //EL ALOJAMIENTO CAMBIA A ESTADO ALOJADO Y LA FECHA DE INGRESO = DATETIME.NOW
-                }
-                else if (Acompañantes.Contains(this.ClienteResponsable))//Alta sin Reserva, crea nuevo alojamiento con estado Alojado
-                {
-                    HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
-                    this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
-                    new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
-                    NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
-                }
-                else
-                {
-                    throw new Exception("El Cliente Responsable no se encuentra en la lista de Clientes.");
-                }
-
-                txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                btn_Confirmar.Enabled = false;
-
-                groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
-                groupBox3.Enabled = false;
-                groupBox4.Enabled = false;
-
-                btn_Aceptar.Enabled = true;
-            }
-            catch (Exception E)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
-        }
-
         //RESPONSABLE
         private void btn_AgregarCliente_Click(object sender, EventArgs e)
         {
@@ -178,7 +134,7 @@ namespace UI
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     this.Acompañantes.Add(ClienteResponsable);
 
-                    btn_Confirmar.Enabled = true;
+                    btn_Comprobar.Enabled = true;
                     btn_AgregarAcompañante.Enabled = true;
                     btn_quitarCliente.Enabled = true;
                 }
@@ -269,7 +225,7 @@ namespace UI
             groupBox4.Enabled = false;
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
-            btn_Confirmar.Enabled = false;
+            btn_Comprobar.Enabled = false;
         }
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
@@ -278,7 +234,7 @@ namespace UI
             groupBox4.Enabled = false;
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
-            btn_Confirmar.Enabled = false;
+            btn_Comprobar.Enabled = false;
         }
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
@@ -312,7 +268,7 @@ namespace UI
             //txb_CostoBase.Enabled = pValorEnable;
             
 
-            btn_Confirmar.Enabled = !pValorEnable;
+            btn_Comprobar.Enabled = !pValorEnable;
             btn_Aceptar.Enabled = pValorEnable;
         }
 
@@ -412,6 +368,62 @@ namespace UI
         {
             VisualizarAlojamiento visualizarAlojamiento = new VisualizarAlojamiento(NuevoAlojamiento);
             visualizarAlojamiento.ShowDialog();
+        }
+
+        private void btn_Comprobar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (btn_VerificarDisponibilidad.Enabled == false) //se trata de alta de reserva
+                {
+                    //this.NuevoAlojamiento.SetIDAloj(Convert.ToInt32(txb_IdAloj.Text));
+
+                    this.NuevoAlojamiento.SetClientes(this.Acompañantes);
+                    new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
+                    new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
+                    this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
+                    //this.NuevoAlojamiento.Habitacion.SetExclusividad(this.NuevoAlojamiento.Exclusividad);
+                    //EL ALOJAMIENTO CAMBIA A ESTADO ALOJADO Y LA FECHA DE INGRESO = DATETIME.NOW
+                }
+                else if (Acompañantes.Contains(this.ClienteResponsable))//Alta sin Reserva, crea nuevo alojamiento con estado Alojado
+                {
+                    HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
+                    this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+                    new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
+                    NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
+                }
+                else
+                {
+                    throw new Exception("El Cliente Responsable no se encuentra en la lista de Clientes.");
+                }
+
+                txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                btn_Comprobar.Enabled = false;
+
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
+                groupBox4.Enabled = false;
+
+                btn_Aceptar.Enabled = true;
+            }
+            catch (Exception E)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+        }
+
+        private void btn_Comprobar_MouseHover(object sender, EventArgs e)
+        {
+            label14.Visible = true;
+            btn_Comprobar.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void btn_Comprobar_MouseLeave(object sender, EventArgs e)
+        {
+            label14.Visible = false;
+            btn_Comprobar.SizeMode = PictureBoxSizeMode.CenterImage;
         }
     }
 }

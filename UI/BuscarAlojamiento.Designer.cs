@@ -72,10 +72,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(393, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(48, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Buscar";
             this.label2.Visible = false;
@@ -84,9 +84,9 @@
             // 
             this.btn_Buscar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btn_Buscar.Image = global::UI.Properties.Resources.boton_buscar;
-            this.btn_Buscar.Location = new System.Drawing.Point(307, 19);
+            this.btn_Buscar.Location = new System.Drawing.Point(325, 29);
             this.btn_Buscar.Name = "btn_Buscar";
-            this.btn_Buscar.Size = new System.Drawing.Size(80, 75);
+            this.btn_Buscar.Size = new System.Drawing.Size(62, 62);
             this.btn_Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btn_Buscar.TabIndex = 3;
             this.btn_Buscar.TabStop = false;
@@ -96,13 +96,15 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(613, 38);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(208, 37);
             this.button3.TabIndex = 2;
             this.button3.Text = "Lista de Alojamientos";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tbx_IdAlojamiento

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -131,13 +132,15 @@
             // 
             // btn_nuevoCliente
             // 
+            this.btn_nuevoCliente.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_nuevoCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nuevoCliente.ForeColor = System.Drawing.Color.White;
             this.btn_nuevoCliente.Location = new System.Drawing.Point(768, 59);
             this.btn_nuevoCliente.Name = "btn_nuevoCliente";
             this.btn_nuevoCliente.Size = new System.Drawing.Size(168, 47);
             this.btn_nuevoCliente.TabIndex = 11;
             this.btn_nuevoCliente.Text = "Nuevo Cliente";
-            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
+            this.btn_nuevoCliente.UseVisualStyleBackColor = false;
             this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
             // 
             // textBox_Legajo
@@ -324,6 +327,14 @@
             this.clm_apellido,
             this.clm_nom,
             this.clm_Nombre});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaResulClientes.DefaultCellStyle = dataGridViewCellStyle5;
             this.tablaResulClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaResulClientes.Location = new System.Drawing.Point(3, 26);
             this.tablaResulClientes.MultiSelect = false;

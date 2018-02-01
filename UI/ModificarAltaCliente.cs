@@ -65,7 +65,7 @@ namespace UI
         private void btn_darAlta_Click(object sender, EventArgs e)
         {
             new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, true);
-            MessageBox.Show("Cliente dado de Alta.");
+            new VentanaEmergente("          Cliente dado de Alta.", TipoMensaje.Exito).ShowDialog();
             ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(ClienteSeleccionado.ClienteId, !ClienteSeleccionado.EnAlta);
             RellenarCampos();
         }
@@ -73,7 +73,7 @@ namespace UI
         private void btn_darBaja_Click(object sender, EventArgs e)
         {
             new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, false);
-            MessageBox.Show("Cliente dado de Baja.");
+            new VentanaEmergente("          Cliente dado de Baja.", TipoMensaje.Exito).ShowDialog();
             ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(ClienteSeleccionado.ClienteId, !ClienteSeleccionado.EnAlta);
             RellenarCampos();
         }

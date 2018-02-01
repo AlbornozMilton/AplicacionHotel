@@ -228,6 +228,7 @@
             this.btn_Cancelar.TabIndex = 19;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // ModificarCupoHabitacion
             // 
