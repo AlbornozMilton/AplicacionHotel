@@ -23,6 +23,7 @@ namespace UI
         {
             txb_Tarifa.Enabled = false;
             txb_TarifaExclusiva.Enabled = false;
+            btn_Aceptar.Enabled = false;
         }
 
         private void CargarTarifaSeleccionada(TarifaCliente pTarifa)
@@ -56,12 +57,17 @@ namespace UI
         {
             try
             {
-                new ControladorExtra().AcutalizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
+                new ControladorExtra().ActualizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Tarifa Actualizada", TipoMensaje.Exito);
                 ventanaEmergente.ShowDialog();
                 Close();
                 ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
                 VentanaTarifas.ShowDialog();
+
+            }
+            catch (FormatException)
+            {
+                new VentanaEmergente("Monto Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
             }
             catch (Exception E)
             {

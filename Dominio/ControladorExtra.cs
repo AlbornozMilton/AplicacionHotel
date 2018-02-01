@@ -82,7 +82,7 @@ namespace Dominio
             iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
         }
 
-        public void AcutalizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
+        public void ActualizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
         {
             if (pCostoNoExcl == "")
             {

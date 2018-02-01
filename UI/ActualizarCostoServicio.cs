@@ -11,6 +11,7 @@ namespace UI
         public ActualizarCostoServicio()
         {
             InitializeComponent();
+            txb_nuevoCosto.Enabled = false;
             btn_Aceptar.Enabled = false;
         }
 
@@ -28,6 +29,7 @@ namespace UI
             {
                 this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
                 CargarServicioSeccionado(this.ServicioSeleccionado);
+                txb_nuevoCosto.Enabled = true;
                 btn_Aceptar.Enabled = true;
             }
             else
@@ -51,6 +53,17 @@ namespace UI
                 Close();
                 AdministrarServicios Actualizar = new AdministrarServicios();
                 Actualizar.ShowDialog();
+            }
+            catch (FormatException)
+            {
+                if (txb_nuevoCosto.Text == "")
+                {
+                    new VentanaEmergente("Debe ingresar un nuevo Costo", TipoMensaje.Alerta).ShowDialog();
+                }
+                else
+                {
+                    new VentanaEmergente("Costo Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
+                }
             }
             catch (Exception E)
             {
