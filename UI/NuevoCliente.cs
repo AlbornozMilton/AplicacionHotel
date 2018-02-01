@@ -17,6 +17,20 @@ namespace UI
         List<Ciudad> Ciudades;
         List<TarifaCliente> Tarifas;
         Cliente localCliente;
+		string[,] camposObligatorios;
+
+		private void ActualizarCamposoBligatorios(string pLabelName, string pLabelText)
+		{
+			for (int i = 0; i < camposObligatorios.Length; i++)
+			{
+				//int j = 1;
+				if (camposObligatorios[i,0] == pLabelName)
+				{
+					camposObligatorios[i,1] = pLabelText;
+					break;
+				}
+			}
+		}
 
         public NuevoCliente()
         {
@@ -25,7 +39,16 @@ namespace UI
 
         private void NuevoCliente_Load(object sender, EventArgs e)
         {
-            button1.Enabled = false;
+			camposObligatorios = new string[,] 
+			{
+				{ label13.Name, label13.Text }, { label14.Name, label14.Text },
+				{ label15.Name, label15.Text }, { label16.Name, label16.Text },
+				{ label17.Name, label17.Text }, { label18.Name, label18.Text },
+				{ label19.Name, label19.Text }, { label21.Name, label21.Text },
+				{ label22.Name, label22.Text }
+			};
+
+			button1.Enabled = false; //ACEPTAR
             Ciudades = ControladorCliente.ObtenerCiudades();
             Tarifas = ControladorCliente.DevolverListaTarifas();
             txb_codPostal.Enabled = false;
@@ -73,14 +96,13 @@ namespace UI
 
         public void ControlCamposObligatorios()
         {
-            Label[] camposOblig = new Label[] { label13, label14, label15, label16, label17, label18, label19, label21, label22 };
-            foreach (var camp in camposOblig)
-            {
-                if (camp.Visible == true)
-                {
-                    throw new Exception("Faltan Campos Obligatorios");
-                }
-            }
+			for (int i = 0; i < camposObligatorios.Length; i++)
+			{
+				if (camposObligatorios[i,1] == "")
+				{
+					throw new Exception("Faltan Campos Obligatorios");
+				}
+			}
         }
 
         //ACEPTAR
@@ -89,14 +111,14 @@ namespace UI
             try
             {
                 ControlCamposObligatorios();
-                if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
-                {
-                    new VentanaEmergente("El DNI ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
-                }
-                if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
-                {
-                    new VentanaEmergente("El Legajo ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
-                }
+                //if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+                //{
+                //    new VentanaEmergente("El DNI ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+                //}
+                //if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+                //{
+                //    new VentanaEmergente("El Legajo ingresado ya existe.", TipoMensaje.Alerta).ShowDialog();
+                //}
                 ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 if (localCliente == null)
@@ -123,26 +145,30 @@ namespace UI
         private void cbx_ciudades_SelectedIndexChanged(object sender, EventArgs e)
         {
             label19.Visible = false;
+			ActualizarCamposoBligatorios(label19.Name,"");
             txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
             var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
             cbx_calles.Items.Clear();
-            cbx_calles.Text = "";
+            //cbx_calles.Text = "";
             foreach (var calle in auxCalles)
             {
                 cbx_calles.Items.Add(calle);
             }
         }
-
+		
         private void tbx_dni_Leave(object sender, EventArgs e)
         {
             if (tbx_dni.Text == "")
             {
-                label13.Visible = true;
+				label13.Text = "Campo Obligatorio";
+				label13.Visible = true;
+				ActualizarCamposoBligatorios(label13.Name,label13.Text);
             }
             else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
             {
-                label13.Text = "Ya Existe";
-                label13.Visible = true;
+				label13.Text = "Ya Existe";
+				label13.Visible = true;
+				ActualizarCamposoBligatorios(label13.Name,label13.Text);
             }
         }
 
@@ -150,15 +176,29 @@ namespace UI
         {
             if (txb_legajo.Text == "")
             {
-                label14.Text = "Campo Obligatorio";
-                label14.Visible = true;
-            }
-            else if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+				label14.Text = "Campo Obligatorio";
+				label14.Visible = true;
+				ActualizarCamposoBligatorios(label14.Name, label14.Text);
+			}
+			else if (tbx_dni.Enabled == false)
             {
-                label14.Text = "Ya Existe";
-                label14.Visible = true;
-            }
-        }
+				if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+				{
+					label14.Text = "Ya Existe";
+					label14.Visible = true;
+					ActualizarCamposoBligatorios(label14.Name, label14.Text); 
+				}
+			}
+			else if (localCliente.Legajo.ToString().CompareTo(txb_legajo.Text) != 0)//PARA EL CASO DE LA MODIFICACION
+			{
+				if (this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+				{
+					label14.Text = "Ya Existe";
+					label14.Visible = true;
+					ActualizarCamposoBligatorios(label14.Name, label14.Text);
+				}
+			}
+		}
 
         private void txb_apellido_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -316,35 +356,7 @@ namespace UI
             }
         }
 
-        private void tbx_dni_TextChanged(object sender, EventArgs e)
-        {
-            label13.Visible = false;
-        }
-
-        private void txb_legajo_TextChanged(object sender, EventArgs e)
-        {
-            label14.Visible = false;
-        }
-
-        private void txb_apellido_TextChanged(object sender, EventArgs e)
-        {
-            label15.Visible = false;
-        }
-
-        private void txb_nombre_TextChanged(object sender, EventArgs e)
-        {
-            label16.Visible = false;
-        }
-
-        private void txb_telefono_TextChanged(object sender, EventArgs e)
-        {
-            label17.Visible = false;
-        }
-
-        private void cbx_tipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label18.Visible = false;
-        }
+        
 
         private void cbx_calles_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -356,21 +368,6 @@ namespace UI
             {
                 new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
-        }
-
-        private void txb_nroCalle_TextChanged(object sender, EventArgs e)
-        {
-            label22.Visible = false;
-        }
-
-        private void cbx_calles_TextChanged(object sender, EventArgs e)
-        {
-            label21.Visible = false;
-        }
-
-        private void pestaña_DatosGenerales_Enter(object sender, EventArgs e)
-        {
-            
         }
 
         private void txb_legajo_KeyPress(object sender, KeyPressEventArgs e)
@@ -385,9 +382,61 @@ namespace UI
             }
         }
 
-        private void pestaña_Ubicacion_Enter(object sender, EventArgs e)
-        {
-            button1.Enabled = true;
-        }
-    }
+		#region CampoObligatorio -> ""
+
+		private void tbx_dni_TextChanged(object sender, EventArgs e)
+		{
+			label13.Visible = false;
+			ActualizarCamposoBligatorios(label13.Name, "");
+		}
+
+		private void txb_legajo_TextChanged(object sender, EventArgs e)
+		{
+			label14.Visible = false;
+			ActualizarCamposoBligatorios(label14.Name, "");
+		}
+
+		private void txb_apellido_TextChanged(object sender, EventArgs e)
+		{
+			label15.Visible = false;
+			ActualizarCamposoBligatorios(label15.Name, "");
+
+		}
+
+		private void txb_nombre_TextChanged(object sender, EventArgs e)
+		{
+			label16.Visible = false;
+			ActualizarCamposoBligatorios(label16.Name, "");
+
+		}
+
+		private void txb_telefono_TextChanged(object sender, EventArgs e)
+		{
+			label17.Visible = false;
+			ActualizarCamposoBligatorios(label17.Name, "");
+
+		}
+
+		private void cbx_tipo_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			label18.Visible = false;
+			ActualizarCamposoBligatorios(label18.Name, "");
+
+		}
+
+		private void txb_nroCalle_TextChanged(object sender, EventArgs e)
+		{
+			label22.Visible = false;
+			ActualizarCamposoBligatorios(label22.Name, "");
+		}
+
+		private void cbx_calles_TextChanged(object sender, EventArgs e)
+		{
+
+			label21.Visible = false;
+			ActualizarCamposoBligatorios(label22.Name, "");
+		}
+
+		#endregion
+	}
 }
