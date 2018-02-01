@@ -235,7 +235,6 @@
 			this.txb_legajo.Name = "txb_legajo";
 			this.txb_legajo.Size = new System.Drawing.Size(282, 30);
 			this.txb_legajo.TabIndex = 22;
-			this.txb_legajo.TextChanged += new System.EventHandler(this.txb_legajo_TextChanged);
 			this.txb_legajo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_legajo_KeyPress);
 			this.txb_legajo.Leave += new System.EventHandler(this.txb_legajo_Leave);
 			// 
@@ -249,8 +248,6 @@
 			this.cbx_tipo.Name = "cbx_tipo";
 			this.cbx_tipo.Size = new System.Drawing.Size(282, 31);
 			this.cbx_tipo.TabIndex = 30;
-			this.cbx_tipo.SelectedIndexChanged += new System.EventHandler(this.cbx_tipo_SelectedIndexChanged);
-			this.cbx_tipo.Leave += new System.EventHandler(this.cbx_tipo_Leave);
 			// 
 			// txb_telefono
 			// 
@@ -260,7 +257,6 @@
 			this.txb_telefono.Name = "txb_telefono";
 			this.txb_telefono.Size = new System.Drawing.Size(282, 30);
 			this.txb_telefono.TabIndex = 28;
-			this.txb_telefono.TextChanged += new System.EventHandler(this.txb_telefono_TextChanged);
 			this.txb_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_telefono_KeyPress);
 			this.txb_telefono.Leave += new System.EventHandler(this.txb_telefono_Leave);
 			// 
@@ -272,7 +268,6 @@
 			this.txb_nombre.Name = "txb_nombre";
 			this.txb_nombre.Size = new System.Drawing.Size(282, 30);
 			this.txb_nombre.TabIndex = 25;
-			this.txb_nombre.TextChanged += new System.EventHandler(this.txb_nombre_TextChanged);
 			this.txb_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_nombre_KeyPress);
 			this.txb_nombre.Leave += new System.EventHandler(this.txb_nombre_Leave);
 			// 
@@ -284,7 +279,6 @@
 			this.txb_apellido.Name = "txb_apellido";
 			this.txb_apellido.Size = new System.Drawing.Size(282, 30);
 			this.txb_apellido.TabIndex = 24;
-			this.txb_apellido.TextChanged += new System.EventHandler(this.txb_apellido_TextChanged);
 			this.txb_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_apellido_KeyPress);
 			this.txb_apellido.Leave += new System.EventHandler(this.txb_apellido_Leave);
 			// 
@@ -296,7 +290,6 @@
 			this.tbx_dni.Name = "tbx_dni";
 			this.tbx_dni.Size = new System.Drawing.Size(282, 30);
 			this.tbx_dni.TabIndex = 20;
-			this.tbx_dni.TextChanged += new System.EventHandler(this.tbx_dni_TextChanged);
 			this.tbx_dni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbx_dni_KeyPress);
 			this.tbx_dni.Leave += new System.EventHandler(this.tbx_dni_Leave);
 			// 
@@ -426,7 +419,6 @@
 			this.cbx_calles.Name = "cbx_calles";
 			this.cbx_calles.Size = new System.Drawing.Size(282, 31);
 			this.cbx_calles.TabIndex = 29;
-			this.cbx_calles.TextChanged += new System.EventHandler(this.cbx_calles_TextChanged);
 			this.cbx_calles.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbx_calles_KeyPress);
 			this.cbx_calles.Leave += new System.EventHandler(this.cbx_calles_Leave);
 			// 
@@ -442,7 +434,6 @@
 			this.cbx_ciudades.Sorted = true;
 			this.cbx_ciudades.TabIndex = 25;
 			this.cbx_ciudades.SelectedIndexChanged += new System.EventHandler(this.cbx_ciudades_SelectedIndexChanged);
-			this.cbx_ciudades.Leave += new System.EventHandler(this.cbx_ciudades_Leave);
 			// 
 			// txb_nroDepto
 			// 
@@ -474,7 +465,6 @@
 			this.txb_nroCalle.Name = "txb_nroCalle";
 			this.txb_nroCalle.Size = new System.Drawing.Size(282, 30);
 			this.txb_nroCalle.TabIndex = 31;
-			this.txb_nroCalle.TextChanged += new System.EventHandler(this.txb_nroCalle_TextChanged);
 			this.txb_nroCalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_nroCalle_KeyPress);
 			this.txb_nroCalle.Leave += new System.EventHandler(this.txb_nroCalle_Leave);
 			// 
