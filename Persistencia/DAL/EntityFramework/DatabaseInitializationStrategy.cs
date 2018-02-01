@@ -78,18 +78,107 @@ namespace Persistencia.DAL.EntityFramework
 
             #region Ciudades
 
-            Ciudad CiudadFederacion = new Ciudad
-            {
-                CiudadId = 3206,
-                Nombre = "Federación"
-            };
+            Ciudad CiudadFederacion = new Ciudad {CiudadId = 3206,Nombre = "Federación"};
             context.Set<Ciudad>().Add(CiudadFederacion);
-            Ciudad CiudadCdelU = new Ciudad
-            {
-                CiudadId = 3260,
-                Nombre = "Concepción del Uruguay"
-            };
+            Ciudad CiudadCdelU = new Ciudad {CiudadId = 3260,Nombre = "Concepción del Uruguay"};
             context.Set<Ciudad>().Add(CiudadCdelU);
+            Ciudad CiudadNogoya = new Ciudad { CiudadId = 3150, Nombre = "Nogoya" };
+            context.Set<Ciudad>().Add(CiudadNogoya);
+            Ciudad CiudadSeptiembre = new Ciudad { CiudadId = 3158, Nombre = "20 de Septiembre" };
+            context.Set<Ciudad>().Add(CiudadSeptiembre);
+            Ciudad CiudadAchiras = new Ciudad { CiudadId = 3246, Nombre = "Achiras" };
+            context.Set<Ciudad>().Add(CiudadAchiras);
+            Ciudad CiudadAero = new Ciudad { CiudadId = 2823, Nombre = "Aero Club Canal" };
+            context.Set<Ciudad>().Add(CiudadAero);
+            Ciudad CiudadAlarcon = new Ciudad { CiudadId = 2852, Nombre = "Alarcon" };
+            context.Set<Ciudad>().Add(CiudadAlarcon);
+            Ciudad CiudadAlbardon = new Ciudad { CiudadId = 2840, Nombre = "Albardon" };
+            context.Set<Ciudad>().Add(CiudadAlbardon);
+            Ciudad CiudadAlbariño = new Ciudad { CiudadId = 3183, Nombre = "Albariño" };
+            context.Set<Ciudad>().Add(CiudadAlbariño);
+            Ciudad CiudadAlberto = new Ciudad { CiudadId = 3170, Nombre = "ALberto Gerchunoff" };
+            context.Set<Ciudad>().Add(CiudadAlberto);
+            Ciudad CiudadAlcaracito = new Ciudad { CiudadId = 3142, Nombre = "Alcaracito" };
+            context.Set<Ciudad>().Add(CiudadAlcaracito);
+            Ciudad CiudadAlcaraz = new Ciudad { CiudadId = 3138, Nombre = "Alcaraz" };
+            context.Set<Ciudad>().Add(CiudadAlcaraz);
+            Ciudad CiudadAlcaraz2 = new Ciudad { CiudadId = 3144, Nombre = "Alcaraz 1°" };
+            context.Set<Ciudad>().Add(CiudadAlcaraz2);
+            Ciudad CiudadAlcaraz3 = new Ciudad { CiudadId = 3136, Nombre = "Alcaraz Norte" };
+            context.Set<Ciudad>().Add(CiudadAlcaraz3);
+            Ciudad CiudadAlcaraz4 = new Ciudad { CiudadId = 3137, Nombre = "Alcaraz Sud" };
+            context.Set<Ciudad>().Add(CiudadAlcaraz4);
+            Ciudad CiudadAlcete = new Ciudad { CiudadId = 3127, Nombre = "Alcete" };
+            context.Set<Ciudad>().Add(CiudadAlcete);
+            Ciudad CiudadAldea1 = new Ciudad { CiudadId = 3101, Nombre = "Aldea Asunción" };
+            context.Set<Ciudad>().Add(CiudadAldea1);
+            Ciudad CiudadAldea3 = new Ciudad { CiudadId = 3114, Nombre = "Aldea Maria Luisa" };
+            context.Set<Ciudad>().Add(CiudadAldea3);
+            Ciudad CiudadAldea5 = new Ciudad { CiudadId = 3188, Nombre = "Aldea San Isidro" };
+            context.Set<Ciudad>().Add(CiudadAldea5);
+            Ciudad CiudadAldea6 = new Ciudad { CiudadId = 3252, Nombre = "Aldea San Jorge" };
+            context.Set<Ciudad>().Add(CiudadAldea6);
+            Ciudad CiudadVillaguay = new Ciudad { CiudadId = 3240, Nombre = "Villaguay" };
+            context.Set<Ciudad>().Add(CiudadVillaguay);
+            Ciudad CiudadParana = new Ciudad { CiudadId = 3100, Nombre = "Paraná" };
+            context.Set<Ciudad>().Add(CiudadParana);
+            Ciudad CiudadGchu = new Ciudad { CiudadId = 2820, Nombre = "Gualeguachú" };
+            context.Set<Ciudad>().Add(CiudadGchu);
+            Ciudad CiudadGualeguay = new Ciudad { CiudadId = 2840, Nombre = "Gualeguay" };
+            context.Set<Ciudad>().Add(CiudadGualeguay);
+            Ciudad CiudadColon = new Ciudad { CiudadId = 3280, Nombre = "Colón" };
+            context.Set<Ciudad>().Add(CiudadColon);
+            Ciudad CiudadSanJose = new Ciudad { CiudadId = 3283, Nombre = "Villa San José" };
+            context.Set<Ciudad>().Add(CiudadSanJose);
+            Ciudad CiudadChajari= new Ciudad { CiudadId = 3228, Nombre = "Chajarí" };
+            context.Set<Ciudad>().Add(CiudadChajari);
+            Ciudad CiudadConcordia = new Ciudad { CiudadId = 3200, Nombre = "Concordia" };
+            context.Set<Ciudad>().Add(CiudadConcordia);
+            Ciudad CiudadLaPaz = new Ciudad { CiudadId = 3190, Nombre = "La Paz" };
+            context.Set<Ciudad>().Add(CiudadLaPaz);
+            Ciudad CiudadFederal = new Ciudad { CiudadId = 3180, Nombre = "Federal" };
+            context.Set<Ciudad>().Add(CiudadFederal);
+            Ciudad CiudadClara = new Ciudad { CiudadId = 3252, Nombre = "Clara" };
+            context.Set<Ciudad>().Add(CiudadClara);
+            Ciudad CiudadVelisa = new Ciudad { CiudadId = 3265, Nombre = "Villa Elisa" };
+            context.Set<Ciudad>().Add(CiudadVelisa);
+            Ciudad CiudadFeliciano = new Ciudad { CiudadId = 3187, Nombre = "San Jose de Feliciano" };
+            context.Set<Ciudad>().Add(CiudadFeliciano);
+            Ciudad CiudadCrespo = new Ciudad { CiudadId = 3116, Nombre = "Crespo" };
+            context.Set<Ciudad>().Add(CiudadCrespo);
+            Ciudad CiudadSanMartin = new Ciudad { CiudadId = 3103, Nombre = "Villa Libertador Gral San Martín" };
+            context.Set<Ciudad>().Add(CiudadSanMartin);
+            Ciudad CiudadBaso = new Ciudad { CiudadId = 3170, Nombre = "Basavilbaso" };
+            context.Set<Ciudad>().Add(CiudadBaso);
+            Ciudad CiudadDom = new Ciudad { CiudadId = 3246, Nombre = "Dominguez" };
+            context.Set<Ciudad>().Add(CiudadDom);
+            Ciudad CiudadMoscas = new Ciudad { CiudadId = 3244, Nombre = "Las Moscas" };
+            context.Set<Ciudad>().Add(CiudadMoscas);
+            Ciudad CiudadUbajay = new Ciudad { CiudadId = 3287, Nombre = "Ubajay" };
+            context.Set<Ciudad>().Add(CiudadUbajay);
+            Ciudad CiudadTala = new Ciudad { CiudadId = 3174, Nombre = "Rosario del Tala" };
+            context.Set<Ciudad>().Add(CiudadTala);
+            Ciudad CiudadSalvador = new Ciudad { CiudadId = 3218, Nombre = "San Salvador" };
+            context.Set<Ciudad>().Add(CiudadSalvador);
+            Ciudad CiudadJubileo = new Ciudad { CiudadId = 3254, Nombre = "Jubileo" };
+            context.Set<Ciudad>().Add(CiudadJubileo);
+            Ciudad CiudadAna = new Ciudad { CiudadId = 3208, Nombre = "Santa Ana" };
+            context.Set<Ciudad>().Add(CiudadAna);
+            Ciudad CiudadUrd = new Ciudad { CiudadId = 2826, Nombre = "Urdinarrain" };
+            context.Set<Ciudad>().Add(CiudadUrd);
+            Ciudad CiudadLarroque = new Ciudad { CiudadId = 2854, Nombre = "Larroque" };
+            context.Set<Ciudad>().Add(CiudadLarroque);
+            Ciudad CiudadCeibas = new Ciudad { CiudadId = 2823, Nombre = "Ceibas" };
+            context.Set<Ciudad>().Add(CiudadCeibas);
+            Ciudad CiudadVictoria = new Ciudad { CiudadId = 3153, Nombre = "Victoria" };
+            context.Set<Ciudad>().Add(CiudadVictoria);
+            Ciudad CiudadViale = new Ciudad { CiudadId = 3109, Nombre = "Viale" };
+            context.Set<Ciudad>().Add(CiudadViale);
+            Ciudad CiudadDiamante = new Ciudad { CiudadId = 3105, Nombre = "Diamante" };
+            context.Set<Ciudad>().Add(CiudadDiamante);
+            Ciudad CiudadCaseros = new Ciudad { CiudadId = 3262, Nombre = "Caseros" };
+            context.Set<Ciudad>().Add(CiudadCaseros);
+
 
             #endregion
 
