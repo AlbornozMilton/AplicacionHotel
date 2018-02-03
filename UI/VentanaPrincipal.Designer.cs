@@ -354,7 +354,7 @@
             this.actualizarTarifasToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Actualizar;
             this.actualizarTarifasToolStripMenuItem.Name = "actualizarTarifasToolStripMenuItem";
             this.actualizarTarifasToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
-            this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Costos deTarifa";
+            this.actualizarTarifasToolStripMenuItem.Text = "Actualizar Costos de Tarifa";
             this.actualizarTarifasToolStripMenuItem.Click += new System.EventHandler(this.actualizarTarifasToolStripMenuItem_Click);
             // 
             // consultarHabitacionesToolStripMenuItem

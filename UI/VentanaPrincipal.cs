@@ -87,7 +87,7 @@ namespace UI
             MostrarAlojsActivos();
             this.ListaAlojamientos = CargarAlojsSinDeposito();
             MostrarAlojsSinDeposito();
-            timer1.Interval = 7200000;// dos horas para nueva notificacion
+            timer1.Interval = 7200000;// dos horas para nueva notificacion 
             timer1.Enabled = true;
             this.ListaAlojamientos = CargarAlojsADarDeAlta();
             MostrarAlojsADarDeAlta();
@@ -198,7 +198,6 @@ namespace UI
             this.ListaAlojamientos = CargarAlojsSinDeposito();
             MostrarAlojsSinDeposito();
             timer1.Enabled = true;
-            SegundoPlanoCargarActivos();
         }
         #endregion
 
