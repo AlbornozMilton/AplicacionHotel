@@ -109,12 +109,14 @@ namespace UI
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
                     new ControladorCliente().ControlClienteActivo(ClienteResponsable, EstadoAlojamiento.Alojado, FechaIni, FechaFin);
-                    
-                    if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
-                    {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.", TipoMensaje.Alerta);
-                        ventanaEmergente.ShowDialog();
-                    }else if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+
+					if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
+					{
+						VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, según las reglas de negocio. Queda a su criterio continuar con la carga.", TipoMensaje.Alerta);
+						ventanaEmergente.ShowDialog();
+					}
+
+					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación.", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
@@ -122,7 +124,7 @@ namespace UI
                         ck_Exclusividad.Enabled = false;
                         ck_Exclusividad.Checked = false;
                     }
-                    else
+					else
                     {
                         ck_Exclusividad.Enabled = true;
                     }
@@ -282,7 +284,7 @@ namespace UI
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                cont_CuposSimples.Value--;
+                cont_CuposSimples.Value = HabSeleccionada.CuposSimpleDisponibles();
             }
         }
 
@@ -296,7 +298,7 @@ namespace UI
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                cont_CuposDobles.Value--;
+                cont_CuposDobles.Value = HabSeleccionada.CuposDoblesDisponibles();
             }
         }
 
