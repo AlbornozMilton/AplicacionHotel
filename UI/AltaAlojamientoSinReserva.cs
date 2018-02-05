@@ -140,6 +140,10 @@ namespace UI
                     btn_AgregarAcompañante.Enabled = true;
                     btn_quitarCliente.Enabled = true;
                 }
+                else
+                {
+                    throw new Exception("   Debe seleccionar un Cliente");
+                }
             }
             catch (Exception E)
             {

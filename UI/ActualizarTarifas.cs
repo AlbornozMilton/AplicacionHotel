@@ -34,22 +34,30 @@ namespace UI
 
         private void btn_ConsultarTarifas_Click(object sender, EventArgs e)
         {
-            ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
-            VentanaTarifas.ShowDialog();
-            if (VentanaTarifas.iTarifaSeleccionada != null)
+            try
             {
-                this.iTarifaSeleccionada = VentanaTarifas.iTarifaSeleccionada;
-                CargarTarifaSeleccionada(this.iTarifaSeleccionada);
-                btn_Aceptar.Enabled = true;
+                ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
+                VentanaTarifas.ShowDialog();
+                if (VentanaTarifas.iTarifaSeleccionada != null)
+                {
+                    this.iTarifaSeleccionada = VentanaTarifas.iTarifaSeleccionada;
+                    CargarTarifaSeleccionada(this.iTarifaSeleccionada);
+                    btn_Aceptar.Enabled = true;
+                }
+                else
+                {
+                    dGV_Tarifas.Rows.Clear();
+                    txb_Tarifa.Text = "";
+                    txb_Tarifa.Enabled = false;
+                    txb_TarifaExclusiva.Text = "";
+                    txb_TarifaExclusiva.Enabled = false;
+                    btn_Aceptar.Enabled = false;
+                    throw new Exception("  Debe seleccionar una Tarifa");
+                }
             }
-            else
+            catch (Exception E)
             {
-                dGV_Tarifas.Rows.Clear();
-                txb_Tarifa.Text = "";
-                txb_Tarifa.Enabled = false;
-                txb_TarifaExclusiva.Text = "";
-                txb_TarifaExclusiva.Enabled = false;
-                btn_Aceptar.Enabled = false;
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -58,16 +66,12 @@ namespace UI
             try
             {
                 new ControladorExtra().ActualizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Tarifa Actualizada", TipoMensaje.Exito);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("      Tarifa Actualizada", TipoMensaje.Exito);
                 ventanaEmergente.ShowDialog();
                 Close();
                 ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
                 VentanaTarifas.ShowDialog();
 
-            }
-            catch (FormatException)
-            {
-                new VentanaEmergente("Monto Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
             }
             catch (Exception E)
             {

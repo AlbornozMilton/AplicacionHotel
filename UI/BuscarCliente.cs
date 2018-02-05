@@ -68,12 +68,12 @@ namespace UI
             try
             {
                 tablaResulClientes.Rows.Clear();
-                if (radioButton1.Checked && radioButton1.Text.Length > 0) //DNi
+                if (radioButton1.Checked && textBox_DNI.Text.Length > 0) //DNi
                 {
                     AuxClienteSeleccionado = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
                     CargarCliente();
                 }
-                else if (radioButton_nombre.Checked && radioButton_nombre.Text.Length > 0)//NOMBRE
+                else if (radioButton_nombre.Checked)//NOMBRE
                 {
                     List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
                     foreach (var cli in list)
@@ -81,17 +81,21 @@ namespace UI
                         tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
                     }
                 }
-                else if (radioButton_legajo.Checked && radioButton_legajo.Text.Length > 0) //LEGAJO
+                else if (radioButton_legajo.Checked && textBox_Legajo.Text.Length > 0) //LEGAJO
                 {
                     AuxClienteSeleccionado = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
                     CargarCliente();
                 }
                 btn_Aceptar.Enabled = true;
             }
-            catch (Exception E)
+            catch (FormatException)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("    Debe ingresar solo números", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
+            }
+            catch (NullReferenceException)
+            {
+                new VentanaEmergente("        Cliente no encontrado", TipoMensaje.Alerta).ShowDialog();
             }
         }
 

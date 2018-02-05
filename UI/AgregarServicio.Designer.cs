@@ -457,9 +457,9 @@
             this.btn_buscarServicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscarServicio.Location = new System.Drawing.Point(15, 132);
             this.btn_buscarServicio.Name = "btn_buscarServicio";
-            this.btn_buscarServicio.Size = new System.Drawing.Size(146, 30);
+            this.btn_buscarServicio.Size = new System.Drawing.Size(215, 30);
             this.btn_buscarServicio.TabIndex = 13;
-            this.btn_buscarServicio.Text = "Consultar Servicio";
+            this.btn_buscarServicio.Text = "Consultar Servicios";
             this.btn_buscarServicio.UseVisualStyleBackColor = true;
             this.btn_buscarServicio.Click += new System.EventHandler(this.btn_buscarServicio_Click);
             // 

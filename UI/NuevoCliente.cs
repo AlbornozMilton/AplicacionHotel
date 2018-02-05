@@ -110,7 +110,15 @@ namespace UI
 
         public void ControlCamposObligatorios()
         {
-			if (cbx_tipo.SelectedItem == null)
+            for (int i = 0; i < camposObligatorios.Length / 2; i++)
+            {
+                if (camposObligatorios[i, 1] != "")
+                {
+                    throw new Exception("Faltan Campos Obligatorios");
+                }
+            }
+
+            if (cbx_tipo.SelectedItem == null)
 			{
 				throw new Exception("Debe elegir un Tipo de Cliente");
 			}
@@ -123,14 +131,6 @@ namespace UI
 			if (cbx_calles.SelectedItem == null && cbx_calles.Text == "")
 			{
 				throw new Exception("Debe elegir un Nombre de Calle");
-			}
-
-			for (int i = 0; i < camposObligatorios.Length/2; i++)
-			{
-				if (camposObligatorios[i,1] != "")
-				{
-					throw new Exception("Faltan Campos Obligatorios");
-				}
 			}
 
 			if (txb_piso.Text == "")
@@ -165,7 +165,7 @@ namespace UI
             }
             catch (Exception E)
             {
-                MessageBox.Show(E.Message);
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 

@@ -111,7 +111,7 @@
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.ShowItemToolTips = true;
-            menuStrip1.Size = new System.Drawing.Size(1110, 38);
+            menuStrip1.Size = new System.Drawing.Size(1129, 38);
             menuStrip1.Stretch = false;
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
@@ -451,7 +451,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(12, 177);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1089, 352);
+            this.groupBox2.Size = new System.Drawing.Size(1108, 352);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OCUPACIÓN ACTUAL";
@@ -461,7 +461,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pictureBox1.Image = global::UI.Properties.Resources.gears_200;
-            this.pictureBox1.Location = new System.Drawing.Point(536, 211);
+            this.pictureBox1.Location = new System.Drawing.Point(546, 211);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 56);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -472,7 +472,7 @@
             // btn_VerDetalle
             // 
             this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_VerDetalle.Location = new System.Drawing.Point(942, 29);
+            this.btn_VerDetalle.Location = new System.Drawing.Point(961, 29);
             this.btn_VerDetalle.Name = "btn_VerDetalle";
             this.btn_VerDetalle.Size = new System.Drawing.Size(141, 30);
             this.btn_VerDetalle.TabIndex = 5;
@@ -533,7 +533,7 @@
             this.dGV_Alojamientos.ReadOnly = true;
             this.dGV_Alojamientos.RowHeadersVisible = false;
             this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Alojamientos.Size = new System.Drawing.Size(1080, 272);
+            this.dGV_Alojamientos.Size = new System.Drawing.Size(1099, 272);
             this.dGV_Alojamientos.TabIndex = 0;
             // 
             // Column7
@@ -619,7 +619,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1110, 541);
+            this.ClientSize = new System.Drawing.Size(1129, 541);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox_disponibilidad);
             this.Controls.Add(menuStrip1);

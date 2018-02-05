@@ -86,11 +86,11 @@ namespace Dominio
         {
             if (pCostoNoExcl == "")
             {
-                throw new Exception("Debe ingresar una nueva Tarifa");
+                throw new Exception("Debe ingresar una nuevo Costo de Tarifa");
             }
             else if (pCostoExcl == "")
             {
-                throw new Exception("Debe ingresar una nueva Tarifa Exclusiva");
+                throw new Exception("Debe ingresar una nuevo Costo de Tarifa Exclusiva");
             }
             else if ((!IsNumeric(pCostoExcl)) || (!IsNumeric(pCostoNoExcl)))
             {

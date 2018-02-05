@@ -23,18 +23,26 @@ namespace UI
 
         private void btn_buscarServicio_Click(object sender, EventArgs e)
         {
-            AdministrarServicios Actualizar = new AdministrarServicios();
-            Actualizar.ShowDialog();
-            if (Actualizar.ServicioSeleccionado != null)
+            try
             {
-                this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
-                CargarServicioSeccionado(this.ServicioSeleccionado);
-                txb_nuevoCosto.Enabled = true;
-                btn_Aceptar.Enabled = true;
+                AdministrarServicios Actualizar = new AdministrarServicios();
+                Actualizar.ShowDialog();
+                if (Actualizar.ServicioSeleccionado != null)
+                {
+                    this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
+                    CargarServicioSeccionado(this.ServicioSeleccionado);
+                    txb_nuevoCosto.Enabled = true;
+                    btn_Aceptar.Enabled = true;
+                }
+                else
+                {
+                    dataGridView_Servicio.Rows.Clear();
+                    throw new Exception("   Debe seleccionar un Servicio");
+                }
             }
-            else
+            catch (Exception E)
             {
-                dataGridView_Servicio.Rows.Clear();
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 

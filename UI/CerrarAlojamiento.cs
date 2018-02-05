@@ -73,8 +73,14 @@ namespace UI
             try
             {
                 new ControladorAlojamiento().CerrarAlojamiento(iAloj_Seleccionado);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.CierreExistoso, iAloj_Seleccionado.AlojamientoId);
-                ventanaEmergente.ShowDialog();
+                if (iAloj_Seleccionado.Servicios.Count != 0)
+                {
+                    new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.CierreExistoso, iAloj_Seleccionado.AlojamientoId).ShowDialog();
+                }
+                else
+                {
+                    new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.Exito).ShowDialog();
+                }
                 Close();
             }
             catch (Exception E)
@@ -90,6 +96,11 @@ namespace UI
             VentanaVisualizar.ShowDialog();
             this.iAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(iAloj_Seleccionado.AlojamientoId);
             CargarAlojamientoSeccionado(this.iAloj_Seleccionado);
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

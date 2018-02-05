@@ -34,26 +34,40 @@ namespace UI
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
         {
-            BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
-            BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.Aloj_Seleccionado != null)
+            try
             {
-                iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
-                CargarAlojamientoSeccionado(BuscarAlojamiento.Aloj_Seleccionado);
-                dGV_ListadoServicios.Rows.Clear();
-                double auxTotal = 0;
-                foreach (var serv in iAloj_Seleccionado.Servicios)
+                BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
+                BuscarAlojamiento.ShowDialog();
+                if (BuscarAlojamiento.Aloj_Seleccionado != null)
                 {
-                    auxTotal += serv.CostoServicio;
-                    dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd/MM/yyyy"), serv.CostoServicio);
+                    iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
+                    CargarAlojamientoSeccionado(BuscarAlojamiento.Aloj_Seleccionado);
+                    dGV_ListadoServicios.Rows.Clear();
+                    double auxTotal = 0;
+                    foreach (var serv in iAloj_Seleccionado.Servicios)
+                    {
+                        auxTotal += serv.CostoServicio;
+                        dGV_ListadoServicios.Rows.Add(serv.Servicio.Nombre, serv.Servicio.CostoBase, serv.Cantidad, serv.FechaServicio.ToString("dd/MM/yyyy"), serv.CostoServicio);
+                    }
+                    textBox_total.Text = auxTotal.ToString();
                 }
-                textBox_total.Text = auxTotal.ToString();
+                else
+                {
+                    dGV_ListadoAlojamientos.Rows.Clear();
+                    dGV_ListadoServicios.Rows.Clear();
+                    throw new Exception("   Debe seleccionar un Alojamiento");
+                }
             }
-            else
+            catch (Exception E)
             {
-                dGV_ListadoAlojamientos.Rows.Clear();
-                dGV_ListadoServicios.Rows.Clear();
+
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
+        }
+
+        private void btn_Aceptar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

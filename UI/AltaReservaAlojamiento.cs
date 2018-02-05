@@ -142,6 +142,10 @@ namespace UI
                     btn_Confirmar.Enabled = true;
                     groupBox3.Enabled = true;
                 }
+                else
+                {
+                    throw new Exception("     Debe seleccionar un Cliente");
+                }
             }
             catch (Exception E)
             {

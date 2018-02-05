@@ -253,6 +253,7 @@
             this.btn_Aceptar.TabIndex = 12;
             this.btn_Aceptar.Text = "Salir";
             this.btn_Aceptar.UseVisualStyleBackColor = true;
+            this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // textBox_total
             // 

@@ -111,12 +111,23 @@ namespace UI
 
         private void btn_buscarServicio_Click(object sender, EventArgs e)
         {
-            AdministrarServicios Actualizar = new AdministrarServicios();
-            Actualizar.ShowDialog();
-            if (Actualizar.ServicioSeleccionado != null)
+            try
             {
-                this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
-                CargarServicioSeccionado(this.ServicioSeleccionado);
+                AdministrarServicios Actualizar = new AdministrarServicios();
+                Actualizar.ShowDialog();
+                if (Actualizar.ServicioSeleccionado != null)
+                {
+                    this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
+                    CargarServicioSeccionado(this.ServicioSeleccionado);
+                }
+                else
+                {
+                    throw new Exception("Debe seleccionar un Servicio");
+                }
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -145,7 +156,7 @@ namespace UI
                 else
                 {
                     btn_Aceptar.Enabled = false;
-                    lbl_txtTotal.Text = "-";
+                    lbl_total.Text = "-";
                 } 
             }
         }
