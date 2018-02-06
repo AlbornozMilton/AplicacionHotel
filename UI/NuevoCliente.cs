@@ -151,7 +151,7 @@ namespace UI
             {
                 ControlCamposObligatorios();
                
-                ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text);
+                ControladorCliente.CargarDomicilio(cbx_calles.Text, txb_nroCalle.Text, txb_piso.Text, txb_nroDepto.Text, txb_codPostal.Text,cbx_ciudades.Text);
                 ControladorCliente.NuevoCliente(tbx_dni.Text, txb_legajo.Text, txb_nombre.Text, txb_apellido.Text, txb_telefono.Text, txb_correo.Text, cbx_tipo.Text);
                 if (localCliente == null)
                 {
@@ -238,8 +238,8 @@ namespace UI
 		{
 			label19.Text = "";
 			ActualizarCamposoBligatorios(label19.Name, label19.Text);
-			txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CiudadId.ToString();
-			var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text).OrderByDescending(c => c);
+			txb_codPostal.Text = Ciudades.Find(c => c.Nombre == cbx_ciudades.Text).CodPostal.ToString();
+			var auxCalles = ControladorCliente.ObtenerCallesDeCiudad(txb_codPostal.Text,cbx_ciudades.Text).OrderByDescending(c => c);
 			cbx_calles.Items.Clear();
 			//cbx_calles.Text = "";
 			foreach (var calle in auxCalles)

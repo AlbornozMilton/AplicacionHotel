@@ -100,10 +100,10 @@ namespace Dominio
             return resultado;
         }
 
-        public List<string> ObtenerCallesDeCiudad(string pCodPostal)
+        public List<string> ObtenerCallesDeCiudad(string pCodPostal, string pNombreCiudad)
         {
             List<string> calles = new List<string>();
-            foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal)))
+            foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal), pNombreCiudad))
             {
                 calles.Add(calle.ToString());
             }
@@ -113,9 +113,9 @@ namespace Dominio
         /// <summary>
         /// Genera un Domicilio con una Ciudad en este Controlador.
         /// </summary>
-        public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal)
+        public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal, string pNombre)
         {
-            Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.Get(Convert.ToInt32(pCodPostal)));
+            Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.GetCiudad(Convert.ToInt32(pCodPostal), pNombre));
             this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
             IdDomiciio = iUoW.RepositorioDomicilio.ComprobarDomicilio(Mapper.Map<Domicilio, pers.Domicilio>(this.Domicilio));
         }

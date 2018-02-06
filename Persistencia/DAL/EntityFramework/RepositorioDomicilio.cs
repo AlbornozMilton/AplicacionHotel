@@ -21,11 +21,11 @@ namespace Persistencia.DAL.EntityFramework
         /// <returns></returns>
         public int ComprobarDomicilio(Domicilio pDomicilio)
         {
-            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CiudadId == pDomicilio.Ciudad.CiudadId);
+            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CodPostal == pDomicilio.Ciudad.CodPostal && c.Nombre == pDomicilio.Ciudad.Nombre);
 
             foreach (var dom in ciudad.Domicilios)
             {
-                if 
+                if // existe
                     (
                      dom.Calle == pDomicilio.Calle &&
                      dom.Numero == pDomicilio.Numero &&
@@ -37,7 +37,8 @@ namespace Persistencia.DAL.EntityFramework
                 }
             }
 
-            pDomicilio.CiudadId = pDomicilio.Ciudad.CiudadId;
+			//sino se agrega nuevo domicilio
+            pDomicilio.CiudadId = ciudad.CiudadId;
             pDomicilio.Ciudad = null;
             this.iDbContext.Domicilios.Add(pDomicilio);
 

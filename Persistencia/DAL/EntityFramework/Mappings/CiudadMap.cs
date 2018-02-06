@@ -12,11 +12,13 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         /// </summary>
         public CiudadMap()
         {
-            this.Property(c => c.CiudadId)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None)
-                .IsRequired();
+			this.Property(c => c.CiudadId)
+				.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
-            this.Property(c => c.Nombre)
+			this.Property(c => c.CodPostal)
+				.IsRequired();
+
+			this.Property(c => c.Nombre)
                 .IsRequired();
         }
     }
