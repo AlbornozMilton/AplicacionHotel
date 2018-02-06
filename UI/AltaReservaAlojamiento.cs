@@ -116,7 +116,7 @@ namespace UI
 
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
-                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, EstadoAlojamiento.Reservado, FechaIni, FechaFin);
+                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin);
 
                     if (this.ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
                     {

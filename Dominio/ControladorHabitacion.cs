@@ -62,7 +62,7 @@ namespace Dominio
         {
             if ((pHab.CuposSimpleDisponibles()<pCantS))
             {
-                throw new Exception("Las cantidades de Cupos Simples que desea no son posibles para la Habitación en estos momentos.");
+                throw new Exception("La cantidad de Cupos Simples deseada no es posibles para las Fechas elegidas");
             }
         }
 
@@ -70,7 +70,7 @@ namespace Dominio
         {
             if (pHab.CuposDoblesDisponibles() < pCantD)
             {
-                throw new Exception("Las cantidades de Cupos Dobles que desea no son posibles para la Habitación en estos momentos.");
+                throw new Exception("La cantidad de Cupos Dobles deseada no es posibles para las Fechas elegidas");
             }
         }
 
@@ -86,7 +86,6 @@ namespace Dominio
                     AlojsResltultado.Add(aloj);
                 }
             }
-
             return AlojsResltultado;
         }
 
