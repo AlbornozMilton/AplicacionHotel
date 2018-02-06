@@ -215,5 +215,21 @@ namespace Dominio
             }
         }
 
-    }
+		public void ControlClienteModificacionALta(int pIdCliente)
+		{
+			List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+
+			foreach (Alojamiento aloj in auxListaAloj)
+			{
+				foreach (Cliente cli in aloj.Clientes)
+				{
+					if (cli.ClienteId == pIdCliente)
+					{
+						throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que es posible modificar su Estado");
+					}
+				}
+			}
+		}
+
+	}
 }

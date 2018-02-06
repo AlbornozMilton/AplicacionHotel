@@ -101,7 +101,7 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            if (AuxClienteSeleccionado == null && tablaResulClientes.CurrentRow != null)
+            if (tablaResulClientes.Rows.Count != 0)
             {
                 this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
             }
@@ -148,12 +148,21 @@ namespace UI
         private void rbn_Alta_CheckedChanged(object sender, EventArgs e)
         {
             auxAlta = true;
-        }
+			Limpiar();
+		}
 
         private void rbn_baja_CheckedChanged(object sender, EventArgs e)
         {
             auxAlta = false;
-        }
+			Limpiar();
+		}
+
+		private void Limpiar()
+		{
+			tablaResulClientes.Rows.Clear();
+			ClienteSeleccionado = null;
+			btn_Aceptar.Enabled = false;
+		}
 
         private void btn_Buscar_MouseHover(object sender, EventArgs e)
         {

@@ -234,7 +234,7 @@
 			// 
 			this.nuevoToolStripMenuItem2.Image = global::UI.Properties.Resources.Boton_Agregar;
 			this.nuevoToolStripMenuItem2.Name = "nuevoToolStripMenuItem2";
-			this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(253, 34);
+			this.nuevoToolStripMenuItem2.Size = new System.Drawing.Size(261, 34);
 			this.nuevoToolStripMenuItem2.Text = "Nuevo";
 			this.nuevoToolStripMenuItem2.Click += new System.EventHandler(this.nuevoToolStripMenuItem2_Click);
 			// 
@@ -242,7 +242,7 @@
 			// 
 			this.buscarToolStripMenuItem2.Image = global::UI.Properties.Resources.boton_buscar;
 			this.buscarToolStripMenuItem2.Name = "buscarToolStripMenuItem2";
-			this.buscarToolStripMenuItem2.Size = new System.Drawing.Size(253, 34);
+			this.buscarToolStripMenuItem2.Size = new System.Drawing.Size(261, 34);
 			this.buscarToolStripMenuItem2.Text = "Buscar";
 			this.buscarToolStripMenuItem2.Click += new System.EventHandler(this.buscarToolStripMenuItem2_Click);
 			// 
@@ -250,15 +250,15 @@
 			// 
 			this.modificarAltaDeClienteToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
 			this.modificarAltaDeClienteToolStripMenuItem.Name = "modificarAltaDeClienteToolStripMenuItem";
-			this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(253, 34);
-			this.modificarAltaDeClienteToolStripMenuItem.Text = "Modificar Alta";
+			this.modificarAltaDeClienteToolStripMenuItem.Size = new System.Drawing.Size(261, 34);
+			this.modificarAltaDeClienteToolStripMenuItem.Text = "Modificar Estado";
 			this.modificarAltaDeClienteToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeClienteToolStripMenuItem_Click);
 			// 
 			// modificarDatosToolStripMenuItem
 			// 
 			this.modificarDatosToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
 			this.modificarDatosToolStripMenuItem.Name = "modificarDatosToolStripMenuItem";
-			this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(253, 34);
+			this.modificarDatosToolStripMenuItem.Size = new System.Drawing.Size(261, 34);
 			this.modificarDatosToolStripMenuItem.Text = "Modificar Datos";
 			this.modificarDatosToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosToolStripMenuItem_Click);
 			// 
