@@ -19,16 +19,12 @@ namespace UI
         {
             InitializeComponent();
             lbl_fechaActual.Text = DateTime.Today.ToString("dd / MM / yyyy");
-            btn_Visualizar.Enabled = false;
-            btn_Aceptar.Enabled = false;
         }
 
         public CancelarAlojamiento(Alojamiento pAloj)
         {
             InitializeComponent();
             lbl_fechaActual.Text = DateTime.Today.ToString("dd / MM / yyyy");
-            btn_Visualizar.Enabled = false;
-            btn_Aceptar.Enabled = false;
             Aloj_Seleccionado = pAloj;
             CargarAlojamientoSeccionado(pAloj);
         }
@@ -36,25 +32,39 @@ namespace UI
         private void CargarAlojamientoSeccionado(Alojamiento pAloj)
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId, pAloj.EstadoAlojamiento, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto(), pAloj.HabitacionId);
+            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId, pAloj.EstadoAlojamiento, pAloj.HabitacionId, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto());
         }
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
             BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.Aloj_Seleccionado != null)
-            {
-                Aloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
-                CargarAlojamientoSeccionado(this.Aloj_Seleccionado);
-                btn_Visualizar.Enabled = true;
-                btn_Aceptar.Enabled = true;
-            }
+			try
+			{
+				if (BuscarAlojamiento.Aloj_Seleccionado != null)
+				{
+					if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento != EstadoAlojamiento.Reservado)
+					{
+						throw new Exception("Operación Cancelada: Solo se puede Cancelar un Alojamiento que este Reservado");
+					}
+
+					Aloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
+					CargarAlojamientoSeccionado(this.Aloj_Seleccionado);
+					btn_Aceptar.Enabled = true;
+				}
+			}
+			catch (Exception E)
+			{
+				VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+				ventanaEmergente.ShowDialog();
+				dGV_ListadoAlojamientos.Rows.Clear();
+				btn_Aceptar.Enabled = false;
+			}
         }
 
         private void btn_Visualizar_Click(object sender, EventArgs e)
         {
-            if (Aloj_Seleccionado != null)
+            if (dGV_ListadoAlojamientos.CurrentRow != null)
             {
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(Aloj_Seleccionado);
                 VentanaVisualizar.ShowDialog();

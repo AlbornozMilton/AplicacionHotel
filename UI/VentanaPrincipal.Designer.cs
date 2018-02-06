@@ -155,7 +155,7 @@
 			// 
 			this.nuevoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("nuevoToolStripMenuItem1.Image")));
 			this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-			this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(263, 34);
+			this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(249, 34);
 			this.nuevoToolStripMenuItem1.Text = "Nuevo";
 			this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
 			// 
@@ -163,7 +163,7 @@
 			// 
 			this.altaDeReservaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_AltaReserva;
 			this.altaDeReservaToolStripMenuItem.Name = "altaDeReservaToolStripMenuItem";
-			this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
+			this.altaDeReservaToolStripMenuItem.Size = new System.Drawing.Size(249, 34);
 			this.altaDeReservaToolStripMenuItem.Text = "Alta de Reserva";
 			this.altaDeReservaToolStripMenuItem.Click += new System.EventHandler(this.altaDeReservaToolStripMenuItem_Click);
 			// 
@@ -171,8 +171,8 @@
 			// 
 			this.cancelarReservaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Cerrar_Cancelar;
 			this.cancelarReservaToolStripMenuItem.Name = "cancelarReservaToolStripMenuItem";
-			this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
-			this.cancelarReservaToolStripMenuItem.Text = "Cancelar Reserva";
+			this.cancelarReservaToolStripMenuItem.Size = new System.Drawing.Size(249, 34);
+			this.cancelarReservaToolStripMenuItem.Text = "Cancelar";
 			this.cancelarReservaToolStripMenuItem.Click += new System.EventHandler(this.cancelarReservaToolStripMenuItem_Click);
 			// 
 			// alojamientoToolStripMenuItem

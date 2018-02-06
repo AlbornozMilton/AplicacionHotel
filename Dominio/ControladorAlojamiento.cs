@@ -299,11 +299,6 @@ namespace Dominio
 
         public void CancelarAlojamiento(Alojamiento pAlojamiento)
         {
-            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
-            {
-                throw new Exception("Operación Cancelada: Solo se puede Cancelar un Alojamiento que esta Reservado");
-            }
-
             //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
             pAlojamiento.Cancelar();
 
