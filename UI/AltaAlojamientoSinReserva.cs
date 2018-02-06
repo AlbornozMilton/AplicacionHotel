@@ -98,7 +98,7 @@ namespace UI
 
                     new ControladorCliente().ControlClienteActivo(ClienteResponsable, FechaIni, FechaFin);
 					
-					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ck_Exclusividad.Enabled == true)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación.", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
@@ -164,10 +164,13 @@ namespace UI
 
 				new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin);
 
-				if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado
+				if (ck_Exclusividad.Enabled == true
 					&&
-					ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado)
-                {
+					ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado
+					&&
+					BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado
+					)
+				{
 					HabSeleccionada.SetExclusividad(false);
 					ck_Exclusividad.Checked = false;
 					ck_Exclusividad.Enabled = false;

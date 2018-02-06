@@ -83,6 +83,8 @@ namespace UI
 						ck_Exclusividad.Enabled = exclusividadCapacidad;
                     }
 
+					dGV_ClienteResponsable.Rows.Clear();
+					ClienteResponsable = null;
                     groupBox4.Enabled = true;
                     groupBox2.Enabled = true;
                 }
@@ -114,7 +116,7 @@ namespace UI
 
                     new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin);
 
-					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ck_Exclusividad.Enabled == true)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
@@ -199,8 +201,16 @@ namespace UI
             try
             {
                 int IdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa, IdAloj);
-                ventanaEmergente.ShowDialog();
+				if (NuevoAlojamiento.Deposito != 0)
+				{
+					VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa, IdAloj);
+					ventanaEmergente.ShowDialog();
+				}
+				else
+				{
+					VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.Exito);
+					ventanaEmergente.ShowDialog();
+				}
                 Close();
             }
             catch (Exception E)
