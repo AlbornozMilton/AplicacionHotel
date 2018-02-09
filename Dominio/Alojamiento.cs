@@ -20,11 +20,11 @@ namespace Dominio
         public byte iCantCuposSimples;
         public byte iCantCuposDobles;
         public bool iExclusividad;
-        private DateTime iFechaReserva = new DateTime();//AGREGAR SIGNO ?
-        private DateTime iFechaEstimadaEgreso = new DateTime();//AGREGAR SIGNO ?
-        private DateTime iFechaEstimadaIngreso = new DateTime();//AGREGAR SIGNO ?
-        private DateTime iFechaIngreso = new DateTime();//AGREGAR SIGNO ?
-        private DateTime iFechaEgreso = new DateTime();//AGREGAR SIGNO ?
+        private DateTime iFechaReserva = new DateTime();
+        private DateTime iFechaEstimadaEgreso = new DateTime();
+        private DateTime iFechaEstimadaIngreso = new DateTime();
+        private DateTime iFechaIngreso = new DateTime();
+        private DateTime iFechaEgreso = new DateTime();
         private EstadoAlojamiento iEstadoAloj;
         private string iContadoresTarifas;
 
@@ -43,7 +43,6 @@ namespace Dominio
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
 
             this.iClientes = new List<Cliente>();
-            //this.iClientes.Add(unClienteResp);
             this.iDniResponsable = unClienteResp.ClienteId;
             //El cliente responsable ya se encuentra en la lista de acompañantes - Verificar
             foreach (var cli in listaAcompañantes)
@@ -206,7 +205,6 @@ namespace Dominio
 
         public void CalcularCostoBase(List<TarifaCliente> pTarifas)
         {
-            //bool lExclusividad = this.iHabitacion.Exclusiva;
             bool lExclusividad = this.iExclusividad;
             double costoBase = 0;
             DateTime auxFechaDesde;
@@ -302,7 +300,7 @@ namespace Dominio
         /// </summary>
         public void Cerrar(DateTime pFechaEgreso)
         {
-            this.iFechaEgreso = pFechaEgreso.Date;
+            this.iFechaEgreso = pFechaEgreso;
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
 

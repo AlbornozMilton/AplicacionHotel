@@ -82,15 +82,15 @@ namespace Dominio
             iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
         }
 
-        public void AcutalizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
+        public void ActualizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
         {
             if (pCostoNoExcl == "")
             {
-                throw new Exception("Debe ingresar una nueva Tarifa");
+                throw new Exception("Debe ingresar una nuevo Costo de Tarifa");
             }
             else if (pCostoExcl == "")
             {
-                throw new Exception("Debe ingresar una nueva Tarifa Exclusiva");
+                throw new Exception("Debe ingresar una nuevo Costo de Tarifa Exclusiva");
             }
             else if ((!IsNumeric(pCostoExcl)) || (!IsNumeric(pCostoNoExcl)))
             {
@@ -120,27 +120,6 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Retorna lista de alojamiento canelados
-        /// </summary>
-        public List<Alojamiento> CancelacionAutomatica()
-        {
-            List<Alojamiento> ListaACancelar = this.AlojamientosACancelar();
-            List<Alojamiento> Resultado = new List<Alojamiento>();
-            ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
-
-            foreach (var aloj in ListaACancelar)
-            {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
-                {
-                    ControlAloj.CancelarAlojamiento(aloj);
-                    Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId)); 
-                }
-            }
-
-            return Resultado;
-        }
-
-        /// <summary>
         /// Retorna lista de alojamientos que deben cerrarse hoy
         /// </summary>
         public List<Alojamiento> AlojamientosACerrar()
@@ -158,24 +137,10 @@ namespace Dominio
             return Resultado;
         }
 
-        /// <summary>
-        /// Retorna lista de alojamiento cerrados
-        /// </summary>
-        public List<Alojamiento> CierreAutomatico()
-        {
-            List<Alojamiento> ListaACerrar = this.AlojamientosACerrar();
-            List<Alojamiento> Resultado = new List<Alojamiento>();
-            ControladorAlojamiento ControlAloj = new ControladorAlojamiento();
-
-            foreach (var aloj in ListaACerrar)
-            {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.AddDays(1).CompareTo(DateTime.Now.Date) == 0)
-                {
-                    ControlAloj.CerrarAlojamiento(aloj);
-                    Resultado.Add(ControlAloj.BuscarAlojamientoPorID(aloj.AlojamientoId));
-                }
-            }
-            return Resultado;
-        }
+		public void NuevaCiudad(string pCodPostal, string pNombre)
+		{
+			iUoW.RepositorioCiudad.Add(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)));
+		}
+        
     }
 }

@@ -26,19 +26,27 @@ namespace UI
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
             BuscarCliente.ShowDialog();
-            if (BuscarCliente.ClienteSeleccionado != null)
-            {
-                ClienteSeleccionado = BuscarCliente.ClienteSeleccionado;
-                RellenarCampos();
-            }
-            else
-            {
-                tablaResulCliente.Rows.Clear();
-                btn_darBaja.Enabled = false;
-                btn_aceptar.Enabled = false;
-                btn_aceptar.Enabled = false;
-            }
-        }
+			try
+			{
+				if (BuscarCliente.ClienteSeleccionado == null)
+				{
+					throw new Exception("Debe seleccionar un Cliente");
+				}
+
+				new ControladorCliente().ControlClienteModificacionALta(BuscarCliente.ClienteSeleccionado.ClienteId);
+
+				ClienteSeleccionado = BuscarCliente.ClienteSeleccionado;
+				RellenarCampos();
+			}
+			catch (Exception E)
+			{
+				tablaResulCliente.Rows.Clear();
+				btn_darBaja.Enabled = false;
+				btn_aceptar.Enabled = false;
+				btn_aceptar.Enabled = false;
+				new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+			}
+		}
 
         private void RellenarCampos()
         {
@@ -65,7 +73,7 @@ namespace UI
         private void btn_darAlta_Click(object sender, EventArgs e)
         {
             new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, true);
-            MessageBox.Show("Cliente dado de Alta.");
+            new VentanaEmergente("          Cliente dado de Alta", TipoMensaje.Exito).ShowDialog();
             ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(ClienteSeleccionado.ClienteId, !ClienteSeleccionado.EnAlta);
             RellenarCampos();
         }
@@ -73,7 +81,7 @@ namespace UI
         private void btn_darBaja_Click(object sender, EventArgs e)
         {
             new ControladorCliente().ModificarAltaCliente(ClienteSeleccionado.ClienteId, false);
-            MessageBox.Show("Cliente dado de Baja.");
+            new VentanaEmergente("          Cliente dado de Baja", TipoMensaje.Exito).ShowDialog();
             ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(ClienteSeleccionado.ClienteId, !ClienteSeleccionado.EnAlta);
             RellenarCampos();
         }

@@ -30,14 +30,16 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultarHabitaciones));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
-            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
+            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +75,7 @@
             this.dGV_Habs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Id,
             this.clm_capacidad,
+            this.clm_Piso,
             this.clm_Nombre,
             this.clm_CostoBase});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -92,38 +95,6 @@
             this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Habs.Size = new System.Drawing.Size(720, 255);
             this.dGV_Habs.TabIndex = 0;
-            // 
-            // clm_Id
-            // 
-            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Id.FillWeight = 40F;
-            this.clm_Id.HeaderText = "Número";
-            this.clm_Id.Name = "clm_Id";
-            this.clm_Id.ReadOnly = true;
-            // 
-            // clm_capacidad
-            // 
-            this.clm_capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_capacidad.FillWeight = 40F;
-            this.clm_capacidad.HeaderText = "Capacidad";
-            this.clm_capacidad.Name = "clm_capacidad";
-            this.clm_capacidad.ReadOnly = true;
-            // 
-            // clm_Nombre
-            // 
-            this.clm_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Nombre.FillWeight = 40F;
-            this.clm_Nombre.HeaderText = "Cupos Simples";
-            this.clm_Nombre.Name = "clm_Nombre";
-            this.clm_Nombre.ReadOnly = true;
-            // 
-            // clm_CostoBase
-            // 
-            this.clm_CostoBase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_CostoBase.FillWeight = 40F;
-            this.clm_CostoBase.HeaderText = "Cupos Dobles";
-            this.clm_CostoBase.Name = "clm_CostoBase";
-            this.clm_CostoBase.ReadOnly = true;
             // 
             // button1
             // 
@@ -147,16 +118,58 @@
             this.btn_Aceptar.UseVisualStyleBackColor = true;
             this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
+            // clm_Id
+            // 
+            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clm_Id.FillWeight = 30F;
+            this.clm_Id.HeaderText = "Número";
+            this.clm_Id.Name = "clm_Id";
+            this.clm_Id.ReadOnly = true;
+            this.clm_Id.Width = 98;
+            // 
+            // clm_capacidad
+            // 
+            this.clm_capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_capacidad.FillWeight = 30F;
+            this.clm_capacidad.HeaderText = "Capacidad";
+            this.clm_capacidad.Name = "clm_capacidad";
+            this.clm_capacidad.ReadOnly = true;
+            // 
+            // clm_Piso
+            // 
+            this.clm_Piso.FillWeight = 30F;
+            this.clm_Piso.HeaderText = "Piso";
+            this.clm_Piso.Name = "clm_Piso";
+            this.clm_Piso.ReadOnly = true;
+            // 
+            // clm_Nombre
+            // 
+            this.clm_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Nombre.FillWeight = 30F;
+            this.clm_Nombre.HeaderText = "Cupos Simples";
+            this.clm_Nombre.Name = "clm_Nombre";
+            this.clm_Nombre.ReadOnly = true;
+            // 
+            // clm_CostoBase
+            // 
+            this.clm_CostoBase.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_CostoBase.FillWeight = 30F;
+            this.clm_CostoBase.HeaderText = "Cupos Dobles";
+            this.clm_CostoBase.Name = "clm_CostoBase";
+            this.clm_CostoBase.ReadOnly = true;
+            // 
             // ConsultarHabitaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(750, 344);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ConsultarHabitaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -176,6 +189,7 @@
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_capacidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Piso;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoBase;
     }

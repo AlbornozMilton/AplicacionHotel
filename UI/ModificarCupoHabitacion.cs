@@ -52,33 +52,41 @@ namespace UI
             
         private void btn_buscarHab_Click(object sender, EventArgs e)
         {
-            btn_confirmar.Enabled = false;
-            ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones();
-            consultarHabitaciones.ShowDialog();
-            if (consultarHabitaciones.HabSeleccionada != null)
+            try
             {
-                List<Alojamiento> auxListaAlojs = new ControladorHabitacion().ControlModificarAltaCupos(consultarHabitaciones.HabSeleccionada.HabitacionId);
-                if (auxListaAlojs.Count == 0)
+                btn_confirmar.Enabled = false;
+                ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones();
+                consultarHabitaciones.ShowDialog();
+                if (consultarHabitaciones.HabSeleccionada != null)
                 {
-                    CargarHabitacion(consultarHabitaciones.HabSeleccionada);
-                    CargarCupos(consultarHabitaciones.HabSeleccionada.Cupos);
-                    btn_confirmar.Enabled = true;
-                    HabSeleccionada = consultarHabitaciones.HabSeleccionada;
+                    List<Alojamiento> auxListaAlojs = new ControladorHabitacion().ControlModificarAltaCupos(consultarHabitaciones.HabSeleccionada.HabitacionId);
+                    if (auxListaAlojs.Count == 0)
+                    {
+                        CargarHabitacion(consultarHabitaciones.HabSeleccionada);
+                        CargarCupos(consultarHabitaciones.HabSeleccionada.Cupos);
+                        btn_confirmar.Enabled = true;
+                        HabSeleccionada = consultarHabitaciones.HabSeleccionada;
+                    }
+                    else
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("No es posible la Habitación seleccionada ya que se encuentra activa en los siguientes Alojamientos", TipoMensaje.Alerta);
+                        ventanaEmergente.ShowDialog();
+                        dGV_Habs.Rows.Clear();
+                        dataGridView_cupos.Rows.Clear();
+                        ListarAlojamientos ListarAlojs = new ListarAlojamientos(auxListaAlojs);
+                        ListarAlojs.ShowDialog();
+                    }
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("No es posible la Habitación seleccionada ya que se ecuentra activa en los siguientes Alojamietos", TipoMensaje.Alerta);
-                    ventanaEmergente.ShowDialog();
                     dGV_Habs.Rows.Clear();
                     dataGridView_cupos.Rows.Clear();
-                    ListarAlojamientos ListarAlojs = new ListarAlojamientos(auxListaAlojs);
-                    ListarAlojs.ShowDialog();
+                    throw new Exception("   Debe seleccionar una Habitación");
                 }
             }
-            else
+            catch (Exception E)
             {
-                dGV_Habs.Rows.Clear();
-                dataGridView_cupos.Rows.Clear();
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -97,6 +105,11 @@ namespace UI
                 HabSeleccionada.ModificarAltaCupo(dataGridView_cupos.CurrentCell.RowIndex);
                 CargarCupos(HabSeleccionada.Cupos);
             }
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

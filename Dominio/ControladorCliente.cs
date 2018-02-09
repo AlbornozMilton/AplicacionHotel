@@ -100,10 +100,10 @@ namespace Dominio
             return resultado;
         }
 
-        public List<string> ObtenerCallesDeCiudad(string pCodPostal)
+        public List<string> ObtenerCallesDeCiudad(string pCodPostal, string pNombreCiudad)
         {
             List<string> calles = new List<string>();
-            foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal)))
+            foreach (var calle in iUoW.RepositorioCiudad.CallesDeCiudad(Convert.ToInt32(pCodPostal), pNombreCiudad))
             {
                 calles.Add(calle.ToString());
             }
@@ -113,9 +113,9 @@ namespace Dominio
         /// <summary>
         /// Genera un Domicilio con una Ciudad en este Controlador.
         /// </summary>
-        public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal)
+        public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal, string pNombre)
         {
-            Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.Get(Convert.ToInt32(pCodPostal)));
+            Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.GetCiudad(Convert.ToInt32(pCodPostal), pNombre));
             this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
             IdDomiciio = iUoW.RepositorioDomicilio.ComprobarDomicilio(Mapper.Map<Domicilio, pers.Domicilio>(this.Domicilio));
         }
@@ -183,7 +183,7 @@ namespace Dominio
         /// <summary>
         /// Produce excepción si el Cliente elegido ya se encuentra en algún Alojamiento Activo.
         /// </summary>
-        public void ControlClienteActivo(Cliente pCliente, EstadoAlojamiento pEstado, DateTime pFechaDesde, DateTime pFechaHasta)
+        public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta)
         {
             List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
 
@@ -193,11 +193,11 @@ namespace Dominio
                 {
                     if (cliente.ClienteId == pCliente.ClienteId)
                     {
-                        if (pEstado == EstadoAlojamiento.Alojado && aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                        if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                         {
-                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado. Verifique si debe realizar un Cierre de Alojamiento");
+                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
                         }
-                        else if (pEstado == EstadoAlojamiento.Reservado && aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                        else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                         {
                             //control de fechas
                             if 
@@ -207,7 +207,7 @@ namespace Dominio
                                     !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                                 )
                             {
-                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas seleccionadas. Verifique si debe realizar un Alta de Reserva.");
+                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
                             }
                         }
                     }
@@ -215,5 +215,21 @@ namespace Dominio
             }
         }
 
-    }
+		public void ControlClienteModificacionALta(int pIdCliente)
+		{
+			List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+
+			foreach (Alojamiento aloj in auxListaAloj)
+			{
+				foreach (Cliente cli in aloj.Clientes)
+				{
+					if (cli.ClienteId == pIdCliente)
+					{
+						throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que es posible modificar su Estado");
+					}
+				}
+			}
+		}
+
+	}
 }

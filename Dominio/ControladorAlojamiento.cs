@@ -59,6 +59,16 @@ namespace Dominio
             return (listaAlojamientos);
         }
 
+        public List<Alojamiento> AlojamientosConDeuda()
+        {
+            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.AlojamientosConDeuda();
+            List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
+            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            {
+                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            return listaAlojamientos;
+        }
         /// <summary>
         /// Realiza la ocupación para una fechas determinadas
         /// </summary>
@@ -289,11 +299,6 @@ namespace Dominio
 
         public void CancelarAlojamiento(Alojamiento pAlojamiento)
         {
-            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado))
-            {
-                throw new Exception("Operación Cancelada: Solo se puede Cancelar un Alojamiento que esta Reservado");
-            }
-
             //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
             pAlojamiento.Cancelar();
 

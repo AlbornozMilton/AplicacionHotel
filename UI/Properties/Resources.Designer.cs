@@ -73,6 +73,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Boton_Actualizar {
+            get {
+                object obj = ResourceManager.GetObject("Boton_Actualizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Boton_Agregar {
             get {
                 object obj = ResourceManager.GetObject("Boton_Agregar", resourceCulture);
@@ -273,6 +283,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap gears_200 {
+            get {
+                object obj = ResourceManager.GetObject("gears-200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Gif_Cagando {
             get {
                 object obj = ResourceManager.GetObject("Gif_Cagando", resourceCulture);
@@ -296,6 +316,16 @@ namespace UI.Properties {
         public static System.Drawing.Bitmap ImagenInicial_2 {
             get {
                 object obj = ResourceManager.GetObject("ImagenInicial_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap orbit_400px {
+            get {
+                object obj = ResourceManager.GetObject("orbit-400px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

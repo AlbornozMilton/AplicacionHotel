@@ -131,6 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.ClientSize = new System.Drawing.Size(403, 186);
             this.Controls.Add(this.button1);
@@ -141,6 +142,7 @@
             this.Controls.Add(this.textBox_pass);
             this.Controls.Add(this.textBox_user);
             this.Controls.Add(this.button_aceptar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReInicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reanudar Sesión";

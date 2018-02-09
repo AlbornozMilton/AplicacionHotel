@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarServicio));
             this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
             this.cant_Servicio = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -456,9 +457,9 @@
             this.btn_buscarServicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscarServicio.Location = new System.Drawing.Point(15, 132);
             this.btn_buscarServicio.Name = "btn_buscarServicio";
-            this.btn_buscarServicio.Size = new System.Drawing.Size(146, 30);
+            this.btn_buscarServicio.Size = new System.Drawing.Size(215, 30);
             this.btn_buscarServicio.TabIndex = 13;
-            this.btn_buscarServicio.Text = "Consultar Servicio";
+            this.btn_buscarServicio.Text = "Consultar Servicios";
             this.btn_buscarServicio.UseVisualStyleBackColor = true;
             this.btn_buscarServicio.Click += new System.EventHandler(this.btn_buscarServicio_Click);
             // 
@@ -477,6 +478,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(917, 310);
@@ -490,6 +492,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cant_Servicio);
             this.Controls.Add(this.btn_BuscarAlojamiento);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AgregarServicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -52,6 +52,7 @@ namespace UI
         {
 
             lbl_TextPrincipal.Text = Mensaje;
+            this.Text = "¡Exito!";
             pictureBox_icon.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox_icon.Image = Properties.Resources.Exito_Icon;
 
@@ -60,7 +61,7 @@ namespace UI
             {
                 case TipoMensaje.Exito:
                     {
-                        this.Text = "Exito";
+                        
                     }
                     break;
                 case TipoMensaje.Alerta:

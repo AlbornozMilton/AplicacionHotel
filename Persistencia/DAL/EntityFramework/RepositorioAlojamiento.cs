@@ -194,5 +194,14 @@ namespace Persistencia.DAL.EntityFramework
 
             iDbContext.SaveChanges();
         }
+
+        public IEnumerable<Alojamiento> AlojamientosConDeuda()
+        {
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion.Cupos").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
+                               where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado) && (aloj.MontoDeuda > 0))
+                               select aloj;
+
+            return alojamientos.ToList<Alojamiento>();
+        }
     }
 }

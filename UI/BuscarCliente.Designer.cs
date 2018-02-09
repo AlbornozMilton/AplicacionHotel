@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuscarCliente));
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -130,13 +131,15 @@
             // 
             // btn_nuevoCliente
             // 
+            this.btn_nuevoCliente.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_nuevoCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nuevoCliente.ForeColor = System.Drawing.Color.White;
             this.btn_nuevoCliente.Location = new System.Drawing.Point(768, 59);
             this.btn_nuevoCliente.Name = "btn_nuevoCliente";
             this.btn_nuevoCliente.Size = new System.Drawing.Size(168, 47);
             this.btn_nuevoCliente.TabIndex = 11;
             this.btn_nuevoCliente.Text = "Nuevo Cliente";
-            this.btn_nuevoCliente.UseVisualStyleBackColor = true;
+            this.btn_nuevoCliente.UseVisualStyleBackColor = false;
             this.btn_nuevoCliente.Click += new System.EventHandler(this.btn_nuevoCliente_Click);
             // 
             // textBox_Legajo
@@ -385,6 +388,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -393,6 +397,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.btn_Cancelar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "BuscarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

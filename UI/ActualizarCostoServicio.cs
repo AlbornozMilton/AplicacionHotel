@@ -11,6 +11,7 @@ namespace UI
         public ActualizarCostoServicio()
         {
             InitializeComponent();
+            txb_nuevoCosto.Enabled = false;
             btn_Aceptar.Enabled = false;
         }
 
@@ -22,17 +23,26 @@ namespace UI
 
         private void btn_buscarServicio_Click(object sender, EventArgs e)
         {
-            AdministrarServicios Actualizar = new AdministrarServicios();
-            Actualizar.ShowDialog();
-            if (Actualizar.ServicioSeleccionado != null)
+            try
             {
-                this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
-                CargarServicioSeccionado(this.ServicioSeleccionado);
-                btn_Aceptar.Enabled = true;
+                AdministrarServicios Actualizar = new AdministrarServicios();
+                Actualizar.ShowDialog();
+                if (Actualizar.ServicioSeleccionado != null)
+                {
+                    this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
+                    CargarServicioSeccionado(this.ServicioSeleccionado);
+                    txb_nuevoCosto.Enabled = true;
+                    btn_Aceptar.Enabled = true;
+                }
+                else
+                {
+                    dataGridView_Servicio.Rows.Clear();
+                    throw new Exception("   Debe seleccionar un Servicio");
+                }
             }
-            else
+            catch (Exception E)
             {
-                dataGridView_Servicio.Rows.Clear();
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
 
@@ -51,6 +61,17 @@ namespace UI
                 Close();
                 AdministrarServicios Actualizar = new AdministrarServicios();
                 Actualizar.ShowDialog();
+            }
+            catch (FormatException)
+            {
+                if (txb_nuevoCosto.Text == "")
+                {
+                    new VentanaEmergente("Debe ingresar un nuevo Costo", TipoMensaje.Alerta).ShowDialog();
+                }
+                else
+                {
+                    new VentanaEmergente("Costo Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
+                }
             }
             catch (Exception E)
             {

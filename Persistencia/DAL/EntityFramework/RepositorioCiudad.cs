@@ -14,23 +14,27 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        //public override IEnumerable<Ciudad> GetAll()
-        //{
-        //    return iDbContext.Ciudades.Include("Domicilios");
-        //}
-
-        public override Ciudad Get(int pId)
+        public Ciudad GetCiudad(int pCodPostal, string pNombre)
         {
-            return iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CiudadId == pId);
+            return iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CodPostal == pCodPostal && c.Nombre == pNombre);
         }
 
-        public IEnumerable<string> CallesDeCiudad(int pCodPostal)
+        public IEnumerable<string> CallesDeCiudad(int pCodPostal, string pNombre)
         {
             var calles = from domicilio in iDbContext.Domicilios
-                         where pCodPostal == domicilio.CiudadId
+                         where pCodPostal == domicilio.Ciudad.CodPostal && pNombre == domicilio.Ciudad.Nombre
                          select domicilio.Calle;
 
             return calles.Distinct();
         }
-    }
+
+		public override void Add(Ciudad pCiudad)
+		{
+			if (GetCiudad(pCiudad.CodPostal, pCiudad.Nombre) != null)
+				throw new Exception("Ciudad Existente");
+
+			iDbContext.Ciudades.Add(pCiudad);
+			iDbContext.SaveChanges();
+		}
+	}
 }
