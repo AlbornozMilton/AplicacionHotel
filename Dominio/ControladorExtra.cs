@@ -156,23 +156,23 @@ namespace Dominio
 					)
 				)
 			{
-				color = "LightGoldenrodYellow"; //sin deposito tras 72hs
+				color = "Yellow"; //sin deposito tras 72hs
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
 			{
-				color = "DeepSkyBlue"; //alojamientos que se deben dar de alta hoy
+				color = "Aquamarine"; //alojamientos que se deben dar de alta hoy
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == 0)
 			{
-				color = "CadetBlue"; //alojamientos que se deben cerrar hoy
+				color = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) > 0)
 			{
-				color = "MediumVioletRed"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
+				color = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date.AddDays(1)) > 0)
 			{
-				color = "IndianRed"; //alojamientos sin dar de baja tras pasar fecha de egreso
+				color = "Plum"; //alojamientos sin dar de baja tras pasar fecha de egreso
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
 			{
