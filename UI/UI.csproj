@@ -230,6 +230,12 @@
     <Compile Include="VentanaPrincipal.Designer.cs">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaUsuario.Designer.cs">
+      <DependentUpon>VistaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="VisualizarAlojamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaUsuario.resx">
+      <DependentUpon>VistaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VisualizarAlojamiento.resx">
       <DependentUpon>VisualizarAlojamiento.cs</DependentUpon>

@@ -1,12 +1,6 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -15,7 +9,6 @@ namespace UI
     {
         public Cliente ClienteSeleccionado;
         private Cliente AuxClienteSeleccionado;
-        ControladorCliente ControladorCliente = new ControladorCliente();
         private bool auxAlta;
 
         public void setEnableAltas(bool pValor)
@@ -46,18 +39,6 @@ namespace UI
             Close();
         }
 
-        //private void pictureBox1_MouseHover(object sender, EventArgs e)
-        //{
-        //    btn_Buscar.Image = Properties.Resources.boton_buscar_seleccion2;
-        //    label1.Visible = true;
-        //}
-
-        //private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        //{
-        //    btn_Buscar.Image = Properties.Resources.boton_buscar;
-        //    label4.Visible = false;
-        //}
-
         private void CargarCliente()
         {
             tablaResulClientes.Rows.Add(AuxClienteSeleccionado.ClienteId, AuxClienteSeleccionado.Legajo, AuxClienteSeleccionado.Apellido, AuxClienteSeleccionado.Nombre, AuxClienteSeleccionado.TarifaCliente.NombreTarifa);
@@ -67,26 +48,27 @@ namespace UI
         {
             try
             {
-                tablaResulClientes.Rows.Clear();
-                if (radioButton1.Checked && textBox_DNI.Text.Length > 0) //DNi
-                {
-                    AuxClienteSeleccionado = ControladorCliente.BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
-                    CargarCliente();
-                }
-                else if (radioButton_nombre.Checked)//NOMBRE
-                {
-                    List<Cliente> list = ControladorCliente.BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
-                    foreach (var cli in list)
-                    {
-                        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
-                    }
-                }
-                else if (radioButton_legajo.Checked && textBox_Legajo.Text.Length > 0) //LEGAJO
-                {
-                    AuxClienteSeleccionado = ControladorCliente.BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
-                    CargarCliente();
-                }
-                btn_Aceptar.Enabled = true;
+				//tablaResulClientes.Rows.Clear();
+				//if (radioButton1.Checked && textBox_DNI.Text.Length > 0) //DNi
+				//{
+				//    AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
+				//    CargarCliente();
+				//}
+				//else if (radioButton_nombre.Checked)//NOMBRE
+				//{
+				//    List<Cliente> list = new ControladorCliente().BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
+				//    foreach (var cli in list)
+				//    {
+				//        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
+				//    }
+				//}
+				//else if (radioButton_legajo.Checked && textBox_Legajo.Text.Length > 0) //LEGAJO
+				//{
+				//    AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
+				//    CargarCliente();
+				//}
+				//btn_Aceptar.Enabled = true;
+				ResultadoBusqueda();
             }
             catch (FormatException)
             {
@@ -99,11 +81,35 @@ namespace UI
             }
         }
 
+		private void ResultadoBusqueda()
+		{
+			tablaResulClientes.Rows.Clear();
+			if (radioButton1.Checked && textBox_DNI.Text.Length > 0) //DNi
+			{
+				AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
+				CargarCliente();
+			}
+			else if (radioButton_nombre.Checked)//NOMBRE
+			{
+				List<Cliente> list = new ControladorCliente().BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
+				foreach (var cli in list)
+				{
+					tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
+				}
+			}
+			else if (radioButton_legajo.Checked && textBox_Legajo.Text.Length > 0) //LEGAJO
+			{
+				AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
+				CargarCliente();
+			}
+			btn_Aceptar.Enabled = true;
+		}
+
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             if (tablaResulClientes.Rows.Count != 0)
             {
-                this.ClienteSeleccionado = ControladorCliente.BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
+                this.ClienteSeleccionado = new ControladorCliente().BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta);
             }
             else
             {
@@ -175,5 +181,15 @@ namespace UI
             btn_Buscar.SizeMode = PictureBoxSizeMode.CenterImage;
             lbl_Buscar.Visible = false;
         }
-    }
+
+		private void button_verDatosCliente_Click(object sender, EventArgs e)
+		{
+			if (tablaResulClientes.CurrentRow != null)
+			{
+				VistaUsuario vistaUsuario = new VistaUsuario(new ControladorCliente().BuscarClientePorDni(Convert.ToInt32(tablaResulClientes.CurrentRow.Cells[0].Value), auxAlta));
+				vistaUsuario.ShowDialog();
+				ResultadoBusqueda();
+			}
+		}
+	}
 }

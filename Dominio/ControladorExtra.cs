@@ -7,6 +7,7 @@ using Persistencia.DAL.EntityFramework;
 using pers = Persistencia.Domain;
 using AutoMapper;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Dominio
 {
@@ -14,7 +15,7 @@ namespace Dominio
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
-        public void EsLetra (KeyPressEventArgs e)
+		public void EsLetra (KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar))
             {
@@ -141,6 +142,51 @@ namespace Dominio
 		{
 			iUoW.RepositorioCiudad.Add(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)));
 		}
-        
-    }
+
+		public string DeterminarColor(Alojamiento aloj)
+		{
+			 string color = "White";
+
+			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
+				&&
+				(
+					(DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
+						&
+						(aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
+					)
+				)
+			{
+				color = "Yellow"; //sin deposito tras 72hs
+			}
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
+			{
+				color = "Aquamarine"; //alojamientos que se deben dar de alta hoy
+			}
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == 0)
+			{
+				color = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
+			}
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) > 0)
+			{
+				color = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
+			}
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date.AddDays(1)) > 0)
+			{
+				color = "Plum"; //alojamientos sin dar de baja tras pasar fecha de egreso
+			}
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
+			{
+				if (aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
+				{
+					color = "Orange"; //alojamientos cerrados sin pago de servicios:
+				}
+				else
+				{
+					color = "OrangeRed"; //alojamientos cerrados adeudados (pago de servicios incompleto)
+				}
+			}
+
+			return color;
+		}
+	}
 }

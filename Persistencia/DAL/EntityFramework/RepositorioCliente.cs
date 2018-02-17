@@ -118,6 +118,7 @@ namespace Persistencia.DAL.EntityFramework
             pClienteViejo.Nombre = pClienteNuevo.Nombre;
             pClienteViejo.Apellido = pClienteNuevo.Apellido;
             pClienteViejo.Telefono = pClienteNuevo.Telefono;
+			pClienteViejo.Correo = pClienteNuevo.Correo;
             pClienteViejo.TarifaClienteId = pClienteNuevo.TarifaCliente.TarifaClienteId;
             pClienteViejo.DomicilioId = pIdDomicilio;
         }

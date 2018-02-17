@@ -26,7 +26,7 @@ namespace Dominio
             this.iNombre = pNombre;
             this.iApellido = pApellido;
             this.iTelefono = pTel;
-            this.iCorreo = pCorreo;
+			this.iCorreo = pCorreo;
             this.iDomicilio = pDomicilio;
             this.iTarifa = pTarifa;
             this.iEnAlta = true;

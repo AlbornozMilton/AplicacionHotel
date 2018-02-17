@@ -31,8 +31,8 @@
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.MenuStrip menuStrip1;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +86,21 @@
 			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+			this.groupBox_ColorsRef = new System.Windows.Forms.GroupBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox4 = new System.Windows.Forms.PictureBox();
+			this.pictureBox5 = new System.Windows.Forms.PictureBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.pictureBox6 = new System.Windows.Forms.PictureBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.pictureBox7 = new System.Windows.Forms.PictureBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.pictureBox8 = new System.Windows.Forms.PictureBox();
 			menuStrip1 = new System.Windows.Forms.MenuStrip();
 			menuStrip1.SuspendLayout();
 			this.groupBox_disponibilidad.SuspendLayout();
@@ -93,6 +108,14 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+			this.groupBox_ColorsRef.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -111,7 +134,7 @@
 			menuStrip1.Location = new System.Drawing.Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
 			menuStrip1.ShowItemToolTips = true;
-			menuStrip1.Size = new System.Drawing.Size(1129, 38);
+			menuStrip1.Size = new System.Drawing.Size(1362, 38);
 			menuStrip1.Stretch = false;
 			menuStrip1.TabIndex = 0;
 			menuStrip1.Text = "menuStrip1";
@@ -123,21 +146,21 @@
             this.cerrarToolStripMenuItem});
 			this.sesionToolStripMenuItem1.Name = "sesionToolStripMenuItem1";
 			this.sesionToolStripMenuItem1.Size = new System.Drawing.Size(90, 34);
-			this.sesionToolStripMenuItem1.Text = "Sesion";
+			this.sesionToolStripMenuItem1.Text = "Sesión";
 			// 
 			// iniciarToolStripMenuItem
 			// 
 			this.iniciarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_InicioSesion;
 			this.iniciarToolStripMenuItem.Name = "iniciarToolStripMenuItem";
-			this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
-			this.iniciarToolStripMenuItem.Text = "Iniciar";
+			this.iniciarToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
+			this.iniciarToolStripMenuItem.Text = "Re-Iniciar";
 			this.iniciarToolStripMenuItem.Click += new System.EventHandler(this.iniciarToolStripMenuItem_Click);
 			// 
 			// cerrarToolStripMenuItem
 			// 
 			this.cerrarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_CerrarSesion;
 			this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-			this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+			this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
 			this.cerrarToolStripMenuItem.Text = "Cerrar";
 			this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
 			// 
@@ -451,7 +474,7 @@
 			this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.groupBox2.Location = new System.Drawing.Point(12, 177);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(1108, 352);
+			this.groupBox2.Size = new System.Drawing.Size(1341, 352);
 			this.groupBox2.TabIndex = 4;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "OCUPACIÓN ACTUAL";
@@ -461,7 +484,7 @@
 			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
 			this.pictureBox1.Image = global::UI.Properties.Resources.gears_200;
-			this.pictureBox1.Location = new System.Drawing.Point(546, 211);
+			this.pictureBox1.Location = new System.Drawing.Point(662, 211);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(63, 56);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -472,7 +495,7 @@
 			// btn_VerDetalle
 			// 
 			this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_VerDetalle.Location = new System.Drawing.Point(961, 29);
+			this.btn_VerDetalle.Location = new System.Drawing.Point(1194, 29);
 			this.btn_VerDetalle.Name = "btn_VerDetalle";
 			this.btn_VerDetalle.Size = new System.Drawing.Size(141, 30);
 			this.btn_VerDetalle.TabIndex = 5;
@@ -501,14 +524,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
 			this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -520,20 +543,20 @@
             this.Column4,
             this.Column5,
             this.Column6});
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle14;
 			this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
 			this.dGV_Alojamientos.RowHeadersVisible = false;
 			this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Alojamientos.Size = new System.Drawing.Size(1099, 272);
+			this.dGV_Alojamientos.Size = new System.Drawing.Size(1332, 272);
 			this.dGV_Alojamientos.TabIndex = 0;
 			// 
 			// Column7
@@ -611,6 +634,160 @@
 			// 
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// groupBox_ColorsRef
+			// 
+			this.groupBox_ColorsRef.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox_ColorsRef.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.groupBox_ColorsRef.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox_ColorsRef.Controls.Add(this.label9);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox8);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox7);
+			this.groupBox_ColorsRef.Controls.Add(this.label8);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox6);
+			this.groupBox_ColorsRef.Controls.Add(this.label7);
+			this.groupBox_ColorsRef.Controls.Add(this.label6);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox5);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox4);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox3);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox2);
+			this.groupBox_ColorsRef.Controls.Add(this.label5);
+			this.groupBox_ColorsRef.Controls.Add(this.label3);
+			this.groupBox_ColorsRef.Controls.Add(this.label4);
+			this.groupBox_ColorsRef.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.groupBox_ColorsRef.Location = new System.Drawing.Point(700, 43);
+			this.groupBox_ColorsRef.Name = "groupBox_ColorsRef";
+			this.groupBox_ColorsRef.Size = new System.Drawing.Size(653, 130);
+			this.groupBox_ColorsRef.TabIndex = 5;
+			this.groupBox_ColorsRef.TabStop = false;
+			this.groupBox_ColorsRef.Text = "REFERENCIAS DE COLORES PARA ALOJAMIENTOS";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(59, 49);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(220, 23);
+			this.label3.TabIndex = 1;
+			this.label3.Text = "Reservas a Dar de Alta Hoy";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(59, 25);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(269, 23);
+			this.label4.TabIndex = 0;
+			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(59, 77);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(138, 23);
+			this.label5.TabIndex = 5;
+			this.label5.Text = "Cierres para Hoy";
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
+			this.pictureBox2.Location = new System.Drawing.Point(10, 29);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox2.TabIndex = 6;
+			this.pictureBox2.TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.BackColor = System.Drawing.Color.Aquamarine;
+			this.pictureBox3.Location = new System.Drawing.Point(10, 53);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox3.TabIndex = 7;
+			this.pictureBox3.TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			this.pictureBox4.BackColor = System.Drawing.Color.DarkTurquoise;
+			this.pictureBox4.Location = new System.Drawing.Point(10, 79);
+			this.pictureBox4.Name = "pictureBox4";
+			this.pictureBox4.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox4.TabIndex = 8;
+			this.pictureBox4.TabStop = false;
+			// 
+			// pictureBox5
+			// 
+			this.pictureBox5.BackColor = System.Drawing.Color.Pink;
+			this.pictureBox5.Location = new System.Drawing.Point(10, 105);
+			this.pictureBox5.Name = "pictureBox5";
+			this.pictureBox5.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox5.TabIndex = 9;
+			this.pictureBox5.TabStop = false;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(59, 101);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(145, 23);
+			this.label6.TabIndex = 10;
+			this.label6.Text = "Faltan dar de Alta";
+			// 
+			// pictureBox6
+			// 
+			this.pictureBox6.BackColor = System.Drawing.Color.Orange;
+			this.pictureBox6.Location = new System.Drawing.Point(366, 68);
+			this.pictureBox6.Name = "pictureBox6";
+			this.pictureBox6.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox6.TabIndex = 12;
+			this.pictureBox6.TabStop = false;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(415, 64);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(237, 23);
+			this.label7.TabIndex = 11;
+			this.label7.Text = "Cerrado sin Pago de Servicios";
+			// 
+			// pictureBox7
+			// 
+			this.pictureBox7.BackColor = System.Drawing.Color.OrangeRed;
+			this.pictureBox7.Location = new System.Drawing.Point(366, 105);
+			this.pictureBox7.Name = "pictureBox7";
+			this.pictureBox7.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox7.TabIndex = 14;
+			this.pictureBox7.TabStop = false;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(415, 101);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(162, 23);
+			this.label8.TabIndex = 13;
+			this.label8.Text = "Cerrado Con Deuda";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(415, 25);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(108, 23);
+			this.label9.TabIndex = 16;
+			this.label9.Text = "Faltan Cerrar";
+			// 
+			// pictureBox8
+			// 
+			this.pictureBox8.BackColor = System.Drawing.Color.Plum;
+			this.pictureBox8.Location = new System.Drawing.Point(366, 29);
+			this.pictureBox8.Name = "pictureBox8";
+			this.pictureBox8.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox8.TabIndex = 15;
+			this.pictureBox8.TabStop = false;
+			// 
 			// VentanaPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,12 +796,15 @@
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(1129, 541);
+			this.ClientSize = new System.Drawing.Size(1362, 541);
+			this.Controls.Add(this.groupBox_ColorsRef);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox_disponibilidad);
 			this.Controls.Add(menuStrip1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = menuStrip1;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "VentanaPrincipal";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Sistema de Información de Alojamientos - FJPPER";
@@ -639,6 +819,15 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+			this.groupBox_ColorsRef.ResumeLayout(false);
+			this.groupBox_ColorsRef.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -698,5 +887,20 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ToolStripMenuItem listaPersonalizadaToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
-    }
+		private System.Windows.Forms.GroupBox groupBox_ColorsRef;
+		private System.Windows.Forms.PictureBox pictureBox3;
+		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.PictureBox pictureBox4;
+		private System.Windows.Forms.PictureBox pictureBox5;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.PictureBox pictureBox7;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.PictureBox pictureBox6;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.PictureBox pictureBox8;
+	}
 }
