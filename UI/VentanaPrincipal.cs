@@ -387,7 +387,12 @@ namespace UI
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(ListAloj);
                 listarAlojamientos.VisiblePago();
                 listarAlojamientos.ShowDialog();
-            }
+			}
+			else
+			{
+				VentanaEmergente ventanaEmergente = new VentanaEmergente("No Existen Alojamientos con Deuda", TipoMensaje.Exito);
+				ventanaEmergente.ShowDialog();
+			}
         }
 
         private void listaPersonalizadaToolStripMenuItem_Click(object sender, EventArgs e)
