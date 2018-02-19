@@ -30,8 +30,20 @@ namespace Persistencia.DAL.EntityFramework
 
 		public override void Add(Ciudad pCiudad)
 		{
-			if (GetCiudad(pCiudad.CodPostal, pCiudad.Nombre) != null)
-				throw new Exception("Ciudad Existente");
+			//Ciudad localCiudad = GetCiudad(pCiudad.CodPostal, pCiudad.Nombre);
+
+			foreach (Ciudad lciudad in iDbContext.Ciudades)
+			{
+				if (lciudad.Nombre == pCiudad.Nombre)
+				{
+					throw new Exception("Nombre de Ciudad Existente");
+				}
+			}
+			//if (localCiudad != null)
+			//	throw new Exception("Ciudad Existente");
+
+			//if (localCiudad.Nombre == pCiudad.Nombre)
+			//	throw new Exception("Nombre de Ciudad Existente");
 
 			iDbContext.Ciudades.Add(pCiudad);
 			iDbContext.SaveChanges();
