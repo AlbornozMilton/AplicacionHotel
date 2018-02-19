@@ -156,7 +156,7 @@ namespace Dominio
 		public string DeterminarColor(Alojamiento aloj)
 		{
 			 string color = "White";
-
+			//var a = aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date);
 			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
 				&&
 				(
@@ -176,11 +176,11 @@ namespace Dominio
 			{
 				color = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
 			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) > 0)
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) < 0)
 			{
 				color = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
 			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date.AddDays(1)) > 0)
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) < 0)
 			{
 				color = "Plum"; //alojamientos sin dar de baja tras pasar fecha de egreso
 			}
