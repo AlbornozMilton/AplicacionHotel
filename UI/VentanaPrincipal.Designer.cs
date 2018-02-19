@@ -31,8 +31,8 @@
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.MenuStrip menuStrip1;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +63,10 @@
 			this.actualizarTarifasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.consultarHabitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modificarAltaDeCuposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.agregarCiudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
 			this.btn_Buscar = new System.Windows.Forms.Button();
 			this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -87,20 +91,20 @@
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.groupBox_ColorsRef = new System.Windows.Forms.GroupBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox4 = new System.Windows.Forms.PictureBox();
-			this.pictureBox5 = new System.Windows.Forms.PictureBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.pictureBox6 = new System.Windows.Forms.PictureBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.pictureBox7 = new System.Windows.Forms.PictureBox();
-			this.label8 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.pictureBox8 = new System.Windows.Forms.PictureBox();
+			this.pictureBox7 = new System.Windows.Forms.PictureBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.pictureBox6 = new System.Windows.Forms.PictureBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.pictureBox5 = new System.Windows.Forms.PictureBox();
+			this.pictureBox4 = new System.Windows.Forms.PictureBox();
+			this.pictureBox3 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			menuStrip1 = new System.Windows.Forms.MenuStrip();
 			menuStrip1.SuspendLayout();
 			this.groupBox_disponibilidad.SuspendLayout();
@@ -109,13 +113,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
 			this.groupBox_ColorsRef.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -343,7 +347,8 @@
             this.tarifasToolStripMenuItem,
             this.actualizarTarifasToolStripMenuItem,
             this.consultarHabitacionesToolStripMenuItem,
-            this.modificarAltaDeCuposToolStripMenuItem});
+            this.modificarAltaDeCuposToolStripMenuItem,
+            this.agregarCiudadToolStripMenuItem});
 			this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
 			this.administracionToolStripMenuItem.Size = new System.Drawing.Size(141, 34);
 			this.administracionToolStripMenuItem.Text = "Administrar";
@@ -395,6 +400,41 @@
 			this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
 			this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
 			this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
+			// 
+			// agregarCiudadToolStripMenuItem
+			// 
+			this.agregarCiudadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarToolStripMenuItem,
+            this.modificarToolStripMenuItem,
+            this.eliminarToolStripMenuItem});
+			this.agregarCiudadToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Consultar;
+			this.agregarCiudadToolStripMenuItem.Name = "agregarCiudadToolStripMenuItem";
+			this.agregarCiudadToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
+			this.agregarCiudadToolStripMenuItem.Text = "Ciudad";
+			// 
+			// agregarToolStripMenuItem
+			// 
+			this.agregarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Agregar;
+			this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+			this.agregarToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+			this.agregarToolStripMenuItem.Text = "Agregar";
+			this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
+			// 
+			// modificarToolStripMenuItem
+			// 
+			this.modificarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
+			this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
+			this.modificarToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+			this.modificarToolStripMenuItem.Text = "Modificar";
+			this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
+			// 
+			// eliminarToolStripMenuItem
+			// 
+			this.eliminarToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Cerrar_Cancelar;
+			this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+			this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+			this.eliminarToolStripMenuItem.Text = "Eliminar";
+			this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
 			// 
 			// groupBox_disponibilidad
 			// 
@@ -524,14 +564,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -543,14 +583,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle14;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle4;
 			this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
@@ -662,95 +702,23 @@
 			this.groupBox_ColorsRef.TabStop = false;
 			this.groupBox_ColorsRef.Text = "REFERENCIAS DE COLORES PARA ALOJAMIENTOS";
 			// 
-			// label3
+			// label9
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(59, 49);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(220, 23);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "Reservas a Dar de Alta Hoy";
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(415, 25);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(108, 23);
+			this.label9.TabIndex = 16;
+			this.label9.Text = "Faltan Cerrar";
 			// 
-			// label4
+			// pictureBox8
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(59, 25);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(269, 23);
-			this.label4.TabIndex = 0;
-			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(59, 77);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(138, 23);
-			this.label5.TabIndex = 5;
-			this.label5.Text = "Cierres para Hoy";
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
-			this.pictureBox2.Location = new System.Drawing.Point(10, 29);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox2.TabIndex = 6;
-			this.pictureBox2.TabStop = false;
-			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.BackColor = System.Drawing.Color.Aquamarine;
-			this.pictureBox3.Location = new System.Drawing.Point(10, 53);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox3.TabIndex = 7;
-			this.pictureBox3.TabStop = false;
-			// 
-			// pictureBox4
-			// 
-			this.pictureBox4.BackColor = System.Drawing.Color.DarkTurquoise;
-			this.pictureBox4.Location = new System.Drawing.Point(10, 79);
-			this.pictureBox4.Name = "pictureBox4";
-			this.pictureBox4.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox4.TabIndex = 8;
-			this.pictureBox4.TabStop = false;
-			// 
-			// pictureBox5
-			// 
-			this.pictureBox5.BackColor = System.Drawing.Color.Pink;
-			this.pictureBox5.Location = new System.Drawing.Point(10, 105);
-			this.pictureBox5.Name = "pictureBox5";
-			this.pictureBox5.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox5.TabIndex = 9;
-			this.pictureBox5.TabStop = false;
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(59, 101);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(145, 23);
-			this.label6.TabIndex = 10;
-			this.label6.Text = "Faltan dar de Alta";
-			// 
-			// pictureBox6
-			// 
-			this.pictureBox6.BackColor = System.Drawing.Color.Orange;
-			this.pictureBox6.Location = new System.Drawing.Point(366, 68);
-			this.pictureBox6.Name = "pictureBox6";
-			this.pictureBox6.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox6.TabIndex = 12;
-			this.pictureBox6.TabStop = false;
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(415, 64);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(237, 23);
-			this.label7.TabIndex = 11;
-			this.label7.Text = "Cerrado sin Pago de Servicios";
+			this.pictureBox8.BackColor = System.Drawing.Color.Plum;
+			this.pictureBox8.Location = new System.Drawing.Point(366, 29);
+			this.pictureBox8.Name = "pictureBox8";
+			this.pictureBox8.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox8.TabIndex = 15;
+			this.pictureBox8.TabStop = false;
 			// 
 			// pictureBox7
 			// 
@@ -770,23 +738,95 @@
 			this.label8.TabIndex = 13;
 			this.label8.Text = "Cerrado Con Deuda";
 			// 
-			// label9
+			// pictureBox6
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(415, 25);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(108, 23);
-			this.label9.TabIndex = 16;
-			this.label9.Text = "Faltan Cerrar";
+			this.pictureBox6.BackColor = System.Drawing.Color.Orange;
+			this.pictureBox6.Location = new System.Drawing.Point(366, 68);
+			this.pictureBox6.Name = "pictureBox6";
+			this.pictureBox6.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox6.TabIndex = 12;
+			this.pictureBox6.TabStop = false;
 			// 
-			// pictureBox8
+			// label7
 			// 
-			this.pictureBox8.BackColor = System.Drawing.Color.Plum;
-			this.pictureBox8.Location = new System.Drawing.Point(366, 29);
-			this.pictureBox8.Name = "pictureBox8";
-			this.pictureBox8.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox8.TabIndex = 15;
-			this.pictureBox8.TabStop = false;
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(415, 64);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(237, 23);
+			this.label7.TabIndex = 11;
+			this.label7.Text = "Cerrado sin Pago de Servicios";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(59, 101);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(145, 23);
+			this.label6.TabIndex = 10;
+			this.label6.Text = "Faltan dar de Alta";
+			// 
+			// pictureBox5
+			// 
+			this.pictureBox5.BackColor = System.Drawing.Color.Pink;
+			this.pictureBox5.Location = new System.Drawing.Point(10, 105);
+			this.pictureBox5.Name = "pictureBox5";
+			this.pictureBox5.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox5.TabIndex = 9;
+			this.pictureBox5.TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			this.pictureBox4.BackColor = System.Drawing.Color.DarkTurquoise;
+			this.pictureBox4.Location = new System.Drawing.Point(10, 79);
+			this.pictureBox4.Name = "pictureBox4";
+			this.pictureBox4.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox4.TabIndex = 8;
+			this.pictureBox4.TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this.pictureBox3.BackColor = System.Drawing.Color.Aquamarine;
+			this.pictureBox3.Location = new System.Drawing.Point(10, 53);
+			this.pictureBox3.Name = "pictureBox3";
+			this.pictureBox3.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox3.TabIndex = 7;
+			this.pictureBox3.TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
+			this.pictureBox2.Location = new System.Drawing.Point(10, 29);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox2.TabIndex = 6;
+			this.pictureBox2.TabStop = false;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(59, 77);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(138, 23);
+			this.label5.TabIndex = 5;
+			this.label5.Text = "Cierres para Hoy";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(59, 49);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(220, 23);
+			this.label3.TabIndex = 1;
+			this.label3.Text = "Reservas a Dar de Alta Hoy";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(59, 25);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(269, 23);
+			this.label4.TabIndex = 0;
+			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
 			// 
 			// VentanaPrincipal
 			// 
@@ -821,13 +861,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
 			this.groupBox_ColorsRef.ResumeLayout(false);
 			this.groupBox_ColorsRef.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -902,5 +942,9 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.PictureBox pictureBox8;
+		private System.Windows.Forms.ToolStripMenuItem agregarCiudadToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
 	}
 }

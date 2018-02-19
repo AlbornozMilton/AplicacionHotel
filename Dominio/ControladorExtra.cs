@@ -143,6 +143,16 @@ namespace Dominio
 			iUoW.RepositorioCiudad.Add(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)));
 		}
 
+		public void ModificarCiudad(string pCodPostal, string pNombre, int pKeyCiudad)
+		{
+			iUoW.RepositorioCiudad.ModificarCiudad(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)), pKeyCiudad);
+		}
+
+		public void EliminarCiudad(int pKeyCiudad)
+		{
+			iUoW.RepositorioCiudad.EliminarCiudad(pKeyCiudad);
+		}
+
 		public string DeterminarColor(Alojamiento aloj)
 		{
 			 string color = "White";

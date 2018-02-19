@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    public class RepositorioCiudad : Repositorio<Ciudad, HotelContext>, IRepositorioCiudad
-    {
-        public RepositorioCiudad(HotelContext pContext) : base(pContext)
-        {
+	public class RepositorioCiudad : Repositorio<Ciudad, HotelContext>, IRepositorioCiudad
+	{
+		public RepositorioCiudad(HotelContext pContext) : base(pContext)
+		{
 
-        }
+		}
 
-        public Ciudad GetCiudad(int pCodPostal, string pNombre)
-        {
-            return iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CodPostal == pCodPostal && c.Nombre == pNombre);
-        }
+		public Ciudad GetCiudad(int pCodPostal, string pNombre)
+		{
+			return iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CodPostal == pCodPostal && c.Nombre == pNombre);
+		}
 
-        public IEnumerable<string> CallesDeCiudad(int pCodPostal, string pNombre)
-        {
-            var calles = from domicilio in iDbContext.Domicilios
-                         where pCodPostal == domicilio.Ciudad.CodPostal && pNombre == domicilio.Ciudad.Nombre
-                         select domicilio.Calle;
+		public IEnumerable<string> CallesDeCiudad(int pCodPostal, string pNombre)
+		{
+			var calles = from domicilio in iDbContext.Domicilios
+						 where pCodPostal == domicilio.Ciudad.CodPostal && pNombre == domicilio.Ciudad.Nombre
+						 select domicilio.Calle;
 
-            return calles.Distinct();
-        }
+			return calles.Distinct();
+		}
 
 		public override void Add(Ciudad pCiudad)
 		{
@@ -35,6 +35,31 @@ namespace Persistencia.DAL.EntityFramework
 
 			iDbContext.Ciudades.Add(pCiudad);
 			iDbContext.SaveChanges();
+		}
+
+		public void ModificarCiudad(Ciudad pCiudad, int pKeyCiudad)
+		{
+			Ciudad localCiudad = iDbContext.Ciudades.Find(pKeyCiudad);
+			if (localCiudad == null)
+				throw new Exception("Ciudad Inexistente");
+			else
+			{
+				localCiudad.CodPostal = pCiudad.CodPostal;
+				localCiudad.Nombre = pCiudad.Nombre;
+				iDbContext.SaveChanges();
+			}
+		}
+
+		public void EliminarCiudad(int pKeyCiudad)
+		{
+			Ciudad localCiudad = iDbContext.Ciudades.Find(pKeyCiudad);
+			if (localCiudad == null)
+				throw new Exception("Ciudad Inexistente");
+			else
+			{
+				iDbContext.Ciudades.Remove(localCiudad);
+				iDbContext.SaveChanges();
+			}
 		}
 	}
 }
