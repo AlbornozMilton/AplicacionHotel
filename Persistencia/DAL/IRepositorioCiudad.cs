@@ -11,5 +11,7 @@ namespace Persistencia.DAL
     {
 		Ciudad GetCiudad(int pCodPostal, string pNombre);
 		IEnumerable<string> CallesDeCiudad(int pCodPostal, string pNombre);
-    }
+		void ModificarCiudad(Ciudad pCiudad, int pKeyCiudad);
+		void EliminarCiudad(int pKeyCiudad);
+	}
 }

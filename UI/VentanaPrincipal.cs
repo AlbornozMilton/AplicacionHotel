@@ -400,5 +400,23 @@ namespace UI
             ListarAlojamientos listarAlojamientos = new ListarAlojamientos();
             listarAlojamientos.ShowDialog();
         }
-    }
+
+		private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AgregarCiudad agregarCiudad = new AgregarCiudad(1);
+			agregarCiudad.ShowDialog();
+		}
+
+		private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AgregarCiudad agregarCiudad = new AgregarCiudad(2);
+			agregarCiudad.ShowDialog();
+		}
+
+		private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AgregarCiudad agregarCiudad = new AgregarCiudad(3);
+			agregarCiudad.ShowDialog();
+		}
+	}
 }
