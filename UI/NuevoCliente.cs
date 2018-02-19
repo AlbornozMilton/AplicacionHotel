@@ -381,5 +381,18 @@ namespace UI
                 new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
             }
         }
+
+		//AGREGAR UNA CIUDAD
+		private void button3_Click(object sender, EventArgs e)
+		{
+			AgregarCiudad agregarCiudad = new AgregarCiudad(1);
+			agregarCiudad.ShowDialog();
+			cbx_ciudades.Items.Clear();
+			Ciudades = new ControladorCliente().ObtenerCiudades();
+			foreach (Ciudad ciudad in Ciudades)
+			{
+				cbx_ciudades.Items.Add(ciudad.Nombre);
+			}
+		}
 	}
 }
