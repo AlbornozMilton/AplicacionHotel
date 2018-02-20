@@ -7,6 +7,8 @@ using Persistencia.DAL.EntityFramework;
 using pers = Persistencia.Domain;
 using AutoMapper;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.Globalization;
 using System.Drawing;
 
 namespace Dominio
@@ -155,20 +157,9 @@ namespace Dominio
 
 		public string DeterminarColor(Alojamiento aloj)
 		{
-			 string color = "White";
-			//var a = aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date);
-			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
-				&&
-				(
-					(DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
-						&
-						(aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
-					)
-				)
-			{
-				color = "Yellow"; //sin deposito tras 72hs
-			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
+			string color = "White";
+			
+			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
 			{
 				color = "Aquamarine"; //alojamientos que se deben dar de alta hoy
 			}
@@ -195,8 +186,68 @@ namespace Dominio
 					color = "OrangeRed"; //alojamientos cerrados adeudados (pago de servicios incompleto)
 				}
 			}
+			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
+				&&
+				(
+					(DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
+						&
+						!aloj.Pagos.Exists(p => p.Tipo == TipoPago.Deposito)//no existe pago de deposito
+					)
+				)
+			{
+				color = "Yellow"; //sin deposito tras 72hs
+			}
 
 			return color;
+		}
+
+		public bool ValidarEmail(string strIn)
+		{
+			bool invalid = false;
+
+			if (String.IsNullOrEmpty(strIn))
+				return false;
+
+			// Use IdnMapping class to convert Unicode domain names.
+			try
+			{
+				strIn = Regex.Replace(strIn, @"(@)(.+)$", this.DomainMapper,
+									  RegexOptions.None, TimeSpan.FromMilliseconds(200));
+			}
+			catch (ArgumentException)
+			{
+				invalid = true;
+			}
+			catch (RegexMatchTimeoutException)
+			{
+				return false;
+			}
+
+			if (invalid)
+				return false;
+
+			// Return true if strIn is in valid email format.
+			try
+			{
+				return Regex.IsMatch(strIn,
+					  @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+					  @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+					  RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+			}
+			catch (RegexMatchTimeoutException)
+			{
+				return false;
+			}
+		}
+
+		private string DomainMapper(Match match)
+		{
+			// IdnMapping class with default property values.
+			IdnMapping idn = new IdnMapping();
+
+			string domainName = match.Groups[2].Value;
+			domainName = idn.GetAscii(domainName);
+			return match.Groups[1].Value + domainName;
 		}
 	}
 }

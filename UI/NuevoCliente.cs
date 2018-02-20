@@ -394,5 +394,31 @@ namespace UI
 				cbx_ciudades.Items.Add(ciudad.Nombre);
 			}
 		}
+
+		private void txb_correo_Leave(object sender, EventArgs e)
+		{
+			if (txb_correo.Text != "")
+			{
+				if (new ControladorExtra().ValidarEmail(txb_correo.Text))
+				{
+					label_correo.Text = "Correo";
+					label_correo.ForeColor = Color.Black;
+					button1.Enabled = true;
+				}
+				else
+				{
+					label_correo.Text = "Correo Inválido";
+					label_correo.ForeColor = Color.Red;
+					button1.Enabled = false;
+				}
+			}
+			else
+			{
+				label_correo.Text = "Correo";
+				label_correo.ForeColor = Color.Black;
+				button1.Enabled = true;
+			}
+		}
+		
 	}
 }
