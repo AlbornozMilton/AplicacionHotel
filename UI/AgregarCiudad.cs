@@ -123,5 +123,29 @@ namespace UI
 				tBx_nombrecCiudad.Text = auxCiudad.Nombre;
 			}
 		}
-	}
+
+        private void tBx_codPostal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+            }
+        }
+
+        private void tBx_nombrecCiudad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+            }
+        }
+    }
 }
