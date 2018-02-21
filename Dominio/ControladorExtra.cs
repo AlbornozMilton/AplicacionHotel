@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistencia.DAL.EntityFramework;
 using pers = Persistencia.Domain;
 using AutoMapper;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Globalization;
-using System.Drawing;
 
 namespace Dominio
 {
@@ -145,9 +141,13 @@ namespace Dominio
 			iUoW.RepositorioCiudad.Add(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)));
 		}
 
-		public void ModificarCiudad(string pCodPostal, string pNombre, int pKeyCiudad)
+		public void ModificarCiudad(string pCodPostalViejo, string pNombreViejo, string pCodPostalNuevo, string pNombreNuevo, List<Ciudad> pCiudades)
 		{
-			iUoW.RepositorioCiudad.ModificarCiudad(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)), pKeyCiudad);
+			if (pCiudades.Exists(c => c.Nombre == pNombreNuevo))
+				throw new Exception("Nombre de Ciudad ya existente");
+
+			iUoW.RepositorioCiudad.ModificarCiudad(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostalNuevo), pNombreNuevo)),
+				pCiudades.Find(c => c.Nombre == pNombreViejo && c.CodPostal.ToString() == pCodPostalViejo).CiudadId);
 		}
 
 		public void EliminarCiudad(int pKeyCiudad)
@@ -177,7 +177,7 @@ namespace Dominio
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
 			{
-				if (aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
+				if (!aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
 				{
 					color = "Orange"; //alojamientos cerrados sin pago de servicios:
 				}
@@ -203,8 +203,6 @@ namespace Dominio
 
 		public bool ValidarEmail(string strIn)
 		{
-			bool invalid = false;
-
 			if (String.IsNullOrEmpty(strIn))
 				return false;
 
@@ -216,15 +214,12 @@ namespace Dominio
 			}
 			catch (ArgumentException)
 			{
-				invalid = true;
+				return false;
 			}
 			catch (RegexMatchTimeoutException)
 			{
 				return false;
 			}
-
-			if (invalid)
-				return false;
 
 			// Return true if strIn is in valid email format.
 			try

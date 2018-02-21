@@ -39,26 +39,28 @@ namespace Persistencia.DAL.EntityFramework
 					throw new Exception("Nombre de Ciudad Existente");
 				}
 			}
-			//if (localCiudad != null)
-			//	throw new Exception("Ciudad Existente");
-
-			//if (localCiudad.Nombre == pCiudad.Nombre)
-			//	throw new Exception("Nombre de Ciudad Existente");
-
+			
 			iDbContext.Ciudades.Add(pCiudad);
 			iDbContext.SaveChanges();
 		}
 
 		public void ModificarCiudad(Ciudad pCiudad, int pKeyCiudad)
 		{
-			Ciudad localCiudad = iDbContext.Ciudades.Find(pKeyCiudad);
-			if (localCiudad == null)
-				throw new Exception("Ciudad Inexistente");
-			else
+			try
 			{
+				Ciudad localCiudad = iDbContext.Ciudades.Find(pKeyCiudad);
+
+				if (localCiudad == null)
+					throw new Exception("Ciudad Inexistente");
+
 				localCiudad.CodPostal = pCiudad.CodPostal;
 				localCiudad.Nombre = pCiudad.Nombre;
 				iDbContext.SaveChanges();
+			}
+			catch (Exception)
+			{
+
+				throw;
 			}
 		}
 
