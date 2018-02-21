@@ -28,17 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarCiudad));
 			this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
+			this.tBx_codPostal = new System.Windows.Forms.TextBox();
+			this.tbx_codPostal_existente = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.cbx_ciudades = new System.Windows.Forms.ComboBox();
+			this.label_cbx_ciudades = new System.Windows.Forms.Label();
+			this.tBx_nombrecCiudad = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.tBx_nombrecCiudad = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.label_cbx_ciudades = new System.Windows.Forms.Label();
-			this.cbx_ciudades = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tbx_codPostal_existente = new System.Windows.Forms.TextBox();
-			this.tBx_codPostal = new System.Windows.Forms.TextBox();
 			this.groupBox_disponibilidad.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -62,6 +63,67 @@
 			this.groupBox_disponibilidad.TabStop = false;
 			this.groupBox_disponibilidad.Text = "Datos de Ciudad";
 			// 
+			// tBx_codPostal
+			// 
+			this.tBx_codPostal.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tBx_codPostal.Location = new System.Drawing.Point(591, 76);
+			this.tBx_codPostal.Name = "tBx_codPostal";
+			this.tBx_codPostal.Size = new System.Drawing.Size(154, 30);
+			this.tBx_codPostal.TabIndex = 2;
+			this.tBx_codPostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.tBx_codPostal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBx_codPostal_KeyPress);
+			// 
+			// tbx_codPostal_existente
+			// 
+			this.tbx_codPostal_existente.Enabled = false;
+			this.tbx_codPostal_existente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbx_codPostal_existente.Location = new System.Drawing.Point(591, 29);
+			this.tbx_codPostal_existente.Name = "tbx_codPostal_existente";
+			this.tbx_codPostal_existente.Size = new System.Drawing.Size(154, 30);
+			this.tbx_codPostal_existente.TabIndex = 28;
+			this.tbx_codPostal_existente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(470, 31);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(115, 23);
+			this.label4.TabIndex = 27;
+			this.label4.Text = "Código Postal";
+			// 
+			// cbx_ciudades
+			// 
+			this.cbx_ciudades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbx_ciudades.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbx_ciudades.FormattingEnabled = true;
+			this.cbx_ciudades.Location = new System.Drawing.Point(183, 28);
+			this.cbx_ciudades.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.cbx_ciudades.Name = "cbx_ciudades";
+			this.cbx_ciudades.Size = new System.Drawing.Size(282, 31);
+			this.cbx_ciudades.Sorted = true;
+			this.cbx_ciudades.TabIndex = 26;
+			this.cbx_ciudades.TabStop = false;
+			this.cbx_ciudades.SelectedIndexChanged += new System.EventHandler(this.cbx_ciudades_SelectedIndexChanged);
+			// 
+			// label_cbx_ciudades
+			// 
+			this.label_cbx_ciudades.AutoSize = true;
+			this.label_cbx_ciudades.Location = new System.Drawing.Point(15, 31);
+			this.label_cbx_ciudades.Name = "label_cbx_ciudades";
+			this.label_cbx_ciudades.Size = new System.Drawing.Size(161, 23);
+			this.label_cbx_ciudades.TabIndex = 5;
+			this.label_cbx_ciudades.Text = "Ciudades Existentes";
+			// 
+			// tBx_nombrecCiudad
+			// 
+			this.tBx_nombrecCiudad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tBx_nombrecCiudad.Location = new System.Drawing.Point(94, 76);
+			this.tBx_nombrecCiudad.Name = "tBx_nombrecCiudad";
+			this.tBx_nombrecCiudad.Size = new System.Drawing.Size(371, 30);
+			this.tBx_nombrecCiudad.TabIndex = 1;
+			this.tBx_nombrecCiudad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBx_nombrecCiudad_KeyPress);
+			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
@@ -79,14 +141,6 @@
 			this.label1.Size = new System.Drawing.Size(73, 23);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Nombre";
-			// 
-			// tBx_nombrecCiudad
-			// 
-			this.tBx_nombrecCiudad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tBx_nombrecCiudad.Location = new System.Drawing.Point(94, 76);
-			this.tBx_nombrecCiudad.Name = "tBx_nombrecCiudad";
-			this.tBx_nombrecCiudad.Size = new System.Drawing.Size(366, 30);
-			this.tBx_nombrecCiudad.TabIndex = 1;
 			// 
 			// button1
 			// 
@@ -112,57 +166,6 @@
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
-			// label_cbx_ciudades
-			// 
-			this.label_cbx_ciudades.AutoSize = true;
-			this.label_cbx_ciudades.Location = new System.Drawing.Point(15, 36);
-			this.label_cbx_ciudades.Name = "label_cbx_ciudades";
-			this.label_cbx_ciudades.Size = new System.Drawing.Size(161, 23);
-			this.label_cbx_ciudades.TabIndex = 5;
-			this.label_cbx_ciudades.Text = "Ciudades Existentes";
-			// 
-			// cbx_ciudades
-			// 
-			this.cbx_ciudades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbx_ciudades.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbx_ciudades.FormattingEnabled = true;
-			this.cbx_ciudades.Location = new System.Drawing.Point(183, 28);
-			this.cbx_ciudades.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.cbx_ciudades.Name = "cbx_ciudades";
-			this.cbx_ciudades.Size = new System.Drawing.Size(282, 31);
-			this.cbx_ciudades.Sorted = true;
-			this.cbx_ciudades.TabIndex = 26;
-			this.cbx_ciudades.TabStop = false;
-			this.cbx_ciudades.SelectedIndexChanged += new System.EventHandler(this.cbx_ciudades_SelectedIndexChanged);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(470, 31);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(115, 23);
-			this.label4.TabIndex = 27;
-			this.label4.Text = "Código Postal";
-			// 
-			// tbx_codPostal_existente
-			// 
-			this.tbx_codPostal_existente.Enabled = false;
-			this.tbx_codPostal_existente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbx_codPostal_existente.Location = new System.Drawing.Point(591, 29);
-			this.tbx_codPostal_existente.Name = "tbx_codPostal_existente";
-			this.tbx_codPostal_existente.Size = new System.Drawing.Size(154, 30);
-			this.tbx_codPostal_existente.TabIndex = 28;
-			this.tbx_codPostal_existente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// tBx_codPostal
-			// 
-			this.tBx_codPostal.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tBx_codPostal.Location = new System.Drawing.Point(591, 76);
-			this.tBx_codPostal.Name = "tBx_codPostal";
-			this.tBx_codPostal.Size = new System.Drawing.Size(154, 30);
-			this.tBx_codPostal.TabIndex = 2;
-			this.tBx_codPostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
 			// AgregarCiudad
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,6 +176,7 @@
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.groupBox_disponibilidad);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "AgregarCiudad";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

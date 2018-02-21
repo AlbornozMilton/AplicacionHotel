@@ -52,6 +52,7 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.pestaña_Ubicacion = new System.Windows.Forms.TabPage();
+			this.button3 = new System.Windows.Forms.Button();
 			this.label22 = new System.Windows.Forms.Label();
 			this.label21 = new System.Windows.Forms.Label();
 			this.label19 = new System.Windows.Forms.Label();
@@ -69,8 +70,7 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.pestaña_Adicional = new System.Windows.Forms.TabPage();
 			this.txb_correo = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.button3 = new System.Windows.Forms.Button();
+			this.label_correo = new System.Windows.Forms.Label();
 			this.tabControl1.SuspendLayout();
 			this.pestaña_DatosGenerales.SuspendLayout();
 			this.pestaña_Ubicacion.SuspendLayout();
@@ -371,6 +371,20 @@
 			this.pestaña_Ubicacion.Text = "Ubicación";
 			this.pestaña_Ubicacion.UseVisualStyleBackColor = true;
 			// 
+			// button3
+			// 
+			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.button3.BackColor = System.Drawing.SystemColors.Control;
+			this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button3.Location = new System.Drawing.Point(471, 58);
+			this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(134, 30);
+			this.button3.TabIndex = 17;
+			this.button3.Text = "Agregar una Ciudad";
+			this.button3.UseVisualStyleBackColor = false;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
+			// 
 			// label22
 			// 
 			this.label22.AutoSize = true;
@@ -540,7 +554,7 @@
 			// pestaña_Adicional
 			// 
 			this.pestaña_Adicional.Controls.Add(this.txb_correo);
-			this.pestaña_Adicional.Controls.Add(this.label5);
+			this.pestaña_Adicional.Controls.Add(this.label_correo);
 			this.pestaña_Adicional.Location = new System.Drawing.Point(4, 32);
 			this.pestaña_Adicional.Name = "pestaña_Adicional";
 			this.pestaña_Adicional.Padding = new System.Windows.Forms.Padding(3);
@@ -557,31 +571,18 @@
 			this.txb_correo.Name = "txb_correo";
 			this.txb_correo.Size = new System.Drawing.Size(392, 30);
 			this.txb_correo.TabIndex = 15;
+			this.txb_correo.Leave += new System.EventHandler(this.txb_correo_Leave);
 			// 
-			// label5
+			// label_correo
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(32, 30);
-			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(62, 23);
-			this.label5.TabIndex = 14;
-			this.label5.Text = "Correo";
-			// 
-			// button3
-			// 
-			this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.button3.BackColor = System.Drawing.SystemColors.Control;
-			this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button3.Location = new System.Drawing.Point(471, 58);
-			this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(134, 30);
-			this.button3.TabIndex = 17;
-			this.button3.Text = "Agregar una Ciudad";
-			this.button3.UseVisualStyleBackColor = false;
-			this.button3.Click += new System.EventHandler(this.button3_Click);
+			this.label_correo.AutoSize = true;
+			this.label_correo.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_correo.Location = new System.Drawing.Point(32, 30);
+			this.label_correo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label_correo.Name = "label_correo";
+			this.label_correo.Size = new System.Drawing.Size(62, 23);
+			this.label_correo.TabIndex = 14;
+			this.label_correo.Text = "Correo";
 			// 
 			// NuevoCliente
 			// 
@@ -656,7 +657,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage pestaña_Adicional;
         private System.Windows.Forms.TextBox txb_correo;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label_correo;
 		private System.Windows.Forms.Button button3;
 	}
 }

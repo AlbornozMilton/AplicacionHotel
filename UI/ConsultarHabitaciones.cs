@@ -32,7 +32,7 @@ namespace UI
                     if (cupo.Tipo == TipoCupo.simple) auxCantCupoSimple++;
                     else auxCantCuposDoble++;
                 }
-                dGV_Habs.Rows.Add(hab.HabitacionId,hab.Capacidad(),hab.Planta,auxCantCupoSimple,auxCantCuposDoble);
+                dGV_Habs.Rows.Add(hab.HabitacionId,hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", auxCantCupoSimple,auxCantCuposDoble);
             }
         }
 

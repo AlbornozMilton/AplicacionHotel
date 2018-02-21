@@ -91,7 +91,7 @@ namespace UI
 						}
 					case "Modificar":
 						{
-							new ControladorExtra().ModificarCiudad(tBx_codPostal.Text, tBx_nombrecCiudad.Text, Ciudades.Find(c => c.Nombre == cbx_ciudades.Text && c.CodPostal.ToString() == tbx_codPostal_existente.Text).CiudadId);
+							new ControladorExtra().ModificarCiudad(tbx_codPostal_existente.Text, cbx_ciudades.Text, tBx_codPostal.Text, tBx_nombrecCiudad.Text, Ciudades);
 							VentanaEmergente ventanaEmergente = new VentanaEmergente("Ciudad Modificada correctamente", TipoMensaje.Exito);
 							ventanaEmergente.ShowDialog();
 							break;
@@ -123,5 +123,29 @@ namespace UI
 				tBx_nombrecCiudad.Text = auxCiudad.Nombre;
 			}
 		}
-	}
+
+        private void tBx_codPostal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsNumero(e);
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+            }
+        }
+
+        private void tBx_nombrecCiudad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                new ControladorExtra().EsLetra(e);
+            }
+            catch (Exception E)
+            {
+                new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+            }
+        }
+    }
 }
