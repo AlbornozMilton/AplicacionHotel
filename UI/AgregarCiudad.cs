@@ -91,7 +91,7 @@ namespace UI
 						}
 					case "Modificar":
 						{
-							new ControladorExtra().ModificarCiudad(tBx_codPostal.Text, tBx_nombrecCiudad.Text, Ciudades.Find(c => c.Nombre == cbx_ciudades.Text && c.CodPostal.ToString() == tbx_codPostal_existente.Text).CiudadId);
+							new ControladorExtra().ModificarCiudad(tbx_codPostal_existente.Text, cbx_ciudades.Text, tBx_codPostal.Text, tBx_nombrecCiudad.Text, Ciudades);
 							VentanaEmergente ventanaEmergente = new VentanaEmergente("Ciudad Modificada correctamente", TipoMensaje.Exito);
 							ventanaEmergente.ShowDialog();
 							break;
