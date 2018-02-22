@@ -237,8 +237,17 @@ namespace UI
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value);
-            TDisp.ShowDialog();
+            if (dtp_fechaDesde.Value.CompareTo(dtp_fechaHasta.Value) == -1)
+            {
+                TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value);
+                TDisp.ShowDialog();
+            }
+            else
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Fechas Incorrectas: fecha 'Hasta' debe ser mayor a la fecha 'Desde'", TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+            
         }
 
         private void serviciosConsumidosToolStripMenuItem_Click(object sender, EventArgs e)

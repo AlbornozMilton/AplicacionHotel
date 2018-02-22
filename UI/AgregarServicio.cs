@@ -41,7 +41,7 @@ namespace UI
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Para Agregar Servicios antes debe realziar un Pago de Alojado", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Para Agregar Servicios antes debe realizar un Pago de Alojado", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                     Close();
                 }
