@@ -175,13 +175,15 @@ namespace UI
 
 		private void tbx_dni_Leave(object sender, EventArgs e)
 		{
-			
-			if (tbx_dni.Text == "")
-				label13.Text = "Campo Obligatorio";
-			else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
-				label13.Text = "Ya Existe";
-			else
-				label13.Text = "";
+
+            if (tbx_dni.Text == "")
+                label13.Text = "Campo Obligatorio";
+            else if (tbx_dni.Text.Length > 8)
+                label13.Text = "DNI muy largo";
+            else if (this.ControladorCliente.ExisteClienteDNI(tbx_dni.Text))
+                label13.Text = "Ya Existe";
+            else
+                label13.Text = "";
 			ActualizarCamposoBligatorios(label13.Name, label13.Text);
 		}
 
@@ -189,7 +191,9 @@ namespace UI
 		{
 			if (txb_legajo.Text == "")
 				label14.Text = "Campo Obligatorio";
-			else if (tbx_dni.Enabled == true && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+            else if (txb_legajo.Text.Length > 8)
+                label14.Text = "Legajo muy largo";
+            else if (tbx_dni.Enabled == true && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
 				label14.Text = "Ya Existe";
 			else if (tbx_dni.Enabled == false && localCliente.Legajo.ToString().CompareTo(txb_legajo.Text) != 0 && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))//PARA EL CASO DE LA MODIFICACION
 				label14.Text = "Ya Existe";
