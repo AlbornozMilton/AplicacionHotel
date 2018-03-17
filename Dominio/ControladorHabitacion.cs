@@ -30,13 +30,20 @@ namespace Dominio
             return listaResultado;
         }
 
+		/// <summary>
+		/// Devuelve las Habitaciones que estan solamente en Alta
+		/// </summary>
+		/// <returns></returns>
         public List<Habitacion> ObtenerHabitacionesFullLibres()
         {
             IEnumerable<pers.Habitacion> listaEnum = iUoW.RepositorioHabitacion.GetAll();
             List<Habitacion> lista = new List<Habitacion>();
             foreach (var hab in listaEnum)
             {
-                lista.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab));
+				if (hab.Alta)
+				{
+					lista.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab)); 
+				}
             }
             return (lista);
         }

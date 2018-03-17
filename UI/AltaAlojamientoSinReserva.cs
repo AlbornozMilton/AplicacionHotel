@@ -19,6 +19,7 @@ namespace UI
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
         public List<Cliente> Acompañantes = new List<Cliente>();
+		private List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
 		private bool exclusividadCapacidad;
 
 
@@ -96,7 +97,7 @@ namespace UI
                 {
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
-                    new ControladorCliente().ControlClienteActivo(ClienteResponsable, FechaIni, FechaFin);
+                    new ControladorCliente().ControlClienteActivo(ClienteResponsable, FechaIni, FechaFin, iAlojsActivos);
 					
 					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ck_Exclusividad.Enabled == true)
                     {
@@ -162,7 +163,7 @@ namespace UI
                     throw new Exception("El Cliente elegido ya se encuentra entre los Clientes seleccionados.");
                 }
 
-				new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin);
+				new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, iAlojsActivos);
 
 				if (ck_Exclusividad.Enabled == true
 					&&

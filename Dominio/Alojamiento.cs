@@ -195,6 +195,7 @@ namespace Dominio
             return this.iPagos.Contains(pPago);
         }
 
+		//Tener en cuenta que el Responsable no esta en la lista de contadores
         public void CalcularCostoBase(List<TarifaCliente> pTarifas)
         {
             bool lExclusividad = this.iExclusividad;
@@ -224,7 +225,10 @@ namespace Dominio
                         aux--;
                     }
                 }
-            }
+
+				//solo el responsable
+				costoBase += Clientes.Find(c => c.ClienteId == this.DniResponsable).ObtenerSuPrecioTarifa(this.Exclusividad);
+			}
 
             this.iMontoTotal = costoBase * (this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days);
 

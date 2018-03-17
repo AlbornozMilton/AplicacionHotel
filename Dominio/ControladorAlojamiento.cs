@@ -113,16 +113,6 @@ namespace Dominio
             return (listaHabitaciones);
         }
 
-        /// <summary>
-        /// Determina si aún no se a superado capacidad de exlcusividad total en cuanto a un porcentaje determinado.
-        /// El cálulo es una estimación basado en fechas límites.
-        /// Si aún se permite exclusividad, se admite exclusividad aunque los nuevos cupos sobrepasen la exclusivdad por unas pocas unidades.
-        /// </summary>
-        /// <param name="pFechaDesde">Fecha Inicial que compara con cada Alojamiento Activo</param>
-        /// <param name="pFechaHasta">Fecha Final la que compara con cada Alojamiento Activo</param>
-        /// <param name="pPorcentaje">Porcentaje de la capacidad límite de exlcusividad para el total del Hotel</param>
-        /// <returns>Retorna verdadero si ya se ha superado la exclusividad límite</returns>
-
         public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pPorcentaje)
         {
 			//este valor puede variar devido a los Alta de las Habitacioes, no es un valor fijo en la BD
@@ -137,27 +127,29 @@ namespace Dominio
             //acumulará la cantidad respecto a las Hab exlcusivas
             int auxCantExclusiva = 0, cantExcl2 = 0;
 
-            List<Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
+            List<Alojamiento> auxListaActivos = this.ObtenerAlojamientosActivos();
 
-            foreach (var aloj in auxLista)
+            foreach (var aloj in auxListaActivos)
             {
+				//Acumular si se solicito exclusividad
+				//se evalua exclsuvidad antes de entrar a hacer todo los demas calculos
                 if (aloj.Exclusividad)
                 {
                     DateTime alojFechaDesde = new DateTime();
                     
-					//la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
-                    //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
+					//la cantidad exclusiva se acumula tanto si es alojado o reservado
                     if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                     {
                         alojFechaDesde = aloj.FechaIngreso.Date;
                     }
-                    else
+                    else //reservado
                     {
                         alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
                     }
 
-                    // Hay interseccion entre las fechas
-                    if (
+					//se acumula cuando sus fechas intersectan con las fechas de parametros
+					// Hay interseccion entre las fechas
+					if (
                             //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
                             (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0)
                             |
@@ -171,8 +163,7 @@ namespace Dominio
                 }
             }
 
-			int resultado = (auxCapacidadTotal * pPorcentaje) / 100;
-
+			//(auxCapacidadTotal * pPorcentaje) / 100 es igual a 6, para el caso de capacidad de 30
 			return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
         }
 

@@ -229,7 +229,7 @@
 			// txb_planta
 			// 
 			this.txb_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_planta.Location = new System.Drawing.Point(459, 31);
+			this.txb_planta.Location = new System.Drawing.Point(269, 31);
 			this.txb_planta.Name = "txb_planta";
 			this.txb_planta.ReadOnly = true;
 			this.txb_planta.Size = new System.Drawing.Size(68, 30);
@@ -240,7 +240,7 @@
 			// 
 			this.lbl_planta.AutoSize = true;
 			this.lbl_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_planta.Location = new System.Drawing.Point(395, 34);
+			this.lbl_planta.Location = new System.Drawing.Point(205, 34);
 			this.lbl_planta.Name = "lbl_planta";
 			this.lbl_planta.Size = new System.Drawing.Size(58, 23);
 			this.lbl_planta.TabIndex = 20;
@@ -249,7 +249,7 @@
 			// txb_capacidad
 			// 
 			this.txb_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_capacidad.Location = new System.Drawing.Point(303, 31);
+			this.txb_capacidad.Location = new System.Drawing.Point(475, 31);
 			this.txb_capacidad.Name = "txb_capacidad";
 			this.txb_capacidad.ReadOnly = true;
 			this.txb_capacidad.Size = new System.Drawing.Size(33, 30);
@@ -260,7 +260,7 @@
 			// 
 			this.lbl_capacidad.AutoSize = true;
 			this.lbl_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_capacidad.Location = new System.Drawing.Point(207, 34);
+			this.lbl_capacidad.Location = new System.Drawing.Point(379, 34);
 			this.lbl_capacidad.Name = "lbl_capacidad";
 			this.lbl_capacidad.Size = new System.Drawing.Size(90, 23);
 			this.lbl_capacidad.TabIndex = 18;
