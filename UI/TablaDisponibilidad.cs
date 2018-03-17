@@ -2,11 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -14,43 +9,45 @@ namespace UI
     public partial class TablaDisponibilidad : Form
     {
         public Habitacion HabSeleccionada;
+		private DateTime iFechaDesde, iFechaHasta;
         public List<Habitacion> Habitaciones;
-        //public Form FormPadre { get; set; } //podria hacerce con una interfaz IForm para juntar varios metodos. consultar Link.
 
         public TablaDisponibilidad()
         {
             InitializeComponent();
         }
 
-        public TablaDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
-        {
-            InitializeComponent();
-            dGV_TablaHabitaciones.Rows.Clear();
-            this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(fechaDesde), Convert.ToDateTime(fechaHasta));
-            foreach (var hab in this.Habitaciones)
-            {
-                int auxExcl = new ControladorHabitacion().VerificarSolicitdExclusividad(hab);
+		public TablaDisponibilidad(DateTime pFechaDesde, DateTime pFechaHasta)
+		{
+			InitializeComponent();
+			iFechaDesde = pFechaDesde;
+			iFechaHasta = pFechaHasta;
+			groupBox2.Text = "Disponibilidad de Habitaciones desde " + iFechaDesde.ToString("dd/MM/yy") +" hasta "+iFechaHasta.ToString("dd/MM/yy");
+		}
 
-                if (!hab.Exclusiva && auxExcl!=0) 
-                {
-                    //dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", hab.CuposSimpleDisponibles(), hab.CuposDoblesDisponibles(),
-                    //auxExcl==hab.Capacidad() ? "Permitida":"No Permitida");
-                }
-            }
+        private void TablaDisponibilidad_Load(object sender, EventArgs e)
+		{
+			this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(iFechaDesde), Convert.ToDateTime(iFechaHasta));
+			foreach (var hab in this.Habitaciones)
+			{
+				//int auxExcl = new ControladorHabitacion().VerificarSolicitdExclusividad(hab);
 
-            dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena segun Nro de Habitacion
-        }
+				if (!hab.Ocupada)
+				{
+					dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Planta == 0 ? "Baja" : "Alta", hab.Capacidad);
+				}
+			}
 
-        private void btn_Seleccionar_Click(object sender, EventArgs e)
-        {
-            DataGridViewCellCollection Fila = dGV_TablaHabitaciones.CurrentRow.Cells;
-            //this.FormPadre.cargar_Nro_Habitacion(Convert.ToByte(Fila[0].Value));
-            //this.HabSeleccionada = new ControladorHabitacion().ObtenerHabitacion(Convert.ToInt32(Fila[0].Value));
-            this.HabSeleccionada = this.Habitaciones.Find(h =>h.HabitacionId == Convert.ToInt32(Fila[0].Value));
-            Close();
-        }
+			dGV_TablaHabitaciones.Sort(Column1, ListSortDirection.Ascending); //Ordena según Nro de Habitación
+		}
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
+		private void btn_Seleccionar_Click(object sender, EventArgs e)
+		{
+			this.HabSeleccionada = this.Habitaciones.Find(h => h.HabitacionId == Convert.ToInt32(dGV_TablaHabitaciones.CurrentRow.Cells[0].Value));
+			Close();
+		}
+
+		private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             Close();
         }

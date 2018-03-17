@@ -69,20 +69,21 @@ namespace Dominio
             }
             return listaAlojamientos;
         }
-        /// <summary>
-        /// Realiza la ocupación para una fechas determinadas
-        /// </summary>
-        /// <returns></returns>
-        public List<Habitacion> DeterminarDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
+		/// <summary>
+		/// Realiza la Ocupación para una fechas determinadas
+		/// </summary>
+		/// <returns>Habitaciones con los campos Ocupada y Exclusividad modificados</returns>
+		public List<Habitacion> DeterminarDisponibilidad(DateTime fechaDesde, DateTime fechaHasta)
         {
             //ControladorHabitacion iControladorHab = new ControladorHabitacion();
-            DateTime auxFechaIniAloj = new DateTime();
-            DateTime auxFechaFinAloj = new DateTime();
+            DateTime auxFechaIniAloj;
+            DateTime auxFechaFinAloj;
             List<Alojamiento> listaAlojActivos = ObtenerAlojamientosActivos(); //METODO DEFINIDO EN REPOSITORIO ALOJAMIENTO -> lista de alojamientos en estado de Alojado o Reservado
             List<Habitacion> listaHabitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres(); //GENERAR LISTA DE HABITACION TODAS LIBRE (GET ALL CON REPOSITORY)lista de todas las habitaciones del hotel, solo los HabitacionesID
 
             foreach (var aloj in listaAlojActivos)
             {
+				//inicializar fechas locales
                 auxFechaFinAloj = aloj.FechaEstimadaEgreso;
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                 {
