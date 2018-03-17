@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -197,16 +190,8 @@ namespace UI
             try
             {
                 int IdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
-				if (NuevoAlojamiento.Deposito != 0)
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa, IdAloj);
-					ventanaEmergente.ShowDialog();
-				}
-				else
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.Exito);
-					ventanaEmergente.ShowDialog();
-				}
+				VentanaEmergente ventanaEmergente = new VentanaEmergente("Reserva de Alojamiento Exitosa", TipoMensaje.ReservaExitosa, IdAloj);
+				ventanaEmergente.ShowDialog();
                 Close();
             }
             catch (Exception E)

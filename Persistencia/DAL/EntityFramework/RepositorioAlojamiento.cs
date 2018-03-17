@@ -38,7 +38,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
@@ -65,25 +65,28 @@ namespace Persistencia.DAL.EntityFramework
         }
 
         /// <summary>
-        /// Utilizado para todos los tipos de Altas
+        /// Utilizado para Nueva Reserva o Nuevo Aloj
         /// </summary>
         public override void Add(Alojamiento unAloj)
         {
             List<Cliente> auxListCliente = new List<Cliente>();
-
             Habitacion auxHabitacion = unAloj.Habitacion;
-            unAloj.Habitacion = iDbContext.Habitaciones.SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
 
+			unAloj.Habitacion = iDbContext.Habitaciones.SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
+
+			//Enlazar clientes
             foreach (var cli in unAloj.Clientes)
             {
                 auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
             }
             unAloj.Clientes = auxListCliente;
 
+
             if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
             {
+				// condicion de que la HAB este en ALTA ??
                 unAloj.Habitacion.Exclusiva = auxHabitacion.Exclusiva;
-                
+				unAloj.Habitacion.Ocupada = auxHabitacion.Ocupada;
 
             }
 
@@ -92,6 +95,9 @@ namespace Persistencia.DAL.EntityFramework
             iDbContext.SaveChanges();
         }
 
+		/// <summary>
+		/// Utilizado para Alta de una Reserva
+		/// </summary>
         public void AltaReserva(Alojamiento pAloj)
         {
             Alojamiento localAloj = this.Get(pAloj.AlojamientoId);

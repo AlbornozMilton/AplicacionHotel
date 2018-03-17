@@ -155,7 +155,7 @@ namespace Dominio
 				auxCantidadContadores += Convert.ToByte(pContadores[i].ToString());
             }
               
-            if (Convert.ToByte(pCapacidadHab) != auxCantidadContadores + 1)
+            if (Convert.ToByte(pCapacidadHab) < auxCantidadContadores + 1)
             {
                 throw new Exception("La cantidad de Clientes cargados sobrepasa la Capacidad de la Habitación");
             }

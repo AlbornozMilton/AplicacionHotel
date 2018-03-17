@@ -19,7 +19,7 @@ namespace Dominio
             return iUoW.RepositorioAlojamiento.UltimoAgregado();
         }
 
-        //Alta con Reserva
+        //Alta con Reserva - no genera un ID
         public void RegistrarAltaReserva(Alojamiento pAlojamiento)
         {
             var A = Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento);
