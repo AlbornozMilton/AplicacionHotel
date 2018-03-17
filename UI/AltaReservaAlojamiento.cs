@@ -98,30 +98,71 @@ namespace UI
             {
                 if (BuscarClienteForm.ClienteSeleccionado != null)
                 {
+					//siempre reiniciar contadores
+					contador_Convenio.Value = 0;
+					contador_Convenio.Enabled = true;
+					contador_Titular.Value = 0;
+					contador_Titular.Enabled = true;
+					contador_Directo.Value = 0;
+					contador_Directo.Enabled = true;
+					contador_NoDirecto.Value = 0;
+					contador_NoDirecto.Enabled = true;
+					contador_Exceptuado.Value = 0;
+					contador_Exceptuado.Enabled = true;
 
-                    this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
-					//Excepción
+					//Excepción cliente activo
                     new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin,new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
-					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ck_Exclusividad.Enabled == true)
-                    {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
-                        ventanaEmergente.ShowDialog();
-                        HabSeleccionada.SetExclusividad(false);
-                        ck_Exclusividad.Checked = false;
-                        ck_Exclusividad.Enabled = false;
-					}
-					else
-					{
-						if (this.ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Titular)
-						{
-							VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
-							ventanaEmergente.ShowDialog(); 
-						}
-						ck_Exclusividad.Enabled = exclusividadCapacidad;
-					}
+					//AVISO DE CLIENTE DEUDOR
 
+					switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
+					{
+						case TipoCliente.Titular:
+							{
+								contador_Convenio.Enabled = false;
+							}
+							break;
+						case TipoCliente.AcompanianteDirecto:
+							{
+								contador_Convenio.Enabled = false;
+								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
+								ventanaEmergente.ShowDialog();
+								ck_Exclusividad.Enabled = exclusividadCapacidad;
+							}
+							break;
+						case TipoCliente.AcompanianteNoDirecto:
+							{
+								contador_Convenio.Enabled = false;
+								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
+								ventanaEmergente.ShowDialog();
+								ck_Exclusividad.Enabled = exclusividadCapacidad;
+							}
+							break;
+						case TipoCliente.TitularExceptuado:
+							{
+								contador_Convenio.Enabled = false;
+								if (ck_Exclusividad.Enabled == true)
+								{
+									VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
+									ventanaEmergente.ShowDialog();
+									HabSeleccionada.SetExclusividad(false);
+									ck_Exclusividad.Checked = false;
+									ck_Exclusividad.Enabled = false;
+								}
+							}
+							break;
+						case TipoCliente.Convenio:
+							{
+								contador_Titular.Enabled = false;
+								contador_Directo.Enabled = false;
+								contador_NoDirecto.Enabled = false;
+								contador_Exceptuado.Enabled = false;
+							}
+							break;
+					}
+						
 					dGV_ClienteResponsable.Rows.Clear();
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     btn_Confirmar.Enabled = true;
