@@ -53,5 +53,10 @@ namespace Dominio
         {
             this.iDetalle = pDetalle;
         }
-    }
+
+		public void ActualizarCosto(double pCosto)
+		{
+			this.iCostoBase = pCosto;
+		}
+	}
 }
