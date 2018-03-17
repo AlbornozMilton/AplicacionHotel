@@ -48,26 +48,6 @@ namespace UI
         {
             try
             {
-				//tablaResulClientes.Rows.Clear();
-				//if (radioButton1.Checked && textBox_DNI.Text.Length > 0) //DNi
-				//{
-				//    AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
-				//    CargarCliente();
-				//}
-				//else if (radioButton_nombre.Checked)//NOMBRE
-				//{
-				//    List<Cliente> list = new ControladorCliente().BuscarClientePorNom_Ape(textBox_Nombre.Text, auxAlta);
-				//    foreach (var cli in list)
-				//    {
-				//        tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
-				//    }
-				//}
-				//else if (radioButton_legajo.Checked && textBox_Legajo.Text.Length > 0) //LEGAJO
-				//{
-				//    AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
-				//    CargarCliente();
-				//}
-				//btn_Aceptar.Enabled = true;
 				ResultadoBusqueda();
             }
             catch (FormatException)
@@ -79,13 +59,21 @@ namespace UI
             {
                 new VentanaEmergente("        Cliente no encontrado", TipoMensaje.Alerta).ShowDialog();
             }
+            catch (Exception E)
+            {
+                new VentanaEmergente("      " + E.Message, TipoMensaje.Alerta).ShowDialog();
+            }
         }
 
 		private void ResultadoBusqueda()
 		{
 			tablaResulClientes.Rows.Clear();
-			if (radioButton1.Checked && textBox_DNI.Text.Length > 0) //DNi
+			if (radioButton1.Checked) //DNi
 			{
+                if (textBox_DNI.Text.Length == 0)
+                {
+                    throw new Exception("Debe ingresar un DNI");
+                }
 				AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorDni((Convert.ToInt32(textBox_DNI.Text)), auxAlta);
 				CargarCliente();
 			}
@@ -97,9 +85,13 @@ namespace UI
 					tablaResulClientes.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
 				}
 			}
-			else if (radioButton_legajo.Checked && textBox_Legajo.Text.Length > 0) //LEGAJO
+			else if (radioButton_legajo.Checked) //LEGAJO
 			{
-				AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
+                if (textBox_Legajo.Text.Length == 0)
+                {
+                    throw new Exception("Debe ingresar un Legajo");
+                }
+                AuxClienteSeleccionado = new ControladorCliente().BuscarClientePorLegajo(textBox_Legajo.Text, auxAlta);
 				CargarCliente();
 			}
 			btn_Aceptar.Enabled = true;

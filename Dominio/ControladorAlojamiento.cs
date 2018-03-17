@@ -65,7 +65,10 @@ namespace Dominio
             List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
             foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
             {
-                listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+				if (aloj.Pagos.Exists(p => p.Tipo == pers.TipoPago.Servicios))
+				{
+					listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj)); 
+				}
             }
             return listaAlojamientos;
         }
