@@ -170,29 +170,16 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Ciudad>().Add(CiudadCaseros);
 
 
-            #endregion
+			#endregion
 
-            #region Habitaciones y Cupos
-            Habitacion hab1 = new Habitacion()
-            {
-                HabitacionId = 1,
-                Planta = 0,// planta baja
-                Exclusiva = false,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
+			#region Habitaciones y Cupos
+			Habitacion hab1 = new Habitacion()
+			{
+				HabitacionId = 1,
+				Planta = 0,// planta baja
+				Capacidad = 2,
+				Ocupada = false,
+                Exclusiva = false
             };
             context.Set<Habitacion>().Add(hab1);
 
@@ -200,28 +187,9 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 2,
                 Exclusiva = false,
-                Planta = 0,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Disponible = true,
-                        Alta = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.doble,
-                        Disponible = true,
-                        Alta = true
-                    }
-                }
+				Capacidad = 4,
+				Ocupada = false,
+				Planta = 0
             };
             context.Set<Habitacion>().Add(hab2);
 
@@ -229,28 +197,9 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 3,
                 Exclusiva = false,
-                Planta = 0,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
+				Capacidad = 3,
+				Ocupada = false,
+				Planta = 0
             };
             context.Set<Habitacion>().Add(hab3);
 
@@ -259,28 +208,9 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 4,
                 Exclusiva = false,
                 Planta = 0,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+			};
             context.Set<Habitacion>().Add(hab4);
 
             Habitacion hab5 = new Habitacion()
@@ -288,22 +218,9 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 5,
                 Exclusiva = false,
                 Planta = 0,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.doble,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+			};
             context.Set<Habitacion>().Add(hab5);
 
             Habitacion hab6 = new Habitacion()
@@ -311,22 +228,10 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 6,
                 Exclusiva = false,
                 Planta = 1,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.doble,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+
+			};
             context.Set<Habitacion>().Add(hab6);
 
             Habitacion hab7 = new Habitacion()
@@ -334,22 +239,10 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 7,
                 Exclusiva = false,
                 Planta = 1,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.doble,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+
+			};
             context.Set<Habitacion>().Add(hab7);
 
             Habitacion hab8 = new Habitacion()
@@ -357,22 +250,10 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 8,
                 Exclusiva = false,
                 Planta = 1,
-                Cupos = new List<Cupo>()
-                {
-                   new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.doble,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+
+			};
             context.Set<Habitacion>().Add(hab8);
 
             Habitacion hab9 = new Habitacion()
@@ -380,28 +261,10 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 9,
                 Exclusiva = false,
                 Planta = 1,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Disponible = true,
-                        Alta = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+
+			};
             context.Set<Habitacion>().Add(hab9);
 
             Habitacion hab10 = new Habitacion()
@@ -409,28 +272,9 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 10,
                 Exclusiva = false,
                 Planta = 1,
-                Cupos = new List<Cupo>()
-                {
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    },
-                    new Cupo
-                    {
-                        Tipo = TipoCupo.simple,
-                        Alta = true,
-                        Disponible = true
-                    }
-                }
-            };
+				Capacidad = 3,
+				Ocupada = false
+			};
             context.Set<Habitacion>().Add(hab10);
 
             #endregion

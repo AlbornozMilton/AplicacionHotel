@@ -21,7 +21,6 @@ namespace Persistencia.DAL.EntityFramework
         public virtual DbSet<Alojamiento> Alojamientos { get; set; }
         public virtual DbSet<Ciudad> Ciudades { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Cupo> Cupos { get; set; }
         public virtual DbSet<Domicilio> Domicilios { get; set; }
         public virtual DbSet<Habitacion> Habitaciones { get; set; }
         public virtual DbSet<LineaServicio> LineaServicios { get; set; }
@@ -37,7 +36,6 @@ namespace Persistencia.DAL.EntityFramework
             mBuilder.Configurations.Add(new AlojamientoMap());
             mBuilder.Configurations.Add(new CiudadMap());
             mBuilder.Configurations.Add(new ClienteMap());
-            mBuilder.Configurations.Add(new CupoMap());
             mBuilder.Configurations.Add(new DomicilioMap());
             mBuilder.Configurations.Add(new HabitacionMap());
             mBuilder.Configurations.Add(new LineaServicioMap());

@@ -41,15 +41,6 @@ namespace UI
             dGV_Habs.Rows.Add(pHab.HabitacionId, pHab.Capacidad(), pHab.Planta==0 ? "Baja":"Alta");
         }
 
-        private void CargarCupos(List<Cupo> pCupos)
-        {
-            dataGridView_cupos.Rows.Clear();
-            foreach (var cupo in pCupos)
-            {
-                dataGridView_cupos.Rows.Add(cupo.Tipo.ToString().ToUpper(),cupo.Alta ? "En Alta":"En Baja", cupo.Alta ? "Dar de Baja":"Dar de Alta");
-            }
-        }
-            
         private void btn_buscarHab_Click(object sender, EventArgs e)
         {
             try

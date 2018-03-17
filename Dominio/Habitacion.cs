@@ -10,20 +10,22 @@ namespace Dominio
     {
         private byte iNumero;
         private byte iPlanta;
-        private bool iExclusiva;
-        private List<Cupo> iCupos;
-
+		private byte iCapacidad;
+		private bool iExclusiva;
+		private bool iOcupada;
+        
         //CONSTRUCTORES
         public Habitacion()
         {
         }
 
-        public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva, int pCapacidad, List<Cupo> pCupos)
+        public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva, byte pCapacidad, bool pOcupada)
         {
             this.iNumero = pNumero;
             this.iPlanta = pPlanta;
+			this.iCapacidad = pCapacidad;
             this.iExclusiva = pExclusiva;
-            this.iCupos = pCupos;
+			this.iOcupada = pOcupada;
         }
 
         //PROPIEDADES
@@ -43,107 +45,32 @@ namespace Dominio
             get { return this.iExclusiva; }
             private set { this.iExclusiva = value; }
         }
-        public List<Cupo> Cupos
-        {
-            get { return this.iCupos; }
-            private set { this.iCupos = value; }
-        }
 
-       
-        public void OcuparCupos(byte pCantS, byte pCantD)
-        {
-            foreach (var cupo in this.iCupos)
-            {
-                if (cupo.Alta && (pCantS > 0 || pCantD > 0))
-                {
-                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && cupo.Disponible )
-                    {
-                        cupo.Ocupar(); 
-                        pCantS--;                            
-                    }
-                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble && cupo.Disponible)
-                    {
-                        cupo.Ocupar();
-                        pCantD--;
-                    }
-                }
-            }
-        }
+		public byte Capacidad
+		{
+			get { return this.iCapacidad; }
+			private set { this.iCapacidad = value; }
+		}
 
-        public void DesocuparCupos(byte pCantS, byte pCantD)
-        {
-            foreach (var cupo in this.iCupos)
-            {
-                if (cupo.Alta && (pCantS > 0 || pCantD > 0))
-                {
-                    if (pCantS > 0 && cupo.Tipo == TipoCupo.simple && !cupo.Disponible)
-                    {
-                        cupo.Desocupar(); 
-                        pCantS--;
-                    }
-                    else if (pCantD > 0 && cupo.Tipo == TipoCupo.doble && !cupo.Disponible)
-                    {
-                        cupo.Desocupar();
-                        pCantD--;
-                    }
-                }
-            }
-        }
+	    public bool Ocupada
+		{
+			get { return this.iOcupada; }
+			private set { this.iOcupada = value; }
+		}
 
-        public byte Capacidad()
+		public void OcuparHabitacion()
         {
-            byte lCapacidad = 0;
-            foreach (var cupo in this.iCupos)
-            {
-                if (cupo.Alta && cupo.Tipo == TipoCupo.simple)
-                {
-                    lCapacidad ++;
-                }
-                else if (cupo.Alta && cupo.Tipo == TipoCupo.doble)
-                {
-                    lCapacidad += 2;
-                } 
-            }
-            return lCapacidad;
-        }
+			this.Ocupada = true;
+		}
 
-        public byte CuposSimpleDisponibles()
-        {
-            byte resultado = 0;
-            foreach (var cupo in this.iCupos)
-            {
-                if (cupo.Alta && cupo.Disponible && cupo.Tipo == TipoCupo.simple)
-                {
-                    resultado++;
-                }
-            }
-            return resultado;
-        }
+		public void DesocuparHabitacion()
+		{
+			this.Ocupada = false;
+		}
 
-        public byte CuposDoblesDisponibles()
+		public void SetExclusividad(bool pExclusividad)
         {
-            byte resultado = 0;
-            foreach (var cupo in this.iCupos)
-            {
-                if (cupo.Alta && cupo.Disponible && cupo.Tipo == TipoCupo.doble )
-                {
-                    resultado ++ ;
-                }
-            }
-            return resultado;
-        }
-
-        public void SetExclusividad(bool pExclusividad)
-        {
-            this.iExclusiva = pExclusividad;
-        }
-
-        public void ModificarAltaCupo(int pIndex)
-        {
-            if (this.iCupos[pIndex].Alta)
-                this.iCupos[pIndex].ModificarAlta(false);
-            else
-                this.iCupos[pIndex].ModificarAlta(true);
+            this.Exclusiva = pExclusividad;
         }
     }
 }

@@ -85,19 +85,19 @@ namespace Persistencia.DAL.EntityFramework
                 unAloj.Habitacion.Exclusiva = auxHabitacion.Exclusiva;
                 
                 ////la que se ocupo en dominio
-                for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
-                {
-                    Cupo localCupo = unAloj.Habitacion.Cupos[i];
-                    Cupo externalCupo = auxHabitacion.Cupos[i];
-                    if ((!externalCupo.Disponible && externalCupo.Alta) && (localCupo.Disponible && localCupo.Alta))
-                    {
-                        localCupo.Disponible = false;
-                    }
-                    //if ((unAloj.Habitacion.Cupos[i].Disponible)&&(!auxHabitacion.Cupos[i].Disponible))
-                    //{
-                    //    unAloj.Habitacion.Cupos[i].Disponible = false;
-                    //}
-                }
+                //for (int i = 0; i < unAloj.Habitacion.Cupos.Count; i++)
+                //{
+                //    Cupo localCupo = unAloj.Habitacion.Cupos[i];
+                //    Cupo externalCupo = auxHabitacion.Cupos[i];
+                //    if ((!externalCupo.Disponible && externalCupo.Alta) && (localCupo.Disponible && localCupo.Alta))
+                //    {
+                //        localCupo.Disponible = false;
+                //    }
+                //    //if ((unAloj.Habitacion.Cupos[i].Disponible)&&(!auxHabitacion.Cupos[i].Disponible))
+                //    //{
+                //    //    unAloj.Habitacion.Cupos[i].Disponible = false;
+                //    //}
+                //}
             }
 
             iDbContext.Alojamientos.Add(unAloj);
@@ -113,16 +113,16 @@ namespace Persistencia.DAL.EntityFramework
             localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
 
             localAloj.Habitacion.Exclusiva = pAloj.Habitacion.Exclusiva;
-            for (int i = 0; i < localAloj.Habitacion.Cupos.Count; i++)
-            {
-                //se va a ocupar--------------------------------//asegurar de que este disponible : control
-                Cupo localCupo = localAloj.Habitacion.Cupos[i];
-                Cupo externalCupo = pAloj.Habitacion.Cupos[i];
-                if ((localCupo.Disponible && localCupo.Alta ) && (!externalCupo.Disponible && externalCupo.Alta))
-                {
-                    localCupo.Disponible = false;
-                }
-            }
+            //for (int i = 0; i < localAloj.Habitacion.Cupos.Count; i++)
+            //{
+            //    //se va a ocupar--------------------------------//asegurar de que este disponible : control
+            //    Cupo localCupo = localAloj.Habitacion.Cupos[i];
+            //    Cupo externalCupo = pAloj.Habitacion.Cupos[i];
+            //    if ((localCupo.Disponible && localCupo.Alta ) && (!externalCupo.Disponible && externalCupo.Alta))
+            //    {
+            //        localCupo.Disponible = false;
+            //    }
+            //}
 
             List<Cliente> auxListCliente = new List<Cliente>();
             foreach (var cli in pAloj.Clientes)
@@ -149,19 +149,19 @@ namespace Persistencia.DAL.EntityFramework
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
                 localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
                 ////la que se ocupo en dominio
-                for (int i = 0; i < localAuxAloj.Habitacion.Cupos.Count; i++)
-                {
-                    Cupo localCupo = localAuxAloj.Habitacion.Cupos[i];
-                    Cupo externalCupo = unAloj.Habitacion.Cupos[i];
-                    if ((!localCupo.Disponible && localCupo.Alta) && (externalCupo.Disponible && externalCupo.Alta))
-                    {
-                        localCupo.Disponible = true;
-                    }
-                    //if ((!localAuxAloj.Habitacion.Cupos[i].Disponible) && (alojHabitacion.Cupos[i].Disponible))
-                    //{
-                    //    localAuxAloj.Habitacion.Cupos[i].Disponible = true;
-                    //}
-                }
+                //for (int i = 0; i < localAuxAloj.Habitacion.Cupos.Count; i++)
+                //{
+                //    Cupo localCupo = localAuxAloj.Habitacion.Cupos[i];
+                //    Cupo externalCupo = unAloj.Habitacion.Cupos[i];
+                //    if ((!localCupo.Disponible && localCupo.Alta) && (externalCupo.Disponible && externalCupo.Alta))
+                //    {
+                //        localCupo.Disponible = true;
+                //    }
+                //    //if ((!localAuxAloj.Habitacion.Cupos[i].Disponible) && (alojHabitacion.Cupos[i].Disponible))
+                //    //{
+                //    //    localAuxAloj.Habitacion.Cupos[i].Disponible = true;
+                //    //}
+                //}
             }
 
             iDbContext.SaveChanges();

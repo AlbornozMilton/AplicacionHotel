@@ -36,14 +36,6 @@ namespace Dominio
             List<Habitacion> lista = new List<Habitacion>();
             foreach (var hab in listaEnum)
             {
-                hab.Exclusiva = false;
-                foreach (var cupo in hab.Cupos)
-                {
-                    if (cupo.Disponible == false)
-                    {
-                        cupo.Disponible = true;
-                    }
-                }
                 lista.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab));
             }
             return (lista);
@@ -54,24 +46,23 @@ namespace Dominio
         /// </summary>
         public int VerificarSolicitdExclusividad(Habitacion pHab)
         {
-            // se se cumple la igualdad, se puede pedir exclusividad
-            return pHab.CuposSimpleDisponibles() + (pHab.CuposDoblesDisponibles() * 2);
+			return 0;
         }
 
         public void VerificarCuposSimplesIngresados(Habitacion pHab, decimal pCantS)
         {
-            if ((pHab.CuposSimpleDisponibles()<pCantS))
-            {
-                throw new Exception("La cantidad de Cupos Simples deseada no es posibles para las Fechas elegidas");
-            }
+            //if ((pHab.CuposSimpleDisponibles()<pCantS))
+            //{
+            //    throw new Exception("La cantidad de Cupos Simples deseada no es posibles para las Fechas elegidas");
+            //}
         }
 
         public void VerificarCuposDoblesIngresados(Habitacion pHab, decimal pCantD)
         {
-            if (pHab.CuposDoblesDisponibles() < pCantD)
-            {
-                throw new Exception("La cantidad de Cupos Dobles deseada no es posibles para las Fechas elegidas");
-            }
+            //if (pHab.CuposDoblesDisponibles() < pCantD)
+            //{
+            //    throw new Exception("La cantidad de Cupos Dobles deseada no es posibles para las Fechas elegidas");
+            //}
         }
 
         public List<Alojamiento> ControlModificarAltaCupos(int pIdHabitacion)
@@ -89,9 +80,9 @@ namespace Dominio
             return AlojsResltultado;
         }
 
-        public void ModificarAltaDeCupos(Habitacion pHabitacion)
+        public void ModificarAltaDeHabitacion(Habitacion pHabitacion)
         {
-            iUoW.RepositorioHabitacion.ModificarAltaCupo(Mapper.Map<Habitacion, pers.Habitacion>(pHabitacion));
+
         }
     }
 }

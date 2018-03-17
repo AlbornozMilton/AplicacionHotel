@@ -58,7 +58,6 @@
     <Compile Include="ControladorCliente.cs" />
     <Compile Include="ControladorExtra.cs" />
     <Compile Include="ControladorHabitacion.cs" />
-    <Compile Include="Cupo.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="DTOsAutoMapper\AutoMapper.cs" />
     <Compile Include="EstadoAlojamiento.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="Servicio.cs" />
     <Compile Include="TarifaCliente.cs" />
     <Compile Include="TipoCliente.cs" />
-    <Compile Include="TipoCupo.cs" />
     <Compile Include="TipoPago.cs" />
   </ItemGroup>
   <ItemGroup>

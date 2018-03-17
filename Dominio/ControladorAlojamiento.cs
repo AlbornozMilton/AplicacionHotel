@@ -102,7 +102,7 @@ namespace Dominio
                     {
                         if (hab.HabitacionId == aloj.HabitacionId)
                         {
-                            hab.OcuparCupos(aloj.CantCuposSimples, aloj.CantCuposDobles);
+							hab.OcuparHabitacion();
                             hab.SetExclusividad(aloj.Exclusividad);
                         }
                     }
@@ -129,7 +129,7 @@ namespace Dominio
 
             foreach (var hab in Habitaciones)
             {
-                auxCapacidadTotal += hab.Capacidad();
+                auxCapacidadTotal += hab.Capacidad;
             }
 
             //acumulará la cantidad de cupos que estan exlcusivos
@@ -164,7 +164,7 @@ namespace Dominio
                        )
                     {
                         //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
-                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad();
+                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad;
                     }
                 }
             }
@@ -291,7 +291,7 @@ namespace Dominio
             //fecha de hoy y cambio de estado
             pAlojamiento.Cerrar(DateTime.Now);
 
-            pAlojamiento.Habitacion.DesocuparCupos(pAlojamiento.CantCuposSimples, pAlojamiento.CantCuposDobles);
+            pAlojamiento.Habitacion.DesocuparHabitacion();
 
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));

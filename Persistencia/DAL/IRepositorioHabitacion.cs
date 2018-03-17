@@ -10,6 +10,6 @@ namespace Persistencia.DAL
     public interface IRepositorioHabitacion:IRepositorio<Habitacion>
     {
         IEnumerable<Habitacion> GetAllconCupos();
-        void ModificarAltaCupo(Habitacion pHabitacion);
+        void ModificarAltaHabitacion(Habitacion pHabitacion);
     }
 }

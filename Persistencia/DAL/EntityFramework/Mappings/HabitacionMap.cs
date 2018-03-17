@@ -15,14 +15,17 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(h => h.HabitacionId)
                 .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
-            //this.Property(h => h.Capacidad)
-            //    .IsRequired();
+			this.Property(h => h.Capacidad)
+				.IsRequired();
 
-            this.Property(h => h.Planta)
+			this.Property(h => h.Planta)
                 .IsRequired();
 
             this.Property(h => h.Exclusiva)
                 .IsRequired();
-        }
+
+			this.Property(o => o.Ocupada)
+				.IsRequired();
+		}
     }
 }
