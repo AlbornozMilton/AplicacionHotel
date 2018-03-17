@@ -81,5 +81,15 @@ namespace Dominio
         {
             this.Exclusiva = pExclusividad;
         }
-    }
+
+		public void DarDeBaja()
+		{
+			this.iAlta = false;
+		}
+
+		public void DarDeAlta()
+		{
+			this.iAlta = true;
+		}
+	}
 }

@@ -174,8 +174,6 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Ciudad>().Add(CiudadDiamante);
             Ciudad CiudadCaseros = new Ciudad { CodPostal = 3262, Nombre = "Caseros", Domicilios = null };
             context.Set<Ciudad>().Add(CiudadCaseros);
-
-
 			#endregion
 
 			#region Habitaciones y Cupos
@@ -197,7 +195,6 @@ namespace Persistencia.DAL.EntityFramework
 				Capacidad = 4,
 				Ocupada = false,
 				Alta = true,
-
 				Planta = 0
             };
             context.Set<Habitacion>().Add(hab2);
@@ -209,7 +206,6 @@ namespace Persistencia.DAL.EntityFramework
 				Capacidad = 3,
 				Ocupada = false,
 				Alta = true,
-
 				Planta = 0
             };
             context.Set<Habitacion>().Add(hab3);
@@ -221,7 +217,6 @@ namespace Persistencia.DAL.EntityFramework
                 Planta = 0,
 				Capacidad = 3,
 				Alta = true,
-
 				Ocupada = false
 			};
             context.Set<Habitacion>().Add(hab4);
@@ -231,7 +226,6 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 5,
                 Exclusiva = false,
 				Alta = true,
-
 				Planta = 0,
 				Capacidad = 3,
 				Ocupada = false
@@ -242,12 +236,10 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 6,
 				Alta = true,
-
 				Exclusiva = false,
                 Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
-
 			};
             context.Set<Habitacion>().Add(hab6);
 
@@ -256,11 +248,9 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 7,
                 Exclusiva = false,
 				Alta = true,
-
 				Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
-
 			};
             context.Set<Habitacion>().Add(hab7);
 
@@ -270,10 +260,8 @@ namespace Persistencia.DAL.EntityFramework
                 Exclusiva = false,
                 Planta = 1,
 				Alta = true,
-
 				Capacidad = 3,
 				Ocupada = false
-
 			};
             context.Set<Habitacion>().Add(hab8);
 
@@ -282,11 +270,9 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 9,
                 Exclusiva = false,
 				Alta = true,
-
 				Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
-
 			};
             context.Set<Habitacion>().Add(hab9);
 
@@ -297,11 +283,9 @@ namespace Persistencia.DAL.EntityFramework
                 Planta = 1,
 				Capacidad = 3,
 				Alta = true,
-
 				Ocupada = false
 			};
             context.Set<Habitacion>().Add(hab10);
-
             #endregion
 
             #region Servicios
@@ -353,79 +337,6 @@ namespace Persistencia.DAL.EntityFramework
 
             #endregion
             ////-----------------------FIN DATOS BASICOS------------------
-
-            ////-----------------------A MODO DE EJEMPLO-----------------
-
-            #region Clientes
-            Cliente Milton = new Cliente
-            {
-                ClienteId = 38387043,
-                Legajo = 2222223,
-                Apellido = "Albornoz",
-                Nombre = "Milton",
-                Telefono = "0345515431476",
-                TarifaClienteId = TarifaTitular.TarifaClienteId,
-                EnAlta = true
-            };
-            context.Set<Cliente>().Add(Milton);
-
-            Cliente Mauri = new Cliente
-            {
-                ClienteId = 37115628,
-                Legajo = 2222222,
-                Apellido = "Chamorro",
-                Nombre = "Mauricio Manuel",
-                Telefono = "0345615542154",
-                TarifaClienteId = TarifaAcompDirecto.TarifaClienteId,
-                EnAlta = true
-            };
-            context.Set<Cliente>().Add(Mauri);
-
-            Cliente Desconocido = new Cliente
-            {
-                ClienteId = 30000001,
-                Apellido = "Anonimous",
-                Nombre = "Marcelo",
-                Telefono = "3554585854",
-                TarifaClienteId = TarifaConvenio.TarifaClienteId,
-                EnAlta = false
-            };
-            context.Set<Cliente>().Add(Desconocido);
-
-            #endregion
-
-            #region Domicilios
-            Domicilio DomiciolioMilton = new Domicilio
-            {
-                Calle = "Peron",
-                Numero = "610",
-                Piso = "0",
-                NroDepto = "1",
-                CiudadId = CiudadCdelU.CiudadId,
-				Ciudad = CiudadCdelU,
-
-				Clientes = new List<Cliente>()
-                {
-                    Milton, Desconocido
-                }
-            };
-            context.Set<Domicilio>().Add(DomiciolioMilton);
-
-            Domicilio DomicilioMauri = new Domicilio
-            {
-                Calle = "Atencio Al Este",
-                Numero = "180",
-                Piso = "0",
-                NroDepto = "1",
-                CiudadId = CiudadFederacion.CiudadId,
-				Ciudad = CiudadFederacion,
-                Clientes = new List<Cliente>()
-                {
-                    Mauri
-                }
-            };
-            context.Set<Domicilio>().Add(DomicilioMauri);
-            #endregion 
 
             base.Seed(context);
         }
