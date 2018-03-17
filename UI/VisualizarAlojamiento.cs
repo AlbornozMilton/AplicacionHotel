@@ -88,8 +88,6 @@ namespace UI
             lbl_MontoDeuda.Text = pAlojamiento.MontoDeuda.ToString();
             lbl_MontoTotal.Text = pAlojamiento.MontoTotal.ToString();
             lbl_NroHabitacion.Text = pAlojamiento.HabitacionId.ToString();
-            lbl_CuposSimples.Text = pAlojamiento.CantCuposSimples.ToString();
-            lbl_CuposDobles.Text = pAlojamiento.CantCuposDobles.ToString();
             lbl_FechaReserva.Text = CargarFecha(pAlojamiento.FechaReserva);
             lbl_FechaIngreso.Text = CargarFecha(pAlojamiento.FechaIngreso);
             lbl_FechaEgreso.Text = CargarFecha(pAlojamiento.FechaEgreso);

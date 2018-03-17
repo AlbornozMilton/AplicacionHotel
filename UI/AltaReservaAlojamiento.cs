@@ -79,7 +79,7 @@ namespace UI
                     }
                     else
                     {
-						exclusividadCapacidad = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada) == HabSeleccionada.Capacidad();
+						exclusividadCapacidad = new ControladorHabitacion().VerificarSolicitdExclusividad(this.HabSeleccionada) == HabSeleccionada.Capacidad;
 						ck_Exclusividad.Enabled = exclusividadCapacidad;
                     }
 
@@ -284,7 +284,8 @@ namespace UI
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                cont_CuposSimples.Value = HabSeleccionada.CuposSimpleDisponibles();
+
+				//cont_CuposSimples.Value = HabSeleccionada.CuposSimpleDisponibles();
             }
         }
 
@@ -298,7 +299,8 @@ namespace UI
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                cont_CuposDobles.Value = HabSeleccionada.CuposDoblesDisponibles();
+
+				//cont_CuposDobles.Value = HabSeleccionada.CuposDoblesDisponibles();
             }
         }
 

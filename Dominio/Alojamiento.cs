@@ -17,14 +17,13 @@ namespace Dominio
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
-        public byte iCantCuposSimples;
-        public byte iCantCuposDobles;
         public bool iExclusividad;
         private DateTime iFechaReserva = new DateTime();
         private DateTime iFechaEstimadaEgreso = new DateTime();
         private DateTime iFechaEstimadaIngreso = new DateTime();
         private DateTime iFechaIngreso = new DateTime();
         private DateTime iFechaEgreso = new DateTime();
+		private DateTime iFechaCancelacion = new DateTime();
         private EstadoAlojamiento iEstadoAloj;
         private string iContadoresTarifas;
 
@@ -53,8 +52,6 @@ namespace Dominio
             this.iHabitacion = unaHab;
             this.iFechaIngreso = unaFechaIngreso;
             this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iCantCuposSimples = cantCuposSimples;
-            this.iCantCuposDobles = cantCuposDobles;
             this.iExclusividad = HabExclusividad;
         }
 
@@ -73,8 +70,6 @@ namespace Dominio
             this.iHabitacion = unaHab;
             this.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
             this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iCantCuposSimples = cantCuposSimples;
-            this.iCantCuposDobles = cantCuposDobles;
             this.iExclusividad = HabExclusividad;
             this.iContadoresTarifas = pContTarifas;
         }
@@ -115,11 +110,19 @@ namespace Dominio
             get { return this.iFechaEgreso; }
             private set { this.iFechaEgreso = value; }
         }
-        public double MontoTotal
+
+		public DateTime FechaCancelacion
+		{
+			get { return this.iFechaCancelacion; }
+			private set { this.iFechaCancelacion = value; }
+		}
+
+		public double MontoTotal
         {
             get { return this.iMontoTotal; }
             private set { this.iMontoTotal = value; }
         }
+
         public double MontoDeuda
         {
             get { return this.iMontoDeuda; }
@@ -129,18 +132,6 @@ namespace Dominio
         public double Deposito
         {
             get { return this.iMontoDeuda * 0.5; }
-        }
-
-        public byte CantCuposSimples
-        {
-            get { return this.iCantCuposSimples; }
-            private set { this.iCantCuposSimples = value; }
-        }
-
-        public byte CantCuposDobles
-        {
-            get { return this.iCantCuposDobles; }
-            private set { this.iCantCuposDobles = value; }
         }
 
         public bool Exclusividad

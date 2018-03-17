@@ -13,6 +13,7 @@ namespace Persistencia.Domain
         public byte Planta { get; set; }
         public bool Exclusiva { get; set; }
 		public bool Ocupada { get; set; }
+		public bool Alta { get; set; }
 
         public List<Alojamiento> Alojamientos { get; set; }
     }

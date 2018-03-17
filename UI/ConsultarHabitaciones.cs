@@ -25,14 +25,12 @@ namespace UI
         {
             foreach (var hab in Habitaciones)
             {
-                int auxCantCupoSimple = 0;
-                int auxCantCuposDoble = 0;
-                foreach (var cupo in hab.Cupos)
-                {
-                    if (cupo.Tipo == TipoCupo.simple) auxCantCupoSimple++;
-                    else auxCantCuposDoble++;
-                }
-                dGV_Habs.Rows.Add(hab.HabitacionId,hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", auxCantCupoSimple,auxCantCuposDoble);
+                //foreach (var cupo in hab.Cupos)
+                //{
+                //    if (cupo.Tipo == TipoCupo.simple) auxCantCupoSimple++;
+                //    else auxCantCuposDoble++;
+                //}
+                //dGV_Habs.Rows.Add(hab.HabitacionId,hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", auxCantCupoSimple,auxCantCuposDoble);
             }
         }
 

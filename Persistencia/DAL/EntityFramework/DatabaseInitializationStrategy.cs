@@ -26,10 +26,16 @@ namespace Persistencia.DAL.EntityFramework
                 Password = "albornoz"
             };
             context.Set<Usuario>().Add(user2);
-            #endregion
+			Usuario user3 = new Usuario
+			{
+				UsuarioId = "norma",
+				Password = "123456123"
+			};
+			context.Set<Usuario>().Add(user3);
+			#endregion
 
-            #region Tarfifas
-            TarifaCliente TarifaTitular = new TarifaCliente
+			#region Tarfifas
+			TarifaCliente TarifaTitular = new TarifaCliente
             {
                 TarifaClienteId = TipoCliente.Titular,
                 NombreTarifa = "Titular",
@@ -179,6 +185,7 @@ namespace Persistencia.DAL.EntityFramework
 				Planta = 0,// planta baja
 				Capacidad = 2,
 				Ocupada = false,
+				Alta = true,
                 Exclusiva = false
             };
             context.Set<Habitacion>().Add(hab1);
@@ -189,6 +196,8 @@ namespace Persistencia.DAL.EntityFramework
                 Exclusiva = false,
 				Capacidad = 4,
 				Ocupada = false,
+				Alta = true,
+
 				Planta = 0
             };
             context.Set<Habitacion>().Add(hab2);
@@ -199,6 +208,8 @@ namespace Persistencia.DAL.EntityFramework
                 Exclusiva = false,
 				Capacidad = 3,
 				Ocupada = false,
+				Alta = true,
+
 				Planta = 0
             };
             context.Set<Habitacion>().Add(hab3);
@@ -209,6 +220,8 @@ namespace Persistencia.DAL.EntityFramework
                 Exclusiva = false,
                 Planta = 0,
 				Capacidad = 3,
+				Alta = true,
+
 				Ocupada = false
 			};
             context.Set<Habitacion>().Add(hab4);
@@ -217,7 +230,9 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 5,
                 Exclusiva = false,
-                Planta = 0,
+				Alta = true,
+
+				Planta = 0,
 				Capacidad = 3,
 				Ocupada = false
 			};
@@ -226,7 +241,9 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab6 = new Habitacion()
             {
                 HabitacionId = 6,
-                Exclusiva = false,
+				Alta = true,
+
+				Exclusiva = false,
                 Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
@@ -238,7 +255,9 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 7,
                 Exclusiva = false,
-                Planta = 1,
+				Alta = true,
+
+				Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
 
@@ -250,6 +269,8 @@ namespace Persistencia.DAL.EntityFramework
                 HabitacionId = 8,
                 Exclusiva = false,
                 Planta = 1,
+				Alta = true,
+
 				Capacidad = 3,
 				Ocupada = false
 
@@ -260,7 +281,9 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 9,
                 Exclusiva = false,
-                Planta = 1,
+				Alta = true,
+
+				Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
 
@@ -273,6 +296,8 @@ namespace Persistencia.DAL.EntityFramework
                 Exclusiva = false,
                 Planta = 1,
 				Capacidad = 3,
+				Alta = true,
+
 				Ocupada = false
 			};
             context.Set<Habitacion>().Add(hab10);
@@ -385,7 +410,6 @@ namespace Persistencia.DAL.EntityFramework
                 }
             };
             context.Set<Domicilio>().Add(DomiciolioMilton);
-
 
             Domicilio DomicilioMauri = new Domicilio
             {

@@ -33,8 +33,8 @@ namespace UI
 
                 if (!hab.Exclusiva && auxExcl!=0) 
                 {
-                    dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", hab.CuposSimpleDisponibles(), hab.CuposDoblesDisponibles(),
-                    auxExcl==hab.Capacidad() ? "Permitida":"No Permitida");
+                    //dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", hab.CuposSimpleDisponibles(), hab.CuposDoblesDisponibles(),
+                    //auxExcl==hab.Capacidad() ? "Permitida":"No Permitida");
                 }
             }
 
