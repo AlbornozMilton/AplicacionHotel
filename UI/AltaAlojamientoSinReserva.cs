@@ -176,7 +176,7 @@ namespace UI
 					ck_Exclusividad.Enabled = false;
 
 					VentanaEmergente ventanaEmergente = new VentanaEmergente(
-                        "Debido a que agregó un Cliente de Tipo Exceptuado, no es posible soliticar la Exclusividad de la Habitación", 
+                        "Debido a que agregó un Cliente de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", 
                         TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
 				}

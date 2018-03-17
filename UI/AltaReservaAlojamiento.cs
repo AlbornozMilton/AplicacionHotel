@@ -187,7 +187,7 @@ namespace UI
                     btn_Aceptar.Enabled = true;
 				}
 				else
-					throw new Exception("Debe elegir un Clinete como Responsable");
+					throw new Exception("Debe elegir un Cliente como Responsable");
             }
             catch (Exception E)
             {

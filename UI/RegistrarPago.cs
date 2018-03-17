@@ -199,7 +199,7 @@ namespace UI
             }
             else if ((Int32.TryParse(txb_Monto.Text, out numero)) == false)
             {
-                throw new Exception("Formato inválido de Monto. Solo se adminiten dígitos.");
+                throw new Exception("Formato inválido de Monto. Solo se admiten dígitos.");
             }
             else if (Convert.ToDouble(monto) > AlojSeleccionado.MontoDeuda)
             {

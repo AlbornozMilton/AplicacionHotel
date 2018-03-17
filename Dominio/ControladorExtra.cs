@@ -195,7 +195,7 @@ namespace Dominio
 					)
 				)
 			{
-				color = "Yellow"; //sin deposito tras 72hs
+				color = "Gold"; //sin deposito tras 72hs
 			}
 
 			return color;
@@ -235,7 +235,8 @@ namespace Dominio
 			}
 		}
 
-		private string DomainMapper(Match match)
+		private string DomainMapper
+            (Match match)
 		{
 			// IdnMapping class with default property values.
 			IdnMapping idn = new IdnMapping();
