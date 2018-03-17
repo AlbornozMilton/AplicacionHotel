@@ -24,12 +24,16 @@ namespace UI
             }
         }
 
-
 		//Boton Seleccionar
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             this.ServicioSeleccionado = ListaServicios.Find(s => s.ServicioId == Convert.ToByte(dGV_Servicios.CurrentRow.Cells[0].Value));
             Close();
         }
-    }
+
+		private void btn_cancelar_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+	}
 }

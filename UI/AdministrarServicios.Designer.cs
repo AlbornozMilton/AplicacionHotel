@@ -38,6 +38,7 @@
 			this.clm_CostoBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
+			this.btn_cancelar = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).BeginInit();
 			this.SuspendLayout();
@@ -135,6 +136,17 @@
 			this.btn_Aceptar.UseVisualStyleBackColor = true;
 			this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
 			// 
+			// btn_cancelar
+			// 
+			this.btn_cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_cancelar.Location = new System.Drawing.Point(16, 250);
+			this.btn_cancelar.Name = "btn_cancelar";
+			this.btn_cancelar.Size = new System.Drawing.Size(110, 30);
+			this.btn_cancelar.TabIndex = 3;
+			this.btn_cancelar.Text = "Cancelar";
+			this.btn_cancelar.UseVisualStyleBackColor = true;
+			this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+			// 
 			// AdministrarServicios
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +155,7 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(901, 291);
+			this.Controls.Add(this.btn_cancelar);
 			this.Controls.Add(this.btn_Aceptar);
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -165,5 +178,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_CostoBase;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_detalle;
-    }
+		private System.Windows.Forms.Button btn_cancelar;
+	}
 }
