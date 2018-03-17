@@ -45,7 +45,5 @@ namespace Persistencia.DAL.EntityFramework
 
             base.OnModelCreating(mBuilder);
         }
-
-
     }
 }

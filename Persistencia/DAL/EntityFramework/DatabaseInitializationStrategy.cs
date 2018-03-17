@@ -176,7 +176,7 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Ciudad>().Add(CiudadCaseros);
 			#endregion
 
-			#region Habitaciones y Cupos
+			#region Habitaciones
 			Habitacion hab1 = new Habitacion()
 			{
 				HabitacionId = 1,

@@ -37,12 +37,13 @@ namespace Dominio
         /// <summary>
         /// Contructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
 
             this.iClientes = new List<Cliente>();
             this.iDniResponsable = unClienteResp.ClienteId;
+
             //El cliente responsable ya se encuentra en la lista de acompañantes - Verificar
             foreach (var cli in listaAcompañantes)
             {
@@ -58,7 +59,7 @@ namespace Dominio
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
+        public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;

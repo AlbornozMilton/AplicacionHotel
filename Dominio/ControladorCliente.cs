@@ -132,18 +132,14 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Controla que la cantidades de cupos ingresados coincidan con la cantidad de clientes totales durante el Alta de Reserva
+        /// Controla que la cantidades de Clientes ingresados coincidan con la capacidad de la Habitacion
         /// </summary>
         /// <param name="pClientes">Acompañantes más el Responsable</param>
-        /// <param name="pCantS">Ya pasó el control de la cantidad posible para la Habitación.</param>
-        /// <param name="pCantD">Ya pasó el control de la cantidad posible para la Habitación.</param>
-        public void ControlCuposConClientes(List<Cliente> pClientes, decimal pCantS, decimal pCantD)
+        public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
         {
-            decimal auxCantidad = pCantS + pCantD * 2;
-
-            if (pClientes.Count != auxCantidad)
+            if (pClientes.Count != pHab.Capacidad)
             {
-                throw new Exception("Las cantidades de cupos ingresadas no corresponden con la cantidad de Clientes cargados.");
+                throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");
             }
         }
 

@@ -272,36 +272,6 @@ namespace UI
 		}
         #endregion
 
-        private void cont_CuposSimples_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //new ControladorHabitacion().VerificarCuposSimplesIngresados(this.HabSeleccionada, cont_CuposSimples.Value);
-            }
-            catch (Exception E)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-
-				//cont_CuposSimples.Value = HabSeleccionada.CuposSimpleDisponibles();
-            }
-        }
-
-        private void cont_CuposDobles_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //new ControladorHabitacion().VerificarCuposDoblesIngresados(this.HabSeleccionada, cont_CuposDobles.Value);
-            }
-            catch (Exception E)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-
-				//cont_CuposDobles.Value = HabSeleccionada.CuposDoblesDisponibles();
-            }
-        }
-
         private void contador_Exceptuado_ValueChanged(object sender, EventArgs e)
         {
             if (contador_Exceptuado.Value > 0)

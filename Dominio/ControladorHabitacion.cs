@@ -23,7 +23,7 @@ namespace Dominio
         public List<Habitacion> GetAllHabitaciones()
         {
             List<Habitacion> listaResultado = new List<Habitacion>();
-            foreach (var hab in iUoW.RepositorioHabitacion.GetAllconCupos())
+            foreach (var hab in iUoW.RepositorioHabitacion.GetAll())
             {
                 listaResultado.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab));
             }
@@ -32,7 +32,7 @@ namespace Dominio
 
         public List<Habitacion> ObtenerHabitacionesFullLibres()
         {
-            IEnumerable<pers.Habitacion> listaEnum = iUoW.RepositorioHabitacion.GetAllconCupos();
+            IEnumerable<pers.Habitacion> listaEnum = iUoW.RepositorioHabitacion.GetAll();
             List<Habitacion> lista = new List<Habitacion>();
             foreach (var hab in listaEnum)
             {

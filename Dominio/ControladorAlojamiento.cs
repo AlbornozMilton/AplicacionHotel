@@ -164,7 +164,6 @@ namespace Dominio
                             (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                        )
                     {
-                        //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
                         auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad;
 						cantExcl2 += aloj.Habitacion.Capacidad;
                     }
