@@ -6,10 +6,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 {
     class HabitacionMap:EntityTypeConfiguration<Habitacion>
     {
-        /// <summary>
-        /// Configuraciones de los atributos de Habitacion
-        /// y de sus relaciones con las clases correspondientes.
-        /// </summary>
         public HabitacionMap()
         {
             this.Property(h => h.HabitacionId)
@@ -25,6 +21,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
                 .IsRequired();
 
 			this.Property(o => o.Ocupada)
+				.IsRequired();
+
+			this.Property(a => a.Alta)
 				.IsRequired();
 		}
     }

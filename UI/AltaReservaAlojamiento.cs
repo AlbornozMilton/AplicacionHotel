@@ -52,11 +52,6 @@ namespace UI
             Close();
         }
 
-        private void button4_MouseHover(object sender, EventArgs e)
-        {
-            //button4.BackColor = Color.Yellow 255, 255, 128};
-        }
-
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
             if (FechaIni.CompareTo(FechaFin) == -1)
@@ -66,9 +61,14 @@ namespace UI
 
                 if (TablaDisp.HabSeleccionada != null)
                 {
-                    tbx_NroHab.Text = Convert.ToString(TablaDisp.HabSeleccionada.HabitacionId);
-                    this.HabSeleccionada = TablaDisp.HabSeleccionada;
+					this.HabSeleccionada = TablaDisp.HabSeleccionada;
 
+					//LLenar campos de Habitacion
+					tbx_NroHab.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
+					txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja":"Alta";
+					txb_capacidad.Text = Convert.ToString(this.HabSeleccionada.Capacidad);
+
+					//Determina si se supero el 20% de exlcuisividad permitida
 					exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20);
 
 					if (!exclusividadCapacidad)//si es falso que entre
@@ -169,9 +169,9 @@ namespace UI
                                         (contador_Exceptuado.Value).ToString() +
                                         (contador_Convenio.Value);
 
-					new ControladorCliente().ControlCuposConClientes(ClienteResponsable, contadores, cont_CuposSimples.Value, cont_CuposDobles.Value);
+					//new ControladorCliente().ControlCuposConClientes(ClienteResponsable);
 
-					this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+					//this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
 
                     this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
@@ -255,8 +255,6 @@ namespace UI
 		private void Limpiar()
 		{
 			tbx_NroHab.Text = "";
-			cont_CuposDobles.Value = 0;
-			cont_CuposSimples.Value = 0;
 			ck_Exclusividad.Checked = false;
 			ck_Exclusividad.Enabled = true;
 
@@ -278,7 +276,7 @@ namespace UI
         {
             try
             {
-                new ControladorHabitacion().VerificarCuposSimplesIngresados(this.HabSeleccionada, cont_CuposSimples.Value);
+                //new ControladorHabitacion().VerificarCuposSimplesIngresados(this.HabSeleccionada, cont_CuposSimples.Value);
             }
             catch (Exception E)
             {
@@ -293,7 +291,7 @@ namespace UI
         {
             try
             {
-                new ControladorHabitacion().VerificarCuposDoblesIngresados(this.HabSeleccionada, cont_CuposDobles.Value);
+                //new ControladorHabitacion().VerificarCuposDoblesIngresados(this.HabSeleccionada, cont_CuposDobles.Value);
             }
             catch (Exception E)
             {

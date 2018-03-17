@@ -124,16 +124,17 @@ namespace Dominio
 
         public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pPorcentaje)
         {
+			//este valor puede variar devido a los Alta de las Habitacioes, no es un valor fijo en la BD
             int auxCapacidadTotal = 0;
-            List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
 
+            List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
             foreach (var hab in Habitaciones)
             {
                 auxCapacidadTotal += hab.Capacidad;
             }
 
-            //acumulará la cantidad de cupos que estan exlcusivos
-            int auxCantExclusiva = 0;
+            //acumulará la cantidad respecto a las Hab exlcusivas
+            int auxCantExclusiva = 0, cantExcl2 = 0;
 
             List<Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
 
@@ -142,9 +143,9 @@ namespace Dominio
                 if (aloj.Exclusividad)
                 {
                     DateTime alojFechaDesde = new DateTime();
-                    //la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
+                    
+					//la cantidad exclusiva se acumula tanto si es alojado o reservado, ya que solo importan para esas fechas parametro
                     //se acumula cuando para cada aloj sus fechas intersectan con las fechas de parametros
-
                     if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                     {
                         alojFechaDesde = aloj.FechaIngreso.Date;
@@ -165,11 +166,14 @@ namespace Dominio
                     {
                         //auxCantExclusiva += aloj.CantCuposSimples + (aloj.CantCuposDobles * 2);
                         auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad;
+						cantExcl2 += aloj.Habitacion.Capacidad;
                     }
                 }
             }
 
-            return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
+			int resultado = (auxCapacidadTotal * pPorcentaje) / 100;
+
+			return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
         }
 
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)
