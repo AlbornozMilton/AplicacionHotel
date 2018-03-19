@@ -143,23 +143,28 @@ namespace Dominio
             }
         }
 
-        /// <summary>
-        /// Para la reserva.
-        /// </summary>
-        public void ControlContadoresConClientes(string pContadores, string pCapacidadHab)
-        {
-            byte auxCantidadContadores = 0;
+		/// <summary>
+		/// Para la reserva.
+		/// </summary>
+		public void ControlContadoresConClientes(Cliente pCliResp, string pContadores, string pCapacidadHab)
+		{
+			byte auxCantidadContadores = 0;
 
-            for (int i = 0; i < pContadores.Length; i++)
-            {
+			for (int i = 0; i < pContadores.Length; i++)
+			{
 				auxCantidadContadores += Convert.ToByte(pContadores[i].ToString());
-            }
-              
-            if (Convert.ToByte(pCapacidadHab) < auxCantidadContadores + 1)
-            {
-                throw new Exception("La cantidad de Clientes cargados sobrepasa la Capacidad de la Habitación");
-            }
-        }
+			}
+
+			if (Convert.ToByte(pCapacidadHab) < auxCantidadContadores + 1)
+			{
+				throw new Exception("La cantidad de Clientes cargados sobrepasa la Capacidad de la Habitación");
+			}
+
+			if (auxCantidadContadores == 0 && pCliResp.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+			{
+				throw new Exception("Un Titular Exceptuado debe estar Acompañado");
+			}
+		}
 
         /// <summary>
         /// Produce excepción si el Cliente elegido ya se encuentra en algún Alojamiento Activo.
