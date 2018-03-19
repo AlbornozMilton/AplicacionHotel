@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -19,6 +13,7 @@ namespace UI
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
         public List<Cliente> Acompañantes = new List<Cliente>();
+		private List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
 		private bool exclusividadCapacidad;
 
 
@@ -63,7 +58,7 @@ namespace UI
                     }
                     else
                     {
-						exclusividadCapacidad = new ControladorHabitacion().VerificarSolicitdExclusividad(HabSeleccionada) == HabSeleccionada.Capacidad();
+						exclusividadCapacidad = new ControladorHabitacion().VerificarSolicitdExclusividad(HabSeleccionada) == HabSeleccionada.Capacidad;
 						ck_Exclusividad.Enabled = exclusividadCapacidad;
 					}
 
@@ -96,7 +91,7 @@ namespace UI
                 {
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
-                    new ControladorCliente().ControlClienteActivo(ClienteResponsable, FechaIni, FechaFin);
+                    new ControladorCliente().ControlClienteActivo(ClienteResponsable, FechaIni, FechaFin, iAlojsActivos);
 					
 					if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado && ck_Exclusividad.Enabled == true)
                     {
@@ -162,7 +157,7 @@ namespace UI
                     throw new Exception("El Cliente elegido ya se encuentra entre los Clientes seleccionados.");
                 }
 
-				new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin);
+				new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, iAlojsActivos);
 
 				if (ck_Exclusividad.Enabled == true
 					&&
@@ -197,20 +192,21 @@ namespace UI
 			{
 				if (btn_VerificarDisponibilidad.Enabled == false) //se trata de alta de reserva
 				{
-					//this.NuevoAlojamiento.SetIDAloj(Convert.ToInt32(txb_IdAloj.Text));
 
 					this.NuevoAlojamiento.SetClientes(this.Acompañantes);
-					new ControladorCliente().ControlCuposConClientes(this.NuevoAlojamiento.Clientes, cont_CuposSimples.Value, cont_CuposDobles.Value);
+					new ControladorCliente().ControlCapacidadConClientes(this.NuevoAlojamiento.Clientes, HabSeleccionada);
 					new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
-					this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
-					//this.NuevoAlojamiento.Habitacion.SetExclusividad(this.NuevoAlojamiento.Exclusividad);
-					//EL ALOJAMIENTO CAMBIA A ESTADO ALOJADO Y LA FECHA DE INGRESO = DATETIME.NOW
+					
+					//this.NuevoAlojamiento.Habitacion.OcuparCupos(this.NuevoAlojamiento.CantCuposSimples, this.NuevoAlojamiento.iCantCuposDobles);
+					
 				}
 				else if (Acompañantes.Contains(this.ClienteResponsable))//Alta sin Reserva, crea nuevo alojamiento con estado Alojado
 				{
-					new ControladorCliente().ControlCuposConClientes(Acompañantes, cont_CuposSimples.Value, cont_CuposDobles.Value);
-					HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
-					this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value), HabSeleccionada.Exclusiva);
+					new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
+
+					//HabSeleccionada.OcuparCupos(Convert.ToByte(cont_CuposSimples.Value), Convert.ToByte(cont_CuposDobles.Value));
+
+					this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
 					NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
 				}
 				else
@@ -274,8 +270,6 @@ namespace UI
         {
             this.FechaFin = dtp_fechaHasta.Value.Date;
 			txb_NroHabitacion.Text = "";
-			cont_CuposSimples.Value = 0;
-			cont_CuposDobles.Value = 0;
 			ck_Exclusividad.Checked = false;
 
 			dGV_ClienteResponsable.Rows.Clear();
@@ -326,7 +320,7 @@ namespace UI
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                cont_CuposSimples.Value = HabSeleccionada.CuposSimpleDisponibles();
+                //cont_CuposSimples.Value = HabSeleccionada.CuposSimpleDisponibles();
             }
         }
 
@@ -340,7 +334,7 @@ namespace UI
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
-                cont_CuposDobles.Value = HabSeleccionada.CuposDoblesDisponibles();
+                //cont_CuposDobles.Value = HabSeleccionada.CuposDoblesDisponibles();
             }
         }
 
@@ -382,8 +376,6 @@ namespace UI
 
             HabSeleccionada = NuevoAlojamiento.Habitacion;
             ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
-            cont_CuposSimples.Value = NuevoAlojamiento.CantCuposSimples;
-            cont_CuposDobles.Value = NuevoAlojamiento.CantCuposDobles;
 
             //cliente responsable
             this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);

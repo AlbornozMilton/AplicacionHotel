@@ -17,14 +17,13 @@ namespace Dominio
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
-        public byte iCantCuposSimples;
-        public byte iCantCuposDobles;
         public bool iExclusividad;
         private DateTime iFechaReserva = new DateTime();
         private DateTime iFechaEstimadaEgreso = new DateTime();
         private DateTime iFechaEstimadaIngreso = new DateTime();
         private DateTime iFechaIngreso = new DateTime();
         private DateTime iFechaEgreso = new DateTime();
+		private DateTime iFechaCancelacion = new DateTime();
         private EstadoAlojamiento iEstadoAloj;
         private string iContadoresTarifas;
 
@@ -38,12 +37,13 @@ namespace Dominio
         /// <summary>
         /// Contructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
+        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
 
             this.iClientes = new List<Cliente>();
             this.iDniResponsable = unClienteResp.ClienteId;
+
             //El cliente responsable ya se encuentra en la lista de acompañantes - Verificar
             foreach (var cli in listaAcompañantes)
             {
@@ -53,15 +53,13 @@ namespace Dominio
             this.iHabitacion = unaHab;
             this.iFechaIngreso = unaFechaIngreso;
             this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iCantCuposSimples = cantCuposSimples;
-            this.iCantCuposDobles = cantCuposDobles;
             this.iExclusividad = HabExclusividad;
         }
 
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, byte cantCuposSimples, byte cantCuposDobles, bool HabExclusividad)
+        public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;
@@ -73,8 +71,6 @@ namespace Dominio
             this.iHabitacion = unaHab;
             this.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
             this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iCantCuposSimples = cantCuposSimples;
-            this.iCantCuposDobles = cantCuposDobles;
             this.iExclusividad = HabExclusividad;
             this.iContadoresTarifas = pContTarifas;
         }
@@ -115,11 +111,19 @@ namespace Dominio
             get { return this.iFechaEgreso; }
             private set { this.iFechaEgreso = value; }
         }
-        public double MontoTotal
+
+		public DateTime FechaCancelacion
+		{
+			get { return this.iFechaCancelacion; }
+			private set { this.iFechaCancelacion = value; }
+		}
+
+		public double MontoTotal
         {
             get { return this.iMontoTotal; }
             private set { this.iMontoTotal = value; }
         }
+
         public double MontoDeuda
         {
             get { return this.iMontoDeuda; }
@@ -129,18 +133,6 @@ namespace Dominio
         public double Deposito
         {
             get { return this.iMontoDeuda * 0.5; }
-        }
-
-        public byte CantCuposSimples
-        {
-            get { return this.iCantCuposSimples; }
-            private set { this.iCantCuposSimples = value; }
-        }
-
-        public byte CantCuposDobles
-        {
-            get { return this.iCantCuposDobles; }
-            private set { this.iCantCuposDobles = value; }
         }
 
         public bool Exclusividad
@@ -203,48 +195,59 @@ namespace Dominio
             return this.iPagos.Contains(pPago);
         }
 
+		//Tener en cuenta que el Responsable no esta en la lista de contadores
         public void CalcularCostoBase(List<TarifaCliente> pTarifas)
         {
             bool lExclusividad = this.iExclusividad;
             double costoBase = 0;
             DateTime auxFechaDesde;
+			Cliente CliResposable = Clientes.Find(c => c.ClienteId == this.DniResponsable);
 
-            if (this.iEstadoAloj == EstadoAlojamiento.Alojado)
+			if (this.iEstadoAloj == EstadoAlojamiento.Alojado)
             {
                 auxFechaDesde = this.iFechaIngreso;
 
-                foreach (var cliente in this.Clientes)
-                {
-                    costoBase += cliente.ObtenerSuPrecioTarifa(lExclusividad);
-                }
+				if (CliResposable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+				{
+					foreach (var cliente in this.Clientes)
+					{
+						costoBase += cliente.ObtenerSuPrecioTarifa(lExclusividad);
+					}
+				}
+				else
+				{
+					costoBase = CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
+				}
             }
-            else
+            else // RESERVADO
             {
                 auxFechaDesde = this.iFechaEstimadaIngreso;
 
-                for (int i = 0; i < this.iContadoresTarifas.Length; i++)
-                {
-                    byte aux = Convert.ToByte(this.iContadoresTarifas[i]);
+				if (CliResposable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+				{
+					for (int i = 0; i < this.iContadoresTarifas.Length; i++)
+					{
+						byte aux = Convert.ToByte(this.iContadoresTarifas[i]);
 
-                    while (aux > Convert.ToByte('0'))
-                    {
-                        costoBase += pTarifas[i].GetTarifa(lExclusividad);
-                        aux--;
-                    }
-                }
-            }
+						while (aux > Convert.ToByte('0'))
+						{
+							costoBase += pTarifas[i].GetTarifa(lExclusividad);
+							aux--;
+						}
+					}//el resonsable no se encuentra en los contadores
+					costoBase += CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
+				}
+				else //si es por convenio
+					costoBase = CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
+			}
 
-            this.iMontoTotal = costoBase * (this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days);
+			this.iMontoTotal = costoBase * (this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days);
 
             Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
             if (auxPago != null)
-            {
                 this.iMontoDeuda = this.iMontoTotal - auxPago.Monto;
-            }
             else
-            {
                 this.iMontoDeuda = this.iMontoTotal;
-            }
         }
 
         public void RegistrarPago(Pago pPago)
@@ -314,5 +317,22 @@ namespace Dominio
         {
             this.iClientes = pClientes;
         }
+
+		public int CantidadAlojados()
+		{
+			if (this.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+			{
+				return Clientes.Count;
+			}
+			else
+			{
+				int auxCont = 0;
+				for (int i = 0; i < ContadoresTarifas.Length; i++)
+				{
+					auxCont += Convert.ToInt32(ContadoresTarifas[i]);
+				}
+				return auxCont + 1;
+			}
+		}
     }
 }

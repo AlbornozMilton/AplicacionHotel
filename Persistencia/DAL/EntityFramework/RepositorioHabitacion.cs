@@ -12,27 +12,11 @@ namespace Persistencia.DAL.EntityFramework
         public RepositorioHabitacion(HotelContext pContext) : base(pContext)
         {
 
-        }
+        }       
 
-        public IEnumerable<Habitacion> GetAllconCupos()
+        public void ModificarAltaHabitacion(Habitacion pHabitacion)
         {
-            var habitaciones = this.iDbContext.Habitaciones.Include("Cupos");
-
-            return habitaciones.ToList<Habitacion>();
-        }
-
-        public void ModificarAltaCupo(Habitacion pHabitacion)
-        {
-            Habitacion localHab = iDbContext.Habitaciones.Include("Cupos").Where(h => h.HabitacionId == pHabitacion.HabitacionId).SingleOrDefault();
-
-            //La pHabitacion viene con los cupos modificados
-            for (int i = 0; i < pHabitacion.Cupos.Count; i++)
-            {
-                if (pHabitacion.Cupos[i].Alta != localHab.Cupos[i].Alta)
-                {
-                    localHab.Cupos[i].Alta = pHabitacion.Cupos[i].Alta;
-                }
-            }
+            Habitacion localHab = iDbContext.Habitaciones.Where(h => h.HabitacionId == pHabitacion.HabitacionId).SingleOrDefault();
 
             iDbContext.SaveChanges();
         }

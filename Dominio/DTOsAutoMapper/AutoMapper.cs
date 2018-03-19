@@ -29,15 +29,11 @@ namespace Dominio.DTOsAutoMapper
 
                 cfg.CreateMap<TarifaCliente, pers.TarifaCliente>().ReverseMap();
 
-                cfg.CreateMap<Cupo, pers.Cupo>().ReverseMap();
-
                 cfg.CreateMap<Pago, pers.Pago>().ReverseMap();
 
                 cfg.CreateMap<TipoCliente, pers.TipoCliente>().ReverseMap();
 
                 cfg.CreateMap<TipoPago, pers.TipoPago>().ReverseMap();
-
-                cfg.CreateMap<TipoCupo, pers.TipoCupo>().ReverseMap();
 
                 cfg.CreateMap<EstadoAlojamiento, pers.EstadoAlojamiento>().ReverseMap();
             });

@@ -132,62 +132,46 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Controla que la cantidades de cupos ingresados coincidan con la cantidad de clientes totales durante el Alta de Reserva
+        /// Controla que la cantidades de Clientes ingresados coincidan con la capacidad de la Habitacion
         /// </summary>
         /// <param name="pClientes">Acompañantes más el Responsable</param>
-        /// <param name="pCantS">Ya pasó el control de la cantidad posible para la Habitación.</param>
-        /// <param name="pCantD">Ya pasó el control de la cantidad posible para la Habitación.</param>
-        public void ControlCuposConClientes(List<Cliente> pClientes, decimal pCantS, decimal pCantD)
+        public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
         {
-            decimal auxCantidad = pCantS + pCantD * 2;
-
-            if (pClientes.Count != auxCantidad)
+            if (pClientes.Count != pHab.Capacidad)
             {
-                throw new Exception("Las cantidades de cupos ingresadas no corresponden con la cantidad de Clientes cargados.");
+                throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");
             }
         }
 
-        /// <summary>
-        /// Para la reserva
-        /// </summary>
-        public void ControlCuposConClientes(Cliente pResponsable, string pContadores, decimal pCantS, decimal pCantD)
-        {
-            decimal auxCantidad = pCantS + pCantD * 2;
-            decimal auxCantidadContadores = 0;
-            bool contieneResponsable = false;
-            int auxTipo = Convert.ToInt32(pResponsable.TarifaCliente.TarifaClienteId);
+		/// <summary>
+		/// Para la reserva.
+		/// </summary>
+		public void ControlContadoresConClientes(Cliente pCliResp, string pContadores, string pCapacidadHab)
+		{
+			byte auxCantidadContadores = 0;
 
-            for (int i = 0; i < pContadores.Length; i++)
-            {
-                if (Convert.ToDecimal(pContadores[i].ToString()) > 0)
-                {
-                    auxCantidadContadores += Convert.ToDecimal(pContadores[i].ToString());
-                    if (i == auxTipo)
-                    {
-                        contieneResponsable = true;
-                    } 
-                }
-            }
-              
-            if (!contieneResponsable)
-            {
-                throw new Exception("Los contadores de Tipo de Clientes ingresados debe contener al Responsable.");
-            }
+			for (int i = 0; i < pContadores.Length; i++)
+			{
+				auxCantidadContadores += Convert.ToByte(pContadores[i].ToString());
+			}
 
-            if (auxCantidad != auxCantidadContadores)
-            {
-                throw new Exception("Las cantidades de cupos ingresadas no corresponden con la cantidad de Clientes cargados.");
-            }
-        }
+			if (Convert.ToByte(pCapacidadHab) < auxCantidadContadores + 1)
+			{
+				throw new Exception("La cantidad de Clientes cargados sobrepasa la Capacidad de la Habitación");
+			}
+
+			if (auxCantidadContadores == 0 && pCliResp.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+			{
+				throw new Exception("Un Titular Exceptuado debe estar Acompañado");
+			}
+		}
 
         /// <summary>
         /// Produce excepción si el Cliente elegido ya se encuentra en algún Alojamiento Activo.
         /// </summary>
-        public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta)
+        public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta, List<Alojamiento> pAlojsActivos)
         {
-            List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
-
-            foreach (var aloj in auxListaAloj)
+            foreach (var aloj in pAlojsActivos)
             {
                 foreach (var cliente in aloj.Clientes)
                 {

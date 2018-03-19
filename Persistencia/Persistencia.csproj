@@ -61,7 +61,6 @@
     <Compile Include="DAL\EntityFramework\Mappings\AlojamientoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\CiudadMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\ClienteMap.cs" />
-    <Compile Include="DAL\EntityFramework\Mappings\CupoMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\DomicilioMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\HabitacionMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\LineaServicioMap.cs" />
@@ -89,7 +88,6 @@
     <Compile Include="Domain\Alojamiento.cs" />
     <Compile Include="Domain\Ciudad.cs" />
     <Compile Include="Domain\Cliente.cs" />
-    <Compile Include="Domain\Cupo.cs" />
     <Compile Include="Domain\Domicilio.cs" />
     <Compile Include="Domain\Habitacion.cs" />
     <Compile Include="Domain\LineaServicio.cs" />

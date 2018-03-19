@@ -125,8 +125,7 @@ namespace UI
 					cli.Legajo,
 					cli.NombreCompleto(),
 					(aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
-					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy"),
-					aloj.CantCuposSimples + (aloj.CantCuposDobles * 2)
+					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
 					);
 				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
 				countRow++;

@@ -31,25 +31,8 @@ namespace UI
         private void CargarHabitacion(Habitacion pHab)
         {
             dGV_Habs.Rows.Clear();
-            int auxCantCupoSimple = 0;
-            int auxCantCuposDoble = 0;
-            foreach (var cupo in pHab.Cupos)
-            {
-                if (cupo.Tipo == TipoCupo.simple) auxCantCupoSimple++;
-                else auxCantCuposDoble++;
-            }
-            dGV_Habs.Rows.Add(pHab.HabitacionId, pHab.Capacidad(), pHab.Planta==0 ? "Baja":"Alta");
         }
 
-        private void CargarCupos(List<Cupo> pCupos)
-        {
-            dataGridView_cupos.Rows.Clear();
-            foreach (var cupo in pCupos)
-            {
-                dataGridView_cupos.Rows.Add(cupo.Tipo.ToString().ToUpper(),cupo.Alta ? "En Alta":"En Baja", cupo.Alta ? "Dar de Baja":"Dar de Alta");
-            }
-        }
-            
         private void btn_buscarHab_Click(object sender, EventArgs e)
         {
             try
@@ -63,7 +46,6 @@ namespace UI
                     if (auxListaAlojs.Count == 0)
                     {
                         CargarHabitacion(consultarHabitaciones.HabSeleccionada);
-                        CargarCupos(consultarHabitaciones.HabSeleccionada.Cupos);
                         btn_confirmar.Enabled = true;
                         HabSeleccionada = consultarHabitaciones.HabSeleccionada;
                     }
@@ -92,7 +74,7 @@ namespace UI
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
-            new ControladorHabitacion().ModificarAltaDeCupos(HabSeleccionada);
+            //new ControladorHabitacion().ModificarAltaDeCupos(HabSeleccionada);
             VentanaEmergente ventanaEmergente = new VentanaEmergente("Modificacion de Cupos Exitosa", TipoMensaje.Exito);
             ventanaEmergente.ShowDialog();
             Close();
@@ -102,8 +84,8 @@ namespace UI
         {
             if (dataGridView_cupos.CurrentCell.ColumnIndex == 2)
             {
-                HabSeleccionada.ModificarAltaCupo(dataGridView_cupos.CurrentCell.RowIndex);
-                CargarCupos(HabSeleccionada.Cupos);
+                //HabSeleccionada.ModificarAltaCupo(dataGridView_cupos.CurrentCell.RowIndex);
+                //CargarCupos(HabSeleccionada.Cupos);
             }
         }
 
