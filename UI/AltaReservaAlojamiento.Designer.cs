@@ -688,6 +688,7 @@
 			this.Name = "AltaReservaAlojamiento";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Nueva Reserva";
+			this.Load += new System.EventHandler(this.AltaReservaAlojamiento_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox4.ResumeLayout(false);

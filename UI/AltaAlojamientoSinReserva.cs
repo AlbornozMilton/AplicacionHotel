@@ -67,7 +67,7 @@ namespace UI
 
 					groupBox4.Enabled = true; //HABITACION
 					groupBox2.Enabled = true; //RESPONSABLE
-					//groupBox3.Enabled = true; //ACOMPAÑANTES
+					btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
 				}
 				else if (HabSeleccionada == null)
 				{
@@ -124,6 +124,7 @@ namespace UI
 						case TipoCliente.TitularExceptuado:
 							{
 								ck_Exclusividad.Checked = false;
+								ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.Convenio:
@@ -289,7 +290,6 @@ namespace UI
             this.FechaFin = dtp_fechaHasta.Value.Date;
 			txb_NroHabitacion.Text = "";
 			txb_capacidad.Text = "";
-			//ck_Exclusividad.CheckState = CheckState.Checked;
 			ck_Exclusividad.Checked = false;
 			dGV_ClienteResponsable.Rows.Clear();
 			dGV_Acompañantes.Rows.Clear();
@@ -305,8 +305,12 @@ namespace UI
         {
             if (Acompañantes.Count > 1) //no excl para mas de un cliente
             {
-				VentanaEmergente ventanaEmergente = new VentanaEmergente("Solo se permite Exclusividad para un Cliente", TipoMensaje.Alerta);
-				ventanaEmergente.ShowDialog();
+				if (ck_Exclusividad.Checked == false)
+				{
+					VentanaEmergente ventanaEmergente = new VentanaEmergente("Solo se permite Exclusividad para un Cliente", TipoMensaje.Alerta);
+					ventanaEmergente.ShowDialog(); 
+				}
+				ck_Exclusividad.Checked = false;
 			}
 			else if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
 			{
@@ -317,8 +321,8 @@ namespace UI
 				}
 				ck_Exclusividad.Checked = false;
 			} // no se cumple la excl cuando se comaprte
-			else
-				this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
+
+			this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
 		}
 
 		/// <summary>
