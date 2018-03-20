@@ -62,18 +62,17 @@ namespace UI
 						VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las Fechas elegidas se supera el límite de exclusividad", TipoMensaje.Alerta);
 						ventanaEmergente.ShowDialog();
 						ck_Exclusividad.Enabled = this.exclusividadCapacidad;
-						//ck_Exclusividad.Checked = this.exclusividadCapacidad;
 					}
-					//LLenar campos de Habitacion
+					//LLenar campos de Habitación
 					tbx_NroHab.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
 					txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja":"Alta";
 					txb_capacidad.Text = Convert.ToString(this.HabSeleccionada.Capacidad);
 
 					dGV_ClienteResponsable.Rows.Clear();
 					ClienteResponsable = null;
-                    groupBox4.Enabled = true;
-                    groupBox2.Enabled = true;
-                }
+					groupBox4.Enabled = true; //HABIACION
+					groupBox2.Enabled = true; //RESPONSABLE
+				}
 				else if (HabSeleccionada == null)
 				{
 					VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe elegir una Habitación para continuar", TipoMensaje.Alerta);
@@ -97,7 +96,13 @@ namespace UI
             {
                 if (BuscarClienteForm.ClienteSeleccionado != null)
                 {
+					//Excepción cliente activo
+					new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+
+					//AVISO DE CLIENTE DEUDOR
+
 					//siempre reiniciar contadores
+					dGV_ClienteResponsable.Rows.Clear();
 					contador_Convenio.Value = 0;
 					contador_Convenio.Enabled = true;
 					contador_Titular.Value = 0;
@@ -110,11 +115,6 @@ namespace UI
 					contador_Exceptuado.Enabled = true;
 
 					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
-
-					//Excepción cliente activo
-                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin,new ControladorAlojamiento().ObtenerAlojamientosActivos());
-
-					//AVISO DE CLIENTE DEUDOR
 
 					switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
 					{
@@ -164,21 +164,15 @@ namespace UI
 							break;
 					}
 						
-					dGV_ClienteResponsable.Rows.Clear();
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     btn_Confirmar.Enabled = true;
-                    groupBox3.Enabled = true;
+                    groupBox3.Enabled = true; //ACOMPAÑANTES
                 }
                 else
-                {
-					dGV_ClienteResponsable.Rows.Clear();
-					groupBox3.Enabled = false;
-					btn_Confirmar.Enabled = false;
-					if (ClienteResponsable == null)
-					{
-						throw new Exception("Debe seleccionar un Cliente para continuar"); 
-					}
-                }
+				if (ClienteResponsable == null)
+				{
+					throw new Exception("Debe seleccionar un Cliente para continuar");
+				}
             }
             catch (Exception E)
             {

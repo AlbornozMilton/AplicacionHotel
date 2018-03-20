@@ -198,7 +198,6 @@ namespace Dominio
 
                 while (cantTipo > Convert.ToByte('0'))
                 {
-
                     if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
                     {
                         throw new Exception("Error de Tipos Cliente");

@@ -56,22 +56,6 @@ namespace Dominio
 			return 0;
         }
 
-        public void VerificarCuposSimplesIngresados(Habitacion pHab, decimal pCantS)
-        {
-            //if ((pHab.CuposSimpleDisponibles()<pCantS))
-            //{
-            //    throw new Exception("La cantidad de Cupos Simples deseada no es posibles para las Fechas elegidas");
-            //}
-        }
-
-        public void VerificarCuposDoblesIngresados(Habitacion pHab, decimal pCantD)
-        {
-            //if (pHab.CuposDoblesDisponibles() < pCantD)
-            //{
-            //    throw new Exception("La cantidad de Cupos Dobles deseada no es posibles para las Fechas elegidas");
-            //}
-        }
-
         public List<Alojamiento> ControlModificarAltaCupos(int pIdHabitacion)
         {
             List<Alojamiento> AlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();

@@ -138,9 +138,7 @@ namespace Dominio
         public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
         {
             if (pClientes.Count != pHab.Capacidad)
-            {
                 throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");
-            }
         }
 
 		/// <summary>

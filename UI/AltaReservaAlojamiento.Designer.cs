@@ -218,6 +218,7 @@
 			this.groupBox4.Controls.Add(this.tbx_NroHab);
 			this.groupBox4.Controls.Add(this.label6);
 			this.groupBox4.Controls.Add(this.ck_Exclusividad);
+			this.groupBox4.Enabled = false;
 			this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox4.Location = new System.Drawing.Point(6, 147);
 			this.groupBox4.Name = "groupBox4";
@@ -249,7 +250,7 @@
 			// txb_capacidad
 			// 
 			this.txb_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_capacidad.Location = new System.Drawing.Point(475, 31);
+			this.txb_capacidad.Location = new System.Drawing.Point(509, 31);
 			this.txb_capacidad.Name = "txb_capacidad";
 			this.txb_capacidad.ReadOnly = true;
 			this.txb_capacidad.Size = new System.Drawing.Size(33, 30);
@@ -260,7 +261,7 @@
 			// 
 			this.lbl_capacidad.AutoSize = true;
 			this.lbl_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_capacidad.Location = new System.Drawing.Point(379, 34);
+			this.lbl_capacidad.Location = new System.Drawing.Point(413, 34);
 			this.lbl_capacidad.Name = "lbl_capacidad";
 			this.lbl_capacidad.Size = new System.Drawing.Size(90, 23);
 			this.lbl_capacidad.TabIndex = 18;
@@ -272,7 +273,7 @@
 			this.tbx_NroHab.Location = new System.Drawing.Point(100, 31);
 			this.tbx_NroHab.Name = "tbx_NroHab";
 			this.tbx_NroHab.ReadOnly = true;
-			this.tbx_NroHab.Size = new System.Drawing.Size(68, 30);
+			this.tbx_NroHab.Size = new System.Drawing.Size(42, 30);
 			this.tbx_NroHab.TabIndex = 16;
 			this.tbx_NroHab.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -290,7 +291,7 @@
 			// 
 			this.ck_Exclusividad.AutoSize = true;
 			this.ck_Exclusividad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ck_Exclusividad.Location = new System.Drawing.Point(604, 31);
+			this.ck_Exclusividad.Location = new System.Drawing.Point(619, 33);
 			this.ck_Exclusividad.Name = "ck_Exclusividad";
 			this.ck_Exclusividad.Size = new System.Drawing.Size(234, 27);
 			this.ck_Exclusividad.TabIndex = 17;
@@ -426,6 +427,7 @@
 			this.groupBox3.Controls.Add(this.label9);
 			this.groupBox3.Controls.Add(this.label8);
 			this.groupBox3.Controls.Add(this.label5);
+			this.groupBox3.Enabled = false;
 			this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox3.Location = new System.Drawing.Point(6, 351);
 			this.groupBox3.Name = "groupBox3";
@@ -574,6 +576,7 @@
 			// btn_Aceptar
 			// 
 			this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
+			this.btn_Aceptar.Enabled = false;
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Aceptar.Location = new System.Drawing.Point(768, 581);
 			this.btn_Aceptar.Name = "btn_Aceptar";
