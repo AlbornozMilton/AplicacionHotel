@@ -84,7 +84,7 @@ namespace Dominio
             foreach (var aloj in listaAlojActivos)
             {
 				//inicializar fechas locales
-                auxFechaFinAloj = aloj.FechaEstimadaEgreso;
+                auxFechaFinAloj = aloj.FechaEstimadaEgreso.Date;
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                 {
                     auxFechaIniAloj = aloj.FechaIngreso.Date;
@@ -124,8 +124,8 @@ namespace Dominio
                 auxCapacidadTotal += hab.Capacidad;
             }
 
-            //acumulará la cantidad respecto a las Hab exlcusivas
-            int auxCantExclusiva = 0, cantExcl2 = 0;
+			//acumulará la cantidad respecto a las Hab exlcusivas
+			int auxCantExclusiva = 0;
 
             List<Alojamiento> auxListaActivos = this.ObtenerAlojamientosActivos();
 
@@ -139,31 +139,21 @@ namespace Dominio
                     
 					//la cantidad exclusiva se acumula tanto si es alojado o reservado
                     if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-                    {
                         alojFechaDesde = aloj.FechaIngreso.Date;
-                    }
                     else //reservado
-                    {
                         alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
-                    }
 
-					//se acumula cuando sus fechas intersectan con las fechas de parametros
-					// Hay interseccion entre las fechas
-					if (
-                            //si fecha de ingreso del aloj se encuetra entre las fechas de parametro
-                            (alojFechaDesde.CompareTo(pFechaDesde.Date) >= 0 && alojFechaDesde.CompareTo(pFechaHasta.Date) <= 0)
-                            |
-                            //si fecha de egreso del aloj se encuetra entre las fechas de parametro
-                            (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
-                       )
-                    {
-                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad;
-						cantExcl2 += aloj.Habitacion.Capacidad;
+					// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
+					if (!(
+							(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <=0)
+                            ||
+							(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
+						))
+					{
+                        auxCantExclusiva += aloj.Habitacion.Capacidad;
                     }
                 }
             }
-
-			//(auxCapacidadTotal * pPorcentaje) / 100 es igual a 6, para el caso de capacidad de 30
 			return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
         }
 
@@ -182,35 +172,61 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
 
-        /// <summary>
-        /// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
-        /// </summary>
-        public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
-        {
-            List<Cliente> ClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+		/// <summary>
+		/// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
+		/// </summary>
+		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
+		{
+			List<Cliente> ClientesAloj = new List<Cliente>(pAlojEnAlta.Clientes);
+			ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
+			ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+
             string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-            int indiceListaCli = 0;
-
-            for (int indiceTipo = 0; indiceTipo < ClientesAloj.Count; indiceTipo++)
+			//int indiceListaCli = 0, contadorTipo = 0;
+            for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
             {
-                byte cantTipo = Convert.ToByte(pContadores[indiceTipo]);
+				int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
+				/*
+				indiceTipo
+					0	Titular
+					1	Acompañante Directo
+					2	Acompañante No Directo
+					3	Titular Exceptuado
+					4	Convenio
+				 */
+				try
+				{
+					while (cantTipo > Convert.ToByte('0'))
+					{
+						Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
+						if (cli !=null)
+							ClientesAloj.Remove(cli);
+						else
+							throw new Exception("Error de Tipos Cliente");
+						//if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
+						//{
+						//	throw new Exception("Error de Tipos Cliente");
+						//}
+						cantTipo--;
+						////contadorTipo++;
+						//indiceListaCli++;
+					}
+				}	
+				catch (IndexOutOfRangeException E)
+				{
+					throw new Exception("Error de Tipos Cliente", E.InnerException);
+				}
+			}
 
-                while (cantTipo > Convert.ToByte('0'))
-                {
+			if (ClientesAloj.Count != 0)
+			{
+				throw new Exception("Error de Tipos Cliente");
+			}
 
-                    if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
-                    {
-                        throw new Exception("Error de Tipos Cliente");
-                    }
-                    cantTipo--;
-                    indiceListaCli++;
-                }
-            }
+			pAlojEnAlta.AltaDeReserva();
 
-            pAlojEnAlta.AltaDeReserva();
-
-            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>());
+            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); //en estado reservado
 
             if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
             {
@@ -219,7 +235,7 @@ namespace Dominio
         }
        
         /// <summary>
-        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservad - Fecha de Alta
+        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
         /// </summary>
         public void ControlInicioAltaReserva(Alojamiento pAloj)
         {

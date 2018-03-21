@@ -281,7 +281,7 @@ namespace UI
 
                 AltaReservaAlojamiento.RellenarCampos();
 
-                AltaReservaAlojamiento.EnableAll(false);
+                //AltaReservaAlojamiento.EnableAll(true);
 
                 //AltaReservaAlojamiento.ShowDialog();
             }

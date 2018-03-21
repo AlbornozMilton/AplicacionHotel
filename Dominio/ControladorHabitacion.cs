@@ -42,7 +42,10 @@ namespace Dominio
             {
 				if (hab.Alta)
 				{
-					lista.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab)); 
+					Habitacion HabDom = Mapper.Map<pers.Habitacion, Habitacion>(hab);
+					HabDom.DesocuparHabitacion();
+					HabDom.SetExclusividad(false);
+					lista.Add(HabDom); 
 				}
             }
             return (lista);
@@ -54,22 +57,6 @@ namespace Dominio
         public int VerificarSolicitdExclusividad(Habitacion pHab)
         {
 			return 0;
-        }
-
-        public void VerificarCuposSimplesIngresados(Habitacion pHab, decimal pCantS)
-        {
-            //if ((pHab.CuposSimpleDisponibles()<pCantS))
-            //{
-            //    throw new Exception("La cantidad de Cupos Simples deseada no es posibles para las Fechas elegidas");
-            //}
-        }
-
-        public void VerificarCuposDoblesIngresados(Habitacion pHab, decimal pCantD)
-        {
-            //if (pHab.CuposDoblesDisponibles() < pCantD)
-            //{
-            //    throw new Exception("La cantidad de Cupos Dobles deseada no es posibles para las Fechas elegidas");
-            //}
         }
 
         public List<Alojamiento> ControlModificarAltaCupos(int pIdHabitacion)

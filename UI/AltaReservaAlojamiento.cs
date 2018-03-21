@@ -16,19 +16,18 @@ namespace UI
 		public AltaReservaAlojamiento()
         {
             InitializeComponent();
-            txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
-            FechaIni = dtp_fechaDesde.Value;
-            dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-            FechaFin = dtp_fechaHasta.Value;
-            btn_Aceptar.Enabled = false;
-            btn_Confirmar.Enabled = false;
+			txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
+			dtp_fechaDesde.Value = DateTime.Now;
+			dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+		}
 
-            groupBox4.Enabled = false;
-            groupBox3.Enabled = false;
-            groupBox2.Enabled = false;
-        }
+		private void AltaReservaAlojamiento_Load(object sender, EventArgs e)
+		{
+			FechaIni = DateTime.Now;
+			FechaFin = DateTime.Now.AddDays(1);
+		}
 
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
+		private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
             label14.Visible = true;
             btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
@@ -62,18 +61,17 @@ namespace UI
 						VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las Fechas elegidas se supera el límite de exclusividad", TipoMensaje.Alerta);
 						ventanaEmergente.ShowDialog();
 						ck_Exclusividad.Enabled = this.exclusividadCapacidad;
-						//ck_Exclusividad.Checked = this.exclusividadCapacidad;
 					}
-					//LLenar campos de Habitacion
+					//LLenar campos de Habitación
 					tbx_NroHab.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
 					txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja":"Alta";
 					txb_capacidad.Text = Convert.ToString(this.HabSeleccionada.Capacidad);
 
 					dGV_ClienteResponsable.Rows.Clear();
 					ClienteResponsable = null;
-                    groupBox4.Enabled = true;
-                    groupBox2.Enabled = true;
-                }
+					groupBox4.Enabled = true; //HABIACION
+					groupBox2.Enabled = true; //RESPONSABLE
+				}
 				else if (HabSeleccionada == null)
 				{
 					VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe elegir una Habitación para continuar", TipoMensaje.Alerta);
@@ -82,7 +80,7 @@ namespace UI
             }
             else
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("La fecha de Ingreso debe ser Menor que la fecha de Egreso", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha de Egreso debe ser Mayor a la Fecha de Ingreso", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }
@@ -97,7 +95,12 @@ namespace UI
             {
                 if (BuscarClienteForm.ClienteSeleccionado != null)
                 {
-					//siempre reiniciar contadores
+					//Excepción cliente activo
+					new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+
+					//AVISO DE CLIENTE DEUDOR
+					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+					dGV_ClienteResponsable.Rows.Clear();
 					contador_Convenio.Value = 0;
 					contador_Convenio.Enabled = true;
 					contador_Titular.Value = 0;
@@ -108,13 +111,6 @@ namespace UI
 					contador_NoDirecto.Enabled = true;
 					contador_Exceptuado.Value = 0;
 					contador_Exceptuado.Enabled = true;
-
-					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
-
-					//Excepción cliente activo
-                    new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin,new ControladorAlojamiento().ObtenerAlojamientosActivos());
-
-					//AVISO DE CLIENTE DEUDOR
 
 					switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
 					{
@@ -143,14 +139,9 @@ namespace UI
 						case TipoCliente.TitularExceptuado:
 							{
 								contador_Convenio.Enabled = false;
-								if (ck_Exclusividad.Enabled == true)
-								{
-									VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
-									ventanaEmergente.ShowDialog();
-									//HabSeleccionada.SetExclusividad(false);
-									ck_Exclusividad.Checked = false;
-									ck_Exclusividad.Enabled = false;
-								}
+								//VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
+								//ventanaEmergente.ShowDialog();
+								ck_Exclusividad.Checked = false;
 							}
 							break;
 						case TipoCliente.Convenio:
@@ -164,21 +155,18 @@ namespace UI
 							break;
 					}
 						
-					dGV_ClienteResponsable.Rows.Clear();
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     btn_Confirmar.Enabled = true;
-                    groupBox3.Enabled = true;
-                }
-                else
-                {
-					dGV_ClienteResponsable.Rows.Clear();
-					groupBox3.Enabled = false;
-					btn_Confirmar.Enabled = false;
-					if (ClienteResponsable == null)
+					if (!ck_Exclusividad.Checked)
 					{
-						throw new Exception("Debe seleccionar un Cliente para continuar"); 
+						groupBox3.Enabled = true; //ACOMPAÑANTES 
 					}
                 }
+                else
+				if (ClienteResponsable == null)
+				{
+					throw new Exception("Debe seleccionar un Cliente para continuar");
+				}
             }
             catch (Exception E)
             {
@@ -248,7 +236,18 @@ namespace UI
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
         {
-			if (ck_Exclusividad.Checked == true)
+			if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+			{
+				if (ck_Exclusividad.Checked == false)
+				{
+					VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
+					ventanaEmergente.ShowDialog();
+				}
+				ck_Exclusividad.Checked = false;
+
+				groupBox3.Enabled = true;
+			}
+			else if (ck_Exclusividad.Checked == true)
 			{
 				groupBox3.Enabled = false;
 				contador_Titular.Value = 0;
@@ -257,7 +256,7 @@ namespace UI
 				contador_NoDirecto.Value = 0;
 				contador_Exceptuado.Value = 0;
 			}
-			else
+			else if (ck_Exclusividad.Checked == false)
 			{
 				groupBox3.Enabled = true;
 			}
@@ -294,9 +293,10 @@ namespace UI
 		private void Limpiar()
 		{
 			tbx_NroHab.Text = "";
+			txb_capacidad.Text = "";
+			txb_planta.Text = "";
 			ck_Exclusividad.Checked = false;
-			ck_Exclusividad.Enabled = true;
-
+			ClienteResponsable = null;
 			dGV_ClienteResponsable.Rows.Clear();
 			contador_Titular.Value = 0;
 			contador_Directo.Value = 0;
