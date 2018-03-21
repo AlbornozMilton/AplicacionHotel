@@ -121,18 +121,14 @@ namespace Persistencia.DAL.EntityFramework
         public void FinalizarAlojamiento(Alojamiento unAloj)
         {
             Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
-
-            //pFechaingreso en caso de Cancelar
             localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
-
+			localAuxAloj.MontoDeuda = 0;
             if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
-            {
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
-                localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
-              
-            }
+            else
+				localAuxAloj.FechaCancelacion = unAloj.FechaCancelacion;
 
-            iDbContext.SaveChanges();
+			iDbContext.SaveChanges();
         }
 
 

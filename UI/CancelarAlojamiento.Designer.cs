@@ -38,12 +38,12 @@
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.dGV_ListadoAlojamientos = new System.Windows.Forms.DataGridView();
-			this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
 			this.clm_IdAlojmiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_IDHabitacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_BuscarAlojamiento = new System.Windows.Forms.Button();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoAlojamientos)).BeginInit();
 			this.SuspendLayout();
@@ -53,7 +53,8 @@
 			this.lbl_fechaActual.AutoSize = true;
 			this.lbl_fechaActual.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_fechaActual.Location = new System.Drawing.Point(698, 21);
+			this.lbl_fechaActual.ForeColor = System.Drawing.Color.Red;
+			this.lbl_fechaActual.Location = new System.Drawing.Point(695, 20);
 			this.lbl_fechaActual.Name = "lbl_fechaActual";
 			this.lbl_fechaActual.Size = new System.Drawing.Size(130, 23);
 			this.lbl_fechaActual.TabIndex = 26;
@@ -64,11 +65,11 @@
 			this.lbl_txtFechaActual.AutoSize = true;
 			this.lbl_txtFechaActual.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_txtFechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_txtFechaActual.Location = new System.Drawing.Point(580, 21);
+			this.lbl_txtFechaActual.Location = new System.Drawing.Point(459, 20);
 			this.lbl_txtFechaActual.Name = "lbl_txtFechaActual";
-			this.lbl_txtFechaActual.Size = new System.Drawing.Size(112, 23);
+			this.lbl_txtFechaActual.Size = new System.Drawing.Size(233, 23);
 			this.lbl_txtFechaActual.TabIndex = 23;
-			this.lbl_txtFechaActual.Text = "Fecha Actual:";
+			this.lbl_txtFechaActual.Text = "Fecha Actual de Cancelación:";
 			// 
 			// btn_Visualizar
 			// 
@@ -155,17 +156,6 @@
 			this.dGV_ListadoAlojamientos.Size = new System.Drawing.Size(810, 57);
 			this.dGV_ListadoAlojamientos.TabIndex = 0;
 			// 
-			// btn_BuscarAlojamiento
-			// 
-			this.btn_BuscarAlojamiento.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_BuscarAlojamiento.Location = new System.Drawing.Point(15, 13);
-			this.btn_BuscarAlojamiento.Name = "btn_BuscarAlojamiento";
-			this.btn_BuscarAlojamiento.Size = new System.Drawing.Size(219, 30);
-			this.btn_BuscarAlojamiento.TabIndex = 18;
-			this.btn_BuscarAlojamiento.Text = "Buscar Alojamiento";
-			this.btn_BuscarAlojamiento.UseVisualStyleBackColor = true;
-			this.btn_BuscarAlojamiento.Click += new System.EventHandler(this.btn_BuscarAlojamiento_Click);
-			// 
 			// clm_IdAlojmiento
 			// 
 			this.clm_IdAlojmiento.FillWeight = 30F;
@@ -200,6 +190,17 @@
 			this.clm_Cliente.HeaderText = "Cliente";
 			this.clm_Cliente.Name = "clm_Cliente";
 			this.clm_Cliente.ReadOnly = true;
+			// 
+			// btn_BuscarAlojamiento
+			// 
+			this.btn_BuscarAlojamiento.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_BuscarAlojamiento.Location = new System.Drawing.Point(15, 13);
+			this.btn_BuscarAlojamiento.Name = "btn_BuscarAlojamiento";
+			this.btn_BuscarAlojamiento.Size = new System.Drawing.Size(219, 30);
+			this.btn_BuscarAlojamiento.TabIndex = 18;
+			this.btn_BuscarAlojamiento.Text = "Buscar Alojamiento";
+			this.btn_BuscarAlojamiento.UseVisualStyleBackColor = true;
+			this.btn_BuscarAlojamiento.Click += new System.EventHandler(this.btn_BuscarAlojamiento_Click);
 			// 
 			// CancelarAlojamiento
 			// 

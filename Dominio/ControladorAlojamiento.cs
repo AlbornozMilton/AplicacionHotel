@@ -297,7 +297,6 @@ namespace Dominio
         public void CancelarAlojamiento(Alojamiento pAlojamiento)
         {
             pAlojamiento.Cancelar();
-
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
     }
