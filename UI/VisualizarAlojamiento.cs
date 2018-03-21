@@ -36,13 +36,9 @@ namespace UI
             foreach (var cli in pClientes)
             {
                 if (cli.ClienteId == pResponsable)
-                {
                     dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
-                }
                 else
-                {
                     dGV_Acompañantes.Rows.Add(cli.ClienteId,cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
-                }
             }
         }
 
@@ -61,17 +57,22 @@ namespace UI
             }
         }
 
-        public string CargarFecha(DateTime pFecha)
+        private string CargarFecha(DateTime pFecha)
         {
             if (pFecha == new DateTime())
-            {
                 return "-";
-            }
             else
-            {
                 return pFecha.ToString("dd / MM / yy");
-            }
         }
+
+		private string CargarHora(string pFecha, DateTime pHora)
+		{
+			
+			if (pFecha.CompareTo("-") == 0)
+				return "-";
+			else
+				return pHora.ToString("H:mm");
+		}
 
         public void CargarFormulario(Alojamiento pAlojamiento)
         {
@@ -86,11 +87,17 @@ namespace UI
 			lbl_Capacidad.Text = pAlojamiento.Habitacion.Capacidad.ToString();
 			lbl_Exclusividad.Text = pAlojamiento.Exclusividad ? "SI" : "NO";
 			lbl_FechaReserva.Text = CargarFecha(pAlojamiento.FechaReserva);
+			lbl_hora1.Text = CargarHora(lbl_FechaReserva.Text,pAlojamiento.FechaReserva);
             lbl_FechaIngreso.Text = CargarFecha(pAlojamiento.FechaIngreso);
+			lbl_hora4.Text = CargarHora(lbl_FechaIngreso.Text, pAlojamiento.FechaIngreso);
             lbl_FechaEgreso.Text = CargarFecha(pAlojamiento.FechaEgreso);
+			lbl_hora5.Text = CargarHora(lbl_FechaEgreso.Text, pAlojamiento.FechaEgreso);
             lbl_FechaEstIngreso.Text = CargarFecha(pAlojamiento.FechaEstimadaIngreso);
+			lbl_hora2.Text = CargarHora(lbl_FechaEstIngreso.Text, pAlojamiento.FechaEstimadaIngreso);
             lbl_FechaEstEgreso.Text = CargarFecha(pAlojamiento.FechaEstimadaEgreso);
+			lbl_hora3.Text = CargarHora(lbl_FechaEstEgreso.Text, pAlojamiento.FechaEstimadaEgreso);
 			lbl_value_fechaCancelacion.Text = CargarFecha(pAlojamiento.FechaCancelacion);
+			lbl_hora6.Text = CargarHora(lbl_value_fechaCancelacion.Text, pAlojamiento.FechaCancelacion);
 			
 
             CargarClientes(pAlojamiento.Clientes, pAlojamiento.DniResponsable);
@@ -135,18 +142,13 @@ namespace UI
 
         private void AlojReserva(string pContadores)
         {
-            //(contador_Titular.Value).ToString() +
-            //(contador_Directo.Value).ToString() +
-            //(contador_NoDirecto.Value).ToString() +
-            //(contador_Exceptuado.Value).ToString() +
-            //(contador_Convenio.Value);
-            groupBox4.Visible = false; //Acompañantes
             cant_titular.Text = pContadores[0].ToString();
             cat_CantAcpmDirect.Text = pContadores[1].ToString();
             cantNoDirec.Text = pContadores[2].ToString();
             cantExcep.Text = pContadores[3].ToString();
             cant_conv.Text = pContadores[4].ToString();
-            groupBox_AcompReserva.Visible = true;
+			groupBox4.Visible = false; //Acompañantes como Lista
+			groupBox_AcompReserva.Visible = true; //Acompañantes como contadores
         }
     }
 }

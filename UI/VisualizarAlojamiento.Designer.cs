@@ -56,6 +56,8 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.lbl_planta = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.lbl_value_fechaCancelacion = new System.Windows.Forms.Label();
+			this.label_text_fechaCancelacion = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.lbl_FechaReserva = new System.Windows.Forms.Label();
 			this.lbl_FechaEgreso = new System.Windows.Forms.Label();
@@ -109,8 +111,12 @@
 			this.clm_Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.label13 = new System.Windows.Forms.Label();
 			this.textBox_total = new System.Windows.Forms.TextBox();
-			this.label_text_fechaCancelacion = new System.Windows.Forms.Label();
-			this.lbl_value_fechaCancelacion = new System.Windows.Forms.Label();
+			this.lbl_hora1 = new System.Windows.Forms.Label();
+			this.lbl_hora4 = new System.Windows.Forms.Label();
+			this.lbl_hora2 = new System.Windows.Forms.Label();
+			this.lbl_hora3 = new System.Windows.Forms.Label();
+			this.lbl_hora5 = new System.Windows.Forms.Label();
+			this.lbl_hora6 = new System.Windows.Forms.Label();
 			this.tabControl1.SuspendLayout();
 			this.pestaña_Datos.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -130,7 +136,7 @@
 			// btn_Aceptar
 			// 
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_Aceptar.Location = new System.Drawing.Point(777, 307);
+			this.btn_Aceptar.Location = new System.Drawing.Point(721, 308);
 			this.btn_Aceptar.Name = "btn_Aceptar";
 			this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
 			this.btn_Aceptar.TabIndex = 19;
@@ -151,7 +157,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(12, 12);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(878, 288);
+			this.tabControl1.Size = new System.Drawing.Size(819, 288);
 			this.tabControl1.TabIndex = 20;
 			// 
 			// pestaña_Datos
@@ -169,7 +175,7 @@
 			this.pestaña_Datos.Location = new System.Drawing.Point(4, 32);
 			this.pestaña_Datos.Name = "pestaña_Datos";
 			this.pestaña_Datos.Padding = new System.Windows.Forms.Padding(3);
-			this.pestaña_Datos.Size = new System.Drawing.Size(870, 252);
+			this.pestaña_Datos.Size = new System.Drawing.Size(811, 252);
 			this.pestaña_Datos.TabIndex = 0;
 			this.pestaña_Datos.Text = "Datos";
 			this.pestaña_Datos.UseVisualStyleBackColor = true;
@@ -178,7 +184,7 @@
 			// 
 			this.lbl_MontoDeuda.AutoSize = true;
 			this.lbl_MontoDeuda.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_MontoDeuda.Location = new System.Drawing.Point(713, 30);
+			this.lbl_MontoDeuda.Location = new System.Drawing.Point(665, 30);
 			this.lbl_MontoDeuda.Name = "lbl_MontoDeuda";
 			this.lbl_MontoDeuda.Size = new System.Drawing.Size(92, 25);
 			this.lbl_MontoDeuda.TabIndex = 32;
@@ -188,7 +194,7 @@
 			// 
 			this.label11.AutoSize = true;
 			this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label11.Location = new System.Drawing.Point(532, 28);
+			this.label11.Location = new System.Drawing.Point(484, 28);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(131, 25);
 			this.label11.TabIndex = 30;
@@ -198,7 +204,7 @@
 			// 
 			this.lbl_MontoTotal.AutoSize = true;
 			this.lbl_MontoTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_MontoTotal.Location = new System.Drawing.Point(713, 3);
+			this.lbl_MontoTotal.Location = new System.Drawing.Point(665, 3);
 			this.lbl_MontoTotal.Name = "lbl_MontoTotal";
 			this.lbl_MontoTotal.Size = new System.Drawing.Size(92, 25);
 			this.lbl_MontoTotal.TabIndex = 33;
@@ -208,7 +214,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(532, 3);
+			this.label7.Location = new System.Drawing.Point(484, 3);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(116, 25);
 			this.label7.TabIndex = 31;
@@ -247,7 +253,7 @@
 			this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox2.Location = new System.Drawing.Point(536, 61);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(269, 185);
+			this.groupBox2.Size = new System.Drawing.Size(233, 185);
 			this.groupBox2.TabIndex = 29;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Habitación";
@@ -256,17 +262,17 @@
 			// 
 			this.label14.AutoSize = true;
 			this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(6, 159);
+			this.label14.Location = new System.Drawing.Point(6, 153);
 			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(79, 23);
+			this.label14.Size = new System.Drawing.Size(103, 23);
 			this.label14.TabIndex = 16;
-			this.label14.Text = "Exclusiva";
+			this.label14.Text = "Exclusividad";
 			// 
 			// lbl_Exclusividad
 			// 
 			this.lbl_Exclusividad.AutoSize = true;
 			this.lbl_Exclusividad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_Exclusividad.Location = new System.Drawing.Point(188, 159);
+			this.lbl_Exclusividad.Location = new System.Drawing.Point(142, 153);
 			this.lbl_Exclusividad.Name = "lbl_Exclusividad";
 			this.lbl_Exclusividad.Size = new System.Drawing.Size(48, 23);
 			this.lbl_Exclusividad.TabIndex = 17;
@@ -286,7 +292,7 @@
 			// 
 			this.lbl_Capacidad.AutoSize = true;
 			this.lbl_Capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_Capacidad.Location = new System.Drawing.Point(187, 114);
+			this.lbl_Capacidad.Location = new System.Drawing.Point(142, 114);
 			this.lbl_Capacidad.Name = "lbl_Capacidad";
 			this.lbl_Capacidad.Size = new System.Drawing.Size(69, 23);
 			this.lbl_Capacidad.TabIndex = 15;
@@ -306,7 +312,7 @@
 			// 
 			this.lbl_NroHabitacion.AutoSize = true;
 			this.lbl_NroHabitacion.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_NroHabitacion.Location = new System.Drawing.Point(187, 27);
+			this.lbl_NroHabitacion.Location = new System.Drawing.Point(142, 25);
 			this.lbl_NroHabitacion.Name = "lbl_NroHabitacion";
 			this.lbl_NroHabitacion.Size = new System.Drawing.Size(59, 23);
 			this.lbl_NroHabitacion.TabIndex = 13;
@@ -326,7 +332,7 @@
 			// 
 			this.lbl_planta.AutoSize = true;
 			this.lbl_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_planta.Location = new System.Drawing.Point(187, 67);
+			this.lbl_planta.Location = new System.Drawing.Point(142, 67);
 			this.lbl_planta.Name = "lbl_planta";
 			this.lbl_planta.Size = new System.Drawing.Size(75, 23);
 			this.lbl_planta.TabIndex = 3;
@@ -334,6 +340,12 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.lbl_hora6);
+			this.groupBox1.Controls.Add(this.lbl_hora5);
+			this.groupBox1.Controls.Add(this.lbl_hora3);
+			this.groupBox1.Controls.Add(this.lbl_hora2);
+			this.groupBox1.Controls.Add(this.lbl_hora4);
+			this.groupBox1.Controls.Add(this.lbl_hora1);
 			this.groupBox1.Controls.Add(this.lbl_value_fechaCancelacion);
 			this.groupBox1.Controls.Add(this.label_text_fechaCancelacion);
 			this.groupBox1.Controls.Add(this.label2);
@@ -349,10 +361,30 @@
 			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox1.Location = new System.Drawing.Point(39, 61);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(393, 185);
+			this.groupBox1.Size = new System.Drawing.Size(491, 185);
 			this.groupBox1.TabIndex = 28;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Fechas";
+			// 
+			// lbl_value_fechaCancelacion
+			// 
+			this.lbl_value_fechaCancelacion.AutoSize = true;
+			this.lbl_value_fechaCancelacion.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_value_fechaCancelacion.Location = new System.Drawing.Point(279, 153);
+			this.lbl_value_fechaCancelacion.Name = "lbl_value_fechaCancelacion";
+			this.lbl_value_fechaCancelacion.Size = new System.Drawing.Size(55, 23);
+			this.lbl_value_fechaCancelacion.TabIndex = 13;
+			this.lbl_value_fechaCancelacion.Text = "Fecha";
+			// 
+			// label_text_fechaCancelacion
+			// 
+			this.label_text_fechaCancelacion.AutoSize = true;
+			this.label_text_fechaCancelacion.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label_text_fechaCancelacion.Location = new System.Drawing.Point(6, 153);
+			this.label_text_fechaCancelacion.Name = "label_text_fechaCancelacion";
+			this.label_text_fechaCancelacion.Size = new System.Drawing.Size(176, 23);
+			this.label_text_fechaCancelacion.TabIndex = 12;
+			this.label_text_fechaCancelacion.Text = "Fecha de Cancelación";
 			// 
 			// label2
 			// 
@@ -482,7 +514,7 @@
 			this.pestaña_Clientes.Location = new System.Drawing.Point(4, 32);
 			this.pestaña_Clientes.Name = "pestaña_Clientes";
 			this.pestaña_Clientes.Padding = new System.Windows.Forms.Padding(3);
-			this.pestaña_Clientes.Size = new System.Drawing.Size(870, 252);
+			this.pestaña_Clientes.Size = new System.Drawing.Size(811, 252);
 			this.pestaña_Clientes.TabIndex = 1;
 			this.pestaña_Clientes.Text = "Clientes";
 			this.pestaña_Clientes.UseVisualStyleBackColor = true;
@@ -793,7 +825,7 @@
 			this.pestaña_Servicios.Location = new System.Drawing.Point(4, 32);
 			this.pestaña_Servicios.Name = "pestaña_Servicios";
 			this.pestaña_Servicios.Padding = new System.Windows.Forms.Padding(3);
-			this.pestaña_Servicios.Size = new System.Drawing.Size(870, 252);
+			this.pestaña_Servicios.Size = new System.Drawing.Size(811, 252);
 			this.pestaña_Servicios.TabIndex = 3;
 			this.pestaña_Servicios.Text = "Servicios Consumidos";
 			this.pestaña_Servicios.UseVisualStyleBackColor = true;
@@ -837,7 +869,7 @@
 			this.dGV_Servicios.ReadOnly = true;
 			this.dGV_Servicios.RowHeadersVisible = false;
 			this.dGV_Servicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Servicios.Size = new System.Drawing.Size(864, 246);
+			this.dGV_Servicios.Size = new System.Drawing.Size(805, 246);
 			this.dGV_Servicios.TabIndex = 13;
 			// 
 			// clm_Servicio
@@ -886,7 +918,7 @@
 			this.pestaña_Pagos.Location = new System.Drawing.Point(4, 32);
 			this.pestaña_Pagos.Name = "pestaña_Pagos";
 			this.pestaña_Pagos.Padding = new System.Windows.Forms.Padding(3);
-			this.pestaña_Pagos.Size = new System.Drawing.Size(870, 252);
+			this.pestaña_Pagos.Size = new System.Drawing.Size(811, 252);
 			this.pestaña_Pagos.TabIndex = 4;
 			this.pestaña_Pagos.Text = "Pagos";
 			this.pestaña_Pagos.UseVisualStyleBackColor = true;
@@ -929,7 +961,7 @@
 			this.dGV_Pagos.ReadOnly = true;
 			this.dGV_Pagos.RowHeadersVisible = false;
 			this.dGV_Pagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Pagos.Size = new System.Drawing.Size(864, 246);
+			this.dGV_Pagos.Size = new System.Drawing.Size(805, 246);
 			this.dGV_Pagos.TabIndex = 13;
 			// 
 			// clm_Tipo
@@ -986,25 +1018,65 @@
 			this.textBox_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.textBox_total.Visible = false;
 			// 
-			// label_text_fechaCancelacion
+			// lbl_hora1
 			// 
-			this.label_text_fechaCancelacion.AutoSize = true;
-			this.label_text_fechaCancelacion.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label_text_fechaCancelacion.Location = new System.Drawing.Point(8, 159);
-			this.label_text_fechaCancelacion.Name = "label_text_fechaCancelacion";
-			this.label_text_fechaCancelacion.Size = new System.Drawing.Size(176, 23);
-			this.label_text_fechaCancelacion.TabIndex = 12;
-			this.label_text_fechaCancelacion.Text = "Fecha de Cancelación";
+			this.lbl_hora1.AutoSize = true;
+			this.lbl_hora1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora1.Location = new System.Drawing.Point(404, 27);
+			this.lbl_hora1.Name = "lbl_hora1";
+			this.lbl_hora1.Size = new System.Drawing.Size(77, 23);
+			this.lbl_hora1.TabIndex = 14;
+			this.lbl_hora1.Text = "lbl_hora1";
 			// 
-			// lbl_value_fechaCancelacion
+			// lbl_hora4
 			// 
-			this.lbl_value_fechaCancelacion.AutoSize = true;
-			this.lbl_value_fechaCancelacion.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_value_fechaCancelacion.Location = new System.Drawing.Point(279, 159);
-			this.lbl_value_fechaCancelacion.Name = "lbl_value_fechaCancelacion";
-			this.lbl_value_fechaCancelacion.Size = new System.Drawing.Size(55, 23);
-			this.lbl_value_fechaCancelacion.TabIndex = 13;
-			this.lbl_value_fechaCancelacion.Text = "Fecha";
+			this.lbl_hora4.AutoSize = true;
+			this.lbl_hora4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora4.Location = new System.Drawing.Point(404, 105);
+			this.lbl_hora4.Name = "lbl_hora4";
+			this.lbl_hora4.Size = new System.Drawing.Size(80, 23);
+			this.lbl_hora4.TabIndex = 15;
+			this.lbl_hora4.Text = "lbl_hora4";
+			// 
+			// lbl_hora2
+			// 
+			this.lbl_hora2.AutoSize = true;
+			this.lbl_hora2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora2.Location = new System.Drawing.Point(404, 52);
+			this.lbl_hora2.Name = "lbl_hora2";
+			this.lbl_hora2.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora2.TabIndex = 15;
+			this.lbl_hora2.Text = "lbl_hora2";
+			// 
+			// lbl_hora3
+			// 
+			this.lbl_hora3.AutoSize = true;
+			this.lbl_hora3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora3.Location = new System.Drawing.Point(404, 78);
+			this.lbl_hora3.Name = "lbl_hora3";
+			this.lbl_hora3.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora3.TabIndex = 16;
+			this.lbl_hora3.Text = "lbl_hora3";
+			// 
+			// lbl_hora5
+			// 
+			this.lbl_hora5.AutoSize = true;
+			this.lbl_hora5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora5.Location = new System.Drawing.Point(404, 128);
+			this.lbl_hora5.Name = "lbl_hora5";
+			this.lbl_hora5.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora5.TabIndex = 17;
+			this.lbl_hora5.Text = "lbl_hora5";
+			// 
+			// lbl_hora6
+			// 
+			this.lbl_hora6.AutoSize = true;
+			this.lbl_hora6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora6.Location = new System.Drawing.Point(404, 153);
+			this.lbl_hora6.Name = "lbl_hora6";
+			this.lbl_hora6.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora6.TabIndex = 18;
+			this.lbl_hora6.Text = "lbl_hora6";
 			// 
 			// VisualizarAlojamiento
 			// 
@@ -1013,7 +1085,7 @@
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(899, 350);
+			this.ClientSize = new System.Drawing.Size(840, 350);
 			this.Controls.Add(this.textBox_total);
 			this.Controls.Add(this.label13);
 			this.Controls.Add(this.tabControl1);
@@ -1121,5 +1193,11 @@
         private System.Windows.Forms.Label label_Titular;
 		private System.Windows.Forms.Label lbl_value_fechaCancelacion;
 		private System.Windows.Forms.Label label_text_fechaCancelacion;
+		private System.Windows.Forms.Label lbl_hora6;
+		private System.Windows.Forms.Label lbl_hora5;
+		private System.Windows.Forms.Label lbl_hora3;
+		private System.Windows.Forms.Label lbl_hora2;
+		private System.Windows.Forms.Label lbl_hora4;
+		private System.Windows.Forms.Label lbl_hora1;
 	}
 }
