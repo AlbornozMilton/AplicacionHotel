@@ -25,14 +25,8 @@ namespace UI
 		private void AltaAlojamientoSinReserva_Load(object sender, EventArgs e)
 		{
 			txb_fechaActual.Text = DateTime.Today.ToString("dd/MM/yy");
-			txb_fechaActual.Enabled = false;
-			txb_CostoBase.Enabled = false;
 			dtp_fechaDesde.Value = DateTime.Now;
-			dtp_fechaDesde.Enabled = false;
-			//FechaIni = dtp_fechaDesde.Value;
 			dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-			//FechaFin = dtp_fechaHasta.Value;
-			txb_IdAloj.Enabled = false;
 		}
 
 		private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
@@ -93,7 +87,7 @@ namespace UI
 				if (BuscarClienteForm.ClienteSeleccionado != null)
 				{
 					//Excepción cliente activo
-					new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+					new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
 					//AVISO DE CLIENTE DEUDOR
 

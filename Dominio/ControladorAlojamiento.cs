@@ -182,34 +182,51 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
 
-        /// <summary>
-        /// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
-        /// </summary>
-        public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
-        {
-            List<Cliente> ClientesAloj = pAlojEnAlta.Clientes.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+		/// <summary>
+		/// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
+		/// </summary>
+		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
+		{
+			List<Cliente> ClientesAloj = new List<Cliente>(pAlojEnAlta.Clientes);
+			ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
+			ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+
             string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-            int indiceListaCli = 0;
-
-            for (int indiceTipo = 0; indiceTipo < ClientesAloj.Count; indiceTipo++)
+			int indiceListaCli = 0, contadorTipo = 0;
+            for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
             {
-                byte cantTipo = Convert.ToByte(pContadores[indiceTipo]);
-
-                while (cantTipo > Convert.ToByte('0'))
-                {
-                    if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
-                    {
-                        throw new Exception("Error de Tipos Cliente");
-                    }
-                    cantTipo--;
-                    indiceListaCli++;
-                }
-            }
+				byte cantTipo = Convert.ToByte(pContadores[indiceTipo]);
+				/*
+				indiceTipo
+					0	Titular
+					1	Acompañante Directo
+					2	Acompañante No Directo
+					3	Titular Exceptuado
+					4	Convenio
+				 */
+				try
+				{
+					while (cantTipo > Convert.ToByte('0'))
+					{
+						if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
+						{
+							throw new Exception("Error de Tipos Cliente");
+						}
+						cantTipo--;
+						contadorTipo++;
+						indiceListaCli++;
+					}
+				}	
+				catch (IndexOutOfRangeException E)
+				{
+					throw new Exception("Error de Tipos Cliente", E.InnerException);
+				}
+			}
 
             pAlojEnAlta.AltaDeReserva();
 
-            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>());
+            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); //en estado reservado
 
             if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
             {
@@ -218,7 +235,7 @@ namespace Dominio
         }
        
         /// <summary>
-        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservad - Fecha de Alta
+        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
         /// </summary>
         public void ControlInicioAltaReserva(Alojamiento pAloj)
         {

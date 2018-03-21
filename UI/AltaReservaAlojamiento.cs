@@ -21,14 +21,8 @@ namespace UI
 		private void AltaReservaAlojamiento_Load(object sender, EventArgs e)
 		{
 			txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
-			//FechaIni = dtp_fechaDesde.Value;
+			dtp_fechaDesde.Value = DateTime.Now;
 			dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-			//FechaFin = dtp_fechaHasta.Value;
-			//btn_Aceptar.Enabled = false;
-			//btn_Confirmar.Enabled = false;
-			//groupBox4.Enabled = false;
-			//groupBox3.Enabled = false;
-			//groupBox2.Enabled = false;
 		}
 
 		private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -100,11 +94,10 @@ namespace UI
                 if (BuscarClienteForm.ClienteSeleccionado != null)
                 {
 					//Excepción cliente activo
-					new ControladorCliente().ControlClienteActivo(this.ClienteResponsable, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+					new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
 					//AVISO DE CLIENTE DEUDOR
-
-					//siempre reiniciar contadores
+					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 					dGV_ClienteResponsable.Rows.Clear();
 					contador_Convenio.Value = 0;
 					contador_Convenio.Enabled = true;
@@ -116,8 +109,6 @@ namespace UI
 					contador_NoDirecto.Enabled = true;
 					contador_Exceptuado.Value = 0;
 					contador_Exceptuado.Enabled = true;
-
-					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 
 					switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
 					{
@@ -164,7 +155,10 @@ namespace UI
 						
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     btn_Confirmar.Enabled = true;
-                    groupBox3.Enabled = true; //ACOMPAÑANTES
+					if (!ck_Exclusividad.Checked)
+					{
+						groupBox3.Enabled = true; //ACOMPAÑANTES 
+					}
                 }
                 else
 				if (ClienteResponsable == null)

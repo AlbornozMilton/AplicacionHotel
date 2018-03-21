@@ -66,15 +66,15 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.txb_CostoBase = new System.Windows.Forms.TextBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.txb_planta = new System.Windows.Forms.TextBox();
+			this.lbl_planta = new System.Windows.Forms.Label();
+			this.txb_capacidad = new System.Windows.Forms.TextBox();
+			this.lbl_capacidad = new System.Windows.Forms.Label();
 			this.ck_Exclusividad = new System.Windows.Forms.CheckBox();
 			this.txb_NroHabitacion = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.btn_Comprobar = new System.Windows.Forms.PictureBox();
-			this.txb_planta = new System.Windows.Forms.TextBox();
-			this.lbl_planta = new System.Windows.Forms.Label();
-			this.txb_capacidad = new System.Windows.Forms.TextBox();
-			this.lbl_capacidad = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
@@ -108,6 +108,7 @@
 			// 
 			// txb_IdAloj
 			// 
+			this.txb_IdAloj.Enabled = false;
 			this.txb_IdAloj.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_IdAloj.Location = new System.Drawing.Point(67, 9);
 			this.txb_IdAloj.Name = "txb_IdAloj";
@@ -121,6 +122,7 @@
 			// 
 			// txb_fechaActual
 			// 
+			this.txb_fechaActual.Enabled = false;
 			this.txb_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_fechaActual.Location = new System.Drawing.Point(756, 5);
 			this.txb_fechaActual.Name = "txb_fechaActual";
@@ -172,6 +174,7 @@
 			this.dtp_fechaDesde.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
 			this.dtp_fechaDesde.CalendarTrailingForeColor = System.Drawing.Color.Black;
 			this.dtp_fechaDesde.Cursor = System.Windows.Forms.Cursors.Default;
+			this.dtp_fechaDesde.Enabled = false;
 			this.dtp_fechaDesde.Location = new System.Drawing.Point(172, 28);
 			this.dtp_fechaDesde.Name = "dtp_fechaDesde";
 			this.dtp_fechaDesde.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -493,6 +496,46 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Habitación Seleccionada";
 			// 
+			// txb_planta
+			// 
+			this.txb_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_planta.Location = new System.Drawing.Point(267, 28);
+			this.txb_planta.Name = "txb_planta";
+			this.txb_planta.ReadOnly = true;
+			this.txb_planta.Size = new System.Drawing.Size(68, 30);
+			this.txb_planta.TabIndex = 25;
+			this.txb_planta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// lbl_planta
+			// 
+			this.lbl_planta.AutoSize = true;
+			this.lbl_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_planta.Location = new System.Drawing.Point(203, 31);
+			this.lbl_planta.Name = "lbl_planta";
+			this.lbl_planta.Size = new System.Drawing.Size(58, 23);
+			this.lbl_planta.TabIndex = 24;
+			this.lbl_planta.Text = "Planta";
+			// 
+			// txb_capacidad
+			// 
+			this.txb_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txb_capacidad.Location = new System.Drawing.Point(493, 29);
+			this.txb_capacidad.Name = "txb_capacidad";
+			this.txb_capacidad.ReadOnly = true;
+			this.txb_capacidad.Size = new System.Drawing.Size(33, 30);
+			this.txb_capacidad.TabIndex = 23;
+			this.txb_capacidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// lbl_capacidad
+			// 
+			this.lbl_capacidad.AutoSize = true;
+			this.lbl_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_capacidad.Location = new System.Drawing.Point(397, 32);
+			this.lbl_capacidad.Name = "lbl_capacidad";
+			this.lbl_capacidad.Size = new System.Drawing.Size(90, 23);
+			this.lbl_capacidad.TabIndex = 22;
+			this.lbl_capacidad.Text = "Capacidad";
+			// 
 			// ck_Exclusividad
 			// 
 			this.ck_Exclusividad.AutoSize = true;
@@ -548,46 +591,6 @@
 			this.btn_Comprobar.Click += new System.EventHandler(this.btn_Comprobar_Click);
 			this.btn_Comprobar.MouseLeave += new System.EventHandler(this.btn_Comprobar_MouseLeave);
 			this.btn_Comprobar.MouseHover += new System.EventHandler(this.btn_Comprobar_MouseHover);
-			// 
-			// txb_planta
-			// 
-			this.txb_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_planta.Location = new System.Drawing.Point(267, 28);
-			this.txb_planta.Name = "txb_planta";
-			this.txb_planta.ReadOnly = true;
-			this.txb_planta.Size = new System.Drawing.Size(68, 30);
-			this.txb_planta.TabIndex = 25;
-			this.txb_planta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// lbl_planta
-			// 
-			this.lbl_planta.AutoSize = true;
-			this.lbl_planta.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_planta.Location = new System.Drawing.Point(203, 31);
-			this.lbl_planta.Name = "lbl_planta";
-			this.lbl_planta.Size = new System.Drawing.Size(58, 23);
-			this.lbl_planta.TabIndex = 24;
-			this.lbl_planta.Text = "Planta";
-			// 
-			// txb_capacidad
-			// 
-			this.txb_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_capacidad.Location = new System.Drawing.Point(493, 29);
-			this.txb_capacidad.Name = "txb_capacidad";
-			this.txb_capacidad.ReadOnly = true;
-			this.txb_capacidad.Size = new System.Drawing.Size(33, 30);
-			this.txb_capacidad.TabIndex = 23;
-			this.txb_capacidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// lbl_capacidad
-			// 
-			this.lbl_capacidad.AutoSize = true;
-			this.lbl_capacidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_capacidad.Location = new System.Drawing.Point(397, 32);
-			this.lbl_capacidad.Name = "lbl_capacidad";
-			this.lbl_capacidad.Size = new System.Drawing.Size(90, 23);
-			this.lbl_capacidad.TabIndex = 22;
-			this.lbl_capacidad.Text = "Capacidad";
 			// 
 			// AltaAlojamientoSinReserva
 			// 
