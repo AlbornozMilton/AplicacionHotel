@@ -181,10 +181,9 @@ namespace Dominio
 			ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
 			ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
 
-            string pContadores = pAlojEnAlta.ContadoresTarifas;
+			string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-			//int indiceListaCli = 0, contadorTipo = 0;
-            for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
+			for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
             {
 				int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
 				/*
@@ -195,27 +194,14 @@ namespace Dominio
 					3	Titular Exceptuado
 					4	Convenio
 				 */
-				try
+				while (cantTipo > Convert.ToByte('0'))
 				{
-					while (cantTipo > Convert.ToByte('0'))
-					{
-						Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
-						if (cli !=null)
-							ClientesAloj.Remove(cli);
-						else
-							throw new Exception("Error de Tipos Cliente");
-						//if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
-						//{
-						//	throw new Exception("Error de Tipos Cliente");
-						//}
-						cantTipo--;
-						////contadorTipo++;
-						//indiceListaCli++;
-					}
-				}	
-				catch (IndexOutOfRangeException E)
-				{
-					throw new Exception("Error de Tipos Cliente", E.InnerException);
+					Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
+					if (cli !=null)
+						ClientesAloj.Remove(cli);
+					else
+						throw new Exception("Error de Tipos Cliente");
+					cantTipo--;
 				}
 			}
 
@@ -226,11 +212,11 @@ namespace Dominio
 
 			pAlojEnAlta.AltaDeReserva();
 
-            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); //en estado reservado
+            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); 
 
             if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
             {
-                throw new Exception("Costo base incorrecto.");
+                throw new Exception("Costo Base Incorrecto.");
             }
         }
        
@@ -310,7 +296,6 @@ namespace Dominio
 
         public void CancelarAlojamiento(Alojamiento pAlojamiento)
         {
-            //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
             pAlojamiento.Cancelar();
 
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));

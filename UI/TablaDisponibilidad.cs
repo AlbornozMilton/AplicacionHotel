@@ -30,8 +30,6 @@ namespace UI
 			this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(iFechaDesde), Convert.ToDateTime(iFechaHasta));
 			foreach (var hab in this.Habitaciones)
 			{
-				//int auxExcl = new ControladorHabitacion().VerificarSolicitdExclusividad(hab);
-
 				if (!hab.Ocupada)
 				{
 					dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Planta == 0 ? "Baja" : "Alta", hab.Capacidad);

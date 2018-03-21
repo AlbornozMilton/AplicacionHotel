@@ -184,6 +184,9 @@ namespace Dominio
         }
 
         //----------------------METHODS----------------------
+		/// <summary>
+		/// Cambio de Estado a "Alojado" y Set fecha de Ingreso
+		/// </summary>
         public void AltaDeReserva()
         {
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
@@ -306,10 +309,12 @@ namespace Dominio
             this.iFechaEgreso = pFechaEgreso;
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
-
-        public void Cancelar()
+		/// <summary>
+		/// Registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
+		/// </summary>
+		public void Cancelar()
         {
-            //this.iFechaCancelacion = pFechaCancelacion;
+            this.iFechaCancelacion = DateTime.Now;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
         }
 
