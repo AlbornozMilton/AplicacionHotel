@@ -23,7 +23,8 @@ namespace UI
 
 		private void AltaReservaAlojamiento_Load(object sender, EventArgs e)
 		{
-			
+			FechaIni = DateTime.Now;
+			FechaFin = DateTime.Now.AddDays(1);
 		}
 
 		private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace UI
             }
             else
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha de Egreso debe ser Mayot a la Fecha de Ingreso", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha de Egreso debe ser Mayor a la Fecha de Ingreso", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }

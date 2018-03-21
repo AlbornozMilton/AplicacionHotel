@@ -42,7 +42,10 @@ namespace Dominio
             {
 				if (hab.Alta)
 				{
-					lista.Add(Mapper.Map<pers.Habitacion, Habitacion>(hab)); 
+					Habitacion HabDom = Mapper.Map<pers.Habitacion, Habitacion>(hab);
+					HabDom.DesocuparHabitacion();
+					HabDom.SetExclusividad(false);
+					lista.Add(HabDom); 
 				}
             }
             return (lista);

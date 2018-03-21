@@ -84,7 +84,7 @@ namespace Dominio
             foreach (var aloj in listaAlojActivos)
             {
 				//inicializar fechas locales
-                auxFechaFinAloj = aloj.FechaEstimadaEgreso;
+                auxFechaFinAloj = aloj.FechaEstimadaEgreso.Date;
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                 {
                     auxFechaIniAloj = aloj.FechaIngreso.Date;
