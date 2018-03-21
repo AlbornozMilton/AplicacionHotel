@@ -52,8 +52,13 @@ namespace Dominio
 
             this.iHabitacion = unaHab;
             this.iFechaIngreso = unaFechaIngreso;
-            this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iExclusividad = HabExclusividad;
+			this.iFechaEstimadaEgreso =
+				new DateTime(
+						unaFechaEstimadaEgreso.Year,
+						unaFechaEstimadaEgreso.Month,
+						unaFechaEstimadaEgreso.Day,
+						11, 00, 00);
+			this.iExclusividad = HabExclusividad;
         }
 
         /// <summary>
@@ -69,9 +74,19 @@ namespace Dominio
             this.iDniResponsable = unClienteResp.ClienteId;
 
             this.iHabitacion = unaHab;
-            this.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
-            this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iExclusividad = HabExclusividad;
+            this.iFechaEstimadaIngreso = 
+				new DateTime(
+						unaFechaEstimadaIngreso.Year,
+						unaFechaEstimadaIngreso.Month,
+						unaFechaEstimadaIngreso.Day,
+						10,00,00);
+            this.iFechaEstimadaEgreso = 
+				new DateTime(
+						unaFechaEstimadaEgreso.Year,
+						unaFechaEstimadaEgreso.Month,
+						unaFechaEstimadaEgreso.Day,
+						11, 00, 00);
+			this.iExclusividad = HabExclusividad;
             this.iContadoresTarifas = pContTarifas;
         }
 
