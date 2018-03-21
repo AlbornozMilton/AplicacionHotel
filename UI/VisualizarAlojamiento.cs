@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -88,20 +82,16 @@ namespace UI
             lbl_MontoDeuda.Text = pAlojamiento.MontoDeuda.ToString();
             lbl_MontoTotal.Text = pAlojamiento.MontoTotal.ToString();
             lbl_NroHabitacion.Text = pAlojamiento.HabitacionId.ToString();
-            lbl_FechaReserva.Text = CargarFecha(pAlojamiento.FechaReserva);
+			lbl_planta.Text = pAlojamiento.Habitacion.Planta == 0 ? "Baja" : "Alta";
+			lbl_Capacidad.Text = pAlojamiento.Habitacion.Capacidad.ToString();
+			lbl_Exclusividad.Text = pAlojamiento.Exclusividad ? "SI" : "NO";
+			lbl_FechaReserva.Text = CargarFecha(pAlojamiento.FechaReserva);
             lbl_FechaIngreso.Text = CargarFecha(pAlojamiento.FechaIngreso);
             lbl_FechaEgreso.Text = CargarFecha(pAlojamiento.FechaEgreso);
             lbl_FechaEstIngreso.Text = CargarFecha(pAlojamiento.FechaEstimadaIngreso);
             lbl_FechaEstEgreso.Text = CargarFecha(pAlojamiento.FechaEstimadaEgreso);
-
-            if (pAlojamiento.Exclusividad)
-            {
-                lbl_Exclusividad.Text = "SI";
-            }
-            else
-            {
-                lbl_Exclusividad.Text = "NO";
-            }
+			lbl_value_fechaCancelacion.Text = CargarFecha(pAlojamiento.FechaCancelacion);
+			
 
             CargarClientes(pAlojamiento.Clientes, pAlojamiento.DniResponsable);
             CargarPagos(pAlojamiento.Pagos);

@@ -78,6 +78,14 @@
 			this.btn_VerDetalle = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.dGV_Alojamientos = new System.Windows.Forms.DataGridView();
+			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -96,14 +104,6 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			menuStrip1 = new System.Windows.Forms.MenuStrip();
 			menuStrip1.SuspendLayout();
 			this.groupBox_disponibilidad.SuspendLayout();
@@ -556,7 +556,6 @@
 			// 
 			this.dGV_Alojamientos.AllowUserToAddRows = false;
 			this.dGV_Alojamientos.AllowUserToDeleteRows = false;
-			this.dGV_Alojamientos.AllowUserToOrderColumns = true;
 			this.dGV_Alojamientos.AllowUserToResizeColumns = false;
 			this.dGV_Alojamientos.AllowUserToResizeRows = false;
 			this.dGV_Alojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -590,12 +589,76 @@
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
+			this.dGV_Alojamientos.MultiSelect = false;
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
 			this.dGV_Alojamientos.RowHeadersVisible = false;
 			this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_Alojamientos.Size = new System.Drawing.Size(1336, 296);
 			this.dGV_Alojamientos.TabIndex = 0;
+			// 
+			// Column7
+			// 
+			this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Column7.FillWeight = 35F;
+			this.Column7.HeaderText = "Número";
+			this.Column7.Name = "Column7";
+			this.Column7.ReadOnly = true;
+			// 
+			// clm_Estado
+			// 
+			this.clm_Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Estado.FillWeight = 38F;
+			this.clm_Estado.HeaderText = "Estado";
+			this.clm_Estado.Name = "clm_Estado";
+			this.clm_Estado.ReadOnly = true;
+			// 
+			// Column1
+			// 
+			this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Column1.FillWeight = 40F;
+			this.Column1.HeaderText = "Habitación";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			// 
+			// clm_DNI
+			// 
+			this.clm_DNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_DNI.FillWeight = 45F;
+			this.clm_DNI.HeaderText = "Responsable";
+			this.clm_DNI.Name = "clm_DNI";
+			this.clm_DNI.ReadOnly = true;
+			// 
+			// clm_Legajo
+			// 
+			this.clm_Legajo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Legajo.FillWeight = 45F;
+			this.clm_Legajo.HeaderText = "Legajo";
+			this.clm_Legajo.Name = "clm_Legajo";
+			this.clm_Legajo.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Column2.HeaderText = "Nombre";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Column4
+			// 
+			this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Column4.FillWeight = 50F;
+			this.Column4.HeaderText = "Ingreso";
+			this.Column4.Name = "Column4";
+			this.Column4.ReadOnly = true;
+			// 
+			// Column5
+			// 
+			this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.Column5.FillWeight = 50F;
+			this.Column5.HeaderText = "Egreso";
+			this.Column5.Name = "Column5";
+			this.Column5.ReadOnly = true;
 			// 
 			// timer1
 			// 
@@ -754,69 +817,6 @@
 			this.label4.Size = new System.Drawing.Size(269, 23);
 			this.label4.TabIndex = 0;
 			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
-			// 
-			// Column7
-			// 
-			this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column7.FillWeight = 35F;
-			this.Column7.HeaderText = "Número";
-			this.Column7.Name = "Column7";
-			this.Column7.ReadOnly = true;
-			// 
-			// clm_Estado
-			// 
-			this.clm_Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Estado.FillWeight = 38F;
-			this.clm_Estado.HeaderText = "Estado";
-			this.clm_Estado.Name = "clm_Estado";
-			this.clm_Estado.ReadOnly = true;
-			// 
-			// Column1
-			// 
-			this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column1.FillWeight = 40F;
-			this.Column1.HeaderText = "Habitación";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			// 
-			// clm_DNI
-			// 
-			this.clm_DNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_DNI.FillWeight = 45F;
-			this.clm_DNI.HeaderText = "Responsable";
-			this.clm_DNI.Name = "clm_DNI";
-			this.clm_DNI.ReadOnly = true;
-			// 
-			// clm_Legajo
-			// 
-			this.clm_Legajo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Legajo.FillWeight = 45F;
-			this.clm_Legajo.HeaderText = "Legajo";
-			this.clm_Legajo.Name = "clm_Legajo";
-			this.clm_Legajo.ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column2.HeaderText = "Nombre";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			// 
-			// Column4
-			// 
-			this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column4.FillWeight = 50F;
-			this.Column4.HeaderText = "Ingreso";
-			this.Column4.Name = "Column4";
-			this.Column4.ReadOnly = true;
-			// 
-			// Column5
-			// 
-			this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column5.FillWeight = 50F;
-			this.Column5.HeaderText = "Egreso";
-			this.Column5.Name = "Column5";
-			this.Column5.ReadOnly = true;
 			// 
 			// VentanaPrincipal
 			// 

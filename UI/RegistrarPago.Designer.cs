@@ -163,6 +163,7 @@
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_ListadoAlojamientos.DefaultCellStyle = dataGridViewCellStyle3;
 			this.dGV_ListadoAlojamientos.Location = new System.Drawing.Point(3, 23);
+			this.dGV_ListadoAlojamientos.MultiSelect = false;
 			this.dGV_ListadoAlojamientos.Name = "dGV_ListadoAlojamientos";
 			this.dGV_ListadoAlojamientos.ReadOnly = true;
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
