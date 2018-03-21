@@ -16,13 +16,14 @@ namespace UI
 		public AltaReservaAlojamiento()
         {
             InitializeComponent();
-        }
-
-		private void AltaReservaAlojamiento_Load(object sender, EventArgs e)
-		{
 			txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
 			dtp_fechaDesde.Value = DateTime.Now;
 			dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
+		}
+
+		private void AltaReservaAlojamiento_Load(object sender, EventArgs e)
+		{
+			
 		}
 
 		private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace UI
             }
             else
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("La fecha de Ingreso debe ser Menor que la fecha de Egreso", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha de Egreso debe ser Mayot a la Fecha de Ingreso", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }

@@ -124,8 +124,8 @@ namespace Dominio
                 auxCapacidadTotal += hab.Capacidad;
             }
 
-            //acumulará la cantidad respecto a las Hab exlcusivas
-            int auxCantExclusiva = 0, cantExcl2 = 0;
+			//acumulará la cantidad respecto a las Hab exlcusivas
+			int auxCantExclusiva = 0;
 
             List<Alojamiento> auxListaActivos = this.ObtenerAlojamientosActivos();
 
@@ -157,8 +157,7 @@ namespace Dominio
                             (aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                        )
                     {
-                        auxCantExclusiva += Habitaciones.Find(h => h.HabitacionId == aloj.HabitacionId).Capacidad;
-						cantExcl2 += aloj.Habitacion.Capacidad;
+                        auxCantExclusiva += aloj.Habitacion.Capacidad;
                     }
                 }
             }
@@ -193,10 +192,10 @@ namespace Dominio
 
             string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-			int indiceListaCli = 0, contadorTipo = 0;
+			//int indiceListaCli = 0, contadorTipo = 0;
             for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
             {
-				byte cantTipo = Convert.ToByte(pContadores[indiceTipo]);
+				int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
 				/*
 				indiceTipo
 					0	Titular
@@ -209,13 +208,18 @@ namespace Dominio
 				{
 					while (cantTipo > Convert.ToByte('0'))
 					{
-						if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
-						{
+						Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
+						if (cli !=null)
+							ClientesAloj.Remove(cli);
+						else
 							throw new Exception("Error de Tipos Cliente");
-						}
+						//if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
+						//{
+						//	throw new Exception("Error de Tipos Cliente");
+						//}
 						cantTipo--;
-						contadorTipo++;
-						indiceListaCli++;
+						////contadorTipo++;
+						//indiceListaCli++;
 					}
 				}	
 				catch (IndexOutOfRangeException E)
@@ -224,7 +228,12 @@ namespace Dominio
 				}
 			}
 
-            pAlojEnAlta.AltaDeReserva();
+			if (ClientesAloj.Count != 0)
+			{
+				throw new Exception("Error de Tipos Cliente");
+			}
+
+			pAlojEnAlta.AltaDeReserva();
 
             pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); //en estado reservado
 
