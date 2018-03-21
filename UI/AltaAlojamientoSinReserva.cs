@@ -259,7 +259,7 @@ namespace UI
             try
             {
                 int auxIdAloj;
-                if (btn_VerificarDisponibilidad.Enabled) //Alta sin Reserva
+                if (NuevoAlojamiento.ContadoresTarifas == null) //Alta sin Reserva
                 {
                     auxIdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 }
