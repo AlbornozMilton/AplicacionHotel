@@ -127,7 +127,9 @@ namespace UI
 					(aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
 					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
 					);
-				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+				string[] colores = controladorExtra.DeterminarColor(aloj);
+				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(colores[0]);
+				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.ForeColor = Color.FromName(colores[1]);
 				countRow++;
 				
 				//Color.IndianRed

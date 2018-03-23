@@ -51,7 +51,9 @@ namespace UI
                 {
                     Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                     dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
-					dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+					string[] colores = controladorExtra.DeterminarColor(aloj);
+					dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.BackColor = Color.FromName(colores[0]);
+					dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.ForeColor = Color.FromName(colores[1]);
 					indexRow++;
                 }
                 btn_Aceptar.Enabled = true;
