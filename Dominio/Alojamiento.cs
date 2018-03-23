@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio
 {
@@ -259,7 +256,8 @@ namespace Dominio
 					costoBase = CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
 			}
 
-			this.iMontoTotal = costoBase * (this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days);
+			
+			this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
 
             Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
             if (auxPago != null)
