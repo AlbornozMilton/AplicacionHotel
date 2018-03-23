@@ -151,9 +151,10 @@ namespace Persistencia.DAL.EntityFramework
 
             lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
             lAuxAloj.MontoTotal = unAloj.MontoTotal;
+			//enlazar
             pLineaServicio.Servicio = iDbContext.Servicios.Find(pLineaServicio.Servicio.ServicioId);
-
-            pLineaServicio.AlojamientoId = unAloj.AlojamientoId;
+			//agrear id aloj
+            pLineaServicio.AlojamientoId = lAuxAloj.AlojamientoId;
             iDbContext.LineaServicios.Add(pLineaServicio);
 
             iDbContext.SaveChanges();

@@ -319,9 +319,9 @@ namespace Dominio
         /// <summary>
         /// Asinga la fecha parámetro como Fecha de Egreso y cambia el Estado Alojamiento a Cerrado
         /// </summary>
-        public void Cerrar(DateTime pFechaEgreso)
+        public void Cerrar()
         {
-            this.iFechaEgreso = pFechaEgreso;
+            this.iFechaEgreso = DateTime.Now;
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
 		/// <summary>

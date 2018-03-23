@@ -164,10 +164,7 @@ namespace Dominio
 
         public void AgregarServicio (Servicio pServicio, byte pCant, Alojamiento pAlojamiento)
         {
-            //Servicio unServicio = Mapper.Map<Servicio, pers.Servicio>(pServicio);
             LineaServicio nuevaLineaServicio = new LineaServicio(pCant, pServicio);
-
-            //Actualiza los momtos tambien
             pAlojamiento.AgregarLineaServicio(nuevaLineaServicio);
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
@@ -273,22 +270,12 @@ namespace Dominio
         /// </summary>
         public void CerrarAlojamiento(Alojamiento pAlojamiento)
         {
-            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Alojado))
-            {
-                throw new Exception("Operación Cancelada: Solo se puede Cerrar un Alojamiento que esta Alojado");
-            }
-             
-            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
-            {
-                throw new Exception("Atención: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
-            }
-            
             //Siempre se va a colocar en "false" la exclusividad
             pAlojamiento.Habitacion.SetExclusividad(false);
-            //fecha de hoy y cambio de estado
-            pAlojamiento.Cerrar(DateTime.Now);
-
             pAlojamiento.Habitacion.DesocuparHabitacion();
+			//fecha de hoy y cambio de estado
+			pAlojamiento.Cerrar();
+
 
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));

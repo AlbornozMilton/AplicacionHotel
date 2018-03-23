@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -20,52 +13,72 @@ namespace UI
             InitializeComponent();
             lbl_fechaActual.Text = DateTime.Today.ToString("dd / MM / yyyy");
             lbl_fechaEstEgreso.Text = "-";
-            btn_Visualizar.Enabled = false;
-            btn_Aceptar.Enabled = false;
-            btn_realizarPago.Enabled = false;
-        }
-
-        public CerrarAlojamiento(Alojamiento pAloj)
-        {
-            InitializeComponent();
-            this.iAloj_Seleccionado = pAloj;
         }
 
         private void btn_Visualizar_Click(object sender, EventArgs e)
         {
-            if (iAloj_Seleccionado!=null)
+            if (this.iAloj_Seleccionado!=null)
             {
                 VisualizarAlojamiento VentanaVisualizar = new VisualizarAlojamiento(iAloj_Seleccionado);
                 VentanaVisualizar.ShowDialog();
             }
         }
 
-        private void CargarAlojamientoSeccionado(Alojamiento pAloj)
+        private void CargarAlojamientoSeccionado()
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento, pAloj.HabitacionId, pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto());
-        }
+            dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.EstadoAlojamiento, this.iAloj_Seleccionado.HabitacionId, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).NombreCompleto());
+			if (!iAloj_Seleccionado.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
+			{
+				label_deuda.Visible = true;
+				pictureBox_deuda.Visible = true;
+			}
+			else
+			{
+				label_deuda.Visible = false;
+				pictureBox_deuda.Visible = false;
+			}
+		}
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
         {
-            BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
-            BuscarAlojamiento.ShowDialog();
-            if (BuscarAlojamiento.Aloj_Seleccionado != null)
-            {
-                iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
-                CargarAlojamientoSeccionado(this.iAloj_Seleccionado);
+			try
+			{
+				BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
+				BuscarAlojamiento.ShowDialog();
+				if (BuscarAlojamiento.Aloj_Seleccionado != null)
+				{
+					
 
-                if (iAloj_Seleccionado.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date)!=0)
-                {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.", TipoMensaje.Alerta);
-                    ventanaEmergente.ShowDialog();
-                }
+					if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento != EstadoAlojamiento.Alojado)
+					{
+						throw new Exception("Solo se realiza el Cierre de Alojamientos en Estado Alojado");
+					}
 
-                lbl_fechaEstEgreso.Text = iAloj_Seleccionado.FechaEstimadaEgreso.Date.ToString("dd / MM / yyyy");
-                btn_realizarPago.Enabled = true;
-                btn_Visualizar.Enabled = true;
-                btn_Aceptar.Enabled = true;
-            }
+					if (!BuscarAlojamiento.Aloj_Seleccionado.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
+					{
+						throw new Exception("Se debe realizar un Pago de Alojado para realizar el Cierre del mismo");
+					}
+
+					iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
+
+					if (iAloj_Seleccionado.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == -1)
+					{
+						VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.", TipoMensaje.Alerta);
+						ventanaEmergente.ShowDialog();
+					}
+
+					CargarAlojamientoSeccionado();
+					lbl_fechaEstEgreso.Text = iAloj_Seleccionado.FechaEstimadaEgreso.Date.ToString("dd / MM / yyyy");
+					btn_realizarPago.Enabled = true;
+					btn_Aceptar.Enabled = true;
+				}
+			}
+			catch (Exception E)
+			{
+				VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+				ventanaEmergente.ShowDialog();
+			}
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
@@ -74,13 +87,9 @@ namespace UI
             {
                 new ControladorAlojamiento().CerrarAlojamiento(iAloj_Seleccionado);
                 if (iAloj_Seleccionado.Servicios.Count != 0)
-                {
                     new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.CierreExistoso, iAloj_Seleccionado.AlojamientoId).ShowDialog();
-                }
                 else
-                {
                     new VentanaEmergente("Cierre de Alojamiento Exitoso", TipoMensaje.Exito).ShowDialog();
-                }
                 Close();
             }
             catch (Exception E)
@@ -95,7 +104,7 @@ namespace UI
             RegistrarPago VentanaVisualizar = new RegistrarPago(iAloj_Seleccionado);
             VentanaVisualizar.ShowDialog();
             this.iAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(iAloj_Seleccionado.AlojamientoId);
-            CargarAlojamientoSeccionado(this.iAloj_Seleccionado);
+            CargarAlojamientoSeccionado();
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
