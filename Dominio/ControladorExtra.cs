@@ -158,7 +158,8 @@ namespace Dominio
 		public string[] DeterminarColor(Alojamiento aloj)
 		{
 			string[] resultado = new string[2];
-			resultado[1] = "WindowText";
+			resultado[0] = "Window"; //back color - blanco
+			resultado[1] = "WindowText"; //letra - negro
 
 			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
 			{

@@ -127,7 +127,7 @@ namespace UI
                 }
 
                 this.Alojamientos = new List<Alojamiento>();
-                this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value,dateTimePicker_hasta.Value);
+                this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value.Date,dateTimePicker_hasta.Value.Date);
                 CargarAlojamientos();
             }
             else

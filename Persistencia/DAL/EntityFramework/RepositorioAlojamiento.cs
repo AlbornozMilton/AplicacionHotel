@@ -47,10 +47,10 @@ namespace Persistencia.DAL.EntityFramework
         {
             var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Include("Habitacion")
 							   where (
-                                        (pEstados.Contains(aloj.EstadoAlojamiento))
+										(pEstados.Contains(aloj.EstadoAlojamiento))
                                         &&
                                         (
-                                            (aloj.FechaEstimadaEgreso.ToString().CompareTo(pDesde.ToString()) > 0) && aloj.FechaEstimadaEgreso.ToString().CompareTo(pHasta.ToString()) <= 0
+                                            (aloj.FechaEstimadaIngreso.ToString().CompareTo(pDesde.ToString()) > 0) && aloj.FechaEstimadaEgreso.ToString().CompareTo(pHasta.ToString()) <= 0
                                             ||
                                             (aloj.FechaIngreso.ToString().CompareTo(pDesde.ToString()) >= 0) && aloj.FechaIngreso.ToString().CompareTo(pHasta.ToString()) < 0
                                             ||
