@@ -35,5 +35,10 @@ namespace UI
 		{
 			Close();
 		}
+
+		public void SetVisible(bool pValor)
+		{
+			btn_Aceptar.Visible = pValor;
+		}
 	}
 }
