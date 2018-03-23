@@ -227,9 +227,9 @@ namespace Dominio
                 throw new Exception("El Alojamiento seleccionado debe estar en estado Reservado solamente. Vea los detalles.");
             }
 
-            if (pAloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) != 0)
+            if (pAloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) > 0)
             {
-                throw new Exception("La Fecha Estimada de Ingreso de la Reserva que quiere dar de Alta, no coincide con la Fecha Actual. Vea los detalles.");
+                throw new Exception("La Fecha Estimada de Ingreso de la Reserva no coincide con la Fecha Actual. Vea los detalles.");
             }
         }
 

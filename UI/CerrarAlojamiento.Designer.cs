@@ -250,7 +250,7 @@
 			// 
 			// pictureBox_deuda
 			// 
-			this.pictureBox_deuda.BackColor = System.Drawing.Color.Orange;
+			this.pictureBox_deuda.BackColor = System.Drawing.SystemColors.MenuHighlight;
 			this.pictureBox_deuda.Location = new System.Drawing.Point(12, 152);
 			this.pictureBox_deuda.Name = "pictureBox_deuda";
 			this.pictureBox_deuda.Size = new System.Drawing.Size(43, 19);
@@ -263,12 +263,12 @@
 			this.label_deuda.AutoSize = true;
 			this.label_deuda.BackColor = System.Drawing.Color.Transparent;
 			this.label_deuda.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label_deuda.ForeColor = System.Drawing.Color.OrangeRed;
+			this.label_deuda.ForeColor = System.Drawing.SystemColors.MenuHighlight;
 			this.label_deuda.Location = new System.Drawing.Point(61, 149);
 			this.label_deuda.Name = "label_deuda";
-			this.label_deuda.Size = new System.Drawing.Size(186, 23);
+			this.label_deuda.Size = new System.Drawing.Size(176, 23);
 			this.label_deuda.TabIndex = 19;
-			this.label_deuda.Text = "Falta Pago de Servicios";
+			this.label_deuda.Text = "Servicios Consumidos";
 			this.label_deuda.Visible = false;
 			// 
 			// CerrarAlojamiento

@@ -122,11 +122,16 @@ namespace Persistencia.DAL.EntityFramework
         {
             Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
             localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
-			localAuxAloj.MontoDeuda = 0;
+			localAuxAloj.MontoTotal = unAloj.MontoTotal;
+			localAuxAloj.MontoDeuda = unAloj.MontoDeuda;
+
             if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
             else
+			{
 				localAuxAloj.FechaCancelacion = unAloj.FechaCancelacion;
+				localAuxAloj.MontoDeuda = 0;
+			}
 
 			iDbContext.SaveChanges();
         }

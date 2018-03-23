@@ -28,7 +28,7 @@ namespace UI
         {
             dGV_ListadoAlojamientos.Rows.Clear();
             dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.EstadoAlojamiento, this.iAloj_Seleccionado.HabitacionId, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).NombreCompleto());
-			if (!iAloj_Seleccionado.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
+			if (iAloj_Seleccionado.MontoDeuda > 0)
 			{
 				label_deuda.Visible = true;
 				pictureBox_deuda.Visible = true;
@@ -62,7 +62,7 @@ namespace UI
 
 					iAloj_Seleccionado = BuscarAlojamiento.Aloj_Seleccionado;
 
-					if (iAloj_Seleccionado.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == -1)
+					if (DateTime.Now.Date.CompareTo(iAloj_Seleccionado.FechaEstimadaEgreso.Date) == -1)
 					{
 						VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.", TipoMensaje.Alerta);
 						ventanaEmergente.ShowDialog();
