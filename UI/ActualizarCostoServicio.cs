@@ -23,8 +23,8 @@ namespace UI
         {
             try
             {
-                AdministrarServicios Actualizar = new AdministrarServicios();
-                Actualizar.ShowDialog();
+                AdministrarServicios Actualizar = new AdministrarServicios(true);
+				Actualizar.ShowDialog();
                 if (Actualizar.ServicioSeleccionado != null)
                 {
                     this.Service = Actualizar.ServicioSeleccionado;
@@ -54,8 +54,7 @@ namespace UI
                 ventanaEmergente.ShowDialog();
                 Close();
                 AdministrarServicios Actualizar = new AdministrarServicios();
-                Actualizar.Show();
-				Actualizar.SetVisible(false);
+                Actualizar.ShowDialog();
             }
             catch (FormatException)
             {

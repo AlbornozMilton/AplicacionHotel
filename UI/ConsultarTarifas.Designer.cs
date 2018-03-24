@@ -119,6 +119,7 @@
 			this.btn_Seleccionar.TabIndex = 1;
 			this.btn_Seleccionar.Text = "Seleccionar";
 			this.btn_Seleccionar.UseVisualStyleBackColor = true;
+			this.btn_Seleccionar.Visible = false;
 			this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
 			// 
 			// btn_Cancelar
@@ -148,6 +149,7 @@
 			this.Name = "ConsultarTarifas";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consulta de Tarifas";
+			this.Load += new System.EventHandler(this.ConsultarTarifas_Load);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Tarifas)).EndInit();
 			this.ResumeLayout(false);

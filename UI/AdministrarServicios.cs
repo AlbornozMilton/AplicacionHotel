@@ -13,10 +13,14 @@ namespace UI
         public AdministrarServicios()
         {
             InitializeComponent();
-            CargarServicios();
         }
 
-        private void CargarServicios()
+		public AdministrarServicios(bool pValor)
+		{
+			InitializeComponent();
+			btn_Aceptar.Visible = pValor;
+		}
+		private void CargarServicios()
         {
             foreach (var serv in ListaServicios)
             {
@@ -36,9 +40,9 @@ namespace UI
 			Close();
 		}
 
-		public void SetVisible(bool pValor)
+		private void AdministrarServicios_Load(object sender, EventArgs e)
 		{
-			btn_Aceptar.Visible = pValor;
+			CargarServicios();
 		}
 	}
 }

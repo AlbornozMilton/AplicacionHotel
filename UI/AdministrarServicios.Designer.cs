@@ -164,6 +164,7 @@
 			this.Name = "AdministrarServicios";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consultar Servicios";
+			this.Load += new System.EventHandler(this.AdministrarServicios_Load);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).EndInit();
 			this.ResumeLayout(false);
