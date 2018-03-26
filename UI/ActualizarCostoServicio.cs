@@ -60,11 +60,11 @@ namespace UI
             {
                 if (txb_nuevoCosto.Text == "")
                 {
-                    new VentanaEmergente("Debe ingresar un nuevo Costo", TipoMensaje.Alerta).ShowDialog();
+                    new VentanaEmergente("Debe ingresar un Costo", TipoMensaje.Alerta).ShowDialog();
                 }
                 else
                 {
-                    new VentanaEmergente("Costo Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
+                    new VentanaEmergente("Solo ingresar Números", TipoMensaje.Alerta).ShowDialog();
                 }
             }
             catch (Exception E)

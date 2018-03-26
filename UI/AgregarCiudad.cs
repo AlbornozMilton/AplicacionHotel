@@ -18,7 +18,6 @@ namespace UI
 		{
 			InitializeComponent();
 			lOpcion = pOpcion;
-			
 		}
 
 		private void AgregarCiudad_Load(object sender, EventArgs e)

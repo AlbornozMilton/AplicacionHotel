@@ -8,9 +8,8 @@ namespace UI
     {
         public Alojamiento AlojSeleciconado;
         public Servicio ServicioSeleccionado;
-        //public LineaServicio lLineaServecio;
 
-        public AgregarServicio()
+		public AgregarServicio()
         {
             InitializeComponent();
         }
@@ -80,13 +79,6 @@ namespace UI
             }
             catch (Exception E)
             {
-                //dataGridView1.Rows.Clear();//Aloj seleccionado
-                //dataGridView_Servicio.Rows.Clear();
-                //cant_Servicio.Value = 0;
-                //gpb_Servicio.Enabled = false;
-                //btn_buscarServicio.Enabled = false;
-                //cant_Servicio.Enabled = false;
-
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }

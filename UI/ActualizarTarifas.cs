@@ -46,7 +46,7 @@ namespace UI
             try
             {
                 new ControladorExtra().ActualizarTarifa(this.iTarifa, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("      Tarifa Actualizada", TipoMensaje.Exito);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Tarifa Actualizada", TipoMensaje.Exito);
                 ventanaEmergente.ShowDialog();
                 Close();
                 ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
@@ -56,11 +56,11 @@ namespace UI
 			{
 				if (txb_TarifaExclusiva.Text == "" || txb_Tarifa.Text == "")
 				{
-					new VentanaEmergente("Debe ingresar un nuevo Costo", TipoMensaje.Alerta).ShowDialog();
+					new VentanaEmergente("Debe ingresar un Costo", TipoMensaje.Alerta).ShowDialog();
 				}
 				else
 				{
-					new VentanaEmergente("Costo Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
+					new VentanaEmergente("Solo ingresar Números", TipoMensaje.Alerta).ShowDialog();
 				}
 			}
 			catch (Exception E)
