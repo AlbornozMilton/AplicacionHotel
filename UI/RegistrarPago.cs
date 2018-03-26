@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -18,16 +11,16 @@ namespace UI
         public RegistrarPago()
         {
             InitializeComponent();
-            gbx_Pago.Enabled = false;
-            btn_Aceptar.Enabled = false;
-            ck_ModificarMonto.Enabled = false;
             lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
         }
 
         private void CargarPagos()
         {
-            //cbx_TipoPago.Text = "Ninguno";
-            switch (AlojSeleccionado.EstadoAlojamiento)
+			cbx_TipoPago.Items.Clear();
+			txb_Monto.Text = "-";
+			ck_ModificarMonto.Enabled = false;
+
+			switch (AlojSeleccionado.EstadoAlojamiento)
             {
                 case EstadoAlojamiento.Reservado:
                     {
@@ -64,17 +57,17 @@ namespace UI
         public RegistrarPago(Alojamiento pAloj)
         {
             InitializeComponent();
-            if (!(pAloj.EstadoAlojamiento == EstadoAlojamiento.Cancelado))
+            if (pAloj.EstadoAlojamiento != EstadoAlojamiento.Cancelado)
             {
                 AlojSeleccionado = pAloj;
                 lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
                 CargarAlojamientoSeccionado();
-                ck_ModificarMonto.Enabled = false;
             }
             else
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("No se realizan Pagos de Alojamientos Cancelados", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
+				Close();
             }
         }
 
@@ -98,22 +91,12 @@ namespace UI
                     AlojSeleccionado = VentanaBuscarAlojamiento.Aloj_Seleccionado;
                     CargarAlojamientoSeccionado();
                     gbx_Pago.Enabled = true;
-                    btn_Aceptar.Enabled = true;
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("No se realizan Pagos de Alojamientos Cancelados", TipoMensaje.Alerta);
+					VentanaEmergente ventanaEmergente = new VentanaEmergente("No se realizan Pagos de Alojamientos Cancelados", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
-					dGV_ListadoAlojamientos.Rows.Clear();
-					AlojSeleccionado = null;
-                    gbx_Pago.Enabled = false;
-                    btn_Aceptar.Enabled = false;
                 }
-            }
-            else
-            {
-                gbx_Pago.Enabled = false;
-                btn_Aceptar.Enabled = false;
             }
         }
 
@@ -149,33 +132,22 @@ namespace UI
             {
                 txb_Monto.Text = AlojSeleccionado.MontoDeuda.ToString();
             }
+			btn_Aceptar.Enabled = true;
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             try
             {
-				//vertificar el monto ingresado: formato y numeros
-				if (cbx_TipoPago.Text == "")
-				{
-					throw new Exception("Debe elegir un Tipo de Pago");
-				}
-
 				ValidarDatos();
-				ControladorAlojamiento iControladorAloj = new ControladorAlojamiento();
 				Pago Pago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
 				//iControladorAloj.ControlTipoPago(AlojSeleccionado, Pago);
-				iControladorAloj.AddPago(AlojSeleccionado, Pago);
+				new ControladorAlojamiento().AddPago(AlojSeleccionado, Pago);
+				string mensaje = "Pago de Alojamiento Exitoso";
 				if (Pago.Tipo == TipoPago.Servicios && Pago.Monto != AlojSeleccionado.MontoDeuda)
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("El Pago de Servicios no cubrió el Total de Deuda del Alojamiento, por lo que posteriormente deberá realizar un Pago de Deuda", TipoMensaje.Alerta);
-					ventanaEmergente.ShowDialog();
-				}
-				else
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("Pago de Alojamiento Exitoso", TipoMensaje.Exito);
-					ventanaEmergente.ShowDialog();
-				}
+					mensaje += ". El Alojamiento quedó con DEUDA.";
+				VentanaEmergente ventanaEmergente = new VentanaEmergente(mensaje, TipoMensaje.Exito);
+				ventanaEmergente.ShowDialog();
 				Close();
             }
             catch (Exception E)
@@ -189,10 +161,6 @@ namespace UI
         {
             int numero;
             string monto = txb_Monto.Text;
-            //if (cbx_TipoPago.SelectedItem == null)
-            //{
-            //    throw new Exception("Debe seleccionar el Tipo de Pago");
-            //}
             if (Convert.ToInt32(monto) < 0)
             {
                 throw new Exception("Debe ingresar un Monto mayor a cero");

@@ -62,6 +62,7 @@
 			// 
 			// btn_Aceptar
 			// 
+			this.btn_Aceptar.Enabled = false;
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Aceptar.Location = new System.Drawing.Point(668, 269);
 			this.btn_Aceptar.Name = "btn_Aceptar";
@@ -235,6 +236,7 @@
 			this.gbx_Pago.Controls.Add(this.lbl_Detalle);
 			this.gbx_Pago.Controls.Add(this.lbl_Monto);
 			this.gbx_Pago.Controls.Add(this.lbl_TipoPago);
+			this.gbx_Pago.Enabled = false;
 			this.gbx_Pago.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.gbx_Pago.Location = new System.Drawing.Point(11, 155);
 			this.gbx_Pago.Name = "gbx_Pago";
@@ -246,6 +248,7 @@
 			// ck_ModificarMonto
 			// 
 			this.ck_ModificarMonto.AutoSize = true;
+			this.ck_ModificarMonto.Enabled = false;
 			this.ck_ModificarMonto.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ck_ModificarMonto.Location = new System.Drawing.Point(211, 74);
 			this.ck_ModificarMonto.Name = "ck_ModificarMonto";

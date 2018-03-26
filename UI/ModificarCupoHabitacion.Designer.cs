@@ -34,12 +34,12 @@
 			this.btn_buscarHab = new System.Windows.Forms.Button();
 			this.gpb_Hab = new System.Windows.Forms.GroupBox();
 			this.dGV_Habs = new System.Windows.Forms.DataGridView();
-			this.btn_confirmar = new System.Windows.Forms.Button();
-			this.btn_Cancelar = new System.Windows.Forms.Button();
 			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_Alta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_confirmar = new System.Windows.Forms.Button();
+			this.btn_Cancelar = new System.Windows.Forms.Button();
 			this.btn_alta = new System.Windows.Forms.Button();
 			this.gpb_Hab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -50,9 +50,9 @@
 			this.btn_buscarHab.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_buscarHab.Location = new System.Drawing.Point(12, 9);
 			this.btn_buscarHab.Name = "btn_buscarHab";
-			this.btn_buscarHab.Size = new System.Drawing.Size(196, 30);
+			this.btn_buscarHab.Size = new System.Drawing.Size(161, 30);
 			this.btn_buscarHab.TabIndex = 16;
-			this.btn_buscarHab.Text = "Seleciconar Habitación";
+			this.btn_buscarHab.Text = "Buscar Habitación";
 			this.btn_buscarHab.UseVisualStyleBackColor = true;
 			this.btn_buscarHab.Click += new System.EventHandler(this.btn_buscarHab_Click);
 			// 
@@ -107,29 +107,6 @@
 			this.dGV_Habs.Size = new System.Drawing.Size(439, 59);
 			this.dGV_Habs.TabIndex = 1;
 			// 
-			// btn_confirmar
-			// 
-			this.btn_confirmar.Enabled = false;
-			this.btn_confirmar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_confirmar.Location = new System.Drawing.Point(459, 146);
-			this.btn_confirmar.Name = "btn_confirmar";
-			this.btn_confirmar.Size = new System.Drawing.Size(110, 30);
-			this.btn_confirmar.TabIndex = 18;
-			this.btn_confirmar.Text = "Aceptar";
-			this.btn_confirmar.UseVisualStyleBackColor = true;
-			this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
-			// 
-			// btn_Cancelar
-			// 
-			this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_Cancelar.Location = new System.Drawing.Point(12, 146);
-			this.btn_Cancelar.Name = "btn_Cancelar";
-			this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
-			this.btn_Cancelar.TabIndex = 19;
-			this.btn_Cancelar.Text = "Cancelar";
-			this.btn_Cancelar.UseVisualStyleBackColor = true;
-			this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
-			// 
 			// clm_Id
 			// 
 			this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -161,6 +138,29 @@
 			this.clm_Alta.HeaderText = "Estado";
 			this.clm_Alta.Name = "clm_Alta";
 			this.clm_Alta.ReadOnly = true;
+			// 
+			// btn_confirmar
+			// 
+			this.btn_confirmar.Enabled = false;
+			this.btn_confirmar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_confirmar.Location = new System.Drawing.Point(459, 146);
+			this.btn_confirmar.Name = "btn_confirmar";
+			this.btn_confirmar.Size = new System.Drawing.Size(110, 30);
+			this.btn_confirmar.TabIndex = 18;
+			this.btn_confirmar.Text = "Aceptar";
+			this.btn_confirmar.UseVisualStyleBackColor = true;
+			this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
+			// 
+			// btn_Cancelar
+			// 
+			this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btn_Cancelar.Location = new System.Drawing.Point(12, 146);
+			this.btn_Cancelar.Name = "btn_Cancelar";
+			this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
+			this.btn_Cancelar.TabIndex = 19;
+			this.btn_Cancelar.Text = "Cancelar";
+			this.btn_Cancelar.UseVisualStyleBackColor = true;
+			this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
 			// 
 			// btn_alta
 			// 

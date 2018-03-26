@@ -197,14 +197,14 @@ namespace Dominio
 					if (cli !=null)
 						ClientesAloj.Remove(cli);
 					else
-						throw new Exception("Error de Tipos Cliente");
+						throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
 					cantTipo--;
 				}
 			}
 
 			if (ClientesAloj.Count != 0)
 			{
-				throw new Exception("Error de Tipos Cliente");
+				throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
 			}
 
 			pAlojEnAlta.AltaDeReserva();
