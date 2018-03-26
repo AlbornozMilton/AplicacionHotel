@@ -397,7 +397,7 @@
 			this.modificarAltaDeCuposToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Editar;
 			this.modificarAltaDeCuposToolStripMenuItem.Name = "modificarAltaDeCuposToolStripMenuItem";
 			this.modificarAltaDeCuposToolStripMenuItem.Size = new System.Drawing.Size(458, 34);
-			this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Cupos";
+			this.modificarAltaDeCuposToolStripMenuItem.Text = "Modificar Alta de Habitación";
 			this.modificarAltaDeCuposToolStripMenuItem.Click += new System.EventHandler(this.modificarAltaDeCuposToolStripMenuItem_Click);
 			// 
 			// agregarCiudadToolStripMenuItem

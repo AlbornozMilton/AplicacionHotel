@@ -51,15 +51,10 @@ namespace Dominio
             return (lista);
         }
 
-        /// <summary>
-        /// Retorna verdadero si la suma de cupos simples disponibles más la suma de cupos dobles disponibles es menor a la capacidad de la habitacíón
-        /// </summary>
-        public int VerificarSolicitdExclusividad(Habitacion pHab)
-        {
-			return 0;
-        }
-
-        public List<Alojamiento> ControlModificarAltaCupos(int pIdHabitacion)
+		/// <summary>
+		/// Devuelve una lista con Alojamiento Activos en los que se encuetra una Habitación
+		/// </summary>
+        public List<Alojamiento> ControlModificarAltaHabitacion(int pIdHabitacion)
         {
             List<Alojamiento> AlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
             List<Alojamiento> AlojsResltultado = new List<Alojamiento>();
@@ -76,7 +71,7 @@ namespace Dominio
 
         public void ModificarAltaDeHabitacion(Habitacion pHabitacion)
         {
-
+			iUoW.RepositorioHabitacion.ModificarAltaHabitacion(Mapper.Map<Habitacion,pers.Habitacion>(pHabitacion));
         }
     }
 }

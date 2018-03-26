@@ -129,7 +129,7 @@
 			// clm_Piso
 			// 
 			this.clm_Piso.FillWeight = 30F;
-			this.clm_Piso.HeaderText = "Piso";
+			this.clm_Piso.HeaderText = "Planta";
 			this.clm_Piso.Name = "clm_Piso";
 			this.clm_Piso.ReadOnly = true;
 			// 
@@ -145,7 +145,7 @@
 			// 
 			this.clm_Alta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.clm_Alta.FillWeight = 30F;
-			this.clm_Alta.HeaderText = "En Alta";
+			this.clm_Alta.HeaderText = "Estado";
 			this.clm_Alta.Name = "clm_Alta";
 			this.clm_Alta.ReadOnly = true;
 			// 

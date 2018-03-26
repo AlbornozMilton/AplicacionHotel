@@ -31,7 +31,7 @@ namespace UI
 					hab.HabitacionId, 
 					hab.Planta == 0 ? "Baja" : "Alta", 
 					hab.Capacidad,
-					hab.Alta ? "SI":"NO");
+					hab.Alta ? "En Alta":"En Baja");
 				if (!hab.Alta)
 				{
 					dGV_Habs.Rows[currentHab].DefaultCellStyle.BackColor = Color.FromName("Khaki"); 
