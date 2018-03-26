@@ -59,6 +59,8 @@ namespace UI
             InitializeComponent();
             if (pAloj.EstadoAlojamiento != EstadoAlojamiento.Cancelado)
             {
+				gbx_Pago.Enabled = true;
+				button1.Enabled = false;
                 AlojSeleccionado = pAloj;
                 lbl_MostrarFecha.Text = DateTime.Now.ToString("dd / MM / yyyy");
                 CargarAlojamientoSeccionado();

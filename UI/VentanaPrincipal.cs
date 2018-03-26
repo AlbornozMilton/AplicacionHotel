@@ -400,7 +400,7 @@ namespace UI
 			}
 			else
 			{
-				VentanaEmergente ventanaEmergente = new VentanaEmergente("No Existen Alojamientos con Deuda", TipoMensaje.Exito);
+				VentanaEmergente ventanaEmergente = new VentanaEmergente("No Existen Alojamientos con Servicios Impagos", TipoMensaje.Exito);
 				ventanaEmergente.ShowDialog();
 			}
         }
