@@ -331,6 +331,7 @@
 			// 
 			// btn_Aceptar
 			// 
+			this.btn_Aceptar.Enabled = false;
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Aceptar.Location = new System.Drawing.Point(1165, 504);
 			this.btn_Aceptar.Name = "btn_Aceptar";

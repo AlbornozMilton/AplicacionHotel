@@ -408,7 +408,8 @@ namespace UI
         private void listaPersonalizadaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListarAlojamientos listarAlojamientos = new ListarAlojamientos();
-            listarAlojamientos.ShowDialog();
+			listarAlojamientos.SetVisibleSeleccionar(false);
+			listarAlojamientos.ShowDialog();
         }
 
 		private void agregarToolStripMenuItem_Click(object sender, EventArgs e)

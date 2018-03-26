@@ -17,8 +17,6 @@ namespace UI
         {
             InitializeComponent();
             dateTimePicker_hasta.Value = DateTime.Now.AddDays(1);
-            string[] auxComponents = { "btn_Aceptar"};
-            this.EnableComponents(auxComponents, false);
         }
 
         public ListarAlojamientos(List<Alojamiento> pAlojs)
@@ -92,7 +90,7 @@ namespace UI
 
                 if (auxComponent != null)
                 {
-                    auxComponent.Enabled = pValor;
+                    auxComponent.Visible = pValor;
                 }
             }
         }
@@ -140,15 +138,7 @@ namespace UI
             {
                 RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
                 registrarPago.ShowDialog();
-                if (this.Alojamientos[0].EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                {
-                    this.Alojamientos = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
-                }
-                else
-                {
-                    this.Alojamientos = new ControladorAlojamiento().AlojamientosConDeuda();
-                }
-                CargarAlojamientos();
+				dGV_ListadoDeAlojamientos.Rows.Clear();
             }
         }
 
@@ -156,5 +146,10 @@ namespace UI
         {
             button1.Visible = true;
         }
+
+		public void SetVisibleSeleccionar(bool pValor)
+		{
+			btn_Aceptar.Visible = pValor;
+		}
     }
 }
