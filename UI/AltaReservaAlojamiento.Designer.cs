@@ -635,7 +635,7 @@
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(770, 515);
+			this.label14.Location = new System.Drawing.Point(694, 530);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(96, 19);
 			this.label14.TabIndex = 26;
@@ -647,7 +647,7 @@
 			this.btn_Confirmar.BackColor = System.Drawing.Color.Transparent;
 			this.btn_Confirmar.Image = global::UI.Properties.Resources.Boton_Go;
 			this.btn_Confirmar.InitialImage = null;
-			this.btn_Confirmar.Location = new System.Drawing.Point(701, 495);
+			this.btn_Confirmar.Location = new System.Drawing.Point(796, 505);
 			this.btn_Confirmar.Name = "btn_Confirmar";
 			this.btn_Confirmar.Size = new System.Drawing.Size(63, 61);
 			this.btn_Confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

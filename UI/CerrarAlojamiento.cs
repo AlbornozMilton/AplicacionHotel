@@ -49,7 +49,6 @@ namespace UI
 				if (BuscarAlojamiento.Aloj_Seleccionado != null)
 				{
 					
-
 					if (BuscarAlojamiento.Aloj_Seleccionado.EstadoAlojamiento != EstadoAlojamiento.Alojado)
 					{
 						throw new Exception("Solo se realiza el Cierre de Alojamientos en Estado Alojado");
@@ -64,13 +63,12 @@ namespace UI
 
 					if (DateTime.Now.Date.CompareTo(iAloj_Seleccionado.FechaEstimadaEgreso.Date) == -1)
 					{
-						VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual. Queda a su criterio continuar con el Cierre.", TipoMensaje.Alerta);
+						VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha Estimada de Egreso no coincide con la Fecha Actual", TipoMensaje.Alerta);
 						ventanaEmergente.ShowDialog();
 					}
 
 					CargarAlojamientoSeccionado();
 					lbl_fechaEstEgreso.Text = iAloj_Seleccionado.FechaEstimadaEgreso.Date.ToString("dd / MM / yyyy");
-					btn_realizarPago.Enabled = true;
 					btn_Aceptar.Enabled = true;
 				}
 			}
@@ -97,14 +95,6 @@ namespace UI
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
-        }
-
-        private void btn_realizarPago_Click(object sender, EventArgs e)
-        {
-            RegistrarPago VentanaVisualizar = new RegistrarPago(iAloj_Seleccionado);
-            VentanaVisualizar.ShowDialog();
-            this.iAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(iAloj_Seleccionado.AlojamientoId);
-            CargarAlojamientoSeccionado();
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)

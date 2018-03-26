@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -73,20 +67,20 @@ namespace UI
                 case TipoMensaje.ReservaExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Depósito?";
                     }
                     break;
                 case TipoMensaje.AltaAlojamientoExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Alojado?";
+                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Alojado?";
                         
                     }
                     break;
                 case TipoMensaje.CierreExistoso:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Servicios?";
+                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Servicios?";
                     }
                     break;
             }

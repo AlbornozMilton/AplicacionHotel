@@ -49,6 +49,8 @@ namespace UI
 
         public void CargarServicioSeccionado()
         {
+			cant_Servicio.Value = 0;
+			lbl_total.Text = "-";
             dataGridView_Servicio.Rows.Clear();
             dataGridView_Servicio.Rows.Add(this.ServicioSeleccionado.Nombre, this.ServicioSeleccionado.CostoBase, DateTime.Now.ToString("dd / MM / yyyy"));
         }
@@ -94,7 +96,7 @@ namespace UI
         {
             try
             {
-                AdministrarServicios BuscarServicio = new AdministrarServicios();
+                AdministrarServicios BuscarServicio = new AdministrarServicios(true);
 				BuscarServicio.ShowDialog();
                 if (BuscarServicio.ServicioSeleccionado != null)
                 {

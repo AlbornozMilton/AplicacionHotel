@@ -32,7 +32,7 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Contructor para el Alta Alojamiento sin Reserva
+        /// Constructor para el Alta Alojamiento sin Reserva
         /// </summary>
         public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
@@ -41,7 +41,7 @@ namespace Dominio
             this.iClientes = new List<Cliente>();
             this.iDniResponsable = unClienteResp.ClienteId;
 
-            //El cliente responsable ya se encuentra en la lista de acompañantes - Verificar
+            
             foreach (var cli in listaAcompañantes)
             {
                 iClientes.Add(cli);
@@ -215,7 +215,7 @@ namespace Dominio
         {
             bool lExclusividad = this.iExclusividad;
             double costoBase = 0;
-            DateTime auxFechaDesde;
+            DateTime auxFechaDesde = new DateTime();
 			Cliente CliResposable = Clientes.Find(c => c.ClienteId == this.DniResponsable);
 
 			if (this.iEstadoAloj == EstadoAlojamiento.Alojado)

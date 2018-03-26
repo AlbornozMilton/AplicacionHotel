@@ -570,7 +570,7 @@
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(644, 585);
+			this.label14.Location = new System.Drawing.Point(683, 578);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(91, 19);
 			this.label14.TabIndex = 28;
@@ -582,7 +582,7 @@
 			this.btn_Comprobar.BackColor = System.Drawing.Color.Transparent;
 			this.btn_Comprobar.Image = global::UI.Properties.Resources.Boton_Go;
 			this.btn_Comprobar.InitialImage = null;
-			this.btn_Comprobar.Location = new System.Drawing.Point(575, 557);
+			this.btn_Comprobar.Location = new System.Drawing.Point(780, 557);
 			this.btn_Comprobar.Name = "btn_Comprobar";
 			this.btn_Comprobar.Size = new System.Drawing.Size(63, 61);
 			this.btn_Comprobar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
