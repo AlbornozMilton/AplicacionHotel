@@ -96,7 +96,6 @@
     <Compile Include="Domain\TarifaCliente.cs" />
     <Compile Include="Domain\Usuario.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

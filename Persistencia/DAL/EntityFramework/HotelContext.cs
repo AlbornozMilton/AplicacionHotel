@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using Persistencia.Domain;
 using Persistencia.DAL.EntityFramework.Mappings;
 using System.Data.Entity.ModelConfiguration.Conventions;
