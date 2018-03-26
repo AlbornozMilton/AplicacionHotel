@@ -48,7 +48,7 @@ namespace UI
         {
             if (FechaIni.CompareTo(FechaFin) == -1)
             {
-                TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin);
+                TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
 
                 if (TablaDisp.HabSeleccionada != null)

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -13,7 +6,6 @@ namespace UI
 {
     public partial class BuscarAlojamiento : Form
     {
-        //ControladorAlojamiento ControladorAloj = new ControladorAlojamiento();
         public Alojamiento Aloj_Seleccionado;
         private Alojamiento auxAloj_Seleccionado;
         public DataGridViewCellCollection iFilaSeleccionada;
@@ -21,7 +13,6 @@ namespace UI
         public BuscarAlojamiento()
         {
             InitializeComponent();
-            btn_Aceptar.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -112,5 +103,10 @@ namespace UI
                 ventanaEmergente.ShowDialog();
             }
         }
+
+		public void SetVisibleSeleccionar(bool pValor)
+		{
+			btn_Aceptar.Visible = pValor;
+		}
     }
 }

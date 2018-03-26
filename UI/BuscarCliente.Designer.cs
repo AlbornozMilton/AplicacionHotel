@@ -83,6 +83,7 @@
 			// 
 			this.btn_Aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btn_Aceptar.BackColor = System.Drawing.SystemColors.Control;
+			this.btn_Aceptar.Enabled = false;
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_Aceptar.Location = new System.Drawing.Point(904, 399);
 			this.btn_Aceptar.Name = "btn_Aceptar";

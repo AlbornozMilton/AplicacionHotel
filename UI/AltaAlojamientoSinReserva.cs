@@ -34,7 +34,7 @@ namespace UI
             //si la fecha ini es menor que fecha fin
             if (FechaIni.CompareTo(FechaFin) == -1)
             {
-                TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin);
+                TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
 
 				if (TablaDisp.HabSeleccionada != null)

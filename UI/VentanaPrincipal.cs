@@ -221,6 +221,7 @@ namespace UI
         private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
+			BuscarAlojamiento.SetVisibleSeleccionar(false);
             BuscarAlojamiento.ShowDialog();
         }
 
@@ -240,7 +241,7 @@ namespace UI
         {
             if (dtp_fechaDesde.Value.CompareTo(dtp_fechaHasta.Value) == -1)
             {
-                TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value);
+                TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value,false);
                 TDisp.ShowDialog();
             }
             else
@@ -385,6 +386,7 @@ namespace UI
         private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
+			BuscarCliente.SetVisibleSeleccionar(false);
             BuscarCliente.ShowDialog();
         }
 

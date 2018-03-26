@@ -24,11 +24,9 @@ namespace UI
 
         private void BuscarCliente_Load(object sender, EventArgs e)
         {
-            btn_Aceptar.Enabled = false;
             radioButton1.Checked = true;
             textBox_Legajo.Enabled = false;
             textBox_Nombre.Enabled = false;
-
             rbn_Alta.Checked = true;
             rbn_baja.Checked = false;
             auxAlta = true;
@@ -182,6 +180,11 @@ namespace UI
 				vistaUsuario.ShowDialog();
 				ResultadoBusqueda();
 			}
+		}
+
+		public void SetVisibleSeleccionar(bool pValor)
+		{
+			btn_Aceptar.Visible = pValor;
 		}
 	}
 }
