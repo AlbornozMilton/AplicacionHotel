@@ -34,12 +34,12 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TablaDisponibilidad));
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.dGV_TablaHabitaciones = new System.Windows.Forms.DataGridView();
-			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.btn_Seleccionar = new System.Windows.Forms.Button();
-			this.btn_Cancelar = new System.Windows.Forms.Button();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.btn_Seleccionar = new System.Windows.Forms.Button();
+			this.btn_Cancelar = new System.Windows.Forms.Button();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_TablaHabitaciones)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
@@ -61,7 +61,6 @@
 			// 
 			this.dGV_TablaHabitaciones.AllowUserToAddRows = false;
 			this.dGV_TablaHabitaciones.AllowUserToDeleteRows = false;
-			this.dGV_TablaHabitaciones.AllowUserToOrderColumns = true;
 			this.dGV_TablaHabitaciones.AllowUserToResizeColumns = false;
 			this.dGV_TablaHabitaciones.AllowUserToResizeRows = false;
 			this.dGV_TablaHabitaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -80,6 +79,7 @@
             this.Column2});
 			this.dGV_TablaHabitaciones.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 26);
+			this.dGV_TablaHabitaciones.MultiSelect = false;
 			this.dGV_TablaHabitaciones.Name = "dGV_TablaHabitaciones";
 			this.dGV_TablaHabitaciones.ReadOnly = true;
 			this.dGV_TablaHabitaciones.RowHeadersVisible = false;
@@ -88,6 +88,25 @@
 			this.dGV_TablaHabitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_TablaHabitaciones.Size = new System.Drawing.Size(731, 269);
 			this.dGV_TablaHabitaciones.TabIndex = 0;
+			// 
+			// Column1
+			// 
+			this.Column1.FillWeight = 60F;
+			this.Column1.HeaderText = "Número";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Planta";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Capacidad";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
 			// 
 			// btn_Seleccionar
 			// 
@@ -110,25 +129,6 @@
 			this.btn_Cancelar.Text = "Cancelar";
 			this.btn_Cancelar.UseVisualStyleBackColor = true;
 			this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
-			// 
-			// Column1
-			// 
-			this.Column1.FillWeight = 60F;
-			this.Column1.HeaderText = "Número";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this.Column3.HeaderText = "Planta";
-			this.Column3.Name = "Column3";
-			this.Column3.ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this.Column2.HeaderText = "Capacidad";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
 			// 
 			// TablaDisponibilidad
 			// 

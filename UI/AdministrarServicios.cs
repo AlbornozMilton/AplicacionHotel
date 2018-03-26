@@ -13,10 +13,14 @@ namespace UI
         public AdministrarServicios()
         {
             InitializeComponent();
-            CargarServicios();
         }
 
-        private void CargarServicios()
+		public AdministrarServicios(bool pValor)
+		{
+			InitializeComponent();
+			btn_Aceptar.Visible = pValor;
+		}
+		private void CargarServicios()
         {
             foreach (var serv in ListaServicios)
             {
@@ -34,6 +38,11 @@ namespace UI
 		private void btn_cancelar_Click(object sender, EventArgs e)
 		{
 			Close();
+		}
+
+		private void AdministrarServicios_Load(object sender, EventArgs e)
+		{
+			CargarServicios();
 		}
 	}
 }

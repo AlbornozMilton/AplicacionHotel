@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -21,8 +17,6 @@ namespace UI
         {
             InitializeComponent();
             dateTimePicker_hasta.Value = DateTime.Now.AddDays(1);
-            string[] auxComponents = { "btn_Aceptar"};
-            this.EnableComponents(auxComponents, false);
         }
 
         public ListarAlojamientos(List<Alojamiento> pAlojs)
@@ -51,7 +45,9 @@ namespace UI
                 {
                     Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
                     dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
-					dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+					string[] colores = controladorExtra.DeterminarColor(aloj);
+					dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.BackColor = Color.FromName(colores[0]);
+					dGV_ListadoDeAlojamientos.Rows[indexRow].DefaultCellStyle.ForeColor = Color.FromName(colores[1]);
 					indexRow++;
                 }
                 btn_Aceptar.Enabled = true;
@@ -94,7 +90,7 @@ namespace UI
 
                 if (auxComponent != null)
                 {
-                    auxComponent.Enabled = pValor;
+                    auxComponent.Visible = pValor;
                 }
             }
         }
@@ -125,7 +121,7 @@ namespace UI
                 }
 
                 this.Alojamientos = new List<Alojamiento>();
-                this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value,dateTimePicker_hasta.Value);
+                this.Alojamientos = new ControladorAlojamiento().ListaPersonalizada(localEstados,dateTimePicker_desde.Value.Date,dateTimePicker_hasta.Value.Date);
                 CargarAlojamientos();
             }
             else
@@ -142,14 +138,13 @@ namespace UI
             {
                 RegistrarPago registrarPago = new RegistrarPago(Alojamientos.Find(a => a.AlojamientoId == Convert.ToInt32(dGV_ListadoDeAlojamientos.CurrentRow.Cells[0].Value)));
                 registrarPago.ShowDialog();
-                if (this.Alojamientos[0].EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                {
-                    this.Alojamientos = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
-                }
-                else
-                {
-                    this.Alojamientos = new ControladorAlojamiento().AlojamientosConDeuda();
-                }
+				if (this.Alojamientos.Count > 1)
+				{
+					if (this.Alojamientos[0].EstadoAlojamiento == EstadoAlojamiento.Reservado)
+						this.Alojamientos = new ControladorAlojamiento().AlojsReservadosConDepositoVencidos();
+					else
+						this.Alojamientos = new ControladorAlojamiento().AlojamientosConDeuda(); 
+				}
                 CargarAlojamientos();
             }
         }
@@ -158,5 +153,10 @@ namespace UI
         {
             button1.Visible = true;
         }
+
+		public void SetVisibleSeleccionar(bool pValor)
+		{
+			btn_Aceptar.Visible = pValor;
+		}
     }
 }

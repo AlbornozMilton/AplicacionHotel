@@ -164,10 +164,7 @@ namespace Dominio
 
         public void AgregarServicio (Servicio pServicio, byte pCant, Alojamiento pAlojamiento)
         {
-            //Servicio unServicio = Mapper.Map<Servicio, pers.Servicio>(pServicio);
             LineaServicio nuevaLineaServicio = new LineaServicio(pCant, pServicio);
-
-            //Actualiza los momtos tambien
             pAlojamiento.AgregarLineaServicio(nuevaLineaServicio);
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
@@ -181,10 +178,9 @@ namespace Dominio
 			ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
 			ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
 
-            string pContadores = pAlojEnAlta.ContadoresTarifas;
+			string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-			//int indiceListaCli = 0, contadorTipo = 0;
-            for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
+			for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
             {
 				int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
 				/*
@@ -195,42 +191,29 @@ namespace Dominio
 					3	Titular Exceptuado
 					4	Convenio
 				 */
-				try
+				while (cantTipo > Convert.ToByte('0'))
 				{
-					while (cantTipo > Convert.ToByte('0'))
-					{
-						Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
-						if (cli !=null)
-							ClientesAloj.Remove(cli);
-						else
-							throw new Exception("Error de Tipos Cliente");
-						//if (Convert.ToInt32(ClientesAloj[indiceListaCli].TarifaCliente.TarifaClienteId) != indiceTipo)
-						//{
-						//	throw new Exception("Error de Tipos Cliente");
-						//}
-						cantTipo--;
-						////contadorTipo++;
-						//indiceListaCli++;
-					}
-				}	
-				catch (IndexOutOfRangeException E)
-				{
-					throw new Exception("Error de Tipos Cliente", E.InnerException);
+					Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
+					if (cli !=null)
+						ClientesAloj.Remove(cli);
+					else
+						throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
+					cantTipo--;
 				}
 			}
 
 			if (ClientesAloj.Count != 0)
 			{
-				throw new Exception("Error de Tipos Cliente");
+				throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
 			}
 
 			pAlojEnAlta.AltaDeReserva();
 
-            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); //en estado reservado
+            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); 
 
             if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
             {
-                throw new Exception("Costo base incorrecto.");
+                throw new Exception("Costo Base Incorrecto.");
             }
         }
        
@@ -244,9 +227,9 @@ namespace Dominio
                 throw new Exception("El Alojamiento seleccionado debe estar en estado Reservado solamente. Vea los detalles.");
             }
 
-            if (pAloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) != 0)
+            if (pAloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) > 0)
             {
-                throw new Exception("La Fecha Estimada de Ingreso de la Reserva que quiere dar de Alta, no coincide con la Fecha Actual. Vea los detalles.");
+                throw new Exception("La Fecha Estimada de Ingreso de la Reserva no coincide con la Fecha Actual. Vea los detalles.");
             }
         }
 
@@ -287,22 +270,12 @@ namespace Dominio
         /// </summary>
         public void CerrarAlojamiento(Alojamiento pAlojamiento)
         {
-            if (!(pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Alojado))
-            {
-                throw new Exception("Operación Cancelada: Solo se puede Cerrar un Alojamiento que esta Alojado");
-            }
-             
-            if (!pAlojamiento.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
-            {
-                throw new Exception("Atención: Se debe realizar un Pago de Alojado antes de Cerrar el Alojamiento");
-            }
-            
             //Siempre se va a colocar en "false" la exclusividad
             pAlojamiento.Habitacion.SetExclusividad(false);
-            //fecha de hoy y cambio de estado
-            pAlojamiento.Cerrar(DateTime.Now);
-
             pAlojamiento.Habitacion.DesocuparHabitacion();
+			//fecha de hoy y cambio de estado
+			pAlojamiento.Cerrar();
+
 
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
@@ -310,9 +283,7 @@ namespace Dominio
 
         public void CancelarAlojamiento(Alojamiento pAlojamiento)
         {
-            //registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
             pAlojamiento.Cancelar();
-
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }
     }

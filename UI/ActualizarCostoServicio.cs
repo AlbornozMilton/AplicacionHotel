@@ -6,39 +6,33 @@ namespace UI
 {
     public partial class ActualizarCostoServicio : Form
     {
-        Servicio ServicioSeleccionado;
+        Servicio Service;
 
         public ActualizarCostoServicio()
         {
             InitializeComponent();
-            txb_nuevoCosto.Enabled = false;
-            btn_Aceptar.Enabled = false;
         }
 
-        public void CargarServicioSeccionado(Servicio pServicio)
+        public void CargarServicioSeccionado()
         {
             dataGridView_Servicio.Rows.Clear();
-            dataGridView_Servicio.Rows.Add(pServicio.ServicioId, pServicio.Nombre, pServicio.CostoBase,pServicio.Detalle);
+            dataGridView_Servicio.Rows.Add(Service.ServicioId, Service.Nombre, Service.CostoBase, Service.Detalle);
         }
 
         private void btn_buscarServicio_Click(object sender, EventArgs e)
         {
             try
             {
-                AdministrarServicios Actualizar = new AdministrarServicios();
-                Actualizar.ShowDialog();
+                AdministrarServicios Actualizar = new AdministrarServicios(true);
+				Actualizar.ShowDialog();
                 if (Actualizar.ServicioSeleccionado != null)
                 {
-                    this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
-                    CargarServicioSeccionado(this.ServicioSeleccionado);
-                    txb_nuevoCosto.Enabled = true;
+                    this.Service = Actualizar.ServicioSeleccionado;
+                    CargarServicioSeccionado();
                     btn_Aceptar.Enabled = true;
-                }
-                else
-                {
-                    dataGridView_Servicio.Rows.Clear();
-                    throw new Exception("   Debe seleccionar un Servicio");
-                }
+					txb_nuevoCosto.Enabled = true;
+					txb_nuevoCosto.Text = "";
+				}
             }
             catch (Exception E)
             {
@@ -55,7 +49,7 @@ namespace UI
         {
             try
             {
-                new ControladorExtra().AcutalizarCostoServicio(this.ServicioSeleccionado, txb_nuevoCosto.Text);
+                new ControladorExtra().AcutalizarCostoServicio(this.Service, txb_nuevoCosto.Text);
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("Servicio Actualizado", TipoMensaje.Exito);
                 ventanaEmergente.ShowDialog();
                 Close();

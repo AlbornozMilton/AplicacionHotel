@@ -1,59 +1,39 @@
 ﻿using Dominio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
 {
     public partial class ActualizarTarifas : Form
     {
-        TarifaCliente iTarifaSeleccionada;
+        TarifaCliente iTarifa;
         public ActualizarTarifas()
         {
             InitializeComponent();
         }
 
-        private void ActualizarTarifas_Load(object sender, EventArgs e)
-        {
-            txb_Tarifa.Enabled = false;
-            txb_TarifaExclusiva.Enabled = false;
-            btn_Aceptar.Enabled = false;
-        }
-
-        private void CargarTarifaSeleccionada(TarifaCliente pTarifa)
+        private void CargarTarifaSeleccionada()
         {
             dGV_Tarifas.Rows.Clear();
-            dGV_Tarifas.Rows.Add(pTarifa.NombreTarifa, pTarifa.Tarifa, pTarifa.TarifaExclusiva);
+            dGV_Tarifas.Rows.Add(iTarifa.NombreTarifa, iTarifa.Tarifa, iTarifa.TarifaExclusiva);
         }
 
         private void btn_ConsultarTarifas_Click(object sender, EventArgs e)
         {
             try
             {
-                ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
+                ConsultarTarifas VentanaTarifas = new ConsultarTarifas(true);
                 VentanaTarifas.ShowDialog();
                 if (VentanaTarifas.iTarifaSeleccionada != null)
                 {
-                    this.iTarifaSeleccionada = VentanaTarifas.iTarifaSeleccionada;
-                    CargarTarifaSeleccionada(this.iTarifaSeleccionada);
+                    this.iTarifa = VentanaTarifas.iTarifaSeleccionada;
+                    CargarTarifaSeleccionada();
+                    txb_Tarifa.Enabled = true;
                     btn_Aceptar.Enabled = true;
-                }
-                else
-                {
-                    dGV_Tarifas.Rows.Clear();
-                    txb_Tarifa.Text = "";
-                    txb_Tarifa.Enabled = false;
-                    txb_TarifaExclusiva.Text = "";
-                    txb_TarifaExclusiva.Enabled = false;
-                    btn_Aceptar.Enabled = false;
-                    throw new Exception("  Debe seleccionar una Tarifa");
-                }
+					txb_TarifaExclusiva.Text = "";
+					txb_TarifaExclusiva.Enabled = true;
+					txb_Tarifa.Text = "";
+				}
             }
             catch (Exception E)
             {
@@ -65,15 +45,25 @@ namespace UI
         {
             try
             {
-                new ControladorExtra().ActualizarTarifa(this.iTarifaSeleccionada, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
+                new ControladorExtra().ActualizarTarifa(this.iTarifa, txb_Tarifa.Text, txb_TarifaExclusiva.Text);
                 VentanaEmergente ventanaEmergente = new VentanaEmergente("      Tarifa Actualizada", TipoMensaje.Exito);
                 ventanaEmergente.ShowDialog();
                 Close();
                 ConsultarTarifas VentanaTarifas = new ConsultarTarifas();
                 VentanaTarifas.ShowDialog();
-
             }
-            catch (Exception E)
+			catch (FormatException)
+			{
+				if (txb_TarifaExclusiva.Text == "" || txb_Tarifa.Text == "")
+				{
+					new VentanaEmergente("Debe ingresar un nuevo Costo", TipoMensaje.Alerta).ShowDialog();
+				}
+				else
+				{
+					new VentanaEmergente("Costo Incorrecto: se deben ingresar solo números", TipoMensaje.Alerta).ShowDialog();
+				}
+			}
+			catch (Exception E)
             {
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();

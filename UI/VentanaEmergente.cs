@@ -94,17 +94,18 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-            if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa|| this.TipoMensaje == TipoMensaje.ReservaExitosa 
-                || TipoMensaje == TipoMensaje.CierreExistoso)
-            {
-                RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
-                registrarPago.ShowDialog();
-                Close();
-            }else
-	        {
-                Close();
-            }
-        }
+			if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa || this.TipoMensaje == TipoMensaje.ReservaExitosa
+				|| TipoMensaje == TipoMensaje.CierreExistoso)
+			{
+				RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
+				registrarPago.ShowDialog();
+				Close();
+			}
+			else
+			{
+				Close();
+			}
+		}
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {

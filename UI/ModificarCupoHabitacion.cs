@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using System.Drawing;
 
 namespace UI
 {
@@ -20,50 +15,52 @@ namespace UI
             InitializeComponent();
         }
 
-        private void ModificarCupoHabitacion_Load(object sender, EventArgs e)
-        {
-            btn_confirmar.Enabled = false;
-            //button1.Enabled = false;
-            //button2.Enabled = false;
-            //button3.Enabled = false;
-        }
-
-        private void CargarHabitacion(Habitacion pHab)
+        private void CargarHabitacion()
         {
             dGV_Habs.Rows.Clear();
-        }
+			dGV_Habs.Rows.Add(
+				this.HabSeleccionada.HabitacionId,
+				this.HabSeleccionada.Planta == 0 ? "Baja" : "Alta",
+				this.HabSeleccionada.Capacidad,
+				this.HabSeleccionada.Alta ? "En Alta" : "En Baja"
+				);
 
-        private void btn_buscarHab_Click(object sender, EventArgs e)
+			if (this.HabSeleccionada.Alta)
+			{
+				btn_alta.Text = "Dar de Baja";
+				btn_alta.BackColor = Color.Red;
+			}
+			else
+			{
+				btn_alta.Text = "Dar de Alta";
+				btn_alta.BackColor = Color.Green;
+			}
+		}
+
+		private void btn_buscarHab_Click(object sender, EventArgs e)
         {
             try
             {
-                btn_confirmar.Enabled = false;
-                ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones();
+                ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones(true);
                 consultarHabitaciones.ShowDialog();
                 if (consultarHabitaciones.HabSeleccionada != null)
                 {
-                    List<Alojamiento> auxListaAlojs = new ControladorHabitacion().ControlModificarAltaCupos(consultarHabitaciones.HabSeleccionada.HabitacionId);
+					List<Alojamiento> auxListaAlojs = new ControladorHabitacion().ControlModificarAltaHabitacion(consultarHabitaciones.HabSeleccionada.HabitacionId);
                     if (auxListaAlojs.Count == 0)
                     {
-                        CargarHabitacion(consultarHabitaciones.HabSeleccionada);
-                        btn_confirmar.Enabled = true;
-                        HabSeleccionada = consultarHabitaciones.HabSeleccionada;
+						this.HabSeleccionada = consultarHabitaciones.HabSeleccionada;
+						CargarHabitacion();
+						btn_confirmar.Enabled = true;
+						btn_alta.Visible = true;
                     }
                     else
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("No es posible la Habitación seleccionada ya que se encuentra activa en los siguientes Alojamientos", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("No es posible la Habitación seleccionada ya que se encuentra Activa en los siguientes Alojamientos", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                         dGV_Habs.Rows.Clear();
-                        dataGridView_cupos.Rows.Clear();
                         ListarAlojamientos ListarAlojs = new ListarAlojamientos(auxListaAlojs);
                         ListarAlojs.ShowDialog();
                     }
-                }
-                else
-                {
-                    dGV_Habs.Rows.Clear();
-                    dataGridView_cupos.Rows.Clear();
-                    throw new Exception("   Debe seleccionar una Habitación");
                 }
             }
             catch (Exception E)
@@ -74,24 +71,27 @@ namespace UI
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
-            //new ControladorHabitacion().ModificarAltaDeCupos(HabSeleccionada);
+            new ControladorHabitacion().ModificarAltaDeHabitacion(HabSeleccionada);
             VentanaEmergente ventanaEmergente = new VentanaEmergente("Modificacion de Cupos Exitosa", TipoMensaje.Exito);
             ventanaEmergente.ShowDialog();
+			ConsultarHabitaciones consultarHabitaciones = new ConsultarHabitaciones();
+			consultarHabitaciones.ShowDialog();
             Close();
-        }
-
-        private void dataGridView_cupos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (dataGridView_cupos.CurrentCell.ColumnIndex == 2)
-            {
-                //HabSeleccionada.ModificarAltaCupo(dataGridView_cupos.CurrentCell.RowIndex);
-                //CargarCupos(HabSeleccionada.Cupos);
-            }
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
-    }
+
+		private void btn_alta_Click(object sender, EventArgs e)
+		{
+			if (btn_alta.Text == "Dar de Baja")
+				HabSeleccionada.DarDeBaja();
+			else
+				HabSeleccionada.DarDeAlta();
+			CargarHabitacion();
+
+		}
+	}
 }

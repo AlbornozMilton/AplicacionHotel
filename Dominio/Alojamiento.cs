@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio
 {
@@ -52,8 +49,13 @@ namespace Dominio
 
             this.iHabitacion = unaHab;
             this.iFechaIngreso = unaFechaIngreso;
-            this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iExclusividad = HabExclusividad;
+			this.iFechaEstimadaEgreso =
+				new DateTime(
+						unaFechaEstimadaEgreso.Year,
+						unaFechaEstimadaEgreso.Month,
+						unaFechaEstimadaEgreso.Day,
+						11, 00, 00);
+			this.iExclusividad = HabExclusividad;
         }
 
         /// <summary>
@@ -69,9 +71,19 @@ namespace Dominio
             this.iDniResponsable = unClienteResp.ClienteId;
 
             this.iHabitacion = unaHab;
-            this.iFechaEstimadaIngreso = unaFechaEstimadaIngreso;
-            this.iFechaEstimadaEgreso = unaFechaEstimadaEgreso;
-            this.iExclusividad = HabExclusividad;
+            this.iFechaEstimadaIngreso = 
+				new DateTime(
+						unaFechaEstimadaIngreso.Year,
+						unaFechaEstimadaIngreso.Month,
+						unaFechaEstimadaIngreso.Day,
+						10,00,00);
+            this.iFechaEstimadaEgreso = 
+				new DateTime(
+						unaFechaEstimadaEgreso.Year,
+						unaFechaEstimadaEgreso.Month,
+						unaFechaEstimadaEgreso.Day,
+						11, 00, 00);
+			this.iExclusividad = HabExclusividad;
             this.iContadoresTarifas = pContTarifas;
         }
 
@@ -184,6 +196,9 @@ namespace Dominio
         }
 
         //----------------------METHODS----------------------
+		/// <summary>
+		/// Cambio de Estado a "Alojado" y Set fecha de Ingreso
+		/// </summary>
         public void AltaDeReserva()
         {
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
@@ -241,7 +256,8 @@ namespace Dominio
 					costoBase = CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
 			}
 
-			this.iMontoTotal = costoBase * (this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days);
+			
+			this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
 
             Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
             if (auxPago != null)
@@ -301,15 +317,17 @@ namespace Dominio
         /// <summary>
         /// Asinga la fecha parámetro como Fecha de Egreso y cambia el Estado Alojamiento a Cerrado
         /// </summary>
-        public void Cerrar(DateTime pFechaEgreso)
+        public void Cerrar()
         {
-            this.iFechaEgreso = pFechaEgreso;
+            this.iFechaEgreso = DateTime.Now;
             this.iEstadoAloj = EstadoAlojamiento.Cerrado;
         }
-
-        public void Cancelar()
+		/// <summary>
+		/// Registra fecha de cancelacion y cambia el Estado del Alojamiento a Cancelado
+		/// </summary>
+		public void Cancelar()
         {
-            //this.iFechaCancelacion = pFechaCancelacion;
+            this.iFechaCancelacion = DateTime.Now;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
         }
 

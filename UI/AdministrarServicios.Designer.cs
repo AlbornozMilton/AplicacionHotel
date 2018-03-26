@@ -59,7 +59,6 @@
 			// 
 			this.dGV_Servicios.AllowUserToAddRows = false;
 			this.dGV_Servicios.AllowUserToDeleteRows = false;
-			this.dGV_Servicios.AllowUserToOrderColumns = true;
 			this.dGV_Servicios.AllowUserToResizeColumns = false;
 			this.dGV_Servicios.AllowUserToResizeRows = false;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -86,6 +85,7 @@
 			this.dGV_Servicios.DefaultCellStyle = dataGridViewCellStyle2;
 			this.dGV_Servicios.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_Servicios.Location = new System.Drawing.Point(3, 26);
+			this.dGV_Servicios.MultiSelect = false;
 			this.dGV_Servicios.Name = "dGV_Servicios";
 			this.dGV_Servicios.ReadOnly = true;
 			this.dGV_Servicios.RowHeadersVisible = false;
@@ -134,6 +134,7 @@
 			this.btn_Aceptar.TabIndex = 2;
 			this.btn_Aceptar.Text = "Seleccionar";
 			this.btn_Aceptar.UseVisualStyleBackColor = true;
+			this.btn_Aceptar.Visible = false;
 			this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
 			// 
 			// btn_cancelar
@@ -163,6 +164,7 @@
 			this.Name = "AdministrarServicios";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consultar Servicios";
+			this.Load += new System.EventHandler(this.AdministrarServicios_Load);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Servicios)).EndInit();
 			this.ResumeLayout(false);

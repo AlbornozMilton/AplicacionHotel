@@ -47,10 +47,10 @@ namespace Persistencia.DAL.EntityFramework
         {
             var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Include("Habitacion")
 							   where (
-                                        (pEstados.Contains(aloj.EstadoAlojamiento))
+										(pEstados.Contains(aloj.EstadoAlojamiento))
                                         &&
                                         (
-                                            (aloj.FechaEstimadaEgreso.ToString().CompareTo(pDesde.ToString()) > 0) && aloj.FechaEstimadaEgreso.ToString().CompareTo(pHasta.ToString()) <= 0
+                                            (aloj.FechaEstimadaIngreso.ToString().CompareTo(pDesde.ToString()) > 0) && aloj.FechaEstimadaEgreso.ToString().CompareTo(pHasta.ToString()) <= 0
                                             ||
                                             (aloj.FechaIngreso.ToString().CompareTo(pDesde.ToString()) >= 0) && aloj.FechaIngreso.ToString().CompareTo(pHasta.ToString()) < 0
                                             ||
@@ -121,18 +121,19 @@ namespace Persistencia.DAL.EntityFramework
         public void FinalizarAlojamiento(Alojamiento unAloj)
         {
             Alojamiento localAuxAloj = this.Get(unAloj.AlojamientoId);
-
-            //pFechaingreso en caso de Cancelar
             localAuxAloj.EstadoAlojamiento = unAloj.EstadoAlojamiento;
+			localAuxAloj.MontoTotal = unAloj.MontoTotal;
+			localAuxAloj.MontoDeuda = unAloj.MontoDeuda;
 
             if (localAuxAloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado)
-            {
                 localAuxAloj.FechaEgreso = unAloj.FechaEgreso;
-                localAuxAloj.Habitacion.Exclusiva = unAloj.Habitacion.Exclusiva;
-              
-            }
+            else
+			{
+				localAuxAloj.FechaCancelacion = unAloj.FechaCancelacion;
+				localAuxAloj.MontoDeuda = 0;
+			}
 
-            iDbContext.SaveChanges();
+			iDbContext.SaveChanges();
         }
 
 
@@ -155,9 +156,10 @@ namespace Persistencia.DAL.EntityFramework
 
             lAuxAloj.MontoDeuda = unAloj.MontoDeuda;
             lAuxAloj.MontoTotal = unAloj.MontoTotal;
+			//enlazar
             pLineaServicio.Servicio = iDbContext.Servicios.Find(pLineaServicio.Servicio.ServicioId);
-
-            pLineaServicio.AlojamientoId = unAloj.AlojamientoId;
+			//agrear id aloj
+            pLineaServicio.AlojamientoId = lAuxAloj.AlojamientoId;
             iDbContext.LineaServicios.Add(pLineaServicio);
 
             iDbContext.SaveChanges();

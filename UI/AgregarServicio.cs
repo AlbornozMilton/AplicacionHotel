@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -20,10 +13,6 @@ namespace UI
         public AgregarServicio()
         {
             InitializeComponent();
-            btn_Aceptar.Enabled = false;
-            btn_buscarServicio.Enabled = false;
-            gpb_Servicio.Enabled = false;
-            cant_Servicio.Enabled = false;
         }
 
         public AgregarServicio(Alojamiento pAloj)
@@ -32,16 +21,15 @@ namespace UI
             {
                 if (pAloj.Pagos.Exists(p => p.Tipo == TipoPago.Alojado))
                 {
-                    InitializeComponent();
                     btn_Aceptar.Enabled = false;
                     btn_buscarServicio.Enabled = false;
                     cant_Servicio.Enabled = false;
                     AlojSeleciconado = pAloj;
-                    CargarAlojamientoSeccionado(AlojSeleciconado);
+                    CargarAlojamientoSeccionado();
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Para Agregar Servicios antes debe realizar un Pago de Alojado", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Para Agregar Servicios primero debe realizar un Pago de Alojado", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                     Close();
                 }
@@ -53,16 +41,16 @@ namespace UI
             }
         }
 
-        public void CargarAlojamientoSeccionado(Alojamiento pAloj)
+        public void CargarAlojamientoSeccionado()
         {
             dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Add(pAloj.AlojamientoId,pAloj.EstadoAlojamiento, pAloj.HabitacionId,pAloj.DniResponsable, pAloj.Clientes.Find(c => c.ClienteId == pAloj.DniResponsable).NombreCompleto());
+            dataGridView1.Rows.Add(AlojSeleciconado.AlojamientoId, AlojSeleciconado.EstadoAlojamiento, AlojSeleciconado.HabitacionId, AlojSeleciconado.DniResponsable, AlojSeleciconado.Clientes.Find(c => c.ClienteId == AlojSeleciconado.DniResponsable).NombreCompleto());
         }
 
-        public void CargarServicioSeccionado(Servicio pServicio)
+        public void CargarServicioSeccionado()
         {
             dataGridView_Servicio.Rows.Clear();
-            dataGridView_Servicio.Rows.Add(pServicio.Nombre, pServicio.CostoBase, DateTime.Now.ToString("dd / MM / yyyy"));
+            dataGridView_Servicio.Rows.Add(this.ServicioSeleccionado.Nombre, this.ServicioSeleccionado.CostoBase, DateTime.Now.ToString("dd / MM / yyyy"));
         }
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)
@@ -84,25 +72,18 @@ namespace UI
                     }
 
                     AlojSeleciconado = BuscarAlojamiento.Aloj_Seleccionado;
-                    CargarAlojamientoSeccionado(AlojSeleciconado);
+                    CargarAlojamientoSeccionado();
                     btn_buscarServicio.Enabled = true;
-                    gpb_Servicio.Enabled = true;
-                    cant_Servicio.Enabled = true;
-                }
-                else
-                {
-                   
-                    throw new Exception("Debe seleccionar un Alojamiento");
                 }
             }
             catch (Exception E)
             {
-                dataGridView1.Rows.Clear();//Aloj seleccionado
-                dataGridView_Servicio.Rows.Clear();
-                cant_Servicio.Value = 0;
-                gpb_Servicio.Enabled = false;
-                btn_buscarServicio.Enabled = false;
-                cant_Servicio.Enabled = false;
+                //dataGridView1.Rows.Clear();//Aloj seleccionado
+                //dataGridView_Servicio.Rows.Clear();
+                //cant_Servicio.Value = 0;
+                //gpb_Servicio.Enabled = false;
+                //btn_buscarServicio.Enabled = false;
+                //cant_Servicio.Enabled = false;
 
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
@@ -113,16 +94,13 @@ namespace UI
         {
             try
             {
-                AdministrarServicios Actualizar = new AdministrarServicios();
-                Actualizar.ShowDialog();
-                if (Actualizar.ServicioSeleccionado != null)
+                AdministrarServicios BuscarServicio = new AdministrarServicios();
+				BuscarServicio.ShowDialog();
+                if (BuscarServicio.ServicioSeleccionado != null)
                 {
-                    this.ServicioSeleccionado = Actualizar.ServicioSeleccionado;
-                    CargarServicioSeccionado(this.ServicioSeleccionado);
-                }
-                else
-                {
-                    throw new Exception("Debe seleccionar un Servicio");
+                    this.ServicioSeleccionado = BuscarServicio.ServicioSeleccionado;
+                    CargarServicioSeccionado();
+					cant_Servicio.Enabled = true;
                 }
             }
             catch (Exception E)
@@ -146,19 +124,16 @@ namespace UI
 
         private void cant_Servicio_ValueChanged(object sender, EventArgs e)
         {
-            if (ServicioSeleccionado != null)
+            if (cant_Servicio.Value != 0)
             {
-                if (cant_Servicio.Value != 0)
-                {
-                    btn_Aceptar.Enabled = true;
-                    lbl_total.Text = (this.ServicioSeleccionado.CostoBase * Convert.ToDouble(cant_Servicio.Value)).ToString();
-                }
-                else
-                {
-                    btn_Aceptar.Enabled = false;
-                    lbl_total.Text = "-";
-                } 
+                btn_Aceptar.Enabled = true;
+                lbl_total.Text = (this.ServicioSeleccionado.CostoBase * Convert.ToDouble(cant_Servicio.Value)).ToString();
             }
+            else
+            {
+                btn_Aceptar.Enabled = false;
+                lbl_total.Text = "-";
+            } 
         }
     }
 }

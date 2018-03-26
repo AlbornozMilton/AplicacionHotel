@@ -127,7 +127,9 @@ namespace UI
 					(aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
 					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
 					);
-				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+				string[] colores = controladorExtra.DeterminarColor(aloj);
+				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(colores[0]);
+				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.ForeColor = Color.FromName(colores[1]);
 				countRow++;
 				
 				//Color.IndianRed
@@ -219,6 +221,7 @@ namespace UI
         private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             BuscarAlojamiento BuscarAlojamiento = new BuscarAlojamiento();
+			BuscarAlojamiento.SetVisibleSeleccionar(false);
             BuscarAlojamiento.ShowDialog();
         }
 
@@ -238,7 +241,7 @@ namespace UI
         {
             if (dtp_fechaDesde.Value.CompareTo(dtp_fechaHasta.Value) == -1)
             {
-                TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value);
+                TablaDisponibilidad TDisp = new TablaDisponibilidad(dtp_fechaDesde.Value, dtp_fechaHasta.Value,false);
                 TDisp.ShowDialog();
             }
             else
@@ -383,6 +386,7 @@ namespace UI
         private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
+			BuscarCliente.SetVisibleSeleccionar(false);
             BuscarCliente.ShowDialog();
         }
 
@@ -398,7 +402,7 @@ namespace UI
 			}
 			else
 			{
-				VentanaEmergente ventanaEmergente = new VentanaEmergente("No Existen Alojamientos con Deuda", TipoMensaje.Exito);
+				VentanaEmergente ventanaEmergente = new VentanaEmergente("No Existen Alojamientos con Servicios Impagos", TipoMensaje.Exito);
 				ventanaEmergente.ShowDialog();
 			}
         }
@@ -406,7 +410,8 @@ namespace UI
         private void listaPersonalizadaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListarAlojamientos listarAlojamientos = new ListarAlojamientos();
-            listarAlojamientos.ShowDialog();
+			listarAlojamientos.SetVisibleSeleccionar(false);
+			listarAlojamientos.ShowDialog();
         }
 
 		private void agregarToolStripMenuItem_Click(object sender, EventArgs e)

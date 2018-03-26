@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using System.Drawing;
 
 namespace UI
 {
@@ -21,18 +16,29 @@ namespace UI
             InitializeComponent();
         }
 
-        private void ConsultarHabitaciones_Load(object sender, EventArgs e)
+		public ConsultarHabitaciones(bool pValor)
+		{
+			InitializeComponent();
+			btn_Aceptar.Visible = pValor;
+		}
+
+		private void ConsultarHabitaciones_Load(object sender, EventArgs e)
         {
+			int currentHab = 0;
             foreach (var hab in Habitaciones)
             {
-                //foreach (var cupo in hab.Cupos)
-                //{
-                //    if (cupo.Tipo == TipoCupo.simple) auxCantCupoSimple++;
-                //    else auxCantCuposDoble++;
-                //}
-                //dGV_Habs.Rows.Add(hab.HabitacionId,hab.Capacidad(), hab.Planta == 0 ? "Baja" : "Alta", auxCantCupoSimple,auxCantCuposDoble);
-            }
-        }
+				dGV_Habs.Rows.Add(
+					hab.HabitacionId, 
+					hab.Planta == 0 ? "Baja" : "Alta", 
+					hab.Capacidad,
+					hab.Alta ? "En Alta":"En Baja");
+				if (!hab.Alta)
+				{
+					dGV_Habs.Rows[currentHab].DefaultCellStyle.BackColor = Color.FromName("Khaki"); 
+				}
+				currentHab++;
+			}
+		}
 
         //SALIR
         private void button1_Click(object sender, EventArgs e)

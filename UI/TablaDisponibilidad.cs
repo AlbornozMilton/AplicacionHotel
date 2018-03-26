@@ -12,14 +12,10 @@ namespace UI
 		private DateTime iFechaDesde, iFechaHasta;
         public List<Habitacion> Habitaciones;
 
-        public TablaDisponibilidad()
-        {
-            InitializeComponent();
-        }
-
-		public TablaDisponibilidad(DateTime pFechaDesde, DateTime pFechaHasta)
+		public TablaDisponibilidad(DateTime pFechaDesde, DateTime pFechaHasta, bool pValor)
 		{
 			InitializeComponent();
+			btn_Seleccionar.Visible = pValor;
 			iFechaDesde = pFechaDesde;
 			iFechaHasta = pFechaHasta;
 			groupBox2.Text = "Disponibilidad de Habitaciones desde " + iFechaDesde.ToString("dd/MM/yy") +" hasta "+iFechaHasta.ToString("dd/MM/yy");
@@ -30,8 +26,6 @@ namespace UI
 			this.Habitaciones = new ControladorAlojamiento().DeterminarDisponibilidad(Convert.ToDateTime(iFechaDesde), Convert.ToDateTime(iFechaHasta));
 			foreach (var hab in this.Habitaciones)
 			{
-				//int auxExcl = new ControladorHabitacion().VerificarSolicitdExclusividad(hab);
-
 				if (!hab.Ocupada)
 				{
 					dGV_TablaHabitaciones.Rows.Add(hab.HabitacionId, hab.Planta == 0 ? "Baja" : "Alta", hab.Capacidad);
