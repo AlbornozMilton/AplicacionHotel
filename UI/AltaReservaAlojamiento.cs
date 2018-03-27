@@ -310,49 +310,5 @@ namespace UI
 			groupBox2.Enabled = false;
 		}
         #endregion
-
-		//REGLAS PARA TIPOS DE CLIENTES EN UN HABITACION Y SU EXCLUSIVIDAD
-        private void contador_Exceptuado_ValueChanged(object sender, EventArgs e)
-        {
-			//HabSeleccionada.SetExclusividad(false);
-			//ck_Exclusividad.Enabled = false;
-			//ck_Exclusividad.Checked = false; 
-			//contador_Convenio.Value = 0;
-			//contador_Convenio.Enabled = false;
-            //if(contador_Exceptuado.Value == 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.TitularExceptuado) //para evitar duplicacion de aviso
-            //{
-            //    ck_Exclusividad.Enabled = exclusividadCapacidad;
-            //}
-        }
-
-		private void contador_Titular_ValueChanged(object sender, EventArgs e)
-		{
-			//contador_Convenio.Value = 0;
-			//contador_Convenio.Enabled = false;
-		}
-
-		private void contador_Directo_ValueChanged(object sender, EventArgs e)
-		{
-			//contador_Convenio.Value = 0;
-			//contador_Convenio.Enabled = false;
-		}
-
-		private void contador_NoDirecto_ValueChanged(object sender, EventArgs e)
-		{
-			//contador_Convenio.Value = 0;
-			//contador_Convenio.Enabled = false;
-		}
-
-		private void contador_Convenio_ValueChanged(object sender, EventArgs e)
-		{
-			//contador_Titular.Value = 0;
-			//contador_Titular.Enabled = false;
-			//contador_Directo.Value = 0;
-			//contador_Directo.Enabled = false;
-			//contador_NoDirecto.Value = 0;
-			//contador_NoDirecto.Enabled = false;
-			//contador_Exceptuado.Value = 0;
-			//contador_Exceptuado.Enabled = false;
-		}
 	}
 }

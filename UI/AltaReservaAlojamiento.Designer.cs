@@ -449,7 +449,6 @@
 			this.contador_NoDirecto.Size = new System.Drawing.Size(35, 30);
 			this.contador_NoDirecto.TabIndex = 37;
 			this.contador_NoDirecto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_NoDirecto.ValueChanged += new System.EventHandler(this.contador_NoDirecto_ValueChanged);
 			// 
 			// contador_Directo
 			// 
@@ -464,7 +463,6 @@
 			this.contador_Directo.Size = new System.Drawing.Size(35, 30);
 			this.contador_Directo.TabIndex = 36;
 			this.contador_Directo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Directo.ValueChanged += new System.EventHandler(this.contador_Directo_ValueChanged);
 			// 
 			// label10
 			// 
@@ -499,7 +497,6 @@
 			this.contador_Exceptuado.Size = new System.Drawing.Size(35, 30);
 			this.contador_Exceptuado.TabIndex = 33;
 			this.contador_Exceptuado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Exceptuado.ValueChanged += new System.EventHandler(this.contador_Exceptuado_ValueChanged);
 			// 
 			// contador_Convenio
 			// 
@@ -514,7 +511,6 @@
 			this.contador_Convenio.Size = new System.Drawing.Size(35, 30);
 			this.contador_Convenio.TabIndex = 32;
 			this.contador_Convenio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Convenio.ValueChanged += new System.EventHandler(this.contador_Convenio_ValueChanged);
 			// 
 			// contador_Titular
 			// 
@@ -529,7 +525,6 @@
 			this.contador_Titular.Size = new System.Drawing.Size(35, 30);
 			this.contador_Titular.TabIndex = 31;
 			this.contador_Titular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Titular.ValueChanged += new System.EventHandler(this.contador_Titular_ValueChanged);
 			// 
 			// label9
 			// 

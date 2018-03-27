@@ -223,6 +223,11 @@ namespace UI
 				}
 				else
 				{
+					if (Acompañantes.Count == 1 && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+					{
+						throw new Exception("Un Titular Exceptuado debe estar Acompañado");
+					}
+
 					new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
 					HabSeleccionada.OcuparHabitacion();
 					this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
