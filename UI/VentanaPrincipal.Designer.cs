@@ -31,9 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.MenuStrip menuStrip1;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,10 @@
 			this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.nuevoUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
 			this.btn_Buscar = new System.Windows.Forms.Button();
 			this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -138,7 +142,8 @@
             this.clienteToolStripMenuItem,
             this.listarToolStripMenuItem,
             this.movimientoToolStripMenuItem,
-            this.administracionToolStripMenuItem});
+            this.administracionToolStripMenuItem,
+            this.usuariosToolStripMenuItem});
 			menuStrip1.Location = new System.Drawing.Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
 			menuStrip1.ShowItemToolTips = true;
@@ -440,6 +445,37 @@
 			this.eliminarToolStripMenuItem.Text = "Eliminar";
 			this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
 			// 
+			// usuariosToolStripMenuItem
+			// 
+			this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoUsuarioToolStripMenuItem,
+            this.eliminarUsuarioToolStripMenuItem,
+            this.cambiarContraseñaToolStripMenuItem});
+			this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+			this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(109, 34);
+			this.usuariosToolStripMenuItem.Text = "Usuarios";
+			// 
+			// nuevoUsuarioToolStripMenuItem
+			// 
+			this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
+			this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+			this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo Usuario";
+			this.nuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.nuevoUsuarioToolStripMenuItem_Click);
+			// 
+			// eliminarUsuarioToolStripMenuItem
+			// 
+			this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
+			this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+			this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar Usuario";
+			this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
+			// 
+			// cambiarContraseñaToolStripMenuItem
+			// 
+			this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+			this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+			this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+			this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+			// 
 			// groupBox_disponibilidad
 			// 
 			this.groupBox_disponibilidad.AutoSize = true;
@@ -567,14 +603,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -586,27 +622,27 @@
             this.Column4,
             this.Column5,
             this.clm_Ref});
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle5;
 			this.dGV_Alojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
 			this.dGV_Alojamientos.MultiSelect = false;
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Alojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.dGV_Alojamientos.RowHeadersVisible = false;
 			this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_Alojamientos.Size = new System.Drawing.Size(1336, 296);
@@ -980,5 +1016,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Ref;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.PictureBox pictureBox9;
+		private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem nuevoUsuarioToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem eliminarUsuarioToolStripMenuItem;
 	}
 }

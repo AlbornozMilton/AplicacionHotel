@@ -10,6 +10,7 @@ namespace UI
         string Mensaje;
         TipoMensaje TipoMensaje;
         Alojamiento Alojamiento;
+		public bool Aceptar = false;
 
         public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje)
         {
@@ -93,17 +94,18 @@ namespace UI
 			{
 				RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
 				registrarPago.ShowDialog();
-				Close();
 			}
-			else
+			else if (lbl_TextPrincipal.Text == "Usuario No Registrado")
 			{
-				Close();
+				Aceptar = true;
 			}
+
+			Close();
 		}
 
-        private void button_cancelar_Click(object sender, EventArgs e)
+		private void button_cancelar_Click(object sender, EventArgs e)
         {
-            Close();
+			Close();
         }
     }
 

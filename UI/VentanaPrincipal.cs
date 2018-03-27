@@ -419,5 +419,23 @@ namespace UI
 			AgregarCiudad agregarCiudad = new AgregarCiudad(3);
 			agregarCiudad.ShowDialog();
 		}
+
+		private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UserAdmin userAdmin = new UserAdmin(2);
+			userAdmin.ShowDialog();
+		}
+
+		private void nuevoUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UserAdmin userAdmin = new UserAdmin(0);
+			userAdmin.ShowDialog();
+		}
+
+		private void eliminarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UserAdmin userAdmin = new UserAdmin(1);
+			userAdmin.ShowDialog();
+		}
 	}
 }

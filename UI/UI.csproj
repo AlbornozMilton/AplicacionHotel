@@ -218,6 +218,12 @@
     <Compile Include="TablaDisponibilidad.Designer.cs">
       <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdmin.Designer.cs">
+      <DependentUpon>UserAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentanaArranque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TablaDisponibilidad.resx">
       <DependentUpon>TablaDisponibilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAdmin.resx">
+      <DependentUpon>UserAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaArranque.resx">
       <DependentUpon>VentanaArranque.cs</DependentUpon>

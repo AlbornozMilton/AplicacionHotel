@@ -245,5 +245,10 @@ namespace Dominio
 			domainName = idn.GetAscii(domainName);
 			return match.Groups[1].Value + domainName;
 		}
+
+		public void ModificarUsuario(string pUsuarioID, string pOldPass, string pNewPass)
+		{
+			iUoW.RepositorioUsuario.ModifcarUsuario(pUsuarioID, pOldPass, pNewPass);
+		}
 	}
 }
