@@ -17,6 +17,7 @@ namespace UI
         public VentanaPrincipal()
         {
             InitializeComponent();
+			//dGV_Alojamientos.DefaultCellStyle.BackColor = Color.White;
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,9 +125,8 @@ namespace UI
 					(aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
 					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
 					);
-				string[] colores = controladorExtra.DeterminarColor(aloj);
-				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(colores[0]);
-				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.ForeColor = Color.FromName(colores[1]);
+				dGV_Alojamientos.Rows[countRow].Cells[8].Style.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+				dGV_Alojamientos.Rows[countRow].Cells[8].Style.SelectionBackColor = Color.Transparent;
 				countRow++;
             }
         }

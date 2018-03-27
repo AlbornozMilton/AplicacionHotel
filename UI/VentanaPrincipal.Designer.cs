@@ -33,6 +33,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +88,7 @@
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_Ref = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -104,6 +107,8 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.pictureBox9 = new System.Windows.Forms.PictureBox();
+			this.label10 = new System.Windows.Forms.Label();
 			menuStrip1 = new System.Windows.Forms.MenuStrip();
 			menuStrip1.SuspendLayout();
 			this.groupBox_disponibilidad.SuspendLayout();
@@ -119,6 +124,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -579,7 +585,8 @@
             this.clm_Legajo,
             this.Column2,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.clm_Ref});
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -592,7 +599,20 @@
 			this.dGV_Alojamientos.MultiSelect = false;
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dGV_Alojamientos.RowHeadersVisible = false;
+			dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			this.dGV_Alojamientos.RowsDefaultCellStyle = dataGridViewCellStyle4;
 			this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_Alojamientos.Size = new System.Drawing.Size(1336, 296);
 			this.dGV_Alojamientos.TabIndex = 0;
@@ -660,6 +680,14 @@
 			this.Column5.Name = "Column5";
 			this.Column5.ReadOnly = true;
 			// 
+			// clm_Ref
+			// 
+			this.clm_Ref.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Ref.FillWeight = 15F;
+			this.clm_Ref.HeaderText = "Ref";
+			this.clm_Ref.Name = "clm_Ref";
+			this.clm_Ref.ReadOnly = true;
+			// 
 			// timer1
 			// 
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -670,6 +698,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox_ColorsRef.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox_ColorsRef.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox_ColorsRef.Controls.Add(this.label10);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox9);
 			this.groupBox_ColorsRef.Controls.Add(this.label9);
 			this.groupBox_ColorsRef.Controls.Add(this.pictureBox8);
 			this.groupBox_ColorsRef.Controls.Add(this.pictureBox7);
@@ -703,7 +733,7 @@
 			// 
 			// pictureBox8
 			// 
-			this.pictureBox8.BackColor = System.Drawing.Color.Plum;
+			this.pictureBox8.BackColor = System.Drawing.Color.DarkViolet;
 			this.pictureBox8.Location = new System.Drawing.Point(366, 29);
 			this.pictureBox8.Name = "pictureBox8";
 			this.pictureBox8.Size = new System.Drawing.Size(43, 19);
@@ -713,7 +743,7 @@
 			// pictureBox7
 			// 
 			this.pictureBox7.BackColor = System.Drawing.Color.OrangeRed;
-			this.pictureBox7.Location = new System.Drawing.Point(366, 105);
+			this.pictureBox7.Location = new System.Drawing.Point(366, 79);
 			this.pictureBox7.Name = "pictureBox7";
 			this.pictureBox7.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox7.TabIndex = 14;
@@ -722,7 +752,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(415, 101);
+			this.label8.Location = new System.Drawing.Point(415, 75);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(89, 23);
 			this.label8.TabIndex = 13;
@@ -731,7 +761,7 @@
 			// pictureBox6
 			// 
 			this.pictureBox6.BackColor = System.Drawing.Color.Orange;
-			this.pictureBox6.Location = new System.Drawing.Point(366, 68);
+			this.pictureBox6.Location = new System.Drawing.Point(366, 53);
 			this.pictureBox6.Name = "pictureBox6";
 			this.pictureBox6.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox6.TabIndex = 12;
@@ -740,7 +770,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(415, 64);
+			this.label7.Location = new System.Drawing.Point(414, 49);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(237, 23);
 			this.label7.TabIndex = 11;
@@ -818,6 +848,24 @@
 			this.label4.TabIndex = 0;
 			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
 			// 
+			// pictureBox9
+			// 
+			this.pictureBox9.BackColor = System.Drawing.Color.White;
+			this.pictureBox9.Location = new System.Drawing.Point(366, 105);
+			this.pictureBox9.Name = "pictureBox9";
+			this.pictureBox9.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox9.TabIndex = 17;
+			this.pictureBox9.TabStop = false;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(415, 101);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(67, 23);
+			this.label10.TabIndex = 18;
+			this.label10.Text = "Normal";
+			// 
 			// VentanaPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -856,6 +904,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -933,5 +982,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Ref;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.PictureBox pictureBox9;
 	}
 }

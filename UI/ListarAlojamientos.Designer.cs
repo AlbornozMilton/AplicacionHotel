@@ -53,6 +53,7 @@
 			this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_ApeyNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_ref = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.btn_verDetalles = new System.Windows.Forms.Button();
@@ -252,7 +253,8 @@
             this.clm_NroHabitacion,
             this.clm_DNIResponsable,
             this.clm_ApeyNom,
-            this.clm_tipoCliente});
+            this.clm_tipoCliente,
+            this.clm_ref});
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,7 +275,7 @@
 			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
 			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_ListadoDeAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dGV_ListadoDeAlojamientos.RowHeadersVisible = false;
 			this.dGV_ListadoDeAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -328,6 +330,14 @@
 			this.clm_tipoCliente.HeaderText = "Tipo Cliente";
 			this.clm_tipoCliente.Name = "clm_tipoCliente";
 			this.clm_tipoCliente.ReadOnly = true;
+			// 
+			// clm_ref
+			// 
+			this.clm_ref.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_ref.FillWeight = 15F;
+			this.clm_ref.HeaderText = "Ref";
+			this.clm_ref.Name = "clm_ref";
+			this.clm_ref.ReadOnly = true;
 			// 
 			// btn_Aceptar
 			// 
@@ -587,12 +597,6 @@
         private System.Windows.Forms.DataGridView dGV_ListadoDeAlojamientos;
         private System.Windows.Forms.Button btn_verDetalles;
         private System.Windows.Forms.CheckBox checkBox_todos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojamiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_ApeyNom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipoCliente;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox_ColorsRef;
         private System.Windows.Forms.Label label9;
@@ -609,5 +613,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-    }
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojamiento;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_estado;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_ApeyNom;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipoCliente;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_ref;
+	}
 }
