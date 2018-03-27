@@ -237,6 +237,9 @@
 			this.dGV_ListadoDeAlojamientos.AllowUserToDeleteRows = false;
 			this.dGV_ListadoDeAlojamientos.AllowUserToResizeColumns = false;
 			this.dGV_ListadoDeAlojamientos.AllowUserToResizeRows = false;
+			this.dGV_ListadoDeAlojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dGV_ListadoDeAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -263,7 +266,6 @@
 			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_ListadoDeAlojamientos.DefaultCellStyle = dataGridViewCellStyle3;
-			this.dGV_ListadoDeAlojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_ListadoDeAlojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.dGV_ListadoDeAlojamientos.Location = new System.Drawing.Point(3, 26);
 			this.dGV_ListadoDeAlojamientos.MultiSelect = false;
