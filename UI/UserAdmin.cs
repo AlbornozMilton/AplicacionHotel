@@ -49,10 +49,9 @@ namespace UI
 					case 0:
 						{
 							//Nuevo Usuario
-
+							new ControladorExtra().NuevoUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
 							VentanaEmergente ventanaEmergente = new VentanaEmergente("Usuario Agregado Correctamente", TipoMensaje.Exito);
 							ventanaEmergente.ShowDialog();
-							Close();
 						}
 						break;
 					case 1:
@@ -62,13 +61,9 @@ namespace UI
 							if (ventanaEmergente.Aceptar)
 							{
 								//ELIMINAR USUARIO
-
+								new ControladorExtra().EliminarUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
 								VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Usuario Eliminado", TipoMensaje.Exito);
-								ventanaEmergente.ShowDialog();
-							}
-							else
-							{
-								Close();
+								ventanaEmergente2.ShowDialog();
 							}
 						}
 						break;
@@ -77,12 +72,13 @@ namespace UI
 							new ControladorExtra().ModificarUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
 							VentanaEmergente ventanaEmergente = new VentanaEmergente("Contraseña cambiada con Éxito", TipoMensaje.Exito);
 							ventanaEmergente.ShowDialog();
-							VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Los cambios tendrán efectos cuando inicie Nueva Sesión", TipoMensaje.Exito);
+							VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Los cambios tendrán efectos la próxima vez que Inice la Aplicación", TipoMensaje.Exito);
 							ventanaEmergente2.ShowDialog();
-							Close();
 						}
 						break;
 				}
+
+				Close();
 			}
 			catch (Exception E)
 			{

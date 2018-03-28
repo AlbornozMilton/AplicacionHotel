@@ -95,7 +95,7 @@ namespace UI
 				RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
 				registrarPago.ShowDialog();
 			}
-			else if (lbl_TextPrincipal.Text == "Usuario No Registrado")
+			else if (Mensaje == "¿Eliminar Usuario?")
 			{
 				Aceptar = true;
 			}

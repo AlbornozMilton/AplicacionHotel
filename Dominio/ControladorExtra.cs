@@ -250,5 +250,25 @@ namespace Dominio
 		{
 			iUoW.RepositorioUsuario.ModifcarUsuario(pUsuarioID, pOldPass, pNewPass);
 		}
+
+		public void EliminarUsuario(string pUsuarioID, string pPass, string pRepPass)
+		{
+			if (pPass != pRepPass)
+			{
+				throw new Exception("Contraseñas Incorrectas");
+			}
+
+			iUoW.RepositorioUsuario.EliminarUsuario(pUsuarioID, pPass);
+		}
+
+		public void NuevoUsuario(string pUsuarioID, string pPass, string pRepPass)
+		{
+			if (pPass != pRepPass)
+			{
+				throw new Exception("Contraseñas Incorrectas");
+			}
+
+			iUoW.RepositorioUsuario.NuevoUsuario(pUsuarioID, pPass);
+		}
 	}
 }
