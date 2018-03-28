@@ -44,41 +44,46 @@ namespace UI
 		{
 			try
 			{
-				switch (OP)
+				if (txb_userName.Text != "" && txb_oldPass.Text != "" && txb_newPass.Text != "")
 				{
-					case 0:
-						{
-							//Nuevo Usuario
-							new ControladorExtra().NuevoUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
-							VentanaEmergente ventanaEmergente = new VentanaEmergente("Usuario Agregado Correctamente", TipoMensaje.Exito);
-							ventanaEmergente.ShowDialog();
-						}
-						break;
-					case 1:
-						{
-							VentanaEmergente ventanaEmergente = new VentanaEmergente("¿Eliminar Usuario?", TipoMensaje.Alerta);
-							ventanaEmergente.ShowDialog();
-							if (ventanaEmergente.Aceptar)
+					switch (OP)
+					{
+						case 0:
 							{
-								//ELIMINAR USUARIO
-								new ControladorExtra().EliminarUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
-								VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Usuario Eliminado", TipoMensaje.Exito);
+								//Nuevo Usuario
+								new ControladorExtra().NuevoUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
+								VentanaEmergente ventanaEmergente = new VentanaEmergente("Usuario Agregado Correctamente", TipoMensaje.Exito);
+								ventanaEmergente.ShowDialog();
+							}
+							break;
+						case 1:
+							{
+								VentanaEmergente ventanaEmergente = new VentanaEmergente("¿Eliminar Usuario?", TipoMensaje.Alerta);
+								ventanaEmergente.ShowDialog();
+								if (ventanaEmergente.Aceptar)
+								{
+									//ELIMINAR USUARIO
+									new ControladorExtra().EliminarUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
+									VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Usuario Eliminado", TipoMensaje.Exito);
+									ventanaEmergente2.ShowDialog();
+								}
+							}
+							break;
+						case 2:
+							{
+								new ControladorExtra().ModificarUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
+								VentanaEmergente ventanaEmergente = new VentanaEmergente("Contraseña cambiada con Éxito", TipoMensaje.Exito);
+								ventanaEmergente.ShowDialog();
+								VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Los cambios tendrán efectos la próxima vez que Inice la Aplicación", TipoMensaje.Exito);
 								ventanaEmergente2.ShowDialog();
 							}
-						}
-						break;
-					case 2:
-						{
-							new ControladorExtra().ModificarUsuario(txb_userName.Text, txb_oldPass.Text, txb_newPass.Text);
-							VentanaEmergente ventanaEmergente = new VentanaEmergente("Contraseña cambiada con Éxito", TipoMensaje.Exito);
-							ventanaEmergente.ShowDialog();
-							VentanaEmergente ventanaEmergente2 = new VentanaEmergente("Los cambios tendrán efectos la próxima vez que Inice la Aplicación", TipoMensaje.Exito);
-							ventanaEmergente2.ShowDialog();
-						}
-						break;
-				}
+							break;
+					}
 
-				Close();
+					Close();
+				}
+				else
+					throw new Exception("Debe rellenar todos los campos");
 			}
 			catch (Exception E)
 			{
@@ -90,6 +95,42 @@ namespace UI
 		private void button_cancelar_Click(object sender, EventArgs e)
 		{
 			Close();
+		}
+
+		private void txb_userName_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			try
+			{
+				new ControladorExtra().EsLetra(e);
+			}
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+			}
+		}
+
+		private void txb_newPass_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			try
+			{
+				new ControladorExtra().EsLetra(e);
+			}
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+			}
+		}
+
+		private void txb_oldPass_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			try
+			{
+				new ControladorExtra().EsLetra(e);
+			}
+			catch (Exception E)
+			{
+				new VentanaEmergente(E.Message, TipoMensaje.Alerta).ShowDialog();
+			}
 		}
 	}
 }

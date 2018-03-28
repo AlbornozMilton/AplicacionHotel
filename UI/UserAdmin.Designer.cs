@@ -67,6 +67,7 @@
 			this.txb_newPass.Size = new System.Drawing.Size(195, 30);
 			this.txb_newPass.TabIndex = 3;
 			this.txb_newPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.txb_newPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_newPass_KeyPress);
 			// 
 			// txb_oldPass
 			// 
@@ -76,6 +77,7 @@
 			this.txb_oldPass.Size = new System.Drawing.Size(195, 30);
 			this.txb_oldPass.TabIndex = 2;
 			this.txb_oldPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.txb_oldPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_oldPass_KeyPress);
 			// 
 			// label_oldPass
 			// 
@@ -94,6 +96,7 @@
 			this.txb_userName.Size = new System.Drawing.Size(195, 30);
 			this.txb_userName.TabIndex = 1;
 			this.txb_userName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.txb_userName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_userName_KeyPress);
 			// 
 			// label_newPass
 			// 
