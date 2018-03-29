@@ -44,7 +44,7 @@ namespace UI
 					exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20);
 					if (!exclusividadCapacidad)//si es falso que entre
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las fechas deseadas se supera el límite de exclusividad de la capacidad del Hotel", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Se Supera el límite de exclusividad de la capacidad del Hotel para las Fechas elejidas", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
 						ck_Exclusividad.Enabled = exclusividadCapacidad;
                     }
@@ -223,6 +223,11 @@ namespace UI
 				}
 				else
 				{
+					if (Acompañantes.Count == 1 && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+					{
+						throw new Exception("Un Titular Exceptuado debe estar Acompañado");
+					}
+
 					new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
 					HabSeleccionada.OcuparHabitacion();
 					this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 
@@ -16,6 +10,7 @@ namespace UI
         string Mensaje;
         TipoMensaje TipoMensaje;
         Alojamiento Alojamiento;
+		public bool Aceptar = false;
 
         public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje)
         {
@@ -73,20 +68,20 @@ namespace UI
                 case TipoMensaje.ReservaExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Depósito?";
                     }
                     break;
                 case TipoMensaje.AltaAlojamientoExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Alojado?";
+                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Alojado?";
                         
                     }
                     break;
                 case TipoMensaje.CierreExistoso:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "¿Desea realizar un Pago de Servicios?";
+                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Servicios?";
                     }
                     break;
             }
@@ -99,17 +94,18 @@ namespace UI
 			{
 				RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
 				registrarPago.ShowDialog();
-				Close();
 			}
-			else
+			else if (Mensaje == "¿Eliminar Usuario?")
 			{
-				Close();
+				Aceptar = true;
 			}
+
+			Close();
 		}
 
-        private void button_cancelar_Click(object sender, EventArgs e)
+		private void button_cancelar_Click(object sender, EventArgs e)
         {
-            Close();
+			Close();
         }
     }
 

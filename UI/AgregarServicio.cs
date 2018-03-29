@@ -8,9 +8,8 @@ namespace UI
     {
         public Alojamiento AlojSeleciconado;
         public Servicio ServicioSeleccionado;
-        //public LineaServicio lLineaServecio;
 
-        public AgregarServicio()
+		public AgregarServicio()
         {
             InitializeComponent();
         }
@@ -49,6 +48,8 @@ namespace UI
 
         public void CargarServicioSeccionado()
         {
+			cant_Servicio.Value = 0;
+			lbl_total.Text = "-";
             dataGridView_Servicio.Rows.Clear();
             dataGridView_Servicio.Rows.Add(this.ServicioSeleccionado.Nombre, this.ServicioSeleccionado.CostoBase, DateTime.Now.ToString("dd / MM / yyyy"));
         }
@@ -78,13 +79,6 @@ namespace UI
             }
             catch (Exception E)
             {
-                //dataGridView1.Rows.Clear();//Aloj seleccionado
-                //dataGridView_Servicio.Rows.Clear();
-                //cant_Servicio.Value = 0;
-                //gpb_Servicio.Enabled = false;
-                //btn_buscarServicio.Enabled = false;
-                //cant_Servicio.Enabled = false;
-
                 VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
@@ -94,7 +88,7 @@ namespace UI
         {
             try
             {
-                AdministrarServicios BuscarServicio = new AdministrarServicios();
+                AdministrarServicios BuscarServicio = new AdministrarServicios(true);
 				BuscarServicio.ShowDialog();
                 if (BuscarServicio.ServicioSeleccionado != null)
                 {

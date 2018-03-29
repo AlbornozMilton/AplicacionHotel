@@ -155,40 +155,35 @@ namespace Dominio
 			iUoW.RepositorioCiudad.EliminarCiudad(pKeyCiudad);
 		}
 
-		public string[] DeterminarColor(Alojamiento aloj)
+		public string DeterminarColor(Alojamiento aloj)
 		{
-			string[] resultado = new string[2];
-			resultado[0] = "Window"; //back color - blanco
-			resultado[1] = "WindowText"; //letra - negro
+			string resultado = "Window"; // blanco
 
 			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
 			{
-				resultado[0] = "Aquamarine"; //alojamientos que se deben dar de alta hoy
+				resultado = "Aquamarine"; //alojamientos que se deben dar de alta hoy
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == 0)
 			{
-				resultado[0] = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
+				resultado = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) < 0)
 			{
-				resultado[0] = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
+				resultado = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) < 0)
 			{
-				resultado[0] = "Plum"; //alojamientos sin dar de baja tras pasar fecha de egreso
-				resultado[1] = "Window";
+				resultado = "DarkViolet"; //alojamientos sin cierre
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
 			{
 				if (!aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
 				{
-					resultado[0] = "Orange"; //alojamientos cerrados sin pago de servicios:
-					resultado[1] = "Window";
+					resultado = "Orange"; //alojamientos cerrados sin pago de servicios:
 				}
 				else
 				{
-					resultado[0] = "OrangeRed"; //alojamientos cerrados adeudados (pago de servicios incompleto)
-					resultado[1] = "Window";
+					resultado = "OrangeRed"; //alojamientos cerrados adeudados (pago de servicios incompleto)
 				}
 			}
 			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
@@ -200,7 +195,7 @@ namespace Dominio
 					)
 				)
 			{
-				resultado[0] = "Gold"; //sin deposito tras 72hs
+				resultado = "Gold"; //sin deposito tras 72hs
 			}
 
 			return resultado;
@@ -249,6 +244,31 @@ namespace Dominio
 			string domainName = match.Groups[2].Value;
 			domainName = idn.GetAscii(domainName);
 			return match.Groups[1].Value + domainName;
+		}
+
+		public void ModificarUsuario(string pUsuarioID, string pOldPass, string pNewPass)
+		{
+			iUoW.RepositorioUsuario.ModifcarUsuario(pUsuarioID, pOldPass, pNewPass);
+		}
+
+		public void EliminarUsuario(string pUsuarioID, string pPass, string pRepPass)
+		{
+			if (pPass != pRepPass)
+			{
+				throw new Exception("Contraseñas Incorrectas");
+			}
+
+			iUoW.RepositorioUsuario.EliminarUsuario(pUsuarioID, pPass);
+		}
+
+		public void NuevoUsuario(string pUsuarioID, string pPass, string pRepPass)
+		{
+			if (pPass != pRepPass)
+			{
+				throw new Exception("Contraseñas Incorrectas");
+			}
+
+			iUoW.RepositorioUsuario.NuevoUsuario(pUsuarioID, pPass);
 		}
 	}
 }

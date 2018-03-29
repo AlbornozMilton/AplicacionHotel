@@ -56,6 +56,12 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.lbl_planta = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.lbl_hora6 = new System.Windows.Forms.Label();
+			this.lbl_hora5 = new System.Windows.Forms.Label();
+			this.lbl_hora3 = new System.Windows.Forms.Label();
+			this.lbl_hora2 = new System.Windows.Forms.Label();
+			this.lbl_hora4 = new System.Windows.Forms.Label();
+			this.lbl_hora1 = new System.Windows.Forms.Label();
 			this.lbl_value_fechaCancelacion = new System.Windows.Forms.Label();
 			this.label_text_fechaCancelacion = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -105,18 +111,13 @@
 			this.clm_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pestaña_Pagos = new System.Windows.Forms.TabPage();
 			this.dGV_Pagos = new System.Windows.Forms.DataGridView();
+			this.label13 = new System.Windows.Forms.Label();
+			this.textBox_total = new System.Windows.Forms.TextBox();
 			this.clm_Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.label13 = new System.Windows.Forms.Label();
-			this.textBox_total = new System.Windows.Forms.TextBox();
-			this.lbl_hora1 = new System.Windows.Forms.Label();
-			this.lbl_hora4 = new System.Windows.Forms.Label();
-			this.lbl_hora2 = new System.Windows.Forms.Label();
-			this.lbl_hora3 = new System.Windows.Forms.Label();
-			this.lbl_hora5 = new System.Windows.Forms.Label();
-			this.lbl_hora6 = new System.Windows.Forms.Label();
+			this.clm_detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabControl1.SuspendLayout();
 			this.pestaña_Datos.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -365,6 +366,66 @@
 			this.groupBox1.TabIndex = 28;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Fechas";
+			// 
+			// lbl_hora6
+			// 
+			this.lbl_hora6.AutoSize = true;
+			this.lbl_hora6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora6.Location = new System.Drawing.Point(404, 153);
+			this.lbl_hora6.Name = "lbl_hora6";
+			this.lbl_hora6.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora6.TabIndex = 18;
+			this.lbl_hora6.Text = "lbl_hora6";
+			// 
+			// lbl_hora5
+			// 
+			this.lbl_hora5.AutoSize = true;
+			this.lbl_hora5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora5.Location = new System.Drawing.Point(404, 128);
+			this.lbl_hora5.Name = "lbl_hora5";
+			this.lbl_hora5.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora5.TabIndex = 17;
+			this.lbl_hora5.Text = "lbl_hora5";
+			// 
+			// lbl_hora3
+			// 
+			this.lbl_hora3.AutoSize = true;
+			this.lbl_hora3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora3.Location = new System.Drawing.Point(404, 78);
+			this.lbl_hora3.Name = "lbl_hora3";
+			this.lbl_hora3.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora3.TabIndex = 16;
+			this.lbl_hora3.Text = "lbl_hora3";
+			// 
+			// lbl_hora2
+			// 
+			this.lbl_hora2.AutoSize = true;
+			this.lbl_hora2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora2.Location = new System.Drawing.Point(404, 52);
+			this.lbl_hora2.Name = "lbl_hora2";
+			this.lbl_hora2.Size = new System.Drawing.Size(79, 23);
+			this.lbl_hora2.TabIndex = 15;
+			this.lbl_hora2.Text = "lbl_hora2";
+			// 
+			// lbl_hora4
+			// 
+			this.lbl_hora4.AutoSize = true;
+			this.lbl_hora4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora4.Location = new System.Drawing.Point(404, 105);
+			this.lbl_hora4.Name = "lbl_hora4";
+			this.lbl_hora4.Size = new System.Drawing.Size(80, 23);
+			this.lbl_hora4.TabIndex = 15;
+			this.lbl_hora4.Text = "lbl_hora4";
+			// 
+			// lbl_hora1
+			// 
+			this.lbl_hora1.AutoSize = true;
+			this.lbl_hora1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_hora1.Location = new System.Drawing.Point(404, 27);
+			this.lbl_hora1.Name = "lbl_hora1";
+			this.lbl_hora1.Size = new System.Drawing.Size(77, 23);
+			this.lbl_hora1.TabIndex = 14;
+			this.lbl_hora1.Text = "lbl_hora1";
 			// 
 			// lbl_value_fechaCancelacion
 			// 
@@ -945,7 +1006,8 @@
             this.clm_Tipo,
             this.clm_Fecha,
             this.clm_hora,
-            this.clm_Monto});
+            this.clm_Monto,
+            this.clm_detalle});
 			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -963,37 +1025,6 @@
 			this.dGV_Pagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_Pagos.Size = new System.Drawing.Size(805, 246);
 			this.dGV_Pagos.TabIndex = 13;
-			// 
-			// clm_Tipo
-			// 
-			this.clm_Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Tipo.FillWeight = 50F;
-			this.clm_Tipo.HeaderText = "Tipo";
-			this.clm_Tipo.Name = "clm_Tipo";
-			this.clm_Tipo.ReadOnly = true;
-			// 
-			// clm_Fecha
-			// 
-			this.clm_Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Fecha.HeaderText = "Fecha";
-			this.clm_Fecha.Name = "clm_Fecha";
-			this.clm_Fecha.ReadOnly = true;
-			// 
-			// clm_hora
-			// 
-			this.clm_hora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_hora.FillWeight = 80F;
-			this.clm_hora.HeaderText = "Hora";
-			this.clm_hora.Name = "clm_hora";
-			this.clm_hora.ReadOnly = true;
-			// 
-			// clm_Monto
-			// 
-			this.clm_Monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Monto.FillWeight = 70F;
-			this.clm_Monto.HeaderText = "Monto";
-			this.clm_Monto.Name = "clm_Monto";
-			this.clm_Monto.ReadOnly = true;
 			// 
 			// label13
 			// 
@@ -1018,65 +1049,45 @@
 			this.textBox_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.textBox_total.Visible = false;
 			// 
-			// lbl_hora1
+			// clm_Tipo
 			// 
-			this.lbl_hora1.AutoSize = true;
-			this.lbl_hora1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_hora1.Location = new System.Drawing.Point(404, 27);
-			this.lbl_hora1.Name = "lbl_hora1";
-			this.lbl_hora1.Size = new System.Drawing.Size(77, 23);
-			this.lbl_hora1.TabIndex = 14;
-			this.lbl_hora1.Text = "lbl_hora1";
+			this.clm_Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Tipo.FillWeight = 30F;
+			this.clm_Tipo.HeaderText = "Tipo";
+			this.clm_Tipo.Name = "clm_Tipo";
+			this.clm_Tipo.ReadOnly = true;
 			// 
-			// lbl_hora4
+			// clm_Fecha
 			// 
-			this.lbl_hora4.AutoSize = true;
-			this.lbl_hora4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_hora4.Location = new System.Drawing.Point(404, 105);
-			this.lbl_hora4.Name = "lbl_hora4";
-			this.lbl_hora4.Size = new System.Drawing.Size(80, 23);
-			this.lbl_hora4.TabIndex = 15;
-			this.lbl_hora4.Text = "lbl_hora4";
+			this.clm_Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Fecha.FillWeight = 50F;
+			this.clm_Fecha.HeaderText = "Fecha";
+			this.clm_Fecha.Name = "clm_Fecha";
+			this.clm_Fecha.ReadOnly = true;
 			// 
-			// lbl_hora2
+			// clm_hora
 			// 
-			this.lbl_hora2.AutoSize = true;
-			this.lbl_hora2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_hora2.Location = new System.Drawing.Point(404, 52);
-			this.lbl_hora2.Name = "lbl_hora2";
-			this.lbl_hora2.Size = new System.Drawing.Size(79, 23);
-			this.lbl_hora2.TabIndex = 15;
-			this.lbl_hora2.Text = "lbl_hora2";
+			this.clm_hora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_hora.FillWeight = 30F;
+			this.clm_hora.HeaderText = "Hora";
+			this.clm_hora.Name = "clm_hora";
+			this.clm_hora.ReadOnly = true;
 			// 
-			// lbl_hora3
+			// clm_Monto
 			// 
-			this.lbl_hora3.AutoSize = true;
-			this.lbl_hora3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_hora3.Location = new System.Drawing.Point(404, 78);
-			this.lbl_hora3.Name = "lbl_hora3";
-			this.lbl_hora3.Size = new System.Drawing.Size(79, 23);
-			this.lbl_hora3.TabIndex = 16;
-			this.lbl_hora3.Text = "lbl_hora3";
+			this.clm_Monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Monto.FillWeight = 30F;
+			this.clm_Monto.HeaderText = "Monto";
+			this.clm_Monto.Name = "clm_Monto";
+			this.clm_Monto.ReadOnly = true;
 			// 
-			// lbl_hora5
+			// clm_detalle
 			// 
-			this.lbl_hora5.AutoSize = true;
-			this.lbl_hora5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_hora5.Location = new System.Drawing.Point(404, 128);
-			this.lbl_hora5.Name = "lbl_hora5";
-			this.lbl_hora5.Size = new System.Drawing.Size(79, 23);
-			this.lbl_hora5.TabIndex = 17;
-			this.lbl_hora5.Text = "lbl_hora5";
-			// 
-			// lbl_hora6
-			// 
-			this.lbl_hora6.AutoSize = true;
-			this.lbl_hora6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_hora6.Location = new System.Drawing.Point(404, 153);
-			this.lbl_hora6.Name = "lbl_hora6";
-			this.lbl_hora6.Size = new System.Drawing.Size(79, 23);
-			this.lbl_hora6.TabIndex = 18;
-			this.lbl_hora6.Text = "lbl_hora6";
+			this.clm_detalle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_detalle.FillWeight = 120F;
+			this.clm_detalle.HeaderText = "Detalle";
+			this.clm_detalle.Name = "clm_detalle";
+			this.clm_detalle.ReadOnly = true;
 			// 
 			// VisualizarAlojamiento
 			// 
@@ -1166,10 +1177,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_FechaConsumo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Total;
         private System.Windows.Forms.TextBox textBox_total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_hora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_legajoAcomp;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
@@ -1199,5 +1206,10 @@
 		private System.Windows.Forms.Label lbl_hora2;
 		private System.Windows.Forms.Label lbl_hora4;
 		private System.Windows.Forms.Label lbl_hora1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Tipo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Fecha;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_hora;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Monto;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_detalle;
 	}
 }

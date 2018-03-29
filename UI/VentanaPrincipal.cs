@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
@@ -20,6 +17,7 @@ namespace UI
         public VentanaPrincipal()
         {
             InitializeComponent();
+			//dGV_Alojamientos.DefaultCellStyle.BackColor = Color.White;
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,12 +125,9 @@ namespace UI
 					(aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
 					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
 					);
-				string[] colores = controladorExtra.DeterminarColor(aloj);
-				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.BackColor = Color.FromName(colores[0]);
-				dGV_Alojamientos.Rows[countRow].DefaultCellStyle.ForeColor = Color.FromName(colores[1]);
+				dGV_Alojamientos.Rows[countRow].Cells[8].Style.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+				dGV_Alojamientos.Rows[countRow].Cells[8].Style.SelectionBackColor = Color.Transparent;
 				countRow++;
-				
-				//Color.IndianRed
             }
         }
 
@@ -145,7 +140,7 @@ namespace UI
         {
             if (this.ListaAlojamientos.Count > 0)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los Alojamiento Reservados a continuación no presentan Pago de Depósito tras pasar de las 72hs de la Fecha de Reserva", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Alojamientos Reservados no presentan Pago de Depósito", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(this.ListaAlojamientos);
                 listarAlojamientos.VisiblePago();
@@ -162,11 +157,11 @@ namespace UI
         {
             if (this.ListaAlojamientos.Count > 0)
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy.", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Los siguientes Alojamientos deben dase de Alta Hoy", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(this.ListaAlojamientos);
                 listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Recuerde Dar de Alta las Reservas en las Fechas de Ingreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
+                ventanaEmergente = new VentanaEmergente("Recuerde Dar de Alta las Reservas en las Fechas de Ingreso correspondientes", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }
@@ -184,7 +179,7 @@ namespace UI
                 ventanaEmergente.ShowDialog();
                 ListarAlojamientos listarAlojamientos = new ListarAlojamientos(this.ListaAlojamientos);
                 listarAlojamientos.ShowDialog();
-                ventanaEmergente = new VentanaEmergente("Recuerde Cerrar Alojamientos en las Fechas de Egreso correspondientes para evitar confusiones en las operaciones.", TipoMensaje.Alerta);
+                ventanaEmergente = new VentanaEmergente("Recuerde Cerrar Alojamientos en las Fechas de Egreso correspondientes.", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }
@@ -277,16 +272,9 @@ namespace UI
                 {
                     throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
-
                 new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
-
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.Aloj_Seleccionado;
-
                 AltaReservaAlojamiento.RellenarCampos();
-
-                //AltaReservaAlojamiento.EnableAll(true);
-
-                //AltaReservaAlojamiento.ShowDialog();
             }
             catch (NullReferenceException E)
             {
@@ -430,6 +418,24 @@ namespace UI
 		{
 			AgregarCiudad agregarCiudad = new AgregarCiudad(3);
 			agregarCiudad.ShowDialog();
+		}
+
+		private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UserAdmin userAdmin = new UserAdmin(2);
+			userAdmin.ShowDialog();
+		}
+
+		private void nuevoUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UserAdmin userAdmin = new UserAdmin(0);
+			userAdmin.ShowDialog();
+		}
+
+		private void eliminarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UserAdmin userAdmin = new UserAdmin(1);
+			userAdmin.ShowDialog();
 		}
 	}
 }

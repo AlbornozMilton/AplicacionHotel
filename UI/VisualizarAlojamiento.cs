@@ -25,7 +25,7 @@ namespace UI
                 foreach (var pago in pPagos)
                 {
                     totalPagos += pago.Monto;
-                    dGV_Pagos.Rows.Add(pago.Tipo, pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.ToString("H:mm"), pago.Monto);
+                    dGV_Pagos.Rows.Add(pago.Tipo, pago.FechaPago.ToString("dd / MM / yyyy"), pago.FechaPago.ToString("H:mm"), pago.Monto,pago.Detalle);
                 }
             }
         }

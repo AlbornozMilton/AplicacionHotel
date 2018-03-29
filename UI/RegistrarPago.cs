@@ -143,7 +143,6 @@ namespace UI
             {
 				ValidarDatos();
 				Pago Pago = new Pago(cbx_TipoPago.SelectedItem.ToString(), Convert.ToDouble(txb_Monto.Text), txb_Detalle.Text);
-				//iControladorAloj.ControlTipoPago(AlojSeleccionado, Pago);
 				new ControladorAlojamiento().AddPago(AlojSeleccionado, Pago);
 				string mensaje = "Pago de Alojamiento Exitoso";
 				if (Pago.Tipo == TipoPago.Servicios && Pago.Monto != AlojSeleccionado.MontoDeuda)

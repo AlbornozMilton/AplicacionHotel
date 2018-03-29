@@ -449,7 +449,6 @@
 			this.contador_NoDirecto.Size = new System.Drawing.Size(35, 30);
 			this.contador_NoDirecto.TabIndex = 37;
 			this.contador_NoDirecto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_NoDirecto.ValueChanged += new System.EventHandler(this.contador_NoDirecto_ValueChanged);
 			// 
 			// contador_Directo
 			// 
@@ -464,7 +463,6 @@
 			this.contador_Directo.Size = new System.Drawing.Size(35, 30);
 			this.contador_Directo.TabIndex = 36;
 			this.contador_Directo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Directo.ValueChanged += new System.EventHandler(this.contador_Directo_ValueChanged);
 			// 
 			// label10
 			// 
@@ -499,7 +497,6 @@
 			this.contador_Exceptuado.Size = new System.Drawing.Size(35, 30);
 			this.contador_Exceptuado.TabIndex = 33;
 			this.contador_Exceptuado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Exceptuado.ValueChanged += new System.EventHandler(this.contador_Exceptuado_ValueChanged);
 			// 
 			// contador_Convenio
 			// 
@@ -514,7 +511,6 @@
 			this.contador_Convenio.Size = new System.Drawing.Size(35, 30);
 			this.contador_Convenio.TabIndex = 32;
 			this.contador_Convenio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Convenio.ValueChanged += new System.EventHandler(this.contador_Convenio_ValueChanged);
 			// 
 			// contador_Titular
 			// 
@@ -529,7 +525,6 @@
 			this.contador_Titular.Size = new System.Drawing.Size(35, 30);
 			this.contador_Titular.TabIndex = 31;
 			this.contador_Titular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.contador_Titular.ValueChanged += new System.EventHandler(this.contador_Titular_ValueChanged);
 			// 
 			// label9
 			// 
@@ -635,7 +630,7 @@
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(770, 515);
+			this.label14.Location = new System.Drawing.Point(694, 530);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(96, 19);
 			this.label14.TabIndex = 26;
@@ -647,7 +642,7 @@
 			this.btn_Confirmar.BackColor = System.Drawing.Color.Transparent;
 			this.btn_Confirmar.Image = global::UI.Properties.Resources.Boton_Go;
 			this.btn_Confirmar.InitialImage = null;
-			this.btn_Confirmar.Location = new System.Drawing.Point(701, 495);
+			this.btn_Confirmar.Location = new System.Drawing.Point(796, 505);
 			this.btn_Confirmar.Name = "btn_Confirmar";
 			this.btn_Confirmar.Size = new System.Drawing.Size(63, 61);
 			this.btn_Confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

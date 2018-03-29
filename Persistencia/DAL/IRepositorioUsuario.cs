@@ -1,14 +1,14 @@
 ﻿using Persistencia.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistencia.DAL
 {
     public interface IRepositorioUsuario:IRepositorio<Usuario>
     {
-
+		/// <summary>
+		/// Retorna Usuario Modificado o Excepciones 
+		/// </summary>
+		void ModifcarUsuario(string pUsuarioID, string pOldPass, string pNewPass);
+		void EliminarUsuario(string pUsuarioID, string pPass);
+		void NuevoUsuario(string pUsuarioID, string pPass);
     }
 }

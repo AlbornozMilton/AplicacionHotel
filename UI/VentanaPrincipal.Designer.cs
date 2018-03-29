@@ -33,6 +33,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,10 @@
 			this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.nuevoUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox_disponibilidad = new System.Windows.Forms.GroupBox();
 			this.btn_Buscar = new System.Windows.Forms.Button();
 			this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -86,10 +91,13 @@
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_Ref = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.groupBox_ColorsRef = new System.Windows.Forms.GroupBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.pictureBox9 = new System.Windows.Forms.PictureBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.pictureBox8 = new System.Windows.Forms.PictureBox();
 			this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -112,6 +120,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Alojamientos)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
 			this.groupBox_ColorsRef.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -133,7 +142,8 @@
             this.clienteToolStripMenuItem,
             this.listarToolStripMenuItem,
             this.movimientoToolStripMenuItem,
-            this.administracionToolStripMenuItem});
+            this.administracionToolStripMenuItem,
+            this.usuariosToolStripMenuItem});
 			menuStrip1.Location = new System.Drawing.Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
 			menuStrip1.ShowItemToolTips = true;
@@ -435,6 +445,40 @@
 			this.eliminarToolStripMenuItem.Text = "Eliminar";
 			this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
 			// 
+			// usuariosToolStripMenuItem
+			// 
+			this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoUsuarioToolStripMenuItem,
+            this.eliminarUsuarioToolStripMenuItem,
+            this.cambiarContraseñaToolStripMenuItem});
+			this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+			this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(109, 34);
+			this.usuariosToolStripMenuItem.Text = "Usuarios";
+			// 
+			// nuevoUsuarioToolStripMenuItem
+			// 
+			this.nuevoUsuarioToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Agregar;
+			this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
+			this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(295, 34);
+			this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo Usuario";
+			this.nuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.nuevoUsuarioToolStripMenuItem_Click);
+			// 
+			// eliminarUsuarioToolStripMenuItem
+			// 
+			this.eliminarUsuarioToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Cerrar_Cancelar;
+			this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
+			this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(295, 34);
+			this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar Usuario";
+			this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
+			// 
+			// cambiarContraseñaToolStripMenuItem
+			// 
+			this.cambiarContraseñaToolStripMenuItem.Image = global::UI.Properties.Resources.Boton_Actualizar;
+			this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+			this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(295, 34);
+			this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar Contraseña";
+			this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click);
+			// 
 			// groupBox_disponibilidad
 			// 
 			this.groupBox_disponibilidad.AutoSize = true;
@@ -579,7 +623,8 @@
             this.clm_Legajo,
             this.Column2,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.clm_Ref});
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -588,10 +633,19 @@
 			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle2;
+			this.dGV_Alojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 65);
 			this.dGV_Alojamientos.MultiSelect = false;
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this.dGV_Alojamientos.RowHeadersVisible = false;
 			this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dGV_Alojamientos.Size = new System.Drawing.Size(1336, 296);
@@ -660,6 +714,14 @@
 			this.Column5.Name = "Column5";
 			this.Column5.ReadOnly = true;
 			// 
+			// clm_Ref
+			// 
+			this.clm_Ref.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Ref.FillWeight = 15F;
+			this.clm_Ref.HeaderText = "Ref";
+			this.clm_Ref.Name = "clm_Ref";
+			this.clm_Ref.ReadOnly = true;
+			// 
 			// timer1
 			// 
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -670,6 +732,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox_ColorsRef.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox_ColorsRef.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox_ColorsRef.Controls.Add(this.label10);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox9);
 			this.groupBox_ColorsRef.Controls.Add(this.label9);
 			this.groupBox_ColorsRef.Controls.Add(this.pictureBox8);
 			this.groupBox_ColorsRef.Controls.Add(this.pictureBox7);
@@ -692,6 +756,24 @@
 			this.groupBox_ColorsRef.TabStop = false;
 			this.groupBox_ColorsRef.Text = "REFERENCIAS DE COLORES PARA ALOJAMIENTOS";
 			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(415, 101);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(67, 23);
+			this.label10.TabIndex = 18;
+			this.label10.Text = "Normal";
+			// 
+			// pictureBox9
+			// 
+			this.pictureBox9.BackColor = System.Drawing.Color.White;
+			this.pictureBox9.Location = new System.Drawing.Point(366, 105);
+			this.pictureBox9.Name = "pictureBox9";
+			this.pictureBox9.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox9.TabIndex = 17;
+			this.pictureBox9.TabStop = false;
+			// 
 			// label9
 			// 
 			this.label9.AutoSize = true;
@@ -703,7 +785,7 @@
 			// 
 			// pictureBox8
 			// 
-			this.pictureBox8.BackColor = System.Drawing.Color.Plum;
+			this.pictureBox8.BackColor = System.Drawing.Color.DarkViolet;
 			this.pictureBox8.Location = new System.Drawing.Point(366, 29);
 			this.pictureBox8.Name = "pictureBox8";
 			this.pictureBox8.Size = new System.Drawing.Size(43, 19);
@@ -713,7 +795,7 @@
 			// pictureBox7
 			// 
 			this.pictureBox7.BackColor = System.Drawing.Color.OrangeRed;
-			this.pictureBox7.Location = new System.Drawing.Point(366, 105);
+			this.pictureBox7.Location = new System.Drawing.Point(366, 79);
 			this.pictureBox7.Name = "pictureBox7";
 			this.pictureBox7.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox7.TabIndex = 14;
@@ -722,7 +804,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(415, 101);
+			this.label8.Location = new System.Drawing.Point(415, 75);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(89, 23);
 			this.label8.TabIndex = 13;
@@ -731,7 +813,7 @@
 			// pictureBox6
 			// 
 			this.pictureBox6.BackColor = System.Drawing.Color.Orange;
-			this.pictureBox6.Location = new System.Drawing.Point(366, 68);
+			this.pictureBox6.Location = new System.Drawing.Point(366, 53);
 			this.pictureBox6.Name = "pictureBox6";
 			this.pictureBox6.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox6.TabIndex = 12;
@@ -740,7 +822,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(415, 64);
+			this.label7.Location = new System.Drawing.Point(414, 49);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(237, 23);
 			this.label7.TabIndex = 11;
@@ -849,6 +931,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
 			this.groupBox_ColorsRef.ResumeLayout(false);
 			this.groupBox_ColorsRef.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -933,5 +1016,12 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Ref;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.PictureBox pictureBox9;
+		private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem nuevoUsuarioToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem eliminarUsuarioToolStripMenuItem;
 	}
 }

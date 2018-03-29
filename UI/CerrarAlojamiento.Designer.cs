@@ -42,7 +42,6 @@
 			this.btn_Cancelar = new System.Windows.Forms.Button();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.btn_Visualizar = new System.Windows.Forms.Button();
-			this.btn_realizarPago = new System.Windows.Forms.Button();
 			this.lbl_txtFechaActual = new System.Windows.Forms.Label();
 			this.lbl_txtfechaEstEgreso = new System.Windows.Forms.Label();
 			this.lbl_fechaEstEgreso = new System.Windows.Forms.Label();
@@ -171,7 +170,7 @@
 			// 
 			this.btn_Aceptar.Enabled = false;
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_Aceptar.Location = new System.Drawing.Point(715, 193);
+			this.btn_Aceptar.Location = new System.Drawing.Point(712, 193);
 			this.btn_Aceptar.Name = "btn_Aceptar";
 			this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
 			this.btn_Aceptar.TabIndex = 10;
@@ -182,7 +181,7 @@
 			// btn_Visualizar
 			// 
 			this.btn_Visualizar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_Visualizar.Location = new System.Drawing.Point(556, 157);
+			this.btn_Visualizar.Location = new System.Drawing.Point(712, 157);
 			this.btn_Visualizar.Name = "btn_Visualizar";
 			this.btn_Visualizar.Size = new System.Drawing.Size(110, 30);
 			this.btn_Visualizar.TabIndex = 12;
@@ -190,24 +189,12 @@
 			this.btn_Visualizar.UseVisualStyleBackColor = true;
 			this.btn_Visualizar.Click += new System.EventHandler(this.btn_Visualizar_Click);
 			// 
-			// btn_realizarPago
-			// 
-			this.btn_realizarPago.Enabled = false;
-			this.btn_realizarPago.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_realizarPago.Location = new System.Drawing.Point(672, 157);
-			this.btn_realizarPago.Name = "btn_realizarPago";
-			this.btn_realizarPago.Size = new System.Drawing.Size(153, 30);
-			this.btn_realizarPago.TabIndex = 13;
-			this.btn_realizarPago.Text = "Realizar Pago";
-			this.btn_realizarPago.UseVisualStyleBackColor = true;
-			this.btn_realizarPago.Click += new System.EventHandler(this.btn_realizarPago_Click);
-			// 
 			// lbl_txtFechaActual
 			// 
 			this.lbl_txtFechaActual.AutoSize = true;
 			this.lbl_txtFechaActual.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_txtFechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_txtFechaActual.Location = new System.Drawing.Point(587, 8);
+			this.lbl_txtFechaActual.Location = new System.Drawing.Point(578, 9);
 			this.lbl_txtFechaActual.Name = "lbl_txtFechaActual";
 			this.lbl_txtFechaActual.Size = new System.Drawing.Size(112, 23);
 			this.lbl_txtFechaActual.TabIndex = 14;
@@ -218,7 +205,7 @@
 			this.lbl_txtfechaEstEgreso.AutoSize = true;
 			this.lbl_txtfechaEstEgreso.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_txtfechaEstEgreso.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_txtfechaEstEgreso.Location = new System.Drawing.Point(510, 34);
+			this.lbl_txtfechaEstEgreso.Location = new System.Drawing.Point(501, 35);
 			this.lbl_txtfechaEstEgreso.Name = "lbl_txtfechaEstEgreso";
 			this.lbl_txtfechaEstEgreso.Size = new System.Drawing.Size(189, 23);
 			this.lbl_txtfechaEstEgreso.TabIndex = 15;
@@ -230,7 +217,7 @@
 			this.lbl_fechaEstEgreso.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_fechaEstEgreso.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_fechaEstEgreso.ForeColor = System.Drawing.SystemColors.MenuText;
-			this.lbl_fechaEstEgreso.Location = new System.Drawing.Point(704, 34);
+			this.lbl_fechaEstEgreso.Location = new System.Drawing.Point(695, 35);
 			this.lbl_fechaEstEgreso.Name = "lbl_fechaEstEgreso";
 			this.lbl_fechaEstEgreso.Size = new System.Drawing.Size(130, 23);
 			this.lbl_fechaEstEgreso.TabIndex = 16;
@@ -242,7 +229,7 @@
 			this.lbl_fechaActual.BackColor = System.Drawing.Color.Transparent;
 			this.lbl_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbl_fechaActual.ForeColor = System.Drawing.Color.OrangeRed;
-			this.lbl_fechaActual.Location = new System.Drawing.Point(704, 8);
+			this.lbl_fechaActual.Location = new System.Drawing.Point(695, 9);
 			this.lbl_fechaActual.Name = "lbl_fechaActual";
 			this.lbl_fechaActual.Size = new System.Drawing.Size(130, 23);
 			this.lbl_fechaActual.TabIndex = 17;
@@ -278,14 +265,13 @@
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.ClientSize = new System.Drawing.Size(837, 231);
+			this.ClientSize = new System.Drawing.Size(834, 231);
 			this.Controls.Add(this.label_deuda);
 			this.Controls.Add(this.pictureBox_deuda);
 			this.Controls.Add(this.lbl_fechaActual);
 			this.Controls.Add(this.lbl_fechaEstEgreso);
 			this.Controls.Add(this.lbl_txtfechaEstEgreso);
 			this.Controls.Add(this.lbl_txtFechaActual);
-			this.Controls.Add(this.btn_realizarPago);
 			this.Controls.Add(this.btn_Visualizar);
 			this.Controls.Add(this.btn_Cancelar);
 			this.Controls.Add(this.btn_Aceptar);
@@ -312,7 +298,6 @@
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button btn_Visualizar;
-        private System.Windows.Forms.Button btn_realizarPago;
         private System.Windows.Forms.Label lbl_txtFechaActual;
         private System.Windows.Forms.Label lbl_txtfechaEstEgreso;
         private System.Windows.Forms.Label lbl_fechaEstEgreso;

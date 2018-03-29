@@ -83,7 +83,7 @@
 			this.btn_BuscarAlojamiento.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btn_BuscarAlojamiento.Location = new System.Drawing.Point(15, 4);
 			this.btn_BuscarAlojamiento.Name = "btn_BuscarAlojamiento";
-			this.btn_BuscarAlojamiento.Size = new System.Drawing.Size(215, 30);
+			this.btn_BuscarAlojamiento.Size = new System.Drawing.Size(176, 30);
 			this.btn_BuscarAlojamiento.TabIndex = 0;
 			this.btn_BuscarAlojamiento.Text = "Buscar Alojamiento";
 			this.btn_BuscarAlojamiento.UseVisualStyleBackColor = true;
@@ -458,11 +458,11 @@
 			// 
 			this.btn_buscarServicio.Enabled = false;
 			this.btn_buscarServicio.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_buscarServicio.Location = new System.Drawing.Point(15, 132);
+			this.btn_buscarServicio.Location = new System.Drawing.Point(15, 136);
 			this.btn_buscarServicio.Name = "btn_buscarServicio";
-			this.btn_buscarServicio.Size = new System.Drawing.Size(215, 30);
+			this.btn_buscarServicio.Size = new System.Drawing.Size(176, 30);
 			this.btn_buscarServicio.TabIndex = 13;
-			this.btn_buscarServicio.Text = "Consultar Servicios";
+			this.btn_buscarServicio.Text = "Seleccionar Servicio";
 			this.btn_buscarServicio.UseVisualStyleBackColor = true;
 			this.btn_buscarServicio.Click += new System.EventHandler(this.btn_buscarServicio_Click);
 			// 

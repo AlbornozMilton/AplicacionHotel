@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{12B5369B-2940-44C8-A0A2-3FEC7DE409EE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Persistencia</RootNamespace>
     <AssemblyName>Persistencia</AssemblyName>
@@ -96,7 +96,6 @@
     <Compile Include="Domain\TarifaCliente.cs" />
     <Compile Include="Domain\Usuario.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

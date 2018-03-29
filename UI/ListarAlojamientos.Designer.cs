@@ -53,6 +53,7 @@
 			this.clm_DNIResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_ApeyNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_ref = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.btn_verDetalles = new System.Windows.Forms.Button();
@@ -72,6 +73,8 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
+			this.pictureBox9 = new System.Windows.Forms.PictureBox();
 			this.groupBox_Rapida.SuspendLayout();
 			this.groupBox_Personalizado.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -84,6 +87,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox_Rapida
@@ -236,6 +240,9 @@
 			this.dGV_ListadoDeAlojamientos.AllowUserToDeleteRows = false;
 			this.dGV_ListadoDeAlojamientos.AllowUserToResizeColumns = false;
 			this.dGV_ListadoDeAlojamientos.AllowUserToResizeRows = false;
+			this.dGV_ListadoDeAlojamientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dGV_ListadoDeAlojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -252,7 +259,8 @@
             this.clm_NroHabitacion,
             this.clm_DNIResponsable,
             this.clm_ApeyNom,
-            this.clm_tipoCliente});
+            this.clm_tipoCliente,
+            this.clm_ref});
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -261,7 +269,6 @@
 			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_ListadoDeAlojamientos.DefaultCellStyle = dataGridViewCellStyle3;
-			this.dGV_ListadoDeAlojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_ListadoDeAlojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.dGV_ListadoDeAlojamientos.Location = new System.Drawing.Point(3, 26);
 			this.dGV_ListadoDeAlojamientos.MultiSelect = false;
@@ -273,7 +280,7 @@
 			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
 			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dGV_ListadoDeAlojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dGV_ListadoDeAlojamientos.RowHeadersVisible = false;
 			this.dGV_ListadoDeAlojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -329,6 +336,14 @@
 			this.clm_tipoCliente.Name = "clm_tipoCliente";
 			this.clm_tipoCliente.ReadOnly = true;
 			// 
+			// clm_ref
+			// 
+			this.clm_ref.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_ref.FillWeight = 15F;
+			this.clm_ref.HeaderText = "Ref";
+			this.clm_ref.Name = "clm_ref";
+			this.clm_ref.ReadOnly = true;
+			// 
 			// btn_Aceptar
 			// 
 			this.btn_Aceptar.Enabled = false;
@@ -381,6 +396,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox_ColorsRef.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.groupBox_ColorsRef.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox_ColorsRef.Controls.Add(this.label10);
+			this.groupBox_ColorsRef.Controls.Add(this.pictureBox9);
 			this.groupBox_ColorsRef.Controls.Add(this.label9);
 			this.groupBox_ColorsRef.Controls.Add(this.pictureBox8);
 			this.groupBox_ColorsRef.Controls.Add(this.pictureBox7);
@@ -424,7 +441,7 @@
 			// pictureBox7
 			// 
 			this.pictureBox7.BackColor = System.Drawing.Color.OrangeRed;
-			this.pictureBox7.Location = new System.Drawing.Point(366, 150);
+			this.pictureBox7.Location = new System.Drawing.Point(366, 110);
 			this.pictureBox7.Name = "pictureBox7";
 			this.pictureBox7.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox7.TabIndex = 14;
@@ -433,7 +450,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(415, 146);
+			this.label8.Location = new System.Drawing.Point(415, 106);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(89, 23);
 			this.label8.TabIndex = 13;
@@ -442,7 +459,7 @@
 			// pictureBox6
 			// 
 			this.pictureBox6.BackColor = System.Drawing.Color.Orange;
-			this.pictureBox6.Location = new System.Drawing.Point(366, 87);
+			this.pictureBox6.Location = new System.Drawing.Point(366, 68);
 			this.pictureBox6.Name = "pictureBox6";
 			this.pictureBox6.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox6.TabIndex = 12;
@@ -451,7 +468,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(415, 83);
+			this.label7.Location = new System.Drawing.Point(415, 64);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(237, 23);
 			this.label7.TabIndex = 11;
@@ -529,6 +546,24 @@
 			this.label4.TabIndex = 0;
 			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
 			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(415, 146);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(67, 23);
+			this.label10.TabIndex = 20;
+			this.label10.Text = "Normal";
+			// 
+			// pictureBox9
+			// 
+			this.pictureBox9.BackColor = System.Drawing.Color.White;
+			this.pictureBox9.Location = new System.Drawing.Point(366, 150);
+			this.pictureBox9.Name = "pictureBox9";
+			this.pictureBox9.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox9.TabIndex = 19;
+			this.pictureBox9.TabStop = false;
+			// 
 			// ListarAlojamientos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +599,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -587,12 +623,6 @@
         private System.Windows.Forms.DataGridView dGV_ListadoDeAlojamientos;
         private System.Windows.Forms.Button btn_verDetalles;
         private System.Windows.Forms.CheckBox checkBox_todos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojamiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_ApeyNom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipoCliente;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox_ColorsRef;
         private System.Windows.Forms.Label label9;
@@ -609,5 +639,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-    }
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_IdAlojamiento;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_estado;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_NroHabitacion;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_DNIResponsable;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_ApeyNom;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipoCliente;
+		private System.Windows.Forms.DataGridViewTextBoxColumn clm_ref;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.PictureBox pictureBox9;
+	}
 }
