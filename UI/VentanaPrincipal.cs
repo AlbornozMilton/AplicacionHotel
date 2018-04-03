@@ -434,12 +434,14 @@ namespace UI
 
 		private void nuevoToolStripMenuItem4_Click(object sender, EventArgs e)
 		{
-
+			
 		}
 
 		private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-
+			ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
+			actualizarCostoServicio.ElimiarServicio();
+			actualizarCostoServicio.ShowDialog();
 		}
 
 		private void actulizarCostosToolStripMenuItem_Click(object sender, EventArgs e)

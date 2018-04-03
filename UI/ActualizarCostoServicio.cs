@@ -6,17 +6,24 @@ namespace UI
 {
     public partial class ActualizarCostoServicio : Form
     {
-        Servicio Service;
+        Servicio Servicio;
 
         public ActualizarCostoServicio()
         {
             InitializeComponent();
         }
 
+		public void ElimiarServicio()
+		{
+			Text = "Eliminar Servicio";
+			lbl_textIngreseCosto.Visible = false;
+			txb_nuevoCosto.Visible = false;
+		}
+
         public void CargarServicioSeccionado()
         {
             dataGridView_Servicio.Rows.Clear();
-            dataGridView_Servicio.Rows.Add(Service.ServicioId, Service.Nombre, Service.CostoBase, Service.Detalle);
+            dataGridView_Servicio.Rows.Add(Servicio.ServicioId, Servicio.Nombre, Servicio.CostoBase, Servicio.Detalle);
         }
 
         private void btn_buscarServicio_Click(object sender, EventArgs e)
@@ -27,11 +34,15 @@ namespace UI
 				Actualizar.ShowDialog();
                 if (Actualizar.ServicioSeleccionado != null)
                 {
-                    this.Service = Actualizar.ServicioSeleccionado;
+                    this.Servicio = Actualizar.ServicioSeleccionado;
                     CargarServicioSeccionado();
                     btn_Aceptar.Enabled = true;
-					txb_nuevoCosto.Enabled = true;
-					txb_nuevoCosto.Text = "";
+
+					if (Text != "Eliminar Servicio")
+					{
+						txb_nuevoCosto.Enabled = true;
+						txb_nuevoCosto.Text = ""; 
+					}
 				}
             }
             catch (Exception E)
@@ -49,11 +60,23 @@ namespace UI
         {
             try
             {
-                new ControladorExtra().AcutalizarCostoServicio(this.Service, txb_nuevoCosto.Text);
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Servicio Actualizado", TipoMensaje.Exito);
-                ventanaEmergente.ShowDialog();
-                Close();
-                AdministrarServicios Actualizar = new AdministrarServicios();
+				string mensaje = "Error de Asiganción de Mensaje";
+
+				if (Text != "Eliminar Servicio")
+				{
+					mensaje = "Servicio Actualizado";
+					new ControladorExtra().AcutalizarCostoServicio(this.Servicio, txb_nuevoCosto.Text);
+				}
+				else
+				{
+					mensaje = "Servicio Eliminado";
+					//controlador eliminar servicio
+				}
+
+				VentanaEmergente ventanaEmergente = new VentanaEmergente(mensaje, TipoMensaje.Exito);
+				ventanaEmergente.ShowDialog();
+				Close();
+				AdministrarServicios Actualizar = new AdministrarServicios();
                 Actualizar.ShowDialog();
             }
             catch (FormatException)
