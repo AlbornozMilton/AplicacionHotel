@@ -286,7 +286,6 @@ namespace Persistencia.DAL.EntityFramework
             #region Servicios
             Servicio Bata = new Servicio
             {
-                ServicioId = 1,
                 Nombre = "Bata",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -295,7 +294,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio AireAcondicionado = new Servicio
             {
-                ServicioId = 2,
                 Nombre = "Aire Acondicionado",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
@@ -305,7 +303,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio SeguroDeSalud = new Servicio
             {
-                ServicioId = 3,
                 Nombre = "Seguridad Medica",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -314,7 +311,6 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio Calefaccion = new Servicio
             {
-                ServicioId = 4,
                 Nombre = "Calefacción",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
@@ -323,17 +319,34 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio RecargoPorFumar = new Servicio
             {
-                ServicioId = 5,
                 Nombre = "Recargo por Fumar",
                 Detalle = "El costo de este servicio por estadía",
                 CostoBase = 50
             };
             context.Set<Servicio>().Add(RecargoPorFumar);
 
-            #endregion
-            ////-----------------------FIN DATOS BASICOS------------------
+			#endregion
 
-            base.Seed(context);
+			context.Set<MetadataHotel>().Add
+				(
+					new MetadataHotel
+					{
+						Nombre = "PorcentajeExclusividad",
+						Valor = 20
+					}
+				);
+			context.Set<MetadataHotel>().Add
+				(
+					new MetadataHotel
+					{
+						Nombre = "PorcentajeTour",
+						Valor = 10
+					}
+				);
+
+			////-----------------------FIN DATOS BASICOS------------------
+
+			base.Seed(context);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Persistencia.DAL.EntityFramework
         public virtual DbSet<Servicio> Servicios { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<TarifaCliente> Tarifas { get; set; }
+		public virtual DbSet<MetadataHotel> Metadatas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mBuilder)
         {
@@ -37,7 +38,7 @@ namespace Persistencia.DAL.EntityFramework
             mBuilder.Configurations.Add(new PagoMap());
             mBuilder.Configurations.Add(new TarifaClienteMap());
             mBuilder.Configurations.Add(new UsuarioMap());
-
+			mBuilder.Configurations.Add(new MetadataHotelMap());
             base.OnModelCreating(mBuilder);
         }
     }
