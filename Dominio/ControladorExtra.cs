@@ -76,9 +76,10 @@ namespace Dominio
         }
 
 		#region Servicios
-		public void NuevoServicio(Servicio pServicio)
+		public void NuevoServicio(string pNombre, string pDetalle, string pCosto)
 		{
-			iUoW.RepositorioServicio.Add(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+			Servicio pServicio = new Servicio(pNombre, pDetalle,Convert.ToDouble(pCosto));
+			iUoW.RepositorioServicio.NuevoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
 		}
 
 		public void EliminarServicio(Servicio pServicio)

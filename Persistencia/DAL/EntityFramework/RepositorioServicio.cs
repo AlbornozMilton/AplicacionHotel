@@ -27,7 +27,13 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void NuevoServicio(Servicio pServicio)
 		{
-			throw new System.NotImplementedException();
+			if (iDbContext.Servicios.Where(s => s.Nombre == pServicio.Nombre && s.CostoBase == pServicio.CostoBase).SingleOrDefault() != null)
+			{
+				throw new System.Exception("Servicio ya Existente");
+			}
+
+			iDbContext.Servicios.Add(pServicio);
+			iDbContext.SaveChanges();
 		}
 
 		public void ElimiarServicio(Servicio pServicio)

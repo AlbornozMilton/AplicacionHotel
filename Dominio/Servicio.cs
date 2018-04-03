@@ -13,9 +13,8 @@
 
         }
 
-        public Servicio(byte pCodServicio, string pNombre, string pDetalle, double pCostoBase)
+        public Servicio(string pNombre, string pDetalle, double pCostoBase)
         {
-            this.iCodServicio = pCodServicio;
             this.iNombe = pNombre;
             this.iDetalle = pDetalle;
             this.iCostoBase = pCostoBase;

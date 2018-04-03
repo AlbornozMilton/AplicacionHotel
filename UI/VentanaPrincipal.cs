@@ -434,7 +434,8 @@ namespace UI
 
 		private void nuevoToolStripMenuItem4_Click(object sender, EventArgs e)
 		{
-			
+			NuevoServicio nuevoServicio = new NuevoServicio();
+			nuevoServicio.ShowDialog();
 		}
 
 		private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
