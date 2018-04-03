@@ -365,12 +365,6 @@ namespace UI
             cancelarAlojamiento.ShowDialog();
         }
 
-        private void actualizarCostoServiciosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
-            actualizarCostoServicio.ShowDialog();
-        }
-
         private void buscarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             BuscarCliente BuscarCliente = new BuscarCliente();
@@ -436,6 +430,22 @@ namespace UI
 		{
 			UserAdmin userAdmin = new UserAdmin(1);
 			userAdmin.ShowDialog();
+		}
+
+		private void nuevoToolStripMenuItem4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void actulizarCostosToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ActualizarCostoServicio actualizarCostoServicio = new ActualizarCostoServicio();
+			actualizarCostoServicio.ShowDialog();
 		}
 	}
 }
