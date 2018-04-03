@@ -70,7 +70,7 @@ namespace UI
 				else
 				{
 					mensaje = "Servicio Eliminado";
-					//controlador eliminar servicio
+					new ControladorExtra().EliminarServicio(this.Servicio);
 				}
 
 				VentanaEmergente ventanaEmergente = new VentanaEmergente(mensaje, TipoMensaje.Exito);

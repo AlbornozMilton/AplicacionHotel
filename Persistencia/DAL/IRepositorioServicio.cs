@@ -6,5 +6,7 @@ namespace Persistencia.DAL
     {
         Servicio GetByNombre(string pNombreServicio);
 		void ActualizarCostoServicio(Servicio pServicio);
+		void NuevoServicio(Servicio pServicio);
+		void ElimiarServicio(Servicio pServicio);
 	}
 }
