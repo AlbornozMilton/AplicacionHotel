@@ -24,7 +24,7 @@ namespace Persistencia.DAL.EntityFramework
 			Usuario user3 = new Usuario
 			{
 				UsuarioId = "norma",
-				Password = "123456123"
+				Password = "norma"
 			};
 			context.Set<Usuario>().Add(user3);
 			#endregion
@@ -281,11 +281,12 @@ namespace Persistencia.DAL.EntityFramework
 				Ocupada = false
 			};
             context.Set<Habitacion>().Add(hab10);
-            #endregion
+			#endregion
 
-            #region Servicios
-            Servicio Bata = new Servicio
-            {
+			#region Servicios
+			Servicio Bata = new Servicio
+			{
+				ServicioId = 1,
                 Nombre = "Bata",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
@@ -294,7 +295,8 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio AireAcondicionado = new Servicio
             {
-                Nombre = "Aire Acondicionado",
+				ServicioId = 2,
+				Nombre = "Aire Acondicionado",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
             };
@@ -303,7 +305,8 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio SeguroDeSalud = new Servicio
             {
-                Nombre = "Seguridad Medica",
+				ServicioId = 3,
+				Nombre = "Seguridad Medica",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
             };
@@ -311,15 +314,18 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio Calefaccion = new Servicio
             {
-                Nombre = "Calefacción",
+				ServicioId = 4,
+				Nombre = "Calefacción",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
             };
+
             context.Set<Servicio>().Add(Calefaccion);
 
             Servicio RecargoPorFumar = new Servicio
             {
-                Nombre = "Recargo por Fumar",
+				ServicioId = 5,
+				Nombre = "Recargo por Fumar",
                 Detalle = "El costo de este servicio por estadía",
                 CostoBase = 50
             };
@@ -331,6 +337,7 @@ namespace Persistencia.DAL.EntityFramework
 				(
 					new MetadataHotel
 					{
+						MetadaId = 1,
 						Nombre = "PorcentajeExclusividad",
 						Valor = 20
 					}
@@ -339,6 +346,7 @@ namespace Persistencia.DAL.EntityFramework
 				(
 					new MetadataHotel
 					{
+						MetadaId = 2,
 						Nombre = "PorcentajeTour",
 						Valor = 10
 					}

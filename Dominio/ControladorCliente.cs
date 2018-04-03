@@ -124,16 +124,16 @@ namespace Dominio
             iUoW.Dispose();
         }
 
-        public bool ValidarUsuario(string pUs, string pPass)
+        public bool ValidarUsuario(string pUser, string pPass)
         {
-            return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUs, Password = pPass });
-        }
+			return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUser, Password = pPass });
+		}
 
-        /// <summary>
-        /// Controla que la cantidades de Clientes ingresados coincidan con la capacidad de la Habitacion
-        /// </summary>
-        /// <param name="pClientes">Acompañantes más el Responsable</param>
-        public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
+		/// <summary>
+		/// Controla que la cantidades de Clientes ingresados coincidan con la capacidad de la Habitacion
+		/// </summary>
+		/// <param name="pClientes">Acompañantes más el Responsable</param>
+		public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
         {
             if (pClientes.Count > pHab.Capacidad)
                 throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");

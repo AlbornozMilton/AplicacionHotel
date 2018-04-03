@@ -8,8 +8,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 		public MetadataHotelMap()
 		{
 			this.Property(m => m.MetadaId)
-			   .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)
-			   .IsRequired();
+			   .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
 
 			this.Property(m => m.Nombre)
 				.IsRequired();
