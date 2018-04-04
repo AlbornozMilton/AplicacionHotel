@@ -27,6 +27,7 @@ namespace Persistencia.DAL.EntityFramework
             this.RepositorioTarifa = new RepositorioTarifa(this.iDbContext);
             this.RepositorioHabitacion = new RepositorioHabitacion(this.iDbContext);
             this.RepositorioServicio = new RepositorioServicio(this.iDbContext);
+			this.RepositorioMetadaHotel = new RepositorioMetadaHotel(this.iDbContext);
         }
 
 
@@ -40,7 +41,7 @@ namespace Persistencia.DAL.EntityFramework
         public IRepositorioTarifa RepositorioTarifa{ get; private set; }
         public IRepositorioHabitacion RepositorioHabitacion{ get; private set; }
         public IRepositorioServicio RepositorioServicio{ get; private set; }
-
+		public IRepositorioMetadaHotel RepositorioMetadaHotel { get; private set; }
 
         /// <summary>
         /// Realiza el método SaveChanges();
