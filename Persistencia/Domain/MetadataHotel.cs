@@ -2,7 +2,7 @@
 {
 	public class MetadataHotel
 	{
-		public byte MetadaId { get; set; }
+		public byte MetadataHotelId { get; set; }
 
 		public string Nombre { get; set; }
 

@@ -24,7 +24,7 @@ namespace Persistencia.DAL.EntityFramework
 			Usuario user3 = new Usuario
 			{
 				UsuarioId = "norma",
-				Password = "norma"
+				Password = "rigoni"
 			};
 			context.Set<Usuario>().Add(user3);
 			#endregion
@@ -44,7 +44,7 @@ namespace Persistencia.DAL.EntityFramework
                 TarifaClienteId = TipoCliente.AcompanianteDirecto,
                 NombreTarifa = "Acompañante Directo",
                 Tarifa = 170,
-                TarifaExclusiva = 270
+                TarifaExclusiva = 0
             };
             context.Set<TarifaCliente>().Add(TarifaAcompDirecto);
 
@@ -53,7 +53,7 @@ namespace Persistencia.DAL.EntityFramework
                 TarifaClienteId = TipoCliente.AcompanianteNoDirecto,
                 NombreTarifa = "Acompañante No Directo",
                 Tarifa = 200,
-                TarifaExclusiva = 300
+                TarifaExclusiva = 0
             };
             context.Set<TarifaCliente>().Add(TarifaAcompNoDirecto);
 
@@ -62,7 +62,7 @@ namespace Persistencia.DAL.EntityFramework
                 TarifaClienteId = TipoCliente.TitularExceptuado,
                 NombreTarifa = "Titular Exceptuado",
                 Tarifa = 0,
-                TarifaExclusiva = 50
+                TarifaExclusiva = 0
             };
             context.Set<TarifaCliente>().Add(TarifaExceptuado);
 
@@ -287,7 +287,7 @@ namespace Persistencia.DAL.EntityFramework
 			Servicio Bata = new Servicio
 			{
 				ServicioId = 1,
-                Nombre = "Bata",
+				Nombre = "Bata",
                 Detalle = "El costo de este servicio es por día",
                 CostoBase = 10
             };
@@ -303,19 +303,10 @@ namespace Persistencia.DAL.EntityFramework
 
             context.Set<Servicio>().Add(AireAcondicionado);
 
-            Servicio SeguroDeSalud = new Servicio
-            {
-				ServicioId = 3,
-				Nombre = "Seguridad Medica",
-                Detalle = "El costo de este servicio es por día",
-                CostoBase = 10
-            };
-            context.Set<Servicio>().Add(SeguroDeSalud);
-
             Servicio Calefaccion = new Servicio
             {
-				ServicioId = 4,
-				Nombre = "Calefacción",
+				ServicioId = 3,
+				Nombre = "calefacción",
                 Detalle = "El costo de este servicio es por hora",
                 CostoBase = 30
             };
@@ -324,7 +315,7 @@ namespace Persistencia.DAL.EntityFramework
 
             Servicio RecargoPorFumar = new Servicio
             {
-				ServicioId = 5,
+				ServicioId = 4,
 				Nombre = "Recargo por Fumar",
                 Detalle = "El costo de este servicio por estadía",
                 CostoBase = 50
@@ -337,7 +328,7 @@ namespace Persistencia.DAL.EntityFramework
 				(
 					new MetadataHotel
 					{
-						MetadaId = 1,
+						MetadataHotelId = 1,
 						Nombre = "PorcentajeExclusividad",
 						Valor = 20
 					}
@@ -346,7 +337,7 @@ namespace Persistencia.DAL.EntityFramework
 				(
 					new MetadataHotel
 					{
-						MetadaId = 2,
+						MetadataHotelId = 2,
 						Nombre = "PorcentajeTour",
 						Valor = 10
 					}
