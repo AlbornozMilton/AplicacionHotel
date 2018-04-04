@@ -113,48 +113,48 @@ namespace Dominio
             return (listaHabitaciones);
         }
 
-        public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pPorcentaje)
-        {
+		public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta)
+		{
 			//este valor puede variar devido a los Alta de las Habitacioes, no es un valor fijo en la BD
-            int auxCapacidadTotal = 0;
+			int auxCapacidadTotal = 0;
 
-            List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
-            foreach (var hab in Habitaciones)
-            {
-                auxCapacidadTotal += hab.Capacidad;
-            }
+			List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
+			foreach (var hab in Habitaciones)
+			{
+				auxCapacidadTotal += hab.Capacidad;
+			}
 
 			//acumulará la cantidad respecto a las Hab exlcusivas
 			int auxCantExclusiva = 0;
 
-            List<Alojamiento> auxListaActivos = this.ObtenerAlojamientosActivos();
+			List<Alojamiento> auxListaActivos = this.ObtenerAlojamientosActivos();
 
-            foreach (var aloj in auxListaActivos)
-            {
+			foreach (var aloj in auxListaActivos)
+			{
 				//Acumular si se solicito exclusividad
 				//se evalua exclsuvidad antes de entrar a hacer todo los demas calculos
-                if (aloj.Exclusividad)
-                {
-                    DateTime alojFechaDesde = new DateTime();
-                    
+				if (aloj.Exclusividad)
+				{
+					DateTime alojFechaDesde = new DateTime();
+
 					//la cantidad exclusiva se acumula tanto si es alojado o reservado
-                    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-                        alojFechaDesde = aloj.FechaIngreso.Date;
-                    else //reservado
-                        alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+					if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+						alojFechaDesde = aloj.FechaIngreso.Date;
+					else //reservado
+						alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
 
 					// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
 					if (!(
-							(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <=0)
-                            ||
+							(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
+							||
 							(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
 						))
 					{
-                        auxCantExclusiva += aloj.Habitacion.Capacidad;
-                    }
-                }
-            }
-			return auxCantExclusiva < ((auxCapacidadTotal * pPorcentaje) / 100);
+						auxCantExclusiva += aloj.Habitacion.Capacidad;
+					}
+				}
+			}
+			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(1)) / 100);
         }
 
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)

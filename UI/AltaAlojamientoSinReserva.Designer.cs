@@ -154,7 +154,7 @@
 			this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(621, 42);
 			this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
 			this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(210, 44);
-			this.btn_VerificarDisponibilidad.TabIndex = 4;
+			this.btn_VerificarDisponibilidad.TabIndex = 1;
 			this.btn_VerificarDisponibilidad.Text = "Verificar Disponibilidad";
 			this.btn_VerificarDisponibilidad.UseVisualStyleBackColor = false;
 			this.btn_VerificarDisponibilidad.Click += new System.EventHandler(this.btn_VerificarDisponibilidad_Click);
@@ -166,6 +166,7 @@
 			this.dtp_fechaHasta.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.dtp_fechaHasta.Size = new System.Drawing.Size(406, 30);
 			this.dtp_fechaHasta.TabIndex = 3;
+			this.dtp_fechaHasta.TabStop = false;
 			this.dtp_fechaHasta.Value = new System.DateTime(2018, 1, 3, 0, 0, 0, 0);
 			this.dtp_fechaHasta.ValueChanged += new System.EventHandler(this.dtp_fechaHasta_ValueChanged);
 			// 
@@ -180,6 +181,7 @@
 			this.dtp_fechaDesde.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.dtp_fechaDesde.Size = new System.Drawing.Size(406, 30);
 			this.dtp_fechaDesde.TabIndex = 2;
+			this.dtp_fechaDesde.TabStop = false;
 			this.dtp_fechaDesde.ValueChanged += new System.EventHandler(this.dtp_fechaDesde_ValueChanged);
 			// 
 			// label4

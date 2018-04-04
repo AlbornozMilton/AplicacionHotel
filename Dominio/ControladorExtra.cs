@@ -75,13 +75,27 @@ namespace Dominio
             return (lista);
         }
 
-        public void AcutalizarCostoServicio(Servicio pServicio, string pCosto)
-        {
-            pServicio.ActualizarCosto(Convert.ToDouble(pCosto));
-            iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
-        }
+		#region Servicios
+		public void NuevoServicio(string pNombre, string pDetalle, string pCosto)
+		{
+			Servicio pServicio = new Servicio(pNombre, pDetalle,Convert.ToDouble(pCosto));
+			iUoW.RepositorioServicio.NuevoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+		}
 
-        public void ActualizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
+		public void EliminarServicio(Servicio pServicio)
+		{
+			iUoW.RepositorioServicio.ElimiarServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+		}
+
+		public void AcutalizarCostoServicio(Servicio pServicio, string pCosto)
+		{
+			pServicio.ActualizarCosto(Convert.ToDouble(pCosto));
+			iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+		} 
+		#endregion
+
+
+		public void ActualizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
         {
             if (pCostoNoExcl == "")
             {

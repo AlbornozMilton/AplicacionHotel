@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EntityFramework\Mappings\MetadataHotelMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\ServicioMap.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioHabitacion.cs" />
+    <Compile Include="DAL\EntityFramework\RepositorioMetadaHotel.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioServicio.cs" />
     <Compile Include="DAL\EntityFramework\RepositorioTarifa.cs" />
     <Compile Include="DAL\IRepositorioDomicilio.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="DAL\IRepositorioCiudad.cs" />
     <Compile Include="DAL\IRepositorioCliente.cs" />
     <Compile Include="DAL\IRepositorioHabitacion.cs" />
+    <Compile Include="DAL\IRepositorioMetadaHotel.cs" />
     <Compile Include="DAL\IRepositorioServicio.cs" />
     <Compile Include="DAL\IRepositorioTarifa.cs" />
     <Compile Include="DAL\IRepositorioUsuario.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="Domain\Domicilio.cs" />
     <Compile Include="Domain\Habitacion.cs" />
     <Compile Include="Domain\LineaServicio.cs" />
+    <Compile Include="Domain\MetadataHotel.cs" />
     <Compile Include="Domain\Pago.cs" />
     <Compile Include="Domain\Servicio.cs" />
     <Compile Include="Domain\TarifaCliente.cs" />
