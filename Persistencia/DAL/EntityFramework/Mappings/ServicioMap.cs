@@ -8,7 +8,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
         public ServicioMap()
         {
             this.Property(l => l.ServicioId)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
 
             this.Property(l => l.CostoBase)
                 .IsRequired();

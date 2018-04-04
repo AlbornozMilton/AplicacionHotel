@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Persistencia.Domain;
+using System;
 
 namespace Persistencia.DAL.EntityFramework
 {
@@ -27,11 +28,12 @@ namespace Persistencia.DAL.EntityFramework
 
 		public void NuevoServicio(Servicio pServicio)
 		{
-			if (iDbContext.Servicios.Where(s => s.Nombre == pServicio.Nombre && s.CostoBase == pServicio.CostoBase).SingleOrDefault() != null)
+			if (iDbContext.Servicios.Where(s => s.Nombre == pServicio.Nombre).SingleOrDefault() != null)
 			{
 				throw new System.Exception("Servicio ya Existente");
 			}
 
+			pServicio.ServicioId = Convert.ToByte(iDbContext.Servicios.Count() + 1);
 			iDbContext.Servicios.Add(pServicio);
 			iDbContext.SaveChanges();
 		}

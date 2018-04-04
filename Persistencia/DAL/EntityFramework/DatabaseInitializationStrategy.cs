@@ -283,47 +283,6 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Habitacion>().Add(hab10);
 			#endregion
 
-			#region Servicios
-			Servicio Bata = new Servicio
-			{
-				ServicioId = 1,
-				Nombre = "Bata",
-                Detalle = "El costo de este servicio es por día",
-                CostoBase = 10
-            };
-            context.Set<Servicio>().Add(Bata);
-
-            Servicio AireAcondicionado = new Servicio
-            {
-				ServicioId = 2,
-				Nombre = "Aire Acondicionado",
-                Detalle = "El costo de este servicio es por hora",
-                CostoBase = 30
-            };
-
-            context.Set<Servicio>().Add(AireAcondicionado);
-
-            Servicio Calefaccion = new Servicio
-            {
-				ServicioId = 3,
-				Nombre = "calefacción",
-                Detalle = "El costo de este servicio es por hora",
-                CostoBase = 30
-            };
-
-            context.Set<Servicio>().Add(Calefaccion);
-
-            Servicio RecargoPorFumar = new Servicio
-            {
-				ServicioId = 4,
-				Nombre = "Recargo por Fumar",
-                Detalle = "El costo de este servicio por estadía",
-                CostoBase = 50
-            };
-            context.Set<Servicio>().Add(RecargoPorFumar);
-
-			#endregion
-
 			context.Set<MetadataHotel>().Add
 				(
 					new MetadataHotel
