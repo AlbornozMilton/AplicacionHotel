@@ -55,7 +55,7 @@ namespace UI
                 {
 					this.HabSeleccionada = TablaDisp.HabSeleccionada;
 					//Almacenar si se supero el 20% de exlcuisividad permitida. Por defecto este campo va a estar en True
-					this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20);
+					this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
 					if (!exclusividadCapacidad)//si es falso que entre
 					{
 						VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las Fechas elegidas se supera el límite de exclusividad", TipoMensaje.Alerta);

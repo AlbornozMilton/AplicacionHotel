@@ -41,7 +41,7 @@ namespace UI
                 {
 					this.HabSeleccionada = TablaDisp.HabSeleccionada;
 
-					exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 20);
+					exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
 					if (!exclusividadCapacidad)//si es falso que entre
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Se Supera el límite de exclusividad de la capacidad del Hotel para las Fechas elejidas", TipoMensaje.Alerta);
