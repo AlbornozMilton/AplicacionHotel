@@ -26,13 +26,14 @@ namespace UI
 		{
 			txb_fechaActual.Text = DateTime.Today.ToString("dd/MM/yy");
 			dtp_fechaDesde.Value = DateTime.Now;
+			FechaIni = DateTime.Now; 
 			dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
 		}
 
 		private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
             //si la fecha ini es menor que fecha fin
-            if (FechaIni.CompareTo(FechaFin) == -1)
+            if (FechaIni.Date.CompareTo(FechaFin.Date) == -1)
             {
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
@@ -71,7 +72,7 @@ namespace UI
 			}
             else
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Las fechas seleccionadas no corresponden. Seleccione de nuevo", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha de Egreso debe ser Mayor a la Fecha de Ingreso", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }
@@ -286,7 +287,7 @@ namespace UI
 
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            this.FechaFin = dtp_fechaHasta.Value.Date;
+            this.FechaFin = dtp_fechaHasta.Value;
 			txb_NroHabitacion.Text = "";
 			txb_capacidad.Text = "";
 			ck_Exclusividad.Checked = false;

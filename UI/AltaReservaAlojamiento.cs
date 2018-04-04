@@ -46,7 +46,7 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            if (FechaIni.CompareTo(FechaFin) == -1)
+            if (FechaIni.Date.CompareTo(FechaFin.Date) == -1)
             {
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
