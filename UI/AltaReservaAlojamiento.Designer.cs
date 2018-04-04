@@ -161,7 +161,7 @@
 			this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(654, 31);
 			this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
 			this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(199, 41);
-			this.btn_VerificarDisponibilidad.TabIndex = 4;
+			this.btn_VerificarDisponibilidad.TabIndex = 1;
 			this.btn_VerificarDisponibilidad.Text = "Verificar Disponibilidad";
 			this.btn_VerificarDisponibilidad.UseVisualStyleBackColor = false;
 			this.btn_VerificarDisponibilidad.Click += new System.EventHandler(this.btn_VerificarDisponibilidad_Click);
@@ -173,6 +173,7 @@
 			this.dtp_fechaHasta.Name = "dtp_fechaHasta";
 			this.dtp_fechaHasta.Size = new System.Drawing.Size(448, 30);
 			this.dtp_fechaHasta.TabIndex = 3;
+			this.dtp_fechaHasta.TabStop = false;
 			this.dtp_fechaHasta.ValueChanged += new System.EventHandler(this.dtp_fechaHasta_ValueChanged);
 			// 
 			// dtp_fechaDesde
@@ -186,6 +187,7 @@
 			this.dtp_fechaDesde.Name = "dtp_fechaDesde";
 			this.dtp_fechaDesde.Size = new System.Drawing.Size(448, 30);
 			this.dtp_fechaDesde.TabIndex = 2;
+			this.dtp_fechaDesde.TabStop = false;
 			this.dtp_fechaDesde.ValueChanged += new System.EventHandler(this.dtp_fechaDesde_ValueChanged);
 			// 
 			// label4

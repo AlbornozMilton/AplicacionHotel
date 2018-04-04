@@ -59,6 +59,8 @@
 			this.btn_verDetalles = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox_ColorsRef = new System.Windows.Forms.GroupBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.pictureBox9 = new System.Windows.Forms.PictureBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.pictureBox8 = new System.Windows.Forms.PictureBox();
 			this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -73,13 +75,12 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.pictureBox9 = new System.Windows.Forms.PictureBox();
 			this.groupBox_Rapida.SuspendLayout();
 			this.groupBox_Personalizado.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoDeAlojamientos)).BeginInit();
 			this.groupBox_ColorsRef.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -87,7 +88,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox_Rapida
@@ -109,7 +109,7 @@
 			this.btn_ListarActivos.Location = new System.Drawing.Point(541, 27);
 			this.btn_ListarActivos.Name = "btn_ListarActivos";
 			this.btn_ListarActivos.Size = new System.Drawing.Size(91, 30);
-			this.btn_ListarActivos.TabIndex = 0;
+			this.btn_ListarActivos.TabIndex = 1;
 			this.btn_ListarActivos.Text = "Listar Activos";
 			this.btn_ListarActivos.UseVisualStyleBackColor = true;
 			this.btn_ListarActivos.Click += new System.EventHandler(this.btn_ListarActivos_Click);
@@ -149,7 +149,7 @@
 			this.checkBox_todos.Location = new System.Drawing.Point(420, 72);
 			this.checkBox_todos.Name = "checkBox_todos";
 			this.checkBox_todos.Size = new System.Drawing.Size(73, 27);
-			this.checkBox_todos.TabIndex = 7;
+			this.checkBox_todos.TabIndex = 10;
 			this.checkBox_todos.Text = "Todos";
 			this.checkBox_todos.UseVisualStyleBackColor = true;
 			// 
@@ -159,7 +159,7 @@
 			this.btn_Listar.Location = new System.Drawing.Point(542, 45);
 			this.btn_Listar.Name = "btn_Listar";
 			this.btn_Listar.Size = new System.Drawing.Size(91, 31);
-			this.btn_Listar.TabIndex = 6;
+			this.btn_Listar.TabIndex = 2;
 			this.btn_Listar.Text = "Listar";
 			this.btn_Listar.UseVisualStyleBackColor = true;
 			this.btn_Listar.Click += new System.EventHandler(this.btn_Listar_Click);
@@ -171,7 +171,7 @@
 			this.checkBox_cancelado.Location = new System.Drawing.Point(420, 48);
 			this.checkBox_cancelado.Name = "checkBox_cancelado";
 			this.checkBox_cancelado.Size = new System.Drawing.Size(109, 27);
-			this.checkBox_cancelado.TabIndex = 5;
+			this.checkBox_cancelado.TabIndex = 9;
 			this.checkBox_cancelado.Text = "Cancelado";
 			this.checkBox_cancelado.UseVisualStyleBackColor = true;
 			// 
@@ -182,7 +182,7 @@
 			this.checkBox_cerrado.Location = new System.Drawing.Point(420, 23);
 			this.checkBox_cerrado.Name = "checkBox_cerrado";
 			this.checkBox_cerrado.Size = new System.Drawing.Size(90, 27);
-			this.checkBox_cerrado.TabIndex = 4;
+			this.checkBox_cerrado.TabIndex = 8;
 			this.checkBox_cerrado.Text = "Cerrado";
 			this.checkBox_cerrado.UseVisualStyleBackColor = true;
 			// 
@@ -213,6 +213,7 @@
 			this.dateTimePicker_hasta.Name = "dateTimePicker_hasta";
 			this.dateTimePicker_hasta.Size = new System.Drawing.Size(333, 30);
 			this.dateTimePicker_hasta.TabIndex = 1;
+			this.dateTimePicker_hasta.TabStop = false;
 			// 
 			// dateTimePicker_desde
 			// 
@@ -221,6 +222,7 @@
 			this.dateTimePicker_desde.Name = "dateTimePicker_desde";
 			this.dateTimePicker_desde.Size = new System.Drawing.Size(333, 30);
 			this.dateTimePicker_desde.TabIndex = 0;
+			this.dateTimePicker_desde.TabStop = false;
 			// 
 			// groupBox3
 			// 
@@ -351,7 +353,7 @@
 			this.btn_Aceptar.Location = new System.Drawing.Point(1165, 504);
 			this.btn_Aceptar.Name = "btn_Aceptar";
 			this.btn_Aceptar.Size = new System.Drawing.Size(155, 30);
-			this.btn_Aceptar.TabIndex = 3;
+			this.btn_Aceptar.TabIndex = 4;
 			this.btn_Aceptar.Text = "Seleccionar";
 			this.btn_Aceptar.UseVisualStyleBackColor = true;
 			this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
@@ -362,7 +364,7 @@
 			this.button2.Location = new System.Drawing.Point(13, 504);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(145, 30);
-			this.button2.TabIndex = 4;
+			this.button2.TabIndex = 7;
 			this.button2.Text = "Cancelar";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -373,7 +375,7 @@
 			this.btn_verDetalles.Location = new System.Drawing.Point(971, 504);
 			this.btn_verDetalles.Name = "btn_verDetalles";
 			this.btn_verDetalles.Size = new System.Drawing.Size(143, 30);
-			this.btn_verDetalles.TabIndex = 5;
+			this.btn_verDetalles.TabIndex = 3;
 			this.btn_verDetalles.Text = "Ver Detalles";
 			this.btn_verDetalles.UseVisualStyleBackColor = true;
 			this.btn_verDetalles.Click += new System.EventHandler(this.button1_Click);
@@ -384,7 +386,7 @@
 			this.button1.Location = new System.Drawing.Point(766, 504);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(195, 30);
-			this.button1.TabIndex = 6;
+			this.button1.TabIndex = 5;
 			this.button1.Text = "Realizar Pago";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Visible = false;
@@ -419,6 +421,24 @@
 			this.groupBox_ColorsRef.TabIndex = 7;
 			this.groupBox_ColorsRef.TabStop = false;
 			this.groupBox_ColorsRef.Text = "REFERENCIAS DE COLORES PARA ALOJAMIENTOS";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(415, 146);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(67, 23);
+			this.label10.TabIndex = 20;
+			this.label10.Text = "Normal";
+			// 
+			// pictureBox9
+			// 
+			this.pictureBox9.BackColor = System.Drawing.Color.White;
+			this.pictureBox9.Location = new System.Drawing.Point(366, 150);
+			this.pictureBox9.Name = "pictureBox9";
+			this.pictureBox9.Size = new System.Drawing.Size(43, 19);
+			this.pictureBox9.TabIndex = 19;
+			this.pictureBox9.TabStop = false;
 			// 
 			// label9
 			// 
@@ -546,24 +566,6 @@
 			this.label4.TabIndex = 0;
 			this.label4.Text = "Sin Depósito tras 72hs de Reserva";
 			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(415, 146);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(67, 23);
-			this.label10.TabIndex = 20;
-			this.label10.Text = "Normal";
-			// 
-			// pictureBox9
-			// 
-			this.pictureBox9.BackColor = System.Drawing.Color.White;
-			this.pictureBox9.Location = new System.Drawing.Point(366, 150);
-			this.pictureBox9.Name = "pictureBox9";
-			this.pictureBox9.Size = new System.Drawing.Size(43, 19);
-			this.pictureBox9.TabIndex = 19;
-			this.pictureBox9.TabStop = false;
-			// 
 			// ListarAlojamientos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -592,6 +594,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ListadoDeAlojamientos)).EndInit();
 			this.groupBox_ColorsRef.ResumeLayout(false);
 			this.groupBox_ColorsRef.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -599,7 +602,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
 			this.ResumeLayout(false);
 
         }
