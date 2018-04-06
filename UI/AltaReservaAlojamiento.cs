@@ -62,6 +62,7 @@ namespace UI
 						ventanaEmergente.ShowDialog();
 						ck_Exclusividad.Enabled = this.exclusividadCapacidad;
 					}
+
 					//LLenar campos de Habitación
 					tbx_NroHab.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
 					txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja":"Alta";
@@ -193,6 +194,7 @@ namespace UI
 
 					new ControladorCliente().ControlContadoresConClientes(ClienteResponsable, contadores,txb_capacidad.Text);
 
+					//--------------------------------------------------lista de hab
 					this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
 
                     this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());

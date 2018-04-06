@@ -126,6 +126,7 @@ namespace Persistencia.DAL.EntityFramework
             localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
             localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
 
+			//ya estan enlazadas ¿¿??
 			foreach (var localHab in localAloj.Habitaciones)
 			{
 				foreach (var hab in pAloj.Habitaciones)

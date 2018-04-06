@@ -79,7 +79,6 @@
             this.Column2});
 			this.dGV_TablaHabitaciones.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_TablaHabitaciones.Location = new System.Drawing.Point(3, 26);
-			this.dGV_TablaHabitaciones.MultiSelect = false;
 			this.dGV_TablaHabitaciones.Name = "dGV_TablaHabitaciones";
 			this.dGV_TablaHabitaciones.ReadOnly = true;
 			this.dGV_TablaHabitaciones.RowHeadersVisible = false;
