@@ -1,4 +1,5 @@
-﻿namespace Dominio
+﻿using System.Collections.Generic;
+namespace Dominio
 {
 	public class Habitacion: System.IComparable<Habitacion>
 	{
@@ -7,6 +8,7 @@
 		private byte iCapacidad;
 		private bool iOcupada;
 		private bool iAlta;
+		private List<AlojHab> iAloHabs = new List<AlojHab>();
 
 		//CONSTRUCTORES
 		public Habitacion()	{}
@@ -50,6 +52,8 @@
 			get { return this.iAlta; }
 			private set { this.iAlta = value; }
 		}
+
+		public List<AlojHab> AlojHabs { get { return this.iAloHabs } private set { this.iAloHabs = value; } }
 
 		//---------------------metodos
 		public void OcuparHabitacion()
