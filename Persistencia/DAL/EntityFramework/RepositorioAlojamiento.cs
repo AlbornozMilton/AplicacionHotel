@@ -68,9 +68,22 @@ namespace Persistencia.DAL.EntityFramework
         public override void Add(Alojamiento unAloj)
         {
             List<Cliente> auxListCliente = new List<Cliente>();
-            Habitacion auxHabitacion = unAloj.Habitacion;
+			List<Habitacion> auxHabitaciones = new List<Habitacion>();
+			//List<Habitacion> externalHabs = unAloj.Habitaciones;
+			//unAloj.Habitaciones = iDbContext.Habitaciones.SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
 
-			unAloj.Habitacion = iDbContext.Habitaciones.SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
+			//Enlazar Habitaciones
+			foreach (var hab in unAloj.Habitaciones)
+			{
+				Habitacion localHab = iDbContext.Habitaciones.Find(hab.HabitacionId);
+				if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+				{
+					localHab.Exclusiva = hab.Exclusiva;
+					localHab.Ocupada = hab.Ocupada;
+				}
+				auxHabitaciones.Add(localHab);
+			}
+			unAloj.Habitaciones = auxHabitaciones;
 
 			//Enlazar clientes
             foreach (var cli in unAloj.Clientes)
@@ -80,13 +93,23 @@ namespace Persistencia.DAL.EntityFramework
             unAloj.Clientes = auxListCliente;
 
 
-            if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-            {
-				// condicion de que la HAB este en ALTA ??
-                unAloj.Habitacion.Exclusiva = auxHabitacion.Exclusiva;
-				unAloj.Habitacion.Ocupada = auxHabitacion.Ocupada;
+    //        if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+    //        {
+				//// condicion de que la HAB este en ALTA ??
+				//// unAloj.Habitacion.Exclusiva = auxHabitacion.Exclusiva;
+				//// unAloj.Habitacion.Ocupada = auxHabitacion.Ocupada;
+				////foreach (var hab in unAloj.Habitaciones)
+				////{
+				////	foreach (var externalHab in externalHabs)
+				////	{
+				////		if (hab.HabitacionId == )
+				////		{
 
-            }
+				////		}
+				////	}
+				////}
+
+    //        }
 
             iDbContext.Alojamientos.Add(unAloj);
 
