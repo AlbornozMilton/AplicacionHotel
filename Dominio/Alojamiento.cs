@@ -7,7 +7,7 @@ namespace Dominio
     {
         private List<LineaServicio> iServicios;
         private List<Cliente> iClientes;
-        private Habitacion iHabitacion;
+        private List<Habitacion> iHabitaciones;
         private List<Pago> iPagos = new List<Pago>();
 
         private int iIdAlojamiento;
@@ -34,7 +34,7 @@ namespace Dominio
         /// <summary>
         /// Constructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(Habitacion unaHab, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
+        public Alojamiento(List<Habitacion> pHabes, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
 
@@ -47,7 +47,7 @@ namespace Dominio
                 iClientes.Add(cli);
             }
 
-            this.iHabitacion = unaHab;
+            this.iHabitaciones = pHabes;
             this.iFechaIngreso = unaFechaIngreso;
 			this.iFechaEstimadaEgreso =
 				new DateTime(
@@ -61,7 +61,7 @@ namespace Dominio
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(string pContTarifas, Habitacion unaHab, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
+        public Alojamiento(string pContTarifas, List<Habitacion> pHabes, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;
@@ -70,7 +70,7 @@ namespace Dominio
             this.iClientes.Add(unClienteResp);
             this.iDniResponsable = unClienteResp.ClienteId;
 
-            this.iHabitacion = unaHab;
+            this.iHabitaciones = pHabes;
             this.iFechaEstimadaIngreso = 
 				new DateTime(
 						unaFechaEstimadaIngreso.Year,
@@ -171,16 +171,16 @@ namespace Dominio
             private set { this.iClientes = value; }
         }
 
-        public int HabitacionId
-        {
-            get { return this.iHabitacion.HabitacionId; }
-           // private set { this.iHabitacion. = value; }
-        }
+        //public List<int> HabitacionId
+        //{
+        //    get { return this.iHabitacion.HabitacionId; }
+        //   // private set { this.iHabitacion. = value; }
+        //}
 
-        public Habitacion Habitacion
+        public List<Habitacion> Habitaciones
         {
-            get { return this.iHabitacion; }
-            private set { this.iHabitacion = value; }
+            get { return this.iHabitaciones; }
+            private set { this.iHabitaciones = value; }
         }
 
         public List<LineaServicio> Servicios

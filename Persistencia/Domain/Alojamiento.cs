@@ -19,10 +19,10 @@ namespace Persistencia.Domain
         public EstadoAlojamiento EstadoAlojamiento { get; set; }
         public string ContadoresTarifas { get; set; }
 
-        //-------------------- Relaciones ---------------------------------//
-    //    public int ClienteId { get; set; }
-        public byte HabitacionId { get; set; }
-        public Habitacion Habitacion { get; set; }
+    //-------------------- Relaciones ---------------------------------//
+	//    public int ClienteId { get; set; }
+    //   public byte HabitacionId { get; set; }
+        public List<Habitacion> Habitaciones { get; set; }
         public List<Cliente> Clientes { get; set; }
         public List<Pago> Pagos { get; set; }
         public List<LineaServicio> Servicios { get; set; }

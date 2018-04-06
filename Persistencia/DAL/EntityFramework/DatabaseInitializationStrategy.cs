@@ -23,8 +23,8 @@ namespace Persistencia.DAL.EntityFramework
             context.Set<Usuario>().Add(user2);
 			Usuario user3 = new Usuario
 			{
-				UsuarioId = "norma",
-				Password = "rigoni"
+				UsuarioId = "Complejo",
+				Password = "inmaculada"
 			};
 			context.Set<Usuario>().Add(user3);
 			#endregion
