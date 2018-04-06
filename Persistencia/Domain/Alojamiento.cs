@@ -15,7 +15,7 @@ namespace Persistencia.Domain
 		public DateTime? FechaCancelacion { get; set; }
 		public double MontoTotal { get; set; }
         public double MontoDeuda { get; set; }
-        public bool Exclusividad { get; set; }
+        public bool EsTour { get; set; }
         public EstadoAlojamiento EstadoAlojamiento { get; set; }
         public string ContadoresTarifas { get; set; }
 

@@ -14,7 +14,7 @@ namespace Dominio
         private int iDniResponsable;
         private double iMontoTotal;
         private double iMontoDeuda;
-        public bool iExclusividad;
+        public bool iEsTour;
         private DateTime iFechaReserva = new DateTime();
         private DateTime iFechaEstimadaEgreso = new DateTime();
         private DateTime iFechaEstimadaIngreso = new DateTime();
@@ -34,7 +34,7 @@ namespace Dominio
         /// <summary>
         /// Constructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(List<Habitacion> pHabes, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
+        public Alojamiento(List<Habitacion> pHabes, Cliente unClienteResp, List<Cliente> listaAcompañantes, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour)
         {
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
 
@@ -55,13 +55,13 @@ namespace Dominio
 						unaFechaEstimadaEgreso.Month,
 						unaFechaEstimadaEgreso.Day,
 						11, 00, 00);
-			this.iExclusividad = HabExclusividad;
+			this.iEsTour = pEsTour;
         }
 
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(string pContTarifas, List<Habitacion> pHabes, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool HabExclusividad)
+        public Alojamiento(string pContTarifas, List<Habitacion> pHabes, Cliente unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;
@@ -83,7 +83,7 @@ namespace Dominio
 						unaFechaEstimadaEgreso.Month,
 						unaFechaEstimadaEgreso.Day,
 						11, 00, 00);
-			this.iExclusividad = HabExclusividad;
+			this.iEsTour = pEsTour;
             this.iContadoresTarifas = pContTarifas;
         }
 
@@ -147,10 +147,10 @@ namespace Dominio
             get { return this.iMontoDeuda * 0.5; }
         }
 
-        public bool Exclusividad
+        public bool EsTour
         {
-            get { return this.iExclusividad; }
-            private set { this.iExclusividad = value; }
+            get { return this.iEsTour; }
+            private set { this.iEsTour = value; }
         }
 
         public EstadoAlojamiento EstadoAlojamiento

@@ -25,7 +25,7 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Habitacion").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Where(a => a.AlojamientoId == pId).SingleOrDefault();
+                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Habitaciones").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Where(a => a.AlojamientoId == pId).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -36,7 +36,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitacion").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Habitaciones").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
@@ -45,7 +45,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados, DateTime pDesde, DateTime pHasta)
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Include("Habitacion")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Include("Habitaciones")
 							   where (
 										(pEstados.Contains(aloj.EstadoAlojamiento))
                                         &&
@@ -201,7 +201,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> AlojamientosConDeuda()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Include("Habitacion")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("Clientes.TarifaCliente").Include("Clientes.Domicilio").Include("Habitaciones")
 							   where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado) && (aloj.MontoDeuda > 0))
                                select aloj;
 
