@@ -5,21 +5,17 @@
 		private byte iNumero;
 		private byte iPlanta;
 		private byte iCapacidad;
-		private bool iExclusiva;
 		private bool iOcupada;
 		private bool iAlta;
 
 		//CONSTRUCTORES
-		public Habitacion()
-		{
-		}
+		public Habitacion()	{}
 
-		public Habitacion(byte pNumero, byte pPlanta, bool pExclusiva, byte pCapacidad, bool pOcupada, bool pAlta)
+		public Habitacion(byte pNumero, byte pPlanta, byte pCapacidad, bool pOcupada, bool pAlta)
 		{
 			this.iNumero = pNumero;
 			this.iPlanta = pPlanta;
 			this.iCapacidad = pCapacidad;
-			this.iExclusiva = pExclusiva;
 			this.iOcupada = pOcupada;
 			this.iAlta = pAlta;
 		}
@@ -35,11 +31,6 @@
 		{
 			get { return this.iPlanta; }
 			private set { this.iPlanta = value; }
-		}
-		public bool Exclusiva
-		{
-			get { return this.iExclusiva; }
-			private set { this.iExclusiva = value; }
 		}
 
 		public byte Capacidad
@@ -70,11 +61,6 @@
 		{
 			this.Ocupada = false;
 		}
-
-		public void SetExclusividad(bool pExclusividad)
-        {
-            this.Exclusiva = pExclusividad;
-        }
 
 		public void DarDeBaja()
 		{
