@@ -1,6 +1,6 @@
 ﻿namespace Dominio
 {
-	public class Habitacion
+	public class Habitacion: System.IComparable<Habitacion>
 	{
 		private byte iNumero;
 		private byte iPlanta;
@@ -84,6 +84,11 @@
 		public void DarDeAlta()
 		{
 			this.iAlta = true;
+		}
+
+		public int CompareTo(Habitacion other)
+		{
+			return this.HabitacionId.CompareTo(other.HabitacionId);
 		}
 	}
 }

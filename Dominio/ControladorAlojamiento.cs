@@ -101,7 +101,7 @@ namespace Dominio
                 {
                     foreach (var hab in listaHabitaciones)
                     {
-                        if (hab.HabitacionId == aloj.HabitacionId)
+                        if (aloj.Habitaciones.Contains(hab))
                         {
 							hab.OcuparHabitacion();
                             hab.SetExclusividad(aloj.Exclusividad);
