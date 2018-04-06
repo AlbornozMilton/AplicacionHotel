@@ -17,11 +17,11 @@ namespace Dominio
 		private DateTime iFechaCancelacion = new DateTime();
 		private double iMontoTotal;
 		private double iMontoDeuda;
+		private EstadoAlojamiento iEstadoAloj;
 
 		private List<LineaServicio> iServicios = new List<LineaServicio>();
 		private List<AlojHab> iAlojHabs = new List<AlojHab>();
 		private List<Pago> iPagos = new List<Pago>();
-		private EstadoAlojamiento iEstadoAloj;
 
         //-----------------------CONSTRUCTORES----------------------
      
@@ -82,7 +82,17 @@ namespace Dominio
             get { return this.iDniResponsable; }
             private set { this.iDniResponsable = value; }
         }
-        public DateTime FechaReserva
+		public bool EsTour
+		{
+			get { return this.iEsTour; }
+			private set { this.iEsTour = value; }
+		}
+		public string ContadoresTarifas
+		{
+			get { return this.iContadoresTarifas; }
+			private set { this.iContadoresTarifas = value; }
+		}
+		public DateTime FechaReserva
         {
             get { return this.iFechaReserva; }
             private set { this.iFechaReserva = value; }
@@ -107,60 +117,36 @@ namespace Dominio
             get { return this.iFechaEgreso; }
             private set { this.iFechaEgreso = value; }
         }
-
 		public DateTime FechaCancelacion
 		{
 			get { return this.iFechaCancelacion; }
 			private set { this.iFechaCancelacion = value; }
 		}
-
 		public double MontoTotal
         {
             get { return this.iMontoTotal; }
             private set { this.iMontoTotal = value; }
         }
-
         public double MontoDeuda
         {
             get { return this.iMontoDeuda; }
             private set { this.iMontoDeuda = value; }
         }
-
-        public double Deposito
-        {
-            get { return this.iMontoDeuda * 0.5; }
-        }
-
-        public bool EsTour
-        {
-            get { return this.iEsTour; }
-            private set { this.iEsTour = value; }
-        }
-
         public EstadoAlojamiento EstadoAlojamiento
         {
             get { return this.iEstadoAloj; }
             private set { this.iEstadoAloj = value; }
         }
-
-        public string ContadoresTarifas
-        {
-            get { return this.iContadoresTarifas; }
-            private set { this.iContadoresTarifas = value; }
-        }
-
-        public List<AlojHab> Habitaciones
-        {
+        public List<AlojHab> AlojHabes
+		{
             get { return this.iAlojHabs; }
             private set { this.iAlojHabs = value; }
         }
-
         public List<LineaServicio> Servicios
         {
             get { return this.iServicios; }
             private set { this.iServicios = value; }
         }
-
         public List<Pago> Pagos
         {
             get { return this.iPagos; }
@@ -168,6 +154,11 @@ namespace Dominio
         }
 
         //----------------------METHODS----------------------
+
+		public double Deposito(int pPorcentajeDepo)
+		{
+			return this.iMontoTotal * pPorcentajeDepo * 0.01;
+		}
 		/// <summary>
 		/// Cambio de Estado a "Alojado" y Set fecha de Ingreso
 		/// </summary>
