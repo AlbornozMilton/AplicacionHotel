@@ -8,7 +8,7 @@ namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
-        public List<Habitacion> HabSeleccionadas;
+        public List<Habitacion> HabSeleccionadas = new List<Habitacion>();
 		private DateTime iFechaDesde, iFechaHasta;
         public List<Habitacion> Habitaciones;
 
