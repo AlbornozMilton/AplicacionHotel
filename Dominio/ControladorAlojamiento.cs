@@ -150,7 +150,10 @@ namespace Dominio
 							(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
 						))
 					{
-						auxCantExclusiva += aloj.Habitacion.Capacidad;
+						foreach (var hab in aloj.Habitaciones)
+						{
+							auxCantExclusiva += hab.Capacidad;
+						}
 					}
 				}
 			}
