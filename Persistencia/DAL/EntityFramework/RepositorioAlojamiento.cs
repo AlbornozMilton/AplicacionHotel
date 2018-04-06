@@ -126,7 +126,17 @@ namespace Persistencia.DAL.EntityFramework
             localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
             localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
 
-            localAloj.Habitacion.Exclusiva = pAloj.Habitacion.Exclusiva;
+			foreach (var localHab in localAloj.Habitaciones)
+			{
+				foreach (var hab in pAloj.Habitaciones)
+				{
+					if (localHab.HabitacionId == hab.HabitacionId)
+					{
+						localHab.Exclusiva = hab.Exclusiva;
+						localHab.Ocupada = hab.Ocupada;
+					}
+				}
+			}
           
             List<Cliente> auxListCliente = new List<Cliente>();
             foreach (var cli in pAloj.Clientes)
