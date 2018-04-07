@@ -38,9 +38,9 @@ namespace UI
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
 
-				if (TablaDisp.HabSeleccionada != null)
+				if (true)
                 {
-					this.HabSeleccionada = TablaDisp.HabSeleccionada;
+					//this.HabSeleccionada = TablaDisp.HabSeleccionada;
 
 					exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
 					if (!exclusividadCapacidad)//si es falso que entre
@@ -218,9 +218,9 @@ namespace UI
 				if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
 				{
 					this.NuevoAlojamiento.SetClientes(this.Acompañantes);
-					new ControladorCliente().ControlCapacidadConClientes(this.NuevoAlojamiento.Clientes, HabSeleccionada);
-					new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
-					NuevoAlojamiento.Habitacion.OcuparHabitacion();
+					//new ControladorCliente().ControlCapacidadConClientes(this.NuevoAlojamiento.Clientes, HabSeleccionada);
+					//new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
+					//NuevoAlojamiento.Habitacion.OcuparHabitacion();
 				}
 				else
 				{
@@ -229,10 +229,10 @@ namespace UI
 						throw new Exception("Un Titular Exceptuado debe estar Acompañado");
 					}
 
-					new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
-					HabSeleccionada.OcuparHabitacion();
-					this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
-					NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
+					//new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
+					//HabSeleccionada.OcuparHabitacion();
+					//this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
+					//NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
 				}
 				txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
 				btn_Comprobar.Enabled = false;
@@ -259,7 +259,7 @@ namespace UI
             try
             {
                 int auxIdAloj;
-                if (NuevoAlojamiento.ContadoresTarifas == null) //Alta sin Reserva
+                if (NuevoAlojamiento == null) //Alta sin Reserva
                 {
                     auxIdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 }
@@ -321,8 +321,6 @@ namespace UI
 				}
 				ck_Exclusividad.Checked = false;
 			} // no se cumple la excl cuando se comaprte
-
-			this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
 		}
 
 		/// <summary>
@@ -339,16 +337,9 @@ namespace UI
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
             dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
             dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
-            txb_NroHabitacion.Text = NuevoAlojamiento.HabitacionId.ToString();
-			txb_capacidad.Text = NuevoAlojamiento.Habitacion.Capacidad.ToString();
-			txb_planta.Text = NuevoAlojamiento.Habitacion.Planta == 0 ? "Baja" : "Alta";
-
-			HabSeleccionada = NuevoAlojamiento.Habitacion;
-            ck_Exclusividad.Checked = NuevoAlojamiento.Exclusividad;
 			//ck_Exclusividad.CheckState = NuevoAlojamiento.Exclusividad == true ? CheckState.Checked:CheckState.Unchecked;
 
 			//cliente responsable
-			this.ClienteResponsable = NuevoAlojamiento.Clientes.Find(c => c.ClienteId == NuevoAlojamiento.DniResponsable);
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
             this.Acompañantes = new List<Cliente>();
             this.Acompañantes.Add(ClienteResponsable);

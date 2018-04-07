@@ -54,7 +54,7 @@ namespace Dominio
 			private set { this.iAlta = value; }
 		}
 
-		public List<AlojHab> AlojHabs { get { return this.iAloHabs } private set { this.iAloHabs = value; } }
+		public List<AlojHab> AlojHabs { get { return this.iAloHabs; } private set { this.iAloHabs = value; } }
 
 		//---------------------metodos
 		public void OcuparHabitacion()

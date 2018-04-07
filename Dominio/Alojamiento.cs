@@ -303,5 +303,23 @@ namespace Dominio
 			//}
 			return 0;
 		}
+
+		public Cliente ClienteResponsable()
+		{
+			Cliente cliResponsable = null;
+			foreach (AlojHab alojHab in this.AlojHabes)
+			{
+				foreach (Cliente cli in alojHab.Clientes)
+				{
+					if (cli.ClienteId == this.iDniResponsable)
+					{
+						cliResponsable = cli;
+						break;
+					}
+				}
+				break;
+			}
+			return cliResponsable;
+		}
     }
 }

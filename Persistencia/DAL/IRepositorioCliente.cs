@@ -12,7 +12,7 @@ namespace Persistencia.DAL
         bool ExisteClienteDNI(int pDNI);
         bool ExisteClienteLegajo(int pLegajo);
         void ActualizarCliente(Cliente pCliente, int pIdDomicilio);
-        void ModificarDNICliente(Cliente pCliente, int pLegajo);
+        void EliminarCliente(Cliente pCliente, int pDNI);
     }
 
 }

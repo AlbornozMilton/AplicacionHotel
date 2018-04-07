@@ -26,7 +26,7 @@ namespace UI
                     {
                         if (!(AlojSeleccionado.Pagos.Exists(p => p.Tipo.ToString() == "Deposito"))
 							&&
-							AlojSeleccionado.Deposito != 0)
+							AlojSeleccionado.Deposito(1) != 0)
                         {
                             cbx_TipoPago.Items.Add("Deposito");
                         }
@@ -77,7 +77,6 @@ namespace UI
         {
             CargarPagos();
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(AlojSeleccionado.AlojamientoId, AlojSeleccionado.EstadoAlojamiento, AlojSeleccionado.HabitacionId, AlojSeleccionado.DniResponsable, AlojSeleccionado.Clientes.Find(c => c.ClienteId == AlojSeleccionado.DniResponsable).NombreCompleto());
         }
 
         //Buscar otro alojamiento
@@ -123,7 +122,7 @@ namespace UI
         {
             if (cbx_TipoPago.SelectedItem.ToString() == "Deposito")
             {
-                txb_Monto.Text = AlojSeleccionado.Deposito.ToString();
+                txb_Monto.Text = AlojSeleccionado.Deposito(1).ToString();
             }
             else if (cbx_TipoPago.SelectedItem.ToString() == "Servicios")
             {

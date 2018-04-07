@@ -73,24 +73,23 @@ namespace Persistencia.DAL.EntityFramework
 			//unAloj.Habitaciones = iDbContext.Habitaciones.SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
 
 			//Enlazar Habitaciones
-			foreach (var hab in unAloj.Habitaciones)
-			{
-				Habitacion localHab = iDbContext.Habitaciones.Find(hab.HabitacionId);
-				if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-				{
-					localHab.Exclusiva = hab.Exclusiva;
-					localHab.Ocupada = hab.Ocupada;
-				}
-				auxHabitaciones.Add(localHab);
-			}
-			unAloj.Habitaciones = auxHabitaciones;
+			//foreach (var hab in unAloj.Habitaciones)
+			//{
+			//	Habitacion localHab = iDbContext.Habitaciones.Find(hab.HabitacionId);
+			//	if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+			//	{
+			//		localHab.Ocupada = hab.Ocupada;
+			//	}
+			//	auxHabitaciones.Add(localHab);
+			//}
+			//unAloj.Habitaciones = auxHabitaciones;
 
-			//Enlazar clientes
-            foreach (var cli in unAloj.Clientes)
-            {
-                auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-            }
-            unAloj.Clientes = auxListCliente;
+			////Enlazar clientes
+   //         foreach (var cli in unAloj.Clientes)
+   //         {
+   //             auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+   //         }
+   //         unAloj.Clientes = auxListCliente;
 
 
     //        if (unAloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
@@ -127,26 +126,26 @@ namespace Persistencia.DAL.EntityFramework
             localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
 
 			//ya estan enlazadas ¿¿??
-			foreach (var localHab in localAloj.Habitaciones)
-			{
-				foreach (var hab in pAloj.Habitaciones)
-				{
-					if (localHab.HabitacionId == hab.HabitacionId)
-					{
-						localHab.Exclusiva = hab.Exclusiva;
-						localHab.Ocupada = hab.Ocupada;
-					}
-				}
-			}
+			//foreach (var localHab in localAloj.Habitaciones)
+			//{
+			//	foreach (var hab in pAloj.Habitaciones)
+			//	{
+			//		if (localHab.HabitacionId == hab.HabitacionId)
+			//		{
+			//			localHab.Exclusiva = hab.Exclusiva;
+			//			localHab.Ocupada = hab.Ocupada;
+			//		}
+			//	}
+			//}
           
-            List<Cliente> auxListCliente = new List<Cliente>();
-            foreach (var cli in pAloj.Clientes)
-            {
-                auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-            }
-            localAloj.Clientes = auxListCliente;
+   //         List<Cliente> auxListCliente = new List<Cliente>();
+   //         foreach (var cli in pAloj.Clientes)
+   //         {
+   //             auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
+   //         }
+   //         localAloj.Clientes = auxListCliente;
 
-            iDbContext.SaveChanges();
+   //         iDbContext.SaveChanges();
         }
 
         /// <summary>

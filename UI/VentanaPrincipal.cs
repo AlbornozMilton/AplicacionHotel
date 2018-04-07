@@ -113,12 +113,11 @@ namespace UI
             int countRow = 0;
 			foreach (Alojamiento aloj in this.ListaAlojamientos)
 			{
-				Cliente cli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
+				Cliente cli = aloj.ClienteResponsable();
 				dGV_Alojamientos.Rows.Add
 					(
 					aloj.AlojamientoId,
 					aloj.EstadoAlojamiento,
-					aloj.HabitacionId,
 					aloj.DniResponsable,
 					cli.Legajo,
 					cli.NombreCompleto(),

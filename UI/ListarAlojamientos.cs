@@ -43,8 +43,8 @@ namespace UI
                 int indexRow = 0;
                 foreach (var aloj in this.Alojamientos)
                 {
-                    Cliente auxCli = aloj.Clientes.Find(c => c.ClienteId == aloj.DniResponsable);
-                    dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
+					Cliente auxCli = aloj.ClienteResponsable();
+                    //dGV_ListadoDeAlojamientos.Rows.Add(aloj.AlojamientoId, aloj.EstadoAlojamiento, aloj.Habitacion.HabitacionId, auxCli.ClienteId, auxCli.NombreCompleto(), auxCli.TarifaCliente.NombreTarifa);
 					dGV_ListadoDeAlojamientos.Rows[indexRow].Cells[6].Style.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
 					dGV_ListadoDeAlojamientos.Rows[indexRow].Cells[6].Style.SelectionBackColor = Color.Transparent;
 					indexRow++;
