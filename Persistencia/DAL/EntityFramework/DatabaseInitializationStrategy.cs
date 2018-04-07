@@ -179,98 +179,99 @@ namespace Persistencia.DAL.EntityFramework
 				Capacidad = 3,
 				Ocupada = false,
 				Alta = true,
+				AlojHabs = new System.Collections.Generic.List<AlojHab>()
             };
-            context.Set<Habitacion>().Add(hab1);
+   //         context.Set<Habitacion>().Add(hab1);
 
-            Habitacion hab2 = new Habitacion()
-            {
-                HabitacionId = 2,
-				Capacidad = 3,
-				Ocupada = false,
-				Alta = true,
-				Planta = 0
-            };
-            context.Set<Habitacion>().Add(hab2);
+   //         Habitacion hab2 = new Habitacion()
+   //         {
+   //             HabitacionId = 2,
+			//	Capacidad = 3,
+			//	Ocupada = false,
+			//	Alta = true,
+			//	Planta = 0
+   //         };
+   //         context.Set<Habitacion>().Add(hab2);
 
-            Habitacion hab3 = new Habitacion()
-            {
-                HabitacionId = 3,
-				Capacidad = 3,
-				Ocupada = false,
-				Alta = true,
-				Planta = 0
-            };
-            context.Set<Habitacion>().Add(hab3);
+   //         Habitacion hab3 = new Habitacion()
+   //         {
+   //             HabitacionId = 3,
+			//	Capacidad = 3,
+			//	Ocupada = false,
+			//	Alta = true,
+			//	Planta = 0
+   //         };
+   //         context.Set<Habitacion>().Add(hab3);
 
-            Habitacion hab4 = new Habitacion()
-            {
-                HabitacionId = 4,
-                Planta = 0,
-				Capacidad = 3,
-				Alta = true,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab4);
+   //         Habitacion hab4 = new Habitacion()
+   //         {
+   //             HabitacionId = 4,
+   //             Planta = 0,
+			//	Capacidad = 3,
+			//	Alta = true,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab4);
 
-            Habitacion hab5 = new Habitacion()
-            {
-                HabitacionId = 5,
-				Alta = true,
-				Planta = 0,
-				Capacidad = 3,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab5);
+   //         Habitacion hab5 = new Habitacion()
+   //         {
+   //             HabitacionId = 5,
+			//	Alta = true,
+			//	Planta = 0,
+			//	Capacidad = 3,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab5);
 
-            Habitacion hab6 = new Habitacion()
-            {
-                HabitacionId = 6,
-				Alta = true,
-                Planta = 1,
-				Capacidad = 3,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab6);
+   //         Habitacion hab6 = new Habitacion()
+   //         {
+   //             HabitacionId = 6,
+			//	Alta = true,
+   //             Planta = 1,
+			//	Capacidad = 3,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab6);
 
-            Habitacion hab7 = new Habitacion()
-            {
-                HabitacionId = 7,
-				Alta = true,
-				Planta = 1,
-				Capacidad = 3,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab7);
+   //         Habitacion hab7 = new Habitacion()
+   //         {
+   //             HabitacionId = 7,
+			//	Alta = true,
+			//	Planta = 1,
+			//	Capacidad = 3,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab7);
 
-            Habitacion hab8 = new Habitacion()
-            {
-                HabitacionId = 8,
-                Planta = 1,
-				Alta = true,
-				Capacidad = 3,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab8);
+   //         Habitacion hab8 = new Habitacion()
+   //         {
+   //             HabitacionId = 8,
+   //             Planta = 1,
+			//	Alta = true,
+			//	Capacidad = 3,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab8);
 
-            Habitacion hab9 = new Habitacion()
-            {
-                HabitacionId = 9,
-				Alta = true,
-				Planta = 1,
-				Capacidad = 3,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab9);
+   //         Habitacion hab9 = new Habitacion()
+   //         {
+   //             HabitacionId = 9,
+			//	Alta = true,
+			//	Planta = 1,
+			//	Capacidad = 3,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab9);
 
-            Habitacion hab10 = new Habitacion()
-            {
-                HabitacionId = 10,
-                Planta = 1,
-				Capacidad = 3,
-				Alta = true,
-				Ocupada = false
-			};
-            context.Set<Habitacion>().Add(hab10);
+   //         Habitacion hab10 = new Habitacion()
+   //         {
+   //             HabitacionId = 10,
+   //             Planta = 1,
+			//	Capacidad = 3,
+			//	Alta = true,
+			//	Ocupada = false
+			//};
+   //         context.Set<Habitacion>().Add(hab10);
 			#endregion
 
 			context.Set<MetadataHotel>().Add
