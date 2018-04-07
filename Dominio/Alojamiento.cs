@@ -174,7 +174,7 @@ namespace Dominio
         }
 
 		//Tener en cuenta que el Responsable no esta en la lista de contadores
-        public void CalcularCostoBase(List<TarifaCliente> pTarifas, Cliente pResponsable)
+        public void CalcularCostoBase()
         {
 			// LA EXCLUSIVIDAD SE ACUMULA SEGUN CADA HABITACION
 			double costoBase = 0;
@@ -194,40 +194,42 @@ namespace Dominio
 							costoBase += cli.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
 						}
 					}
-					costoBase += mAloHab.Clientes[0].ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+					else
+						costoBase += mAloHab.Clientes[0].ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
 				}
 			}
 			else // RESERVADO
 			{
 				auxFechaDesde = this.iFechaEstimadaIngreso;
 
-				if (pResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+				foreach (AlojHab mAloHab in this.AlojHabes)
 				{
-					for (int i = 0; i < this.iContadoresTarifas.Length; i++)
+					if (mAloHab.Tarifas[0].TarifaClienteId != TipoCliente.Convenio)
 					{
-						byte aux = Convert.ToByte(this.iContadoresTarifas[i]);
-
-						while (aux > Convert.ToByte('0'))
+						foreach (TarifaCliente tarifa in mAloHab.Tarifas)
 						{
-							costoBase += pTarifas[i].GetTarifa(mAloHab.Exclusividad);
-							aux--;
+							costoBase += tarifa.GetTarifa(mAloHab.Exclusividad);
 						}
 					}
-					//el resonsable no se encuentra en los contadores
-					costoBase += pResponsable.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+					else
+						costoBase += mAloHab.Clientes[0].ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
 				}
-				else //si es por convenio
-					costoBase += pResponsable.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
 			}
 
 
 			this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
+			this.iMontoDeuda = this.iMontoTotal;
 
-			Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
-			if (auxPago != null)
-				this.iMontoDeuda = this.iMontoTotal - auxPago.Monto;
-			else
-				this.iMontoDeuda = this.iMontoTotal;
+			foreach (Pago pago in this.Pagos)
+			{
+				iMontoDeuda =- pago.Monto;
+			}
+
+			//Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
+			//if (auxPago != null)
+			//	this.iMontoDeuda = this.iMontoTotal - auxPago.Monto;
+			//else
+			//	this.iMontoDeuda = this.iMontoTotal;
 		}
 
 		public void RegistrarPago(Pago pPago)
