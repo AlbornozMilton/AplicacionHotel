@@ -72,7 +72,8 @@ namespace UI
 					{
 						dGV_Habs.Rows.Add(hab.HabitacionId,
 							hab.Planta == 0?"Baja":"Alta",
-							hab.Capacidad
+							hab.Capacidad,
+							"No"
 							// ExclusividadSegunCapacidad
 							);
 						auxCapacidadTotal += hab.Capacidad;
@@ -112,28 +113,16 @@ namespace UI
 					//AVISO DE CLIENTE DEUDOR
 					this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
 					dGV_ClienteResponsable.Rows.Clear();
-					contador_Convenio.Value = 0;
-					contador_Convenio.Enabled = true;
-					contador_Titular.Value = 0;
-					contador_Titular.Enabled = true;
-					contador_Directo.Value = 0;
-					contador_Directo.Enabled = true;
-					contador_NoDirecto.Value = 0;
-					contador_NoDirecto.Enabled = true;
-					contador_Exceptuado.Value = 0;
-					contador_Exceptuado.Enabled = true;
 
 					switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
 					{
 						case TipoCliente.Titular:
 							{
-								contador_Convenio.Enabled = false;
 								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.AcompanianteDirecto:
 							{
-								contador_Convenio.Enabled = false;
 								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
 								ventanaEmergente.ShowDialog();
 								//ck_Exclusividad.Enabled = exclusividadCapacidad;
@@ -141,7 +130,6 @@ namespace UI
 							break;
 						case TipoCliente.AcompanianteNoDirecto:
 							{
-								contador_Convenio.Enabled = false;
 								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
 								ventanaEmergente.ShowDialog();
 								//ck_Exclusividad.Enabled = exclusividadCapacidad;
@@ -149,7 +137,6 @@ namespace UI
 							break;
 						case TipoCliente.TitularExceptuado:
 							{
-								contador_Convenio.Enabled = false;
 								//VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
 								//ventanaEmergente.ShowDialog();
 								//ck_Exclusividad.Checked = false;
@@ -157,10 +144,7 @@ namespace UI
 							break;
 						case TipoCliente.Convenio:
 							{
-								contador_Titular.Enabled = false;
-								contador_Directo.Enabled = false;
-								contador_NoDirecto.Enabled = false;
-								contador_Exceptuado.Enabled = false;
+								
 								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
@@ -191,13 +175,6 @@ namespace UI
             {
                 if (ClienteResponsable != null) //requisito
                 {
-                    string contadores =
-                                        (contador_Titular.Value).ToString() +
-                                        (contador_Directo.Value).ToString() +
-                                        (contador_NoDirecto.Value).ToString() +
-                                        (contador_Exceptuado.Value).ToString() +
-                                        (contador_Convenio.Value);
-
 					new ControladorCliente().ControlContadoresConClientes(ClienteResponsable, contadores,auxCapacidadTotal);
 
 					//--------------------------------------------------lista de hab
@@ -206,7 +183,7 @@ namespace UI
                     this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
                     txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                    txb_Deposito.Text = NuevoAlojamiento.Deposito.ToString();
+                    txb_Deposito.Text = NuevoAlojamiento.Deposito().ToString();
 
                     groupBox4.Enabled = false;
                     groupBox3.Enabled = false;
@@ -300,21 +277,11 @@ namespace UI
 
 		private void Limpiar()
 		{
-			//tbx_NroHab.Text = "";
-			//txb_capacidad.Text = "";
-			//txb_planta.Text = "";
-			//ck_Exclusividad.Checked = false;
 			ClienteResponsable = null;
 			dGV_ClienteResponsable.Rows.Clear();
-			contador_Titular.Value = 0;
-			contador_Directo.Value = 0;
-			contador_NoDirecto.Value = 0;
-			contador_Exceptuado.Value = 0;
-			contador_Convenio.Value = 0;
 
 			btn_Confirmar.Enabled = false;
 			groupBox4.Enabled = false;
-			groupBox3.Enabled = false;
 			groupBox2.Enabled = false;
 		}
         #endregion

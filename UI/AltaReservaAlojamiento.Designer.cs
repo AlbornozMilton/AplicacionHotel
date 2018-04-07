@@ -47,10 +47,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.dGV_Habs = new System.Windows.Forms.DataGridView();
-			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_exclu = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
 			this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +64,11 @@
 			this.label14 = new System.Windows.Forms.Label();
 			this.btn_Confirmar = new System.Windows.Forms.PictureBox();
 			this.button1 = new System.Windows.Forms.Button();
+			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_exclu = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -203,7 +204,7 @@
 			this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox4.Location = new System.Drawing.Point(12, 147);
 			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(556, 166);
+			this.groupBox4.Size = new System.Drawing.Size(880, 288);
 			this.groupBox4.TabIndex = 15;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Habitaciones Seleccionadas";
@@ -228,7 +229,8 @@
             this.clm_Id,
             this.dataGridViewTextBoxColumn1,
             this.clm_capacidad,
-            this.clm_exclu});
+            this.clm_exclu,
+            this.clmk_tipoCliente});
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
 			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -244,38 +246,8 @@
 			this.dGV_Habs.RowHeadersVisible = false;
 			this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
 			this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Habs.Size = new System.Drawing.Size(550, 137);
+			this.dGV_Habs.Size = new System.Drawing.Size(874, 259);
 			this.dGV_Habs.TabIndex = 2;
-			// 
-			// clm_Id
-			// 
-			this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Id.FillWeight = 40F;
-			this.clm_Id.HeaderText = "Número";
-			this.clm_Id.Name = "clm_Id";
-			this.clm_Id.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
-			this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			// 
-			// clm_capacidad
-			// 
-			this.clm_capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_capacidad.FillWeight = 40F;
-			this.clm_capacidad.HeaderText = "Capacidad";
-			this.clm_capacidad.Name = "clm_capacidad";
-			this.clm_capacidad.ReadOnly = true;
-			// 
-			// clm_exclu
-			// 
-			this.clm_exclu.HeaderText = "Exclusividad";
-			this.clm_exclu.Name = "clm_exclu";
-			this.clm_exclu.ReadOnly = true;
 			// 
 			// groupBox2
 			// 
@@ -286,7 +258,7 @@
 			this.groupBox2.Controls.Add(this.dGV_ClienteResponsable);
 			this.groupBox2.Controls.Add(this.button2);
 			this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox2.Location = new System.Drawing.Point(12, 319);
+			this.groupBox2.Location = new System.Drawing.Point(12, 441);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(880, 124);
 			this.groupBox2.TabIndex = 16;
@@ -385,11 +357,11 @@
 			// 
 			this.button2.BackColor = System.Drawing.Color.White;
 			this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(748, 16);
+			this.button2.Location = new System.Drawing.Point(738, 16);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(125, 30);
+			this.button2.Size = new System.Drawing.Size(135, 30);
 			this.button2.TabIndex = 9;
-			this.button2.Text = "Agregar";
+			this.button2.Text = "Buscar Cliente";
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
@@ -494,12 +466,61 @@
 			this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
 			this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-			this.button1.Location = new System.Drawing.Point(666, 214);
+			this.button1.Location = new System.Drawing.Point(467, 648);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(175, 41);
 			this.button1.TabIndex = 28;
 			this.button1.Text = "Reserva de TOUR";
 			this.button1.UseVisualStyleBackColor = false;
+			// 
+			// clm_Id
+			// 
+			this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Id.FillWeight = 40F;
+			this.clm_Id.HeaderText = "Número";
+			this.clm_Id.Name = "clm_Id";
+			this.clm_Id.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+			this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			this.dataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// clm_capacidad
+			// 
+			this.clm_capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_capacidad.FillWeight = 40F;
+			this.clm_capacidad.HeaderText = "Capacidad";
+			this.clm_capacidad.Name = "clm_capacidad";
+			this.clm_capacidad.ReadOnly = true;
+			// 
+			// clm_exclu
+			// 
+			this.clm_exclu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_exclu.FillWeight = 45F;
+			this.clm_exclu.HeaderText = "Exclusividad";
+			this.clm_exclu.Name = "clm_exclu";
+			this.clm_exclu.ReadOnly = true;
+			this.clm_exclu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.clm_exclu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			// 
+			// clmk_tipoCliente
+			// 
+			this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
+			this.clmk_tipoCliente.Items.AddRange(new object[] {
+            "Titular",
+            "Acomp. Directo",
+            "Acomp. No Directo",
+            "Titular Exceptuado",
+            "Convenio"});
+			this.clmk_tipoCliente.Name = "clmk_tipoCliente";
+			this.clmk_tipoCliente.ReadOnly = true;
+			this.clmk_tipoCliente.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			// 
 			// AltaReservaAlojamiento
 			// 
@@ -579,6 +600,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clm_capacidad;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clm_exclu;
+		private System.Windows.Forms.DataGridViewButtonColumn clm_exclu;
+		private System.Windows.Forms.DataGridViewComboBoxColumn clmk_tipoCliente;
 	}
 }
