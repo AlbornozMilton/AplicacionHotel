@@ -9,9 +9,9 @@ namespace Persistencia.DAL.EntityFramework
 
 		}
 
-		public int ObtenerValorMetada(byte pNroMetadata)
+		public int ObtenerValorMetada(TipoMetadaHotel pTipo)
 		{
-			return iDbContext.Metadatas.Find(pNroMetadata).Valor;
+			return iDbContext.Metadatas.Find(pTipo).Valor;
 		}
 	}
 }

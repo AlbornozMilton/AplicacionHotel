@@ -4,6 +4,6 @@ namespace Persistencia.DAL
 {
 	public interface IRepositorioMetadaHotel:IRepositorio<MetadataHotel>
 	{
-		int ObtenerValorMetada(byte pNroMetadata);
+		int ObtenerValorMetada(TipoMetadaHotel pTipo);
 	}
 }
