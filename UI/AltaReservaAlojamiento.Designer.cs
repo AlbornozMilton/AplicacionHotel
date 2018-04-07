@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaReservaAlojamiento));
 			this.txb_fechaActual = new System.Windows.Forms.TextBox();
 			this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,6 +46,11 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.dGV_Habs = new System.Windows.Forms.DataGridView();
+			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.clm_exclu = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
 			this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,17 +59,6 @@
 			this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.button2 = new System.Windows.Forms.Button();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.contador_NoDirecto = new System.Windows.Forms.NumericUpDown();
-			this.contador_Directo = new System.Windows.Forms.NumericUpDown();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.contador_Exceptuado = new System.Windows.Forms.NumericUpDown();
-			this.contador_Convenio = new System.Windows.Forms.NumericUpDown();
-			this.contador_Titular = new System.Windows.Forms.NumericUpDown();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
 			this.button5 = new System.Windows.Forms.Button();
 			this.btn_Aceptar = new System.Windows.Forms.Button();
 			this.txb_CostoBase = new System.Windows.Forms.TextBox();
@@ -73,24 +67,13 @@
 			this.label13 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.btn_Confirmar = new System.Windows.Forms.PictureBox();
-			this.dGV_Habs = new System.Windows.Forms.DataGridView();
 			this.button1 = new System.Windows.Forms.Button();
-			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_exclu = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
-			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.contador_NoDirecto)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Directo)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Exceptuado)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Convenio)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Titular)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txb_fechaActual
@@ -225,6 +208,75 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Habitaciones Seleccionadas";
 			// 
+			// dGV_Habs
+			// 
+			this.dGV_Habs.AllowUserToAddRows = false;
+			this.dGV_Habs.AllowUserToDeleteRows = false;
+			this.dGV_Habs.AllowUserToResizeColumns = false;
+			this.dGV_Habs.AllowUserToResizeRows = false;
+			this.dGV_Habs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Habs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this.dGV_Habs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dGV_Habs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clm_Id,
+            this.dataGridViewTextBoxColumn1,
+            this.clm_capacidad,
+            this.clm_exclu});
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dGV_Habs.DefaultCellStyle = dataGridViewCellStyle2;
+			this.dGV_Habs.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dGV_Habs.Location = new System.Drawing.Point(3, 26);
+			this.dGV_Habs.Name = "dGV_Habs";
+			this.dGV_Habs.ReadOnly = true;
+			this.dGV_Habs.RowHeadersVisible = false;
+			this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+			this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dGV_Habs.Size = new System.Drawing.Size(550, 137);
+			this.dGV_Habs.TabIndex = 2;
+			// 
+			// clm_Id
+			// 
+			this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_Id.FillWeight = 40F;
+			this.clm_Id.HeaderText = "Número";
+			this.clm_Id.Name = "clm_Id";
+			this.clm_Id.ReadOnly = true;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+			this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
+			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			this.dataGridViewTextBoxColumn1.ReadOnly = true;
+			// 
+			// clm_capacidad
+			// 
+			this.clm_capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.clm_capacidad.FillWeight = 40F;
+			this.clm_capacidad.HeaderText = "Capacidad";
+			this.clm_capacidad.Name = "clm_capacidad";
+			this.clm_capacidad.ReadOnly = true;
+			// 
+			// clm_exclu
+			// 
+			this.clm_exclu.HeaderText = "Exclusividad";
+			this.clm_exclu.Name = "clm_exclu";
+			this.clm_exclu.ReadOnly = true;
+			// 
 			// groupBox2
 			// 
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -341,147 +393,6 @@
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
-			// groupBox3
-			// 
-			this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox3.Controls.Add(this.contador_NoDirecto);
-			this.groupBox3.Controls.Add(this.contador_Directo);
-			this.groupBox3.Controls.Add(this.label10);
-			this.groupBox3.Controls.Add(this.label11);
-			this.groupBox3.Controls.Add(this.contador_Exceptuado);
-			this.groupBox3.Controls.Add(this.contador_Convenio);
-			this.groupBox3.Controls.Add(this.contador_Titular);
-			this.groupBox3.Controls.Add(this.label9);
-			this.groupBox3.Controls.Add(this.label8);
-			this.groupBox3.Controls.Add(this.label5);
-			this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox3.Location = new System.Drawing.Point(12, 449);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(880, 126);
-			this.groupBox3.TabIndex = 17;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Otros Clientes";
-			// 
-			// contador_NoDirecto
-			// 
-			this.contador_NoDirecto.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.contador_NoDirecto.Location = new System.Drawing.Point(803, 53);
-			this.contador_NoDirecto.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.contador_NoDirecto.Name = "contador_NoDirecto";
-			this.contador_NoDirecto.Size = new System.Drawing.Size(35, 30);
-			this.contador_NoDirecto.TabIndex = 37;
-			this.contador_NoDirecto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// contador_Directo
-			// 
-			this.contador_Directo.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.contador_Directo.Location = new System.Drawing.Point(803, 20);
-			this.contador_Directo.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.contador_Directo.Name = "contador_Directo";
-			this.contador_Directo.Size = new System.Drawing.Size(35, 30);
-			this.contador_Directo.TabIndex = 36;
-			this.contador_Directo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(581, 56);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(183, 20);
-			this.label10.TabIndex = 35;
-			this.label10.Text = "Acompañante No Directo";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label11.Location = new System.Drawing.Point(581, 22);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(158, 20);
-			this.label11.TabIndex = 34;
-			this.label11.Text = "Acompañante Directo";
-			// 
-			// contador_Exceptuado
-			// 
-			this.contador_Exceptuado.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.contador_Exceptuado.Location = new System.Drawing.Point(228, 88);
-			this.contador_Exceptuado.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.contador_Exceptuado.Name = "contador_Exceptuado";
-			this.contador_Exceptuado.Size = new System.Drawing.Size(35, 30);
-			this.contador_Exceptuado.TabIndex = 33;
-			this.contador_Exceptuado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// contador_Convenio
-			// 
-			this.contador_Convenio.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.contador_Convenio.Location = new System.Drawing.Point(228, 55);
-			this.contador_Convenio.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.contador_Convenio.Name = "contador_Convenio";
-			this.contador_Convenio.Size = new System.Drawing.Size(35, 30);
-			this.contador_Convenio.TabIndex = 32;
-			this.contador_Convenio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// contador_Titular
-			// 
-			this.contador_Titular.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.contador_Titular.Location = new System.Drawing.Point(228, 22);
-			this.contador_Titular.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.contador_Titular.Name = "contador_Titular";
-			this.contador_Titular.Size = new System.Drawing.Size(35, 30);
-			this.contador_Titular.TabIndex = 31;
-			this.contador_Titular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(40, 91);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(146, 20);
-			this.label9.TabIndex = 30;
-			this.label9.Text = "Afiliado Exceptuado";
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(40, 58);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(159, 20);
-			this.label8.TabIndex = 29;
-			this.label8.Text = "Afiliado por Convenio";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(40, 24);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(110, 20);
-			this.label5.TabIndex = 28;
-			this.label5.Text = "Afiliado Titular";
-			// 
 			// button5
 			// 
 			this.button5.BackColor = System.Drawing.Color.White;
@@ -578,45 +489,6 @@
 			this.btn_Confirmar.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
 			this.btn_Confirmar.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
 			// 
-			// dGV_Habs
-			// 
-			this.dGV_Habs.AllowUserToAddRows = false;
-			this.dGV_Habs.AllowUserToDeleteRows = false;
-			this.dGV_Habs.AllowUserToResizeColumns = false;
-			this.dGV_Habs.AllowUserToResizeRows = false;
-			this.dGV_Habs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Habs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-			this.dGV_Habs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dGV_Habs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clm_Id,
-            this.dataGridViewTextBoxColumn1,
-            this.clm_capacidad,
-            this.clm_exclu});
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dGV_Habs.DefaultCellStyle = dataGridViewCellStyle2;
-			this.dGV_Habs.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dGV_Habs.Location = new System.Drawing.Point(3, 26);
-			this.dGV_Habs.Name = "dGV_Habs";
-			this.dGV_Habs.ReadOnly = true;
-			this.dGV_Habs.RowHeadersVisible = false;
-			this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-			this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Habs.Size = new System.Drawing.Size(550, 137);
-			this.dGV_Habs.TabIndex = 2;
-			// 
 			// button1
 			// 
 			this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -628,36 +500,6 @@
 			this.button1.TabIndex = 28;
 			this.button1.Text = "Reserva de TOUR";
 			this.button1.UseVisualStyleBackColor = false;
-			// 
-			// clm_Id
-			// 
-			this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_Id.FillWeight = 40F;
-			this.clm_Id.HeaderText = "Número";
-			this.clm_Id.Name = "clm_Id";
-			this.clm_Id.ReadOnly = true;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
-			this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			// 
-			// clm_capacidad
-			// 
-			this.clm_capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_capacidad.FillWeight = 40F;
-			this.clm_capacidad.HeaderText = "Capacidad";
-			this.clm_capacidad.Name = "clm_capacidad";
-			this.clm_capacidad.ReadOnly = true;
-			// 
-			// clm_exclu
-			// 
-			this.clm_exclu.HeaderText = "Exclusividad";
-			this.clm_exclu.Name = "clm_exclu";
-			this.clm_exclu.ReadOnly = true;
 			// 
 			// AltaReservaAlojamiento
 			// 
@@ -673,7 +515,6 @@
 			this.Controls.Add(this.btn_Confirmar);
 			this.Controls.Add(this.txb_Deposito);
 			this.Controls.Add(this.label13);
-			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.txb_CostoBase);
 			this.Controls.Add(this.label12);
 			this.Controls.Add(this.button5);
@@ -695,17 +536,10 @@
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.contador_NoDirecto)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Directo)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Exceptuado)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Convenio)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.contador_Titular)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -726,17 +560,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown contador_NoDirecto;
-        private System.Windows.Forms.NumericUpDown contador_Directo;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown contador_Exceptuado;
-        private System.Windows.Forms.NumericUpDown contador_Convenio;
-        private System.Windows.Forms.NumericUpDown contador_Titular;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.TextBox txb_CostoBase;

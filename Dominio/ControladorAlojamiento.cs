@@ -86,13 +86,9 @@ namespace Dominio
 				//inicializar fechas locales
                 auxFechaFinAloj = aloj.FechaEstimadaEgreso.Date;
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-                {
                     auxFechaIniAloj = aloj.FechaIngreso.Date;
-                }
                 else
-                {
                     auxFechaIniAloj = aloj.FechaEstimadaIngreso.Date;
-                }
 
                 //control fechas
                 if (
@@ -101,11 +97,13 @@ namespace Dominio
                 {
                     foreach (var hab in listaHabitaciones)
                     {
-                        if (aloj.Habitaciones.Contains(hab))
-                        {
-							hab.OcuparHabitacion();
-                            hab.SetExclusividad(aloj.Exclusividad);
-                        }
+						foreach (AlojHab alojHab in aloj.AlojHabes)
+						{
+							if (alojHab.Habitacion.Equals(hab))
+							{
+								hab.OcuparHabitacion();
+							}
+						}
                     }
                 }
 
