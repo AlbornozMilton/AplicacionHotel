@@ -37,8 +37,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 				.IsOptional();
 
             this.Property(e => e.EstadoAlojamiento).IsRequired();
-
-            this.Property(c => c.ContadoresTarifas).IsOptional();
         }
     }
 }

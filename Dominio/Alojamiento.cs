@@ -8,7 +8,6 @@ namespace Dominio
         private int iIdAlojamiento;
         private int iDniResponsable;
         public bool iEsTour;
-		private string iContadoresTarifas;
 		private DateTime iFechaReserva = new DateTime();
         private DateTime iFechaEstimadaEgreso = new DateTime();
         private DateTime iFechaEstimadaIngreso = new DateTime();
@@ -48,7 +47,7 @@ namespace Dominio
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(string pContTarifas, List<AlojHab> pAlojHabes, int unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour)
+        public Alojamiento(List<AlojHab> pAlojHabes, int unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;
@@ -68,7 +67,6 @@ namespace Dominio
 						unaFechaEstimadaEgreso.Day,
 						11, 00, 00);
 			this.iEsTour = pEsTour;
-            this.iContadoresTarifas = pContTarifas;
         }
 
         //----------------------PROP----------------------
@@ -86,11 +84,6 @@ namespace Dominio
 		{
 			get { return this.iEsTour; }
 			private set { this.iEsTour = value; }
-		}
-		public string ContadoresTarifas
-		{
-			get { return this.iContadoresTarifas; }
-			private set { this.iContadoresTarifas = value; }
 		}
 		public DateTime FechaReserva
         {
