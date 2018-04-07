@@ -9,7 +9,6 @@ namespace Persistencia.Domain
         public double CostoServicio { get; set; }
         public DateTime FechaServicio { get; set; }
 
-
         public byte ServicioId { get; set; }
         public Servicio Servicio { get; set; }
 

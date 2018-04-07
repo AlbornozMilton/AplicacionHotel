@@ -16,9 +16,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 			this.Property(h => h.Planta)
                 .IsRequired();
 
-            this.Property(h => h.Exclusiva)
-                .IsRequired();
-
 			this.Property(o => o.Ocupada)
 				.IsRequired();
 

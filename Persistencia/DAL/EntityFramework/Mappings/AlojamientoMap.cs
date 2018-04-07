@@ -36,20 +36,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 			this.Property(a => a.FechaCancelacion).HasColumnType("datetime2")
 				.IsOptional();
 
-			this.HasMany<Habitacion>(a => a.Habitaciones)
-				.WithMany(h => h.Alojamientos)
-				.Map(tabla =>
-				{
-					tabla.ToTable("Alojamiento_Habitacion");
-				});
-
-			this.HasMany<Cliente>(a => a.Clientes)
-                .WithMany(c => c.Alojamientos)
-                .Map(tabla =>
-               {
-                   tabla.ToTable("Alojamiento_Cliente");
-               });
-
             this.Property(e => e.EstadoAlojamiento).IsRequired();
 
             this.Property(c => c.ContadoresTarifas).IsOptional();
