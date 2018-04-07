@@ -130,12 +130,17 @@ namespace Dominio
 		}
 
 		/// <summary>
-		/// Controla que la cantidades de Clientes ingresados coincidan con la capacidad de la Habitacion
+		/// NO SIRVE ?????
 		/// </summary>
 		/// <param name="pClientes">Acompañantes más el Responsable</param>
-		public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
+		public void ControlCapacidadConClientes(List<AlojHab> pAlojHabs, int pCantidad)
         {
-            if (pClientes.Count > pHab.Capacidad)
+			int auxCant = 0;
+			foreach (var alojHab in pAlojHabs)
+			{
+				auxCant += alojHab.Habitacion.Capacidad;
+			}
+            if (auxCant > pCantidad)
                 throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");
         }
 

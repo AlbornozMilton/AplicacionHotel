@@ -71,5 +71,13 @@ namespace Dominio
         {
 			iUoW.RepositorioHabitacion.ModificarAltaHabitacion(Mapper.Map<Habitacion,pers.Habitacion>(pHabitacion));
         }
+
+		//pasar un datagrid
+		public List<AlojHab> GenerarAlojHabs(System.Windows.Forms.DataGridView pHabSeleccionadas)
+		{
+			List<AlojHab> resultado = new List<AlojHab>();
+
+			return resultado;
+		}
     }
 }

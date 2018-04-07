@@ -170,12 +170,12 @@ namespace UI
             {
                 if (ClienteResponsable != null) //requisito
                 {
-					//generar las AlojHab
-					//pasarlas como parametro al control debajo
-					new ControladorCliente().ControlCapacidadConClientes(ClienteResponsable,auxCapacidadTotal);
+					List<AlojHab> alojsHab = new ControladorHabitacion().GenerarAlojHabs(dGV_Habs);
+
+					//new ControladorCliente().ControlCapacidadConClientes(alojsHab, auxCapacidadTotal);
 
 					//--------------------------------------------------lista de hab
-					this.NuevoAlojamiento = new Alojamiento(, ClienteResponsable, FechaIni, FechaFin);
+					this.NuevoAlojamiento = new Alojamiento(alojsHab, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
 
                     this.NuevoAlojamiento.CalcularCostoBase();
 
