@@ -101,7 +101,7 @@ namespace Dominio
                 {
                     foreach (var hab in listaHabitaciones)
                     {
-                        if (hab.HabitacionId == aloj.HabitacionId)
+                        if (aloj.Habitaciones.Contains(hab))
                         {
 							hab.OcuparHabitacion();
                             hab.SetExclusividad(aloj.Exclusividad);
@@ -150,7 +150,10 @@ namespace Dominio
 							(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
 						))
 					{
-						auxCantExclusiva += aloj.Habitacion.Capacidad;
+						foreach (var hab in aloj.Habitaciones)
+						{
+							auxCantExclusiva += hab.Capacidad;
+						}
 					}
 				}
 			}
@@ -270,13 +273,14 @@ namespace Dominio
         /// </summary>
         public void CerrarAlojamiento(Alojamiento pAlojamiento)
         {
-            //Siempre se va a colocar en "false" la exclusividad
-            pAlojamiento.Habitacion.SetExclusividad(false);
-            pAlojamiento.Habitacion.DesocuparHabitacion();
+			//Siempre se va a colocar en "false" la exclusividad
+			foreach (var hab in pAlojamiento.Habitaciones)
+			{
+				hab.SetExclusividad(false);
+				hab.DesocuparHabitacion();
+			}
 			//fecha de hoy y cambio de estado
 			pAlojamiento.Cerrar();
-
-
             //registrar fecha de egreso y cambia el Estado del Alojamiento a Cerrado
             iUoW.RepositorioAlojamiento.FinalizarAlojamiento(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento));
         }

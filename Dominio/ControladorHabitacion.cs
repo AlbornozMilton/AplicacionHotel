@@ -57,10 +57,13 @@ namespace Dominio
                 
             foreach (var aloj in AlojsActivos)
             {
-                if (aloj.HabitacionId == pIdHabitacion)
-                {
-                    AlojsResltultado.Add(aloj);
-                }
+				foreach (var hab in aloj.Habitaciones)
+				{
+					if (hab.HabitacionId == pIdHabitacion)
+					{
+						AlojsResltultado.Add(aloj);
+					}
+				}
             }
             return AlojsResltultado;
         }

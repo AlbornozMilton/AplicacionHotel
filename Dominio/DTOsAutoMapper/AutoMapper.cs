@@ -13,6 +13,10 @@ namespace Dominio.DTOsAutoMapper
         {
             Mapper.Initialize(cfg =>
             {
+				cfg.CreateMap<AlojHab, pers.AlojHab>().ReverseMap();
+
+				//cfg.CreateMap<MetadaHotel, pers.MetadataHotel>();
+
                 cfg.CreateMap<Cliente, pers.Cliente>().ReverseMap();
 
                 cfg.CreateMap<Domicilio, pers.Domicilio>().ReverseMap();

@@ -8,7 +8,7 @@ namespace UI
 {
     public partial class TablaDisponibilidad : Form
     {
-        public Habitacion HabSeleccionada;
+        public List<Habitacion> HabSeleccionadas = new List<Habitacion>();
 		private DateTime iFechaDesde, iFechaHasta;
         public List<Habitacion> Habitaciones;
 
@@ -37,7 +37,10 @@ namespace UI
 
 		private void btn_Seleccionar_Click(object sender, EventArgs e)
 		{
-			this.HabSeleccionada = this.Habitaciones.Find(h => h.HabitacionId == Convert.ToInt32(dGV_TablaHabitaciones.CurrentRow.Cells[0].Value));
+			for (int i = 0; i < dGV_TablaHabitaciones.SelectedRows.Count; i++)
+			{
+				this.HabSeleccionadas.Add(this.Habitaciones.Find(h => h.HabitacionId == Convert.ToInt32(dGV_TablaHabitaciones.SelectedRows[i].Cells[0].Value)));
+			}
 			Close();
 		}
 

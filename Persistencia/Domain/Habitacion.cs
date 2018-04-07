@@ -7,10 +7,9 @@ namespace Persistencia.Domain
         public byte HabitacionId { get; set; }//Numero de la Habitacion
         public byte Capacidad { get; set; }
         public byte Planta { get; set; }
-        public bool Exclusiva { get; set; }
 		public bool Ocupada { get; set; }
 		public bool Alta { get; set; }
 
-        public List<Alojamiento> Alojamientos { get; set; }
+        public List<AlojHab> AlojHabs { get; set; }
     }
 }

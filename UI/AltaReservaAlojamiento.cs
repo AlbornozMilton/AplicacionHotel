@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Dominio;
 
@@ -6,8 +7,9 @@ namespace UI
 {
     public partial class AltaReservaAlojamiento : Form
     {
-        public Habitacion HabSeleccionada;
-        public DateTime FechaIni;
+        public List<Habitacion> HabSeleccionadas;
+		private byte auxCapacidadTotal = 0;
+		public DateTime FechaIni;
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
         Alojamiento NuevoAlojamiento;
@@ -51,28 +53,37 @@ namespace UI
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
 
-                if (TablaDisp.HabSeleccionada != null)
+                if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
-					this.HabSeleccionada = TablaDisp.HabSeleccionada;
+					this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
 					//Almacenar si se supero el 20% de exlcuisividad permitida. Por defecto este campo va a estar en True
-					this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
-					if (!exclusividadCapacidad)//si es falso que entre
-					{
-						VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las Fechas elegidas se supera el límite de exclusividad", TipoMensaje.Alerta);
-						ventanaEmergente.ShowDialog();
-						ck_Exclusividad.Enabled = this.exclusividadCapacidad;
-					}
-					//LLenar campos de Habitación
-					tbx_NroHab.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
-					txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja":"Alta";
-					txb_capacidad.Text = Convert.ToString(this.HabSeleccionada.Capacidad);
+					//if (HabSeleccionadas.Count > 1) // la exclusividad es para una Hab
+					//{
+					//	this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
+					//	if (!exclusividadCapacidad)//si es falso que entre
+					//	{
+					//		VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite la exclusividad de la Habitación porque para las Fechas elegidas se supera el límite de exclusividad", TipoMensaje.Alerta);
+					//		ventanaEmergente.ShowDialog();
+					//		ck_Exclusividad.Enabled = this.exclusividadCapacidad;
+					//	} 
+					//}
 
+					foreach (var hab in this.HabSeleccionadas)
+					{
+						dGV_Habs.Rows.Add(hab.HabitacionId,
+							hab.Planta == 0?"Baja":"Alta",
+							hab.Capacidad
+							// ExclusividadSegunCapacidad
+							);
+						auxCapacidadTotal += hab.Capacidad;
+					}
+					
 					dGV_ClienteResponsable.Rows.Clear();
 					ClienteResponsable = null;
 					groupBox4.Enabled = true; //HABIACION
 					groupBox2.Enabled = true; //RESPONSABLE
 				}
-				else if (HabSeleccionada == null)
+				else if (HabSeleccionadas.Count == 0)
 				{
 					VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe elegir una Habitación para continuar", TipoMensaje.Alerta);
 					ventanaEmergente.ShowDialog();
@@ -117,7 +128,7 @@ namespace UI
 						case TipoCliente.Titular:
 							{
 								contador_Convenio.Enabled = false;
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.AcompanianteDirecto:
@@ -125,7 +136,7 @@ namespace UI
 								contador_Convenio.Enabled = false;
 								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
 								ventanaEmergente.ShowDialog();
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.AcompanianteNoDirecto:
@@ -133,7 +144,7 @@ namespace UI
 								contador_Convenio.Enabled = false;
 								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
 								ventanaEmergente.ShowDialog();
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.TitularExceptuado:
@@ -141,7 +152,7 @@ namespace UI
 								contador_Convenio.Enabled = false;
 								//VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
 								//ventanaEmergente.ShowDialog();
-								ck_Exclusividad.Checked = false;
+								//ck_Exclusividad.Checked = false;
 							}
 							break;
 						case TipoCliente.Convenio:
@@ -150,17 +161,13 @@ namespace UI
 								contador_Directo.Enabled = false;
 								contador_NoDirecto.Enabled = false;
 								contador_Exceptuado.Enabled = false;
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 					}
 						
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
                     btn_Confirmar.Enabled = true;
-					if (!ck_Exclusividad.Checked)
-					{
-						groupBox3.Enabled = true; //ACOMPAÑANTES 
-					}
                 }
                 else
 				if (ClienteResponsable == null)
@@ -191,9 +198,10 @@ namespace UI
                                         (contador_Exceptuado.Value).ToString() +
                                         (contador_Convenio.Value);
 
-					new ControladorCliente().ControlContadoresConClientes(ClienteResponsable, contadores,txb_capacidad.Text);
+					new ControladorCliente().ControlContadoresConClientes(ClienteResponsable, contadores,auxCapacidadTotal);
 
-					this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionada, ClienteResponsable, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
+					//--------------------------------------------------lista de hab
+					this.NuevoAlojamiento = new Alojamiento(contadores, HabSeleccionadas, ClienteResponsable, FechaIni, FechaFin);
 
                     this.NuevoAlojamiento.CalcularCostoBase(new ControladorCliente().DevolverListaTarifas());
 
@@ -236,31 +244,31 @@ namespace UI
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
         {
-			if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
-			{
-				if (ck_Exclusividad.Checked == false)
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
-					ventanaEmergente.ShowDialog();
-				}
-				ck_Exclusividad.Checked = false;
+			//if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+			//{
+			//	if (ck_Exclusividad.Checked == false)
+			//	{
+			//		VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
+			//		ventanaEmergente.ShowDialog();
+			//	}
+			//	ck_Exclusividad.Checked = false;
 
-				groupBox3.Enabled = true;
-			}
-			else if (ck_Exclusividad.Checked == true)
-			{
-				groupBox3.Enabled = false;
-				contador_Titular.Value = 0;
-				contador_Convenio.Value = 0;
-				contador_Directo.Value = 0;
-				contador_NoDirecto.Value = 0;
-				contador_Exceptuado.Value = 0;
-			}
-			else if (ck_Exclusividad.Checked == false)
-			{
-				groupBox3.Enabled = true;
-			}
-			this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
+			//	groupBox3.Enabled = true;
+			//}
+			//else if (ck_Exclusividad.Checked == true)
+			//{
+			//	groupBox3.Enabled = false;
+			//	contador_Titular.Value = 0;
+			//	contador_Convenio.Value = 0;
+			//	contador_Directo.Value = 0;
+			//	contador_NoDirecto.Value = 0;
+			//	contador_Exceptuado.Value = 0;
+			//}
+			//else if (ck_Exclusividad.Checked == false)
+			//{
+			//	groupBox3.Enabled = true;
+			//}
+			//this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
         }
 
         #region Ingreso de Fechas en Calendario
@@ -292,10 +300,10 @@ namespace UI
 
 		private void Limpiar()
 		{
-			tbx_NroHab.Text = "";
-			txb_capacidad.Text = "";
-			txb_planta.Text = "";
-			ck_Exclusividad.Checked = false;
+			//tbx_NroHab.Text = "";
+			//txb_capacidad.Text = "";
+			//txb_planta.Text = "";
+			//ck_Exclusividad.Checked = false;
 			ClienteResponsable = null;
 			dGV_ClienteResponsable.Rows.Clear();
 			contador_Titular.Value = 0;
