@@ -19,7 +19,7 @@ namespace Dominio
 		//-------------------------------Constructores
 		public Cliente() { } 
 
-        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, TarifaCliente pTarifa, AlojHab pAlojHab)
+        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, TarifaCliente pTarifa)
         {
             this.iDni = pDni;
             this.iLegajo = pLegajo;
