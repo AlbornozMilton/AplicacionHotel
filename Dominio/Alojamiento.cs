@@ -235,16 +235,7 @@ namespace Dominio
 		public void RegistrarPago(Pago pPago)
         {
             this.iMontoDeuda -= pPago.Monto;
-
-            //PARA EL CASO EN EL QUE SE AGREGA UN PRIMER PAGO
-            if (this.Pagos!=null)
-            {
-                this.iPagos.Add(pPago);
-            }
-            else
-            {
-                this.Pagos = new List<Pago>() { pPago };
-            }
+            this.iPagos.Add(pPago);
         }
 
         public double TotalServicios()
