@@ -8,6 +8,7 @@ namespace Dominio
 		private byte iCapacidad;
 		private bool iOcupada;
 		private bool iAlta;
+		private List<TarifaCliente> iTarifas;
 		private List<AlojHab> iAloHabs = new List<AlojHab>();
 
 		//CONSTRUCTORES

@@ -14,7 +14,7 @@ namespace Dominio
         public bool iEnAlta;
         private Domicilio iDomicilio;
         private TarifaCliente iTarifa;
-		private AlojHab iAlojHab;
+		//private AlojHab iAlojHab;
 
 		//-------------------------------Constructores
 		public Cliente() { } 
@@ -43,7 +43,6 @@ namespace Dominio
 
         public Domicilio Domicilio { get { return this.iDomicilio; } private set { this.iDomicilio = value; } }
         public TarifaCliente TarifaCliente { get { return this.iTarifa; } private set { this.iTarifa = value; } }
-        //public List<Alojamiento> Alojamientos { get { return this.iAlojamientos; } private set { this.iAlojamientos = value; } }
 
         //-------------------------------------Metodos---------------------------------------
         /// <summary>

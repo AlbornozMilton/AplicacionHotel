@@ -13,6 +13,7 @@ namespace Persistencia.Domain
 		public byte HabitacionId { get; set; }
 		public Habitacion Habitacion { get; set; }
 
+		public List<TarifaCliente> Tarifas { get; set; }
 		public List<Cliente> Clientes { get; set; }
 	}
 }

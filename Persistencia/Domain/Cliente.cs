@@ -19,7 +19,7 @@ namespace Persistencia.Domain
         public int DomicilioId { get; set; }
         public Domicilio Domicilio { get; set; }
        
-		public int AlojHabId { get; set; }
-        public AlojHab AlojHab { get; set; }
+		//public int AlojHabId { get; set; }
+  //      public AlojHab AlojHab { get; set; }
     }
 }

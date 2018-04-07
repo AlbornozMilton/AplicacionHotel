@@ -174,64 +174,63 @@ namespace Dominio
         }
 
 		//Tener en cuenta que el Responsable no esta en la lista de contadores
-        public void CalcularCostoBase(List<TarifaCliente> pTarifas)
+        public void CalcularCostoBase(List<TarifaCliente> pTarifas, Cliente pResponsable)
         {
 			// LA EXCLUSIVIDAD SE ACUMULA SEGUN CADA HABITACION
-
-
-   //         double costoBase = 0;
-   //         DateTime auxFechaDesde = new DateTime();
+			double costoBase = 0;
+			DateTime auxFechaDesde = new DateTime();
 			//Cliente CliResposable = Clientes.Find(c => c.ClienteId == this.DniResponsable);
 
-			//if (this.iEstadoAloj == EstadoAlojamiento.Alojado)
-   //         {
-   //             auxFechaDesde = this.iFechaIngreso;
+			if (this.iEstadoAloj == EstadoAlojamiento.Alojado)
+			{
+				auxFechaDesde = this.iFechaIngreso;
 
-			//	if (CliResposable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
-			//	{
-			//		foreach (var cliente in this.Clientes)
-			//		{
-			//			costoBase += cliente.ObtenerSuPrecioTarifa(lExclusividad);
-			//		}
-			//	}
-			//	else
-			//	{
-			//		costoBase = CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
-			//	}
-   //         }
-   //         else // RESERVADO
-   //         {
-   //             auxFechaDesde = this.iFechaEstimadaIngreso;
+				foreach (AlojHab mAloHab in this.AlojHabes)
+				{
+					if (mAloHab.Clientes[0].TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+					{
+						foreach (Cliente cli in mAloHab.Clientes)
+						{
+							costoBase += cli.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+						}
+					}
+					costoBase += mAloHab.Clientes[0].ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+				}
+			}
+			else // RESERVADO
+			{
+				auxFechaDesde = this.iFechaEstimadaIngreso;
 
-			//	if (CliResposable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
-			//	{
-			//		for (int i = 0; i < this.iContadoresTarifas.Length; i++)
-			//		{
-			//			byte aux = Convert.ToByte(this.iContadoresTarifas[i]);
+				if (pResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+				{
+					for (int i = 0; i < this.iContadoresTarifas.Length; i++)
+					{
+						byte aux = Convert.ToByte(this.iContadoresTarifas[i]);
 
-			//			while (aux > Convert.ToByte('0'))
-			//			{
-			//				costoBase += pTarifas[i].GetTarifa(lExclusividad);
-			//				aux--;
-			//			}
-			//		}//el resonsable no se encuentra en los contadores
-			//		costoBase += CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
-			//	}
-			//	else //si es por convenio
-			//		costoBase = CliResposable.ObtenerSuPrecioTarifa(this.Exclusividad);
-			//}
+						while (aux > Convert.ToByte('0'))
+						{
+							costoBase += pTarifas[i].GetTarifa(mAloHab.Exclusividad);
+							aux--;
+						}
+					}
+					//el resonsable no se encuentra en los contadores
+					costoBase += pResponsable.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+				}
+				else //si es por convenio
+					costoBase += pResponsable.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+			}
 
-			
-			//this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
 
-   //         Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
-   //         if (auxPago != null)
-   //             this.iMontoDeuda = this.iMontoTotal - auxPago.Monto;
-   //         else
-   //             this.iMontoDeuda = this.iMontoTotal;
-        }
+			this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
 
-        public void RegistrarPago(Pago pPago)
+			Pago auxPago = this.Pagos.Find(p => p.Tipo == TipoPago.Deposito);
+			if (auxPago != null)
+				this.iMontoDeuda = this.iMontoTotal - auxPago.Monto;
+			else
+				this.iMontoDeuda = this.iMontoTotal;
+		}
+
+		public void RegistrarPago(Pago pPago)
         {
             this.iMontoDeuda -= pPago.Monto;
 

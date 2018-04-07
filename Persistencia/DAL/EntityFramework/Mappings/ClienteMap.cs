@@ -34,7 +34,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
             this.HasOptional(c => c.Domicilio).WithMany(c => c.Clientes);
 
-			this.HasOptional(c => c.AlojHab).WithMany(a => a.Clientes);
+			//this.HasOptional(c => c.AlojHab).WithMany(a => a.Clientes);
         }
     }
 }
