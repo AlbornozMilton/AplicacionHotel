@@ -129,28 +129,25 @@ namespace Dominio
 
 			foreach (var aloj in auxListaActivos)
 			{
-				//Acumular si se solicito exclusividad
-				//se evalua exclsuvidad antes de entrar a hacer todo los demas calculos
-				if (aloj.Exclusividad)
+				DateTime alojFechaDesde = new DateTime();
+
+				//la cantidad exclusiva se acumula tanto si es alojado o reservado
+				if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+					alojFechaDesde = aloj.FechaIngreso.Date;
+				else //reservado
+					alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+				// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
+				if (!(
+					(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
+					||
+					(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
+					))
 				{
-					DateTime alojFechaDesde = new DateTime();
-
-					//la cantidad exclusiva se acumula tanto si es alojado o reservado
-					if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-						alojFechaDesde = aloj.FechaIngreso.Date;
-					else //reservado
-						alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
-
-					// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
-					if (!(
-							(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
-							||
-							(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
-						))
+					foreach (AlojHab alojHab in aloj.AlojHabes)
 					{
-						foreach (var hab in aloj.Habitaciones)
+						if (alojHab.Exclusividad)
 						{
-							auxCantExclusiva += hab.Capacidad;
+							auxCantExclusiva += alojHab.Habitacion.Capacidad;
 						}
 					}
 				}

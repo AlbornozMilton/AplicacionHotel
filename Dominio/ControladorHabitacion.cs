@@ -40,7 +40,6 @@ namespace Dominio
 				{
 					Habitacion HabDom = Mapper.Map<pers.Habitacion, Habitacion>(hab);
 					HabDom.DesocuparHabitacion();
-					HabDom.SetExclusividad(false);
 					lista.Add(HabDom); 
 				}
             }
