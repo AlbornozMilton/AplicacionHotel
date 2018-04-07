@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework.Mappings

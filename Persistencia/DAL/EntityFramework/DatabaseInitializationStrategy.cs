@@ -176,18 +176,16 @@ namespace Persistencia.DAL.EntityFramework
 			{
 				HabitacionId = 1,
 				Planta = 0,// planta baja
-				Capacidad = 2,
+				Capacidad = 3,
 				Ocupada = false,
 				Alta = true,
-                Exclusiva = false
             };
             context.Set<Habitacion>().Add(hab1);
 
             Habitacion hab2 = new Habitacion()
             {
                 HabitacionId = 2,
-                Exclusiva = false,
-				Capacidad = 4,
+				Capacidad = 3,
 				Ocupada = false,
 				Alta = true,
 				Planta = 0
@@ -197,7 +195,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab3 = new Habitacion()
             {
                 HabitacionId = 3,
-                Exclusiva = false,
 				Capacidad = 3,
 				Ocupada = false,
 				Alta = true,
@@ -208,7 +205,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab4 = new Habitacion()
             {
                 HabitacionId = 4,
-                Exclusiva = false,
                 Planta = 0,
 				Capacidad = 3,
 				Alta = true,
@@ -219,7 +215,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab5 = new Habitacion()
             {
                 HabitacionId = 5,
-                Exclusiva = false,
 				Alta = true,
 				Planta = 0,
 				Capacidad = 3,
@@ -231,7 +226,6 @@ namespace Persistencia.DAL.EntityFramework
             {
                 HabitacionId = 6,
 				Alta = true,
-				Exclusiva = false,
                 Planta = 1,
 				Capacidad = 3,
 				Ocupada = false
@@ -241,7 +235,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab7 = new Habitacion()
             {
                 HabitacionId = 7,
-                Exclusiva = false,
 				Alta = true,
 				Planta = 1,
 				Capacidad = 3,
@@ -252,7 +245,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab8 = new Habitacion()
             {
                 HabitacionId = 8,
-                Exclusiva = false,
                 Planta = 1,
 				Alta = true,
 				Capacidad = 3,
@@ -263,7 +255,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab9 = new Habitacion()
             {
                 HabitacionId = 9,
-                Exclusiva = false,
 				Alta = true,
 				Planta = 1,
 				Capacidad = 3,
@@ -274,7 +265,6 @@ namespace Persistencia.DAL.EntityFramework
             Habitacion hab10 = new Habitacion()
             {
                 HabitacionId = 10,
-                Exclusiva = false,
                 Planta = 1,
 				Capacidad = 3,
 				Alta = true,
