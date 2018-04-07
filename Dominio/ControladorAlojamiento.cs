@@ -152,7 +152,7 @@ namespace Dominio
 					}
 				}
 			}
-			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(1)) / 100);
+			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad)) / 100);
         }
 
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)
@@ -172,47 +172,47 @@ namespace Dominio
 		/// </summary>
 		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
 		{
-			List<Cliente> ClientesAloj = new List<Cliente>(pAlojEnAlta.Clientes);
-			ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
-			ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+			//List<Cliente> ClientesAloj = new List<Cliente>(pAlojEnAlta.Clientes);
+			//ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
+			//ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
 
-			string pContadores = pAlojEnAlta.ContadoresTarifas;
+			//string pContadores = pAlojEnAlta.ContadoresTarifas;
 
-			for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
-            {
-				int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
-				/*
-				indiceTipo
-					0	Titular
-					1	Acompañante Directo
-					2	Acompañante No Directo
-					3	Titular Exceptuado
-					4	Convenio
-				 */
-				while (cantTipo > Convert.ToByte('0'))
-				{
-					Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
-					if (cli !=null)
-						ClientesAloj.Remove(cli);
-					else
-						throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
-					cantTipo--;
-				}
-			}
+			//for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
+   //         {
+			//	int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
+			//	/*
+			//	indiceTipo
+			//		0	Titular
+			//		1	Acompañante Directo
+			//		2	Acompañante No Directo
+			//		3	Titular Exceptuado
+			//		4	Convenio
+			//	 */
+			//	while (cantTipo > Convert.ToByte('0'))
+			//	{
+			//		Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
+			//		if (cli !=null)
+			//			ClientesAloj.Remove(cli);
+			//		else
+			//			throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
+			//		cantTipo--;
+			//	}
+			//}
 
-			if (ClientesAloj.Count != 0)
-			{
-				throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
-			}
+			//if (ClientesAloj.Count != 0)
+			//{
+			//	throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
+			//}
 
-			pAlojEnAlta.AltaDeReserva();
+			//pAlojEnAlta.AltaDeReserva();
 
-            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); 
+   //         pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); 
 
-            if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
-            {
-                throw new Exception("Costo Base Incorrecto.");
-            }
+   //         if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
+   //         {
+   //             throw new Exception("Costo Base Incorrecto.");
+   //         }
         }
        
         /// <summary>
@@ -269,10 +269,9 @@ namespace Dominio
         public void CerrarAlojamiento(Alojamiento pAlojamiento)
         {
 			//Siempre se va a colocar en "false" la exclusividad
-			foreach (var hab in pAlojamiento.Habitaciones)
+			foreach (var aloHab in pAlojamiento.AlojHabes)
 			{
-				hab.SetExclusividad(false);
-				hab.DesocuparHabitacion();
+				aloHab.Habitacion.DesocuparHabitacion();
 			}
 			//fecha de hoy y cambio de estado
 			pAlojamiento.Cerrar();
