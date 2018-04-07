@@ -170,55 +170,44 @@ namespace Dominio
 		/// <summary>
 		/// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
 		/// </summary>
-		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
+		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta)
 		{
-			//List<Cliente> ClientesAloj = new List<Cliente>(pAlojEnAlta.Clientes);
-			//ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
-			//ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+			double cantidadTarifa = 0, cantidadCliente = 0;
 
-			//string pContadores = pAlojEnAlta.ContadoresTarifas;
+			foreach (AlojHab alojHab in pAlojEnAlta.AlojHabes)
+			{
+				foreach (TarifaCliente tarifa in alojHab.Tarifas)
+				{
+					cantidadTarifa += tarifa.GetTarifa(alojHab.Exclusividad);
+				}
+				foreach (Cliente cli in alojHab.Clientes)
+				{
+					cantidadCliente += cli.ObtenerSuPrecioTarifa(alojHab.Exclusividad);
+				}
+			}
 
-			//for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
-   //         {
-			//	int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
-			//	/*
-			//	indiceTipo
-			//		0	Titular
-			//		1	Acompañante Directo
-			//		2	Acompañante No Directo
-			//		3	Titular Exceptuado
-			//		4	Convenio
-			//	 */
-			//	while (cantTipo > Convert.ToByte('0'))
-			//	{
-			//		Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
-			//		if (cli !=null)
-			//			ClientesAloj.Remove(cli);
-			//		else
-			//			throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
-			//		cantTipo--;
-			//	}
-			//}
+			if (cantidadTarifa != cantidadCliente)
+			{
+				throw new Exception("Los Clientes cargados NO corresponden con la Reserva");
+			}
+		}
 
-			//if (ClientesAloj.Count != 0)
-			//{
-			//	throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
-			//}
+		public void DarAltaReserva(Alojamiento pAlojEnAlta, string pCostoBase)
+		{
+			pAlojEnAlta.AltaDeReserva();
 
-			//pAlojEnAlta.AltaDeReserva();
+			pAlojEnAlta.CalcularCostoBase();
 
-   //         pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); 
+			if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
+			{
+				throw new Exception("Costo Base Incorrecto.");
+			}
+		}
 
-   //         if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
-   //         {
-   //             throw new Exception("Costo Base Incorrecto.");
-   //         }
-        }
-       
-        /// <summary>
-        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
-        /// </summary>
-        public void ControlInicioAltaReserva(Alojamiento pAloj)
+		/// <summary>
+		/// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
+		/// </summary>
+		public void ControlInicioAltaReserva(Alojamiento pAloj)
         {
             if (pAloj.EstadoAlojamiento != EstadoAlojamiento.Reservado)
             {
