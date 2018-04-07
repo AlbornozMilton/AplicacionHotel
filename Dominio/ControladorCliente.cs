@@ -198,17 +198,21 @@ namespace Dominio
             }
         }
 
-		public void ControlClienteModificacionALta(int pIdCliente)
+		public void ControlClienteModificacionAlta(int pIdCliente)
 		{
 			List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
 
 			foreach (Alojamiento aloj in auxListaAloj)
 			{
-				foreach (Cliente cli in aloj.Clientes)
+				foreach (var alojHab in aloj.AlojHabes)
 				{
-					if (cli.ClienteId == pIdCliente)
+					foreach (var cli in alojHab.Clientes)
 					{
-						throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que es posible modificar su Estado");
+						if (cli.ClienteId == pIdCliente)
+						{
+							throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que NO es posible modificar su Estado");
+						}
+
 					}
 				}
 			}
