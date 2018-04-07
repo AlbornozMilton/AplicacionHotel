@@ -56,9 +56,9 @@ namespace Dominio
                 
             foreach (var aloj in AlojsActivos)
             {
-				foreach (var hab in aloj.Habitaciones)
+				foreach (var alojHab in aloj.AlojHabes)
 				{
-					if (hab.HabitacionId == pIdHabitacion)
+					if (alojHab.Habitacion.HabitacionId == pIdHabitacion)
 					{
 						AlojsResltultado.Add(aloj);
 					}
