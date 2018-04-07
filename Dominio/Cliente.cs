@@ -14,12 +14,12 @@ namespace Dominio
         public bool iEnAlta;
         private Domicilio iDomicilio;
         private TarifaCliente iTarifa;
-      //  private List<Alojamiento> iAlojamientos;
+		private AlojHab iAlojHab;
 
-        //-------------------------------Constructores
-        public Cliente() { } 
+		//-------------------------------Constructores
+		public Cliente() { } 
 
-        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, TarifaCliente pTarifa)
+        public Cliente(int pDni, int pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, TarifaCliente pTarifa, AlojHab pAlojHab)
         {
             this.iDni = pDni;
             this.iLegajo = pLegajo;
