@@ -279,6 +279,7 @@ namespace Persistencia.DAL.EntityFramework
 					new MetadataHotel
 					{
 						MetadataHotelId = TipoMetadaHotel.PorcentajeExclusividad,
+						Nombre = "Porcentaje Capacidad de Exclusividad",
 						Valor = 20
 					}
 				);
@@ -287,6 +288,7 @@ namespace Persistencia.DAL.EntityFramework
 					new MetadataHotel
 					{
 						MetadataHotelId = TipoMetadaHotel.PorcentajeTour,
+						Nombre = "Porcentaje Descuento Tour",
 						Valor = 10
 					}
 				);

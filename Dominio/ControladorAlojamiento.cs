@@ -152,6 +152,7 @@ namespace Dominio
 					}
 				}
 			}
+			//var valor = iUoW.RepositorioMetadaHotel.Get(Convert.ToInt32(pers.TipoMetadaHotel.PorcentajeExclusividad));
 			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad)) / 100);
         }
 

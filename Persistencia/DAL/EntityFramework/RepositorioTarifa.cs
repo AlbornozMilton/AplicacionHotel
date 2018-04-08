@@ -10,11 +10,6 @@ namespace Persistencia.DAL.EntityFramework
 
         }
 
-        public TarifaCliente GetTarifaString(string pTipoCliente)
-        {
-            return this.iDbContext.Tarifas.SingleOrDefault(t => t.TarifaClienteId.ToString() == pTipoCliente);
-        }
-
         public void ActualizarMontos(TarifaCliente pTarifa)
         {
             TarifaCliente localTarifa = iDbContext.Tarifas.Where(t => t.NombreTarifa == pTarifa.NombreTarifa).SingleOrDefault();
