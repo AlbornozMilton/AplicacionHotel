@@ -7,7 +7,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 	{
 		public AlojHabsMap()
 		{
-			this.Property(a => a.AlojamientoId)
+			this.Property(a => a.AlojHabId)
 				.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)
 				.IsRequired();
 
