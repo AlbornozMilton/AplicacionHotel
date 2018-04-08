@@ -40,7 +40,6 @@ namespace Dominio
 				{
 					Habitacion HabDom = Mapper.Map<pers.Habitacion, Habitacion>(hab);
 					HabDom.DesocuparHabitacion();
-					HabDom.SetExclusividad(false);
 					lista.Add(HabDom); 
 				}
             }
@@ -57,9 +56,9 @@ namespace Dominio
                 
             foreach (var aloj in AlojsActivos)
             {
-				foreach (var hab in aloj.Habitaciones)
+				foreach (var alojHab in aloj.AlojHabes)
 				{
-					if (hab.HabitacionId == pIdHabitacion)
+					if (alojHab.Habitacion.HabitacionId == pIdHabitacion)
 					{
 						AlojsResltultado.Add(aloj);
 					}
@@ -72,5 +71,13 @@ namespace Dominio
         {
 			iUoW.RepositorioHabitacion.ModificarAltaHabitacion(Mapper.Map<Habitacion,pers.Habitacion>(pHabitacion));
         }
+
+		//pasar un datagrid
+		public List<AlojHab> GenerarAlojHabs(System.Windows.Forms.DataGridView pHabSeleccionadas)
+		{
+			List<AlojHab> resultado = new List<AlojHab>();
+
+			return resultado;
+		}
     }
 }

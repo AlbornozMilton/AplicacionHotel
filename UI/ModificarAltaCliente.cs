@@ -26,7 +26,7 @@ namespace UI
 					throw new Exception("Debe seleccionar un Cliente");
 				}
 
-				new ControladorCliente().ControlClienteModificacionALta(BuscarCliente.ClienteSeleccionado.ClienteId);
+				new ControladorCliente().ControlClienteModificacionAlta(BuscarCliente.ClienteSeleccionado.ClienteId);
 
 				ClienteSeleccionado = BuscarCliente.ClienteSeleccionado;
 				RellenarCampos();

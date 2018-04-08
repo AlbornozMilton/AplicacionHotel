@@ -130,12 +130,17 @@ namespace Dominio
 		}
 
 		/// <summary>
-		/// Controla que la cantidades de Clientes ingresados coincidan con la capacidad de la Habitacion
+		/// NO SIRVE ?????
 		/// </summary>
 		/// <param name="pClientes">Acompañantes más el Responsable</param>
-		public void ControlCapacidadConClientes(List<Cliente> pClientes, Habitacion pHab)
+		public void ControlCapacidadConClientes(List<AlojHab> pAlojHabs, int pCantidad)
         {
-            if (pClientes.Count > pHab.Capacidad)
+			int auxCant = 0;
+			foreach (var alojHab in pAlojHabs)
+			{
+				auxCant += alojHab.Habitacion.Capacidad;
+			}
+            if (auxCant > pCantidad)
                 throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");
         }
 
@@ -169,43 +174,50 @@ namespace Dominio
         {
             foreach (var aloj in pAlojsActivos)
             {
-                foreach (var cliente in aloj.Clientes)
-                {
-                    if (cliente.ClienteId == pCliente.ClienteId)
-                    {
-                        if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-                        {
-                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
-                        }
-                        else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                        {
-                            //control de fechas
-                            if 
-                                (
-                                    !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
-                                    &&
-                                    !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
-                                )
-                            {
-                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
-                            }
-                        }
-                    }
-                }
+				foreach (AlojHab alojHab in aloj.AlojHabes)
+				{
+					foreach (Cliente cli in alojHab.Clientes)
+					{
+						if (cli.ClienteId == pCliente.ClienteId)
+						{
+							if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+							{
+								throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
+							}
+							else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+							{
+								//control de fechas
+								if
+									(
+										!(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+										&&
+										!(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+									)
+								{
+									throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
+								}
+							}
+						}
+					}
+				}
             }
         }
 
-		public void ControlClienteModificacionALta(int pIdCliente)
+		public void ControlClienteModificacionAlta(int pIdCliente)
 		{
 			List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
 
 			foreach (Alojamiento aloj in auxListaAloj)
 			{
-				foreach (Cliente cli in aloj.Clientes)
+				foreach (var alojHab in aloj.AlojHabes)
 				{
-					if (cli.ClienteId == pIdCliente)
+					foreach (var cli in alojHab.Clientes)
 					{
-						throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que es posible modificar su Estado");
+						if (cli.ClienteId == pIdCliente)
+						{
+							throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que NO es posible modificar su Estado");
+						}
+
 					}
 				}
 			}

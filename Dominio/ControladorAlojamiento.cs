@@ -86,13 +86,9 @@ namespace Dominio
 				//inicializar fechas locales
                 auxFechaFinAloj = aloj.FechaEstimadaEgreso.Date;
                 if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-                {
                     auxFechaIniAloj = aloj.FechaIngreso.Date;
-                }
                 else
-                {
                     auxFechaIniAloj = aloj.FechaEstimadaIngreso.Date;
-                }
 
                 //control fechas
                 if (
@@ -101,11 +97,13 @@ namespace Dominio
                 {
                     foreach (var hab in listaHabitaciones)
                     {
-                        if (aloj.Habitaciones.Contains(hab))
-                        {
-							hab.OcuparHabitacion();
-                            hab.SetExclusividad(aloj.Exclusividad);
-                        }
+						foreach (AlojHab alojHab in aloj.AlojHabes)
+						{
+							if (alojHab.Habitacion.Equals(hab))
+							{
+								hab.OcuparHabitacion();
+							}
+						}
                     }
                 }
 
@@ -131,33 +129,30 @@ namespace Dominio
 
 			foreach (var aloj in auxListaActivos)
 			{
-				//Acumular si se solicito exclusividad
-				//se evalua exclsuvidad antes de entrar a hacer todo los demas calculos
-				if (aloj.Exclusividad)
+				DateTime alojFechaDesde = new DateTime();
+
+				//la cantidad exclusiva se acumula tanto si es alojado o reservado
+				if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+					alojFechaDesde = aloj.FechaIngreso.Date;
+				else //reservado
+					alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+				// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
+				if (!(
+					(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
+					||
+					(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
+					))
 				{
-					DateTime alojFechaDesde = new DateTime();
-
-					//la cantidad exclusiva se acumula tanto si es alojado o reservado
-					if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-						alojFechaDesde = aloj.FechaIngreso.Date;
-					else //reservado
-						alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
-
-					// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
-					if (!(
-							(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
-							||
-							(alojFechaDesde.Date.CompareTo(pFechaHasta) >= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta) > 0)
-						))
+					foreach (AlojHab alojHab in aloj.AlojHabes)
 					{
-						foreach (var hab in aloj.Habitaciones)
+						if (alojHab.Exclusividad)
 						{
-							auxCantExclusiva += hab.Capacidad;
+							auxCantExclusiva += alojHab.Habitacion.Capacidad;
 						}
 					}
 				}
 			}
-			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(1)) / 100);
+			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad)) / 100);
         }
 
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)
@@ -175,55 +170,44 @@ namespace Dominio
 		/// <summary>
 		/// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
 		/// </summary>
-		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta, string pCostoBase)
+		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta)
 		{
-			List<Cliente> ClientesAloj = new List<Cliente>(pAlojEnAlta.Clientes);
-			ClientesAloj.Remove(pAlojEnAlta.Clientes.Find(c => c.ClienteId == pAlojEnAlta.DniResponsable)); //Responsable
-			ClientesAloj.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+			double cantidadTarifa = 0, cantidadCliente = 0;
 
-			string pContadores = pAlojEnAlta.ContadoresTarifas;
-
-			for (int indiceTipo = 0; indiceTipo < pContadores.Length; indiceTipo++)
-            {
-				int cantTipo = Convert.ToInt32(pContadores[indiceTipo]);
-				/*
-				indiceTipo
-					0	Titular
-					1	Acompañante Directo
-					2	Acompañante No Directo
-					3	Titular Exceptuado
-					4	Convenio
-				 */
-				while (cantTipo > Convert.ToByte('0'))
+			foreach (AlojHab alojHab in pAlojEnAlta.AlojHabes)
+			{
+				foreach (TarifaCliente tarifa in alojHab.Tarifas)
 				{
-					Cliente cli = ClientesAloj.Find(c => Convert.ToInt32(c.TarifaCliente.TarifaClienteId) == indiceTipo);
-					if (cli !=null)
-						ClientesAloj.Remove(cli);
-					else
-						throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
-					cantTipo--;
+					cantidadTarifa += tarifa.GetTarifa(alojHab.Exclusividad);
+				}
+				foreach (Cliente cli in alojHab.Clientes)
+				{
+					cantidadCliente += cli.ObtenerSuPrecioTarifa(alojHab.Exclusividad);
 				}
 			}
 
-			if (ClientesAloj.Count != 0)
+			if (cantidadTarifa != cantidadCliente)
 			{
-				throw new Exception("Los Clientes cargados NO corresponden con los cargados en la Reserva");
+				throw new Exception("Los Clientes cargados NO corresponden con la Reserva");
 			}
+		}
 
+		public void DarAltaReserva(Alojamiento pAlojEnAlta, string pCostoBase)
+		{
 			pAlojEnAlta.AltaDeReserva();
 
-            pAlojEnAlta.CalcularCostoBase(new List<TarifaCliente>()); 
+			pAlojEnAlta.CalcularCostoBase();
 
-            if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
-            {
-                throw new Exception("Costo Base Incorrecto.");
-            }
-        }
-       
-        /// <summary>
-        /// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
-        /// </summary>
-        public void ControlInicioAltaReserva(Alojamiento pAloj)
+			if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
+			{
+				throw new Exception("Costo Base Incorrecto.");
+			}
+		}
+
+		/// <summary>
+		/// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
+		/// </summary>
+		public void ControlInicioAltaReserva(Alojamiento pAloj)
         {
             if (pAloj.EstadoAlojamiento != EstadoAlojamiento.Reservado)
             {
@@ -274,10 +258,9 @@ namespace Dominio
         public void CerrarAlojamiento(Alojamiento pAlojamiento)
         {
 			//Siempre se va a colocar en "false" la exclusividad
-			foreach (var hab in pAlojamiento.Habitaciones)
+			foreach (var aloHab in pAlojamiento.AlojHabes)
 			{
-				hab.SetExclusividad(false);
-				hab.DesocuparHabitacion();
+				aloHab.Habitacion.DesocuparHabitacion();
 			}
 			//fecha de hoy y cambio de estado
 			pAlojamiento.Cerrar();

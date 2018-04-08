@@ -2,10 +2,14 @@
 {
 	public class MetadataHotel
 	{
-		public byte MetadataHotelId { get; set; }
-
-		public string Nombre { get; set; }
+		public TipoMetadaHotel MetadataHotelId { get; set; }
 
 		public int Valor { get; set; }
+	}
+	
+	public enum TipoMetadaHotel
+	{
+		PorcentajeExclusividad,
+		PorcentajeTour
 	}
 }

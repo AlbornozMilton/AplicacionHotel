@@ -124,23 +124,8 @@ namespace Persistencia.DAL.EntityFramework
         /// <summary>
         /// Actualiza el DNI de un Cliente en base a su Legajo
         /// </summary>
-        public void ModificarDNICliente(Cliente pCliente, int pLegajo)
+        public void EliminarCliente(Cliente pCliente, int pDNI)
         {
-            Cliente localCliente = this.GetPorLegajo(pLegajo, pCliente.EnAlta);
-
-            //cambiar el cliente para todos los alojamientos en los que estuvo y esta.
-            foreach (var aloj in iDbContext.Alojamientos)
-            {
-                foreach (var cli in aloj.Clientes)
-                {
-                    if (cli.ClienteId == localCliente.ClienteId)
-                    {
-                        cli.ClienteId = pCliente.ClienteId;
-                    }
-                }
-            }
-
-            localCliente.ClienteId = pCliente.ClienteId;
 
             iDbContext.SaveChanges();
         }

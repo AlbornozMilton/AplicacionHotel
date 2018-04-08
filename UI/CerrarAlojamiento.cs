@@ -27,7 +27,6 @@ namespace UI
         private void CargarAlojamientoSeccionado()
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(this.iAloj_Seleccionado.AlojamientoId, this.iAloj_Seleccionado.EstadoAlojamiento, this.iAloj_Seleccionado.HabitacionId, this.iAloj_Seleccionado.DniResponsable, this.iAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.iAloj_Seleccionado.DniResponsable).NombreCompleto());
 			if (iAloj_Seleccionado.MontoDeuda > 0)
 			{
 				label_deuda.Visible = true;

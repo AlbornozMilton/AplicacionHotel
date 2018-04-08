@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 namespace Dominio
 {
-	public class Habitacion: System.IComparable<Habitacion>
+	public class Habitacion: System.IEquatable<Habitacion>
 	{
 		private byte iNumero;
 		private byte iPlanta;
@@ -53,7 +53,7 @@ namespace Dominio
 			private set { this.iAlta = value; }
 		}
 
-		public List<AlojHab> AlojHabs { get { return this.iAloHabs } private set { this.iAloHabs = value; } }
+		public List<AlojHab> AlojHabs { get { return this.iAloHabs; } private set { this.iAloHabs = value; } }
 
 		//---------------------metodos
 		public void OcuparHabitacion()
@@ -76,9 +76,9 @@ namespace Dominio
 			this.iAlta = true;
 		}
 
-		public int CompareTo(Habitacion other)
+		public bool Equals(Habitacion other)
 		{
-			return this.HabitacionId.CompareTo(other.HabitacionId);
+			return this.HabitacionId == other.HabitacionId;
 		}
 	}
 }

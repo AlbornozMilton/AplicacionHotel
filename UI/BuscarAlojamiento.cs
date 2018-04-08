@@ -46,7 +46,7 @@ namespace UI
             dGV_ListadoAlojamientos.Rows.Clear();
             if (auxAloj_Seleccionado != null)
             {
-                dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, this.auxAloj_Seleccionado.Habitacion.HabitacionId,this.auxAloj_Seleccionado.DniResponsable, this.auxAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.auxAloj_Seleccionado.DniResponsable).NombreCompleto());
+                //dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, this.auxAloj_Seleccionado.Habitacion.HabitacionId,this.auxAloj_Seleccionado.DniResponsable, this.auxAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.auxAloj_Seleccionado.DniResponsable).NombreCompleto());
                 btn_Aceptar.Enabled = true;
             }
             else

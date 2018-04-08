@@ -17,7 +17,6 @@ namespace UI
         private void CargarAlojamientoSeccionado()
         {
             dGV_ListadoAlojamientos.Rows.Clear();
-            dGV_ListadoAlojamientos.Rows.Add(this.Aloj_Seleccionado.AlojamientoId, this.Aloj_Seleccionado.EstadoAlojamiento, this.Aloj_Seleccionado.HabitacionId, this.Aloj_Seleccionado.DniResponsable, this.Aloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.Aloj_Seleccionado.DniResponsable).NombreCompleto());
         }
 
         private void btn_BuscarAlojamiento_Click(object sender, EventArgs e)

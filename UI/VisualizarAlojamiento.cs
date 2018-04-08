@@ -82,10 +82,6 @@ namespace UI
             lbl_EstadoActual.Text = pAlojamiento.EstadoAlojamiento.ToString();
             lbl_MontoDeuda.Text = pAlojamiento.MontoDeuda.ToString();
             lbl_MontoTotal.Text = pAlojamiento.MontoTotal.ToString();
-            lbl_NroHabitacion.Text = pAlojamiento.HabitacionId.ToString();
-			lbl_planta.Text = pAlojamiento.Habitacion.Planta == 0 ? "Baja" : "Alta";
-			lbl_Capacidad.Text = pAlojamiento.Habitacion.Capacidad.ToString();
-			lbl_Exclusividad.Text = pAlojamiento.Exclusividad ? "SI" : "NO";
 			lbl_FechaReserva.Text = CargarFecha(pAlojamiento.FechaReserva);
 			lbl_hora1.Text = CargarHora(lbl_FechaReserva.Text,pAlojamiento.FechaReserva);
             lbl_FechaIngreso.Text = CargarFecha(pAlojamiento.FechaIngreso);
@@ -100,12 +96,10 @@ namespace UI
 			lbl_hora6.Text = CargarHora(lbl_value_fechaCancelacion.Text, pAlojamiento.FechaCancelacion);
 			
 
-            CargarClientes(pAlojamiento.Clientes, pAlojamiento.DniResponsable);
             CargarPagos(pAlojamiento.Pagos);
             CargarServicios(pAlojamiento.Servicios);
             if (pAlojamiento.EstadoAlojamiento == EstadoAlojamiento.Reservado)
             {
-                AlojReserva(pAlojamiento.ContadoresTarifas); 
             }
         }
 
