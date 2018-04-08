@@ -31,12 +31,12 @@
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.MenuStrip menuStrip1;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaPrincipal));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.sesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.iniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -526,7 +526,7 @@
 			this.groupBox_disponibilidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox_disponibilidad.Location = new System.Drawing.Point(12, 41);
 			this.groupBox_disponibilidad.Name = "groupBox_disponibilidad";
-			this.groupBox_disponibilidad.Size = new System.Drawing.Size(506, 146);
+			this.groupBox_disponibilidad.Size = new System.Drawing.Size(506, 134);
 			this.groupBox_disponibilidad.TabIndex = 3;
 			this.groupBox_disponibilidad.TabStop = false;
 			this.groupBox_disponibilidad.Text = "Ver Disponiblidad";
@@ -536,7 +536,7 @@
 			this.btn_Buscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.btn_Buscar.BackColor = System.Drawing.SystemColors.MenuHighlight;
 			this.btn_Buscar.ForeColor = System.Drawing.Color.White;
-			this.btn_Buscar.Location = new System.Drawing.Point(372, 44);
+			this.btn_Buscar.Location = new System.Drawing.Point(372, 38);
 			this.btn_Buscar.Name = "btn_Buscar";
 			this.btn_Buscar.Size = new System.Drawing.Size(128, 59);
 			this.btn_Buscar.TabIndex = 1;
@@ -558,7 +558,7 @@
 			// 
 			this.dtp_fechaDesde.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
 			this.dtp_fechaDesde.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.dtp_fechaDesde.Location = new System.Drawing.Point(80, 45);
+			this.dtp_fechaDesde.Location = new System.Drawing.Point(80, 39);
 			this.dtp_fechaDesde.Name = "dtp_fechaDesde";
 			this.dtp_fechaDesde.Size = new System.Drawing.Size(286, 30);
 			this.dtp_fechaDesde.TabIndex = 2;
@@ -590,9 +590,9 @@
 			this.groupBox2.Controls.Add(this.dGV_Alojamientos);
 			this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.groupBox2.Location = new System.Drawing.Point(12, 223);
+			this.groupBox2.Location = new System.Drawing.Point(12, 213);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(987, 494);
+			this.groupBox2.Size = new System.Drawing.Size(987, 504);
 			this.groupBox2.TabIndex = 4;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Alojamientos Reservados y Alojados";
@@ -614,7 +614,7 @@
 			this.btn_VerDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.btn_VerDetalle.BackColor = System.Drawing.Color.White;
-			this.btn_VerDetalle.Location = new System.Drawing.Point(873, 193);
+			this.btn_VerDetalle.Location = new System.Drawing.Point(879, 181);
 			this.btn_VerDetalle.Name = "btn_VerDetalle";
 			this.btn_VerDetalle.Size = new System.Drawing.Size(120, 30);
 			this.btn_VerDetalle.TabIndex = 5;
@@ -625,7 +625,7 @@
 			// button1
 			// 
 			this.button1.BackColor = System.Drawing.Color.White;
-			this.button1.Location = new System.Drawing.Point(12, 193);
+			this.button1.Location = new System.Drawing.Point(12, 181);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(111, 30);
 			this.button1.TabIndex = 6;
@@ -640,14 +640,14 @@
 			this.dGV_Alojamientos.AllowUserToResizeColumns = false;
 			this.dGV_Alojamientos.AllowUserToResizeRows = false;
 			this.dGV_Alojamientos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+			dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
 			this.dGV_Alojamientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dGV_Alojamientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7,
@@ -658,31 +658,31 @@
             this.Column4,
             this.clm_egreso,
             this.clm_Ref});
-			dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle35;
+			dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dGV_Alojamientos.DefaultCellStyle = dataGridViewCellStyle17;
 			this.dGV_Alojamientos.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dGV_Alojamientos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
 			this.dGV_Alojamientos.Location = new System.Drawing.Point(3, 26);
 			this.dGV_Alojamientos.MultiSelect = false;
 			this.dGV_Alojamientos.Name = "dGV_Alojamientos";
 			this.dGV_Alojamientos.ReadOnly = true;
-			dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
-			dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-			dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dGV_Alojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+			dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+			dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_Alojamientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
 			this.dGV_Alojamientos.RowHeadersVisible = false;
 			this.dGV_Alojamientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Alojamientos.Size = new System.Drawing.Size(981, 465);
+			this.dGV_Alojamientos.Size = new System.Drawing.Size(981, 475);
 			this.dGV_Alojamientos.TabIndex = 0;
 			// 
 			// timer1
@@ -715,7 +715,7 @@
 			this.groupBox_ColorsRef.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox_ColorsRef.Location = new System.Drawing.Point(524, 43);
 			this.groupBox_ColorsRef.Name = "groupBox_ColorsRef";
-			this.groupBox_ColorsRef.Size = new System.Drawing.Size(475, 144);
+			this.groupBox_ColorsRef.Size = new System.Drawing.Size(475, 132);
 			this.groupBox_ColorsRef.TabIndex = 5;
 			this.groupBox_ColorsRef.TabStop = false;
 			this.groupBox_ColorsRef.Text = "Referencias (Columna \"Ref\")";
@@ -800,7 +800,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(59, 105);
+			this.label6.Location = new System.Drawing.Point(59, 79);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(109, 19);
 			this.label6.TabIndex = 10;
@@ -809,7 +809,7 @@
 			// pictureBox5
 			// 
 			this.pictureBox5.BackColor = System.Drawing.Color.Pink;
-			this.pictureBox5.Location = new System.Drawing.Point(10, 105);
+			this.pictureBox5.Location = new System.Drawing.Point(10, 79);
 			this.pictureBox5.Name = "pictureBox5";
 			this.pictureBox5.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox5.TabIndex = 9;
@@ -818,7 +818,7 @@
 			// pictureBox4
 			// 
 			this.pictureBox4.BackColor = System.Drawing.Color.DarkTurquoise;
-			this.pictureBox4.Location = new System.Drawing.Point(10, 79);
+			this.pictureBox4.Location = new System.Drawing.Point(10, 105);
 			this.pictureBox4.Name = "pictureBox4";
 			this.pictureBox4.Size = new System.Drawing.Size(43, 19);
 			this.pictureBox4.TabIndex = 8;
@@ -846,11 +846,11 @@
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(59, 79);
+			this.label5.Location = new System.Drawing.Point(59, 105);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(76, 19);
+			this.label5.Size = new System.Drawing.Size(156, 19);
 			this.label5.TabIndex = 5;
-			this.label5.Text = "Cerrar Hoy";
+			this.label5.Text = "Cerrar Alojamiento Hoy";
 			// 
 			// label3
 			// 
@@ -868,15 +868,15 @@
 			this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label4.Location = new System.Drawing.Point(59, 29);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(150, 19);
+			this.label4.Size = new System.Drawing.Size(203, 19);
 			this.label4.TabIndex = 0;
-			this.label4.Text = "Sin Depósito tras 72hs";
+			this.label4.Text = "Reserva Sin Depósito tras 72hs";
 			// 
 			// Column7
 			// 
 			this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.Column7.DefaultCellStyle = dataGridViewCellStyle32;
+			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.Column7.DefaultCellStyle = dataGridViewCellStyle14;
 			this.Column7.FillWeight = 20F;
 			this.Column7.HeaderText = "Nro";
 			this.Column7.Name = "Column7";
@@ -885,8 +885,8 @@
 			// clm_Estado
 			// 
 			this.clm_Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.clm_Estado.DefaultCellStyle = dataGridViewCellStyle33;
+			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.clm_Estado.DefaultCellStyle = dataGridViewCellStyle15;
 			this.clm_Estado.FillWeight = 25F;
 			this.clm_Estado.HeaderText = "Estado";
 			this.clm_Estado.Name = "clm_Estado";
@@ -926,8 +926,8 @@
 			// clm_egreso
 			// 
 			this.clm_egreso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			this.clm_egreso.DefaultCellStyle = dataGridViewCellStyle34;
+			dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			this.clm_egreso.DefaultCellStyle = dataGridViewCellStyle16;
 			this.clm_egreso.FillWeight = 40F;
 			this.clm_egreso.HeaderText = "Egreso";
 			this.clm_egreso.Name = "clm_egreso";
