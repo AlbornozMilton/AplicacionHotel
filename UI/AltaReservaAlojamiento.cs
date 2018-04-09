@@ -55,25 +55,18 @@ namespace UI
                 if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
 					this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
-					var tarifas = new ControladorCliente().DevolverListaTarifas();
 					this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
 
+					dGV_Habs.Rows.Clear();
 					foreach (var hab in this.HabSeleccionadas)
 					{
 						for (int i = 0; i < hab.Capacidad; i++)
 						{
 							dGV_Habs.Rows.Add(hab.HabitacionId,
-							hab.Planta == 0 ? "Baja" : "Alta",
-							"No"
-							);
+							hab.Planta == 0 ? "Baja" : "Alta");
 						}
+						dGV_excl.Rows.Add(hab.HabitacionId, "No");
 					}
-
-					//for (int i = 0; i < dGV_Habs.RowCount; i++)
-					//{
-					//	dGV_Habs.Columns.Add
-					//}
-					
 
 					//USAR exclusividadCapacidad para no negar el boton de exclusividad
 					dGV_ClienteResponsable.Rows.Clear();
@@ -294,6 +287,19 @@ namespace UI
 		{
 			e.Cancel = false;
 			e.ThrowException = false;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			if (button1.Text == "No es TOUR")
+			{
+				button1.Text = "Es TOUR";
+				button1.BackColor = System.Drawing.Color.Green;
+			}else
+			{
+				button1.Text = "No es TOUR";
+				button1.BackColor = System.Drawing.Color.OrangeRed;
+			}
 		}
 	}
 }

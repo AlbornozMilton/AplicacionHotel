@@ -35,6 +35,9 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaReservaAlojamiento));
 			this.txb_fechaActual = new System.Windows.Forms.TextBox();
 			this.textBox1 = new System.Windows.Forms.TextBox();
@@ -65,9 +68,12 @@
 			this.label14 = new System.Windows.Forms.Label();
 			this.btn_Confirmar = new System.Windows.Forms.PictureBox();
 			this.button1 = new System.Windows.Forms.Button();
+			this.groupBox_excl = new System.Windows.Forms.GroupBox();
+			this.dGV_excl = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
 			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clm_exclu = new System.Windows.Forms.DataGridViewButtonColumn();
 			this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
@@ -75,6 +81,8 @@
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).BeginInit();
+			this.groupBox_excl.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dGV_excl)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txb_fechaActual
@@ -204,7 +212,7 @@
 			this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox4.Location = new System.Drawing.Point(12, 147);
 			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(880, 288);
+			this.groupBox4.Size = new System.Drawing.Size(541, 288);
 			this.groupBox4.TabIndex = 15;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Habitaciones Seleccionadas";
@@ -228,11 +236,10 @@
 			this.dGV_Habs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_Id,
             this.dataGridViewTextBoxColumn1,
-            this.clm_exclu,
             this.clmk_tipoCliente});
 			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
 			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
 			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -252,10 +259,9 @@
 			this.dGV_Habs.RowHeadersVisible = false;
 			this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
 			this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dGV_Habs.Size = new System.Drawing.Size(874, 259);
+			this.dGV_Habs.Size = new System.Drawing.Size(535, 259);
 			this.dGV_Habs.TabIndex = 2;
 			this.dGV_Habs.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dGV_Habs_DataError);
-			this.dGV_Habs.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dGV_Habs_DefaultValuesNeeded);
 			// 
 			// groupBox2
 			// 
@@ -471,15 +477,88 @@
 			// 
 			// button1
 			// 
-			this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+			this.button1.BackColor = System.Drawing.Color.OrangeRed;
 			this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-			this.button1.Location = new System.Drawing.Point(467, 648);
+			this.button1.Location = new System.Drawing.Point(720, 287);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(175, 41);
+			this.button1.Size = new System.Drawing.Size(145, 41);
 			this.button1.TabIndex = 28;
-			this.button1.Text = "Reserva de TOUR";
+			this.button1.Text = "No es TOUR";
 			this.button1.UseVisualStyleBackColor = false;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// groupBox_excl
+			// 
+			this.groupBox_excl.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox_excl.Controls.Add(this.dGV_excl);
+			this.groupBox_excl.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.groupBox_excl.Location = new System.Drawing.Point(569, 147);
+			this.groupBox_excl.Name = "groupBox_excl";
+			this.groupBox_excl.Size = new System.Drawing.Size(122, 288);
+			this.groupBox_excl.TabIndex = 29;
+			this.groupBox_excl.TabStop = false;
+			this.groupBox_excl.Text = "Exclusividad";
+			// 
+			// dGV_excl
+			// 
+			this.dGV_excl.AllowUserToAddRows = false;
+			this.dGV_excl.AllowUserToDeleteRows = false;
+			this.dGV_excl.AllowUserToResizeColumns = false;
+			this.dGV_excl.AllowUserToResizeRows = false;
+			this.dGV_excl.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_excl.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+			this.dGV_excl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dGV_excl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewButtonColumn1});
+			dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dGV_excl.DefaultCellStyle = dataGridViewCellStyle9;
+			this.dGV_excl.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dGV_excl.Location = new System.Drawing.Point(3, 26);
+			this.dGV_excl.Name = "dGV_excl";
+			dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dGV_excl.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+			this.dGV_excl.RowHeadersVisible = false;
+			this.dGV_excl.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+			this.dGV_excl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dGV_excl.Size = new System.Drawing.Size(116, 259);
+			this.dGV_excl.TabIndex = 2;
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewTextBoxColumn2.FillWeight = 40F;
+			this.dataGridViewTextBoxColumn2.HeaderText = "Nro";
+			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			// 
+			// dataGridViewButtonColumn1
+			// 
+			this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.dataGridViewButtonColumn1.FillWeight = 45F;
+			this.dataGridViewButtonColumn1.HeaderText = "Excl";
+			this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+			this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			// 
 			// clm_Id
 			// 
@@ -494,15 +573,6 @@
 			this.dataGridViewTextBoxColumn1.FillWeight = 40F;
 			this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
 			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			// 
-			// clm_exclu
-			// 
-			this.clm_exclu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.clm_exclu.FillWeight = 45F;
-			this.clm_exclu.HeaderText = "Exclusividad";
-			this.clm_exclu.Name = "clm_exclu";
-			this.clm_exclu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			this.clm_exclu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			// 
 			// clmk_tipoCliente
 			// 
@@ -529,6 +599,7 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(898, 701);
+			this.Controls.Add(this.groupBox_excl);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label14);
 			this.Controls.Add(this.btn_Confirmar);
@@ -559,6 +630,8 @@
 			this.groupBox2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).EndInit();
+			this.groupBox_excl.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dGV_excl)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -595,9 +668,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipo;
 		private System.Windows.Forms.DataGridView dGV_Habs;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.GroupBox groupBox_excl;
+		private System.Windows.Forms.DataGridView dGV_excl;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+		private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-		private System.Windows.Forms.DataGridViewButtonColumn clm_exclu;
 		private System.Windows.Forms.DataGridViewComboBoxColumn clmk_tipoCliente;
 	}
 }
