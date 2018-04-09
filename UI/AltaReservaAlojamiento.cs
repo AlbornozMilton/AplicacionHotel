@@ -8,7 +8,6 @@ namespace UI
     public partial class AltaReservaAlojamiento : Form
     {
         public List<Habitacion> HabSeleccionadas;
-		private byte auxCapacidadTotal = 0;
 		public DateTime FechaIni;
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
@@ -56,17 +55,26 @@ namespace UI
                 if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
 					this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
+					var tarifas = new ControladorCliente().DevolverListaTarifas();
+					this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
+
 					foreach (var hab in this.HabSeleccionadas)
 					{
-						dGV_Habs.Rows.Add(hab.HabitacionId,
-							hab.Planta == 0?"Baja":"Alta",
-							hab.Capacidad,
+						for (int i = 0; i < hab.Capacidad; i++)
+						{
+							dGV_Habs.Rows.Add(hab.HabitacionId,
+							hab.Planta == 0 ? "Baja" : "Alta",
 							"No"
 							);
-						auxCapacidadTotal += hab.Capacidad;
+						}
 					}
 
-					this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin);
+					//for (int i = 0; i < dGV_Habs.RowCount; i++)
+					//{
+					//	dGV_Habs.Columns.Add
+					//}
+					
+
 					//USAR exclusividadCapacidad para no negar el boton de exclusividad
 					dGV_ClienteResponsable.Rows.Clear();
 					ClienteResponsable = null;
@@ -280,6 +288,12 @@ namespace UI
 			groupBox4.Enabled = false;
 			groupBox2.Enabled = false;
 		}
-        #endregion
+		#endregion
+
+		private void dGV_Habs_DataError(object sender, DataGridViewDataErrorEventArgs e)
+		{
+			e.Cancel = false;
+			e.ThrowException = false;
+		}
 	}
 }
