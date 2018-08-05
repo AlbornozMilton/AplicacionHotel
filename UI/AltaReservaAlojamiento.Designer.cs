@@ -75,6 +75,7 @@
 			this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -83,10 +84,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).BeginInit();
 			this.groupBox_excl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dGV_excl)).BeginInit();
+			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// txb_fechaActual
 			// 
+			this.txb_fechaActual.BackColor = System.Drawing.Color.White;
 			this.txb_fechaActual.Enabled = false;
 			this.txb_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txb_fechaActual.Location = new System.Drawing.Point(768, 7);
@@ -98,10 +101,11 @@
 			// 
 			// textBox1
 			// 
+			this.textBox1.BackColor = System.Drawing.Color.White;
 			this.textBox1.Enabled = false;
 			this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.textBox1.Location = new System.Drawing.Point(58, 6);
+			this.textBox1.Location = new System.Drawing.Point(212, 6);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
 			this.textBox1.Size = new System.Drawing.Size(116, 30);
@@ -127,13 +131,13 @@
 			this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(12, 9);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(27, 23);
+			this.label1.Size = new System.Drawing.Size(194, 23);
 			this.label1.TabIndex = 4;
-			this.label1.Text = "ID";
+			this.label1.Text = "Número de Alojamiento";
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox1.BackColor = System.Drawing.Color.Gold;
 			this.groupBox1.Controls.Add(this.btn_VerificarDisponibilidad);
 			this.groupBox1.Controls.Add(this.dtp_fechaHasta);
 			this.groupBox1.Controls.Add(this.dtp_fechaDesde);
@@ -206,7 +210,7 @@
 			// 
 			// groupBox4
 			// 
-			this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox4.BackColor = System.Drawing.Color.Gold;
 			this.groupBox4.Controls.Add(this.dGV_Habs);
 			this.groupBox4.Enabled = false;
 			this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -268,7 +272,7 @@
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox2.BackColor = System.Drawing.Color.Gold;
 			this.groupBox2.Controls.Add(this.dGV_ClienteResponsable);
 			this.groupBox2.Controls.Add(this.button2);
 			this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -385,7 +389,7 @@
 			this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button5.Location = new System.Drawing.Point(12, 659);
 			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(125, 30);
+			this.button5.Size = new System.Drawing.Size(111, 30);
 			this.button5.TabIndex = 19;
 			this.button5.Text = "Cancelar";
 			this.button5.UseVisualStyleBackColor = false;
@@ -396,7 +400,7 @@
 			this.btn_Aceptar.BackColor = System.Drawing.Color.White;
 			this.btn_Aceptar.Enabled = false;
 			this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btn_Aceptar.Location = new System.Drawing.Point(760, 659);
+			this.btn_Aceptar.Location = new System.Drawing.Point(767, 659);
 			this.btn_Aceptar.Name = "btn_Aceptar";
 			this.btn_Aceptar.Size = new System.Drawing.Size(125, 30);
 			this.btn_Aceptar.TabIndex = 18;
@@ -408,7 +412,7 @@
 			// 
 			this.txb_CostoBase.Enabled = false;
 			this.txb_CostoBase.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_CostoBase.Location = new System.Drawing.Point(122, 599);
+			this.txb_CostoBase.Location = new System.Drawing.Point(149, 34);
 			this.txb_CostoBase.Name = "txb_CostoBase";
 			this.txb_CostoBase.ReadOnly = true;
 			this.txb_CostoBase.Size = new System.Drawing.Size(83, 30);
@@ -420,17 +424,17 @@
 			this.label12.AutoSize = true;
 			this.label12.BackColor = System.Drawing.Color.Transparent;
 			this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label12.Location = new System.Drawing.Point(13, 602);
+			this.label12.Location = new System.Drawing.Point(24, 37);
 			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(94, 23);
+			this.label12.Size = new System.Drawing.Size(120, 23);
 			this.label12.TabIndex = 21;
-			this.label12.Text = "Costo Base";
+			this.label12.Text = "Costo Reserva";
 			// 
 			// txb_Deposito
 			// 
 			this.txb_Deposito.Enabled = false;
 			this.txb_Deposito.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txb_Deposito.Location = new System.Drawing.Point(320, 599);
+			this.txb_Deposito.Location = new System.Drawing.Point(347, 34);
 			this.txb_Deposito.Name = "txb_Deposito";
 			this.txb_Deposito.ReadOnly = true;
 			this.txb_Deposito.Size = new System.Drawing.Size(83, 30);
@@ -442,7 +446,7 @@
 			this.label13.AutoSize = true;
 			this.label13.BackColor = System.Drawing.Color.Transparent;
 			this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label13.Location = new System.Drawing.Point(236, 602);
+			this.label13.Location = new System.Drawing.Point(263, 37);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(78, 23);
 			this.label13.TabIndex = 23;
@@ -453,11 +457,12 @@
 			this.label14.AutoSize = true;
 			this.label14.BackColor = System.Drawing.Color.Transparent;
 			this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(694, 606);
+			this.label14.ForeColor = System.Drawing.Color.Black;
+			this.label14.Location = new System.Drawing.Point(689, 37);
 			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(96, 19);
+			this.label14.Size = new System.Drawing.Size(91, 19);
 			this.label14.TabIndex = 26;
-			this.label14.Text = "COMPROBAR";
+			this.label14.Text = "CONFIRMAR";
 			this.label14.Visible = false;
 			// 
 			// btn_Confirmar
@@ -465,9 +470,9 @@
 			this.btn_Confirmar.BackColor = System.Drawing.Color.Transparent;
 			this.btn_Confirmar.Image = global::UI.Properties.Resources.Boton_Go;
 			this.btn_Confirmar.InitialImage = null;
-			this.btn_Confirmar.Location = new System.Drawing.Point(796, 581);
+			this.btn_Confirmar.Location = new System.Drawing.Point(786, 21);
 			this.btn_Confirmar.Name = "btn_Confirmar";
-			this.btn_Confirmar.Size = new System.Drawing.Size(63, 61);
+			this.btn_Confirmar.Size = new System.Drawing.Size(56, 49);
 			this.btn_Confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.btn_Confirmar.TabIndex = 25;
 			this.btn_Confirmar.TabStop = false;
@@ -490,7 +495,7 @@
 			// 
 			// groupBox_excl
 			// 
-			this.groupBox_excl.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox_excl.BackColor = System.Drawing.Color.Gold;
 			this.groupBox_excl.Controls.Add(this.dGV_excl);
 			this.groupBox_excl.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox_excl.Location = new System.Drawing.Point(569, 147);
@@ -590,6 +595,26 @@
 			this.clmk_tipoCliente.Sorted = true;
 			this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			// 
+			// groupBox3
+			// 
+			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox3.BackColor = System.Drawing.Color.Gold;
+			this.groupBox3.Controls.Add(this.label13);
+			this.groupBox3.Controls.Add(this.label12);
+			this.groupBox3.Controls.Add(this.label14);
+			this.groupBox3.Controls.Add(this.btn_Confirmar);
+			this.groupBox3.Controls.Add(this.txb_CostoBase);
+			this.groupBox3.Controls.Add(this.txb_Deposito);
+			this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.groupBox3.Location = new System.Drawing.Point(12, 571);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(880, 82);
+			this.groupBox3.TabIndex = 30;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Confirmación de Reserva";
+			// 
 			// AltaReservaAlojamiento
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,14 +624,9 @@
 			this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(898, 701);
+			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox_excl);
 			this.Controls.Add(this.button1);
-			this.Controls.Add(this.label14);
-			this.Controls.Add(this.btn_Confirmar);
-			this.Controls.Add(this.txb_Deposito);
-			this.Controls.Add(this.label13);
-			this.Controls.Add(this.txb_CostoBase);
-			this.Controls.Add(this.label12);
 			this.Controls.Add(this.button5);
 			this.Controls.Add(this.btn_Aceptar);
 			this.Controls.Add(this.groupBox2);
@@ -632,6 +652,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).EndInit();
 			this.groupBox_excl.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dGV_excl)).EndInit();
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -675,5 +697,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
 		private System.Windows.Forms.DataGridViewComboBoxColumn clmk_tipoCliente;
+		private System.Windows.Forms.GroupBox groupBox3;
 	}
 }
