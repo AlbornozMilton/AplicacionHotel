@@ -111,9 +111,9 @@ namespace Dominio
             return (listaHabitaciones);
         }
 
-		public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta)
+		public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pCantAux)
 		{
-			//este valor puede variar devido a los Alta de las Habitacioes, no es un valor fijo en la BD
+			//este valor puede variar devido a los Alta de las Habitaciones, no es un valor fijo explicito en la BD
 			int auxCapacidadTotal = 0;
 
 			List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
@@ -131,11 +131,12 @@ namespace Dominio
 			{
 				DateTime alojFechaDesde = new DateTime();
 
-				//la cantidad exclusiva se acumula tanto si es alojado o reservado
+				//la cantidad exclusiva se acumula tanto si es alojado o se ha reservbado
 				if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
 					alojFechaDesde = aloj.FechaIngreso.Date;
 				else //reservado
 					alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+
 				// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
 				if (!(
 					(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
@@ -152,8 +153,8 @@ namespace Dominio
 					}
 				}
 			}
-			//var valor = iUoW.RepositorioMetadaHotel.Get(Convert.ToInt32(pers.TipoMetadaHotel.PorcentajeExclusividad));
-			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad)) / 100);
+
+            return (decimal)(auxCantExclusiva + pCantAux) <= (auxCapacidadTotal * Decimal.Divide(iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad), 100));
         }
 
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)
