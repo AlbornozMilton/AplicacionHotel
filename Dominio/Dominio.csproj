@@ -62,6 +62,7 @@
     <Compile Include="Domicilio.cs" />
     <Compile Include="DTOsAutoMapper\AutoMapper.cs" />
     <Compile Include="EstadoAlojamiento.cs" />
+    <Compile Include="HabClientesRow.cs" />
     <Compile Include="Habitacion.cs" />
     <Compile Include="LineaServicio.cs" />
     <Compile Include="Pago.cs" />

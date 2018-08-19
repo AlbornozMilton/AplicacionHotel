@@ -8,6 +8,7 @@ namespace Dominio
         bool iExclusividad;
         Alojamiento iAloj;
         Habitacion iHab;
+        List<HabClientesRow> iRowTarifas = new List<HabClientesRow>();
         List<TarifaCliente> iTarifas = new List<TarifaCliente>();
         List<Cliente> iClientes = new List<Cliente>();
 
@@ -34,16 +35,14 @@ namespace Dominio
         public List<TarifaCliente> Tarifas { get { return this.iTarifas; } private set { this.iTarifas = value; } }
         public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
 
-        public void AgregarTarifa(TarifaCliente pTarifa)
+        public void AgregarTarifa(int pNum, string pTarifa)
         {
-            iTarifas.Add(pTarifa);
-        }
+            var row = iRowTarifas.Find(r => r.iNumRow == pNum);
 
-        public void CambioTarifa(TarifaCliente pOldTarifa, TarifaCliente pNewTarifa)
-        {
-            iTarifas.Remove(iTarifas.Find(t => t.NombreTarifa == pOldTarifa.NombreTarifa));
-            AgregarTarifa(pNewTarifa);
-        }
+            if (row != null)
+                iRowTarifas.Remove(row);
 
+            iRowTarifas.Add(new HabClientesRow(pNum, pTarifa));
+        }
     }
 }

@@ -361,9 +361,10 @@ namespace UI
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn && e.RowIndex >= 0)
             {
                 var row = dGV_Habs.Rows[e.RowIndex];
-                string nombreTarifa = (string)row.Cells[2].Value;
-                
 
+                var ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells[0].Value);
+
+                ah.AgregarTarifa(e.RowIndex, (string)row.Cells[2].Value);
             }
         }
 
