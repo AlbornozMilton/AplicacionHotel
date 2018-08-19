@@ -14,7 +14,7 @@ namespace UI
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
         private Alojamiento NuevoAlojamiento;
-        private List<AlojHab> AlojHabs;
+        private List<AlojHab> AlojHabs = new List<AlojHab>();
         private bool exclusividadCapacidad;
 
         public AltaReservaAlojamiento()
@@ -33,14 +33,16 @@ namespace UI
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
-            label14.Visible = true;
+            //label14.Visible = true;
             btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_Confirmar.Image = UI.Properties.Resources.boton_buscar_seleccion2;
         }
 
         private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
-            label14.Visible = false;
+            //label14.Visible = false;
             btn_Confirmar.SizeMode = PictureBoxSizeMode.CenterImage;
+            btn_Confirmar.Image = UI.Properties.Resources.Exito_Icon;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -62,12 +64,15 @@ namespace UI
 
                     this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 0);
 
+                    AlojHabs.Clear();
                     dGV_Habs.Rows.Clear();
                     dGV_excl.Rows.Clear();
                     cantExclAux = 0;
 
-                    foreach (var hab in this.HabSeleccionadas)
+                    foreach (Habitacion hab in this.HabSeleccionadas)
                     {
+                        AlojHabs.Add(new AlojHab(hab));
+
                         for (int i = 0; i < hab.Capacidad; i++)
                         {
                             dGV_Habs.Rows.Add(hab.HabitacionId,
@@ -317,29 +322,58 @@ namespace UI
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 var row = dGV_excl.Rows[e.RowIndex];
+                Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value);
 
                 if ((string)row.Cells[1].Value == "No")
                 {
-                    int cant = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value).Capacidad;
-                    cantExclAux += cant;
+                    //int cant = auxHab.Capacidad;
+                    cantExclAux += auxHab.Capacidad;
 
                     this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, cantExclAux);
 
                     if (this.exclusividadCapacidad)
+                    {
                         row.Cells[1].Value = "Si";
+
+                        AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = exclusividadCapacidad;
+                    }
                     else
                     {
-                        cantExclAux -= cant;
+                        cantExclAux -= auxHab.Capacidad;
 
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Se supera cantidad de exclusividad", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Se supera la cantidad de exclusividad", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                     }
                 }
                 else
                 {
                     row.Cells[1].Value = "No";
+                    AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
+
                     cantExclAux = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value).Capacidad;
                 }
+            }
+        }
+
+        private void dGV_Habs_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn && e.RowIndex >= 0)
+            {
+                var row = dGV_Habs.Rows[e.RowIndex];
+                string nombreTarifa = (string)row.Cells[2].Value;
+                
+
+            }
+        }
+
+        private void dGV_Habs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.CurrentCell is DataGridViewComboBoxCell)
+            {
+                senderGrid.BeginEdit(true);
+                ((ComboBox)senderGrid.EditingControl).DroppedDown = true;
             }
         }
     }
