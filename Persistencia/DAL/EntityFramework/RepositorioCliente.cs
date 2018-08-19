@@ -18,6 +18,10 @@ namespace Persistencia.DAL.EntityFramework
                            where ((cli.Nombre + cli.Apellido).Contains(pNombre)) && (cli.EnAlta == pAlta)
                            select cli;
 
+            //var clientes = from cli in this.iDbContext.Clientes
+            //               where ((cli.Nombre + cli.Apellido).Contains(pNombre)) && (cli.EnAlta == pAlta)
+            //               select cli;
+
             return clientes.ToList<Cliente>();
         }
 
