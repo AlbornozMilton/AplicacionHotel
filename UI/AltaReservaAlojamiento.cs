@@ -188,32 +188,52 @@ namespace UI
 
                     //new ControladorCliente().ControlCapacidadConClientes(alojsHab, auxCapacidadTotal);
 
-                    var cant = 0;
-                    foreach (var hab in HabSeleccionadas)
+                    //var cant = 0;
+                    bool result = false;
+
+                    //foreach (var hab in HabSeleccionadas)
+                    //{
+                    //    cant += hab.Capacidad;
+                    //}
+
+                    foreach (DataGridViewRow row in dGV_Habs.Rows)
                     {
-                        cant += hab.Capacidad;
+                        if (((DataGridViewComboBoxCell)row.Cells[2]).Value == null)
+                        {
+                            VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                            ventanaEmergente.ShowDialog();
+                            result = ventanaEmergente.Aceptar;
+                            break;
+                        }
                     }
-                    if (dGV_Habs.Rows.Count < cant)
+
+                    //if (dGV_Habs.Rows.Count < cant)
+                    //{
+                    //    VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                    //    ventanaEmergente.ShowDialog();
+
+                    //    result = ventanaEmergente.Aceptar;
+                    //}
+
+                    if (result)
                     {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.Alerta);
-                        ventanaEmergente.ShowDialog();
+                        new ControladorHabitacion().GenerarTarifas(AlojHabs);
+
+                        //--------------------------------------------------lista de hab
+                        this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
+
+                        this.NuevoAlojamiento.CalcularCostoBase();
+
+                        txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                        //txb_Deposito.Text = NuevoAlojamiento.Deposito().ToString();
+
+                        groupBox4.Enabled = false;
+                        groupBox2.Enabled = false;
+                        groupBox1.Enabled = false;
+
+                        btn_Confirmar.Enabled = false;
+                        btn_Aceptar.Enabled = true;
                     }
-                    new ControladorHabitacion().GenerarTarifas(AlojHabs);
-
-                    //--------------------------------------------------lista de hab
-                    this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
-
-                    this.NuevoAlojamiento.CalcularCostoBase();
-
-                    txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                    //txb_Deposito.Text = NuevoAlojamiento.Deposito().ToString();
-
-                    groupBox4.Enabled = false;
-                    groupBox2.Enabled = false;
-                    groupBox1.Enabled = false;
-
-                    btn_Confirmar.Enabled = false;
-                    btn_Aceptar.Enabled = true;
                 }
                 else if (ClienteResponsable == null)
                     throw new Exception("Debe elegir un Cliente como Responsable");

@@ -10,7 +10,7 @@ namespace UI
         string Mensaje;
         TipoMensaje TipoMensaje;
         Alojamiento Alojamiento;
-		public bool Aceptar = false;
+        public bool Aceptar = false;
 
         public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje)
         {
@@ -21,7 +21,7 @@ namespace UI
             lbl_TextAux.Visible = false;
         }
 
-        public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje,int pIdAloj)
+        public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje, int pIdAloj)
         {
             InitializeComponent();
             Mensaje = pMensajePrincipal;
@@ -56,7 +56,7 @@ namespace UI
             {
                 case TipoMensaje.Exito:
                     {
-                        
+
                     }
                     break;
                 case TipoMensaje.Alerta:
@@ -75,7 +75,7 @@ namespace UI
                     {
                         lbl_TextAux.Visible = true;
                         lbl_TextAux.Text = "   ¿Desea realizar un Pago de Alojado?";
-                        
+
                     }
                     break;
                 case TipoMensaje.CierreExistoso:
@@ -84,28 +84,40 @@ namespace UI
                         lbl_TextAux.Text = "   ¿Desea realizar un Pago de Servicios?";
                     }
                     break;
+                case TipoMensaje.SiNo:
+                    {
+                        lbl_TextAux.Text = "¿Desea continuar?";
+                        pictureBox_icon.Image = Properties.Resources.Alerta_Icon;
+                        button_cancelar.Visible = true;
+                        btn_Aceptar.Text = "Si";
+                        btn_Aceptar.Location = new Point(363, 139);
+                    }
+                    break;
             }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-			if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa || this.TipoMensaje == TipoMensaje.ReservaExitosa
-				|| TipoMensaje == TipoMensaje.CierreExistoso)
-			{
-				RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
-				registrarPago.ShowDialog();
-			}
-			else if (Mensaje == "¿Eliminar Usuario?")
-			{
-				Aceptar = true;
-			}
+            if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa || this.TipoMensaje == TipoMensaje.ReservaExitosa
+                || TipoMensaje == TipoMensaje.CierreExistoso)
+            {
+                RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
+                registrarPago.ShowDialog();
+            }
+            else if (Mensaje == "¿Eliminar Usuario?" || TipoMensaje == TipoMensaje.SiNo)
+            {
+                Aceptar = true;
+            }
 
-			Close();
-		}
+            Close();
+        }
 
-		private void button_cancelar_Click(object sender, EventArgs e)
+        private void button_cancelar_Click(object sender, EventArgs e)
         {
-			Close();
+            if (TipoMensaje == TipoMensaje.SiNo)
+                Aceptar = false;
+
+            Close();
         }
     }
 
@@ -115,6 +127,7 @@ namespace UI
         AltaAlojamientoExitosa,
         CierreExistoso,
         Exito,
-        Alerta
+        Alerta,
+        SiNo
     }
 }
