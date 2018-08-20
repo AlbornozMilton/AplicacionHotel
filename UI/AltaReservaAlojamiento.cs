@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Dominio;
@@ -86,6 +87,7 @@ namespace UI
                     ClienteResponsable = null;
                     groupBox4.Enabled = true; //HABIACION
                     groupBox2.Enabled = true; //RESPONSABLE
+                    button2.Enabled = true;
                 }
                 else if (HabSeleccionadas.Count == 0)
                 {
@@ -154,7 +156,7 @@ namespace UI
                     for (int i = 0; i < dGV_Habs.Rows.Count; i++)
                     {
                         var valorCell = (DataGridViewComboBoxCell)dGV_Habs.Rows[i].Cells[2];
-                        
+
                         if (valorCell != null && (string)valorCell.Value == ClienteResponsable.TarifaCliente.NombreTarifa)
                             responsable = true;
                         else if (valorCell == null)
@@ -174,7 +176,7 @@ namespace UI
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
                         ventanaEmergente.ShowDialog();
-                        result = ventanaEmergente.Aceptar; 
+                        result = ventanaEmergente.Aceptar;
                     }
 
                     if (result && responsable)
@@ -186,6 +188,7 @@ namespace UI
                         this.NuevoAlojamiento.CalcularCostoBase();
 
                         txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                        txb_Deposito.Text = NuevoAlojamiento.Deposito(20).ToString();
 
                         groupBox4.Enabled = false;
                         groupBox2.Enabled = false;
@@ -193,6 +196,7 @@ namespace UI
 
                         btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_3;
                         btn_Confirmar.Enabled = false;
+                        button1.Enabled = false;
                         button2.Enabled = false;
 
                         btn_Aceptar.Enabled = true;
@@ -370,6 +374,22 @@ namespace UI
             {
                 senderGrid.BeginEdit(true);
                 ((ComboBox)senderGrid.EditingControl).DroppedDown = true;
+            }
+        }
+
+        private void btn_EnabledChanged(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (btn.Enabled)
+            {
+                btn.ForeColor = Color.White;
+                btn.BackColor = Color.Chocolate;
+            }
+            else
+            {
+                btn.ForeColor = Color.DarkGray;
+                btn.BackColor = Color.SaddleBrown;
             }
         }
     }

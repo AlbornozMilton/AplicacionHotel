@@ -152,6 +152,7 @@ namespace Dominio
         {
             return this.iMontoTotal * pPorcentajeDepo * 0.01;
         }
+
         /// <summary>
         /// Cambio de Estado a "Alojado" y Set fecha de Ingreso
         /// </summary>

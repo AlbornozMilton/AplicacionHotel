@@ -54,6 +54,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
+            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
@@ -69,15 +72,12 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
-            this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -168,9 +168,9 @@
             this.btn_VerificarDisponibilidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_VerificarDisponibilidad.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btn_VerificarDisponibilidad.BackColor = System.Drawing.Color.Chocolate;
             this.btn_VerificarDisponibilidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.Color.White;
             this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(867, 38);
             this.btn_VerificarDisponibilidad.Margin = new System.Windows.Forms.Padding(4);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
@@ -178,6 +178,7 @@
             this.btn_VerificarDisponibilidad.TabIndex = 1;
             this.btn_VerificarDisponibilidad.Text = "Seleccionar Habitaciones";
             this.btn_VerificarDisponibilidad.UseVisualStyleBackColor = false;
+            this.btn_VerificarDisponibilidad.EnabledChanged += new System.EventHandler(this.btn_EnabledChanged);
             this.btn_VerificarDisponibilidad.Click += new System.EventHandler(this.btn_VerificarDisponibilidad_Click);
             // 
             // dtp_fechaHasta
@@ -306,14 +307,44 @@
             this.dGV_Habs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellValueChanged);
             this.dGV_Habs.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dGV_Habs_DataError);
             // 
+            // clm_Id
+            // 
+            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Id.FillWeight = 40F;
+            this.clm_Id.HeaderText = "Número";
+            this.clm_Id.Name = "clm_Id";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // clmk_tipoCliente
+            // 
+            this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmk_tipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
+            this.clmk_tipoCliente.Items.AddRange(new object[] {
+            "Acomp. Directo",
+            "Acomp. No Direct",
+            "Convenio",
+            "Titular",
+            "Titular Exceptuado"});
+            this.clmk_tipoCliente.Name = "clmk_tipoCliente";
+            this.clmk_tipoCliente.Sorted = true;
+            this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.SaddleBrown;
+            this.button2.BackColor = System.Drawing.Color.Chocolate;
+            this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(896, 552);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
@@ -321,6 +352,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Seleccionar Responsable";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.EnabledChanged += new System.EventHandler(this.btn_EnabledChanged);
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button5
@@ -563,35 +595,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Confirmación de Reserva";
             // 
-            // clm_Id
-            // 
-            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Id.FillWeight = 40F;
-            this.clm_Id.HeaderText = "Número";
-            this.clm_Id.Name = "clm_Id";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // clmk_tipoCliente
-            // 
-            this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmk_tipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
-            this.clmk_tipoCliente.Items.AddRange(new object[] {
-            "Acomp. Directo",
-            "Acomp. No Direct",
-            "Convenio",
-            "Titular",
-            "Titular Exceptuado"});
-            this.clmk_tipoCliente.Name = "clmk_tipoCliente";
-            this.clmk_tipoCliente.Sorted = true;
-            this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // dGV_ClienteResponsable
             // 
             this.dGV_ClienteResponsable.AllowUserToAddRows = false;
@@ -645,29 +648,13 @@
             this.dGV_ClienteResponsable.Size = new System.Drawing.Size(1160, 76);
             this.dGV_ClienteResponsable.TabIndex = 10;
             // 
-            // clm_tipo
+            // clm_Dni
             // 
-            this.clm_tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_tipo.FillWeight = 70F;
-            this.clm_tipo.HeaderText = "Tipo";
-            this.clm_tipo.Name = "clm_tipo";
-            this.clm_tipo.ReadOnly = true;
-            // 
-            // clm_Nombre
-            // 
-            this.clm_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Nombre.FillWeight = 70F;
-            this.clm_Nombre.HeaderText = "Nombre";
-            this.clm_Nombre.Name = "clm_Nombre";
-            this.clm_Nombre.ReadOnly = true;
-            // 
-            // clm_Apellido
-            // 
-            this.clm_Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Apellido.FillWeight = 70F;
-            this.clm_Apellido.HeaderText = "Apellido";
-            this.clm_Apellido.Name = "clm_Apellido";
-            this.clm_Apellido.ReadOnly = true;
+            this.clm_Dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Dni.FillWeight = 40F;
+            this.clm_Dni.HeaderText = "DNI";
+            this.clm_Dni.Name = "clm_Dni";
+            this.clm_Dni.ReadOnly = true;
             // 
             // clm_Legajo
             // 
@@ -677,13 +664,29 @@
             this.clm_Legajo.Name = "clm_Legajo";
             this.clm_Legajo.ReadOnly = true;
             // 
-            // clm_Dni
+            // clm_Apellido
             // 
-            this.clm_Dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Dni.FillWeight = 40F;
-            this.clm_Dni.HeaderText = "DNI";
-            this.clm_Dni.Name = "clm_Dni";
-            this.clm_Dni.ReadOnly = true;
+            this.clm_Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Apellido.FillWeight = 70F;
+            this.clm_Apellido.HeaderText = "Apellido";
+            this.clm_Apellido.Name = "clm_Apellido";
+            this.clm_Apellido.ReadOnly = true;
+            // 
+            // clm_Nombre
+            // 
+            this.clm_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Nombre.FillWeight = 70F;
+            this.clm_Nombre.HeaderText = "Nombre";
+            this.clm_Nombre.Name = "clm_Nombre";
+            this.clm_Nombre.ReadOnly = true;
+            // 
+            // clm_tipo
+            // 
+            this.clm_tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_tipo.FillWeight = 70F;
+            this.clm_tipo.HeaderText = "Tipo";
+            this.clm_tipo.Name = "clm_tipo";
+            this.clm_tipo.ReadOnly = true;
             // 
             // groupBox2
             // 
