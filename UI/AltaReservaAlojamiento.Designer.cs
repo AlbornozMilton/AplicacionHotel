@@ -64,8 +64,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txb_Deposito = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btn_Confirmar = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox_excl = new System.Windows.Forms.GroupBox();
             this.dGV_excl = new System.Windows.Forms.DataGridView();
@@ -79,10 +77,10 @@
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Comprobar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).BeginInit();
             this.groupBox_excl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_excl)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -304,6 +302,7 @@
             this.dGV_Habs.Size = new System.Drawing.Size(713, 318);
             this.dGV_Habs.TabIndex = 2;
             this.dGV_Habs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellClick);
+            this.dGV_Habs.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellLeave);
             this.dGV_Habs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellValueChanged);
             this.dGV_Habs.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dGV_Habs_DataError);
             // 
@@ -441,42 +440,6 @@
             this.label13.TabIndex = 23;
             this.label13.Text = "Depósito";
             // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(921, 46);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(119, 20);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "COMPROBAR";
-            this.label14.Visible = false;
-            // 
-            // btn_Confirmar
-            // 
-            this.btn_Confirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Confirmar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Confirmar.Enabled = false;
-            this.btn_Confirmar.Image = global::UI.Properties.Resources.Exito_Icon;
-            this.btn_Confirmar.InitialImage = null;
-            this.btn_Confirmar.Location = new System.Drawing.Point(1048, 26);
-            this.btn_Confirmar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Confirmar.Name = "btn_Confirmar";
-            this.btn_Confirmar.Size = new System.Drawing.Size(75, 60);
-            this.btn_Confirmar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btn_Confirmar.TabIndex = 25;
-            this.btn_Confirmar.TabStop = false;
-            this.btn_Confirmar.Click += new System.EventHandler(this.btn_Confirmar_Click);
-            this.btn_Confirmar.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave_1);
-            this.btn_Confirmar.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
@@ -579,10 +542,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox3.Controls.Add(this.btn_Comprobar);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.btn_Confirmar);
             this.groupBox3.Controls.Add(this.txb_CostoBase);
             this.groupBox3.Controls.Add(this.txb_Deposito);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -705,6 +667,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Responsable";
             // 
+            // btn_Comprobar
+            // 
+            this.btn_Comprobar.Location = new System.Drawing.Point(985, 37);
+            this.btn_Comprobar.Name = "btn_Comprobar";
+            this.btn_Comprobar.Size = new System.Drawing.Size(151, 49);
+            this.btn_Comprobar.TabIndex = 27;
+            this.btn_Comprobar.Text = "Comprobar";
+            this.btn_Comprobar.UseVisualStyleBackColor = true;
+            this.btn_Comprobar.Click += new System.EventHandler(this.btn_Confirmar_Click);
+            // 
             // AltaReservaAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -741,7 +713,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Confirmar)).EndInit();
             this.groupBox_excl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_excl)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -773,8 +744,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txb_Deposito;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox btn_Confirmar;
-        private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.DataGridView dGV_Habs;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.GroupBox groupBox_excl;
@@ -792,5 +761,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipo;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btn_Comprobar;
     }
 }

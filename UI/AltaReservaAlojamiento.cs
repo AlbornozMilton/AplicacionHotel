@@ -32,20 +32,6 @@ namespace UI
             FechaFin = DateTime.Now.AddDays(1);
         }
 
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
-        {
-            label14.Visible = true;
-            btn_Confirmar.SizeMode = PictureBoxSizeMode.CenterImage;
-            btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_2;
-        }
-
-        private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
-        {
-            label14.Visible = false;
-            btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
-            btn_Confirmar.Image = UI.Properties.Resources.Exito_Icon;
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
             Close();
@@ -128,7 +114,7 @@ namespace UI
                     dGV_ClienteResponsable.Rows.Clear();
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
 
-                    btn_Confirmar.Enabled = true;
+                    //btn_Confirmar.Enabled = true;
                 }
                 else if (ClienteResponsable == null)
                     throw new Exception("Debe seleccionar un Cliente Responsable para continuar");
@@ -147,6 +133,7 @@ namespace UI
         {
             try
             {
+
                 if (ClienteResponsable != null) //requisito
                 {
                     bool result = true;
@@ -194,8 +181,8 @@ namespace UI
                         groupBox2.Enabled = false;
                         groupBox1.Enabled = false;
 
-                        btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_3;
-                        btn_Confirmar.Enabled = false;
+                        //btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_3;
+                        //btn_Confirmar.Enabled = false;
                         button1.Enabled = false;
                         button2.Enabled = false;
 
@@ -289,7 +276,7 @@ namespace UI
             ClienteResponsable = null;
             dGV_ClienteResponsable.Rows.Clear();
 
-            btn_Confirmar.Enabled = false;
+            //btn_Confirmar.Enabled = false;
             groupBox4.Enabled = false;
             groupBox2.Enabled = false;
         }
@@ -391,6 +378,11 @@ namespace UI
                 btn.ForeColor = Color.DarkGray;
                 btn.BackColor = Color.SaddleBrown;
             }
+        }
+
+        private void dGV_Habs_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            ((sender as DataGridView).CurrentRow.Cells[2] as DataGridViewComboBoxCell).Value = (sender as DataGridView).CurrentRow.Cells[2].Value;
         }
     }
 }
