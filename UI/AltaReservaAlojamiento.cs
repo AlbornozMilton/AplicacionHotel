@@ -33,14 +33,14 @@ namespace UI
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
-            //label14.Visible = true;
+            label14.Visible = true;
             btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
-            btn_Confirmar.Image = UI.Properties.Resources.boton_buscar_seleccion2;
+            btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_2;
         }
 
         private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
-            //label14.Visible = false;
+            label14.Visible = false;
             btn_Confirmar.SizeMode = PictureBoxSizeMode.CenterImage;
             btn_Confirmar.Image = UI.Properties.Resources.Exito_Icon;
         }
@@ -114,59 +114,24 @@ namespace UI
                         ||
                         BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.AcompanianteNoDirecto)
                     {
-                        throw new Exception("El Cliente Responsable Solo puede ser Titular, Titular Exceptuado o Convenio");
+                        throw new Exception("El Cliente Responsable solo puede ser Titular, Titular Exceptuado o Convenio");
                     }
+
                     //Excepción cliente activo
                     new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
-                    //AVISO DE CLIENTE DEUDOR
+                    //AVISO DE CLIENTE DEUDOR ---------------------------------------
+
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+
                     dGV_ClienteResponsable.Rows.Clear();
 
-                    //switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
-                    //{
-                    //	case TipoCliente.Titular:
-                    //		{
-                    //			//ck_Exclusividad.Enabled = exclusividadCapacidad;
-                    //		}
-                    //		break;
-                    //	case TipoCliente.AcompanianteDirecto:
-                    //		{
-                    //			VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
-                    //			ventanaEmergente.ShowDialog();
-                    //			//ck_Exclusividad.Enabled = exclusividadCapacidad;
-                    //		}
-                    //		break;
-                    //	case TipoCliente.AcompanianteNoDirecto:
-                    //		{
-                    //			VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
-                    //			ventanaEmergente.ShowDialog();
-                    //			//ck_Exclusividad.Enabled = exclusividadCapacidad;
-                    //		}
-                    //		break;
-                    //	case TipoCliente.TitularExceptuado:
-                    //		{
-                    //			//VentanaEmergente ventanaEmergente = new VentanaEmergente("Debido a que el Cliente Responsable es de Tipo Exceptuado, no es posible solicitar la Exclusividad de la Habitación", TipoMensaje.Alerta);
-                    //			//ventanaEmergente.ShowDialog();
-                    //			//ck_Exclusividad.Checked = false;
-                    //		}
-                    //		break;
-                    //	case TipoCliente.Convenio:
-                    //		{
-
-                    //			//ck_Exclusividad.Enabled = exclusividadCapacidad;
-                    //		}
-                    //		break;
-                    //}
-
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
+
                     btn_Confirmar.Enabled = true;
                 }
-                else
-                if (ClienteResponsable == null)
-                {
+                else if (ClienteResponsable == null)
                     throw new Exception("Debe seleccionar un Cliente Responsable para continuar");
-                }
             }
             catch (Exception E)
             {
@@ -231,7 +196,9 @@ namespace UI
                         groupBox2.Enabled = false;
                         groupBox1.Enabled = false;
 
+                        btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_3;
                         btn_Confirmar.Enabled = false;
+
                         btn_Aceptar.Enabled = true;
                     }
                 }
