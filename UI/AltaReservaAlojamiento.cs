@@ -34,14 +34,14 @@ namespace UI
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
             label14.Visible = true;
-            btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_Confirmar.SizeMode = PictureBoxSizeMode.CenterImage;
             btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_2;
         }
 
         private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
             label14.Visible = false;
-            btn_Confirmar.SizeMode = PictureBoxSizeMode.CenterImage;
+            btn_Confirmar.SizeMode = PictureBoxSizeMode.Zoom;
             btn_Confirmar.Image = UI.Properties.Resources.Exito_Icon;
         }
 
@@ -120,12 +120,10 @@ namespace UI
                     //Excepción cliente activo
                     new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
-                    //AVISO DE CLIENTE DEUDOR ---------------------------------------
+                    //<-------------AVISO DE CLIENTE DEUDOR --------------------------
 
                     this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
-
                     dGV_ClienteResponsable.Rows.Clear();
-
                     dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
 
                     btn_Confirmar.Enabled = true;
@@ -149,48 +147,45 @@ namespace UI
             {
                 if (ClienteResponsable != null) //requisito
                 {
-                    //List<AlojHab> alojsHab = new ControladorHabitacion().GenerarAlojHabs(dGV_Habs);
+                    bool result = true;
+                    bool responsable = false;
+                    int cantNull = 0;
 
-                    //new ControladorCliente().ControlCapacidadConClientes(alojsHab, auxCapacidadTotal);
-
-                    //var cant = 0;
-                    bool result = false;
-
-                    //foreach (var hab in HabSeleccionadas)
-                    //{
-                    //    cant += hab.Capacidad;
-                    //}
-
-                    foreach (DataGridViewRow row in dGV_Habs.Rows)
+                    for (int i = 0; i < dGV_Habs.Rows.Count; i++)
                     {
-                        if (((DataGridViewComboBoxCell)row.Cells[2]).Value == null)
-                        {
-                            VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
-                            ventanaEmergente.ShowDialog();
-                            result = ventanaEmergente.Aceptar;
-                            break;
-                        }
+                        var valorCell = (DataGridViewComboBoxCell)dGV_Habs.Rows[i].Cells[2];
+                        
+                        if (valorCell != null && (string)valorCell.Value == ClienteResponsable.TarifaCliente.NombreTarifa)
+                            responsable = true;
+                        else if (valorCell == null)
+                            cantNull++;
                     }
 
-                    //if (dGV_Habs.Rows.Count < cant)
-                    //{
-                    //    VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
-                    //    ventanaEmergente.ShowDialog();
+                    if (!responsable)
+                        throw new Exception("Debe incluir un Responsable Titular");
 
-                    //    result = ventanaEmergente.Aceptar;
-                    //}
+                    int capTotal = 0;
+                    foreach (var hab in HabSeleccionadas)
+                    {
+                        capTotal += hab.Capacidad;
+                    }
 
-                    if (result)
+                    if (cantNull != capTotal)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                        ventanaEmergente.ShowDialog();
+                        result = ventanaEmergente.Aceptar; 
+                    }
+
+                    if (result && responsable)
                     {
                         new ControladorHabitacion().GenerarTarifas(AlojHabs);
 
-                        //--------------------------------------------------lista de hab
                         this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
 
                         this.NuevoAlojamiento.CalcularCostoBase();
 
                         txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                        //txb_Deposito.Text = NuevoAlojamiento.Deposito().ToString();
 
                         groupBox4.Enabled = false;
                         groupBox2.Enabled = false;
@@ -198,6 +193,7 @@ namespace UI
 
                         btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_3;
                         btn_Confirmar.Enabled = false;
+                        button2.Enabled = false;
 
                         btn_Aceptar.Enabled = true;
                     }
