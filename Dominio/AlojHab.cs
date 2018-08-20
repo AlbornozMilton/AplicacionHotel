@@ -34,6 +34,7 @@ namespace Dominio
         public Habitacion Habitacion { get { return this.iHab; } private set { this.iHab = value; } }
         public List<TarifaCliente> Tarifas { get { return this.iTarifas; } private set { this.iTarifas = value; } }
         public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
+        public List<HabClientesRow> Rows { get { return this.iRowTarifas; } private set { this.iRowTarifas = value; } }
 
         public void AgregarTarifa(int pNum, string pTarifa)
         {

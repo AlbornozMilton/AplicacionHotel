@@ -184,12 +184,24 @@ namespace UI
             {
                 if (ClienteResponsable != null) //requisito
                 {
-                    List<AlojHab> alojsHab = new ControladorHabitacion().GenerarAlojHabs(dGV_Habs);
+                    //List<AlojHab> alojsHab = new ControladorHabitacion().GenerarAlojHabs(dGV_Habs);
 
                     //new ControladorCliente().ControlCapacidadConClientes(alojsHab, auxCapacidadTotal);
 
+                    var cant = 0;
+                    foreach (var hab in HabSeleccionadas)
+                    {
+                        cant += hab.Capacidad;
+                    }
+                    if (dGV_Habs.Rows.Count < cant)
+                    {
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.Alerta);
+                        ventanaEmergente.ShowDialog();
+                    }
+                    new ControladorHabitacion().GenerarTarifas(AlojHabs);
+
                     //--------------------------------------------------lista de hab
-                    this.NuevoAlojamiento = new Alojamiento(alojsHab, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
+                    this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
 
                     this.NuevoAlojamiento.CalcularCostoBase();
 

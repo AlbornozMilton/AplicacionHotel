@@ -29,12 +29,18 @@ namespace Dominio
 
         public Cliente BuscarClientePorDni(int unDni, bool pAlta)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorDNI(unDni, pAlta)));
+            var cliente = iUoW.RepositorioCliente.GetPorDNI(unDni, pAlta);
+            cliente.Domicilio.Clientes = null;
+            cliente.TarifaCliente.Clientes = null;
+            return Mapper.Map<pers.Cliente, Cliente>(cliente);
         }
 
         public Cliente BuscarClientePorLegajo(string pLegajo, bool pAlta)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo), pAlta)));
+            var cliente = iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo), pAlta);
+            cliente.Domicilio.Clientes = null;
+            cliente.TarifaCliente.Clientes = null;
+            return Mapper.Map<pers.Cliente, Cliente>(cliente);
         }
 
         public List<Cliente> BuscarClientePorNom_Ape(string pCadena, bool pAlta)
