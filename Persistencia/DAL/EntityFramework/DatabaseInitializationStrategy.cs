@@ -297,6 +297,15 @@ namespace Persistencia.DAL.EntityFramework
                 (
                     new MetadataHotel
                     {
+                        MetadataHotelId = TipoMetadaHotel.CantPersonaTour,
+                        Nombre = "Cantidad de personas mínima para Tour",
+                        Valor = 15
+                    }
+                );
+            context.Set<MetadataHotel>().Add
+                (
+                    new MetadataHotel
+                    {
                         MetadataHotelId = TipoMetadaHotel.PorcentajeDeposito,
                         Nombre = "Porcentaje Depósito",
                         Valor = 50

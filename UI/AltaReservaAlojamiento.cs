@@ -75,7 +75,7 @@ namespace UI
                     groupBox2.Enabled = true; //RESPONSABLE
                     button2.Enabled = true;
                 }
-                else if (HabSeleccionadas.Count == 0)
+                else if (TablaDisp.HabSeleccionadas.Count == 0)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe seleccionar al menos una Habitación para continuar", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
@@ -145,18 +145,25 @@ namespace UI
 
                         if (valorCell != null && (string)valorCell.Value == ClienteResponsable.TarifaCliente.NombreTarifa)
                             responsable = true;
-                        else if (valorCell == null)
+                        else if (valorCell.Value == null)
                             cantNull++;
                     }
 
                     if (!responsable)
-                        throw new Exception("Debe incluir un Responsable Titular");
+                        throw new Exception("Debe incluir algún Titular como Responsable");
 
                     int capTotal = 0;
                     foreach (var hab in HabSeleccionadas)
                     {
                         capTotal += hab.Capacidad;
                     }
+
+                    int cantTour = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.CantPersonaTour);
+                    if (button1.Text == "ES TOUR" && capTotal != cantTour)
+                        throw new Exception("La cantidad mínima para Tour debe ser de " + cantTour.ToString());
+
+                    if (button1.Text == "ES TOUR" && cantNull != 0)
+                        throw new Exception("Debe completar el Tour");
 
                     if (cantNull != capTotal)
                     {
@@ -181,17 +188,17 @@ namespace UI
                         groupBox4.Enabled = false;
                         groupBox2.Enabled = false;
                         groupBox1.Enabled = false;
+                        groupBox_excl.Enabled = false;
 
-                        //btn_Confirmar.Image = UI.Properties.Resources.Boton_Ok_Seleccion_3;
-                        //btn_Confirmar.Enabled = false;
                         button1.Enabled = false;
                         button2.Enabled = false;
+                        btn_Comprobar.Enabled = false;
 
                         btn_Aceptar.Enabled = true;
                     }
                 }
                 else if (ClienteResponsable == null)
-                    throw new Exception("Debe elegir un Cliente como Responsable");
+                    throw new Exception("Debe 'Seleccionar Responsable' ");
             }
             catch (Exception E)
             {

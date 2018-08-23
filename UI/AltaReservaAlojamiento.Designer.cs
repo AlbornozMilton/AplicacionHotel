@@ -371,7 +371,7 @@
             this.txb_CostoBase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_CostoBase.Enabled = false;
+            this.txb_CostoBase.BackColor = System.Drawing.Color.White;
             this.txb_CostoBase.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_CostoBase.Location = new System.Drawing.Point(131, 29);
             this.txb_CostoBase.Name = "txb_CostoBase";
@@ -397,7 +397,7 @@
             // txb_Deposito
             // 
             this.txb_Deposito.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txb_Deposito.Enabled = false;
+            this.txb_Deposito.BackColor = System.Drawing.Color.White;
             this.txb_Deposito.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_Deposito.Location = new System.Drawing.Point(333, 29);
             this.txb_Deposito.Name = "txb_Deposito";
@@ -532,12 +532,12 @@
             // 
             // btn_Comprobar
             // 
-            this.btn_Comprobar.Location = new System.Drawing.Point(739, 30);
+            this.btn_Comprobar.Location = new System.Drawing.Point(738, 29);
             this.btn_Comprobar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Comprobar.Name = "btn_Comprobar";
-            this.btn_Comprobar.Size = new System.Drawing.Size(113, 40);
+            this.btn_Comprobar.Size = new System.Drawing.Size(126, 40);
             this.btn_Comprobar.TabIndex = 27;
-            this.btn_Comprobar.Text = "Comprobar";
+            this.btn_Comprobar.Text = "COMPROBAR";
             this.btn_Comprobar.UseVisualStyleBackColor = true;
             this.btn_Comprobar.Click += new System.EventHandler(this.btn_Confirmar_Click);
             // 

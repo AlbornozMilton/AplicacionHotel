@@ -11,6 +11,7 @@
 	{
 		PorcentajeExclusividad,
 		PorcentajeTour,
+        CantPersonaTour,
         PorcentajeDeposito
 	}
 }
