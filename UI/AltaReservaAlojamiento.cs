@@ -223,35 +223,6 @@ namespace UI
             }
         }
 
-        private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
-            //{
-            //	if (ck_Exclusividad.Checked == false)
-            //	{
-            //		VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
-            //		ventanaEmergente.ShowDialog();
-            //	}
-            //	ck_Exclusividad.Checked = false;
-
-            //	groupBox3.Enabled = true;
-            //}
-            //else if (ck_Exclusividad.Checked == true)
-            //{
-            //	groupBox3.Enabled = false;
-            //	contador_Titular.Value = 0;
-            //	contador_Convenio.Value = 0;
-            //	contador_Directo.Value = 0;
-            //	contador_NoDirecto.Value = 0;
-            //	contador_Exceptuado.Value = 0;
-            //}
-            //else if (ck_Exclusividad.Checked == false)
-            //{
-            //	groupBox3.Enabled = true;
-            //}
-            //this.HabSeleccionada.SetExclusividad(this.ck_Exclusividad.Checked);
-        }
-
         #region Ingreso de Fechas en Calendario
         //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad o algo similar
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
@@ -260,7 +231,6 @@ namespace UI
             {
                 new ControladorAlojamiento().ControlPlazoParaReservar(dtp_fechaDesde.Value.Date);
                 this.FechaIni = dtp_fechaDesde.Value;
-
             }
             catch (Exception E)
             {
@@ -284,7 +254,6 @@ namespace UI
             ClienteResponsable = null;
             dGV_ClienteResponsable.Rows.Clear();
 
-            //btn_Confirmar.Enabled = false;
             groupBox4.Enabled = false;
             groupBox2.Enabled = false;
         }
@@ -344,7 +313,7 @@ namespace UI
                     row.Cells[1].Value = "No";
                     AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
 
-                    cantExclAux = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value).Capacidad;
+                    cantExclAux -= auxHab.Capacidad;
                 }
             }
         }
