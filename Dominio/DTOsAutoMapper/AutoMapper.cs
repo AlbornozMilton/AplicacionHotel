@@ -40,6 +40,8 @@ namespace Dominio.DTOsAutoMapper
                 cfg.CreateMap<TipoPago, pers.TipoPago>().ReverseMap();
 
                 cfg.CreateMap<EstadoAlojamiento, pers.EstadoAlojamiento>().ReverseMap();
+
+                cfg.CreateMap<TipoMetadaHotel, pers.TipoMetadaHotel>().ReverseMap();
             });
         }
     }

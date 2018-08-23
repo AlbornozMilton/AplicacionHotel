@@ -13,7 +13,7 @@ namespace Dominio
     {
         UnitOfWork iUoW = new UnitOfWork(new HotelContext());
 
-		public void EsLetra (KeyPressEventArgs e)
+        public void EsLetra(KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar))
             {
@@ -50,7 +50,7 @@ namespace Dominio
                 throw new Exception("Se deben ingresar solo Números sin espacio");
             }
         }
-        public bool IsNumeric (string num)
+        public bool IsNumeric(string num)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Dominio
             {
                 return false;
             }
-        } 
+        }
 
         public List<Servicio> ObtenerServicios()
         {
@@ -75,27 +75,27 @@ namespace Dominio
             return (lista);
         }
 
-		#region Servicios
-		public void NuevoServicio(string pNombre, string pDetalle, string pCosto)
-		{
-			Servicio pServicio = new Servicio(pNombre, pDetalle,Convert.ToDouble(pCosto));
-			iUoW.RepositorioServicio.NuevoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
-		}
+        #region Servicios
+        public void NuevoServicio(string pNombre, string pDetalle, string pCosto)
+        {
+            Servicio pServicio = new Servicio(pNombre, pDetalle, Convert.ToDouble(pCosto));
+            iUoW.RepositorioServicio.NuevoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+        }
 
-		public void EliminarServicio(Servicio pServicio)
-		{
-			iUoW.RepositorioServicio.ElimiarServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
-		}
+        public void EliminarServicio(Servicio pServicio)
+        {
+            iUoW.RepositorioServicio.ElimiarServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+        }
 
-		public void AcutalizarCostoServicio(Servicio pServicio, string pCosto)
-		{
-			pServicio.ActualizarCosto(Convert.ToDouble(pCosto));
-			iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
-		} 
-		#endregion
+        public void AcutalizarCostoServicio(Servicio pServicio, string pCosto)
+        {
+            pServicio.ActualizarCosto(Convert.ToDouble(pCosto));
+            iUoW.RepositorioServicio.ActualizarCostoServicio(Mapper.Map<Servicio, pers.Servicio>(pServicio));
+        }
+        #endregion
 
 
-		public void ActualizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
+        public void ActualizarTarifa(TarifaCliente pTarifa, string pCostoNoExcl, string pCostoExcl)
         {
             if (pCostoNoExcl == "")
             {
@@ -150,139 +150,152 @@ namespace Dominio
             return Resultado;
         }
 
-		public void NuevaCiudad(string pCodPostal, string pNombre)
-		{
-			iUoW.RepositorioCiudad.Add(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)));
-		}
+        public void NuevaCiudad(string pCodPostal, string pNombre)
+        {
+            iUoW.RepositorioCiudad.Add(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostal), pNombre)));
+        }
 
-		public void ModificarCiudad(string pCodPostalViejo, string pNombreViejo, string pCodPostalNuevo, string pNombreNuevo, List<Ciudad> pCiudades)
-		{
-			if (pCiudades.Exists(c => c.Nombre == pNombreNuevo))
-				throw new Exception("Nombre de Ciudad ya existente");
+        public void ModificarCiudad(string pCodPostalViejo, string pNombreViejo, string pCodPostalNuevo, string pNombreNuevo, List<Ciudad> pCiudades)
+        {
+            if (pCiudades.Exists(c => c.Nombre == pNombreNuevo))
+                throw new Exception("Nombre de Ciudad ya existente");
 
-			iUoW.RepositorioCiudad.ModificarCiudad(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostalNuevo), pNombreNuevo)),
-				pCiudades.Find(c => c.Nombre == pNombreViejo && c.CodPostal.ToString() == pCodPostalViejo).CiudadId);
-		}
+            iUoW.RepositorioCiudad.ModificarCiudad(Mapper.Map<Ciudad, pers.Ciudad>(new Ciudad(Convert.ToInt32(pCodPostalNuevo), pNombreNuevo)),
+                pCiudades.Find(c => c.Nombre == pNombreViejo && c.CodPostal.ToString() == pCodPostalViejo).CiudadId);
+        }
 
-		public void EliminarCiudad(int pKeyCiudad)
-		{
-			iUoW.RepositorioCiudad.EliminarCiudad(pKeyCiudad);
-		}
+        public void EliminarCiudad(int pKeyCiudad)
+        {
+            iUoW.RepositorioCiudad.EliminarCiudad(pKeyCiudad);
+        }
 
-		public string DeterminarColor(Alojamiento aloj)
-		{
-			string resultado = "Window"; // blanco
+        public string DeterminarColor(Alojamiento aloj)
+        {
+            string resultado = "Window"; // blanco
 
-			if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
-			{
-				resultado = "Aquamarine"; //alojamientos que se deben dar de alta hoy
-			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == 0)
-			{
-				resultado = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
-			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) < 0)
-			{
-				resultado = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
-			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) < 0)
-			{
-				resultado = "DarkViolet"; //alojamientos sin cierre
-			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
-			{
-				if (!aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
-				{
-					resultado = "Orange"; //alojamientos cerrados sin pago de servicios:
-				}
-				else
-				{
-					resultado = "OrangeRed"; //alojamientos cerrados adeudados (pago de servicios incompleto)
-				}
-			}
-			else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
-				&&
-				(
-					(DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
-						&
-						!aloj.Pagos.Exists(p => p.Tipo == TipoPago.Deposito)//no existe pago de deposito
-					)
-				)
-			{
-				resultado = "Gold"; //sin deposito tras 72hs
-			}
+            if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) == 0)
+            {
+                resultado = "Aquamarine"; //alojamientos que se deben dar de alta hoy
+            }
+            else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) == 0)
+            {
+                resultado = "DarkTurquoise"; //alojamientos que se deben cerrar hoy
+            }
+            else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado && aloj.FechaEstimadaIngreso.Date.CompareTo(DateTime.Now.Date) < 0)
+            {
+                resultado = "Pink"; //alojamientos reservados sin dado de alta tras pasar fecha de ingreso
+            }
+            else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado && aloj.FechaEstimadaEgreso.Date.CompareTo(DateTime.Now.Date) < 0)
+            {
+                resultado = "DarkViolet"; //alojamientos sin cierre
+            }
+            else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado && aloj.MontoDeuda > 0)
+            {
+                if (!aloj.Pagos.Exists(p => p.Tipo == TipoPago.Servicios))
+                {
+                    resultado = "Orange"; //alojamientos cerrados sin pago de servicios:
+                }
+                else
+                {
+                    resultado = "OrangeRed"; //alojamientos cerrados adeudados (pago de servicios incompleto)
+                }
+            }
+            else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado
+                &&
+                (
+                    (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
+                        &
+                        !aloj.Pagos.Exists(p => p.Tipo == TipoPago.Deposito)//no existe pago de deposito
+                    )
+                )
+            {
+                resultado = "Gold"; //sin deposito tras 72hs
+            }
 
-			return resultado;
-		}
+            return resultado;
+        }
 
-		public bool ValidarEmail(string strIn)
-		{
-			if (String.IsNullOrEmpty(strIn))
-				return false;
+        public bool ValidarEmail(string strIn)
+        {
+            if (String.IsNullOrEmpty(strIn))
+                return false;
 
-			// Use IdnMapping class to convert Unicode domain names.
-			try
-			{
-				strIn = Regex.Replace(strIn, @"(@)(.+)$", this.DomainMapper,
-									  RegexOptions.None, TimeSpan.FromMilliseconds(200));
-			}
-			catch (ArgumentException)
-			{
-				return false;
-			}
-			catch (RegexMatchTimeoutException)
-			{
-				return false;
-			}
+            // Use IdnMapping class to convert Unicode domain names.
+            try
+            {
+                strIn = Regex.Replace(strIn, @"(@)(.+)$", this.DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
 
-			// Return true if strIn is in valid email format.
-			try
-			{
-				return Regex.IsMatch(strIn,
-					  @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-					  @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
-					  RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
-			}
-			catch (RegexMatchTimeoutException)
-			{
-				return false;
-			}
-		}
+            // Return true if strIn is in valid email format.
+            try
+            {
+                return Regex.IsMatch(strIn,
+                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
 
-		private string DomainMapper
+        private string DomainMapper
             (Match match)
-		{
-			// IdnMapping class with default property values.
-			IdnMapping idn = new IdnMapping();
+        {
+            // IdnMapping class with default property values.
+            IdnMapping idn = new IdnMapping();
 
-			string domainName = match.Groups[2].Value;
-			domainName = idn.GetAscii(domainName);
-			return match.Groups[1].Value + domainName;
-		}
+            string domainName = match.Groups[2].Value;
+            domainName = idn.GetAscii(domainName);
+            return match.Groups[1].Value + domainName;
+        }
 
-		public void ModificarUsuario(string pUsuarioID, string pOldPass, string pNewPass)
-		{
-			iUoW.RepositorioUsuario.ModifcarUsuario(pUsuarioID, pOldPass, pNewPass);
-		}
+        public void ModificarUsuario(string pUsuarioID, string pOldPass, string pNewPass)
+        {
+            iUoW.RepositorioUsuario.ModifcarUsuario(pUsuarioID, pOldPass, pNewPass);
+        }
 
-		public void EliminarUsuario(string pUsuarioID, string pPass, string pRepPass)
-		{
-			if (pPass != pRepPass)
-			{
-				throw new Exception("Contraseñas Incorrectas");
-			}
+        public void EliminarUsuario(string pUsuarioID, string pPass, string pRepPass)
+        {
+            if (pPass != pRepPass)
+            {
+                throw new Exception("Contraseñas Incorrectas");
+            }
 
-			iUoW.RepositorioUsuario.EliminarUsuario(pUsuarioID, pPass);
-		}
+            iUoW.RepositorioUsuario.EliminarUsuario(pUsuarioID, pPass);
+        }
 
-		public void NuevoUsuario(string pUsuarioID, string pPass, string pRepPass)
-		{
-			if (pPass != pRepPass)
-			{
-				throw new Exception("Contraseñas Incorrectas");
-			}
+        public void NuevoUsuario(string pUsuarioID, string pPass, string pRepPass)
+        {
+            if (pPass != pRepPass)
+            {
+                throw new Exception("Contraseñas Incorrectas");
+            }
 
-			iUoW.RepositorioUsuario.NuevoUsuario(pUsuarioID, pPass);
-		}
-	}
+            iUoW.RepositorioUsuario.NuevoUsuario(pUsuarioID, pPass);
+        }
+
+        public int ObtenerValorMetada(TipoMetadaHotel pMT)
+        {
+            switch (pMT)
+            {
+                case TipoMetadaHotel.PorcentajeExclusividad:
+                    return iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad);
+                case TipoMetadaHotel.PorcentajeTour:
+                    return iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeTour);
+                default:
+                    return 0;
+            }
+        }
+    }
 }

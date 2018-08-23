@@ -170,7 +170,7 @@ namespace UI
                     {
                         new ControladorHabitacion().GenerarTarifas(AlojHabs);
 
-                        this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, false);
+                        this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, button1.ForeColor == Color.Green ? true : false);
 
                         this.NuevoAlojamiento.CalcularCostoBase();
 

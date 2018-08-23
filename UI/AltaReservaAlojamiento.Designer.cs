@@ -70,6 +70,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_Comprobar = new System.Windows.Forms.Button();
             this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
             this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,7 +78,6 @@
             this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_Comprobar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -93,11 +93,10 @@
             this.txb_fechaActual.BackColor = System.Drawing.Color.White;
             this.txb_fechaActual.Enabled = false;
             this.txb_fechaActual.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_fechaActual.Location = new System.Drawing.Point(524, 15);
-            this.txb_fechaActual.Margin = new System.Windows.Forms.Padding(4);
+            this.txb_fechaActual.Location = new System.Drawing.Point(393, 12);
             this.txb_fechaActual.Name = "txb_fechaActual";
             this.txb_fechaActual.ReadOnly = true;
-            this.txb_fechaActual.Size = new System.Drawing.Size(156, 35);
+            this.txb_fechaActual.Size = new System.Drawing.Size(118, 30);
             this.txb_fechaActual.TabIndex = 7;
             this.txb_fechaActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -107,11 +106,10 @@
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox1.Location = new System.Drawing.Point(221, 14);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(166, 11);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(153, 35);
+            this.textBox1.Size = new System.Drawing.Size(116, 30);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "En proceso...";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -121,10 +119,9 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(382, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(286, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 30);
+            this.label2.Size = new System.Drawing.Size(108, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "Fecha Actual";
             // 
@@ -133,10 +130,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(8, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 30);
+            this.label1.Size = new System.Drawing.Size(163, 23);
             this.label1.TabIndex = 4;
             this.label1.Text = "Número de Reserva";
             // 
@@ -152,11 +148,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 63);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(10, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1171, 119);
+            this.groupBox1.Size = new System.Drawing.Size(878, 97);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Disponibilidad de Habitaciones";
@@ -169,10 +163,9 @@
             this.btn_VerificarDisponibilidad.BackColor = System.Drawing.Color.Chocolate;
             this.btn_VerificarDisponibilidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.Color.White;
-            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(867, 38);
-            this.btn_VerificarDisponibilidad.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(650, 31);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
-            this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(288, 45);
+            this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(216, 37);
             this.btn_VerificarDisponibilidad.TabIndex = 1;
             this.btn_VerificarDisponibilidad.Text = "Seleccionar Habitaciones";
             this.btn_VerificarDisponibilidad.UseVisualStyleBackColor = false;
@@ -186,10 +179,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_fechaHasta.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_fechaHasta.Location = new System.Drawing.Point(216, 77);
-            this.dtp_fechaHasta.Margin = new System.Windows.Forms.Padding(4);
+            this.dtp_fechaHasta.Location = new System.Drawing.Point(162, 63);
             this.dtp_fechaHasta.Name = "dtp_fechaHasta";
-            this.dtp_fechaHasta.Size = new System.Drawing.Size(596, 27);
+            this.dtp_fechaHasta.Size = new System.Drawing.Size(448, 23);
             this.dtp_fechaHasta.TabIndex = 3;
             this.dtp_fechaHasta.TabStop = false;
             this.dtp_fechaHasta.ValueChanged += new System.EventHandler(this.dtp_fechaHasta_ValueChanged);
@@ -205,10 +197,9 @@
             this.dtp_fechaDesde.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.dtp_fechaDesde.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtp_fechaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_fechaDesde.Location = new System.Drawing.Point(216, 38);
-            this.dtp_fechaDesde.Margin = new System.Windows.Forms.Padding(4);
+            this.dtp_fechaDesde.Location = new System.Drawing.Point(162, 31);
             this.dtp_fechaDesde.Name = "dtp_fechaDesde";
-            this.dtp_fechaDesde.Size = new System.Drawing.Size(596, 27);
+            this.dtp_fechaDesde.Size = new System.Drawing.Size(448, 23);
             this.dtp_fechaDesde.TabIndex = 2;
             this.dtp_fechaDesde.TabStop = false;
             this.dtp_fechaDesde.ValueChanged += new System.EventHandler(this.dtp_fechaDesde_ValueChanged);
@@ -220,10 +211,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 78);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(17, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(147, 20);
+            this.label4.Size = new System.Drawing.Size(124, 17);
             this.label4.TabIndex = 1;
             this.label4.Text = "Fecha Est. Egreso";
             // 
@@ -234,10 +224,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 38);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(17, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 20);
+            this.label3.Size = new System.Drawing.Size(126, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Fecha Est. Ingreso";
             // 
@@ -250,11 +239,9 @@
             this.groupBox4.Controls.Add(this.dGV_Habs);
             this.groupBox4.Enabled = false;
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(13, 190);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Location = new System.Drawing.Point(10, 154);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(721, 354);
+            this.groupBox4.Size = new System.Drawing.Size(750, 264);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Habitaciones Seleccionadas";
@@ -290,8 +277,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV_Habs.DefaultCellStyle = dataGridViewCellStyle3;
             this.dGV_Habs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGV_Habs.Location = new System.Drawing.Point(4, 32);
-            this.dGV_Habs.Margin = new System.Windows.Forms.Padding(4);
+            this.dGV_Habs.Location = new System.Drawing.Point(3, 26);
             this.dGV_Habs.MultiSelect = false;
             this.dGV_Habs.Name = "dGV_Habs";
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -299,7 +285,7 @@
             this.dGV_Habs.RowHeadersVisible = false;
             this.dGV_Habs.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGV_Habs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Habs.Size = new System.Drawing.Size(713, 318);
+            this.dGV_Habs.Size = new System.Drawing.Size(744, 235);
             this.dGV_Habs.TabIndex = 2;
             this.dGV_Habs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellClick);
             this.dGV_Habs.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellLeave);
@@ -344,10 +330,9 @@
             this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(896, 552);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(672, 431);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(288, 45);
+            this.button2.Size = new System.Drawing.Size(216, 37);
             this.button2.TabIndex = 9;
             this.button2.Text = "Seleccionar Responsable";
             this.button2.UseVisualStyleBackColor = false;
@@ -359,10 +344,9 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1036, 819);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Location = new System.Drawing.Point(777, 665);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(148, 45);
+            this.button5.Size = new System.Drawing.Size(111, 37);
             this.button5.TabIndex = 19;
             this.button5.Text = "Cancelar";
             this.button5.UseVisualStyleBackColor = false;
@@ -374,10 +358,9 @@
             this.btn_Aceptar.BackColor = System.Drawing.Color.White;
             this.btn_Aceptar.Enabled = false;
             this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(778, 820);
-            this.btn_Aceptar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Aceptar.Location = new System.Drawing.Point(584, 666);
             this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(148, 45);
+            this.btn_Aceptar.Size = new System.Drawing.Size(111, 37);
             this.btn_Aceptar.TabIndex = 18;
             this.btn_Aceptar.Text = "Aceptar";
             this.btn_Aceptar.UseVisualStyleBackColor = false;
@@ -390,11 +373,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_CostoBase.Enabled = false;
             this.txb_CostoBase.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_CostoBase.Location = new System.Drawing.Point(160, 36);
-            this.txb_CostoBase.Margin = new System.Windows.Forms.Padding(4);
+            this.txb_CostoBase.Location = new System.Drawing.Point(131, 29);
             this.txb_CostoBase.Name = "txb_CostoBase";
             this.txb_CostoBase.ReadOnly = true;
-            this.txb_CostoBase.Size = new System.Drawing.Size(109, 35);
+            this.txb_CostoBase.Size = new System.Drawing.Size(83, 30);
             this.txb_CostoBase.TabIndex = 22;
             this.txb_CostoBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -406,10 +388,9 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(32, 46);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(24, 37);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 20);
+            this.label12.Size = new System.Drawing.Size(101, 17);
             this.label12.TabIndex = 21;
             this.label12.Text = "Costo Reserva";
             // 
@@ -418,11 +399,10 @@
             this.txb_Deposito.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txb_Deposito.Enabled = false;
             this.txb_Deposito.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Deposito.Location = new System.Drawing.Point(435, 36);
-            this.txb_Deposito.Margin = new System.Windows.Forms.Padding(4);
+            this.txb_Deposito.Location = new System.Drawing.Point(333, 29);
             this.txb_Deposito.Name = "txb_Deposito";
             this.txb_Deposito.ReadOnly = true;
-            this.txb_Deposito.Size = new System.Drawing.Size(109, 35);
+            this.txb_Deposito.Size = new System.Drawing.Size(83, 30);
             this.txb_Deposito.TabIndex = 24;
             this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -433,10 +413,9 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(351, 46);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(263, 37);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 20);
+            this.label13.Size = new System.Drawing.Size(64, 17);
             this.label13.TabIndex = 23;
             this.label13.Text = "Depósito";
             // 
@@ -445,10 +424,9 @@
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(959, 237);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(10, 421);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 50);
+            this.button1.Size = new System.Drawing.Size(145, 41);
             this.button1.TabIndex = 28;
             this.button1.Text = "No es TOUR";
             this.button1.UseVisualStyleBackColor = false;
@@ -462,11 +440,9 @@
             this.groupBox_excl.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox_excl.Controls.Add(this.dGV_excl);
             this.groupBox_excl.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox_excl.Location = new System.Drawing.Point(738, 190);
-            this.groupBox_excl.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox_excl.Location = new System.Drawing.Point(763, 154);
             this.groupBox_excl.Name = "groupBox_excl";
-            this.groupBox_excl.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_excl.Size = new System.Drawing.Size(163, 354);
+            this.groupBox_excl.Size = new System.Drawing.Size(122, 264);
             this.groupBox_excl.TabIndex = 29;
             this.groupBox_excl.TabStop = false;
             this.groupBox_excl.Text = "Exclusividad";
@@ -502,8 +478,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV_excl.DefaultCellStyle = dataGridViewCellStyle7;
             this.dGV_excl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGV_excl.Location = new System.Drawing.Point(4, 32);
-            this.dGV_excl.Margin = new System.Windows.Forms.Padding(4);
+            this.dGV_excl.Location = new System.Drawing.Point(3, 26);
             this.dGV_excl.Name = "dGV_excl";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -516,7 +491,7 @@
             this.dGV_excl.RowHeadersVisible = false;
             this.dGV_excl.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGV_excl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_excl.Size = new System.Drawing.Size(155, 318);
+            this.dGV_excl.Size = new System.Drawing.Size(116, 235);
             this.dGV_excl.TabIndex = 2;
             this.dGV_excl.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_excl_CellContentClick);
             // 
@@ -548,14 +523,23 @@
             this.groupBox3.Controls.Add(this.txb_CostoBase);
             this.groupBox3.Controls.Add(this.txb_Deposito);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 703);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 571);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(1168, 108);
+            this.groupBox3.Size = new System.Drawing.Size(876, 88);
             this.groupBox3.TabIndex = 30;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Confirmación de Reserva";
+            // 
+            // btn_Comprobar
+            // 
+            this.btn_Comprobar.Location = new System.Drawing.Point(739, 30);
+            this.btn_Comprobar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Comprobar.Name = "btn_Comprobar";
+            this.btn_Comprobar.Size = new System.Drawing.Size(113, 40);
+            this.btn_Comprobar.TabIndex = 27;
+            this.btn_Comprobar.Text = "Comprobar";
+            this.btn_Comprobar.UseVisualStyleBackColor = true;
+            this.btn_Comprobar.Click += new System.EventHandler(this.btn_Confirmar_Click);
             // 
             // dGV_ClienteResponsable
             // 
@@ -591,8 +575,7 @@
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dGV_ClienteResponsable.DefaultCellStyle = dataGridViewCellStyle11;
             this.dGV_ClienteResponsable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dGV_ClienteResponsable.Location = new System.Drawing.Point(4, 32);
-            this.dGV_ClienteResponsable.Margin = new System.Windows.Forms.Padding(4);
+            this.dGV_ClienteResponsable.Location = new System.Drawing.Point(3, 26);
             this.dGV_ClienteResponsable.Name = "dGV_ClienteResponsable";
             this.dGV_ClienteResponsable.ReadOnly = true;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -607,7 +590,7 @@
             dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dGV_ClienteResponsable.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dGV_ClienteResponsable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(1160, 76);
+            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(870, 62);
             this.dGV_ClienteResponsable.TabIndex = 10;
             // 
             // clm_Dni
@@ -658,34 +641,22 @@
             this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox2.Controls.Add(this.dGV_ClienteResponsable);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(16, 583);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 474);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(1168, 112);
+            this.groupBox2.Size = new System.Drawing.Size(876, 91);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Responsable";
             // 
-            // btn_Comprobar
-            // 
-            this.btn_Comprobar.Location = new System.Drawing.Point(985, 37);
-            this.btn_Comprobar.Name = "btn_Comprobar";
-            this.btn_Comprobar.Size = new System.Drawing.Size(151, 49);
-            this.btn_Comprobar.TabIndex = 27;
-            this.btn_Comprobar.Text = "Comprobar";
-            this.btn_Comprobar.UseVisualStyleBackColor = true;
-            this.btn_Comprobar.Click += new System.EventHandler(this.btn_Confirmar_Click);
-            // 
             // AltaReservaAlojamiento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.DarkRed;
             this.BackgroundImage = global::UI.Properties.Resources.FondoPantallas;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1197, 870);
+            this.ClientSize = new System.Drawing.Size(899, 713);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -701,10 +672,9 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1215, 917);
-            this.MinimumSize = new System.Drawing.Size(1215, 917);
+            this.MaximumSize = new System.Drawing.Size(915, 752);
+            this.MinimumSize = new System.Drawing.Size(915, 752);
             this.Name = "AltaReservaAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Reserva";

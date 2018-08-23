@@ -214,6 +214,10 @@ namespace Dominio
             }
 
             this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
+
+            if (this.iEsTour)
+                this.iMontoTotal -= this.iMontoTotal * 0.15;
+
             this.iMontoDeuda = this.iMontoTotal;
 
             foreach (Pago pago in this.Pagos)
