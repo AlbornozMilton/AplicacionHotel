@@ -77,7 +77,7 @@
             // lbl_TextPrincipal
             // 
             this.lbl_TextPrincipal.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_TextPrincipal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TextPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TextPrincipal.Location = new System.Drawing.Point(89, 20);
             this.lbl_TextPrincipal.Name = "lbl_TextPrincipal";
             this.lbl_TextPrincipal.Size = new System.Drawing.Size(300, 60);
@@ -89,7 +89,7 @@
             // 
             this.lbl_TextAux.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_TextAux.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_TextAux.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TextAux.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TextAux.Location = new System.Drawing.Point(39, 80);
             this.lbl_TextAux.MaximumSize = new System.Drawing.Size(350, 26);
             this.lbl_TextAux.MinimumSize = new System.Drawing.Size(350, 26);

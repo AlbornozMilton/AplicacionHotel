@@ -37,6 +37,7 @@ namespace UI
 
 
             btn_Aceptar.Text = "Realizar Pago";
+            lbl_TextAux.Text = "¿Desea continuar?";
             btn_Aceptar.Location = new Point(242, 113);
             btn_Aceptar.Size = new Size(132, 30);
 
@@ -68,25 +69,24 @@ namespace UI
                 case TipoMensaje.ReservaExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Depósito?";
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
                     }
                     break;
                 case TipoMensaje.AltaAlojamientoExitosa:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Alojado?";
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Alojado?";
 
                     }
                     break;
                 case TipoMensaje.CierreExistoso:
                     {
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Servicios?";
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Servicios?";
                     }
                     break;
                 case TipoMensaje.SiNo:
                     {
-                        lbl_TextAux.Text = "¿Desea continuar?";
                         pictureBox_icon.Image = Properties.Resources.Alerta_Icon;
                         btn_Aceptar.Text = "Si";
                         button_cancelar.Text = "No";
