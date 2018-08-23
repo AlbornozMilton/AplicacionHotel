@@ -428,7 +428,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 41);
             this.button1.TabIndex = 28;
-            this.button1.Text = "No es TOUR";
+            this.button1.Text = "NO ES TOUR";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -533,7 +533,7 @@
             // btn_Comprobar
             // 
             this.btn_Comprobar.Location = new System.Drawing.Point(739, 30);
-            this.btn_Comprobar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Comprobar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Comprobar.Name = "btn_Comprobar";
             this.btn_Comprobar.Size = new System.Drawing.Size(113, 40);
             this.btn_Comprobar.TabIndex = 27;

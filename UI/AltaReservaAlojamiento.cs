@@ -133,7 +133,6 @@ namespace UI
         {
             try
             {
-
                 if (ClienteResponsable != null) //requisito
                 {
                     bool result = true;
@@ -170,12 +169,14 @@ namespace UI
                     {
                         new ControladorHabitacion().GenerarTarifas(AlojHabs);
 
-                        this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, button1.ForeColor == Color.Green ? true : false);
+                        this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, button1.Text == "ES TOUR" ? true : false);
 
                         this.NuevoAlojamiento.CalcularCostoBase();
 
                         txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                        txb_Deposito.Text = NuevoAlojamiento.Deposito(20).ToString();
+
+                        int porcDeposito = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.PorcentajeDeposito);
+                        txb_Deposito.Text = NuevoAlojamiento.Deposito(porcDeposito).ToString();
 
                         groupBox4.Enabled = false;
                         groupBox2.Enabled = false;
@@ -290,14 +291,14 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (button1.Text == "No es TOUR")
+            if (button1.Text == "NO ES TOUR")
             {
-                button1.Text = "Es TOUR";
+                button1.Text = "ES TOUR";
                 button1.BackColor = System.Drawing.Color.Green;
             }
             else
             {
-                button1.Text = "No es TOUR";
+                button1.Text = "NO ES TOUR";
                 button1.BackColor = System.Drawing.Color.OrangeRed;
             }
         }

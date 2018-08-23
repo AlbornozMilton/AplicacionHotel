@@ -88,9 +88,12 @@ namespace UI
                     {
                         lbl_TextAux.Text = "¿Desea continuar?";
                         pictureBox_icon.Image = Properties.Resources.Alerta_Icon;
-                        button_cancelar.Visible = true;
                         btn_Aceptar.Text = "Si";
-                        btn_Aceptar.Location = new Point(363, 139);
+                        button_cancelar.Text = "No";
+                        btn_Aceptar.Location = new Point(266, 113);
+
+                        button_cancelar.Visible = true;
+                        lbl_TextAux.Visible = true;
                     }
                     break;
             }

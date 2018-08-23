@@ -216,7 +216,7 @@ namespace Dominio
             this.iMontoTotal = costoBase * (Math.Abs(this.iFechaEstimadaEgreso.Date.Subtract(auxFechaDesde.Date).Days));
 
             if (this.iEsTour)
-                this.iMontoTotal -= this.iMontoTotal * 0.15;
+                this.iMontoTotal -= this.iMontoTotal * new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.PorcentajeTour) * 0.01;
 
             this.iMontoDeuda = this.iMontoTotal;
 
