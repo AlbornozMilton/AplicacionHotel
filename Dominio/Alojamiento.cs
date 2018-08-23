@@ -24,7 +24,7 @@ namespace Dominio
 
         //-----------------------CONSTRUCTORES----------------------
 
-        public Alojamiento(List<AlojHab> alojsHab) { }
+        public Alojamiento() { }
 
         /// <summary>
         /// Constructor para el Alta Alojamiento sin Reserva

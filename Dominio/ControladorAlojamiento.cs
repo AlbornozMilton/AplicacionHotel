@@ -31,11 +31,12 @@ namespace Dominio
             return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
         }
 
-        public List<Alojamiento> ObtenerAlojamientosActivos() //Devuelve la lista de alojamientos activos mappeandolos de Pers a Dominio
+        public List<Alojamiento> ObtenerAlojamientosActivos() 
         {
-            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
+            //IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
+            List<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos().ToList();
             List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
-            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            foreach (var aloj in listaEnum)
             {
                 listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
             }
@@ -235,23 +236,24 @@ namespace Dominio
         /// </summary>
         public List<Alojamiento> AlojsReservadosConDepositoVencidos()
         {
-            List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
-            List<Alojamiento> ListaResultado = new List<Alojamiento>();
-            foreach (var aloj in auxLista)
-            {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                {
-                    if (
-                        (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
-                        &
-                        (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
-                        )
-                    {
-                        ListaResultado.Add(aloj);
-                    }
-                }
-            }
-            return ListaResultado;
+            //List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
+            //List<Alojamiento> ListaResultado = new List<Alojamiento>();
+            //foreach (var aloj in auxLista)
+            //{
+            //    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            //    {
+            //        if (
+            //            (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
+            //            &
+            //            (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
+            //            )
+            //        {
+            //            ListaResultado.Add(aloj);
+            //        }
+            //    }
+            //}
+            //return ListaResultado;
+            return null;
         }
 
         /// <summary>

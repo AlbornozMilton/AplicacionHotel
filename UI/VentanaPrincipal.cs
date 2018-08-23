@@ -17,7 +17,6 @@ namespace UI
         public VentanaPrincipal()
         {
             InitializeComponent();
-			//dGV_Alojamientos.DefaultCellStyle.BackColor = Color.White;
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,7 +70,7 @@ namespace UI
         {
             iniciarToolStripMenuItem.Enabled = false;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-            CorrerTodoSegundoPlano();
+            //CorrerTodoSegundoPlano();
         }
 
 
@@ -108,25 +107,25 @@ namespace UI
 
         private void MostrarAlojsActivos()
         {
-			ControladorExtra controladorExtra = new ControladorExtra();
+            ControladorExtra controladorExtra = new ControladorExtra();
             pictureBox1.Visible = false;
             int countRow = 0;
-			foreach (Alojamiento aloj in this.ListaAlojamientos)
-			{
-				Cliente cli = aloj.ClienteResponsable();
-				dGV_Alojamientos.Rows.Add
-					(
-					aloj.AlojamientoId,
-					aloj.EstadoAlojamiento,
-					aloj.DniResponsable,
-					cli.Legajo,
-					cli.NombreCompleto(),
-					(aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
-					aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
-					);
-				dGV_Alojamientos.Rows[countRow].Cells[8].Style.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
-				dGV_Alojamientos.Rows[countRow].Cells[8].Style.SelectionBackColor = Color.Transparent;
-				countRow++;
+            foreach (Alojamiento aloj in this.ListaAlojamientos)
+            {
+                Cliente cli = aloj.ClienteResponsable();
+                dGV_Alojamientos.Rows.Add
+                    (
+                    aloj.AlojamientoId,
+                    aloj.EstadoAlojamiento,
+                    aloj.DniResponsable,
+                    cli.Legajo,
+                    cli.NombreCompleto(),
+                    (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado ? aloj.FechaIngreso : aloj.FechaEstimadaIngreso).ToString("dd / MM / yyyy"),
+                    aloj.FechaEstimadaEgreso.ToString("dd / MM / yyyy")
+                    );
+                dGV_Alojamientos.Rows[countRow].Cells[8].Style.BackColor = Color.FromName(controladorExtra.DeterminarColor(aloj));
+                dGV_Alojamientos.Rows[countRow].Cells[8].Style.SelectionBackColor = Color.Transparent;
+                countRow++;
             }
         }
 

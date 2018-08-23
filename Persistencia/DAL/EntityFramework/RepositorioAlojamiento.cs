@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Persistencia.Domain;
 
@@ -36,7 +37,7 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("AlojHabes").Include("Pagos")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes").Include("Pagos")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
@@ -69,6 +70,23 @@ namespace Persistencia.DAL.EntityFramework
         {
             List<Cliente> auxListCliente = new List<Cliente>();
 			List<Habitacion> auxHabitaciones = new List<Habitacion>();
+
+            foreach (var ah in unAloj.AlojHabes)
+            {
+                ah.HabitacionId = ah.Habitacion.HabitacionId;
+                iDbContext.Entry(ah.Habitacion).State = EntityState.Modified;
+                //int idHab = ah.Habitacion.HabitacionId;
+                //Habitacion habBD = iDbContext.Habitaciones.Find(idHab);
+                //ah.Habitacion =
+                foreach (var tarifa in ah.Tarifas)
+                {
+                    iDbContext.Entry(tarifa).State = EntityState.Modified;
+
+                }
+            }
+
+          
+
 			//List<Habitacion> externalHabs = unAloj.Habitaciones;
 			//unAloj.Habitaciones = iDbContext.Habitaciones.SingleOrDefault(h => h.HabitacionId == unAloj.HabitacionId);
 

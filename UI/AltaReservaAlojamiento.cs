@@ -165,7 +165,7 @@ namespace UI
                     if (button1.Text == "ES TOUR" && cantNull != 0)
                         throw new Exception("Debe completar el Tour");
 
-                    if (cantNull != capTotal)
+                    if (cantNull != capTotal && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
                         ventanaEmergente.ShowDialog();
