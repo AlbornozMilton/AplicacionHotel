@@ -293,6 +293,8 @@ namespace Dominio
                     return iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad);
                 case TipoMetadaHotel.PorcentajeTour:
                     return iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeTour);
+                case TipoMetadaHotel.PorcentajeDeposito:
+                    return iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeDeposito);
                 default:
                     return 0;
             }

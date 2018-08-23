@@ -10,6 +10,7 @@
 	public enum TipoMetadaHotel
 	{
 		PorcentajeExclusividad,
-		PorcentajeTour
+		PorcentajeTour,
+        PorcentajeDeposito
 	}
 }

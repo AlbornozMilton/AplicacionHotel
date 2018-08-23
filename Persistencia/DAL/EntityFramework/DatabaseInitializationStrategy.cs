@@ -292,10 +292,19 @@ namespace Persistencia.DAL.EntityFramework
 						Valor = 10
 					}
 				);
+            context.Set<MetadataHotel>().Add
+                (
+                    new MetadataHotel
+                    {
+                        MetadataHotelId = TipoMetadaHotel.PorcentajeDeposito,
+                        Nombre = "Porcentaje Depósito",
+                        Valor = 50
+                    }
+                );
 
-			//////-----------------------FIN DATOS BASICOS------------------
+            //////-----------------------FIN DATOS BASICOS------------------
 
-			base.Seed(context);
+            base.Seed(context);
         }
     }
 }
