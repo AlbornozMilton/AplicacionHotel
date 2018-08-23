@@ -306,31 +306,49 @@ namespace UI
 
                 if ((string)row.Cells[1].Value == "No")
                 {
-                    //int cant = auxHab.Capacidad;
-                    cantExclAux += auxHab.Capacidad;
-
-                    this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, cantExclAux);
-
-                    if (this.exclusividadCapacidad)
+                    bool Excl = false;
+                    List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
+                    foreach (DataGridViewRow item in dGV_Habs.Rows)
                     {
-                        row.Cells[1].Value = "Si";
+                        if ((byte)item.Cells[0].Value == (byte)row.Cells[0].Value && tiposCli.Contains((string)item.Cells[2].Value))
+                            Excl = true;
+                    }
 
-                        AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = exclusividadCapacidad;
+                    if (Excl)
+                    {
+                        cantExclAux += auxHab.Capacidad;
+
+                        this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, cantExclAux);
+
+                        if (this.exclusividadCapacidad)
+                        {
+                            row.Cells[1].Value = "Si";
+
+                            AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = exclusividadCapacidad;
+                        }
+                        else
+                        {
+                            cantExclAux -= auxHab.Capacidad;
+
+                            VentanaEmergente ventanaEmergente = new VentanaEmergente("Se supera la cantidad de exclusividad", TipoMensaje.Alerta);
+                            ventanaEmergente.ShowDialog();
+                        } 
                     }
                     else
                     {
                         cantExclAux -= auxHab.Capacidad;
 
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Se supera la cantidad de exclusividad", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Para exclusividad de la habitación, esta misma debe poseer un Titular, Titular Exceptuado o Convenio", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                     }
                 }
                 else
                 {
-                    row.Cells[1].Value = "No";
                     AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
 
                     cantExclAux -= auxHab.Capacidad;
+
+                    row.Cells[1].Value = "No";
                 }
             }
         }
