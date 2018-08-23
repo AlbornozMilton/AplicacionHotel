@@ -30,6 +30,8 @@ namespace UI
         {
             FechaIni = DateTime.Now;
             FechaFin = DateTime.Now.AddDays(1);
+            dGV_Habs.AlternatingRowsDefaultCellStyle = null;
+            dGV_excl.AlternatingRowsDefaultCellStyle = null;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -164,6 +166,21 @@ namespace UI
 
                     if (button1.Text == "ES TOUR" && cantNull != 0)
                         throw new Exception("Debe completar el Tour");
+
+                    //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
+                    foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                    {
+                        if ((string)rowExcl.Cells[1].Value == "Si")
+                        {
+                            foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
+                            {
+                                if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value != null)
+                                {
+                                    cantNull++;
+                                }
+                            }
+                        }
+                    }
 
                     if (cantNull != capTotal && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                     {
