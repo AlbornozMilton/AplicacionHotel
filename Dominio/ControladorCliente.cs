@@ -220,14 +220,13 @@ namespace Dominio
                         {
                             if (cli.ClienteId == pCliente.ClienteId)
                             {
-                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
+                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para la fecha elegida.");
                             }
                         }
                     }
                 }
                 else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                 {
-                    //control de fechas
                     if
                         (
                             aloj.DniResponsable == pCliente.ClienteId
@@ -237,7 +236,7 @@ namespace Dominio
                             !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
                         )
                     {
-                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
+                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado para la fecha elegidas.");
                     }
                 }
 

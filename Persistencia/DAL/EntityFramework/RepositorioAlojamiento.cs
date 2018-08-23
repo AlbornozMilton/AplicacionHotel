@@ -41,7 +41,7 @@ namespace Persistencia.DAL.EntityFramework
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
-            return alojamientos.ToList<Alojamiento>();
+            return alojamientos.ToList();
         }
 
         public IEnumerable<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados, DateTime pDesde, DateTime pHasta)
@@ -60,7 +60,7 @@ namespace Persistencia.DAL.EntityFramework
                                     )
                                select aloj;
 
-            return alojamientos.ToList<Alojamiento>();
+            return alojamientos.ToList();
         }
 
         public IEnumerable<Alojamiento> AlojamientosConDeuda()
@@ -69,7 +69,7 @@ namespace Persistencia.DAL.EntityFramework
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado) && (aloj.MontoDeuda > 0))
                                select aloj;
 
-            return alojamientos.ToList<Alojamiento>();
+            return alojamientos.ToList();
         }
 
         /// <summary>
