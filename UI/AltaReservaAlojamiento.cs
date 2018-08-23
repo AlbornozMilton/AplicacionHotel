@@ -174,15 +174,15 @@ namespace UI
                         {
                             foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
                             {
-                                if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value != null)
+                                if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value == null)
                                 {
-                                    cantNull++;
+                                    cantNull--;
                                 }
                             }
                         }
                     }
 
-                    if (cantNull != capTotal && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+                    if (/*cantNull != capTotal*/cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
                         ventanaEmergente.ShowDialog();
