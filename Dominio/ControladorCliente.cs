@@ -180,34 +180,67 @@ namespace Dominio
         /// </summary>
         public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta, List<Alojamiento> pAlojsActivos)
         {
+            //foreach (var aloj in pAlojsActivos)
+            //{
+            //    foreach (AlojHab alojHab in aloj.AlojHabes)
+            //    {
+            //        foreach (Cliente cli in alojHab.Clientes)
+            //        {
+            //            if (cli.ClienteId == pCliente.ClienteId)
+            //            {
+            //                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+            //                {
+            //                    throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
+            //                }
+            //                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            //                {
+            //                    //control de fechas
+            //                    if
+            //                        (
+            //                            !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+            //                            &&
+            //                            !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+            //                        )
+            //                    {
+            //                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
             foreach (var aloj in pAlojsActivos)
             {
-                foreach (AlojHab alojHab in aloj.AlojHabes)
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                 {
-                    foreach (Cliente cli in alojHab.Clientes)
+                    foreach (AlojHab alojHab in aloj.AlojHabes)
                     {
-                        if (cli.ClienteId == pCliente.ClienteId)
+                        foreach (Cliente cli in alojHab.Clientes)
                         {
-                            if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                            if (cli.ClienteId == pCliente.ClienteId)
                             {
                                 throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
-                            }
-                            else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                            {
-                                //control de fechas
-                                if
-                                    (
-                                        !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
-                                        &&
-                                        !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
-                                    )
-                                {
-                                    throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
-                                }
                             }
                         }
                     }
                 }
+                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                {
+                    //control de fechas
+                    if
+                        (
+                            aloj.DniResponsable == pCliente.ClienteId
+                            &&
+                            !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+                            &&
+                            !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+                        )
+                    {
+                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
+                    }
+                }
+
             }
         }
 
