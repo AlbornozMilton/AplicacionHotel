@@ -11,7 +11,7 @@ namespace Persistencia.Domain
         public string NroDepto { get; set; }
 
        // public List<Cliente> Clientes { get; set; }
-        public int CiudadId { get; set; }
+        public int? CiudadId { get; set; }
         public Ciudad Ciudad { get; set; }
 
        // public int  ClienteId { get; set; }

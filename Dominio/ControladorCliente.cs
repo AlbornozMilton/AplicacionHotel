@@ -22,7 +22,10 @@ namespace Dominio
 
         public void NuevoCliente(string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, string pTipoCliente)
         {
-            this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
+            if (pLegajo != "")
+                this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
+            else
+                this.Cliente = new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
 
             iUoW.RepositorioCliente.ActualizarCliente(Mapper.Map<Cliente, pers.Cliente>(this.Cliente), IdDomiciio);
         }
@@ -121,8 +124,14 @@ namespace Dominio
         /// </summary>
         public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal, string pNombre)
         {
-            Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.GetCiudad(Convert.ToInt32(pCodPostal), pNombre));
-            this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
+            if (pCodPostal != "")
+            {
+                Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.GetCiudad(Convert.ToInt32(pCodPostal), pNombre));
+                this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
+            }
+            else
+                this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso);
+
             IdDomiciio = iUoW.RepositorioDomicilio.ComprobarDomicilio(Mapper.Map<Domicilio, pers.Domicilio>(this.Domicilio));
         }
 

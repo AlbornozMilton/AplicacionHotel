@@ -23,8 +23,8 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(d => d.NroDepto)
                 .IsOptional();
 
-            this.HasRequired(d => d.Ciudad)
-                .WithMany(c => c.Domicilios);
+            //this.HasOptional(d => d.Ciudad)
+            //    .WithMany(c => c.Domicilios);
         }
     }
 }

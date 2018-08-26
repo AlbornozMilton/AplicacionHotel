@@ -3,7 +3,7 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    public class RepositorioDomicilio: Repositorio<Domicilio, HotelContext>, IRepositorioDomicilio
+    public class RepositorioDomicilio : Repositorio<Domicilio, HotelContext>, IRepositorioDomicilio
     {
         public RepositorioDomicilio(HotelContext pContext) : base(pContext)
         {
@@ -17,25 +17,29 @@ namespace Persistencia.DAL.EntityFramework
         /// <returns></returns>
         public int ComprobarDomicilio(Domicilio pDomicilio)
         {
-            Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CodPostal == pDomicilio.Ciudad.CodPostal && c.Nombre == pDomicilio.Ciudad.Nombre);
-
-            foreach (var dom in ciudad.Domicilios)
+            if (pDomicilio.Ciudad != null)
             {
-                if // existe
-                    (
-                     dom.Calle == pDomicilio.Calle &&
-                     dom.Numero == pDomicilio.Numero &&
-                     dom.NroDepto == pDomicilio.NroDepto &&
-                     dom.Piso == pDomicilio.Piso
-                    )
+                Ciudad ciudad = iDbContext.Ciudades.Include("Domicilios").SingleOrDefault(c => c.CodPostal == pDomicilio.Ciudad.CodPostal && c.Nombre == pDomicilio.Ciudad.Nombre);
+
+                foreach (var dom in ciudad.Domicilios)
                 {
-                    return dom.DomicilioId;
+                    if // existe
+                        (
+                         dom.Calle == pDomicilio.Calle &&
+                         dom.Numero == pDomicilio.Numero &&
+                         dom.NroDepto == pDomicilio.NroDepto &&
+                         dom.Piso == pDomicilio.Piso
+                        )
+                    {
+                        return dom.DomicilioId;
+                    }
                 }
+
+                //sino se agrega nuevo domicilio
+                pDomicilio.CiudadId = ciudad.CiudadId;
+                pDomicilio.Ciudad = null;
             }
 
-			//sino se agrega nuevo domicilio
-            pDomicilio.CiudadId = ciudad.CiudadId;
-            pDomicilio.Ciudad = null;
             this.iDbContext.Domicilios.Add(pDomicilio);
 
             this.iDbContext.SaveChanges();
