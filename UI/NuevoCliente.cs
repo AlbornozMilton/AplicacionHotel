@@ -80,7 +80,7 @@ namespace UI
             tbx_dni.Text = localCliente.ClienteId.ToString();
             label13.Text = "";
             tbx_dni.Enabled = false;
-            txb_legajo.Text = localCliente.Legajo.ToString();
+            txb_legajo.Text = localCliente.Legajo != 0 ? localCliente.Legajo.ToString() : "";
             label14.Text = "";
             txb_apellido.Text = localCliente.Apellido;
             label15.Text = "";
@@ -192,13 +192,9 @@ namespace UI
 
         private void txb_legajo_Leave(object sender, EventArgs e)
         {
-            //if (txb_legajo.Text == "")
-            //	label14.Text = "Campo Obligatorio";
-            //         else 
-            //if (txb_legajo.Text.Length > 8)
-            //    label14.Text = "Legajo muy largo";
-            //else 
-            if (tbx_dni.Enabled == true && txb_legajo.Text != "" && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
+            if (txb_legajo.Text == "0")
+                label14.Text = "";
+            else if (tbx_dni.Enabled == true && txb_legajo.Text != "" && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))
                 label14.Text = "Ya Existe";
             else if (txb_legajo.Text != "" && tbx_dni.Enabled == false && localCliente.Legajo.ToString().CompareTo(txb_legajo.Text) != 0 && this.ControladorCliente.ExisteClienteLegajo(txb_legajo.Text))//PARA EL CASO DE LA MODIFICACION
                 label14.Text = "Ya Existe";
