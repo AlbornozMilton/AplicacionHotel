@@ -58,7 +58,7 @@ namespace UI
 					dGV_ClienteResponsable.Rows.Clear();
 					ClienteResponsable = null;
 					this.Acompañantes.Clear();
-					dGV_Acompañantes.Rows.Clear();
+					dGV_Habitaciones.Rows.Clear();
 
 					//groupBox4.Enabled = true; //HABITACION
 					groupBox2.Enabled = true; //RESPONSABLE
@@ -133,7 +133,7 @@ namespace UI
 
 					groupBox3.Enabled = true; //ACOMPAÑANTES
 					//btn_Comprobar.Enabled = true;
-					dGV_Acompañantes.Rows.Clear();
+					dGV_Habitaciones.Rows.Clear();
 					Acompañantes.Clear();
 					Acompañantes.Add(ClienteResponsable);
 				}
@@ -191,7 +191,7 @@ namespace UI
 
 					//AVISO CLIENTE ADEUDOR
 
-					dGV_Acompañantes.Rows.Add(acomp.ClienteId, acomp.Legajo, acomp.Apellido, acomp.Nombre, acomp.TarifaCliente.NombreTarifa);
+					dGV_Habitaciones.Rows.Add(acomp.ClienteId, acomp.Legajo, acomp.Apellido, acomp.Nombre, acomp.TarifaCliente.NombreTarifa);
 					this.Acompañantes.Add(acomp); 
 				}
 			}
@@ -204,10 +204,10 @@ namespace UI
 
 		private void btn_quitarCliente_Click(object sender, EventArgs e)
 		{
-			if (dGV_Acompañantes.CurrentRow != null)
+			if (dGV_Habitaciones.CurrentRow != null)
 			{
-				Acompañantes.Remove(Acompañantes.Find(c => c.ClienteId == Convert.ToInt32(dGV_Acompañantes.CurrentRow.Cells[0].Value)));
-				dGV_Acompañantes.Rows.Remove(dGV_Acompañantes.CurrentRow);
+				Acompañantes.Remove(Acompañantes.Find(c => c.ClienteId == Convert.ToInt32(dGV_Habitaciones.CurrentRow.Cells[0].Value)));
+				dGV_Habitaciones.Rows.Remove(dGV_Habitaciones.CurrentRow);
 			}
 		}
 
@@ -238,7 +238,7 @@ namespace UI
 				//btn_Comprobar.Enabled = false;
 				groupBox1.Enabled = false;
 				groupBox2.Enabled = false;
-				groupBox3.Enabled = false;
+				groupBox3.Enabled = true;
 				//groupBox4.Enabled = false;
 				btn_Aceptar.Enabled = true;
 			}
@@ -292,12 +292,12 @@ namespace UI
 			//txb_capacidad.Text = "";
 			//ck_Exclusividad.Checked = false;
 			dGV_ClienteResponsable.Rows.Clear();
-			dGV_Acompañantes.Rows.Clear();
+			dGV_Habitaciones.Rows.Clear();
 			ClienteResponsable = null;
 			Acompañantes.Clear();
 			//groupBox4.Enabled = false;
 			groupBox2.Enabled = false;
-			groupBox3.Enabled = false;
+			groupBox3.Enabled = true;
 			//btn_Comprobar.Enabled = false;
 		}
 
