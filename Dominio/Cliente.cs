@@ -32,6 +32,19 @@ namespace Dominio
             this.iEnAlta = true;
         }
 
+        //Sin legajo para Acomp o Acomp No Directo
+        public Cliente(int pDni, string pNombre, string pApellido, string pTel, string pCorreo, Domicilio pDomicilio, TarifaCliente pTarifa)
+        {
+            this.iDni = pDni;
+            this.iNombre = pNombre;
+            this.iApellido = pApellido;
+            this.iTelefono = pTel;
+            this.iCorreo = pCorreo;
+            this.iDomicilio = pDomicilio;
+            this.iTarifa = pTarifa;
+            this.iEnAlta = true;
+        }
+
         //----------------------------------Propiedades------------------------------------
         public int ClienteId { get { return this.iDni; } private set { this.iDni = value; } }
         public int Legajo { get { return this.iLegajo; } private set { this.iLegajo = value; } }

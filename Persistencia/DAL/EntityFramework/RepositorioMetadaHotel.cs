@@ -1,4 +1,5 @@
-﻿using Persistencia.Domain;
+﻿using System.Linq;
+using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework
 {
@@ -11,7 +12,7 @@ namespace Persistencia.DAL.EntityFramework
 
 		public int ObtenerValorMetada(TipoMetadaHotel pTipo)
 		{
-			return iDbContext.Metadatas.Find(pTipo).Valor;
+			return iDbContext.Metadatas.SingleOrDefault(m => m.MetadataHotelId == pTipo).Valor;
 		}
 	}
 }

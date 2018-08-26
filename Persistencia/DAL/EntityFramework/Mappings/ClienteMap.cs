@@ -18,10 +18,10 @@ namespace Persistencia.DAL.EntityFramework.Mappings
                 .IsOptional();
 
             this.Property(c => c.Nombre)
-                .IsRequired();
+                .IsOptional();
 
             this.Property(c => c.Apellido)
-                .IsRequired();
+                .IsOptional();
 
             this.Property(c => c.Telefono)
                 .IsOptional();
@@ -34,7 +34,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
             this.HasOptional(c => c.Domicilio).WithMany(c => c.Clientes);
 
-		//	this.HasOptional(c => c.AlojHab).WithMany(a => a.Clientes);
 		}
     }
 }

@@ -19,6 +19,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
 
 			this.Property(c => c.Nombre)
                 .IsRequired();
+
         }
     }
 }

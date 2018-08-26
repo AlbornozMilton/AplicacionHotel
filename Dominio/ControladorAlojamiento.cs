@@ -31,11 +31,12 @@ namespace Dominio
             return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
         }
 
-        public List<Alojamiento> ObtenerAlojamientosActivos() //Devuelve la lista de alojamientos activos mappeandolos de Pers a Dominio
+        public List<Alojamiento> ObtenerAlojamientosActivos() 
         {
-            IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
+            //IEnumerable<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos();
+            List<pers.Alojamiento> listaEnum = iUoW.RepositorioAlojamiento.GetAllAlojamientosActivos().ToList();
             List<Alojamiento> listaAlojamientos = new List<Alojamiento>();
-            foreach (var aloj in (listaEnum.ToList<pers.Alojamiento>()))
+            foreach (var aloj in listaEnum)
             {
                 listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
             }
@@ -111,9 +112,9 @@ namespace Dominio
             return (listaHabitaciones);
         }
 
-		public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta)
+		public bool ExclusividadSegunCapacidad(DateTime pFechaDesde, DateTime pFechaHasta, int pCantAux)
 		{
-			//este valor puede variar devido a los Alta de las Habitacioes, no es un valor fijo en la BD
+			//este valor puede variar devido a los Alta de las Habitaciones, no es un valor fijo explicito en la BD
 			int auxCapacidadTotal = 0;
 
 			List<Habitacion> Habitaciones = new ControladorHabitacion().ObtenerHabitacionesFullLibres();
@@ -131,11 +132,12 @@ namespace Dominio
 			{
 				DateTime alojFechaDesde = new DateTime();
 
-				//la cantidad exclusiva se acumula tanto si es alojado o reservado
+				//la cantidad exclusiva se acumula tanto si es alojado o se ha reservbado
 				if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
 					alojFechaDesde = aloj.FechaIngreso.Date;
 				else //reservado
 					alojFechaDesde = aloj.FechaEstimadaIngreso.Date;
+
 				// Si hay interseccion entre las fechas acumular la cantidad de exclusividad
 				if (!(
 					(alojFechaDesde.CompareTo(pFechaDesde) < 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde) <= 0)
@@ -152,7 +154,8 @@ namespace Dominio
 					}
 				}
 			}
-			return auxCantExclusiva < ((auxCapacidadTotal * iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad)) / 100);
+
+            return (decimal)(auxCantExclusiva + pCantAux) <= (auxCapacidadTotal * Decimal.Divide(iUoW.RepositorioMetadaHotel.ObtenerValorMetada(pers.TipoMetadaHotel.PorcentajeExclusividad), 100));
         }
 
         public void AddPago(Alojamiento pAlojamiento,Pago pPago)
@@ -233,23 +236,24 @@ namespace Dominio
         /// </summary>
         public List<Alojamiento> AlojsReservadosConDepositoVencidos()
         {
-            List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
-            List<Alojamiento> ListaResultado = new List<Alojamiento>();
-            foreach (var aloj in auxLista)
-            {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                {
-                    if (
-                        (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
-                        &
-                        (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
-                        )
-                    {
-                        ListaResultado.Add(aloj);
-                    }
-                }
-            }
-            return ListaResultado;
+            //List <Alojamiento> auxLista = this.ObtenerAlojamientosActivos();
+            //List<Alojamiento> ListaResultado = new List<Alojamiento>();
+            //foreach (var aloj in auxLista)
+            //{
+            //    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            //    {
+            //        if (
+            //            (DateTime.Now.Subtract(aloj.FechaReserva).Ticks >= (TimeSpan.TicksPerHour * 72))
+            //            &
+            //            (aloj.Pagos.Find(p => p.Tipo == TipoPago.Deposito) == null)//no existe pago de deposito
+            //            )
+            //        {
+            //            ListaResultado.Add(aloj);
+            //        }
+            //    }
+            //}
+            //return ListaResultado;
+            return null;
         }
 
         /// <summary>

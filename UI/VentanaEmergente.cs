@@ -10,7 +10,7 @@ namespace UI
         string Mensaje;
         TipoMensaje TipoMensaje;
         Alojamiento Alojamiento;
-		public bool Aceptar = false;
+        public bool Aceptar = false;
 
         public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje)
         {
@@ -21,7 +21,7 @@ namespace UI
             lbl_TextAux.Visible = false;
         }
 
-        public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje,int pIdAloj)
+        public VentanaEmergente(string pMensajePrincipal, TipoMensaje pTipoMensaje, int pIdAloj)
         {
             InitializeComponent();
             Mensaje = pMensajePrincipal;
@@ -37,6 +37,7 @@ namespace UI
 
 
             btn_Aceptar.Text = "Realizar Pago";
+            lbl_TextAux.Text = "¿Desea continuar?";
             btn_Aceptar.Location = new Point(242, 113);
             btn_Aceptar.Size = new Size(132, 30);
 
@@ -56,7 +57,7 @@ namespace UI
             {
                 case TipoMensaje.Exito:
                     {
-                        
+
                     }
                     break;
                 case TipoMensaje.Alerta:
@@ -67,21 +68,32 @@ namespace UI
                     break;
                 case TipoMensaje.ReservaExitosa:
                     {
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Depósito?";
                     }
                     break;
                 case TipoMensaje.AltaAlojamientoExitosa:
                     {
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Alojado?";
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Alojado?";
-                        
+
                     }
                     break;
                 case TipoMensaje.CierreExistoso:
                     {
+                        lbl_TextAux.Text = "¿Desea realizar un Pago de Servicios?";
                         lbl_TextAux.Visible = true;
-                        lbl_TextAux.Text = "   ¿Desea realizar un Pago de Servicios?";
+                    }
+                    break;
+                case TipoMensaje.SiNo:
+                    {
+                        pictureBox_icon.Image = Properties.Resources.Alerta_Icon;
+                        btn_Aceptar.Text = "Si";
+                        button_cancelar.Text = "No";
+                        btn_Aceptar.Location = new Point(266, 113);
+
+                        button_cancelar.Visible = true;
+                        lbl_TextAux.Visible = true;
                     }
                     break;
             }
@@ -89,23 +101,26 @@ namespace UI
 
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
-			if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa || this.TipoMensaje == TipoMensaje.ReservaExitosa
-				|| TipoMensaje == TipoMensaje.CierreExistoso)
-			{
-				RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
-				registrarPago.ShowDialog();
-			}
-			else if (Mensaje == "¿Eliminar Usuario?")
-			{
-				Aceptar = true;
-			}
+            if (this.TipoMensaje == TipoMensaje.AltaAlojamientoExitosa || this.TipoMensaje == TipoMensaje.ReservaExitosa
+                || TipoMensaje == TipoMensaje.CierreExistoso)
+            {
+                RegistrarPago registrarPago = new RegistrarPago(Alojamiento);
+                registrarPago.ShowDialog();
+            }
+            else if (Mensaje == "¿Eliminar Usuario?" || TipoMensaje == TipoMensaje.SiNo)
+            {
+                Aceptar = true;
+            }
 
-			Close();
-		}
+            Close();
+        }
 
-		private void button_cancelar_Click(object sender, EventArgs e)
+        private void button_cancelar_Click(object sender, EventArgs e)
         {
-			Close();
+            if (TipoMensaje == TipoMensaje.SiNo)
+                Aceptar = false;
+
+            Close();
         }
     }
 
@@ -115,6 +130,7 @@ namespace UI
         AltaAlojamientoExitosa,
         CierreExistoso,
         Exito,
-        Alerta
+        Alerta,
+        SiNo
     }
 }

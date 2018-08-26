@@ -20,21 +20,30 @@ namespace Dominio
 
         //--------------------------------------METODOS------------------
 
-        public void NuevoCliente (string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, string pTipoCliente)
+        public void NuevoCliente(string pDni, string pLegajo, string pNombre, string pApellido, string pTel, string pCorreo, string pTipoCliente)
         {
-            this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
+            if (pLegajo != "")
+                this.Cliente = new Cliente(Convert.ToInt32(pDni), Convert.ToInt32(pLegajo), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
+            else
+                this.Cliente = new Cliente(Convert.ToInt32(pDni), pNombre, pApellido, pTel, pCorreo, this.Domicilio, Tarifas.Find(t => t.NombreTarifa == pTipoCliente));
 
             iUoW.RepositorioCliente.ActualizarCliente(Mapper.Map<Cliente, pers.Cliente>(this.Cliente), IdDomiciio);
         }
 
         public Cliente BuscarClientePorDni(int unDni, bool pAlta)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorDNI(unDni, pAlta)));
+            var cliente = iUoW.RepositorioCliente.GetPorDNI(unDni, pAlta);
+            cliente.Domicilio.Clientes = null;
+            cliente.TarifaCliente.Clientes = null;
+            return Mapper.Map<pers.Cliente, Cliente>(cliente);
         }
 
         public Cliente BuscarClientePorLegajo(string pLegajo, bool pAlta)
         {
-            return (Mapper.Map<pers.Cliente, Cliente>(iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo), pAlta)));
+            var cliente = iUoW.RepositorioCliente.GetPorLegajo(Convert.ToInt32(pLegajo), pAlta);
+            cliente.Domicilio.Clientes = null;
+            cliente.TarifaCliente.Clientes = null;
+            return Mapper.Map<pers.Cliente, Cliente>(cliente);
         }
 
         public List<Cliente> BuscarClientePorNom_Ape(string pCadena, bool pAlta)
@@ -43,7 +52,9 @@ namespace Dominio
             List<Cliente> lista = new List<Cliente>();
             foreach (var i in listaEnum)
             {
-                    lista.Add(Mapper.Map<pers.Cliente, Cliente>(i));
+                i.TarifaCliente.Clientes = null;
+                i.Domicilio.Clientes = null;
+                lista.Add(Mapper.Map<pers.Cliente, Cliente>(i));
             }
             return (lista);
         }
@@ -113,8 +124,14 @@ namespace Dominio
         /// </summary>
         public void CargarDomicilio(string pCalle, string pNumCalle, string pPiso, string pNumDpto, string pCodPostal, string pNombre)
         {
-            Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.GetCiudad(Convert.ToInt32(pCodPostal), pNombre));
-            this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
+            if (pCodPostal != "")
+            {
+                Ciudad auxCiudad = Mapper.Map<pers.Ciudad, Ciudad>(iUoW.RepositorioCiudad.GetCiudad(Convert.ToInt32(pCodPostal), pNombre));
+                this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso, auxCiudad);
+            }
+            else
+                this.Domicilio = new Domicilio(pCalle, pNumCalle, pNumDpto, pPiso);
+
             IdDomiciio = iUoW.RepositorioDomicilio.ComprobarDomicilio(Mapper.Map<Domicilio, pers.Domicilio>(this.Domicilio));
         }
 
@@ -126,102 +143,134 @@ namespace Dominio
 
         public bool ValidarUsuario(string pUser, string pPass)
         {
-			return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUser, Password = pPass });
-		}
+            return iUsuarios.Contains(new pers.Usuario { UsuarioId = pUser, Password = pPass });
+        }
 
-		/// <summary>
-		/// NO SIRVE ?????
-		/// </summary>
-		/// <param name="pClientes">Acompañantes más el Responsable</param>
-		public void ControlCapacidadConClientes(List<AlojHab> pAlojHabs, int pCantidad)
+        /// <summary>
+        /// NO SIRVE ?????
+        /// </summary>
+        /// <param name="pClientes">Acompañantes más el Responsable</param>
+        public void ControlCapacidadConClientes(List<AlojHab> pAlojHabs, int pCantidad)
         {
-			int auxCant = 0;
-			foreach (var alojHab in pAlojHabs)
-			{
-				auxCant += alojHab.Habitacion.Capacidad;
-			}
+            int auxCant = 0;
+            foreach (var alojHab in pAlojHabs)
+            {
+                auxCant += alojHab.Habitacion.Capacidad;
+            }
             if (auxCant > pCantidad)
                 throw new Exception("Las cantidades de Clientes ingresadas no corresponden con la Capacidad de la Habitación");
         }
 
-		/// <summary>
-		/// Para la reserva.
-		/// </summary>
-		public void ControlContadoresConClientes(Cliente pCliResp, string pContadores, string pCapacidadHab)
-		{
-			byte auxCantidadContadores = 0;
+        /// <summary>
+        /// Para la reserva.
+        /// </summary>
+        public void ControlContadoresConClientes(Cliente pCliResp, string pContadores, string pCapacidadHab)
+        {
+            byte auxCantidadContadores = 0;
 
-			for (int i = 0; i < pContadores.Length; i++)
-			{
-				auxCantidadContadores += Convert.ToByte(pContadores[i].ToString());
-			}
+            for (int i = 0; i < pContadores.Length; i++)
+            {
+                auxCantidadContadores += Convert.ToByte(pContadores[i].ToString());
+            }
 
-			if (Convert.ToByte(pCapacidadHab) < auxCantidadContadores + 1)
-			{
-				throw new Exception("La cantidad de Clientes cargados sobrepasa la Capacidad de la Habitación");
-			}
+            if (Convert.ToByte(pCapacidadHab) < auxCantidadContadores + 1)
+            {
+                throw new Exception("La cantidad de Clientes cargados sobrepasa la Capacidad de la Habitación");
+            }
 
-			if (auxCantidadContadores == 0 && pCliResp.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
-			{
-				throw new Exception("Un Titular Exceptuado debe estar Acompañado");
-			}
-		}
+            if (auxCantidadContadores == 0 && pCliResp.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+            {
+                throw new Exception("Un Titular Exceptuado debe estar Acompañado");
+            }
+        }
 
         /// <summary>
         /// Produce excepción si el Cliente elegido ya se encuentra en algún Alojamiento Activo.
         /// </summary>
         public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta, List<Alojamiento> pAlojsActivos)
         {
+            //foreach (var aloj in pAlojsActivos)
+            //{
+            //    foreach (AlojHab alojHab in aloj.AlojHabes)
+            //    {
+            //        foreach (Cliente cli in alojHab.Clientes)
+            //        {
+            //            if (cli.ClienteId == pCliente.ClienteId)
+            //            {
+            //                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+            //                {
+            //                    throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
+            //                }
+            //                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+            //                {
+            //                    //control de fechas
+            //                    if
+            //                        (
+            //                            !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+            //                            &&
+            //                            !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+            //                        )
+            //                    {
+            //                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
             foreach (var aloj in pAlojsActivos)
             {
-				foreach (AlojHab alojHab in aloj.AlojHabes)
-				{
-					foreach (Cliente cli in alojHab.Clientes)
-					{
-						if (cli.ClienteId == pCliente.ClienteId)
-						{
-							if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-							{
-								throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para las Fechas elegidas.");
-							}
-							else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-							{
-								//control de fechas
-								if
-									(
-										!(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
-										&&
-										!(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
-									)
-								{
-									throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado entre las Fechas elegidas.");
-								}
-							}
-						}
-					}
-				}
+                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                {
+                    foreach (AlojHab alojHab in aloj.AlojHabes)
+                    {
+                        foreach (Cliente cli in alojHab.Clientes)
+                        {
+                            if (cli.ClienteId == pCliente.ClienteId)
+                            {
+                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para la fecha elegida.");
+                            }
+                        }
+                    }
+                }
+                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
+                {
+                    if
+                        (
+                            aloj.DniResponsable == pCliente.ClienteId
+                            &&
+                            !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+                            &&
+                            !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+                        )
+                    {
+                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado para la fecha elegidas.");
+                    }
+                }
+
             }
         }
 
-		public void ControlClienteModificacionAlta(int pIdCliente)
-		{
-			List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+        public void ControlClienteModificacionAlta(int pIdCliente)
+        {
+            List<Alojamiento> auxListaAloj = new ControladorAlojamiento().ObtenerAlojamientosActivos();
 
-			foreach (Alojamiento aloj in auxListaAloj)
-			{
-				foreach (var alojHab in aloj.AlojHabes)
-				{
-					foreach (var cli in alojHab.Clientes)
-					{
-						if (cli.ClienteId == pIdCliente)
-						{
-							throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que NO es posible modificar su Estado");
-						}
+            foreach (Alojamiento aloj in auxListaAloj)
+            {
+                foreach (var alojHab in aloj.AlojHabes)
+                {
+                    foreach (var cli in alojHab.Clientes)
+                    {
+                        if (cli.ClienteId == pIdCliente)
+                        {
+                            throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que NO es posible modificar su Estado");
+                        }
 
-					}
-				}
-			}
-		}
+                    }
+                }
+            }
+        }
 
-	}
+    }
 }
