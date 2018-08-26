@@ -47,12 +47,12 @@ namespace UI
                     {
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Se Supera el límite de exclusividad de la capacidad del Hotel para las Fechas elejidas", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
-						ck_Exclusividad.Enabled = exclusividadCapacidad;
+						//ck_Exclusividad.Enabled = exclusividadCapacidad;
                     }
 					//lenar campos de Habitación
-					txb_NroHabitacion.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
-					txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja" : "Alta";
-					txb_capacidad.Text = Convert.ToString(this.HabSeleccionada.Capacidad);
+					//txb_NroHabitacion.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
+					//txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja" : "Alta";
+					//txb_capacidad.Text = Convert.ToString(this.HabSeleccionada.Capacidad);
 
 					//limpiar Responsable y Acompañantes
 					dGV_ClienteResponsable.Rows.Clear();
@@ -60,9 +60,9 @@ namespace UI
 					this.Acompañantes.Clear();
 					dGV_Acompañantes.Rows.Clear();
 
-					groupBox4.Enabled = true; //HABITACION
+					//groupBox4.Enabled = true; //HABITACION
 					groupBox2.Enabled = true; //RESPONSABLE
-					btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
+					//btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
 				}
 				else if (HabSeleccionada == null)
 				{
@@ -99,32 +99,32 @@ namespace UI
 					{
 						case TipoCliente.Titular:
 							{
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.AcompanianteDirecto:
 							{
 								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
 								ventanaEmergente.ShowDialog();
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.AcompanianteNoDirecto:
 							{
 								VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
 								ventanaEmergente.ShowDialog();
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.TitularExceptuado:
 							{
-								ck_Exclusividad.Checked = false;
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Checked = false;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 						case TipoCliente.Convenio:
 							{
-								ck_Exclusividad.Enabled = exclusividadCapacidad;
+								//ck_Exclusividad.Enabled = exclusividadCapacidad;
 							}
 							break;
 					}
@@ -132,7 +132,7 @@ namespace UI
 					dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
 
 					groupBox3.Enabled = true; //ACOMPAÑANTES
-					btn_Comprobar.Enabled = true;
+					//btn_Comprobar.Enabled = true;
 					dGV_Acompañantes.Rows.Clear();
 					Acompañantes.Clear();
 					Acompañantes.Add(ClienteResponsable);
@@ -154,13 +154,13 @@ namespace UI
         {
 			try
 			{
-				if (Acompañantes.Count + 1 > Convert.ToInt32(txb_capacidad.Text))
-					throw new Exception("Se Supera la capacidad de la Habitación");
+				//if (Acompañantes.Count + 1 > Convert.ToInt32(txb_capacidad.Text))
+				//	throw new Exception("Se Supera la capacidad de la Habitación");
 
-				if (Acompañantes.Count > 0 && ck_Exclusividad.Checked == true)
-				{
-					throw new Exception("Solo se permite Exclusividad para un Cliente");
-				}
+				//if (Acompañantes.Count > 0 && ck_Exclusividad.Checked == true)
+				//{
+				//	throw new Exception("Solo se permite Exclusividad para un Cliente");
+				//}
 
 				BuscarCliente BuscarClienteForm = new BuscarCliente();
 				BuscarClienteForm.setEnableAltas(false);
@@ -235,11 +235,11 @@ namespace UI
 					//NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
 				}
 				txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-				btn_Comprobar.Enabled = false;
+				//btn_Comprobar.Enabled = false;
 				groupBox1.Enabled = false;
 				groupBox2.Enabled = false;
 				groupBox3.Enabled = false;
-				groupBox4.Enabled = false;
+				//groupBox4.Enabled = false;
 				btn_Aceptar.Enabled = true;
 			}
 			catch (Exception E)
@@ -288,38 +288,38 @@ namespace UI
         private void dtp_fechaHasta_ValueChanged(object sender, EventArgs e)
         {
             this.FechaFin = dtp_fechaHasta.Value;
-			txb_NroHabitacion.Text = "";
-			txb_capacidad.Text = "";
-			ck_Exclusividad.Checked = false;
+			//txb_NroHabitacion.Text = "";
+			//txb_capacidad.Text = "";
+			//ck_Exclusividad.Checked = false;
 			dGV_ClienteResponsable.Rows.Clear();
 			dGV_Acompañantes.Rows.Clear();
 			ClienteResponsable = null;
 			Acompañantes.Clear();
-			groupBox4.Enabled = false;
+			//groupBox4.Enabled = false;
 			groupBox2.Enabled = false;
 			groupBox3.Enabled = false;
-			btn_Comprobar.Enabled = false;
+			//btn_Comprobar.Enabled = false;
 		}
 
         private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
         {
             if (Acompañantes.Count > 1) //no excl para mas de un cliente
             {
-				if (ck_Exclusividad.Checked == false)
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("Solo se permite Exclusividad para un Cliente", TipoMensaje.Alerta);
-					ventanaEmergente.ShowDialog(); 
-				}
-				ck_Exclusividad.Checked = false;
+				//if (ck_Exclusividad.Checked == false)
+				//{
+				//	VentanaEmergente ventanaEmergente = new VentanaEmergente("Solo se permite Exclusividad para un Cliente", TipoMensaje.Alerta);
+				//	ventanaEmergente.ShowDialog(); 
+				//}
+				//ck_Exclusividad.Checked = false;
 			}
 			else if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
 			{
-				if (ck_Exclusividad.Checked == false)
-				{
-					VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
-					ventanaEmergente.ShowDialog(); 
-				}
-				ck_Exclusividad.Checked = false;
+				//if (ck_Exclusividad.Checked == false)
+				//{
+				//	VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
+				//	ventanaEmergente.ShowDialog(); 
+				//}
+				//ck_Exclusividad.Checked = false;
 			} // no se cumple la excl cuando se comaprte
 		}
 
@@ -358,7 +358,6 @@ namespace UI
 			////-------------------------------------
 			groupBox1.Enabled = false; //disponibilidad
 			groupBox3.Enabled = true; // Acompañantes
-			btn_Comprobar.Enabled = true;
 			button_visualizarReserva.Visible = true;
         }
         #endregion
@@ -367,18 +366,6 @@ namespace UI
         {
             VisualizarAlojamiento visualizarAlojamiento = new VisualizarAlojamiento(NuevoAlojamiento);
             visualizarAlojamiento.ShowDialog();
-        }
-
-        private void btn_Comprobar_MouseHover(object sender, EventArgs e)
-        {
-            label14.Visible = true;
-            btn_Comprobar.SizeMode = PictureBoxSizeMode.Zoom;
-        }
-
-        private void btn_Comprobar_MouseLeave(object sender, EventArgs e)
-        {
-            label14.Visible = false;
-            btn_Comprobar.SizeMode = PictureBoxSizeMode.CenterImage;
         }
 	}
 }
