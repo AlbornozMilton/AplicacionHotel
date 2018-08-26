@@ -68,21 +68,21 @@ namespace UI
                     break;
                 case TipoMensaje.ReservaExitosa:
                     {
-                        lbl_TextAux.Visible = true;
                         lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
+                        lbl_TextAux.Visible = true;
                     }
                     break;
                 case TipoMensaje.AltaAlojamientoExitosa:
                     {
-                        lbl_TextAux.Visible = true;
                         lbl_TextAux.Text = "¿Desea realizar un Pago de Alojado?";
+                        lbl_TextAux.Visible = true;
 
                     }
                     break;
                 case TipoMensaje.CierreExistoso:
                     {
-                        lbl_TextAux.Visible = true;
                         lbl_TextAux.Text = "¿Desea realizar un Pago de Servicios?";
+                        lbl_TextAux.Visible = true;
                     }
                     break;
                 case TipoMensaje.SiNo:
