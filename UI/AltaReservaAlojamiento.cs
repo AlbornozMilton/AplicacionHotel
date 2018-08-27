@@ -41,7 +41,6 @@ namespace UI
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            //llenar alojhabs
             if (FechaIni.Date.CompareTo(FechaFin.Date) == -1)
             {
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin, true);

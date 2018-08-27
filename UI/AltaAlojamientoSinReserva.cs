@@ -7,14 +7,17 @@ namespace UI
 {
     public partial class AltaAlojamientoSinReserva : Form
     {
-        public Habitacion HabSeleccionada;
+        public List<Habitacion> HabSeleccionadas;
         public DateTime FechaIni;
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
         public List<Cliente> Acompañantes = new List<Cliente>();
-		private List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
-		private bool exclusividadCapacidad;
+
+        List<AlojHab> AlojHabs = new List<AlojHab>();
+		List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+		bool exclusividadCapacidad;
+        int cantExclAux;
 
 
         public AltaAlojamientoSinReserva()
@@ -32,23 +35,22 @@ namespace UI
 
 		private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
         {
-            //si la fecha ini es menor que fecha fin
             if (FechaIni.Date.CompareTo(FechaFin.Date) == -1)
             {
                 TablaDisponibilidad TablaDisp = new TablaDisponibilidad(FechaIni, FechaFin,true);
                 TablaDisp.ShowDialog();
 
-				if (true)
+				if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
-					//this.HabSeleccionada = TablaDisp.HabSeleccionada;
+					this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
 
 					exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 0);
-					if (!exclusividadCapacidad)//si es falso que entre
-                    {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Se Supera el límite de exclusividad de la capacidad del Hotel para las Fechas elejidas", TipoMensaje.Alerta);
-                        ventanaEmergente.ShowDialog();
-						//ck_Exclusividad.Enabled = exclusividadCapacidad;
-                    }
+
+                    AlojHabs.Clear();
+                    dGV_Habitaciones.Rows.Clear();
+                    dGV_excl.Rows.Clear();
+                    cantExclAux = 0;
+
 					//lenar campos de Habitación
 					//txb_NroHabitacion.Text = Convert.ToString(this.HabSeleccionada.HabitacionId);
 					//txb_planta.Text = this.HabSeleccionada.Planta == 0 ? "Baja" : "Alta";
@@ -64,7 +66,7 @@ namespace UI
 					groupBox2.Enabled = true; //RESPONSABLE
 					//btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
 				}
-				else if (HabSeleccionada == null)
+				else if (HabSeleccionadas == null)
 				{
 					VentanaEmergente ventanaEmergente = new VentanaEmergente("Debe elegir una Habitación para continuar", TipoMensaje.Alerta);
 					ventanaEmergente.ShowDialog();
