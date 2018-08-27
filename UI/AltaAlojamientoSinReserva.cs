@@ -167,102 +167,6 @@ namespace UI
             }
         }
 
-        private void btn_AgregarAcompañante_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //if (Acompañantes.Count + 1 > Convert.ToInt32(txb_capacidad.Text))
-                //	throw new Exception("Se Supera la capacidad de la Habitación");
-
-                //if (Acompañantes.Count > 0 && ck_Exclusividad.Checked == true)
-                //{
-                //	throw new Exception("Solo se permite Exclusividad para un Cliente");
-                //}
-
-                BuscarCliente BuscarClienteForm = new BuscarCliente();
-                BuscarClienteForm.setEnableAltas(false);
-                BuscarClienteForm.ShowDialog();
-                Cliente acomp = BuscarClienteForm.ClienteSeleccionado;
-
-                if (acomp != null)
-                {
-
-                    foreach (AlojHab ah in AlojHabs)
-                    {
-                        foreach (Cliente cli in ah.Clientes)
-                        {
-                            if (true)
-                            {
-
-                            }
-                        }
-                    }
-
-                    if (Acompañantes.Contains(BuscarClienteForm.ClienteSeleccionado))
-                        throw new Exception("El Cliente elegido ya se encuentra entre los Clientes seleccionados");
-
-                    new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, iAlojsActivos);
-
-                    //AVISO CLIENTE ADEUDOR
-
-                    dGV_Habitaciones.Rows.Add(acomp.ClienteId, acomp.Legajo, acomp.Apellido, acomp.Nombre, acomp.TarifaCliente.NombreTarifa);
-                    this.Acompañantes.Add(acomp);
-                }
-            }
-            catch (Exception E)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
-        }
-
-        private void btn_quitarCliente_Click(object sender, EventArgs e)
-        {
-            if (dGV_Habitaciones.CurrentRow != null)
-            {
-                Acompañantes.Remove(Acompañantes.Find(c => c.ClienteId == Convert.ToInt32(dGV_Habitaciones.CurrentRow.Cells[0].Value)));
-                dGV_Habitaciones.Rows.Remove(dGV_Habitaciones.CurrentRow);
-            }
-        }
-
-        private void btn_Comprobar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
-                {
-                    this.NuevoAlojamiento.SetClientes(this.Acompañantes);
-                    //new ControladorCliente().ControlCapacidadConClientes(this.NuevoAlojamiento.Clientes, HabSeleccionada);
-                    //new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
-                    //NuevoAlojamiento.Habitacion.OcuparHabitacion();
-                }
-                else
-                {
-                    if (Acompañantes.Count == 1 && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
-                    {
-                        throw new Exception("Un Titular Exceptuado debe estar Acompañado");
-                    }
-
-                    //new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
-                    //HabSeleccionada.OcuparHabitacion();
-                    //this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
-                    //NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
-                }
-                //txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-                //btn_Comprobar.Enabled = false;
-                groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
-                groupBox3.Enabled = true;
-                //groupBox4.Enabled = false;
-                btn_Aceptar.Enabled = true;
-            }
-            catch (Exception E)
-            {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
-                ventanaEmergente.ShowDialog();
-            }
-        }
-
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -381,12 +285,47 @@ namespace UI
 
         private void btn_Comprobar_Click_1(object sender, EventArgs e)
         {
-            if (dGV_Habitaciones.Rows.Count == 0)
-                throw new Exception("Debe seleccionar al menos una Habitación");
+            try
+            {
+                if (dGV_Habitaciones.Rows.Count == 0)
+                    throw new Exception("Debe seleccionar al menos una Habitación");
 
-            //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
+                //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
 
-            //comprbar que todos los check esten en true
+                //comprbar que todos los check esten en true
+
+                if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
+                {
+                    this.NuevoAlojamiento.SetClientes(this.Acompañantes);
+                    //new ControladorCliente().ControlCapacidadConClientes(this.NuevoAlojamiento.Clientes, HabSeleccionada);
+                    //new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
+                    //NuevoAlojamiento.Habitacion.OcuparHabitacion();
+                }
+                else
+                {
+                    if (Acompañantes.Count == 1 && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
+                    {
+                        throw new Exception("Un Titular Exceptuado debe estar Acompañado");
+                    }
+
+                    //new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
+                    //HabSeleccionada.OcuparHabitacion();
+                    //this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
+                    //NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
+                }
+                //txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                //btn_Comprobar.Enabled = false;
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = true;
+                //groupBox4.Enabled = false;
+                btn_Aceptar.Enabled = true;
+            }
+            catch (Exception E)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
         }
 
         private void dGV_Habitaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -399,14 +338,17 @@ namespace UI
                     var rowSelected = dGV_Habitaciones.Rows[e.RowIndex];
                     Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)rowSelected.Cells[1].Value);
 
-                    if ((string)rowSelected.Cells[0].Value == "Agregar")
-                    {
-                        BuscarCliente BuscarClienteForm = new BuscarCliente();
-                        BuscarClienteForm.setEnableAltas(false);
-                        BuscarClienteForm.ShowDialog();
+                    BuscarCliente BuscarClienteForm = new BuscarCliente();
+                    BuscarClienteForm.setEnableAltas(false);
+                    BuscarClienteForm.ShowDialog();
 
-                        if (BuscarClienteForm.ClienteSeleccionado != null)
+                    if (BuscarClienteForm.ClienteSeleccionado != null)
+                    {
+                        var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells["Hab"/*1*/].Value);
+
+                        if ((string)rowSelected.Cells[0].Value == "Agregar")
                         {
+
                             Cliente CliAux = BuscarClienteForm.ClienteSeleccionado;
 
                             foreach (AlojHab ah in AlojHabs)
@@ -426,7 +368,7 @@ namespace UI
 
                             string nombreTarifa = (string)rowSelected.Cells["Tipo Cliente"/*4*/].Value;
 
-                            var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells[0].Value);
+                            //var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells["Hab"/*1*/].Value);
                             ahAux.AgregarTarifaRow(e.RowIndex, nombreTarifa);
 
                             //check de su tarifa correspondiente para tal habitacion
@@ -438,7 +380,7 @@ namespace UI
                             {
                                 foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                                 {
-                                    if ((string)rowExcl.Cells["Excl"/*1*/].Value == "Si")
+                                    if ((byte)rowExcl.Cells["Nro"/*0*/].Value == ahAux.Habitacion.HabitacionId && (string)rowExcl.Cells["Excl"/*1*/].Value == "Si")
                                     {
                                         //AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
                                         ahAux.Exclusividad = false;
@@ -457,12 +399,47 @@ namespace UI
                                 rowSelected.Cells[5].Value = CliAux.Domicilio.Ciudad.Nombre + " - " + CliAux.Domicilio.Direccion();
                             else
                                 rowSelected.Cells[5].Value = CliAux.Domicilio.Direccion();
+
+                            ahAux.Clientes.Add(BuscarClienteForm.ClienteSeleccionado);
                         }
+                        else // QUITAR
+                        {
+                            rowSelected.Cells[2].Value = "";
+                            rowSelected.Cells[3].Value = "";
+                            rowSelected.Cells[4].Value = "";
+                            rowSelected.Cells[5].Value = "";
 
-                    }
-                    else // QUITAR
-                    {
+                            ahAux.Clientes.Remove(BuscarClienteForm.ClienteSeleccionado);
 
+                            //Acomodar exclusividad
+                            int auxCapacidad = 0;
+                            foreach (DataGridViewRow dgvRow in dGV_Habitaciones.Rows)
+                            {
+                                if ((byte)dgvRow.Cells["Hab"].Value == ahAux.Habitacion.HabitacionId
+                                    &&
+                                    (string)dgvRow.Cells["DNI"].Value != ""
+                                    )
+                                {
+                                    auxCapacidad++;
+                                }
+                            }
+                            if (auxCapacidad == 0)
+                            {
+                                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                                {
+                                    if ((byte)rowExcl.Cells["Nro"/*0*/].Value == ahAux.Habitacion.HabitacionId && (string)rowExcl.Cells["Excl"/*1*/].Value == "Si")
+                                    {
+                                        //AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
+                                        ahAux.Exclusividad = false;
+
+                                        cantExclAux -= auxHab.Capacidad;
+
+                                        rowExcl.Cells["Excl"/*1*/].Value = "No";
+                                    }
+                                }
+                            }
+
+                        }
                     }
                 }
             }

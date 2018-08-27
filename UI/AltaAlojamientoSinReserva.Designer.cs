@@ -40,11 +40,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txb_IdAloj = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_VerificarDisponibilidad = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_AgregarAcompañante = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtp_fechaDesde = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
@@ -60,6 +58,12 @@
             this.btn_AgregarCliente = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dGV_Habitaciones = new System.Windows.Forms.DataGridView();
+            this.col_Op = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.col_Hab = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_AyN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Procedencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_visualizarReserva = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
@@ -77,12 +81,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txb_Deposito = new System.Windows.Forms.TextBox();
-            this.col_Op = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.col_Hab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_AyN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Procedencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
@@ -121,11 +119,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.btn_quitarCliente);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.btn_VerificarDisponibilidad);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btn_AgregarAcompañante);
             this.groupBox1.Controls.Add(this.dtp_fechaHasta);
             this.groupBox1.Controls.Add(this.dtp_fechaDesde);
             this.groupBox1.Controls.Add(this.button1);
@@ -138,16 +134,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fechas de estadía";
-            // 
-            // btn_quitarCliente
-            // 
-            this.btn_quitarCliente.Location = new System.Drawing.Point(742, 75);
-            this.btn_quitarCliente.Name = "btn_quitarCliente";
-            this.btn_quitarCliente.Size = new System.Drawing.Size(110, 30);
-            this.btn_quitarCliente.TabIndex = 12;
-            this.btn_quitarCliente.Text = "Quitar Cliente";
-            this.btn_quitarCliente.UseVisualStyleBackColor = true;
-            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
             // 
             // textBox1
             // 
@@ -184,16 +170,6 @@
             this.label2.Size = new System.Drawing.Size(70, 23);
             this.label2.TabIndex = 35;
             this.label2.Text = "Atendió";
-            // 
-            // btn_AgregarAcompañante
-            // 
-            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(858, 75);
-            this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
-            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(110, 30);
-            this.btn_AgregarAcompañante.TabIndex = 11;
-            this.btn_AgregarAcompañante.Text = "Agregar Cliente";
-            this.btn_AgregarAcompañante.UseVisualStyleBackColor = true;
-            this.btn_AgregarAcompañante.Click += new System.EventHandler(this.btn_AgregarAcompañante_Click);
             // 
             // dtp_fechaHasta
             // 
@@ -428,6 +404,59 @@
             this.dGV_Habitaciones.TabIndex = 10;
             this.dGV_Habitaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habitaciones_CellContentClick);
             // 
+            // col_Op
+            // 
+            this.col_Op.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.col_Op.FillWeight = 35F;
+            this.col_Op.HeaderText = "Operación";
+            this.col_Op.Name = "col_Op";
+            this.col_Op.ReadOnly = true;
+            this.col_Op.Width = 95;
+            // 
+            // col_Hab
+            // 
+            this.col_Hab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_Hab.FillWeight = 15F;
+            this.col_Hab.HeaderText = "Hab";
+            this.col_Hab.Name = "col_Hab";
+            this.col_Hab.ReadOnly = true;
+            this.col_Hab.Width = 50;
+            // 
+            // col_AyN
+            // 
+            this.col_AyN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_AyN.FillWeight = 135F;
+            this.col_AyN.HeaderText = "Apellido y Nombres";
+            this.col_AyN.Name = "col_AyN";
+            this.col_AyN.ReadOnly = true;
+            this.col_AyN.Width = 437;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.FillWeight = 39.93764F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 170;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn3.FillWeight = 120F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tipo Cliente";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 310;
+            // 
+            // col_Procedencia
+            // 
+            this.col_Procedencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_Procedencia.HeaderText = "Procedencia";
+            this.col_Procedencia.Name = "col_Procedencia";
+            this.col_Procedencia.ReadOnly = true;
+            this.col_Procedencia.Width = 400;
+            // 
             // button_visualizarReserva
             // 
             this.button_visualizarReserva.BackColor = System.Drawing.Color.Chocolate;
@@ -623,7 +652,7 @@
             // btn_Comprobar
             // 
             this.btn_Comprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Comprobar.Location = new System.Drawing.Point(839, 24);
+            this.btn_Comprobar.Location = new System.Drawing.Point(842, 31);
             this.btn_Comprobar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Comprobar.Name = "btn_Comprobar";
             this.btn_Comprobar.Size = new System.Drawing.Size(126, 40);
@@ -639,7 +668,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(263, 37);
+            this.label13.Location = new System.Drawing.Point(263, 44);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(64, 17);
             this.label13.TabIndex = 23;
@@ -653,7 +682,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(24, 37);
+            this.label12.Location = new System.Drawing.Point(24, 44);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(101, 17);
             this.label12.TabIndex = 21;
@@ -664,7 +693,7 @@
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(131, 32);
+            this.textBox2.Location = new System.Drawing.Point(131, 39);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(83, 26);
@@ -676,65 +705,12 @@
             this.txb_Deposito.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txb_Deposito.BackColor = System.Drawing.Color.White;
             this.txb_Deposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Deposito.Location = new System.Drawing.Point(333, 32);
+            this.txb_Deposito.Location = new System.Drawing.Point(333, 39);
             this.txb_Deposito.Name = "txb_Deposito";
             this.txb_Deposito.ReadOnly = true;
             this.txb_Deposito.Size = new System.Drawing.Size(83, 26);
             this.txb_Deposito.TabIndex = 24;
             this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // col_Op
-            // 
-            this.col_Op.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.col_Op.FillWeight = 35F;
-            this.col_Op.HeaderText = "Operación";
-            this.col_Op.Name = "col_Op";
-            this.col_Op.ReadOnly = true;
-            this.col_Op.Width = 95;
-            // 
-            // col_Hab
-            // 
-            this.col_Hab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Hab.FillWeight = 15F;
-            this.col_Hab.HeaderText = "Hab";
-            this.col_Hab.Name = "col_Hab";
-            this.col_Hab.ReadOnly = true;
-            this.col_Hab.Width = 50;
-            // 
-            // col_AyN
-            // 
-            this.col_AyN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_AyN.FillWeight = 135F;
-            this.col_AyN.HeaderText = "Apellido y Nombres";
-            this.col_AyN.Name = "col_AyN";
-            this.col_AyN.ReadOnly = true;
-            this.col_AyN.Width = 437;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn1.FillWeight = 39.93764F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 170;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn3.FillWeight = 120F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tipo Cliente";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 310;
-            // 
-            // col_Procedencia
-            // 
-            this.col_Procedencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Procedencia.HeaderText = "Procedencia";
-            this.col_Procedencia.Name = "col_Procedencia";
-            this.col_Procedencia.ReadOnly = true;
-            this.col_Procedencia.Width = 400;
             // 
             // AltaAlojamientoSinReserva
             // 
@@ -793,11 +769,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_AgregarCliente;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btn_AgregarAcompañante;
         private System.Windows.Forms.DataGridView dGV_Habitaciones;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button btn_Cancelar;
-        private System.Windows.Forms.Button btn_quitarCliente;
         private System.Windows.Forms.DataGridView dGV_ClienteResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_legajo;
