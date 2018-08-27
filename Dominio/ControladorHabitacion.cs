@@ -90,7 +90,7 @@ namespace Dominio
             {
                 foreach (HabClientesRow row in item.Rows)
                 {
-                    switch (row.iTarifaString)
+                    switch (row.TarifaString)
                     {
                         case ("Acomp. Directo"):
                             {

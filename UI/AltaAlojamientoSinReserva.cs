@@ -315,28 +315,6 @@ namespace UI
             //btn_Comprobar.Enabled = false;
         }
 
-        private void ck_Exclusividad_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Acompañantes.Count > 1) //no excl para mas de un cliente
-            {
-                //if (ck_Exclusividad.Checked == false)
-                //{
-                //	VentanaEmergente ventanaEmergente = new VentanaEmergente("Solo se permite Exclusividad para un Cliente", TipoMensaje.Alerta);
-                //	ventanaEmergente.ShowDialog(); 
-                //}
-                //ck_Exclusividad.Checked = false;
-            }
-            else if (ClienteResponsable != null && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
-            {
-                //if (ck_Exclusividad.Checked == false)
-                //{
-                //	VentanaEmergente ventanaEmergente = new VentanaEmergente("No se permite Exclusividad para Cliente Exceptuado", TipoMensaje.Alerta);
-                //	ventanaEmergente.ShowDialog(); 
-                //}
-                //ck_Exclusividad.Checked = false;
-            } // no se cumple la excl cuando se comaprte
-        }
-
         /// <summary>
         /// Modifica el campo Enable de una conjunto de propiedades de la Form al valor de parámetro
         /// </summary>
@@ -363,6 +341,8 @@ namespace UI
             //    dGV_excl.Rows.Add(hab.HabitacionId, "No");
             //}
 
+            //generar los check
+            //check de su tarifa correspondiente para tal habitacion
             //<<<<<<<<<<<<<<<<<<----------------------------------------
 
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
@@ -405,6 +385,8 @@ namespace UI
                 throw new Exception("Debe seleccionar al menos una Habitación");
 
             //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
+
+            //comprbar que todos los check esten en true
         }
 
         private void dGV_Habitaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -436,14 +418,37 @@ namespace UI
                                         throw new Exception("El cliente elegido ya se encuentra seleccionado");
                                     }
                                 }
+
                             }
 
                             //Cliente Activo
                             new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
-                            //buscarlo en su tarifa correspondiente para tal habitacion
+                            string nombreTarifa = (string)rowSelected.Cells["Tipo Cliente"/*4*/].Value;
+
+                            var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells[0].Value);
+                            ahAux.AgregarTarifaRow(e.RowIndex, nombreTarifa);
+
+                            //check de su tarifa correspondiente para tal habitacion
+                            ahAux.CheckinTarifaCliente(nombreTarifa);
 
                             //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
+                            List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
+                            if (!tiposCli.Contains(nombreTarifa))
+                            {
+                                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                                {
+                                    if ((string)rowExcl.Cells["Excl"/*1*/].Value == "Si")
+                                    {
+                                        //AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
+                                        ahAux.Exclusividad = false;
+
+                                        cantExclAux -= auxHab.Capacidad;
+
+                                        rowExcl.Cells["Excl"/*1*/].Value = "No";
+                                    }
+                                }
+                            }
 
                             rowSelected.Cells[2].Value = CliAux.Apellido + " " + CliAux.Nombre;
                             rowSelected.Cells[3].Value = CliAux.ClienteId;
@@ -479,7 +484,7 @@ namespace UI
                 if ((string)row.Cells[1].Value == "No")
                 {
                     bool Excl = false;
-                    
+
                     //solo estos en pueden pedir excplusividad para su hab
                     List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
                     foreach (DataGridViewRow item in dGV_Habitaciones.Rows)

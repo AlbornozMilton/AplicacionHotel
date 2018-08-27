@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Dominio
+﻿namespace Dominio
 {
     public class HabClientesRow
     {
-        public int iNumRow { get; private set; }
-        public string iTarifaString { get; private set; }
+        public int NumRow { get; private set; }
+        public string TarifaString { get; private set; }
+        public bool Check { get; set; }
 
         public HabClientesRow(int pNum, string pTarifa)
         {
-            iNumRow = pNum;
-            iTarifaString = pTarifa;
+            NumRow = pNum;
+            TarifaString = pTarifa;
+            Check = false;
         }
     }
 }

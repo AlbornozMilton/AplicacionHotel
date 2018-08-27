@@ -364,7 +364,7 @@ namespace UI
 
                 var ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells[0].Value);
 
-                ah.AgregarTarifa(e.RowIndex, (string)row.Cells[2].Value);
+                ah.AgregarTarifaRow(e.RowIndex, (string)row.Cells[2].Value);
             }
         }
 

@@ -56,9 +56,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
-            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
@@ -82,6 +79,9 @@
             this.dt_hora = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpicker_fechaAloj = new System.Windows.Forms.DateTimePicker();
+            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -324,35 +324,6 @@
             this.dGV_Habs.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellLeave);
             this.dGV_Habs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellValueChanged);
             this.dGV_Habs.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dGV_Habs_DataError);
-            // 
-            // clm_Id
-            // 
-            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Id.FillWeight = 40F;
-            this.clm_Id.HeaderText = "Número";
-            this.clm_Id.Name = "clm_Id";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // clmk_tipoCliente
-            // 
-            this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmk_tipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
-            this.clmk_tipoCliente.Items.AddRange(new object[] {
-            "Acomp. Directo",
-            "Acomp. No Direct",
-            "Convenio",
-            "Titular",
-            "Titular Exceptuado"});
-            this.clmk_tipoCliente.Name = "clmk_tipoCliente";
-            this.clmk_tipoCliente.Sorted = true;
-            this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // button2
             // 
@@ -704,6 +675,35 @@
             this.dtpicker_fechaAloj.TabIndex = 35;
             this.dtpicker_fechaAloj.TabStop = false;
             // 
+            // clm_Id
+            // 
+            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Id.FillWeight = 40F;
+            this.clm_Id.HeaderText = "Número";
+            this.clm_Id.Name = "clm_Id";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // clmk_tipoCliente
+            // 
+            this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmk_tipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
+            this.clmk_tipoCliente.Items.AddRange(new object[] {
+            "Acompañante Directo",
+            "Acompañante No Directo",
+            "Convenio",
+            "Titular",
+            "Titular Exceptuado"});
+            this.clmk_tipoCliente.Name = "clmk_tipoCliente";
+            this.clmk_tipoCliente.Sorted = true;
+            this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // AltaReservaAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,9 +776,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
 		private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
 		private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn clmk_tipoCliente;
         private System.Windows.Forms.DataGridView dGV_ClienteResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Legajo;
@@ -792,5 +789,8 @@
         private System.Windows.Forms.DateTimePicker dtpicker_fechaAloj;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn clmk_tipoCliente;
     }
 }
