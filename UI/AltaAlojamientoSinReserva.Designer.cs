@@ -40,9 +40,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txb_IdAloj = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_quitarCliente = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_VerificarDisponibilidad = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_AgregarAcompañante = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
             this.dtp_fechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -54,35 +59,30 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_AgregarCliente = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button_visualizarReserva = new System.Windows.Forms.Button();
-            this.btn_quitarCliente = new System.Windows.Forms.Button();
             this.dGV_Habitaciones = new System.Windows.Forms.DataGridView();
-            this.col_Op = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.col_AyN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Hab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Procedencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_AgregarAcompañante = new System.Windows.Forms.Button();
+            this.button_visualizarReserva = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.groupBox_excl = new System.Windows.Forms.GroupBox();
             this.dGV_excl = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.dtpicker_fechaAloj = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dt_hora = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btn_Comprobar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txb_Deposito = new System.Windows.Forms.TextBox();
+            this.col_Op = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.col_Hab = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_AyN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Procedencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_ClienteResponsable)).BeginInit();
@@ -139,17 +139,61 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fechas de estadía";
             // 
+            // btn_quitarCliente
+            // 
+            this.btn_quitarCliente.Location = new System.Drawing.Point(742, 75);
+            this.btn_quitarCliente.Name = "btn_quitarCliente";
+            this.btn_quitarCliente.Size = new System.Drawing.Size(110, 30);
+            this.btn_quitarCliente.TabIndex = 12;
+            this.btn_quitarCliente.Text = "Quitar Cliente";
+            this.btn_quitarCliente.UseVisualStyleBackColor = true;
+            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(850, 32);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(121, 54);
+            this.textBox1.TabIndex = 36;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btn_VerificarDisponibilidad
             // 
             this.btn_VerificarDisponibilidad.BackColor = System.Drawing.Color.Chocolate;
             this.btn_VerificarDisponibilidad.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(430, 32);
+            this.btn_VerificarDisponibilidad.Location = new System.Drawing.Point(430, 31);
             this.btn_VerificarDisponibilidad.Name = "btn_VerificarDisponibilidad";
             this.btn_VerificarDisponibilidad.Size = new System.Drawing.Size(160, 54);
             this.btn_VerificarDisponibilidad.TabIndex = 1;
             this.btn_VerificarDisponibilidad.Text = "Seleccionar Habitaciones";
             this.btn_VerificarDisponibilidad.UseVisualStyleBackColor = false;
             this.btn_VerificarDisponibilidad.Click += new System.EventHandler(this.btn_VerificarDisponibilidad_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(781, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 23);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Atendió";
+            // 
+            // btn_AgregarAcompañante
+            // 
+            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(858, 75);
+            this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
+            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(110, 30);
+            this.btn_AgregarAcompañante.TabIndex = 11;
+            this.btn_AgregarAcompañante.Text = "Agregar Cliente";
+            this.btn_AgregarAcompañante.UseVisualStyleBackColor = true;
+            this.btn_AgregarAcompañante.Click += new System.EventHandler(this.btn_AgregarAcompañante_Click);
             // 
             // dtp_fechaHasta
             // 
@@ -184,6 +228,18 @@
             this.dtp_fechaDesde.TabStop = false;
             this.dtp_fechaDesde.ValueChanged += new System.EventHandler(this.dtp_fechaDesde_ValueChanged);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.OrangeRed;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button1.Location = new System.Drawing.Point(596, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 54);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "NO ES TOUR";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -208,11 +264,10 @@
             // 
             this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox2.Controls.Add(this.dGV_ClienteResponsable);
-            this.groupBox2.Enabled = false;
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(15, 466);
+            this.groupBox2.Location = new System.Drawing.Point(12, 487);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(983, 88);
+            this.groupBox2.Size = new System.Drawing.Size(983, 93);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Responsable";
@@ -227,11 +282,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_ClienteResponsable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGV_ClienteResponsable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -255,7 +311,7 @@
             this.dGV_ClienteResponsable.ReadOnly = true;
             this.dGV_ClienteResponsable.RowHeadersVisible = false;
             this.dGV_ClienteResponsable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(962, 53);
+            this.dGV_ClienteResponsable.Size = new System.Drawing.Size(962, 58);
             this.dGV_ClienteResponsable.TabIndex = 14;
             // 
             // dataGridViewTextBoxColumn5
@@ -301,10 +357,11 @@
             // btn_AgregarCliente
             // 
             this.btn_AgregarCliente.BackColor = System.Drawing.Color.Chocolate;
+            this.btn_AgregarCliente.Enabled = false;
             this.btn_AgregarCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold);
             this.btn_AgregarCliente.ForeColor = System.Drawing.Color.White;
             this.btn_AgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_AgregarCliente.Location = new System.Drawing.Point(782, 423);
+            this.btn_AgregarCliente.Location = new System.Drawing.Point(779, 444);
             this.btn_AgregarCliente.Name = "btn_AgregarCliente";
             this.btn_AgregarCliente.Size = new System.Drawing.Size(216, 37);
             this.btn_AgregarCliente.TabIndex = 9;
@@ -319,33 +376,10 @@
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 162);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(861, 255);
+            this.groupBox3.Size = new System.Drawing.Size(861, 276);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Habitaciones";
-            // 
-            // button_visualizarReserva
-            // 
-            this.button_visualizarReserva.BackColor = System.Drawing.Color.Chocolate;
-            this.button_visualizarReserva.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button_visualizarReserva.Location = new System.Drawing.Point(15, 423);
-            this.button_visualizarReserva.Name = "button_visualizarReserva";
-            this.button_visualizarReserva.Size = new System.Drawing.Size(216, 37);
-            this.button_visualizarReserva.TabIndex = 13;
-            this.button_visualizarReserva.Text = "Ver Detalles de Reserva";
-            this.button_visualizarReserva.UseVisualStyleBackColor = false;
-            this.button_visualizarReserva.Visible = false;
-            this.button_visualizarReserva.Click += new System.EventHandler(this.button_visualizarReserva_Click);
-            // 
-            // btn_quitarCliente
-            // 
-            this.btn_quitarCliente.Location = new System.Drawing.Point(742, 75);
-            this.btn_quitarCliente.Name = "btn_quitarCliente";
-            this.btn_quitarCliente.Size = new System.Drawing.Size(110, 30);
-            this.btn_quitarCliente.TabIndex = 12;
-            this.btn_quitarCliente.Text = "Quitar Cliente";
-            this.btn_quitarCliente.UseVisualStyleBackColor = true;
-            this.btn_quitarCliente.Click += new System.EventHandler(this.btn_quitarCliente_Click);
             // 
             // dGV_Habitaciones
             // 
@@ -358,21 +392,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dGV_Habitaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dGV_Habitaciones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dGV_Habitaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dGV_Habitaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Habitaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Op,
+            this.col_Hab,
             this.col_AyN,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3,
-            this.col_Hab,
             this.col_Procedencia});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
@@ -389,93 +424,48 @@
             this.dGV_Habitaciones.ReadOnly = true;
             this.dGV_Habitaciones.RowHeadersVisible = false;
             this.dGV_Habitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_Habitaciones.Size = new System.Drawing.Size(855, 226);
+            this.dGV_Habitaciones.Size = new System.Drawing.Size(855, 247);
             this.dGV_Habitaciones.TabIndex = 10;
             // 
-            // col_Op
+            // button_visualizarReserva
             // 
-            this.col_Op.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.col_Op.FillWeight = 35F;
-            this.col_Op.HeaderText = "Operación";
-            this.col_Op.Name = "col_Op";
-            this.col_Op.ReadOnly = true;
-            this.col_Op.Width = 95;
-            // 
-            // col_AyN
-            // 
-            this.col_AyN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_AyN.FillWeight = 135F;
-            this.col_AyN.HeaderText = "Apellido y Nombres";
-            this.col_AyN.Name = "col_AyN";
-            this.col_AyN.ReadOnly = true;
-            this.col_AyN.Width = 437;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn1.FillWeight = 39.93764F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 170;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn3.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tipo Cliente";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 365;
-            // 
-            // col_Hab
-            // 
-            this.col_Hab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Hab.FillWeight = 15F;
-            this.col_Hab.HeaderText = "Hab";
-            this.col_Hab.Name = "col_Hab";
-            this.col_Hab.ReadOnly = true;
-            this.col_Hab.Width = 50;
-            // 
-            // col_Procedencia
-            // 
-            this.col_Procedencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Procedencia.HeaderText = "Procedencia";
-            this.col_Procedencia.Name = "col_Procedencia";
-            this.col_Procedencia.ReadOnly = true;
-            this.col_Procedencia.Width = 400;
-            // 
-            // btn_AgregarAcompañante
-            // 
-            this.btn_AgregarAcompañante.Location = new System.Drawing.Point(858, 75);
-            this.btn_AgregarAcompañante.Name = "btn_AgregarAcompañante";
-            this.btn_AgregarAcompañante.Size = new System.Drawing.Size(110, 30);
-            this.btn_AgregarAcompañante.TabIndex = 11;
-            this.btn_AgregarAcompañante.Text = "Agregar Cliente";
-            this.btn_AgregarAcompañante.UseVisualStyleBackColor = true;
-            this.btn_AgregarAcompañante.Click += new System.EventHandler(this.btn_AgregarAcompañante_Click);
+            this.button_visualizarReserva.BackColor = System.Drawing.Color.Chocolate;
+            this.button_visualizarReserva.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold);
+            this.button_visualizarReserva.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button_visualizarReserva.Location = new System.Drawing.Point(12, 444);
+            this.button_visualizarReserva.Name = "button_visualizarReserva";
+            this.button_visualizarReserva.Size = new System.Drawing.Size(216, 37);
+            this.button_visualizarReserva.TabIndex = 13;
+            this.button_visualizarReserva.Text = "Ver Detalles de Reserva";
+            this.button_visualizarReserva.UseVisualStyleBackColor = false;
+            this.button_visualizarReserva.Visible = false;
+            this.button_visualizarReserva.Click += new System.EventHandler(this.button_visualizarReserva_Click);
             // 
             // btn_Aceptar
             // 
+            this.btn_Aceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Aceptar.BackColor = System.Drawing.Color.White;
             this.btn_Aceptar.Enabled = false;
             this.btn_Aceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Aceptar.Location = new System.Drawing.Point(888, 688);
+            this.btn_Aceptar.Location = new System.Drawing.Point(730, 680);
             this.btn_Aceptar.Name = "btn_Aceptar";
-            this.btn_Aceptar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Aceptar.Size = new System.Drawing.Size(111, 37);
             this.btn_Aceptar.TabIndex = 9;
             this.btn_Aceptar.Text = "Aceptar";
-            this.btn_Aceptar.UseVisualStyleBackColor = true;
+            this.btn_Aceptar.UseVisualStyleBackColor = false;
             this.btn_Aceptar.Click += new System.EventHandler(this.btn_Aceptar_Click);
             // 
             // btn_Cancelar
             // 
+            this.btn_Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Cancelar.BackColor = System.Drawing.Color.White;
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancelar.Location = new System.Drawing.Point(744, 688);
+            this.btn_Cancelar.Location = new System.Drawing.Point(884, 680);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(110, 30);
+            this.btn_Cancelar.Size = new System.Drawing.Size(111, 37);
             this.btn_Cancelar.TabIndex = 10;
             this.btn_Cancelar.Text = "Cancelar";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.UseVisualStyleBackColor = false;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // groupBox_excl
@@ -488,7 +478,7 @@
             this.groupBox_excl.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_excl.Location = new System.Drawing.Point(876, 162);
             this.groupBox_excl.Name = "groupBox_excl";
-            this.groupBox_excl.Size = new System.Drawing.Size(122, 255);
+            this.groupBox_excl.Size = new System.Drawing.Size(122, 273);
             this.groupBox_excl.TabIndex = 30;
             this.groupBox_excl.TabStop = false;
             this.groupBox_excl.Text = "Exclusividad";
@@ -537,7 +527,7 @@
             this.dGV_excl.RowHeadersVisible = false;
             this.dGV_excl.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dGV_excl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dGV_excl.Size = new System.Drawing.Size(116, 226);
+            this.dGV_excl.Size = new System.Drawing.Size(116, 244);
             this.dGV_excl.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn2
@@ -556,24 +546,10 @@
             this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.OrangeRed;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(608, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 54);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "NO ES TOUR";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // dtpicker_fechaAloj
             // 
-            this.dtpicker_fechaAloj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpicker_fechaAloj.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpicker_fechaAloj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpicker_fechaAloj.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpicker_fechaAloj.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dtpicker_fechaAloj.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.dtpicker_fechaAloj.Cursor = System.Windows.Forms.Cursors.Default;
@@ -588,6 +564,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -599,6 +576,7 @@
             // 
             // dt_hora
             // 
+            this.dt_hora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dt_hora.CustomFormat = "HH:mm";
             this.dt_hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_hora.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -611,38 +589,15 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(493, 12);
+            this.label7.Location = new System.Drawing.Point(493, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 23);
             this.label7.TabIndex = 1;
             this.label7.Text = "Fecha";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(850, 32);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(121, 54);
-            this.textBox1.TabIndex = 36;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(781, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 23);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Atendió";
             // 
             // groupBox4
             // 
@@ -656,15 +611,16 @@
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.txb_Deposito);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(15, 560);
+            this.groupBox4.Location = new System.Drawing.Point(15, 586);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(980, 88);
             this.groupBox4.TabIndex = 35;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Comprobación de Reserva";
+            this.groupBox4.Text = "Comprobación de Alojamiento";
             // 
             // btn_Comprobar
             // 
+            this.btn_Comprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Comprobar.Location = new System.Drawing.Point(839, 24);
             this.btn_Comprobar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Comprobar.Name = "btn_Comprobar";
@@ -672,6 +628,7 @@
             this.btn_Comprobar.TabIndex = 27;
             this.btn_Comprobar.Text = "COMPROBAR";
             this.btn_Comprobar.UseVisualStyleBackColor = true;
+            this.btn_Comprobar.Click += new System.EventHandler(this.btn_Comprobar_Click_1);
             // 
             // label13
             // 
@@ -702,15 +659,13 @@
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(131, 32);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(126, 26);
+            this.textBox2.Size = new System.Drawing.Size(83, 26);
             this.textBox2.TabIndex = 22;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -725,6 +680,59 @@
             this.txb_Deposito.Size = new System.Drawing.Size(83, 26);
             this.txb_Deposito.TabIndex = 24;
             this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // col_Op
+            // 
+            this.col_Op.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.col_Op.FillWeight = 35F;
+            this.col_Op.HeaderText = "Operación";
+            this.col_Op.Name = "col_Op";
+            this.col_Op.ReadOnly = true;
+            this.col_Op.Width = 95;
+            // 
+            // col_Hab
+            // 
+            this.col_Hab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_Hab.FillWeight = 15F;
+            this.col_Hab.HeaderText = "Hab";
+            this.col_Hab.Name = "col_Hab";
+            this.col_Hab.ReadOnly = true;
+            this.col_Hab.Width = 50;
+            // 
+            // col_AyN
+            // 
+            this.col_AyN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_AyN.FillWeight = 135F;
+            this.col_AyN.HeaderText = "Apellido y Nombres";
+            this.col_AyN.Name = "col_AyN";
+            this.col_AyN.ReadOnly = true;
+            this.col_AyN.Width = 437;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.FillWeight = 39.93764F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 170;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn3.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tipo Cliente";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 365;
+            // 
+            // col_Procedencia
+            // 
+            this.col_Procedencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_Procedencia.HeaderText = "Procedencia";
+            this.col_Procedencia.Name = "col_Procedencia";
+            this.col_Procedencia.ReadOnly = true;
+            this.col_Procedencia.Width = 400;
             // 
             // AltaAlojamientoSinReserva
             // 
@@ -795,12 +803,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button button_visualizarReserva;
-        private System.Windows.Forms.DataGridViewButtonColumn col_Op;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_AyN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Hab;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Procedencia;
         private System.Windows.Forms.GroupBox groupBox_excl;
         private System.Windows.Forms.DataGridView dGV_excl;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -818,5 +820,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txb_Deposito;
+        private System.Windows.Forms.DataGridViewButtonColumn col_Op;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Hab;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_AyN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Procedencia;
     }
 }

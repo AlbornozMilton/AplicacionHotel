@@ -21,7 +21,7 @@ namespace UI
         public AltaReservaAlojamiento()
         {
             InitializeComponent();
-            txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
+            //txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
             dtp_fechaDesde.Value = DateTime.Now;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
         }
@@ -74,7 +74,7 @@ namespace UI
                     ClienteResponsable = null;
                     groupBox4.Enabled = true; //HABIACION
                     groupBox2.Enabled = true; //RESPONSABLE
-                    button2.Enabled = true;
+                    button2.Enabled = true; //Seleccionar responsable
                 }
                 else if (TablaDisp.HabSeleccionadas.Count == 0)
                 {
@@ -84,7 +84,7 @@ namespace UI
             }
             else
             {
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("La Fecha de Egreso debe ser Mayor a la Fecha de Ingreso", TipoMensaje.Alerta);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("La fecha de egreso debe ser mayor a la fecha de ingreso", TipoMensaje.Alerta);
                 ventanaEmergente.ShowDialog();
             }
         }
@@ -136,6 +136,9 @@ namespace UI
             {
                 if (ClienteResponsable != null) //requisito
                 {
+                    if (dGV_Habs.Rows.Count == 0)
+                        throw new Exception("Debe seleccionar al menos una Habitación");
+
                     bool result = true;
                     bool responsable = false;
                     int cantNull = 0;
