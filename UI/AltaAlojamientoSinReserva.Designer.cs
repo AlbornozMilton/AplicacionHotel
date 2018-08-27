@@ -426,6 +426,7 @@
             this.dGV_Habitaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Habitaciones.Size = new System.Drawing.Size(855, 247);
             this.dGV_Habitaciones.TabIndex = 10;
+            this.dGV_Habitaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habitaciones_CellContentClick);
             // 
             // button_visualizarReserva
             // 
@@ -529,6 +530,7 @@
             this.dGV_excl.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_excl.Size = new System.Drawing.Size(116, 244);
             this.dGV_excl.TabIndex = 2;
+            this.dGV_excl.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_excl_CellContentClick);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -720,11 +722,11 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn3.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn3.FillWeight = 120F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Tipo Cliente";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 365;
+            this.dataGridViewTextBoxColumn3.Width = 310;
             // 
             // col_Procedencia
             // 

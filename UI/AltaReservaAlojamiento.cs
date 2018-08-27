@@ -398,5 +398,10 @@ namespace UI
         {
             ((sender as DataGridView).CurrentRow.Cells[2] as DataGridViewComboBoxCell).Value = (sender as DataGridView).CurrentRow.Cells[2].Value;
         }
+
+        private void dGV_Habs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //CUANDO CAMBIE DE TIPO DE CLIENTE CHEQUEAR LA EXCLUSIVIDAD SI CAMBIARLA O NO
+        }
     }
 }

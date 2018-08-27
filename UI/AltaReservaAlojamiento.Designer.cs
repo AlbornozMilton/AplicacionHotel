@@ -320,6 +320,7 @@
             this.dGV_Habs.Size = new System.Drawing.Size(854, 242);
             this.dGV_Habs.TabIndex = 2;
             this.dGV_Habs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellClick);
+            this.dGV_Habs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellContentClick);
             this.dGV_Habs.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellLeave);
             this.dGV_Habs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellValueChanged);
             this.dGV_Habs.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dGV_Habs_DataError);

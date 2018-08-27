@@ -17,7 +17,7 @@ namespace UI
         List<AlojHab> AlojHabs = new List<AlojHab>();
         List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
         bool exclusividadCapacidad;
-        int cantExclAux;
+        int cantExclAux = 0;
 
 
         public AltaAlojamientoSinReserva()
@@ -34,7 +34,7 @@ namespace UI
             dtp_fechaDesde.Value = DateTime.Now;
             FechaIni = DateTime.Now;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
-            FechaFin = DateTime.Now.AddDays(1);  /// ????? si es reservaaa???
+            FechaFin = DateTime.Now.AddDays(1);  // si es reserva, se rellenan campos
         }
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace UI
 
                         for (int i = 0; i < hab.Capacidad; i++)
                         {
-                            dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId, "", "", "");
+                            dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId);
                         }
 
                         dGV_excl.Rows.Add(hab.HabitacionId, "No");
@@ -78,7 +78,7 @@ namespace UI
                     }
 
                     btn_AgregarCliente.Enabled = true; //seleccionar responsable
-                    
+
                     //btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
                 }
                 else if (TablaDisp.HabSeleccionadas == null)
@@ -187,18 +187,15 @@ namespace UI
                 if (acomp != null)
                 {
 
-                    if (ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.Convenio
-                        &&
-                        acomp.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+                    foreach (AlojHab ah in AlojHabs)
                     {
-                        throw new Exception("Debido al Responsable, solo se admiten Clientes Con Convenio");
-                    }
+                        foreach (Cliente cli in ah.Clientes)
+                        {
+                            if (true)
+                            {
 
-                    if (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio
-                        &&
-                        acomp.TarifaCliente.TarifaClienteId == TipoCliente.Convenio)
-                    {
-                        throw new Exception("Debido al Responsable, solo se admiten Clientes Sin Convenio");
+                            }
+                        }
                     }
 
                     if (Acompañantes.Contains(BuscarClienteForm.ClienteSeleccionado))
@@ -351,6 +348,23 @@ namespace UI
         #region Alta de Reserva
         public void RellenarCampos()
         {
+
+            //importanteeee----------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+            //foreach (Habitacion hab in this.HabSeleccionadas)
+            //{
+            //    AlojHabs.Add(new AlojHab(hab));
+
+            //    for (int i = 0; i < hab.Capacidad; i++)
+            //    {
+            //        dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId);
+            //    }
+
+            //    dGV_excl.Rows.Add(hab.HabitacionId, "No");
+            //}
+
+            //<<<<<<<<<<<<<<<<<<----------------------------------------
+
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
             dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
             dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
@@ -389,6 +403,128 @@ namespace UI
         {
             if (dGV_Habitaciones.Rows.Count == 0)
                 throw new Exception("Debe seleccionar al menos una Habitación");
+
+            //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
+        }
+
+        private void dGV_Habitaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var senderGrid = (DataGridView)sender;
+                if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+                {
+                    var rowSelected = dGV_Habitaciones.Rows[e.RowIndex];
+                    Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)rowSelected.Cells[1].Value);
+
+                    if ((string)rowSelected.Cells[0].Value == "Agregar")
+                    {
+                        BuscarCliente BuscarClienteForm = new BuscarCliente();
+                        BuscarClienteForm.setEnableAltas(false);
+                        BuscarClienteForm.ShowDialog();
+
+                        if (BuscarClienteForm.ClienteSeleccionado != null)
+                        {
+                            Cliente CliAux = BuscarClienteForm.ClienteSeleccionado;
+
+                            foreach (AlojHab ah in AlojHabs)
+                            {
+                                foreach (Cliente cli in ah.Clientes)
+                                {
+                                    if (CliAux.ClienteId == cli.ClienteId)
+                                    {
+                                        throw new Exception("El cliente elegido ya se encuentra seleccionado");
+                                    }
+                                }
+                            }
+
+                            //Cliente Activo
+                            new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+
+                            //buscarlo en su tarifa correspondiente para tal habitacion
+
+                            //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
+
+                            rowSelected.Cells[2].Value = CliAux.Apellido + " " + CliAux.Nombre;
+                            rowSelected.Cells[3].Value = CliAux.ClienteId;
+                            rowSelected.Cells[4].Value = CliAux.TarifaCliente.NombreTarifa;
+                            if (CliAux.Domicilio.Ciudad != null)
+                                rowSelected.Cells[5].Value = CliAux.Domicilio.Ciudad.Nombre + " - " + CliAux.Domicilio.Direccion();
+                            else
+                                rowSelected.Cells[5].Value = CliAux.Domicilio.Direccion();
+                        }
+
+                    }
+                    else // QUITAR
+                    {
+
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                VentanaEmergente ventanaEmergente = new VentanaEmergente(E.Message, TipoMensaje.Alerta);
+                ventanaEmergente.ShowDialog();
+            }
+        }
+
+        private void dGV_excl_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var row = dGV_excl.Rows[e.RowIndex];
+                Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value);
+
+                if ((string)row.Cells[1].Value == "No")
+                {
+                    bool Excl = false;
+                    
+                    //solo estos en pueden pedir excplusividad para su hab
+                    List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
+                    foreach (DataGridViewRow item in dGV_Habitaciones.Rows)
+                    {
+                        if ((byte)item.Cells[1].Value == (byte)row.Cells[1].Value && tiposCli.Contains((string)item.Cells[4].Value))
+                            Excl = true;
+                    }
+
+                    if (Excl)
+                    {
+                        cantExclAux += auxHab.Capacidad;
+
+                        this.exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, cantExclAux);
+
+                        if (this.exclusividadCapacidad)
+                        {
+                            row.Cells[1].Value = "Si";
+
+                            AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = exclusividadCapacidad;
+                        }
+                        else
+                        {
+                            cantExclAux -= auxHab.Capacidad;
+
+                            VentanaEmergente ventanaEmergente = new VentanaEmergente("Se supera la cantidad de exclusividad", TipoMensaje.Alerta);
+                            ventanaEmergente.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        cantExclAux -= auxHab.Capacidad;
+
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Para exclusividad de la habitación, esta misma debe poseer un Titular, Titular Exceptuado o Convenio", TipoMensaje.Alerta);
+                        ventanaEmergente.ShowDialog();
+                    }
+                }
+                else
+                {
+                    AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
+
+                    cantExclAux -= auxHab.Capacidad;
+
+                    row.Cells[1].Value = "No";
+                }
+            }
         }
     }
 }
