@@ -341,7 +341,7 @@ namespace UI
 
                             VentanaEmergente ventanaEmergente = new VentanaEmergente("Se supera la cantidad de exclusividad", TipoMensaje.Alerta);
                             ventanaEmergente.ShowDialog();
-                        } 
+                        }
                     }
                     else
                     {
@@ -414,17 +414,31 @@ namespace UI
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn && e.RowIndex >= 0)
             {
                 var rowSelected = dGV_Habs.Rows[e.RowIndex];
-                //Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)rowSelected.Cells[1].Value);
                 var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells["Número"/*0*/].Value);
 
                 List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
-                if (!tiposCli.Contains((string)rowSelected.Cells["Tipo Cliente"].Value))
+                bool responsable = false;
+                foreach (DataGridViewRow dgvRow in dGV_Habs.Rows)
+                {
+                    if ((byte)dgvRow.Cells[0].Value == ahAux.Habitacion.HabitacionId
+                        &&
+                        tiposCli.Contains((string)dgvRow.Cells[4].Value))
+                    {
+                        responsable = true;
+                    }
+                }
+
+                if (!responsable)
                 {
                     foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                     {
-                        if ((byte)rowExcl.Cells["Nro"].Value == ahAux.Habitacion.HabitacionId)
+                        if ((byte)rowExcl.Cells[0].Value == ahAux.Habitacion.HabitacionId)
                         {
-                            rowExcl.Cells["Excl"].Value = "No";
+                            ahAux.Exclusividad = false;
+
+                            cantExclAux -= ahAux.Habitacion.Capacidad;
+
+                            rowExcl.Cells[1].Value = "No";
                         }
                     }
                 }

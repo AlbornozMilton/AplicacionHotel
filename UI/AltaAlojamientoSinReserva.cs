@@ -47,7 +47,7 @@ namespace UI
                 if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
                     //this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
-                   ;
+                    ;
 
                     exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 0);
 
@@ -339,17 +339,17 @@ namespace UI
                     var rowSelected = dGV_Habitaciones.Rows[e.RowIndex];
                     //Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)rowSelected.Cells[1].Value);
 
-                    BuscarCliente BuscarClienteForm = new BuscarCliente();
-                    BuscarClienteForm.setEnableAltas(false);
-                    BuscarClienteForm.ShowDialog();
+                    var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells[/*Hab*/1].Value);
+                    List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
 
-                    if (BuscarClienteForm.ClienteSeleccionado != null)
+                    if ((string)rowSelected.Cells[0].Value == "Agregar")
                     {
-                        var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells["Hab"/*1*/].Value);
+                        BuscarCliente BuscarClienteForm = new BuscarCliente();
+                        BuscarClienteForm.setEnableAltas(false);
+                        BuscarClienteForm.ShowDialog();
 
-                        if ((string)rowSelected.Cells[0].Value == "Agregar")
+                        if (BuscarClienteForm.ClienteSeleccionado != null)
                         {
-
                             Cliente CliAux = BuscarClienteForm.ClienteSeleccionado;
 
                             foreach (AlojHab ah in AlojHabs)
@@ -367,7 +367,7 @@ namespace UI
                             //Cliente Activo
                             new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
-                            string nombreTarifa = (string)rowSelected.Cells["Tipo Cliente"/*4*/].Value;
+                            string nombreTarifa = (string)rowSelected.Cells[/*"Tipo Cliente"*/4].Value;
 
                             //var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells["Hab"/*1*/].Value);
                             ahAux.AgregarTarifaRow(e.RowIndex, nombreTarifa);
@@ -376,19 +376,19 @@ namespace UI
                             ahAux.CheckinTarifaCliente(nombreTarifa);
 
                             //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
-                            List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
+                            //List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
                             if (!tiposCli.Contains(nombreTarifa))
                             {
                                 foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                                 {
-                                    if ((byte)rowExcl.Cells["Nro"/*0*/].Value == ahAux.Habitacion.HabitacionId && (string)rowExcl.Cells["Excl"/*1*/].Value == "Si")
+                                    if ((byte)rowExcl.Cells[/*"Nro"*/0].Value == ahAux.Habitacion.HabitacionId && (string)rowExcl.Cells[/*"Excl"*/1].Value == "Si")
                                     {
                                         //AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
                                         ahAux.Exclusividad = false;
 
                                         cantExclAux -= ahAux.Habitacion.Capacidad;
 
-                                        rowExcl.Cells["Excl"/*1*/].Value = "No";
+                                        rowExcl.Cells[/*Excl*/1].Value = "No";
                                     }
                                 }
                             }
@@ -402,45 +402,57 @@ namespace UI
                                 rowSelected.Cells[5].Value = CliAux.Domicilio.Direccion();
 
                             ahAux.Clientes.Add(BuscarClienteForm.ClienteSeleccionado);
+                            rowSelected.Cells[0].Value = "Quitar";
                         }
-                        else // QUITAR
+                    }
+                    else // QUITAR
+                    {
+                        ahAux.Clientes.Remove(ahAux.Clientes.Find(c => c.ClienteId == (int)rowSelected.Cells[3].Value));
+
+                        rowSelected.Cells[2].Value = "";
+                        rowSelected.Cells[3].Value = "";
+                        rowSelected.Cells[4].Value = "";
+                        rowSelected.Cells[5].Value = "";
+
+                        //Acomodar exclusividad
+                        //int auxCapacidad = 0;
+                        bool responsable = false;
+                        foreach (DataGridViewRow dgvRow in dGV_Habitaciones.Rows)
                         {
-                            rowSelected.Cells[2].Value = "";
-                            rowSelected.Cells[3].Value = "";
-                            rowSelected.Cells[4].Value = "";
-                            rowSelected.Cells[5].Value = "";
+                            //if ((byte)dgvRow.Cells[1].Value == ahAux.Habitacion.HabitacionId
+                            //    &&
+                            //    dgvRow.Cells[2].Value != null
+                            //    &&
+                            //    (string)dgvRow.Cells[2].Value != ""
+                            //    )
+                            //{
+                            //    auxCapacidad++;
+                            //}
 
-                            ahAux.Clientes.Remove(BuscarClienteForm.ClienteSeleccionado);
-
-                            //Acomodar exclusividad
-                            int auxCapacidad = 0;
-                            foreach (DataGridViewRow dgvRow in dGV_Habitaciones.Rows)
+                            if ((byte)dgvRow.Cells[1].Value == ahAux.Habitacion.HabitacionId 
+                                && 
+                                tiposCli.Contains((string)dgvRow.Cells[4].Value))
                             {
-                                if ((byte)dgvRow.Cells["Hab"].Value == ahAux.Habitacion.HabitacionId
-                                    &&
-                                    (string)dgvRow.Cells["DNI"].Value != ""
-                                    )
-                                {
-                                    auxCapacidad++;
-                                }
+                                responsable = true;
                             }
-                            if (auxCapacidad == 0)
-                            {
-                                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
-                                {
-                                    if ((byte)rowExcl.Cells["Nro"/*0*/].Value == ahAux.Habitacion.HabitacionId && (string)rowExcl.Cells["Excl"/*1*/].Value == "Si")
-                                    {
-                                        //AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
-                                        ahAux.Exclusividad = false;
-
-                                        cantExclAux -= ahAux.Habitacion.Capacidad;
-
-                                        rowExcl.Cells["Excl"/*1*/].Value = "No";
-                                    }
-                                }
-                            }
-
                         }
+                        if (!responsable/* && auxCapacidad == 0*/)
+                        {
+                            foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                            {
+                                if ((byte)rowExcl.Cells[0/*Nro*/].Value == ahAux.Habitacion.HabitacionId && (string)rowExcl.Cells[1].Value == "Si")
+                                {
+                                    //AlojHabs.Find(h => h.Habitacion.HabitacionId == auxHab.HabitacionId).Exclusividad = false;
+                                    ahAux.Exclusividad = false;
+
+                                    cantExclAux -= ahAux.Habitacion.Capacidad;
+
+                                    rowExcl.Cells[1].Value = "No";
+                                }
+                            }
+                        }
+
+                        rowSelected.Cells[0].Value = "Agregar";
                     }
                 }
             }
@@ -458,7 +470,7 @@ namespace UI
             {
                 var row = dGV_excl.Rows[e.RowIndex];
                 //Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value);
-                AlojHab ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells["Nro"].Value);
+                AlojHab ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells[0].Value);
 
                 if ((string)row.Cells[1].Value == "No")
                 {
@@ -469,14 +481,14 @@ namespace UI
                     int cantParaExcl = 0;
                     foreach (DataGridViewRow item in dGV_Habitaciones.Rows)
                     {
-                        if ((byte)item.Cells[1].Value == (byte)row.Cells[1].Value && tiposCli.Contains((string)item.Cells[4].Value))
+                        if ((byte)item.Cells[1].Value == (byte)row.Cells[0].Value && tiposCli.Contains((string)item.Cells[4].Value))
                         {
-                        Excl = true;
+                            Excl = true;
                             cantParaExcl++; //solo excl para una persona
                         }
                     }
 
-                    if (Excl && cantParaExcl == 0)
+                    if (Excl && cantParaExcl == 1)
                     {
                         cantExclAux += ah.Habitacion.Capacidad;
 
