@@ -305,24 +305,27 @@ namespace UI
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 var row = dGV_excl.Rows[e.RowIndex];
-                //Habitacion auxHab = this.HabSeleccionadas.Find(h => h.HabitacionId == (byte)row.Cells[0].Value);
-                AlojHab ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells["Nro"].Value);
+                AlojHab ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells[0].Value);
 
                 if ((string)row.Cells[1].Value == "No")
                 {
-                    bool Excl = false;
                     List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
                     int cantParaExcl = 0;
-                    foreach (DataGridViewRow item in dGV_Habs.Rows)
+                    bool responsable = false;
+                    foreach (DataGridViewRow rowHab in dGV_Habs.Rows)
                     {
-                        if ((byte)item.Cells[0].Value == (byte)row.Cells[0].Value && tiposCli.Contains((string)item.Cells[2].Value))
+                        if ((byte)rowHab.Cells[0].Value == (byte)row.Cells[0].Value)
                         {
-                            Excl = true;
-                            cantParaExcl++; //solo excl para una persona
+                            //solo excl para una persona
+                            if (rowHab.Cells[2].Value != null)
+                                cantParaExcl++;
+
+                            if (tiposCli.Contains((string)rowHab.Cells[2].Value))
+                                responsable = true;
                         }
                     }
 
-                    if (Excl && cantExclAux == 1)
+                    if (responsable && cantParaExcl == 1)
                     {
                         cantExclAux += ah.Habitacion.Capacidad;
 
@@ -330,10 +333,9 @@ namespace UI
 
                         if (this.exclusividadCapacidad)
                         {
-                            row.Cells[1].Value = "Si";
-
-                            //AlojHabs.Find(h => h.Habitacion.HabitacionId == ah.Habitacion.HabitacionId).Exclusividad = exclusividadCapacidad;
                             ah.Exclusividad = exclusividadCapacidad;
+
+                            row.Cells[1].Value = "Si";
                         }
                         else
                         {
@@ -345,13 +347,13 @@ namespace UI
                     }
                     else
                     {
-                        cantExclAux -= ah.Habitacion.Capacidad;
+                        //cantExclAux -= ah.Habitacion.Capacidad;
 
                         VentanaEmergente ventanaEmergente = new VentanaEmergente("Para exclusividad de la habitación debe poseer un Titular, Titular Exceptuado o Convenio solamente", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                     }
                 }
-                else
+                else // Si
                 {
                     //AlojHabs.Find(h => h.Habitacion.HabitacionId == ah.Habitacion.HabitacionId).Exclusividad = false;
                     ah.Exclusividad = false;
@@ -365,15 +367,47 @@ namespace UI
 
         private void dGV_Habs_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            //CUANDO CAMBIE DE TIPO DE CLIENTE CHEQUEAR LA EXCLUSIVIDAD SI CAMBIARLA O NO
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn && e.RowIndex >= 0)
             {
-                var row = dGV_Habs.Rows[e.RowIndex];
+                var rowSelected = dGV_Habs.Rows[e.RowIndex];
+                var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells[0].Value);
 
-                var ah = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)row.Cells[0].Value);
+                List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
+                bool responsable = false;
+                int cantParaExcl = 0;
+                foreach (DataGridViewRow dgvRow in dGV_Habs.Rows)
+                {
+                    if ((byte)dgvRow.Cells[0].Value == (byte)rowSelected.Cells[0].Value)
+                    {
+                        //solo excl para una persona
+                        if (dgvRow.Cells[2].Value != null)
+                            cantParaExcl++;
 
-                ah.AgregarTarifaRow(e.RowIndex, (string)row.Cells[2].Value);
+                        if (tiposCli.Contains((string)dgvRow.Cells[2].Value))
+                            responsable = true;
+                    }
+                }
+
+                if (!(!responsable && cantParaExcl != 1))
+                {
+                    foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                    {
+                        if ((byte)rowExcl.Cells[0].Value == ahAux.Habitacion.HabitacionId)
+                        {
+                            ahAux.Exclusividad = false;
+
+                            cantExclAux -= ahAux.Habitacion.Capacidad;
+
+                            rowExcl.Cells[1].Value = "No";
+                        }
+                    }
+                }
+
+                ahAux.AgregarTarifaRow(e.RowIndex, (string)rowSelected.Cells[2].Value);
             }
+
         }
 
         private void dGV_Habs_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -409,40 +443,7 @@ namespace UI
 
         private void dGV_Habs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //CUANDO CAMBIE DE TIPO DE CLIENTE CHEQUEAR LA EXCLUSIVIDAD SI CAMBIARLA O NO
-            var senderGrid = (DataGridView)sender;
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn && e.RowIndex >= 0)
-            {
-                var rowSelected = dGV_Habs.Rows[e.RowIndex];
-                var ahAux = AlojHabs.Find(h => h.Habitacion.HabitacionId == (byte)rowSelected.Cells["Número"/*0*/].Value);
-
-                List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
-                bool responsable = false;
-                foreach (DataGridViewRow dgvRow in dGV_Habs.Rows)
-                {
-                    if ((byte)dgvRow.Cells[0].Value == ahAux.Habitacion.HabitacionId
-                        &&
-                        tiposCli.Contains((string)dgvRow.Cells[4].Value))
-                    {
-                        responsable = true;
-                    }
-                }
-
-                if (!responsable)
-                {
-                    foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
-                    {
-                        if ((byte)rowExcl.Cells[0].Value == ahAux.Habitacion.HabitacionId)
-                        {
-                            ahAux.Exclusividad = false;
-
-                            cantExclAux -= ahAux.Habitacion.Capacidad;
-
-                            rowExcl.Cells[1].Value = "No";
-                        }
-                    }
-                }
-            }
+            dGV_Habs_CellValueChanged(sender, e);
         }
     }
 }
