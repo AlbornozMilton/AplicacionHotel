@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Dominio
 {
@@ -59,6 +60,33 @@ namespace Dominio
                     result = false;
             }
             return result;
+        }
+
+        /// <summary>
+        /// Solo cuando este alojamiento se haya reservado
+        /// </summary>
+        public bool ControlTarifasCliente()
+        {
+            bool resultado = true;
+
+            if (this.Tarifas.Count == this.Clientes.Count)
+            {
+                List<TarifaCliente> AuxTarifas = this.Tarifas.OrderBy(t => t.TarifaClienteId).ToList();
+                List<Cliente> AuxTarifasCli = this.Clientes.OrderBy(c => c.TarifaCliente.TarifaClienteId).ToList();
+
+                for (int i = 0; i < AuxTarifas.Count; i++)
+                {
+                    if (AuxTarifas[i].TarifaClienteId != AuxTarifasCli[i].TarifaCliente.TarifaClienteId)
+                    {
+                        resultado = false;
+                        break;
+                    }
+                } 
+            }
+            else
+                resultado = false;
+
+            return resultado;
         }
     }
 }

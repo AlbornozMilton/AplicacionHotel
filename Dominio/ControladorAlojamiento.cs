@@ -170,31 +170,6 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
 
-		/// <summary>
-		/// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
-		/// </summary>
-		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta)
-		{
-			double cantidadTarifa = 0, cantidadCliente = 0;
-
-			foreach (AlojHab alojHab in pAlojEnAlta.AlojHabes)
-			{
-				foreach (TarifaCliente tarifa in alojHab.Tarifas)
-				{
-					cantidadTarifa += tarifa.GetTarifa(alojHab.Exclusividad);
-				}
-				foreach (Cliente cli in alojHab.Clientes)
-				{
-					cantidadCliente += cli.ObtenerSuPrecioTarifa(alojHab.Exclusividad);
-				}
-			}
-
-			if (cantidadTarifa != cantidadCliente)
-			{
-				throw new Exception("Los Clientes cargados NO corresponden con la Reserva");
-			}
-		}
-
 		public void DarAltaReserva(Alojamiento pAlojEnAlta, string pCostoBase)
 		{
 			pAlojEnAlta.AltaDeReserva();

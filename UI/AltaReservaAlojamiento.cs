@@ -135,90 +135,89 @@ namespace UI
         {
             try
             {
-                if (ClienteResponsable != null) //requisito
+                if (ClienteResponsable == null) 
+                    throw new Exception("Debe 'Seleccionar Responsable'");
+
+                if (dGV_Habs.Rows.Count == 0)
+                    throw new Exception("Debe seleccionar al menos una Habitación");
+
+                bool result = true;
+                bool responsable = false;
+                int cantNull = 0;
+
+                for (int i = 0; i < dGV_Habs.Rows.Count; i++)
                 {
-                    if (dGV_Habs.Rows.Count == 0)
-                        throw new Exception("Debe seleccionar al menos una Habitación");
+                    var valorCell = (DataGridViewComboBoxCell)dGV_Habs.Rows[i].Cells[2];
 
-                    bool result = true;
-                    bool responsable = false;
-                    int cantNull = 0;
+                    if (valorCell != null && (string)valorCell.Value == ClienteResponsable.TarifaCliente.NombreTarifa)
+                        responsable = true;
+                    else if (valorCell.Value == null)
+                        cantNull++;
+                }
 
-                    for (int i = 0; i < dGV_Habs.Rows.Count; i++)
+                if (!responsable)
+                    throw new Exception("Debe incluir algún Titular como Responsable");
+
+                int capTotal = 0;
+                foreach (var hab in AlojHabs)
+                {
+                    capTotal += hab.Habitacion.Capacidad;
+                }
+
+                int cantTour = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.CantPersonaTour);
+                if (button1.Text == "ES TOUR" && capTotal != cantTour)
+                    throw new Exception("La cantidad mínima para Tour debe ser de " + cantTour.ToString());
+
+                if (button1.Text == "ES TOUR" && cantNull != 0)
+                    throw new Exception("Debe completar el Tour");
+
+                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
+                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                {
+                    if ((string)rowExcl.Cells[1].Value == "Si")
                     {
-                        var valorCell = (DataGridViewComboBoxCell)dGV_Habs.Rows[i].Cells[2];
-
-                        if (valorCell != null && (string)valorCell.Value == ClienteResponsable.TarifaCliente.NombreTarifa)
-                            responsable = true;
-                        else if (valorCell.Value == null)
-                            cantNull++;
-                    }
-
-                    if (!responsable)
-                        throw new Exception("Debe incluir algún Titular como Responsable");
-
-                    int capTotal = 0;
-                    foreach (var hab in AlojHabs)
-                    {
-                        capTotal += hab.Habitacion.Capacidad;
-                    }
-
-                    int cantTour = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.CantPersonaTour);
-                    if (button1.Text == "ES TOUR" && capTotal != cantTour)
-                        throw new Exception("La cantidad mínima para Tour debe ser de " + cantTour.ToString());
-
-                    if (button1.Text == "ES TOUR" && cantNull != 0)
-                        throw new Exception("Debe completar el Tour");
-
-                    //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
-                    foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
-                    {
-                        if ((string)rowExcl.Cells[1].Value == "Si")
+                        foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
                         {
-                            foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
+                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value == null)
                             {
-                                if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value == null)
-                                {
-                                    cantNull--;
-                                }
+                                cantNull--;
                             }
                         }
                     }
-
-                    if (/*cantNull != capTotal*/cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
-                    {
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
-                        ventanaEmergente.ShowDialog();
-                        result = ventanaEmergente.Aceptar;
-                    }
-
-                    if (result && responsable)
-                    {
-                        new ControladorHabitacion().GenerarTarifas(AlojHabs);
-
-                        this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, FechaIni, FechaFin, button1.Text == "ES TOUR" ? true : false);
-
-                        this.NuevoAlojamiento.CalcularCostoBase();
-
-                        txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-
-                        int porcDeposito = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.PorcentajeDeposito);
-                        txb_Deposito.Text = NuevoAlojamiento.Deposito(porcDeposito).ToString();
-
-                        groupBox4.Enabled = false;
-                        groupBox2.Enabled = false;
-                        groupBox1.Enabled = false;
-                        groupBox_excl.Enabled = false;
-
-                        button1.Enabled = false;
-                        button2.Enabled = false;
-                        btn_Comprobar.Enabled = false;
-
-                        btn_Aceptar.Enabled = true;
-                    }
                 }
-                else if (ClienteResponsable == null)
-                    throw new Exception("Debe 'Seleccionar Responsable' ");
+
+                if (/*cantNull != capTotal*/cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                    ventanaEmergente.ShowDialog();
+                    result = ventanaEmergente.Aceptar;
+                }
+
+                if (result && responsable)
+                {
+                    new ControladorHabitacion().GenerarTarifas(AlojHabs);
+
+                    DateTime lfechaAloj = new DateTime(dtpicker_fechaAloj.Value.Year, dtpicker_fechaAloj.Value.Month, dtpicker_fechaAloj.Value.Day, dt_hora.Value.Hour, dt_hora.Value.Minute, 0);
+                    this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable.ClienteId, lfechaAloj, FechaIni, FechaFin, button1.Text == "ES TOUR" ? true : false, tbx_atendio.Text);
+
+                    this.NuevoAlojamiento.CalcularCostoBase();
+
+                    txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+
+                    int porcDeposito = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.PorcentajeDeposito);
+                    txb_Deposito.Text = NuevoAlojamiento.Deposito(porcDeposito).ToString();
+
+                    groupBox4.Enabled = false;
+                    groupBox2.Enabled = false;
+                    groupBox1.Enabled = false;
+                    groupBox_excl.Enabled = false;
+
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    btn_Comprobar.Enabled = false;
+
+                    btn_Aceptar.Enabled = true;
+                }
             }
             catch (Exception E)
             {

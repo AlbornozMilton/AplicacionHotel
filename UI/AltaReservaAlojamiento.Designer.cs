@@ -46,7 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbx_atendio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_VerificarDisponibilidad = new System.Windows.Forms.Button();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -56,6 +56,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dGV_Habs = new System.Windows.Forms.DataGridView();
+            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_Aceptar = new System.Windows.Forms.Button();
@@ -79,9 +82,6 @@
             this.dt_hora = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpicker_fechaAloj = new System.Windows.Forms.DateTimePicker();
-            this.clm_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmk_tipoCliente = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -134,7 +134,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tbx_atendio);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.btn_VerificarDisponibilidad);
             this.groupBox1.Controls.Add(this.dtp_fechaHasta);
@@ -150,25 +150,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fechas de estadía";
             // 
-            // textBox2
+            // tbx_atendio
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(861, 29);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(121, 54);
-            this.textBox2.TabIndex = 38;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbx_atendio.BackColor = System.Drawing.Color.White;
+            this.tbx_atendio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbx_atendio.Location = new System.Drawing.Point(762, 56);
+            this.tbx_atendio.Name = "tbx_atendio";
+            this.tbx_atendio.Size = new System.Drawing.Size(215, 26);
+            this.tbx_atendio.TabIndex = 38;
+            this.tbx_atendio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(785, 45);
+            this.label5.Location = new System.Drawing.Point(838, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 23);
             this.label5.TabIndex = 37;
@@ -324,6 +321,35 @@
             this.dGV_Habs.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellLeave);
             this.dGV_Habs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Habs_CellValueChanged);
             this.dGV_Habs.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dGV_Habs_DataError);
+            // 
+            // clm_Id
+            // 
+            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Id.FillWeight = 40F;
+            this.clm_Id.HeaderText = "Número";
+            this.clm_Id.Name = "clm_Id";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // clmk_tipoCliente
+            // 
+            this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmk_tipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
+            this.clmk_tipoCliente.Items.AddRange(new object[] {
+            "Acompañante Directo",
+            "Acompañante No Directo",
+            "Convenio",
+            "Titular",
+            "Titular Exceptuado"});
+            this.clmk_tipoCliente.Name = "clmk_tipoCliente";
+            this.clmk_tipoCliente.Sorted = true;
+            this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // button2
             // 
@@ -675,35 +701,6 @@
             this.dtpicker_fechaAloj.TabIndex = 35;
             this.dtpicker_fechaAloj.TabStop = false;
             // 
-            // clm_Id
-            // 
-            this.clm_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Id.FillWeight = 40F;
-            this.clm_Id.HeaderText = "Número";
-            this.clm_Id.Name = "clm_Id";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 40F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Planta";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // clmk_tipoCliente
-            // 
-            this.clmk_tipoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmk_tipoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.clmk_tipoCliente.HeaderText = "Tipo Cliente";
-            this.clmk_tipoCliente.Items.AddRange(new object[] {
-            "Acompañante Directo",
-            "Acompañante No Directo",
-            "Convenio",
-            "Titular",
-            "Titular Exceptuado"});
-            this.clmk_tipoCliente.Name = "clmk_tipoCliente";
-            this.clmk_tipoCliente.Sorted = true;
-            this.clmk_tipoCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // AltaReservaAlojamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -787,7 +784,7 @@
         private System.Windows.Forms.DateTimePicker dt_hora;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpicker_fechaAloj;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbx_atendio;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

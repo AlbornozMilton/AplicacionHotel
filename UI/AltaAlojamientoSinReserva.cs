@@ -7,7 +7,6 @@ namespace UI
 {
     public partial class AltaAlojamientoSinReserva : Form
     {
-        //public List<Habitacion> HabSeleccionadas;
         public DateTime FechaIni;
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
@@ -29,12 +28,13 @@ namespace UI
         {
             //DateTime.Today.ToString("dd/MM/yy");
             dtpicker_fechaAloj.Value = DateTime.Today;
-            //dt_hora.Value = DateTime.Today.add(dtpicker_fechaAloj.Value.Hour, dtpicker_fechaAloj.Value.Minute);
-            dGV_excl.AlternatingRowsDefaultCellStyle = null;
+            dt_hora.Value = dtpicker_fechaAloj.Value;
             dtp_fechaDesde.Value = DateTime.Now;
             FechaIni = DateTime.Now;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
             FechaFin = DateTime.Now.AddDays(1);  // si es reserva, se rellenan campos
+
+            dGV_excl.AlternatingRowsDefaultCellStyle = null;
         }
 
         private void btn_VerificarDisponibilidad_Click(object sender, EventArgs e)
@@ -291,16 +291,37 @@ namespace UI
                 if (dGV_Habitaciones.Rows.Count == 0)
                     throw new Exception("Debe seleccionar al menos una Habitación");
 
-                //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
+                if (ClienteResponsable == null)
+                    throw new Exception("Debe 'Seleccionar Responsable'");
 
-                //comprbar que todos los check esten en true
+                //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
+                bool responsable = false;
+                foreach (AlojHab alojHab in AlojHabs)
+                {
+                    foreach (Cliente cli in alojHab.Clientes)
+                    {
+                        if (cli.ClienteId == ClienteResponsable.ClienteId)
+                        {
+                            responsable = true;
+                            break;
+                        }
+                    }
+                }
+                if (!responsable)
+                    throw new Exception("El Responsable elegido debe estar en algunas de las Habitaciones'");
+
+                //COMPROBAR QUE TODOS LOS CHECK ESTEN EN TRUE
+
+
+                DateTime lfechaAloj = new DateTime(dtpicker_fechaAloj.Value.Year, dtpicker_fechaAloj.Value.Month, dtpicker_fechaAloj.Value.Day, dt_hora.Value.Hour, dt_hora.Value.Minute, 0);
 
                 if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
                 {
-                    this.NuevoAlojamiento.SetClientes(this.Acompañantes);
-                    //new ControladorCliente().ControlCapacidadConClientes(this.NuevoAlojamiento.Clientes, HabSeleccionada);
-                    //new ControladorAlojamiento().ComprobarClientesAltaConReserva(this.NuevoAlojamiento, txb_CostoBase.Text);
-                    //NuevoAlojamiento.Habitacion.OcuparHabitacion();
+                    foreach (AlojHab ah in AlojHabs)
+                    {
+                        if (!ah.ControlTarifasCliente())
+                            throw new Exception("Los Clientes cargados deben coincidir con los cargados en la Reserva");
+                    }
                 }
                 else
                 {
@@ -314,6 +335,7 @@ namespace UI
                     //this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
                     //NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
                 }
+
                 //txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
                 //btn_Comprobar.Enabled = false;
                 groupBox1.Enabled = false;
@@ -364,7 +386,6 @@ namespace UI
                             //Cliente Activo
                             new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
 
-
                             rowSelected.Cells[2].Value = CliAux.Apellido + " " + CliAux.Nombre;
                             rowSelected.Cells[3].Value = CliAux.ClienteId;
                             rowSelected.Cells[4].Value = CliAux.TarifaCliente.NombreTarifa;
@@ -373,14 +394,10 @@ namespace UI
                             else
                                 rowSelected.Cells[5].Value = CliAux.Domicilio.Direccion();
 
-                            string nombreTarifa = (string)rowSelected.Cells[4].Value;
-                            ahAux.AgregarTarifaRow(e.RowIndex, nombreTarifa);
-                            //check de su tarifa correspondiente para tal habitacion
-                            ahAux.CheckinTarifaCliente(nombreTarifa);
-
                             //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
                             EvaluarExcl1(rowSelected, ahAux);
 
+                            //si es reserva, la lista de tarifas ya viene cargada, sino no es necesario el futuro control
                             ahAux.Clientes.Add(BuscarClienteForm.ClienteSeleccionado);
                             rowSelected.Cells[0].Value = "Quitar";
                         }

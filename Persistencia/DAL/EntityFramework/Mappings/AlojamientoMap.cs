@@ -18,6 +18,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(a => a.DniResponsable)
                 .IsRequired();
 
+            this.Property(a => a.FechaAloj).HasColumnType("datetime2")
+               .IsRequired();
+
             this.Property(a => a.FechaReserva).HasColumnType("datetime2")
                 .IsOptional();
 
