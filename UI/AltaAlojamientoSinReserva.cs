@@ -11,7 +11,6 @@ namespace UI
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
         public Alojamiento NuevoAlojamiento;
-        public List<Cliente> Acompañantes = new List<Cliente>();
 
         List<AlojHab> AlojHabs = new List<AlojHab>();
         List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
@@ -139,7 +138,7 @@ namespace UI
             try
             {
                 int auxIdAloj;
-                if (NuevoAlojamiento == null) //Alta sin Reserva
+                if (AlojHabs[0].Tarifas.Count == 0) //se trata de un alonamineto sin reserva
                 {
                     auxIdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 }
@@ -174,7 +173,6 @@ namespace UI
             dGV_ClienteResponsable.Rows.Clear();
             dGV_Habitaciones.Rows.Clear();
             ClienteResponsable = null;
-            Acompañantes.Clear();
             //groupBox4.Enabled = false;
             groupBox2.Enabled = false;
             groupBox3.Enabled = true;
@@ -218,8 +216,8 @@ namespace UI
 
             //cliente responsable
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
-            this.Acompañantes = new List<Cliente>();
-            this.Acompañantes.Add(ClienteResponsable);
+            //this.Acompañantes = new List<Cliente>();
+            //this.Acompañantes.Add(ClienteResponsable);
             //btn_Confirmar.Enabled = true;
 
             //HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
@@ -337,11 +335,10 @@ namespace UI
                 DateTime lfechaAloj = new DateTime(dtpicker_fechaAloj.Value.Year, dtpicker_fechaAloj.Value.Month, dtpicker_fechaAloj.Value.Day, dt_hora.Value.Hour, dt_hora.Value.Minute, 0);
                 if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
                 {
-                    //COMPROBAR QUE TODOS LOS CHECK ESTEN EN TRUE
                     foreach (AlojHab ah in AlojHabs)
                     {
                         if (!ah.ControlTarifasCliente())
-                            throw new Exception("Los Clientes cargados deben coincidir con los cargados en la Reserva");
+                            throw new Exception("Los Tipos de Clientes cargados deben coincidir con los cargados en la Reserva");
                     }
 
                     this.NuevoAlojamiento.AltaDeReserva(AlojHabs, lfechaAloj, dtp_fechaDesde.Value);
@@ -355,18 +352,21 @@ namespace UI
                 {
                     this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable, lfechaAloj, FechaIni, FechaFin, button1.Text == "ES TOUR" ? true : false, tbx_atendio.Text);
 
-                    NuevoAlojamiento.CalcularCostoBase();
+                    this.NuevoAlojamiento.CalcularCostoBase();
                 }
 
-                txb_MontoAloj.Text = NuevoAlojamiento.MontoTotal.ToString();
-                txb_Deposito.Text = NuevoAlojamiento.MontoDepositado().ToString();
+                txb_MontoAloj.Text = this.NuevoAlojamiento.MontoTotal.ToString();
+                txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
 
                 groupBox1.Enabled = false; // grid de fechas
                 groupBox2.Enabled = false; // grid de responsable
                 btn_AgregarCliente.Enabled = false;
                 groupBox3.Enabled = false; // grid de habitaciones
+                groupBox_excl.Enabled = false;
+
                 dt_hora.Enabled = false;
                 dtpicker_fechaAloj.Enabled = false;
+
                 btn_Comprobar.Enabled = false;
 
                 btn_Aceptar.Enabled = true;

@@ -233,6 +233,9 @@ namespace UI
                     groupBox1.Enabled = false;
                     groupBox_excl.Enabled = false;
 
+                    dt_hora.Enabled = false;
+                    dtpicker_fechaAloj.Enabled = false;
+
                     button1.Enabled = false;
                     button2.Enabled = false;
                     btn_Comprobar.Enabled = false;
