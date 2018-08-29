@@ -167,12 +167,15 @@ namespace Dominio
         }
 
         /// <summary>
-        /// Cambio de Estado a "Alojado" y Set fecha de Ingreso
+        /// Cambio de Estado a "Alojado"
         /// </summary>
-        public void AltaDeReserva()
+        public void AltaDeReserva(List<AlojHab> pAH, DateTime pFechaAloj, DateTime pFechaIngreso)
         {
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
-            this.FechaIngreso = DateTime.Now;
+            this.iAlojHabs = pAH;
+            this.iFechaAloj = pFechaAloj;
+            //this.FechaIngreso = DateTime.Now;
+            this.FechaIngreso = pFechaIngreso;
         }
 
         public bool ExistePagoAlojamiento(Pago pPago)
@@ -255,11 +258,6 @@ namespace Dominio
             return total;
         }
 
-        public void AgregarCliente(Cliente pCliente)
-        {
-            //this.iClientes.Add(pCliente);
-        }
-
         /// <summary>
         /// Agrega una linea servicio y actualiza sus montos
         /// </summary>
@@ -293,29 +291,6 @@ namespace Dominio
         {
             this.iFechaCancelacion = DateTime.Now;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
-        }
-
-        public void SetClientes(List<Cliente> pClientes)
-        {
-            //this.iClientes = pClientes;
-        }
-
-        public int CantidadAlojados()
-        {
-            //if (this.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-            //{
-            //	return Clientes.Count;
-            //}
-            //else
-            //{
-            //	int auxCont = 0;
-            //	for (int i = 0; i < ContadoresTarifas.Length; i++)
-            //	{
-            //		auxCont += Convert.ToInt32(ContadoresTarifas[i]);
-            //	}
-            //	return auxCont + 1;
-            //}
-            return 0;
         }
 
         public Cliente ClienteResponsable()

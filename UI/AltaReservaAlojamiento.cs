@@ -186,7 +186,7 @@ namespace UI
                     }
                 }
 
-                if (/*cantNull != capTotal*/cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+                if (cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
                     ventanaEmergente.ShowDialog();

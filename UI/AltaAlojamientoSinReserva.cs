@@ -310,34 +310,34 @@ namespace UI
                 if (!responsable)
                     throw new Exception("El Responsable elegido debe estar en algunas de las Habitaciones'");
 
-                //COMPROBAR QUE TODOS LOS CHECK ESTEN EN TRUE
-
-
                 DateTime lfechaAloj = new DateTime(dtpicker_fechaAloj.Value.Year, dtpicker_fechaAloj.Value.Month, dtpicker_fechaAloj.Value.Day, dt_hora.Value.Hour, dt_hora.Value.Minute, 0);
 
                 if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
                 {
+                    //COMPROBAR QUE TODOS LOS CHECK ESTEN EN TRUE
                     foreach (AlojHab ah in AlojHabs)
                     {
                         if (!ah.ControlTarifasCliente())
                             throw new Exception("Los Clientes cargados deben coincidir con los cargados en la Reserva");
                     }
+
+                    this.NuevoAlojamiento.AltaDeReserva(AlojHabs, lfechaAloj, dtp_fechaDesde.Value);
+
+                    this.NuevoAlojamiento.CalcularCostoBase();
+
+                    if (this.NuevoAlojamiento.MontoTotal.ToString() != txb_MontoAloj.Text)
+                        throw new Exception("Error en el cálculo de Monto de Alojamiento");
                 }
                 else
                 {
-                    if (Acompañantes.Count == 1 && ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.TitularExceptuado)
-                    {
-                        throw new Exception("Un Titular Exceptuado debe estar Acompañado");
-                    }
+                    this.NuevoAlojamiento = new Alojamiento(AlojHabs, ClienteResponsable, lfechaAloj, FechaIni, FechaFin, button1.Text == "ES TOUR" ? true : false, tbx_atendio.Text);
 
-                    //new ControladorCliente().ControlCapacidadConClientes(Acompañantes, HabSeleccionada);
-                    //HabSeleccionada.OcuparHabitacion();
-                    //this.NuevoAlojamiento = new Alojamiento(HabSeleccionada, ClienteResponsable, Acompañantes, FechaIni, FechaFin, HabSeleccionada.Exclusiva);
-                    //NuevoAlojamiento.CalcularCostoBase(new List<TarifaCliente>());
+                    NuevoAlojamiento.CalcularCostoBase();
                 }
 
-                //txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
+                txb_MontoAloj.Text = NuevoAlojamiento.MontoTotal.ToString();
                 //btn_Comprobar.Enabled = false;
+
                 groupBox1.Enabled = false;
                 groupBox2.Enabled = false;
                 groupBox3.Enabled = true;

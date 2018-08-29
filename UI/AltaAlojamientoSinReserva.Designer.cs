@@ -40,7 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txb_IdAloj = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbx_atendio = new System.Windows.Forms.TextBox();
             this.btn_VerificarDisponibilidad = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dtp_fechaHasta = new System.Windows.Forms.DateTimePicker();
@@ -79,7 +79,7 @@
             this.btn_Comprobar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txb_MontoAloj = new System.Windows.Forms.TextBox();
             this.txb_Deposito = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -119,7 +119,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbx_atendio);
             this.groupBox1.Controls.Add(this.btn_VerificarDisponibilidad);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtp_fechaHasta);
@@ -135,15 +135,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fechas de estadía";
             // 
-            // textBox1
+            // tbx_atendio
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(721, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 26);
-            this.textBox1.TabIndex = 36;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbx_atendio.BackColor = System.Drawing.Color.White;
+            this.tbx_atendio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbx_atendio.Location = new System.Drawing.Point(721, 55);
+            this.tbx_atendio.Name = "tbx_atendio";
+            this.tbx_atendio.Size = new System.Drawing.Size(250, 26);
+            this.tbx_atendio.TabIndex = 36;
+            this.tbx_atendio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btn_VerificarDisponibilidad
             // 
@@ -636,7 +636,7 @@
             this.groupBox4.Controls.Add(this.btn_Comprobar);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.txb_MontoAloj);
             this.groupBox4.Controls.Add(this.txb_Deposito);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(15, 586);
@@ -685,17 +685,17 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "Costo Reserva";
             // 
-            // textBox2
+            // txb_MontoAloj
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(131, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(83, 26);
-            this.textBox2.TabIndex = 22;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txb_MontoAloj.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txb_MontoAloj.BackColor = System.Drawing.Color.White;
+            this.txb_MontoAloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_MontoAloj.Location = new System.Drawing.Point(131, 39);
+            this.txb_MontoAloj.Name = "txb_MontoAloj";
+            this.txb_MontoAloj.ReadOnly = true;
+            this.txb_MontoAloj.Size = new System.Drawing.Size(83, 26);
+            this.txb_MontoAloj.TabIndex = 22;
+            this.txb_MontoAloj.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txb_Deposito
             // 
@@ -785,13 +785,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dt_hora;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbx_atendio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btn_Comprobar;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txb_MontoAloj;
         private System.Windows.Forms.TextBox txb_Deposito;
         private System.Windows.Forms.DataGridViewButtonColumn col_Op;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Hab;
