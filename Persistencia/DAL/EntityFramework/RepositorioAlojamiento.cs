@@ -102,32 +102,12 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public void AltaReserva(Alojamiento pAloj)
         {
+            //        iDbContext.Entry(tarifa).State = EntityState.Modified;
+
             Alojamiento localAloj = this.Get(pAloj.AlojamientoId);
             localAloj.MontoDeuda = pAloj.MontoDeuda;//por si efectuo pago reserva 
             localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
             localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
-
-            //ya estan enlazadas ¿¿??
-            //foreach (var localHab in localAloj.Habitaciones)
-            //{
-            //	foreach (var hab in pAloj.Habitaciones)
-            //	{
-            //		if (localHab.HabitacionId == hab.HabitacionId)
-            //		{
-            //			localHab.Exclusiva = hab.Exclusiva;
-            //			localHab.Ocupada = hab.Ocupada;
-            //		}
-            //	}
-            //}
-
-            //         List<Cliente> auxListCliente = new List<Cliente>();
-            //         foreach (var cli in pAloj.Clientes)
-            //         {
-            //             auxListCliente.Add(iDbContext.Clientes.Find(cli.ClienteId));
-            //         }
-            //         localAloj.Clientes = auxListCliente;
-
-            //         iDbContext.SaveChanges();
         }
 
         /// <summary>
