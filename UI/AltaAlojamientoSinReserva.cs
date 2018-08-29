@@ -294,6 +294,10 @@ namespace UI
                 if (ClienteResponsable == null)
                     throw new Exception("Debe 'Seleccionar Responsable'");
 
+                List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
+                if(!tiposCli.Contains(ClienteResponsable.TarifaCliente.NombreTarifa))
+                    throw new Exception("Debe incluir algún Titular como Responsable");
+
                 //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
                 bool responsable = false;
                 foreach (AlojHab alojHab in AlojHabs)
@@ -310,8 +314,42 @@ namespace UI
                 if (!responsable)
                     throw new Exception("El Responsable elegido debe estar en algunas de las Habitaciones'");
 
-                DateTime lfechaAloj = new DateTime(dtpicker_fechaAloj.Value.Year, dtpicker_fechaAloj.Value.Month, dtpicker_fechaAloj.Value.Day, dt_hora.Value.Hour, dt_hora.Value.Minute, 0);
+                int capTotal = 0;
+                foreach (var hab in AlojHabs)
+                {
+                    capTotal += hab.Habitacion.Capacidad;
+                }
 
+                int cantTour = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.CantPersonaTour);
+                if (button1.Text == "ES TOUR" && capTotal < cantTour)
+                    throw new Exception("La cantidad mínima para Tour debe ser de " + cantTour.ToString());
+
+                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
+                int cantNull = 0;
+                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                {
+                    if ((string)rowExcl.Cells[1].Value == "No")
+                    {
+                        foreach (DataGridViewRow rowHabs in dGV_Habitaciones.Rows)
+                        {
+                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[1].Value && rowHabs.Cells[3].Value == null)
+                            {
+                                cantNull++;
+                            }
+                        }
+                    }
+                }
+
+                bool resultVentEmer = true;
+                if (cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
+                {
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                    ventanaEmergente.ShowDialog();
+                    resultVentEmer = ventanaEmergente.Aceptar;
+                }
+
+                /////////////---------------------------------------->>>>>>>>>>>>>>>>>>>>>
+                DateTime lfechaAloj = new DateTime(dtpicker_fechaAloj.Value.Year, dtpicker_fechaAloj.Value.Month, dtpicker_fechaAloj.Value.Day, dt_hora.Value.Hour, dt_hora.Value.Minute, 0);
                 if (!btn_VerificarDisponibilidad.Enabled) //se trata de alta de reserva
                 {
                     //COMPROBAR QUE TODOS LOS CHECK ESTEN EN TRUE

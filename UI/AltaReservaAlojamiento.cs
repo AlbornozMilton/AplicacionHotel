@@ -143,7 +143,7 @@ namespace UI
 
                 bool result = true;
                 bool responsable = false;
-                int cantNull = 0;
+               
 
                 for (int i = 0; i < dGV_Habs.Rows.Count; i++)
                 {
@@ -151,8 +151,8 @@ namespace UI
 
                     if (valorCell != null && (string)valorCell.Value == ClienteResponsable.TarifaCliente.NombreTarifa)
                         responsable = true;
-                    else if (valorCell.Value == null)
-                        cantNull++;
+                    //else if (valorCell.Value == null)
+                    //    cantNull++;
                 }
 
                 if (!responsable)
@@ -165,27 +165,31 @@ namespace UI
                 }
 
                 int cantTour = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.CantPersonaTour);
-                if (button1.Text == "ES TOUR" && capTotal != cantTour)
+                if (button1.Text == "ES TOUR" && capTotal < cantTour)
                     throw new Exception("La cantidad mínima para Tour debe ser de " + cantTour.ToString());
 
-                if (button1.Text == "ES TOUR" && cantNull != 0)
-                    throw new Exception("Debe completar el Tour");
+                //preguntar si es requisito excluyente
+                //if (button1.Text == "ES TOUR" && cantNull != 0)
+                //    throw new Exception("Debe completar el Tour");
 
                 //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
+                int cantNull = 0;
                 foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                 {
-                    if ((string)rowExcl.Cells[1].Value == "Si")
+                    if ((string)rowExcl.Cells[1].Value == "No")
                     {
                         foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
                         {
                             if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value == null)
                             {
-                                cantNull--;
+                                cantNull++;
                             }
                         }
                     }
                 }
 
+                //solo el Titular Convenio esta registrado, no se registra su familia, entonces solo con la la exclusividad sabemos si va o no con la familia
+                //el costo base para responsable convenio se calcula en base a la excl no a la cant de convenios (su familia)
                 if (cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                 {
                     VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);

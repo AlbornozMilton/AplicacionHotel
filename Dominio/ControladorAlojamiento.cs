@@ -170,18 +170,6 @@ namespace Dominio
             iUoW.RepositorioAlojamiento.AddLineaServicio(Mapper.Map<Alojamiento, pers.Alojamiento>(pAlojamiento), Mapper.Map<LineaServicio, pers.LineaServicio>(nuevaLineaServicio));
         }
 
-		public void DarAltaReserva(Alojamiento pAlojEnAlta, string pCostoBase)
-		{
-			pAlojEnAlta.AltaDeReserva();
-
-			pAlojEnAlta.CalcularCostoBase();
-
-			if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
-			{
-				throw new Exception("Costo Base Incorrecto.");
-			}
-		}
-
 		/// <summary>
 		/// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
 		/// </summary>
