@@ -327,6 +327,8 @@ namespace UI
 
                     if (this.NuevoAlojamiento.MontoTotal.ToString() != txb_MontoAloj.Text)
                         throw new Exception("Error en el cálculo de Monto de Alojamiento");
+
+                    txb_Deposito.Text = NuevoAlojamiento.MontoDepositado().ToString();
                 }
                 else
                 {
@@ -336,12 +338,15 @@ namespace UI
                 }
 
                 txb_MontoAloj.Text = NuevoAlojamiento.MontoTotal.ToString();
-                //btn_Comprobar.Enabled = false;
 
-                groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
-                groupBox3.Enabled = true;
-                //groupBox4.Enabled = false;
+                groupBox1.Enabled = false; // grid de fechas
+                groupBox2.Enabled = false; // grid de responsable
+                btn_AgregarCliente.Enabled = false;
+                groupBox3.Enabled = false; // grid de habitaciones
+                dt_hora.Enabled = false;
+                dtpicker_fechaAloj.Enabled = false;
+                btn_Comprobar.Enabled = false;
+
                 btn_Aceptar.Enabled = true;
             }
             catch (Exception E)

@@ -166,6 +166,19 @@ namespace Dominio
             return this.iMontoTotal * pPorcentajeDepo * 0.01;
         }
 
+        public double MontoDepositado()
+        {
+            foreach (Pago p in this.Pagos)
+            {
+                if (p.Tipo == TipoPago.Deposito)
+                {
+                    return p.Monto;
+                }
+            }
+
+            return 0;
+        }
+
         /// <summary>
         /// Cambio de Estado a "Alojado"
         /// </summary>
