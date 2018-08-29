@@ -486,7 +486,7 @@ namespace UI
                 }
             }
 
-            if (!(!responsable && cantParaExcl != 1))
+            if (cantParaExcl != 1 || cantParaExcl == 1 && !responsable)
             {
                 foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                 {
@@ -499,6 +499,8 @@ namespace UI
                         rowExcl.Cells[1].Value = "No";
                     }
                 }
+
+                
             }
         }
 
