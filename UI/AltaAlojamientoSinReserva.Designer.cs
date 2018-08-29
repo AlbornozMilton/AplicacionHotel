@@ -581,7 +581,6 @@
             this.dtpicker_fechaAloj.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dtpicker_fechaAloj.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.dtpicker_fechaAloj.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtpicker_fechaAloj.Enabled = false;
             this.dtpicker_fechaAloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpicker_fechaAloj.Location = new System.Drawing.Point(554, 12);
             this.dtpicker_fechaAloj.Name = "dtpicker_fechaAloj";
@@ -681,19 +680,19 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(24, 44);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(101, 17);
+            this.label12.Size = new System.Drawing.Size(121, 17);
             this.label12.TabIndex = 21;
-            this.label12.Text = "Costo Reserva";
+            this.label12.Text = "Costo Alojamiento";
             // 
             // txb_MontoAloj
             // 
             this.txb_MontoAloj.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txb_MontoAloj.BackColor = System.Drawing.Color.White;
             this.txb_MontoAloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_MontoAloj.Location = new System.Drawing.Point(131, 39);
+            this.txb_MontoAloj.Location = new System.Drawing.Point(151, 39);
             this.txb_MontoAloj.Name = "txb_MontoAloj";
             this.txb_MontoAloj.ReadOnly = true;
-            this.txb_MontoAloj.Size = new System.Drawing.Size(83, 26);
+            this.txb_MontoAloj.Size = new System.Drawing.Size(90, 26);
             this.txb_MontoAloj.TabIndex = 22;
             this.txb_MontoAloj.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -705,7 +704,7 @@
             this.txb_Deposito.Location = new System.Drawing.Point(392, 39);
             this.txb_Deposito.Name = "txb_Deposito";
             this.txb_Deposito.ReadOnly = true;
-            this.txb_Deposito.Size = new System.Drawing.Size(83, 26);
+            this.txb_Deposito.Size = new System.Drawing.Size(90, 26);
             this.txb_Deposito.TabIndex = 24;
             this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

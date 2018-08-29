@@ -187,7 +187,6 @@ namespace Dominio
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
             this.iAlojHabs = pAH;
             this.iFechaAloj = pFechaAloj;
-            //this.FechaIngreso = DateTime.Now;
             this.FechaIngreso = pFechaIngreso;
         }
 

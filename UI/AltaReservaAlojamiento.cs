@@ -8,8 +8,6 @@ namespace UI
 {
     public partial class AltaReservaAlojamiento : Form
     {
-        //public List<Habitacion> HabSeleccionadas;
-
         public DateTime FechaIni;
         public DateTime FechaFin;
         public Cliente ClienteResponsable;
@@ -24,6 +22,7 @@ namespace UI
             InitializeComponent();
             //txb_fechaActual.Text = DateTime.Now.ToString("dd/MM/yy");
             dtp_fechaDesde.Value = DateTime.Now;
+            dt_hora.Value = dtp_fechaDesde.Value;
             dtp_fechaHasta.Value = DateTime.Now.AddDays(1);
         }
 

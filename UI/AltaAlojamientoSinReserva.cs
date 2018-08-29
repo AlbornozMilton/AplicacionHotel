@@ -499,8 +499,6 @@ namespace UI
                         rowExcl.Cells[1].Value = "No";
                     }
                 }
-
-                
             }
         }
 
@@ -528,7 +526,6 @@ namespace UI
                             if (tiposCli.Contains((string)rowHab.Cells[4].Value))
                                 responsable = true;
                         }
-
                     }
 
                     if (responsable && cantParaExcl == 1)

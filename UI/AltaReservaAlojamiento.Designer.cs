@@ -402,7 +402,7 @@
             this.txb_CostoBase.Location = new System.Drawing.Point(131, 32);
             this.txb_CostoBase.Name = "txb_CostoBase";
             this.txb_CostoBase.ReadOnly = true;
-            this.txb_CostoBase.Size = new System.Drawing.Size(83, 26);
+            this.txb_CostoBase.Size = new System.Drawing.Size(90, 26);
             this.txb_CostoBase.TabIndex = 22;
             this.txb_CostoBase.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -428,7 +428,7 @@
             this.txb_Deposito.Location = new System.Drawing.Point(333, 34);
             this.txb_Deposito.Name = "txb_Deposito";
             this.txb_Deposito.ReadOnly = true;
-            this.txb_Deposito.Size = new System.Drawing.Size(83, 26);
+            this.txb_Deposito.Size = new System.Drawing.Size(90, 26);
             this.txb_Deposito.TabIndex = 24;
             this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -692,7 +692,6 @@
             this.dtpicker_fechaAloj.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dtpicker_fechaAloj.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.dtpicker_fechaAloj.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtpicker_fechaAloj.Enabled = false;
             this.dtpicker_fechaAloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpicker_fechaAloj.Location = new System.Drawing.Point(575, 10);
             this.dtpicker_fechaAloj.Name = "dtpicker_fechaAloj";
