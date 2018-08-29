@@ -103,63 +103,24 @@ namespace UI
             BuscarClienteForm.ShowDialog();
             try
             {
-                if (BuscarClienteForm.ClienteSeleccionado != null)
+                if (BuscarClienteForm.ClienteSeleccionado == null)
+                    throw new Exception("Debe seleccionar un Responsable para continuar");
+
+                if (BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.AcompanianteDirecto
+                        ||
+                        BuscarClienteForm.ClienteSeleccionado.TarifaCliente.TarifaClienteId == TipoCliente.AcompanianteNoDirecto)
                 {
-                    //Excepción cliente activo
-                    new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
-
-                    //AVISO DE CLIENTE DEUDOR
-
-                    dGV_ClienteResponsable.Rows.Clear();
-                    this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
-
-                    switch (ClienteResponsable.TarifaCliente.TarifaClienteId)
-                    {
-                        case TipoCliente.Titular:
-                            {
-                                //ck_Exclusividad.Enabled = exclusividadCapacidad;
-                            }
-                            break;
-                        case TipoCliente.AcompanianteDirecto:
-                            {
-                                VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
-                                ventanaEmergente.ShowDialog();
-                                //ck_Exclusividad.Enabled = exclusividadCapacidad;
-                            }
-                            break;
-                        case TipoCliente.AcompanianteNoDirecto:
-                            {
-                                VentanaEmergente ventanaEmergente = new VentanaEmergente("El Cliente Responsable que eligió no es Titular, queda a su criterio continuar con la carga", TipoMensaje.Alerta);
-                                ventanaEmergente.ShowDialog();
-                                //ck_Exclusividad.Enabled = exclusividadCapacidad;
-                            }
-                            break;
-                        case TipoCliente.TitularExceptuado:
-                            {
-                                //ck_Exclusividad.Checked = false;
-                                //ck_Exclusividad.Enabled = exclusividadCapacidad;
-                            }
-                            break;
-                        case TipoCliente.Convenio:
-                            {
-                                //ck_Exclusividad.Enabled = exclusividadCapacidad;
-                            }
-                            break;
-                    }
-
-                    dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
-
-                    groupBox3.Enabled = true; //ACOMPAÑANTES
-                                              //btn_Comprobar.Enabled = true;
-                    dGV_Habitaciones.Rows.Clear();
-                    Acompañantes.Clear();
-                    Acompañantes.Add(ClienteResponsable);
+                    throw new Exception("El Responsable solo puede ser Titular, Titular Exceptuado o Convenio");
                 }
-                else
-                if (ClienteResponsable == null)
-                {
-                    throw new Exception("Debe seleccionar un Cliente para continuar");
-                }
+
+                //Excepción cliente activo
+                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+
+                //<-------------AVISO DE CLIENTE DEUDOR --------------------------
+
+                dGV_ClienteResponsable.Rows.Clear();
+                this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
+                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
             }
             catch (Exception E)
             {
@@ -288,6 +249,16 @@ namespace UI
         {
             try
             {
+                VentanaEmergente ventanaEmergenteAtendio;
+                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
+                {
+                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
+                    ventanaEmergenteAtendio.ShowDialog();
+
+                    if (!ventanaEmergenteAtendio.Aceptar)
+                        return;
+                }
+
                 if (dGV_Habitaciones.Rows.Count == 0)
                     throw new Exception("Debe seleccionar al menos una Habitación");
 
@@ -295,7 +266,7 @@ namespace UI
                     throw new Exception("Debe 'Seleccionar Responsable'");
 
                 List<string> tiposCli = new List<string>() { "Titular", "Convenio", "Titular Exceptuado" };
-                if(!tiposCli.Contains(ClienteResponsable.TarifaCliente.NombreTarifa))
+                if (!tiposCli.Contains(ClienteResponsable.TarifaCliente.NombreTarifa))
                     throw new Exception("Debe incluir algún Titular como Responsable");
 
                 //COMPROBAR QUE EL RESPONSABLE ESTE SELECCIONADO
@@ -315,6 +286,7 @@ namespace UI
                     throw new Exception("El Responsable elegido debe estar en algunas de las Habitaciones'");
 
                 int capTotal = 0;
+
                 foreach (var hab in AlojHabs)
                 {
                     capTotal += hab.Habitacion.Capacidad;
@@ -323,6 +295,18 @@ namespace UI
                 int cantTour = new ControladorExtra().ObtenerValorMetada(TipoMetadaHotel.CantPersonaTour);
                 if (button1.Text == "ES TOUR" && capTotal < cantTour)
                     throw new Exception("La cantidad mínima para Tour debe ser de " + cantTour.ToString());
+
+                //Reglas segun tipo de responsables y clientes
+                foreach (DataGridViewRow row in dGV_Habitaciones.Rows)
+                {
+                    if (row.Cells[4].Value != null)
+                    {
+                        if ((ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.Convenio && (string)row.Cells[4].Value != "Convenio")
+                                            ||
+                                        (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio) && (string)row.Cells[4].Value == "Convenio")
+                            throw new Exception("No debe haber Titulares por Convenio mezclados con otros Tipos de Titulares"); 
+                    }
+                }
 
                 //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
                 int cantNull = 0;
@@ -340,12 +324,13 @@ namespace UI
                     }
                 }
 
-                bool resultVentEmer = true;
+                VentanaEmergente ventanaEmergenteHabDisp;
                 if (cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
-                    ventanaEmergente.ShowDialog();
-                    resultVentEmer = ventanaEmergente.Aceptar;
+                    ventanaEmergenteHabDisp = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                    ventanaEmergenteHabDisp.ShowDialog();
+                    if (!ventanaEmergenteHabDisp.Aceptar)
+                        return;
                 }
 
                 /////////////---------------------------------------->>>>>>>>>>>>>>>>>>>>>
@@ -365,8 +350,6 @@ namespace UI
 
                     if (this.NuevoAlojamiento.MontoTotal.ToString() != txb_MontoAloj.Text)
                         throw new Exception("Error en el cálculo de Monto de Alojamiento");
-
-                    txb_Deposito.Text = NuevoAlojamiento.MontoDepositado().ToString();
                 }
                 else
                 {
@@ -376,6 +359,7 @@ namespace UI
                 }
 
                 txb_MontoAloj.Text = NuevoAlojamiento.MontoTotal.ToString();
+                txb_Deposito.Text = NuevoAlojamiento.MontoDepositado().ToString();
 
                 groupBox1.Enabled = false; // grid de fechas
                 groupBox2.Enabled = false; // grid de responsable
@@ -552,7 +536,7 @@ namespace UI
                     {
                         //cantExclAux -= ah.Habitacion.Capacidad;
 
-                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Para exclusividad de la habitación debe poseer un Titular, Titular Exceptuado o Convenio solamente", TipoMensaje.Alerta);
+                        VentanaEmergente ventanaEmergente = new VentanaEmergente("Para exclusividad de la Habitación SOLAMENTE debe poseer un Titular, Titular Exceptuado o Convenio", TipoMensaje.Alerta);
                         ventanaEmergente.ShowDialog();
                     }
                 }
