@@ -13,7 +13,7 @@ namespace UI
         public Alojamiento NuevoAlojamiento;
 
         List<AlojHab> AlojHabs = new List<AlojHab>();
-        List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
+        //List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
         bool exclusividadCapacidad;
         int cantExclAux = 0;
 
@@ -26,7 +26,7 @@ namespace UI
         private void AltaAlojamientoSinReserva_Load(object sender, EventArgs e)
         {
             //DateTime.Today.ToString("dd/MM/yy");
-            dtpicker_fechaAloj.Value = DateTime.Today;
+            dtpicker_fechaAloj.Value = DateTime.Now;
             dt_hora.Value = dtpicker_fechaAloj.Value;
             dtp_fechaDesde.Value = DateTime.Now;
             FechaIni = DateTime.Now;
@@ -190,51 +190,62 @@ namespace UI
         #region Alta de Reserva
         public void RellenarCampos()
         {
-
-            //importanteeee----------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-            //rellenar la fecha y hora con la de la reserva FechaAloj
-
-            //foreach (Habitacion hab in this.HabSeleccionadas)
-            //{
-            //    AlojHabs.Add(new AlojHab(hab));
-
-            //    for (int i = 0; i < hab.Capacidad; i++)
-            //    {
-            //        dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId);
-            //    }
-
-            //    dGV_excl.Rows.Add(hab.HabitacionId, "No");
-            //}
-
-            //generar los check
-            //check de su tarifa correspondiente para tal habitacion
-            //<<<<<<<<<<<<<<<<<<----------------------------------------
+            AlojHabs = this.NuevoAlojamiento.AlojHabes;
 
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
             dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
             dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
-            //ck_Exclusividad.CheckState = NuevoAlojamiento.Exclusividad == true ? CheckState.Checked:CheckState.Unchecked;
 
-            //cliente responsable
+            dtpicker_fechaAloj.Value = this.NuevoAlojamiento.FechaAloj;
+            dt_hora.Value = this.NuevoAlojamiento.FechaAloj;
+
+            if (this.NuevoAlojamiento.EsTour)
+            {
+                button1.Text = "ES TOUR";
+                button1.BackColor = System.Drawing.Color.Green;
+            }
+
+            tbx_atendio.Text = this.NuevoAlojamiento.Antendio;
+
+            //<<<<<<<<<<<<<<<<<<----------------------------------------
+            for (int i = 0; i < AlojHabs.Count; i++)
+            {
+                Habitacion hab = this.AlojHabs[i].Habitacion;
+                List<Cliente> cliHab = AlojHabs[i].Clientes;
+                int auxCapHab = hab.Capacidad;
+
+                for (int j = 0; j < cliHab.Count; j++)
+                {
+                    dGV_Habitaciones.Rows.Add(
+                        "Agregar",
+                        hab.HabitacionId,
+                        cliHab[j].Apellido + " " + cliHab[j].Nombre,
+                        cliHab[j].ClienteId,
+                        cliHab[j].TarifaCliente.TarifaClienteId);
+                    auxCapHab--;
+                }
+
+                while (auxCapHab > 0)
+                {
+                    dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId);
+                    auxCapHab--;
+                }
+
+                if (this.AlojHabs[i].Exclusividad)
+                    dGV_excl.Rows.Add(hab.HabitacionId, "Si");
+            }
+            //<<<<<<<<<<<<<<<<<<----------------------------------------
+
+            btn_AgregarCliente.Enabled = false;
+            this.ClienteResponsable = new ControladorCliente().BuscarClientePorDni(this.NuevoAlojamiento.DniResponsable, true);
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
-            //this.Acompañantes = new List<Cliente>();
-            //this.Acompañantes.Add(ClienteResponsable);
-            //btn_Confirmar.Enabled = true;
 
-            //HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
+            txb_MontoAloj.Text = this.NuevoAlojamiento.MontoTotal.ToString();
+            txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
 
-            //para almacenar el valor de costo base de reserva y luego comparar
-            //txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-
-            ////--------Por la reserva------------------------
-            //if (!btn_VerificarDisponibilidad.Enabled)
-            //{
-            //    auxListaCliReserva = NuevoAlojamiento.Clientes;
-            //}
-            ////-------------------------------------
             groupBox1.Enabled = false; //disponibilidad
-            groupBox3.Enabled = true; // Acompañantes
+            groupBox_excl.Enabled = false;
+
             button_visualizarReserva.Visible = true;
         }
         #endregion
@@ -358,7 +369,7 @@ namespace UI
                 }
 
                 txb_MontoAloj.Text = this.NuevoAlojamiento.MontoTotal.ToString();
-                txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
+                //txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
 
                 groupBox1.Enabled = false; // grid de fechas
                 groupBox2.Enabled = false; // grid de responsable

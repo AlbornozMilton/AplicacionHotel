@@ -270,7 +270,9 @@ namespace UI
                 {
                     throw new NullReferenceException("Debe seleccionar un Alojamiento. Vuelva a intentarlo.");
                 }
+
                 new ControladorAlojamiento().ControlInicioAltaReserva(BuscarAlojamiento.Aloj_Seleccionado);
+
                 AltaReservaAlojamiento.NuevoAlojamiento = BuscarAlojamiento.Aloj_Seleccionado;
                 AltaReservaAlojamiento.RellenarCampos();
             }
