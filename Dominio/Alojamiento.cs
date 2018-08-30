@@ -7,7 +7,9 @@ namespace Dominio
     {
         private int iIdAlojamiento;
         private int iDniResponsable;
-        public bool iEsTour;
+        private bool iEsTour;
+        private string iAtendio;
+        private DateTime iFechaAloj;
         private DateTime iFechaReserva = new DateTime();
         private DateTime iFechaEstimadaEgreso = new DateTime();
         private DateTime iFechaEstimadaIngreso = new DateTime();
@@ -29,12 +31,13 @@ namespace Dominio
         /// <summary>
         /// Constructor para el Alta Alojamiento sin Reserva
         /// </summary>
-        public Alojamiento(List<AlojHab> pAlojHabes, Cliente unClienteResp, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour)
+        public Alojamiento(List<AlojHab> pAlojHabes, Cliente unClienteResp, DateTime pFechaAloj, DateTime unaFechaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour, string pAtendio)
         {
             this.iEstadoAloj = EstadoAlojamiento.Alojado;
             this.iDniResponsable = unClienteResp.ClienteId;
             this.iAlojHabs = pAlojHabes;
             this.iFechaIngreso = unaFechaIngreso;
+            this.iFechaAloj = pFechaAloj;
             this.iFechaEstimadaEgreso =
                 new DateTime(
                         unaFechaEstimadaEgreso.Year,
@@ -42,18 +45,20 @@ namespace Dominio
                         unaFechaEstimadaEgreso.Day,
                         11, 00, 00);
             this.iEsTour = pEsTour;
+            this.iAtendio = pAtendio;
         }
 
         /// <summary>
         /// Contructor para la Reserva de Alojamiento
         /// </summary>
-        public Alojamiento(List<AlojHab> pAlojHabes, int unClienteResp, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour)
+        public Alojamiento(List<AlojHab> pAlojHabes, int unClienteResp, DateTime pFechaAloj, DateTime unaFechaEstimadaIngreso, DateTime unaFechaEstimadaEgreso, bool pEsTour, string pAtendio)
         {
             this.iEstadoAloj = EstadoAlojamiento.Reservado;
             this.iFechaReserva = DateTime.Now;
             this.iDniResponsable = unClienteResp;
 
             this.iAlojHabs = pAlojHabes;
+            this.iFechaAloj = pFechaAloj;
             this.iFechaEstimadaIngreso =
                 new DateTime(
                         unaFechaEstimadaIngreso.Year,
@@ -67,6 +72,7 @@ namespace Dominio
                         unaFechaEstimadaEgreso.Day,
                         11, 00, 00);
             this.iEsTour = pEsTour;
+            this.iAtendio = pAtendio;
         }
 
         //----------------------PROP----------------------
@@ -80,10 +86,17 @@ namespace Dominio
             get { return this.iDniResponsable; }
             private set { this.iDniResponsable = value; }
         }
+        public string Antendio { get { return this.iAtendio; } private set { this.iAtendio = value; } }
+
         public bool EsTour
         {
             get { return this.iEsTour; }
             private set { this.iEsTour = value; }
+        }
+        public DateTime FechaAloj
+        {
+            get { return this.iFechaAloj; }
+            private set { this.iFechaAloj = value; }
         }
         public DateTime FechaReserva
         {
@@ -153,13 +166,28 @@ namespace Dominio
             return this.iMontoTotal * pPorcentajeDepo * 0.01;
         }
 
+        public double MontoDepositado()
+        {
+            foreach (Pago p in this.Pagos)
+            {
+                if (p.Tipo == TipoPago.Deposito)
+                {
+                    return p.Monto;
+                }
+            }
+
+            return 0;
+        }
+
         /// <summary>
-        /// Cambio de Estado a "Alojado" y Set fecha de Ingreso
+        /// Cambio de Estado a "Alojado"
         /// </summary>
-        public void AltaDeReserva()
+        public void AltaDeReserva(List<AlojHab> pAH, DateTime pFechaAloj, DateTime pFechaIngreso)
         {
             this.EstadoAlojamiento = EstadoAlojamiento.Alojado;
-            this.FechaIngreso = DateTime.Now;
+            this.iAlojHabs = pAH;
+            this.iFechaAloj = pFechaAloj;
+            this.FechaIngreso = pFechaIngreso;
         }
 
         public bool ExistePagoAlojamiento(Pago pPago)
@@ -242,11 +270,6 @@ namespace Dominio
             return total;
         }
 
-        public void AgregarCliente(Cliente pCliente)
-        {
-            //this.iClientes.Add(pCliente);
-        }
-
         /// <summary>
         /// Agrega una linea servicio y actualiza sus montos
         /// </summary>
@@ -280,29 +303,6 @@ namespace Dominio
         {
             this.iFechaCancelacion = DateTime.Now;
             this.iEstadoAloj = EstadoAlojamiento.Cancelado;
-        }
-
-        public void SetClientes(List<Cliente> pClientes)
-        {
-            //this.iClientes = pClientes;
-        }
-
-        public int CantidadAlojados()
-        {
-            //if (this.EstadoAlojamiento == EstadoAlojamiento.Alojado)
-            //{
-            //	return Clientes.Count;
-            //}
-            //else
-            //{
-            //	int auxCont = 0;
-            //	for (int i = 0; i < ContadoresTarifas.Length; i++)
-            //	{
-            //		auxCont += Convert.ToInt32(ContadoresTarifas[i]);
-            //	}
-            //	return auxCont + 1;
-            //}
-            return 0;
         }
 
         public Cliente ClienteResponsable()

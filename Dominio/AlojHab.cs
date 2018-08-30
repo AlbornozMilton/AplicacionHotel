@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Dominio
 {
@@ -36,14 +37,56 @@ namespace Dominio
         public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
         public List<HabClientesRow> Rows { get { return this.iRowTarifas; } private set { this.iRowTarifas = value; } }
 
-        public void AgregarTarifa(int pNum, string pTarifa)
+        public void AgregarTarifaRow(int pNum, string pTarifa)
         {
-            var row = iRowTarifas.Find(r => r.iNumRow == pNum);
-
+            //pNum es el numero de fila, si ya existe es por que se esta cambiando de tipo de tarifa para la misma fila
+            var row = iRowTarifas.Find(r => r.NumRow == pNum);
             if (row != null)
                 iRowTarifas.Remove(row);
 
             iRowTarifas.Add(new HabClientesRow(pNum, pTarifa));
+        }
+
+        /// <param name="TipoC">Nombre de Tarfifa que se evaluara el "Contains"</param>
+        /// <returns>bool</returns>
+        public bool CheckinTarifaCliente(string TipoC)
+        {
+            bool result = false;
+            foreach (HabClientesRow row in iRowTarifas)
+            {
+                if (!row.Check && row.TarifaString == TipoC)
+                    result = true;
+                else
+                    result = false;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Solo cuando este alojamiento se haya reservado
+        /// </summary>
+        public bool ControlTarifasCliente()
+        {
+            bool resultado = true;
+
+            if (this.Tarifas.Count == this.Clientes.Count)
+            {
+                List<TarifaCliente> AuxTarifas = this.Tarifas.OrderBy(t => t.TarifaClienteId).ToList();
+                List<Cliente> AuxTarifasCli = this.Clientes.OrderBy(c => c.TarifaCliente.TarifaClienteId).ToList();
+
+                for (int i = 0; i < AuxTarifas.Count; i++)
+                {
+                    if (AuxTarifas[i].TarifaClienteId != AuxTarifasCli[i].TarifaCliente.TarifaClienteId)
+                    {
+                        resultado = false;
+                        break;
+                    }
+                } 
+            }
+            else
+                resultado = false;
+
+            return resultado;
         }
     }
 }

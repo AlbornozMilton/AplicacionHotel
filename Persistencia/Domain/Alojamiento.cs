@@ -8,6 +8,8 @@ namespace Persistencia.Domain
         public int AlojamientoId { get; set; }
         public int DniResponsable { get; set; }
         public bool EsTour { get; set; }
+        public string Atendio { get; set; }
+        public DateTime FechaAloj { get; set; }
 		public DateTime? FechaReserva { get; set; }
         public DateTime? FechaEstimadaIngreso { get; set; }
         public DateTime? FechaEstimadaEgreso { get; set; }

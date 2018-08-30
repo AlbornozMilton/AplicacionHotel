@@ -171,43 +171,6 @@ namespace Dominio
         }
 
 		/// <summary>
-		/// Control de Tipos y Cantidades. Cambia estado y fecha. Recalcula costo base.
-		/// </summary>
-		public void ComprobarClientesAltaConReserva(Alojamiento pAlojEnAlta)
-		{
-			double cantidadTarifa = 0, cantidadCliente = 0;
-
-			foreach (AlojHab alojHab in pAlojEnAlta.AlojHabes)
-			{
-				foreach (TarifaCliente tarifa in alojHab.Tarifas)
-				{
-					cantidadTarifa += tarifa.GetTarifa(alojHab.Exclusividad);
-				}
-				foreach (Cliente cli in alojHab.Clientes)
-				{
-					cantidadCliente += cli.ObtenerSuPrecioTarifa(alojHab.Exclusividad);
-				}
-			}
-
-			if (cantidadTarifa != cantidadCliente)
-			{
-				throw new Exception("Los Clientes cargados NO corresponden con la Reserva");
-			}
-		}
-
-		public void DarAltaReserva(Alojamiento pAlojEnAlta, string pCostoBase)
-		{
-			pAlojEnAlta.AltaDeReserva();
-
-			pAlojEnAlta.CalcularCostoBase();
-
-			if (pAlojEnAlta.MontoTotal.ToString() != pCostoBase)
-			{
-				throw new Exception("Costo Base Incorrecto.");
-			}
-		}
-
-		/// <summary>
 		/// Cotrola excepciones previamente para dar de Alta una Reserva: Estado Reservado - Fecha de Alta
 		/// </summary>
 		public void ControlInicioAltaReserva(Alojamiento pAloj)

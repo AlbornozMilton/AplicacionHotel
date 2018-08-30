@@ -33,7 +33,6 @@ namespace Persistencia.DAL.EntityFramework.Mappings
                 .WithMany(tc => tc.Clientes);
 
             this.HasOptional(c => c.Domicilio).WithMany(c => c.Clientes);
-
-		}
+        }
     }
 }

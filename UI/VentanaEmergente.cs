@@ -29,17 +29,18 @@ namespace UI
             Alojamiento = new ControladorAlojamiento().BuscarAlojamientoPorID(pIdAloj);
 
             pictureBox_icon.Location = new Point(37, 12);
-            lbl_TextPrincipal.Location = new Point(118, 34);
+            //lbl_TextPrincipal.Location = new Point(118, 34);
 
             //lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
-            lbl_TextAux.Location = new Point(66, 87);
+            //lbl_TextAux.Location = new Point(66, 87);
             lbl_TextAux.Visible = true;
 
 
             btn_Aceptar.Text = "Realizar Pago";
             lbl_TextAux.Text = "¿Desea continuar?";
-            btn_Aceptar.Location = new Point(242, 113);
-            btn_Aceptar.Size = new Size(132, 30);
+            //btn_Aceptar.Location = new Point(242, 113);
+            btn_Aceptar.Location = new Point(266, 113);
+            //btn_Aceptar.Size = new Size(132, 30);
 
             button_cancelar.Visible = true;
         }

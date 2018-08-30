@@ -20,7 +20,6 @@ namespace UI
         {
             for (int i = 0; i < camposObligatorios.Length; i++)
             {
-                //int j = 1;
                 if (camposObligatorios[i, 0] == pLabelName)
                 {
                     camposObligatorios[i, 1] = pLabelText;
@@ -93,7 +92,6 @@ namespace UI
             if (localCliente.Domicilio.Ciudad != null)
                 cbx_ciudades.SelectedIndex = cbx_ciudades.FindString(localCliente.Domicilio.Ciudad.Nombre);
             label19.Text = "";
-            //cbx_ciudades.Text = localCliente.Domicilio.Ciudad.Nombre;
             cbx_calles.Text = localCliente.Domicilio.Calle;
             label21.Text = "";
             txb_nroCalle.Text = localCliente.Domicilio.Numero.ToString();
@@ -248,7 +246,8 @@ namespace UI
 
             foreach (var calle in auxCalles)
             {
-                cbx_calles.Items.Add(calle);
+                if (calle != "")
+                    cbx_calles.Items.Add(calle);
             }
         }
 
