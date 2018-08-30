@@ -131,16 +131,6 @@ namespace UI
         {
             try
             {
-                VentanaEmergente ventanaEmergenteAtendio;
-                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
-                {
-                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
-                    ventanaEmergenteAtendio.ShowDialog();
-
-                    if (!ventanaEmergenteAtendio.Aceptar)
-                        return;
-                }
-
                 if (ClienteResponsable == null)
                     throw new Exception("Debe 'Seleccionar Responsable'");
 
@@ -201,6 +191,16 @@ namespace UI
                             }
                         }
                     }
+                }
+
+                VentanaEmergente ventanaEmergenteAtendio;
+                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
+                {
+                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
+                    ventanaEmergenteAtendio.ShowDialog();
+
+                    if (!ventanaEmergenteAtendio.Aceptar)
+                        return;
                 }
 
                 //solo el Titular Convenio esta registrado, no se registra su familia, entonces solo con la la exclusividad sabemos si va o no con la familia
@@ -267,7 +267,7 @@ namespace UI
         }
 
         #region Ingreso de Fechas en Calendario
-        //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad o algo similar
+        //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
             try

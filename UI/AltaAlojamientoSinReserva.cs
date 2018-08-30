@@ -249,16 +249,6 @@ namespace UI
         {
             try
             {
-                VentanaEmergente ventanaEmergenteAtendio;
-                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
-                {
-                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
-                    ventanaEmergenteAtendio.ShowDialog();
-
-                    if (!ventanaEmergenteAtendio.Aceptar)
-                        return;
-                }
-
                 if (dGV_Habitaciones.Rows.Count == 0)
                     throw new Exception("Debe seleccionar al menos una Habitación");
 
@@ -304,7 +294,7 @@ namespace UI
                         if ((ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.Convenio && (string)row.Cells[4].Value != "Convenio")
                                             ||
                                         (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio) && (string)row.Cells[4].Value == "Convenio")
-                            throw new Exception("No debe haber Titulares por Convenio mezclados con otros Tipos de Titulares"); 
+                            throw new Exception("No debe haber Titulares por Convenio mezclados con otros Tipos de Titulares");
                     }
                 }
 
@@ -322,6 +312,16 @@ namespace UI
                             }
                         }
                     }
+                }
+
+                VentanaEmergente ventanaEmergenteAtendio;
+                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
+                {
+                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
+                    ventanaEmergenteAtendio.ShowDialog();
+
+                    if (!ventanaEmergenteAtendio.Aceptar)
+                        return;
                 }
 
                 VentanaEmergente ventanaEmergenteHabDisp;

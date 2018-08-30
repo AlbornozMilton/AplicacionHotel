@@ -28,7 +28,7 @@ namespace UI
             TipoMensaje = pTipoMensaje;
             Alojamiento = new ControladorAlojamiento().BuscarAlojamientoPorID(pIdAloj);
 
-            pictureBox_icon.Location = new Point(37, 12);
+            //pictureBox_icon.Location = new Point(37, 12);
             //lbl_TextPrincipal.Location = new Point(118, 34);
 
             //lbl_TextAux.Text = "¿Desea realizar un Pago de Depósito?";
@@ -36,7 +36,7 @@ namespace UI
             lbl_TextAux.Visible = true;
 
 
-            btn_Aceptar.Text = "Realizar Pago";
+            btn_Aceptar.Text = "Si";
             lbl_TextAux.Text = "¿Desea continuar?";
             //btn_Aceptar.Location = new Point(242, 113);
             btn_Aceptar.Location = new Point(266, 113);

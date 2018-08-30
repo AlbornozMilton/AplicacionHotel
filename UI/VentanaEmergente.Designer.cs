@@ -60,7 +60,7 @@
             this.button_cancelar.Name = "button_cancelar";
             this.button_cancelar.Size = new System.Drawing.Size(110, 30);
             this.button_cancelar.TabIndex = 2;
-            this.button_cancelar.Text = "Salir";
+            this.button_cancelar.Text = "No";
             this.button_cancelar.UseVisualStyleBackColor = true;
             this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
             // 
@@ -77,7 +77,7 @@
             // lbl_TextPrincipal
             // 
             this.lbl_TextPrincipal.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_TextPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TextPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TextPrincipal.Location = new System.Drawing.Point(89, 20);
             this.lbl_TextPrincipal.Name = "lbl_TextPrincipal";
             this.lbl_TextPrincipal.Size = new System.Drawing.Size(300, 60);
