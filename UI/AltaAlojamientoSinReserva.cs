@@ -13,7 +13,6 @@ namespace UI
         public Alojamiento NuevoAlojamiento;
 
         List<AlojHab> AlojHabs = new List<AlojHab>();
-        //List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
         bool exclusividadCapacidad;
         int cantExclAux = 0;
 
@@ -45,9 +44,6 @@ namespace UI
 
                 if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
-                    //this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
-                    ;
-
                     exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 0);
 
                     AlojHabs.Clear();
@@ -78,8 +74,6 @@ namespace UI
                     }
 
                     btn_AgregarCliente.Enabled = true; //seleccionar responsable
-
-                    //btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
                 }
                 else if (TablaDisp.HabSeleccionadas == null)
                 {
@@ -205,7 +199,7 @@ namespace UI
                 button1.BackColor = System.Drawing.Color.Green;
             }
 
-            tbx_atendio.Text = this.NuevoAlojamiento.Antendio;
+            tbx_atendio.Text = this.NuevoAlojamiento.Atendio;
 
             //<<<<<<<<<<<<<<<<<<----------------------------------------
             for (int i = 0; i < AlojHabs.Count; i++)

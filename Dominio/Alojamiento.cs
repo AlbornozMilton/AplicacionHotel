@@ -86,7 +86,7 @@ namespace Dominio
             get { return this.iDniResponsable; }
             private set { this.iDniResponsable = value; }
         }
-        public string Antendio { get { return this.iAtendio; } private set { this.iAtendio = value; } }
+        public string Atendio { get { return this.iAtendio; } private set { this.iAtendio = value; } }
 
         public bool EsTour
         {

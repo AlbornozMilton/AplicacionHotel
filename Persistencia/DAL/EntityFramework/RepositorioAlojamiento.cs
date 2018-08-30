@@ -26,7 +26,8 @@ namespace Persistencia.DAL.EntityFramework
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("AlojHabes.Habitacion").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes").Where(a => a.AlojamientoId == pId).SingleOrDefault();
+                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("AlojHabes.Habitacion").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes")
+                    .Where(a => a.AlojamientoId == pId).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -78,10 +79,6 @@ namespace Persistencia.DAL.EntityFramework
         public override void Add(Alojamiento unAloj)
         {
             //        iDbContext.Entry(tarifa).State = EntityState.Modified;
-
-            //         List<Cliente> auxListCliente = new List<Cliente>();
-            //List<Habitacion> auxHabitaciones = new List<Habitacion>();
-
             foreach (var ah in unAloj.AlojHabes)
             {
                 ah.HabitacionId = ah.Habitacion.HabitacionId;
@@ -99,9 +96,6 @@ namespace Persistencia.DAL.EntityFramework
                     iDbContext.Entry(item).State = EntityState.Modified;
                     //item.TarifaCliente = null;
                 }
-                //ah.Tarifas = null;
-
-                //ah.Clientes = null;
             }
 
             iDbContext.Alojamientos.Add(unAloj);
@@ -115,7 +109,6 @@ namespace Persistencia.DAL.EntityFramework
         public void AltaReserva(Alojamiento pAloj)
         {
             //        iDbContext.Entry(tarifa).State = EntityState.Modified;
-
             Alojamiento localAloj = this.Get(pAloj.AlojamientoId);
             localAloj.MontoDeuda = pAloj.MontoDeuda;//por si efectuo pago reserva 
             localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;

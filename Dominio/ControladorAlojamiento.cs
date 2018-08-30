@@ -28,7 +28,32 @@ namespace Dominio
 
         public Alojamiento BuscarAlojamientoPorID(int unId)
         {
-            return (Mapper.Map<pers.Alojamiento, Alojamiento>(iUoW.RepositorioAlojamiento.Get(unId)));
+            var aloj = iUoW.RepositorioAlojamiento.Get(unId);
+            LimpiarAlojHabs(aloj.AlojHabes);
+            return (Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+        }
+
+        private void LimpiarAlojHabs(List<pers.AlojHab> pAHs)
+        {
+            foreach (pers.AlojHab pAH in pAHs)
+            {
+                pAH.Alojamiento = null;
+
+                pAH.Habitacion.AlojHabs = null;
+
+                foreach (pers.Cliente cliente in pAH.Clientes)
+                {
+                    cliente.AlojHabs = null;
+                    //cliente.TarifaCliente.AlojHabs = null; // por getId
+                    //cliente.TarifaCliente.Clientes = null;
+                }
+
+                foreach (pers.TarifaCliente tarifa in pAH.Tarifas)
+                {
+                    tarifa.AlojHabs = null;
+                    tarifa.Clientes = null;
+                } 
+            }
         }
 
         public List<Alojamiento> ObtenerAlojamientosActivos()
@@ -38,26 +63,7 @@ namespace Dominio
 
             foreach (var aloj in listaEnum)
             {
-                foreach (pers.AlojHab ah in aloj.AlojHabes)
-                {
-                    ah.Alojamiento = null;
-
-                    ah.Habitacion.AlojHabs = null;
-
-                    foreach (pers.Cliente cliente in ah.Clientes)
-                    {
-                        cliente.AlojHabs = null;
-                        cliente.TarifaCliente.AlojHabs = null;
-                        cliente.TarifaCliente.Clientes = null;
-                    }
-
-                    foreach (pers.TarifaCliente tarifa in ah.Tarifas)
-                    {
-                        tarifa.AlojHabs = null;
-                        tarifa.Clientes = null;
-                    }
-                }
-
+                LimpiarAlojHabs(aloj.AlojHabes);
                 listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
             }
             return (listaAlojamientos);
