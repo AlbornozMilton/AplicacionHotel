@@ -193,6 +193,8 @@ namespace UI
 
             //importanteeee----------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+            //rellenar la fecha y hora con la de la reserva FechaAloj
+
             //foreach (Habitacion hab in this.HabSeleccionadas)
             //{
             //    AlojHabs.Add(new AlojHab(hab));

@@ -87,9 +87,21 @@ namespace Persistencia.DAL.EntityFramework
                 ah.HabitacionId = ah.Habitacion.HabitacionId;
                 ah.Habitacion = null;
 
-                ah.Tarifas = null;
+                foreach (var item in ah.Tarifas)
+                {
+                    iDbContext.Entry(item).State = EntityState.Modified;
+                    //item.Clientes = null;
+                }
 
-                ah.Clientes = null;
+                foreach (var item in ah.Clientes)
+                {
+                    item.DomicilioId = item.Domicilio.DomicilioId;
+                    iDbContext.Entry(item).State = EntityState.Modified;
+                    //item.TarifaCliente = null;
+                }
+                //ah.Tarifas = null;
+
+                //ah.Clientes = null;
             }
 
             iDbContext.Alojamientos.Add(unAloj);
