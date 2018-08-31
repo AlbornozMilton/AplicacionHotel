@@ -29,11 +29,16 @@ namespace Dominio
         public Alojamiento BuscarAlojamientoPorID(int unId)
         {
             var aloj = iUoW.RepositorioAlojamiento.Get(unId);
-            LimpiarAlojHabs(aloj.AlojHabes);
-            return (Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            if (aloj != null)
+            {
+                LimpiarAlojHabs(aloj.AlojHabes, true);
+                return (Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
+            }
+            else
+                return null;
         }
 
-        private void LimpiarAlojHabs(List<pers.AlojHab> pAHs)
+        private void LimpiarAlojHabs(List<pers.AlojHab> pAHs, bool pGetId)
         {
             foreach (pers.AlojHab pAH in pAHs)
             {
@@ -44,15 +49,18 @@ namespace Dominio
                 foreach (pers.Cliente cliente in pAH.Clientes)
                 {
                     cliente.AlojHabs = null;
-                    //cliente.TarifaCliente.AlojHabs = null; // por getId
-                    //cliente.TarifaCliente.Clientes = null;
+                    if (!pGetId)
+                    {
+                        cliente.TarifaCliente.AlojHabs = null; 
+                        cliente.TarifaCliente.Clientes = null;
+                    }
                 }
 
                 foreach (pers.TarifaCliente tarifa in pAH.Tarifas)
                 {
                     tarifa.AlojHabs = null;
                     tarifa.Clientes = null;
-                } 
+                }
             }
         }
 
@@ -63,7 +71,7 @@ namespace Dominio
 
             foreach (var aloj in listaEnum)
             {
-                LimpiarAlojHabs(aloj.AlojHabes);
+                LimpiarAlojHabs(aloj.AlojHabes, false);
                 listaAlojamientos.Add(Mapper.Map<pers.Alojamiento, Alojamiento>(aloj));
             }
             return (listaAlojamientos);

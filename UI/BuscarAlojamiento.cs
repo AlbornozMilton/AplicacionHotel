@@ -57,9 +57,7 @@ namespace UI
                 btn_Aceptar.Enabled = true;
             }
             else
-            {
                 btn_Aceptar.Enabled = false;
-            }
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
