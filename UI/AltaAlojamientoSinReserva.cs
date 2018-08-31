@@ -107,7 +107,7 @@ namespace UI
                 }
 
                 //Excepción cliente activo
-                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos(), -1);
 
                 //<-------------AVISO DE CLIENTE DEUDOR --------------------------
 
@@ -227,6 +227,8 @@ namespace UI
 
                 if (this.AlojHabs[i].Exclusividad)
                     dGV_excl.Rows.Add(hab.HabitacionId, "Si");
+                else
+                    dGV_excl.Rows.Add(hab.HabitacionId, "No");
             }
             //<<<<<<<<<<<<<<<<<<----------------------------------------
 
@@ -418,7 +420,8 @@ namespace UI
                             }
 
                             //Cliente Activo
-                            new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+                            new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos()
+                                , this.NuevoAlojamiento == null ? -1 : this.NuevoAlojamiento.AlojamientoId);
 
                             rowSelected.Cells[2].Value = CliAux.Apellido + " " + CliAux.Nombre;
                             rowSelected.Cells[3].Value = CliAux.ClienteId;

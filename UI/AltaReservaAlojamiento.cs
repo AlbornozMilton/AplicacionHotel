@@ -108,7 +108,7 @@ namespace UI
                 }
 
                 //Excepción cliente activo
-                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos(), -1);
 
                 //<-------------AVISO DE CLIENTE DEUDOR --------------------------
 
