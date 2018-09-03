@@ -49,11 +49,11 @@ namespace Dominio
                 foreach (pers.Cliente cliente in pAH.Clientes)
                 {
                     cliente.AlojHabs = null;
-                    if (!pGetId)
-                    {
-                        cliente.TarifaCliente.AlojHabs = null; 
-                        cliente.TarifaCliente.Clientes = null;
-                    }
+                    cliente.Domicilio.Clientes = null;
+                    //cliente.Domicilio.Ciudad.Domicilios = null;
+                    //if (true)
+                    cliente.TarifaCliente.AlojHabs = null;
+                    cliente.TarifaCliente.Clientes = null;
                 }
 
                 foreach (pers.TarifaCliente tarifa in pAH.Tarifas)

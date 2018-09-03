@@ -809,7 +809,7 @@
             this.MaximizeBox = false;
             this.Name = "VisualizarAlojamiento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Visualizar Alojamiento";
+            this.Text = "Detalles del Alojamiento";
             this.pestaña_Pagos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Pagos)).EndInit();
             this.pestaña_Servicios.ResumeLayout(false);
