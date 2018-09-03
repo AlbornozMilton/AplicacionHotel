@@ -104,35 +104,30 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public void AltaReserva(Alojamiento pAloj)
         {
+            var auxAlojHabes = pAloj.AlojHabes;
+            pAloj.AlojHabes = null;
             iDbContext.Entry(pAloj).State = EntityState.Modified;
+            iDbContext.SaveChanges();
 
-            foreach (var ah in pAloj.AlojHabes)
+            foreach (var ah in auxAlojHabes)
             {
-                ah.HabitacionId = ah.Habitacion.HabitacionId;
-                ah.Habitacion = null;
+                ah.AlojamientoId = pAloj.AlojamientoId;
+                iDbContext.Entry(ah.Habitacion).State = EntityState.Modified;
 
-                foreach (var item in ah.Tarifas)
+                ah.Tarifas = null;
+
+                foreach (var cli in ah.Clientes)
                 {
-                    iDbContext.Entry(item).State = EntityState.Modified;
-                    //item.Clientes = null;
+                    cli.DomicilioId = cli.Domicilio.DomicilioId;
+                    iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
+                    iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
+                    iDbContext.Entry(cli).State = EntityState.Modified;
                 }
 
-                foreach (var item in ah.Clientes)
-                {
-                    item.DomicilioId = item.Domicilio.DomicilioId;
-                    iDbContext.Entry(item).State = EntityState.Modified;
-                    //item.TarifaCliente = null;
-                }
+                iDbContext.AlojHabs.Add(ah);
             }
 
-            //iDbContext.Alojamientos.Add(unAloj);
-
-
             iDbContext.SaveChanges();
-            //Alojamiento localAloj = this.Get(pAloj.AlojamientoId);
-            //localAloj.MontoDeuda = pAloj.MontoDeuda;//por si efectuo pago reserva 
-            //localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
-            //localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
         }
 
         /// <summary>
