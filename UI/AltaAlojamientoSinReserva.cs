@@ -432,7 +432,8 @@ namespace UI
                                 rowSelected.Cells[5].Value = CliAux.Domicilio.Direccion();
 
                             //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
-                            EvaluarExcl1(rowSelected, ahAux);
+                            if (this.NuevoAlojamiento == null)
+                                EvaluarExcl1(rowSelected, ahAux);
 
                             //si es reserva, la lista de tarifas ya viene cargada, sino no es necesario el futuro control
                             ahAux.Clientes.Add(BuscarClienteForm.ClienteSeleccionado);
@@ -449,7 +450,8 @@ namespace UI
                         rowSelected.Cells[5].Value = null;
 
                         //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
-                        EvaluarExcl1(rowSelected, ahAux);
+                        if (this.NuevoAlojamiento == null)
+                            EvaluarExcl1(rowSelected, ahAux);
 
                         rowSelected.Cells[0].Value = "Agregar";
                     }
