@@ -177,22 +177,6 @@ namespace UI
                     }
                 }
 
-                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
-                int cantNull = 0;
-                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
-                {
-                    if ((string)rowExcl.Cells[1].Value == "No")
-                    {
-                        foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
-                        {
-                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value == null)
-                            {
-                                cantNull++;
-                            }
-                        }
-                    }
-                }
-
                 VentanaEmergente ventanaEmergenteAtendio;
                 if (tbx_atendio.Text == null || tbx_atendio.Text == "")
                 {
@@ -201,6 +185,43 @@ namespace UI
 
                     if (!ventanaEmergenteAtendio.Aceptar)
                         return;
+                }
+
+                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
+                int cantNull = 0;
+                int cantNoNull = 0;
+                string Hab = "";
+                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                {
+                    cantNoNull = 0;
+
+                    if ((string)rowExcl.Cells[1].Value == "No")
+                    {
+                        foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
+                        {
+                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value)
+                            {
+                                if (rowHabs.Cells[2].Value == null)
+                                    cantNull++;
+                                else
+                                {
+                                    Hab = rowExcl.Cells[0].Value.ToString();
+                                    cantNoNull++;
+                                }
+                            }
+                        }
+
+                        if (cantNoNull == 1)
+                            break;
+                    }
+                }
+
+                VentanaEmergente ventanaEmergenteHabDisp2;
+                if (cantNoNull == 1)
+                {
+                    ventanaEmergenteHabDisp2 = new VentanaEmergente("Se cargó un solo Cliente para la Habitación " + Hab + ", por lo que debe colocala como exclusiva", TipoMensaje.Alerta);
+                    ventanaEmergenteHabDisp2.ShowDialog();
+                    return;
                 }
 
                 //solo el Titular Convenio esta registrado, no se registra su familia, entonces solo con la la exclusividad sabemos si va o no con la familia

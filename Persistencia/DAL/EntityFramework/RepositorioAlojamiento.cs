@@ -82,8 +82,8 @@ namespace Persistencia.DAL.EntityFramework
 
                 foreach (var item in ah.Tarifas)
                 {
-                    iDbContext.Entry(item).State = EntityState.Modified;
-                    //item.Clientes = null;
+                    //if (!(iDbContext.Entry(item).CurrentValues == EntityState.Modified))
+                    //    iDbContext.Entry(item).State = EntityState.Modified;
                 }
 
                 foreach (var item in ah.Clientes)
@@ -92,6 +92,8 @@ namespace Persistencia.DAL.EntityFramework
                     iDbContext.Entry(item).State = EntityState.Modified;
                     //item.TarifaCliente = null;
                 }
+
+                //iDbContext.SaveChanges();
             }
 
             iDbContext.Alojamientos.Add(unAloj);

@@ -305,22 +305,6 @@ namespace UI
                     }
                 }
 
-                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
-                int cantNull = 0;
-                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
-                {
-                    if ((string)rowExcl.Cells[1].Value == "No")
-                    {
-                        foreach (DataGridViewRow rowHabs in dGV_Habitaciones.Rows)
-                        {
-                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[1].Value && rowHabs.Cells[3].Value == null)
-                            {
-                                cantNull++;
-                            }
-                        }
-                    }
-                }
-
                 VentanaEmergente ventanaEmergenteAtendio;
                 if (tbx_atendio.Text == null || tbx_atendio.Text == "")
                 {
@@ -331,10 +315,48 @@ namespace UI
                         return;
                 }
 
+                //Para el caso en que haya cargado un solo cliente y NO haya marcado como exclusiva
+                int cantNull = 0;
+                int cantNoNull = 0;
+                string Hab = "";
+                foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
+                {
+                    if ((string)rowExcl.Cells[1].Value == "No")
+                    {
+                        cantNoNull = 0;
+                        foreach (DataGridViewRow rowHabs in dGV_Habitaciones.Rows)
+                        {
+                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[1].Value)
+                            {
+                                if (rowHabs.Cells[3].Value == null)
+                                    cantNull++;
+                                else
+                                {
+                                    Hab = rowExcl.Cells[0].Value.ToString();
+                                    cantNoNull++;
+                                }
+                            }
+
+                        }
+
+                        if (cantNoNull == 1)
+                            break;
+                    }
+                }
+
+                VentanaEmergente ventanaEmergenteHabDisp2;
+                if (cantNoNull == 1)
+                {
+                    ventanaEmergenteHabDisp2 = new VentanaEmergente("Se cargó un solo Cliente para la Habitación " + Hab + ", por lo que debe colocala como exclusiva", TipoMensaje.Alerta);
+                    ventanaEmergenteHabDisp2.ShowDialog();
+                    return;
+                }
+
+                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
                 VentanaEmergente ventanaEmergenteHabDisp;
                 if (cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                 {
-                    ventanaEmergenteHabDisp = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                    ventanaEmergenteHabDisp = new VentanaEmergente("Hay Habitaciones con espacio disponible", TipoMensaje.SiNo);
                     ventanaEmergenteHabDisp.ShowDialog();
                     if (!ventanaEmergenteHabDisp.Aceptar)
                         return;
