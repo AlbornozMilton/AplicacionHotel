@@ -12,7 +12,7 @@ namespace Persistencia.Domain
         public string Correo { get; set; }
         public bool EnAlta { get; set; }
 
-        public TipoCliente TarifaClienteId { get; set; }
+        public TipoCliente? TarifaClienteId { get; set; }
         public TarifaCliente TarifaCliente { get; set; }
 
         public int? DomicilioId { get; set; }

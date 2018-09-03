@@ -116,6 +116,7 @@ namespace Persistencia.DAL.EntityFramework
                     cli.DomicilioId = cli.Domicilio.DomicilioId;
                     //iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
                     cli.TarifaCliente = null;
+                    //cli.TarifaClienteId = null;
                     //iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
                     iDbContext.Entry(cli).State = EntityState.Modified;
                 }
