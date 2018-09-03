@@ -136,12 +136,12 @@ namespace UI
                 {
                     auxIdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 }
-                else
-                {//Alta de reserva
+                else //Alta de reserva
+                {
                     new ControladorAlojamiento().RegistrarAltaReserva(this.NuevoAlojamiento);
                     auxIdAloj = NuevoAlojamiento.AlojamientoId;
                 }
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Alojamiento Registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa, auxIdAloj);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Alojamiento registrado", TipoMensaje.AltaAlojamientoExitosa, auxIdAloj);
                 ventanaEmergente.ShowDialog();
                 Close();
             }
