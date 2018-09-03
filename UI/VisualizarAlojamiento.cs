@@ -31,15 +31,7 @@ namespace UI
         }
         public void CargarClientes(List<Cliente> pClientes, int pResponsable)
         {
-            dGV_ClienteResponsable.Rows.Clear();
-            dGV_Acompañantes.Rows.Clear();
-            foreach (var cli in pClientes)
-            {
-                if (cli.ClienteId == pResponsable)
-                    dGV_ClienteResponsable.Rows.Add(cli.ClienteId, cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
-                else
-                    dGV_Acompañantes.Rows.Add(cli.ClienteId,cli.Legajo, cli.Apellido, cli.Nombre, cli.TarifaCliente.NombreTarifa);
-            }
+            
         }
 
         public void CargarServicios(List<LineaServicio> pServicios)
@@ -76,8 +68,6 @@ namespace UI
 
         public void CargarFormulario(Alojamiento pAlojamiento)
         {
-            groupBox_AcompReserva.Visible = false;
-            groupBox4.Visible = true;
             lbl_IdAlojamiento.Text = pAlojamiento.AlojamientoId.ToString();
             lbl_EstadoActual.Text = pAlojamiento.EstadoAlojamiento.ToString();
             lbl_MontoDeuda.Text = pAlojamiento.MontoDeuda.ToString();
@@ -110,39 +100,27 @@ namespace UI
 
         private void pestaña_Servicios_Enter(object sender, EventArgs e)
         {
-            textBox_total.Text = totalServicios.ToString();
-            textBox_total.Visible = true;
-            label13.Visible = true;
+           
         }
 
         private void pestaña_Servicios_Leave(object sender, EventArgs e)
         {
-            textBox_total.Visible = false;
-            label13.Visible = false;
+            
         }
 
         private void pestaña_Pagos_Enter(object sender, EventArgs e)
         {
-            textBox_total.Text = totalPagos.ToString();
-            textBox_total.Visible = true;
-            label13.Visible = true;
+            
         }
 
         private void pestaña_Pagos_Leave(object sender, EventArgs e)
         {
-            textBox_total.Visible = false;
-            label13.Visible = false;
+            
         }
 
         private void AlojReserva(string pContadores)
         {
-            cant_titular.Text = pContadores[0].ToString();
-            cat_CantAcpmDirect.Text = pContadores[1].ToString();
-            cantNoDirec.Text = pContadores[2].ToString();
-            cantExcep.Text = pContadores[3].ToString();
-            cant_conv.Text = pContadores[4].ToString();
-			groupBox4.Visible = false; //Acompañantes como Lista
-			groupBox_AcompReserva.Visible = true; //Acompañantes como contadores
+            
         }
     }
 }
