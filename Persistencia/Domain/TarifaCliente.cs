@@ -10,7 +10,7 @@ namespace Persistencia.Domain
         public double TarifaExclusiva { get; set; }
 
         public List<Cliente> Clientes { get; set; }
-        public List<AlojHab> AlojHabs { get; set; }
+        public List<AHTarifa> AlojHabs { get; set; }
     }
 
     public enum TipoCliente

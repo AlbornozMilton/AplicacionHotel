@@ -45,8 +45,8 @@ namespace Persistencia.DAL.EntityFramework
                                 .Include("Pagos")
                                 .Include("AlojHabes.Habitacion")
                                 .Include("AlojHabes.Tarifas")
-                                .Include("AlojHabes.Clientes.TarifaCliente")
-                                .Include("AlojHabes.Clientes.Domicilio.Ciudad")
+                                .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                                .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
@@ -60,8 +60,8 @@ namespace Persistencia.DAL.EntityFramework
                                 .Include("Pagos")
                                 .Include("AlojHabes.Habitacion")
                                 .Include("AlojHabes.Tarifas")
-                                .Include("AlojHabes.Clientes.TarifaCliente")
-                                .Include("AlojHabes.Clientes.Domicilio.Ciudad")
+                                .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                                .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                                where (
                                         (pEstados.Contains(aloj.EstadoAlojamiento))
                                         &&
@@ -113,15 +113,15 @@ namespace Persistencia.DAL.EntityFramework
                 //iDbContext.Entry(ah.Clientes).State = EntityState.Modified;
                 foreach (var cli in ah.Clientes)
                 {
-                    cli.DomicilioId = cli.Domicilio.DomicilioId;
-                    cli.Domicilio.Clientes = null;
-                    //cli.TarifaCliente = null;
-                    cli.TarifaClienteId = cli.TarifaCliente.TarifaClienteId;
-                    cli.TarifaCliente.Clientes = null;
-                    cli.TarifaCliente.AlojHabs = null;
-                    //cli.TarifaCliente. = null;
-                    cli.AlojHabs = null;
-                    //cli.
+                    //cli.DomicilioId = cli.Domicilio.DomicilioId;
+                    //cli.Domicilio.Clientes = null;
+                    ////cli.TarifaCliente = null;
+                    //cli.TarifaClienteId = cli.TarifaCliente.TarifaClienteId;
+                    //cli.TarifaCliente.Clientes = null;
+                    //cli.TarifaCliente.AlojHabs = null;
+                    ////cli.TarifaCliente. = null;
+                    //cli.AlojHabs = null;
+                    ////cli.
 
 
                     //iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
@@ -157,10 +157,10 @@ namespace Persistencia.DAL.EntityFramework
 
                 foreach (var cli in ah.Clientes)
                 {
-                    cli.DomicilioId = cli.Domicilio.DomicilioId;
-                    iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
-                    iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
-                    iDbContext.Entry(cli).State = EntityState.Modified;
+                    //cli.DomicilioId = cli.Domicilio.DomicilioId;
+                    //iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
+                    //iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
+                    //iDbContext.Entry(cli).State = EntityState.Modified;
                 }
 
                 iDbContext.AlojHabs.Add(ah);

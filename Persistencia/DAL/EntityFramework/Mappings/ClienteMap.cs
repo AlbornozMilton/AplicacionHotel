@@ -29,10 +29,12 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(c => c.Correo)
                 .IsOptional();
 
-            this.HasOptional(c => c.TarifaCliente)
+            this.HasRequired(c => c.TarifaCliente)
                 .WithMany(tc => tc.Clientes);
 
             this.HasOptional(c => c.Domicilio).WithMany(c => c.Clientes);
+
+            //this.HasOptional(c => c.AlojHabs).WithRequired(c => c;
         }
     }
 }

@@ -12,12 +12,12 @@ namespace Persistencia.Domain
         public string Correo { get; set; }
         public bool EnAlta { get; set; }
 
-        public TipoCliente? TarifaClienteId { get; set; }
+        public TipoCliente TarifaClienteId { get; set; }
         public TarifaCliente TarifaCliente { get; set; }
 
         public int? DomicilioId { get; set; }
         public Domicilio Domicilio { get; set; }
 
-        public List<AlojHab> AlojHabs { get; set; }
+        public List<AHCliente> AlojHabs { get; set; }
 	}
 }

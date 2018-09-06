@@ -46,21 +46,21 @@ namespace Dominio
 
                 pAH.Habitacion.AlojHabs = null;
 
-                foreach (pers.Cliente cliente in pAH.Clientes)
-                {
-                    cliente.AlojHabs = null;
-                    cliente.Domicilio.Clientes = null;
-                    //cliente.Domicilio.Ciudad.Domicilios = null;
-                    //if (true)
-                    cliente.TarifaCliente.AlojHabs = null;
-                    cliente.TarifaCliente.Clientes = null;
-                }
+                //foreach (pers.Cliente cliente in pAH.Clientes)
+                //{
+                //    cliente.AlojHabs = null;
+                //    cliente.Domicilio.Clientes = null;
+                //    //cliente.Domicilio.Ciudad.Domicilios = null;
+                //    //if (true)
+                //    cliente.TarifaCliente.AlojHabs = null;
+                //    cliente.TarifaCliente.Clientes = null;
+                //}
 
-                foreach (pers.TarifaCliente tarifa in pAH.Tarifas)
-                {
-                    tarifa.AlojHabs = null;
-                    tarifa.Clientes = null;
-                }
+                //foreach (pers.TarifaCliente tarifa in pAH.Tarifas)
+                //{
+                //    tarifa.AlojHabs = null;
+                //    tarifa.Clientes = null;
+                //}
             }
         }
 

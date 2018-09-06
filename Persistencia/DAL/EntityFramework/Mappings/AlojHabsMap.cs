@@ -20,13 +20,9 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.HasRequired(h => h.Habitacion)
                .WithMany(h => h.AlojHabs);
 
-            this.HasMany(h => h.Clientes)
-                .WithMany(c => c.AlojHabs)
-                .Map(hc => hc.ToTable("AHC_Id"));
+            //this.HasOptional(h => h.Tarifas);
 
-            this.HasMany(h => h.Tarifas)
-                .WithMany(c => c.AlojHabs)
-                .Map(hc => hc.ToTable("AHT_Id"));
+            //this.HasOptional(h => h.Clientes);
         }
     }
 }
