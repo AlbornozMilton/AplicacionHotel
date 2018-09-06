@@ -6,9 +6,13 @@
         private Cliente iCliente;
         private AlojHab iAlojHab;
 
+        public AHCliente()
+        {
+
+        }
+
         public AHCliente(Cliente pCliente)
         {
-            //iAHClienteId = pIdAloj;
             iCliente = pCliente;
         }
 

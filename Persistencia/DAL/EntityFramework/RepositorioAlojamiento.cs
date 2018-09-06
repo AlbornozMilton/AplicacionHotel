@@ -98,7 +98,6 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public override void Add(Alojamiento unAloj)
         {
-            //        iDbContext.Entry(tarifa).State = EntityState.Modified;
             foreach (var ah in unAloj.AlojHabes)
             {
                 ah.HabitacionId = ah.Habitacion.HabitacionId;
@@ -108,23 +107,13 @@ namespace Persistencia.DAL.EntityFramework
                 {
                     ahtarifa.AHTarifa_TarifaCliente = (int)ahtarifa.TarifaCliente.TarifaClienteId;
                     ahtarifa.TarifaCliente = null;
-                    
-                    //item.AlojHab
-                    //if (!(iDbContext.Entry(item).CurrentValues == EntityState.Modified))
-                    //    iDbContext.Entry(item).State = EntityState.Modified;
                 }
 
-                //iDbContext.Entry(ah.Clientes).State = EntityState.Modified;
                 foreach (var ahcli in ah.Clientes)
                 {
                     ahcli.ClienteId = ahcli.Cliente.ClienteId;
                     ahcli.Cliente = null;
-
-                    //iDbContext.Entry(cli).State = EntityState.Modified;
                 }
-
-                //iDbContext.Alojamientos.Add(unAloj);
-                //iDbContext.SaveChanges();
             }
 
             iDbContext.Alojamientos.Add(unAloj);
