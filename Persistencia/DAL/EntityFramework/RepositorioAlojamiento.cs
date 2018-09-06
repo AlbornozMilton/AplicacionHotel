@@ -27,8 +27,8 @@ namespace Persistencia.DAL.EntityFramework
                     .Include("Pagos")
                     .Include("AlojHabes.Habitacion")
                     .Include("AlojHabes.Tarifas")
-                    .Include("AlojHabes.Clientes.TarifaCliente")
-                    .Include("AlojHabes.Clientes.Domicilio.Ciudad")
+                    .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                    .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                     .Where(a => a.AlojamientoId == pId).SingleOrDefault();
             }
             catch (Exception)
@@ -85,8 +85,8 @@ namespace Persistencia.DAL.EntityFramework
                                 .Include("Pagos")
                                 .Include("AlojHabes.Habitacion")
                                 .Include("AlojHabes.Tarifas")
-                                .Include("AlojHabes.Clientes.TarifaCliente")
-                                .Include("AlojHabes.Clientes.Domicilio.Ciudad")
+                                .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                                .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado) && (aloj.MontoDeuda > 0))
                                select aloj;
 

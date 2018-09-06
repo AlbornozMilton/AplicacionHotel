@@ -114,7 +114,9 @@ namespace UI
 
                 this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
                 dGV_ClienteResponsable.Rows.Clear();
-                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
+                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.NombreCompleto(), ClienteResponsable.ClienteId, ClienteResponsable.TarifaCliente.NombreTarifa, 
+                    ClienteResponsable.Domicilio.Ciudad != null ? ClienteResponsable.Domicilio.Ciudad.Nombre +" - "+ ClienteResponsable.Domicilio.Direccion():
+                    ClienteResponsable.Domicilio.Direccion());
 
             }
             catch (Exception E)

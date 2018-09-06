@@ -210,9 +210,9 @@ namespace Dominio
                 {
                     if (tarifa.TarifaClienteId != TipoCliente.Convenio)
                     {
-                        foreach (Cliente cli in mAloHab.Clientes)
+                        foreach (AHCliente cli in mAloHab.Clientes)
                         {
-                            costoBase += cli.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
+                            costoBase += cli.Cliente.ObtenerSuPrecioTarifa(mAloHab.Exclusividad);
                         }
                     }
                     else if (mAloHab.Exclusividad)
@@ -229,9 +229,9 @@ namespace Dominio
                 {
                     if (tarifa.TarifaClienteId != TipoCliente.Convenio)
                     {
-                        foreach (TarifaCliente tarifaLocal in mAloHab.Tarifas)
+                        foreach (AHTarifa tarifaLocal in mAloHab.Tarifas)
                         {
-                            costoBase += tarifaLocal.GetTarifa(mAloHab.Exclusividad);
+                            costoBase += tarifaLocal.TarifaCliente.GetTarifa(mAloHab.Exclusividad);
                         }
                     }
                     else if (mAloHab.Exclusividad)
@@ -310,11 +310,11 @@ namespace Dominio
             Cliente cliResponsable = null;
             foreach (AlojHab alojHab in this.AlojHabes)
             {
-                foreach (Cliente cli in alojHab.Clientes)
+                foreach (AHCliente cli in alojHab.Clientes)
                 {
-                    if (cli.ClienteId == this.iDniResponsable)
+                    if (cli.Cliente.ClienteId == this.iDniResponsable)
                     {
-                        cliResponsable = cli;
+                        cliResponsable = cli.Cliente;
                         break;
                     }
                 }
