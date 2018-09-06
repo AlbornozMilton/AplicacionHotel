@@ -92,12 +92,12 @@ namespace Dominio
                 {
                     switch (row.TarifaString)
                     {
-                        case ("Acomp. Directo"):
+                        case ("Acompañante Directo"):
                             {
                                 item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.AcompanianteDirecto)));
                             }
                             break;
-                        case ("Acomp. No Direct"):
+                        case ("Acompañante No Directo"):
                             {
                                 item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.AcompanianteNoDirecto)));
                             }
