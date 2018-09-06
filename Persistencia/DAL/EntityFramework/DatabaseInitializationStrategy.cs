@@ -3,7 +3,7 @@ using Persistencia.Domain;
 
 namespace Persistencia.DAL.EntityFramework
 {
-    class DatabaseInitializationStrategy : CreateDatabaseIfNotExists<DbContext>
+    class DatabaseInitializationStrategy : DropCreateDatabaseIfModelChanges<DbContext>
     {
         protected override void Seed(DbContext context)
         {

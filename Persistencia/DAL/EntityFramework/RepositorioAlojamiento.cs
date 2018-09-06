@@ -114,14 +114,23 @@ namespace Persistencia.DAL.EntityFramework
                 foreach (var cli in ah.Clientes)
                 {
                     cli.DomicilioId = cli.Domicilio.DomicilioId;
+                    cli.Domicilio.Clientes = null;
+                    //cli.TarifaCliente = null;
+                    cli.TarifaClienteId = cli.TarifaCliente.TarifaClienteId;
+                    cli.TarifaCliente.Clientes = null;
+                    cli.TarifaCliente.AlojHabs = null;
+                    //cli.TarifaCliente. = null;
+                    cli.AlojHabs = null;
+                    //cli.
+
+
                     //iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
-                    cli.TarifaCliente = null;
-                    //cli.TarifaClienteId = null;
                     //iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
                     iDbContext.Entry(cli).State = EntityState.Modified;
                 }
 
-                //iDbContext.SaveChanges();
+                //iDbContext.Alojamientos.Add(unAloj);
+                iDbContext.SaveChanges();
             }
 
             iDbContext.Alojamientos.Add(unAloj);
