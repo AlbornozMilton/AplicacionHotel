@@ -104,33 +104,27 @@ namespace Persistencia.DAL.EntityFramework
                 ah.HabitacionId = ah.Habitacion.HabitacionId;
                 ah.Habitacion = null;
 
-                foreach (var item in ah.Tarifas)
+                foreach (var ahtarifa in ah.Tarifas)
                 {
+                    ahtarifa.AHTarifa_TarifaCliente = (int)ahtarifa.TarifaCliente.TarifaClienteId;
+                    ahtarifa.TarifaCliente = null;
+                    
+                    //item.AlojHab
                     //if (!(iDbContext.Entry(item).CurrentValues == EntityState.Modified))
                     //    iDbContext.Entry(item).State = EntityState.Modified;
                 }
 
                 //iDbContext.Entry(ah.Clientes).State = EntityState.Modified;
-                foreach (var cli in ah.Clientes)
+                foreach (var ahcli in ah.Clientes)
                 {
-                    //cli.DomicilioId = cli.Domicilio.DomicilioId;
-                    //cli.Domicilio.Clientes = null;
-                    ////cli.TarifaCliente = null;
-                    //cli.TarifaClienteId = cli.TarifaCliente.TarifaClienteId;
-                    //cli.TarifaCliente.Clientes = null;
-                    //cli.TarifaCliente.AlojHabs = null;
-                    ////cli.TarifaCliente. = null;
-                    //cli.AlojHabs = null;
-                    ////cli.
+                    ahcli.ClienteId = ahcli.Cliente.ClienteId;
+                    ahcli.Cliente = null;
 
-
-                    //iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
-                    //iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
-                    iDbContext.Entry(cli).State = EntityState.Modified;
+                    //iDbContext.Entry(cli).State = EntityState.Modified;
                 }
 
                 //iDbContext.Alojamientos.Add(unAloj);
-                iDbContext.SaveChanges();
+                //iDbContext.SaveChanges();
             }
 
             iDbContext.Alojamientos.Add(unAloj);

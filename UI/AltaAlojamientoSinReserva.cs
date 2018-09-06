@@ -205,7 +205,7 @@ namespace UI
             for (int i = 0; i < AlojHabs.Count; i++)
             {
                 Habitacion hab = this.AlojHabs[i].Habitacion;
-                List<Cliente> cliHab = AlojHabs[i].Clientes;
+                List<AHCliente> cliHab = AlojHabs[i].Clientes;
                 int auxCapHab = hab.Capacidad;
 
                 for (int j = 0; j < cliHab.Count; j++)
@@ -213,9 +213,9 @@ namespace UI
                     dGV_Habitaciones.Rows.Add(
                         "Agregar",
                         hab.HabitacionId,
-                        cliHab[j].Apellido + " " + cliHab[j].Nombre,
-                        cliHab[j].ClienteId,
-                        cliHab[j].TarifaCliente.TarifaClienteId);
+                        cliHab[j].Cliente.Apellido + " " + cliHab[j].Cliente.Nombre,
+                        cliHab[j].Cliente.ClienteId,
+                        cliHab[j].Cliente.TarifaCliente.TarifaClienteId);
                     auxCapHab--;
                 }
 
@@ -270,9 +270,9 @@ namespace UI
                 bool responsable = false;
                 foreach (AlojHab alojHab in AlojHabs)
                 {
-                    foreach (Cliente cli in alojHab.Clientes)
+                    foreach (AHCliente cli in alojHab.Clientes)
                     {
-                        if (cli.ClienteId == ClienteResponsable.ClienteId)
+                        if (cli.Cliente.ClienteId == ClienteResponsable.ClienteId)
                         {
                             responsable = true;
                             break;
@@ -431,9 +431,9 @@ namespace UI
 
                             foreach (AlojHab ah in AlojHabs)
                             {
-                                foreach (Cliente cli in ah.Clientes)
+                                foreach (AHCliente cli in ah.Clientes)
                                 {
-                                    if (CliAux.ClienteId == cli.ClienteId)
+                                    if (CliAux.ClienteId == cli.Cliente.ClienteId)
                                     {
                                         throw new Exception("El cliente elegido ya se encuentra seleccionado");
                                     }
@@ -458,13 +458,13 @@ namespace UI
                                 EvaluarExcl1(rowSelected, ahAux);
 
                             //si es reserva, la lista de tarifas ya viene cargada, sino no es necesario el futuro control
-                            ahAux.Clientes.Add(BuscarClienteForm.ClienteSeleccionado);
+                            ahAux.Clientes.Add( new AHCliente(BuscarClienteForm.ClienteSeleccionado));
                             rowSelected.Cells[0].Value = "Quitar";
                         }
                     }
                     else // QUITAR
                     {
-                        ahAux.Clientes.Remove(ahAux.Clientes.Find(c => c.ClienteId == (int)rowSelected.Cells[3].Value));
+                        ahAux.Clientes.Remove(ahAux.Clientes.Find(c => c.Cliente.ClienteId == (int)rowSelected.Cells[3].Value));
 
                         rowSelected.Cells[2].Value = null;
                         rowSelected.Cells[3].Value = null;

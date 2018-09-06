@@ -174,9 +174,9 @@ namespace Dominio
                     {
                         foreach (AlojHab alojHab in aloj.AlojHabes)
                         {
-                            foreach (Cliente cli in alojHab.Clientes)
+                            foreach (AHCliente cli in alojHab.Clientes)
                             {
-                                if (cli.ClienteId == pCliente.ClienteId)
+                                if (cli.Cliente.ClienteId == pCliente.ClienteId)
                                 {
                                     throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para la fecha elegida.");
                                 }
@@ -212,7 +212,7 @@ namespace Dominio
                 {
                     foreach (var cli in alojHab.Clientes)
                     {
-                        if (cli.ClienteId == pIdCliente)
+                        if (cli.Cliente.ClienteId == pIdCliente)
                         {
                             throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que NO es posible modificar su Estado");
                         }

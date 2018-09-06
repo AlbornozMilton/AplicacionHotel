@@ -35,21 +35,21 @@ namespace UI
         {
             foreach (AlojHab ah in pAloj.AlojHabes)
             {
-                foreach (Cliente cli in ah.Clientes)
+                foreach (AHCliente cli in ah.Clientes)
                 {
                     dGV_Habitaciones.Rows.Add(
                         ah.Habitacion.HabitacionId,
-                        cli.NombreCompleto(),
-                        cli.ClienteId,
-                        cli.TarifaCliente.NombreTarifa,
+                        cli.Cliente.NombreCompleto(),
+                        cli.Cliente.ClienteId,
+                        cli.Cliente.TarifaCliente.NombreTarifa,
 
-                        cli.Domicilio.Ciudad != null ?
-                        cli.Domicilio.Direccion() + " - " + cli.Domicilio.Ciudad.Nombre :
-                        cli.Domicilio.Direccion(),
+                        cli.Cliente.Domicilio.Ciudad != null ?
+                        cli.Cliente.Domicilio.Direccion() + " - " + cli.Cliente.Domicilio.Ciudad.Nombre :
+                        cli.Cliente.Domicilio.Direccion(),
 
                     ah.Exclusividad == true ? "Si" : "No");
 
-                    if (pAloj.DniResponsable == cli.ClienteId)
+                    if (pAloj.DniResponsable == cli.Cliente.ClienteId)
                     {
                         dGV_Habitaciones.Rows[dGV_Habitaciones.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Chocolate;
                         dGV_Habitaciones.Rows[dGV_Habitaciones.Rows.Count - 1].DefaultCellStyle.ForeColor = Color.White;

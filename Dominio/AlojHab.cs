@@ -71,12 +71,12 @@ namespace Dominio
 
             if (this.Tarifas.Count == this.Clientes.Count)
             {
-                List<TarifaCliente> AuxTarifas = this.Tarifas.OrderBy(t => t.TarifaClienteId).ToList();
-                List<Cliente> AuxTarifasCli = this.Clientes.OrderBy(c => c.TarifaCliente.TarifaClienteId).ToList();
+                List<AHTarifa> AuxTarifas = this.Tarifas.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+                List<AHCliente> AuxTarifasCli = this.Clientes.OrderBy(c => c.Cliente.TarifaCliente.TarifaClienteId).ToList();
 
                 for (int i = 0; i < AuxTarifas.Count; i++)
                 {
-                    if (AuxTarifas[i].TarifaClienteId != AuxTarifasCli[i].TarifaCliente.TarifaClienteId)
+                    if (AuxTarifas[i].TarifaCliente.TarifaClienteId != AuxTarifasCli[i].Cliente.TarifaCliente.TarifaClienteId)
                     {
                         resultado = false;
                         break;

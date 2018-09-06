@@ -94,27 +94,52 @@ namespace Dominio
                     {
                         case ("Acompañante Directo"):
                             {
-                                item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.AcompanianteDirecto)));
+                                item.Tarifas.Add(Mapper.Map<pers.AHTarifa, AHTarifa>(
+                                    new pers.AHTarifa()
+                                    {
+                                        TarifaCliente = ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.AcompanianteDirecto)
+                                    }
+                                    ));
                             }
                             break;
                         case ("Acompañante No Directo"):
                             {
-                                item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.AcompanianteNoDirecto)));
+                                item.Tarifas.Add(Mapper.Map<pers.AHTarifa, AHTarifa>(
+                                    new pers.AHTarifa()
+                                    {
+                                        TarifaCliente = ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.AcompanianteNoDirecto)
+                                    }
+                                    ));
                             }
                             break;
                         case ("Convenio"):
                             {
-                                item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.Convenio)));
+                                item.Tarifas.Add(Mapper.Map<pers.AHTarifa, AHTarifa>(
+                                    new pers.AHTarifa()
+                                    {
+                                        TarifaCliente = ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.Convenio)
+                                    }
+                                    ));
                             }
                             break;
                         case ("Titular"):
                             {
-                                item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.Titular)));
+                                item.Tarifas.Add(Mapper.Map<pers.AHTarifa, AHTarifa>(
+                                    new pers.AHTarifa()
+                                    {
+                                        TarifaCliente = ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.Titular)
+                                    }
+                                    ));
                             }
                             break;
                         case ("Titular Exceptuado"):
                             {
-                                item.Tarifas.Add(Mapper.Map<pers.TarifaCliente, TarifaCliente>(ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.TitularExceptuado)));
+                                item.Tarifas.Add(Mapper.Map<pers.AHTarifa, AHTarifa>(
+                                    new pers.AHTarifa()
+                                    {
+                                        TarifaCliente = ltarifas.Find(t => t.TarifaClienteId == pers.TipoCliente.TitularExceptuado)
+                                    }
+                                    ));
                             }
                             break;
                         default:
