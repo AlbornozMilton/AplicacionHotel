@@ -25,7 +25,7 @@ namespace Persistencia.DAL.EntityFramework.Mappings
             this.Property(tc => tc.TarifaExclusiva)
                 .IsRequired();
 
-			//this.HasOptional(c => c.AlojHab).WithMany(a => a.Clientes);
+			//this.HasOptional(c => c.AlojHabs);
 		}
     }
 }

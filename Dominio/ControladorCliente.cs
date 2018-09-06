@@ -164,36 +164,39 @@ namespace Dominio
         /// <summary>
         /// Produce excepción si el Cliente elegido ya se encuentra en algún Alojamiento Alojado o Reservado para las fechas dadas.
         /// </summary>
-        public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta, List<Alojamiento> pAlojsActivos)
+        public void ControlClienteActivo(Cliente pCliente, DateTime pFechaDesde, DateTime pFechaHasta, List<Alojamiento> pAlojsActivos, int pIdAlojExcep)
         {
             foreach (var aloj in pAlojsActivos)
             {
-                if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
+                if (pIdAlojExcep != aloj.AlojamientoId)
                 {
-                    foreach (AlojHab alojHab in aloj.AlojHabes)
+                    if (aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado)
                     {
-                        foreach (Cliente cli in alojHab.Clientes)
+                        foreach (AlojHab alojHab in aloj.AlojHabes)
                         {
-                            if (cli.ClienteId == pCliente.ClienteId)
+                            foreach (AHCliente cli in alojHab.Clientes)
                             {
-                                throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para la fecha elegida.");
+                                if (cli.Cliente.ClienteId == pCliente.ClienteId)
+                                {
+                                    throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Alojado para la fecha elegida.");
+                                }
                             }
                         }
                     }
-                }
-                else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
-                {
-                    if
-                        (
-                            aloj.DniResponsable == pCliente.ClienteId
-                            &&
-                            !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
-                            &&
-                            !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
-                        )
+                    else if (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado)
                     {
-                        throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado para la fecha elegidas.");
-                    }
+                        if
+                            (
+                                aloj.DniResponsable == pCliente.ClienteId
+                                &&
+                                !(aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaDesde.Date) >= 0 && aloj.FechaEstimadaIngreso.Date.CompareTo(pFechaHasta.Date) >= 0)
+                                &&
+                                !(aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaDesde.Date) <= 0 && aloj.FechaEstimadaEgreso.Date.CompareTo(pFechaHasta.Date) <= 0)
+                            )
+                        {
+                            throw new Exception("El Cliente seleccionado ya es encuentra en un Alojamiento Reservado para la fecha elegidas.");
+                        }
+                    } 
                 }
 
             }
@@ -209,7 +212,7 @@ namespace Dominio
                 {
                     foreach (var cli in alojHab.Clientes)
                     {
-                        if (cli.ClienteId == pIdCliente)
+                        if (cli.Cliente.ClienteId == pIdCliente)
                         {
                             throw new Exception("El Cliente seleccionado se encuentra en un Alojamiento Reservado o Alojado, por lo que NO es posible modificar su Estado");
                         }

@@ -108,13 +108,15 @@ namespace UI
                 }
 
                 //Excepción cliente activo
-                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos(), -1);
 
                 //<-------------AVISO DE CLIENTE DEUDOR --------------------------
 
                 this.ClienteResponsable = BuscarClienteForm.ClienteSeleccionado;
                 dGV_ClienteResponsable.Rows.Clear();
-                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
+                dGV_ClienteResponsable.Rows.Add(ClienteResponsable.NombreCompleto(), ClienteResponsable.ClienteId, ClienteResponsable.TarifaCliente.NombreTarifa, 
+                    ClienteResponsable.Domicilio.Ciudad != null ? ClienteResponsable.Domicilio.Ciudad.Nombre +" - "+ ClienteResponsable.Domicilio.Direccion():
+                    ClienteResponsable.Domicilio.Direccion());
 
             }
             catch (Exception E)
@@ -131,16 +133,6 @@ namespace UI
         {
             try
             {
-                VentanaEmergente ventanaEmergenteAtendio;
-                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
-                {
-                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
-                    ventanaEmergenteAtendio.ShowDialog();
-
-                    if (!ventanaEmergenteAtendio.Aceptar)
-                        return;
-                }
-
                 if (ClienteResponsable == null)
                     throw new Exception("Debe 'Seleccionar Responsable'");
 
@@ -187,20 +179,51 @@ namespace UI
                     }
                 }
 
+                VentanaEmergente ventanaEmergenteAtendio;
+                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
+                {
+                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
+                    ventanaEmergenteAtendio.ShowDialog();
+
+                    if (!ventanaEmergenteAtendio.Aceptar)
+                        return;
+                }
+
                 //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
                 int cantNull = 0;
+                int cantNoNull = 0;
+                string Hab = "";
                 foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                 {
+                    cantNoNull = 0;
+
                     if ((string)rowExcl.Cells[1].Value == "No")
                     {
                         foreach (DataGridViewRow rowHabs in dGV_Habs.Rows)
                         {
-                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value && rowHabs.Cells[2].Value == null)
+                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[0].Value)
                             {
-                                cantNull++;
+                                if (rowHabs.Cells[2].Value == null)
+                                    cantNull++;
+                                else
+                                {
+                                    Hab = rowExcl.Cells[0].Value.ToString();
+                                    cantNoNull++;
+                                }
                             }
                         }
+
+                        if (cantNoNull == 1)
+                            break;
                     }
+                }
+
+                VentanaEmergente ventanaEmergenteHabDisp2;
+                if (cantNoNull == 1)
+                {
+                    ventanaEmergenteHabDisp2 = new VentanaEmergente("Se cargó un solo Cliente para la Habitación " + Hab + ", por lo que debe colocala como exclusiva", TipoMensaje.Alerta);
+                    ventanaEmergenteHabDisp2.ShowDialog();
+                    return;
                 }
 
                 //solo el Titular Convenio esta registrado, no se registra su familia, entonces solo con la la exclusividad sabemos si va o no con la familia
@@ -267,7 +290,7 @@ namespace UI
         }
 
         #region Ingreso de Fechas en Calendario
-        //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad o algo similar
+        //Cuando se lanze estos dos eventos, obligar a que realice una verificacion de disponibilidad
         private void dtp_fechaDesde_ValueChanged(object sender, EventArgs e)
         {
             try

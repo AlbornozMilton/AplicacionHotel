@@ -706,6 +706,7 @@
             this.txb_Deposito.ReadOnly = true;
             this.txb_Deposito.Size = new System.Drawing.Size(90, 26);
             this.txb_Deposito.TabIndex = 24;
+            this.txb_Deposito.Text = "0";
             this.txb_Deposito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AltaAlojamientoSinReserva

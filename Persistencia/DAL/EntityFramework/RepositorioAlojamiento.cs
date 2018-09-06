@@ -17,16 +17,19 @@ namespace Persistencia.DAL.EntityFramework
         {
             return iDbContext.Alojamientos.Max(a => a.AlojamientoId);
         }
-        /// <summary>
-        /// Este Get devuelve el Alojamiento acompañado de la Habitacion y de la lista de Clientes
-        /// </summary>
-        /// <param name="pId"></param>
-        /// <returns></returns>
+
         public override Alojamiento Get(int pId)
         {
             try
             {
-                return iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("AlojHabes.Habitacion").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes").Where(a => a.AlojamientoId == pId).SingleOrDefault();
+                return iDbContext.Alojamientos
+                    .Include("Servicios.Servicio")
+                    .Include("Pagos")
+                    .Include("AlojHabes.Habitacion")
+                    .Include("AlojHabes.Tarifas")
+                    .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                    .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
+                    .Where(a => a.AlojamientoId == pId).SingleOrDefault();
             }
             catch (Exception)
             {
@@ -37,7 +40,13 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> GetAllAlojamientosActivos()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("AlojHabes.Habitacion").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes").Include("Pagos")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos
+                                .Include("Servicios.Servicio")
+                                .Include("Pagos")
+                                .Include("AlojHabes.Habitacion")
+                                .Include("AlojHabes.Tarifas")
+                                .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                                .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Alojado) || (aloj.EstadoAlojamiento == EstadoAlojamiento.Reservado))
                                select aloj;
 
@@ -46,7 +55,13 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> ListaPersonalizada(List<EstadoAlojamiento> pEstados, DateTime pDesde, DateTime pHasta)
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("AlojHabes.Habitacion").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos
+                                .Include("Servicios.Servicio")
+                                .Include("Pagos")
+                                .Include("AlojHabes.Habitacion")
+                                .Include("AlojHabes.Tarifas")
+                                .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                                .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                                where (
                                         (pEstados.Contains(aloj.EstadoAlojamiento))
                                         &&
@@ -65,7 +80,13 @@ namespace Persistencia.DAL.EntityFramework
 
         public IEnumerable<Alojamiento> AlojamientosConDeuda()
         {
-            var alojamientos = from aloj in this.iDbContext.Alojamientos.Include("Servicios.Servicio").Include("Pagos").Include("AlojHabes.Habitacion").Include("AlojHabes.Tarifas").Include("AlojHabes.Clientes")
+            var alojamientos = from aloj in this.iDbContext.Alojamientos
+                                .Include("Servicios.Servicio")
+                                .Include("Pagos")
+                                .Include("AlojHabes.Habitacion")
+                                .Include("AlojHabes.Tarifas")
+                                .Include("AlojHabes.Clientes.Cliente.TarifaCliente")
+                                .Include("AlojHabes.Clientes.Cliente.Domicilio.Ciudad")
                                where ((aloj.EstadoAlojamiento == EstadoAlojamiento.Cerrado) && (aloj.MontoDeuda > 0))
                                select aloj;
 
@@ -77,31 +98,22 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public override void Add(Alojamiento unAloj)
         {
-            //        iDbContext.Entry(tarifa).State = EntityState.Modified;
-
-            //         List<Cliente> auxListCliente = new List<Cliente>();
-            //List<Habitacion> auxHabitaciones = new List<Habitacion>();
-
             foreach (var ah in unAloj.AlojHabes)
             {
                 ah.HabitacionId = ah.Habitacion.HabitacionId;
                 ah.Habitacion = null;
 
-                foreach (var item in ah.Tarifas)
+                foreach (var ahtarifa in ah.Tarifas)
                 {
-                    iDbContext.Entry(item).State = EntityState.Modified;
-                    //item.Clientes = null;
+                    ahtarifa.AHTarifa_TarifaCliente = (int)ahtarifa.TarifaCliente.TarifaClienteId;
+                    ahtarifa.TarifaCliente = null;
                 }
 
-                foreach (var item in ah.Clientes)
+                foreach (var ahcli in ah.Clientes)
                 {
-                    item.DomicilioId = item.Domicilio.DomicilioId;
-                    iDbContext.Entry(item).State = EntityState.Modified;
-                    //item.TarifaCliente = null;
+                    ahcli.ClienteId = ahcli.Cliente.ClienteId;
+                    ahcli.Cliente = null;
                 }
-                //ah.Tarifas = null;
-
-                //ah.Clientes = null;
             }
 
             iDbContext.Alojamientos.Add(unAloj);
@@ -114,12 +126,30 @@ namespace Persistencia.DAL.EntityFramework
         /// </summary>
         public void AltaReserva(Alojamiento pAloj)
         {
-            //        iDbContext.Entry(tarifa).State = EntityState.Modified;
+            var auxAlojHabes = pAloj.AlojHabes;
+            pAloj.AlojHabes = null;
+            iDbContext.Entry(pAloj).State = EntityState.Modified;
+            iDbContext.SaveChanges();
 
-            Alojamiento localAloj = this.Get(pAloj.AlojamientoId);
-            localAloj.MontoDeuda = pAloj.MontoDeuda;//por si efectuo pago reserva 
-            localAloj.EstadoAlojamiento = pAloj.EstadoAlojamiento;
-            localAloj.FechaIngreso = pAloj.FechaIngreso;//para las altas
+            foreach (var ah in auxAlojHabes)
+            {
+                ah.AlojamientoId = pAloj.AlojamientoId;
+                iDbContext.Entry(ah.Habitacion).State = EntityState.Modified;
+
+                ah.Tarifas = null;
+
+                foreach (var cli in ah.Clientes)
+                {
+                    //cli.DomicilioId = cli.Domicilio.DomicilioId;
+                    //iDbContext.Entry(cli.TarifaCliente).State = EntityState.Modified;
+                    //iDbContext.Entry(cli.Domicilio).State = EntityState.Modified;
+                    //iDbContext.Entry(cli).State = EntityState.Modified;
+                }
+
+                iDbContext.AlojHabs.Add(ah);
+            }
+
+            iDbContext.SaveChanges();
         }
 
         /// <summary>

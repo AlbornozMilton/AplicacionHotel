@@ -73,15 +73,14 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_Comprobar = new System.Windows.Forms.Button();
             this.dGV_ClienteResponsable = new System.Windows.Forms.DataGridView();
-            this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dt_hora = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpicker_fechaAloj = new System.Windows.Forms.DateTimePicker();
+            this.clm_AyN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_Procedencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Habs)).BeginInit();
@@ -575,11 +574,10 @@
             this.dGV_ClienteResponsable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dGV_ClienteResponsable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_ClienteResponsable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clm_AyN,
             this.clm_Dni,
-            this.clm_Legajo,
-            this.clm_Apellido,
-            this.clm_Nombre,
-            this.clm_tipo});
+            this.clm_tipo,
+            this.clm_Procedencia});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -606,46 +604,6 @@
             this.dGV_ClienteResponsable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_ClienteResponsable.Size = new System.Drawing.Size(980, 62);
             this.dGV_ClienteResponsable.TabIndex = 10;
-            // 
-            // clm_Dni
-            // 
-            this.clm_Dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Dni.FillWeight = 40F;
-            this.clm_Dni.HeaderText = "DNI";
-            this.clm_Dni.Name = "clm_Dni";
-            this.clm_Dni.ReadOnly = true;
-            // 
-            // clm_Legajo
-            // 
-            this.clm_Legajo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Legajo.FillWeight = 40F;
-            this.clm_Legajo.HeaderText = "Legajo";
-            this.clm_Legajo.Name = "clm_Legajo";
-            this.clm_Legajo.ReadOnly = true;
-            // 
-            // clm_Apellido
-            // 
-            this.clm_Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Apellido.FillWeight = 70F;
-            this.clm_Apellido.HeaderText = "Apellido";
-            this.clm_Apellido.Name = "clm_Apellido";
-            this.clm_Apellido.ReadOnly = true;
-            // 
-            // clm_Nombre
-            // 
-            this.clm_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_Nombre.FillWeight = 70F;
-            this.clm_Nombre.HeaderText = "Nombre";
-            this.clm_Nombre.Name = "clm_Nombre";
-            this.clm_Nombre.ReadOnly = true;
-            // 
-            // clm_tipo
-            // 
-            this.clm_tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clm_tipo.FillWeight = 70F;
-            this.clm_tipo.HeaderText = "Tipo";
-            this.clm_tipo.Name = "clm_tipo";
-            this.clm_tipo.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -699,6 +657,37 @@
             this.dtpicker_fechaAloj.Size = new System.Drawing.Size(287, 26);
             this.dtpicker_fechaAloj.TabIndex = 35;
             this.dtpicker_fechaAloj.TabStop = false;
+            // 
+            // clm_AyN
+            // 
+            this.clm_AyN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_AyN.HeaderText = "Apellido y Nombres";
+            this.clm_AyN.Name = "clm_AyN";
+            this.clm_AyN.ReadOnly = true;
+            // 
+            // clm_Dni
+            // 
+            this.clm_Dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Dni.FillWeight = 40F;
+            this.clm_Dni.HeaderText = "DNI";
+            this.clm_Dni.Name = "clm_Dni";
+            this.clm_Dni.ReadOnly = true;
+            // 
+            // clm_tipo
+            // 
+            this.clm_tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_tipo.FillWeight = 55F;
+            this.clm_tipo.HeaderText = "Tipo";
+            this.clm_tipo.Name = "clm_tipo";
+            this.clm_tipo.ReadOnly = true;
+            // 
+            // clm_Procedencia
+            // 
+            this.clm_Procedencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clm_Procedencia.FillWeight = 70F;
+            this.clm_Procedencia.HeaderText = "Procedencia";
+            this.clm_Procedencia.Name = "clm_Procedencia";
+            this.clm_Procedencia.ReadOnly = true;
             // 
             // AltaReservaAlojamiento
             // 
@@ -773,11 +762,6 @@
 		private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
 		private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dGV_ClienteResponsable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Legajo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_Comprobar;
         private System.Windows.Forms.DateTimePicker dt_hora;
@@ -788,5 +772,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn clmk_tipoCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_AyN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clm_Procedencia;
     }
 }

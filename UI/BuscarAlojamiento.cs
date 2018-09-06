@@ -22,13 +22,11 @@ namespace UI
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
-            label2.Visible = true;
             btn_Buscar.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            label2.Visible = false;
             btn_Buscar.SizeMode = PictureBoxSizeMode.CenterImage;
         }
 
@@ -46,13 +44,20 @@ namespace UI
             dGV_ListadoAlojamientos.Rows.Clear();
             if (auxAloj_Seleccionado != null)
             {
-                //dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, this.auxAloj_Seleccionado.Habitacion.HabitacionId,this.auxAloj_Seleccionado.DniResponsable, this.auxAloj_Seleccionado.Clientes.Find(c => c.ClienteId == this.auxAloj_Seleccionado.DniResponsable).NombreCompleto());
+                string Habs = "";
+                foreach (var ah in auxAloj_Seleccionado.AlojHabes)
+                {
+                    Habs += ah.Habitacion.HabitacionId + ", ";
+                }
+                Habs = Habs.Remove(Habs.Length - 2);
+
+                Cliente responsable = new ControladorCliente().BuscarClientePorDni(auxAloj_Seleccionado.DniResponsable, true);
+
+                dGV_ListadoAlojamientos.Rows.Add(this.auxAloj_Seleccionado.AlojamientoId, this.auxAloj_Seleccionado.EstadoAlojamiento, Habs, responsable.NombreCompleto(), this.auxAloj_Seleccionado.DniResponsable);
                 btn_Aceptar.Enabled = true;
             }
             else
-            {
                 btn_Aceptar.Enabled = false;
-            }
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
@@ -62,7 +67,7 @@ namespace UI
                 auxAloj_Seleccionado = new ControladorAlojamiento().BuscarAlojamientoPorID(Convert.ToInt32(tbx_IdAlojamiento.Text));
                 CargarAlojAux();
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 if (tbx_IdAlojamiento.Text == "")
                 {
@@ -71,7 +76,7 @@ namespace UI
                 }
                 else
                 {
-                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Formato Incorrecto: se debe ingresar un número sin espacios", TipoMensaje.Alerta);
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente("Formato Incorrecto: se debe ingresar números sin espacios", TipoMensaje.Alerta);
                     ventanaEmergente.ShowDialog();
                 }
             }
@@ -104,9 +109,9 @@ namespace UI
             }
         }
 
-		public void SetVisibleSeleccionar(bool pValor)
-		{
-			btn_Aceptar.Visible = pValor;
-		}
+        public void SetVisibleSeleccionar(bool pValor)
+        {
+            btn_Aceptar.Visible = pValor;
+        }
     }
 }

@@ -1,10 +1,6 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using pers = Persistencia.Domain;
+
 namespace Dominio.DTOsAutoMapper
 {
     public class AutoMapper
@@ -15,7 +11,9 @@ namespace Dominio.DTOsAutoMapper
             {
 				cfg.CreateMap<AlojHab, pers.AlojHab>().ReverseMap();
 
-				//cfg.CreateMap<MetadaHotel, pers.MetadataHotel>();
+                cfg.CreateMap<AHCliente, pers.AHCliente>().ReverseMap();
+
+                cfg.CreateMap<AHTarifa, pers.AHTarifa>().ReverseMap();
 
                 cfg.CreateMap<Cliente, pers.Cliente>().ReverseMap();
 

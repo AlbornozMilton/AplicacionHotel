@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AHCliente.cs" />
+    <Compile Include="AHTarifa.cs" />
     <Compile Include="Alojamiento.cs" />
     <Compile Include="AlojHab.cs" />
     <Compile Include="Ciudad.cs" />

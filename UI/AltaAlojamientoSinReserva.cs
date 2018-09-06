@@ -13,7 +13,6 @@ namespace UI
         public Alojamiento NuevoAlojamiento;
 
         List<AlojHab> AlojHabs = new List<AlojHab>();
-        List<Alojamiento> iAlojsActivos = new ControladorAlojamiento().ObtenerAlojamientosActivos();
         bool exclusividadCapacidad;
         int cantExclAux = 0;
 
@@ -26,7 +25,7 @@ namespace UI
         private void AltaAlojamientoSinReserva_Load(object sender, EventArgs e)
         {
             //DateTime.Today.ToString("dd/MM/yy");
-            dtpicker_fechaAloj.Value = DateTime.Today;
+            dtpicker_fechaAloj.Value = DateTime.Now;
             dt_hora.Value = dtpicker_fechaAloj.Value;
             dtp_fechaDesde.Value = DateTime.Now;
             FechaIni = DateTime.Now;
@@ -45,9 +44,6 @@ namespace UI
 
                 if (TablaDisp.HabSeleccionadas.Count != 0)
                 {
-                    //this.HabSeleccionadas = TablaDisp.HabSeleccionadas;
-                    ;
-
                     exclusividadCapacidad = new ControladorAlojamiento().ExclusividadSegunCapacidad(FechaIni, FechaFin, 0);
 
                     AlojHabs.Clear();
@@ -78,8 +74,6 @@ namespace UI
                     }
 
                     btn_AgregarCliente.Enabled = true; //seleccionar responsable
-
-                    //btn_Comprobar.Enabled = false; //por si vulve a seleccionar "Determianar"
                 }
                 else if (TablaDisp.HabSeleccionadas == null)
                 {
@@ -113,7 +107,7 @@ namespace UI
                 }
 
                 //Excepción cliente activo
-                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+                new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos(), -1);
 
                 //<-------------AVISO DE CLIENTE DEUDOR --------------------------
 
@@ -142,12 +136,12 @@ namespace UI
                 {
                     auxIdAloj = new ControladorAlojamiento().RegistrarAloj(this.NuevoAlojamiento);
                 }
-                else
-                {//Alta de reserva
+                else //Alta de reserva
+                {
                     new ControladorAlojamiento().RegistrarAltaReserva(this.NuevoAlojamiento);
                     auxIdAloj = NuevoAlojamiento.AlojamientoId;
                 }
-                VentanaEmergente ventanaEmergente = new VentanaEmergente("Alojamiento Registrado con Éxito", TipoMensaje.AltaAlojamientoExitosa, auxIdAloj);
+                VentanaEmergente ventanaEmergente = new VentanaEmergente("Alojamiento registrado", TipoMensaje.AltaAlojamientoExitosa, auxIdAloj);
                 ventanaEmergente.ShowDialog();
                 Close();
             }
@@ -190,51 +184,64 @@ namespace UI
         #region Alta de Reserva
         public void RellenarCampos()
         {
-
-            //importanteeee----------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-            //rellenar la fecha y hora con la de la reserva FechaAloj
-
-            //foreach (Habitacion hab in this.HabSeleccionadas)
-            //{
-            //    AlojHabs.Add(new AlojHab(hab));
-
-            //    for (int i = 0; i < hab.Capacidad; i++)
-            //    {
-            //        dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId);
-            //    }
-
-            //    dGV_excl.Rows.Add(hab.HabitacionId, "No");
-            //}
-
-            //generar los check
-            //check de su tarifa correspondiente para tal habitacion
-            //<<<<<<<<<<<<<<<<<<----------------------------------------
+            AlojHabs = this.NuevoAlojamiento.AlojHabes;
 
             txb_IdAloj.Text = NuevoAlojamiento.AlojamientoId.ToString();
             dtp_fechaDesde.Value = NuevoAlojamiento.FechaEstimadaIngreso;
             dtp_fechaHasta.Value = NuevoAlojamiento.FechaEstimadaEgreso;
-            //ck_Exclusividad.CheckState = NuevoAlojamiento.Exclusividad == true ? CheckState.Checked:CheckState.Unchecked;
 
-            //cliente responsable
+            dtpicker_fechaAloj.Value = this.NuevoAlojamiento.FechaAloj;
+            dt_hora.Value = this.NuevoAlojamiento.FechaAloj;
+
+            if (this.NuevoAlojamiento.EsTour)
+            {
+                button1.Text = "ES TOUR";
+                button1.BackColor = System.Drawing.Color.Green;
+            }
+
+            tbx_atendio.Text = this.NuevoAlojamiento.Atendio;
+
+            //<<<<<<<<<<<<<<<<<<----------------------------------------
+            for (int i = 0; i < AlojHabs.Count; i++)
+            {
+                Habitacion hab = this.AlojHabs[i].Habitacion;
+                List<AHCliente> cliHab = AlojHabs[i].Clientes;
+                int auxCapHab = hab.Capacidad;
+
+                for (int j = 0; j < cliHab.Count; j++)
+                {
+                    dGV_Habitaciones.Rows.Add(
+                        "Agregar",
+                        hab.HabitacionId,
+                        cliHab[j].Cliente.Apellido + " " + cliHab[j].Cliente.Nombre,
+                        cliHab[j].Cliente.ClienteId,
+                        cliHab[j].Cliente.TarifaCliente.TarifaClienteId);
+                    auxCapHab--;
+                }
+
+                while (auxCapHab > 0)
+                {
+                    dGV_Habitaciones.Rows.Add("Agregar", hab.HabitacionId);
+                    auxCapHab--;
+                }
+
+                if (this.AlojHabs[i].Exclusividad)
+                    dGV_excl.Rows.Add(hab.HabitacionId, "Si");
+                else
+                    dGV_excl.Rows.Add(hab.HabitacionId, "No");
+            }
+            //<<<<<<<<<<<<<<<<<<----------------------------------------
+
+            btn_AgregarCliente.Enabled = false;
+            this.ClienteResponsable = new ControladorCliente().BuscarClientePorDni(this.NuevoAlojamiento.DniResponsable, true);
             dGV_ClienteResponsable.Rows.Add(ClienteResponsable.ClienteId, ClienteResponsable.Legajo, ClienteResponsable.Apellido, ClienteResponsable.Nombre, ClienteResponsable.TarifaCliente.NombreTarifa);
-            //this.Acompañantes = new List<Cliente>();
-            //this.Acompañantes.Add(ClienteResponsable);
-            //btn_Confirmar.Enabled = true;
 
-            //HabSeleccionada.SetExclusividad(NuevoAlojamiento.Exclusividad);
+            txb_MontoAloj.Text = this.NuevoAlojamiento.MontoTotal.ToString();
+            txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
 
-            //para almacenar el valor de costo base de reserva y luego comparar
-            //txb_CostoBase.Text = NuevoAlojamiento.MontoTotal.ToString();
-
-            ////--------Por la reserva------------------------
-            //if (!btn_VerificarDisponibilidad.Enabled)
-            //{
-            //    auxListaCliReserva = NuevoAlojamiento.Clientes;
-            //}
-            ////-------------------------------------
             groupBox1.Enabled = false; //disponibilidad
-            groupBox3.Enabled = true; // Acompañantes
+            groupBox_excl.Enabled = false;
+
             button_visualizarReserva.Visible = true;
         }
         #endregion
@@ -249,16 +256,6 @@ namespace UI
         {
             try
             {
-                VentanaEmergente ventanaEmergenteAtendio;
-                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
-                {
-                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
-                    ventanaEmergenteAtendio.ShowDialog();
-
-                    if (!ventanaEmergenteAtendio.Aceptar)
-                        return;
-                }
-
                 if (dGV_Habitaciones.Rows.Count == 0)
                     throw new Exception("Debe seleccionar al menos una Habitación");
 
@@ -273,9 +270,9 @@ namespace UI
                 bool responsable = false;
                 foreach (AlojHab alojHab in AlojHabs)
                 {
-                    foreach (Cliente cli in alojHab.Clientes)
+                    foreach (AHCliente cli in alojHab.Clientes)
                     {
-                        if (cli.ClienteId == ClienteResponsable.ClienteId)
+                        if (cli.Cliente.ClienteId == ClienteResponsable.ClienteId)
                         {
                             responsable = true;
                             break;
@@ -304,30 +301,62 @@ namespace UI
                         if ((ClienteResponsable.TarifaCliente.TarifaClienteId == TipoCliente.Convenio && (string)row.Cells[4].Value != "Convenio")
                                             ||
                                         (ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio) && (string)row.Cells[4].Value == "Convenio")
-                            throw new Exception("No debe haber Titulares por Convenio mezclados con otros Tipos de Titulares"); 
+                            throw new Exception("No debe haber Titulares por Convenio mezclados con otros Tipos de Titulares");
                     }
                 }
 
-                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
+                VentanaEmergente ventanaEmergenteAtendio;
+                if (tbx_atendio.Text == null || tbx_atendio.Text == "")
+                {
+                    ventanaEmergenteAtendio = new VentanaEmergente("El campo 'Atendió' esta vacío", TipoMensaje.SiNo);
+                    ventanaEmergenteAtendio.ShowDialog();
+
+                    if (!ventanaEmergenteAtendio.Aceptar)
+                        return;
+                }
+
+                //Para el caso en que haya cargado un solo cliente y NO haya marcado como exclusiva
                 int cantNull = 0;
+                int cantNoNull = 0;
+                string Hab = "";
                 foreach (DataGridViewRow rowExcl in dGV_excl.Rows)
                 {
                     if ((string)rowExcl.Cells[1].Value == "No")
                     {
+                        cantNoNull = 0;
                         foreach (DataGridViewRow rowHabs in dGV_Habitaciones.Rows)
                         {
-                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[1].Value && rowHabs.Cells[3].Value == null)
+                            if ((byte)rowExcl.Cells[0].Value == (byte)rowHabs.Cells[1].Value)
                             {
-                                cantNull++;
+                                if (rowHabs.Cells[3].Value == null)
+                                    cantNull++;
+                                else
+                                {
+                                    Hab = rowExcl.Cells[0].Value.ToString();
+                                    cantNoNull++;
+                                }
                             }
+
                         }
+
+                        if (cantNoNull == 1)
+                            break;
                     }
                 }
 
+                VentanaEmergente ventanaEmergenteHabDisp2;
+                if (cantNoNull == 1)
+                {
+                    ventanaEmergenteHabDisp2 = new VentanaEmergente("Se cargó un solo Cliente para la Habitación " + Hab + ", por lo que debe colocala como exclusiva", TipoMensaje.Alerta);
+                    ventanaEmergenteHabDisp2.ShowDialog();
+                    return;
+                }
+
+                //PARA LA EXCL DE LA HAB SE DEBE RELLANAR LA CANTIDAD TOTAL DE ESA HAB PARA EVITAR EXCEPCIÓN "ESPACIO DISPONIBLE"
                 VentanaEmergente ventanaEmergenteHabDisp;
                 if (cantNull != 0 && ClienteResponsable.TarifaCliente.TarifaClienteId != TipoCliente.Convenio)
                 {
-                    ventanaEmergenteHabDisp = new VentanaEmergente("Hay habitaciones con espacio disponible", TipoMensaje.SiNo);
+                    ventanaEmergenteHabDisp = new VentanaEmergente("Hay Habitaciones con espacio disponible", TipoMensaje.SiNo);
                     ventanaEmergenteHabDisp.ShowDialog();
                     if (!ventanaEmergenteHabDisp.Aceptar)
                         return;
@@ -358,7 +387,7 @@ namespace UI
                 }
 
                 txb_MontoAloj.Text = this.NuevoAlojamiento.MontoTotal.ToString();
-                txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
+                //txb_Deposito.Text = this.NuevoAlojamiento.MontoDepositado().ToString();
 
                 groupBox1.Enabled = false; // grid de fechas
                 groupBox2.Enabled = false; // grid de responsable
@@ -402,9 +431,9 @@ namespace UI
 
                             foreach (AlojHab ah in AlojHabs)
                             {
-                                foreach (Cliente cli in ah.Clientes)
+                                foreach (AHCliente cli in ah.Clientes)
                                 {
-                                    if (CliAux.ClienteId == cli.ClienteId)
+                                    if (CliAux.ClienteId == cli.Cliente.ClienteId)
                                     {
                                         throw new Exception("El cliente elegido ya se encuentra seleccionado");
                                     }
@@ -413,7 +442,8 @@ namespace UI
                             }
 
                             //Cliente Activo
-                            new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos());
+                            new ControladorCliente().ControlClienteActivo(BuscarClienteForm.ClienteSeleccionado, FechaIni, FechaFin, new ControladorAlojamiento().ObtenerAlojamientosActivos()
+                                , this.NuevoAlojamiento == null ? -1 : this.NuevoAlojamiento.AlojamientoId);
 
                             rowSelected.Cells[2].Value = CliAux.Apellido + " " + CliAux.Nombre;
                             rowSelected.Cells[3].Value = CliAux.ClienteId;
@@ -424,16 +454,17 @@ namespace UI
                                 rowSelected.Cells[5].Value = CliAux.Domicilio.Direccion();
 
                             //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
-                            EvaluarExcl1(rowSelected, ahAux);
+                            if (this.NuevoAlojamiento == null)
+                                EvaluarExcl1(rowSelected, ahAux);
 
                             //si es reserva, la lista de tarifas ya viene cargada, sino no es necesario el futuro control
-                            ahAux.Clientes.Add(BuscarClienteForm.ClienteSeleccionado);
+                            ahAux.Clientes.Add( new AHCliente(BuscarClienteForm.ClienteSeleccionado));
                             rowSelected.Cells[0].Value = "Quitar";
                         }
                     }
                     else // QUITAR
                     {
-                        ahAux.Clientes.Remove(ahAux.Clientes.Find(c => c.ClienteId == (int)rowSelected.Cells[3].Value));
+                        ahAux.Clientes.Remove(ahAux.Clientes.Find(c => c.Cliente.ClienteId == (int)rowSelected.Cells[3].Value));
 
                         rowSelected.Cells[2].Value = null;
                         rowSelected.Cells[3].Value = null;
@@ -441,7 +472,8 @@ namespace UI
                         rowSelected.Cells[5].Value = null;
 
                         //CHEQUEAR EL CAMBIO DE EXCL SEGUN EL TIPO DE CLIENTE
-                        EvaluarExcl1(rowSelected, ahAux);
+                        if (this.NuevoAlojamiento == null)
+                            EvaluarExcl1(rowSelected, ahAux);
 
                         rowSelected.Cells[0].Value = "Agregar";
                     }

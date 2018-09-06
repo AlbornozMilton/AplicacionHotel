@@ -18,6 +18,6 @@ namespace Persistencia.Domain
         public int? DomicilioId { get; set; }
         public Domicilio Domicilio { get; set; }
 
-        public List<AlojHab> AlojHabs { get; set; }
+        public List<AHCliente> AlojHabs { get; set; }
 	}
 }

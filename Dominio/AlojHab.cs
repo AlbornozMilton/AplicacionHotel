@@ -10,13 +10,13 @@ namespace Dominio
         Alojamiento iAloj;
         Habitacion iHab;
         List<HabClientesRow> iRowTarifas = new List<HabClientesRow>();
-        List<TarifaCliente> iTarifas = new List<TarifaCliente>();
-        List<Cliente> iClientes = new List<Cliente>();
+        List<AHTarifa> iTarifas = new List<AHTarifa>();
+        List<AHCliente> iClientes = new List<AHCliente>();
 
         public AlojHab() { }
 
         //Para reserva 
-        public AlojHab(bool pExcl, Habitacion pHab, List<TarifaCliente> pTarifas)
+        public AlojHab(bool pExcl, Habitacion pHab, List<AHTarifa> pTarifas)
         {
             iHab = pHab;
             iExclusividad = pExcl;
@@ -33,8 +33,8 @@ namespace Dominio
         public bool Exclusividad { get { return this.iExclusividad; } set { this.iExclusividad = value; } }
         public Alojamiento Alojamiento { get { return this.iAloj; } private set { this.iAloj = value; } }
         public Habitacion Habitacion { get { return this.iHab; } private set { this.iHab = value; } }
-        public List<TarifaCliente> Tarifas { get { return this.iTarifas; } private set { this.iTarifas = value; } }
-        public List<Cliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
+        public List<AHTarifa> Tarifas { get { return this.iTarifas; } private set { this.iTarifas = value; } }
+        public List<AHCliente> Clientes { get { return this.iClientes; } private set { this.iClientes = value; } }
         public List<HabClientesRow> Rows { get { return this.iRowTarifas; } private set { this.iRowTarifas = value; } }
 
         public void AgregarTarifaRow(int pNum, string pTarifa)
@@ -71,12 +71,12 @@ namespace Dominio
 
             if (this.Tarifas.Count == this.Clientes.Count)
             {
-                List<TarifaCliente> AuxTarifas = this.Tarifas.OrderBy(t => t.TarifaClienteId).ToList();
-                List<Cliente> AuxTarifasCli = this.Clientes.OrderBy(c => c.TarifaCliente.TarifaClienteId).ToList();
+                List<AHTarifa> AuxTarifas = this.Tarifas.OrderBy(t => t.TarifaCliente.TarifaClienteId).ToList();
+                List<AHCliente> AuxTarifasCli = this.Clientes.OrderBy(c => c.Cliente.TarifaCliente.TarifaClienteId).ToList();
 
                 for (int i = 0; i < AuxTarifas.Count; i++)
                 {
-                    if (AuxTarifas[i].TarifaClienteId != AuxTarifasCli[i].TarifaCliente.TarifaClienteId)
+                    if (AuxTarifas[i].TarifaCliente.TarifaClienteId != AuxTarifasCli[i].Cliente.TarifaCliente.TarifaClienteId)
                     {
                         resultado = false;
                         break;

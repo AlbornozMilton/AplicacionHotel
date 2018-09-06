@@ -20,9 +20,6 @@ namespace Persistencia.Domain
         public double MontoDeuda { get; set; }
         public EstadoAlojamiento EstadoAlojamiento { get; set; }
 
-    //-------------------- Relaciones ---------------------------------//
-	//    public int ClienteId { get; set; }
-    //   public byte HabitacionId { get; set; }
         public List<AlojHab> AlojHabes { get; set; }
         public List<Pago> Pagos { get; set; }
         public List<LineaServicio> Servicios { get; set; }

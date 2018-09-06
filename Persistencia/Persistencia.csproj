@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -53,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EntityFramework\Mappings\AHClienteMap.cs" />
+    <Compile Include="DAL\EntityFramework\Mappings\AHTarifaMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\AlojHabsMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\MetadataHotelMap.cs" />
     <Compile Include="DAL\EntityFramework\Mappings\ServicioMap.cs" />
@@ -89,6 +92,8 @@
     <Compile Include="DAL\IRepositorioTarifa.cs" />
     <Compile Include="DAL\IRepositorioUsuario.cs" />
     <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="Domain\AHCliente.cs" />
+    <Compile Include="Domain\AHTarifa.cs" />
     <Compile Include="Domain\Alojamiento.cs" />
     <Compile Include="Domain\AlojHab.cs" />
     <Compile Include="Domain\Ciudad.cs" />
